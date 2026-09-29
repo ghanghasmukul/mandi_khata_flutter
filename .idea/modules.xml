@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/mandi_khata_flutter.iml" filepath="$PROJECT_DIR$/mandi_khata_flutter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/mandi_khata_flutter_android.iml" filepath="$PROJECT_DIR$/android/mandi_khata_flutter_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/mandi_khata_app/mandi_khata_app.iml" filepath="$PROJECT_DIR$/apps/mandi_khata_app/mandi_khata_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/mandi_khata_app/android/mandi_khata_app_android.iml" filepath="$PROJECT_DIR$/apps/mandi_khata_app/android/mandi_khata_app_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/khata_core/khata_core.iml" filepath="$PROJECT_DIR$/packages/khata_core/khata_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/mk_ui/mk_ui.iml" filepath="$PROJECT_DIR$/packages/mk_ui/mk_ui.iml" />
     </modules>
   </component>
 </project>

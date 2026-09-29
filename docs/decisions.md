@@ -9,3 +9,5 @@
 | 2026-09-26 | Party net position = khata balance only (no adding shop dues on top) | Fixes prototype double counting |
 | 2026-09-26 | Claude Code accesses only the dev Supabase project; prod via approved GitHub Actions | Safety |
 | 2026-09-29 | Add macOS as a shipped desktop target alongside Windows | Development happens on a Mac, so macOS/Android/Web build and run locally; Windows stays the primary shop-counter platform, built on a Windows machine or the `windows-latest` CI runner |
+| 2026-09-29 | Upgraded Flutter 3.44.0 → 3.47.5 (Dart 3.12 → 3.13.4) | `drift_dev`, `riverpod_generator` and `very_good_analysis` 11 all require analyzer ≥13, which Dart 3.12 could not satisfy; pinning older packages would have started the project on stale deps |
+| 2026-09-29 | Dart pub workspace with a single root lockfile | One resolution for app + khata_core + mk_ui; prevents version drift between the packages |

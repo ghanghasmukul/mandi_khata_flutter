@@ -12,7 +12,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [x] 🧑 `.env.dev` created; `supabase link` to dev done (2026-09-29): linked to `nqsaezlfqfrbrrleilyb`; `POWERSYNC_URL` still blank until the PowerSync instance exists
 
 ## Phase 0: Foundation
-- [ ] 0.1 Monorepo scaffold
+- [x] 0.1 Monorepo scaffold (2026-09-29): pub workspace + app/khata_core/mk_ui, very_good_analysis clean, 3 tests pass, `flutter build web` OK. Manual run on macOS/Chrome/emulator still to be confirmed by user.
 - [ ] 0.2 Design system (mk_ui)
 - [ ] 0.3 Supabase schema: tenancy, users, settings, audit, parties
 - [ ] 0.4 PowerSync sync rules + local database (🧑 paste sync rules into PowerSync dashboard / deploy via CLI)
