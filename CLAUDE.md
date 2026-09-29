@@ -7,7 +7,9 @@ Read this file fully before any task. Then read the phase file you are asked to 
 Mandi Khata is a multi-tenant, offline-first SaaS app for **arhtiyas (commission agents) and agri-input vendors** in Indian grain mandis (Punjab / Haryana / Rajasthan first).
 It is sold on subscription. Every business (tenant) configures its own rules: interest rate, simple vs compound (chakravardhi byaj), compounding period, commission %, mandi charges, price tiers, modules on/off, role permissions.
 
-Platforms: **Windows desktop (primary, shop counter)**, **macOS desktop**, **Android (munshi at the mandi gate)**, **Web (owner / accountant)**.
+Platforms shipped: **Windows desktop (primary, shop counter)**, **macOS desktop**, **Android (munshi at the mandi gate)**, **Web (owner / accountant)**.
+
+Development happens on a **MacBook**. See "Development environment" below — Windows is a build target, not a local one.
 The app must work **fully offline**. Every screen, search, report and interest calculation runs against the local database. Data syncs to the backend whenever internet is available.
 
 Languages: English, Hindi (हिंदी), Punjabi (ਪੰਜਾਬੀ).
@@ -104,13 +106,13 @@ dart run build_runner build --delete-conflicting-outputs   # inside a package/ap
 cd packages/khata_core && dart test
 cd apps/mandi_khata_app && flutter test
 
-# Run
-flutter run -d macos                                       # local dev machine
-flutter run -d windows                                     # on a Windows machine
-flutter run -d chrome --web-renderer canvaskit
-flutter run -d <android-device-id>
+# Run — daily development (macOS dev machine)
+flutter run -d chrome --web-renderer canvaskit             # primary quick loop
+flutter run -d <android-emulator-id>                       # primary quick loop
+flutter run -d macos                                       # desktop check
+# flutter run -d windows                                   # only on a real Windows PC
 
-# Supabase (local)
+# Supabase (local stack — OPTIONAL, needs Docker running)
 supabase start
 supabase db reset          # re-applies migrations + seed
 supabase test db           # pgTAP RLS tests
@@ -119,7 +121,7 @@ supabase functions serve
 
 ## Definition of done (every task)
 
-- [ ] Code compiles on Windows, macOS, Android and Web.
+- [ ] Code compiles on macOS, Android and Web locally; Windows is built by CI (`windows-latest`), never on the dev machine.
 - [ ] `flutter analyze` clean, `dart format` applied.
 - [ ] Unit tests for any logic; `khata_core` changes have tests with worked examples.
 - [ ] Works with network OFF, and syncs correctly when turned back ON.
@@ -138,10 +140,19 @@ supabase functions serve
 - Design reference: the HTML prototype `design/Mandi_Khata.html` (colours, layout, screen list). Match its look. The prototype's data and logic are NOT authoritative; `docs/domain/` is.
 - Use subagents for independent code review and for broad searches; keep the main context for building.
 
+## Development environment
+
+- The dev machine is a **MacBook**. Daily testing is the **Android emulator** and **Chrome** (`flutter run -d chrome`); `-d macos` for a desktop sanity check.
+- **Never run `flutter build windows` or `flutter run -d windows` locally** — it cannot work on macOS. Windows is built only by GitHub Actions on a `windows-latest` runner; the user tests that build on a real Windows PC before the pilot. Keep `windows` in the app's target platforms regardless.
+- The app runs against the **online Supabase dev project and PowerSync Cloud**, configured through `.env.dev` (`--dart-define-from-file=.env.dev`). This is the normal path — no Docker needed to run the app.
+- The **local Supabase stack (Docker) is optional** and used only for `supabase db reset` and `supabase test db`. If Docker is not running, do not try to start the stack: instead ask the user to approve `supabase db push` to apply migrations to the dev project, and let the pgTAP tests run in CI.
+- **Android emulator + local Supabase:** the emulator cannot reach the host's `127.0.0.1`/`localhost`. If the app is ever pointed at a local Supabase or PowerSync, use **`10.0.2.2`** in place of `127.0.0.1` in the Android config. This does not apply when using the online dev project (the normal case).
+
 ## Supabase & tools
 
 - The `supabase` MCP server is connected to the **dev** project only. Use it to: list tables/migrations, read logs, run security and performance advisors, search Supabase docs, deploy Edge Functions to dev.
-- **Never change schema with `execute_sql`.** Schema = migration files in `supabase/migrations/` created with `supabase migration new`, tested with `supabase db reset` + `supabase test db`, then applied to dev (`supabase db push` or MCP `apply_migration` with identical SQL). `execute_sql` is for read queries and debugging only.
+- **Never change schema with `execute_sql`.** Schema = migration files in `supabase/migrations/` created with `supabase migration new`, then applied to dev (`supabase db push` or MCP `apply_migration` with identical SQL). `execute_sql` is for read queries and debugging only.
+- Test migrations locally with `supabase db reset` + `supabase test db` **when Docker is running**. When it is not, skip the local stack: ask the user to approve `supabase db push` to dev, and rely on CI for the pgTAP RLS tests.
 - Never try to access production: no prod project ref, no `.env.prod`, no linking to prod. Production changes go through the GitHub Actions workflow the user approves.
 - Never put the service-role key or any secret in Flutter code. Secrets for Edge Functions go in Supabase secrets (`supabase secrets set`), set by the user.
 - Use the Dart & Flutter MCP server (if connected) for analyzer diagnostics, running tests and hot reload instead of guessing.

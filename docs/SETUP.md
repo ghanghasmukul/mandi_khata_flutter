@@ -2,12 +2,15 @@
 
 These steps are for **you** (they need your accounts, logins and installers). After this, Claude Code does the building.
 
-Development machine: **macOS (Apple silicon)**. macOS, Android and Web all build and run from it.
+Development machine: **MacBook (macOS)**. Daily work is the **Android emulator** and **Chrome** (`flutter run -d chrome`), with `-d macos` as a desktop sanity check.
 
-**Windows is the primary customer platform** (the shop counter), but Flutter cannot cross-compile it — a Windows build needs an actual Windows machine. So:
-- Day-to-day development and testing happens on the Mac (macOS + Android + Web).
-- Windows builds run on the `windows-latest` GitHub Actions runner (set up in Step 0.8).
-- Before each pilot/release, test the Windows build on a real Windows 10/11 machine or VM (see Step 1b).
+**Windows is the primary customer platform** (the shop counter), but Flutter cannot cross-compile it. So:
+- Nobody runs `flutter build windows` on the Mac — it cannot work there.
+- Windows builds are produced **only by GitHub Actions** on a `windows-latest` runner (set up in Step 0.8).
+- You test that CI-produced build on a **real Windows PC before the pilot** (see Step 1b).
+- `windows` stays in the app's target platforms the whole time.
+
+**Backend:** the app runs against the **online Supabase dev project + PowerSync Cloud**, configured in `.env.dev`. You do **not** need Docker to run the app. The local Supabase stack is optional — see Step 2b.
 
 ---
 
@@ -19,7 +22,7 @@ Development machine: **macOS (Apple silicon)**. macOS, Android and Web all build
 | Xcode + Command Line Tools | Needed to build the macOS desktop app; also provides git | App Store, then `xcode-select --install` |
 | Flutter SDK (stable) | The app | https://docs.flutter.dev/get-started/install/macos |
 | Android Studio | Android SDK, emulator, your IDE | https://developer.android.com/studio |
-| Docker Desktop | Runs a local Supabase copy for development and tests | https://www.docker.com/products/docker-desktop/ |
+| Docker Desktop | *Optional.* Local Supabase copy for `supabase db reset` / `supabase test db` | https://www.docker.com/products/docker-desktop/ |
 | Node.js 20 LTS | Edge Functions tooling | `brew install node@20` |
 | Supabase CLI | Migrations, local DB, deploy functions | `brew install supabase/tap/supabase` |
 | Claude Code | The builder | `curl -fsSL https://claude.ai/install.sh \| bash` |
@@ -42,22 +45,24 @@ Optional: install the **Claude Code plugin for JetBrains** in Android Studio (Se
 
 ---
 
-## 1b. The Windows build machine (needed before the pilot, not on day one)
+## 1b. The Windows test PC (needed before the pilot, not on day one)
 
-CI produces the Windows build, but you still need somewhere to run and test it. A Windows 10/11 machine, or a VM on the Mac (Parallels / VMware Fusion / UTM), needs:
+CI builds the Windows app; you only need somewhere to **run and check** it before the pilot. Any Windows 10/11 PC (or a VM on the Mac — Parallels / VMware Fusion / UTM) works: download the installer artifact from the GitHub Actions run and install it.
+
+You do **not** need Flutter, Visual Studio, Supabase, Docker or Claude Code on that PC just to test a release build.
+
+Only if you later want to build Windows locally on that PC:
 
 | Tool | Why | Install |
 |---|---|---|
 | Git for Windows | Version control | https://git-scm.com/download/win |
 | Flutter SDK (stable) | The app | https://docs.flutter.dev/get-started/install/windows |
-| Visual Studio 2022 Community | Required to build Windows desktop apps. Tick **"Desktop development with C++"** | https://visualstudio.microsoft.com/ |
+| Visual Studio 2022 Community | Required to compile Windows desktop apps. Tick **"Desktop development with C++"** | https://visualstudio.microsoft.com/ |
 
 Then `flutter doctor` there must show the **Visual Studio** line green, and:
 ```powershell
 flutter run -d windows
 ```
-
-You don't need Supabase, Docker or Claude Code on that machine — it only builds and runs the app.
 
 ---
 
@@ -70,6 +75,26 @@ You don't need Supabase, Docker or Claude Code on that machine — it only build
 2. **PowerSync** (https://www.powersync.com): create an instance for dev (and later one for prod) and connect it to the Supabase project (their dashboard has a Supabase connection wizard). Note the **PowerSync instance URL**.
 3. **Razorpay** (Phase 5 only): test-mode keys.
 4. **Sentry** (optional, Phase 0.7): a Flutter project DSN.
+
+The app always talks to these **online** services via `.env.dev`. That is the normal development path.
+
+---
+
+## 2b. Local Supabase (optional — only for schema tests)
+
+The local Docker stack is **not** needed to run the app. It exists so migrations can be tested destructively before they touch the dev project:
+
+```bash
+supabase start             # needs Docker Desktop running
+supabase db reset          # re-apply all migrations + seed from scratch
+supabase test db           # pgTAP RLS tests
+```
+
+**If Docker isn't running**, don't start the stack. Instead:
+- Claude asks you to approve `supabase db push`, which applies the migration files to the **dev** project.
+- The pgTAP RLS tests run in **CI** on every push instead of locally.
+
+**Android emulator note:** the emulator cannot reach the host's `127.0.0.1`. If you ever point the app at a *local* Supabase/PowerSync, the Android config must use **`10.0.2.2`** instead of `127.0.0.1`. This does not apply to the online dev project.
 
 ---
 

@@ -37,7 +37,7 @@ claude
 ```
 1. Claude picks the next unchecked step in `docs/PROGRESS.md`, reads its spec and the domain rules, and shows a plan. For big steps, press **Shift+Tab** to switch to plan mode first, read the plan, then approve.
 2. Claude builds it, runs `/verify`, fixes failures, checks the Supabase advisors, and ticks the step.
-3. **You** run the app (`flutter run -d macos`, Android emulator, Chrome — plus `-d windows` on a Windows machine before shipping) and click through what Claude says to test.
+3. **You** run the app and click through what Claude says to test — normally `flutter run -d chrome` and the Android emulator, with `-d macos` for a desktop check. Windows is built by CI; you test that build on a real Windows PC before the pilot.
 4. Approve the commit Claude proposes.
 5. Type `/clear`, then `/next-step` again. Memory lives in the files, not in the chat, so clearing is safe and keeps Claude sharp.
 
@@ -64,5 +64,6 @@ At the end of each phase: `/phase-review <n>`. An independent reviewer checks th
 | | Dev | Prod |
 |---|---|---|
 | Supabase project | `mandi-khata-dev` (Claude via MCP + CLI) | `mandi-khata-prod` (no Claude access) |
-| Schema changes | `supabase db reset` locally → `supabase db push` to dev | GitHub Actions `deploy-db.yml` with your approval (Step 1.11) |
-| App config | `.env.dev` | `.env.prod` (Claude is blocked from reading it) |
+| Schema changes | `supabase db reset` locally when Docker is up, else straight to `supabase db push` to dev with your approval | GitHub Actions `deploy-db.yml` with your approval (Step 1.11) |
+| App config | `.env.dev` (online dev project + PowerSync Cloud) | `.env.prod` (Claude is blocked from reading it) |
+| Desktop builds | macOS locally; Windows on the `windows-latest` CI runner | same, from tagged releases |

@@ -9,7 +9,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [ ] 🧑 Supabase dev + prod projects (Mumbai), PowerSync dev instance
 - [ ] 🧑 `.mcp.json` has the dev project ref; `/mcp` shows supabase connected
 - [ ] 🧑 Dart & Flutter plugin installed in Claude Code
-- [ ] 🧑 `.env.dev` created; `supabase link` to dev done
+- [x] 🧑 `.env.dev` created; `supabase link` to dev done (2026-09-29): linked to `nqsaezlfqfrbrrleilyb`; `POWERSYNC_URL` still blank until the PowerSync instance exists
 
 ## Phase 0: Foundation
 - [ ] 0.1 Monorepo scaffold

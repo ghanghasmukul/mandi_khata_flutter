@@ -10,8 +10,11 @@ Run the quality gate. `quick` = steps 1–4 only. `full` (default) = all steps.
 2. `flutter analyze` at the repo root: must report zero issues. Fix, don't suppress (no `// ignore:` without a written reason).
 3. `cd packages/khata_core && dart test`: all pass. Report coverage for any money/interest code touched.
 4. `cd apps/mandi_khata_app && flutter test`: all pass.
-5. If `supabase/` changed: `supabase db reset` then `supabase test db` (pgTAP RLS tests) and `supabase db lint`.
-6. Builds (full only): `flutter build web`, `flutter build macos` (only on a macOS host), `flutter build windows` (only on a Windows host — otherwise rely on CI), `flutter build apk --debug`.
+5. If `supabase/` changed: check Docker first (`docker info`).
+   - Docker running → `supabase db reset`, then `supabase test db` (pgTAP RLS tests) and `supabase db lint`.
+   - Docker not running → **skip the local stack, do not try to start it.** Report it, ask the user to approve `supabase db push` to the dev project, and note that the pgTAP tests will run in CI.
+6. Builds (full only): `flutter build web`, `flutter build macos`, `flutter build apk --debug`.
+   **Never run `flutter build windows` on the macOS dev machine** — it cannot work there. Windows is built by CI on `windows-latest`; check that run instead.
 7. Rule checks, search the diff for violations and fix them:
    - `double` used for money → must be int paise / `Money`.
    - a query or table without `tenant_id`.
