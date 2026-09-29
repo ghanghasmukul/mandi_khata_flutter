@@ -43,8 +43,14 @@ cd apps/mandi_khata_app
 
 flutter run -d chrome  --dart-define-from-file=../../.env.dev
 flutter run -d macos   --dart-define-from-file=../../.env.dev
-flutter emulators --launch Pixel_10    # then: flutter run -d emulator-5554
+flutter emulators --launch Pixel_10
+flutter run -d emulator-5554 --dart-define-from-file=../../.env.dev
 ```
+
+Always run from `apps/mandi_khata_app`. The repo root is only a pub workspace,
+so `flutter run` there fails with `Target file "lib/main.dart" not found`. In
+Android Studio use the shared **main.dart** run configuration: it points at
+`apps/mandi_khata_app/lib/main.dart` and passes `.env.dev`.
 
 Windows is **not** built on the Mac — Flutter cannot cross-compile it. CI builds
 it on a `windows-latest` runner and it is tested on a real Windows PC before the

@@ -1,49 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:mandi_khata_app/app/env.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mandi_khata_app/app/router.dart';
+import 'package:mk_ui/mk_ui.dart';
 
 void main() {
   runApp(const MandiKhataApp());
 }
 
-class MandiKhataApp extends StatelessWidget {
+class MandiKhataApp extends StatefulWidget {
   const MandiKhataApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mandi Khata',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorSchemeSeed: const Color(0xFF2F7A56),
-        scaffoldBackgroundColor: const Color(0xFFF4F2EA),
-      ),
-      home: const HomePage(),
-    );
-  }
+  State<MandiKhataApp> createState() => _MandiKhataAppState();
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class _MandiKhataAppState extends State<MandiKhataApp> {
+  final GoRouter _router = buildRouter();
+
+  @override
+  void dispose() {
+    _router.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Mandi Khata',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              Env.hasSupabase ? 'Configuration loaded' : 'No configuration',
-              style: const TextStyle(color: Color(0xFF6A6F62)),
-            ),
-          ],
-        ),
-      ),
+    return MaterialApp.router(
+      title: 'Mandi Khata',
+      debugShowCheckedModeBanner: false,
+      theme: MkTheme.light(),
+      // Dark theme is a stub; ship light only until it is designed.
+      themeMode: ThemeMode.light,
+      routerConfig: _router,
     );
   }
 }

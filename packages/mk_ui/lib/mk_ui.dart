@@ -1,20 +1,16 @@
-/// Mandi Khata design system: colour and spacing tokens, theme and the shared
-/// widgets every screen is built from. Built out in step 0.2.
+/// Mandi Khata design system: colour and spacing tokens, theme, bundled fonts
+/// and the shared widgets every screen is built from. The look follows
+/// `design/Mandi_Khata.html`.
 library;
 
-import 'package:flutter/material.dart';
-
-/// Brand colours taken from the prototype in `design/Mandi_Khata.html`.
-abstract final class MkColors {
-  static const brandDark = Color(0xFF173B2C);
-  static const brand = Color(0xFF2F7A56);
-  static const gold = Color(0xFFD4A140);
-  static const background = Color(0xFFF4F2EA);
-  static const surface = Color(0xFFFFFFFF);
-
-  /// Money owed to us by the party.
-  static const udhaar = Color(0xFFCF6A5C);
-
-  /// Money we owe the party.
-  static const jama = Color(0xFF2F7A56);
-}
+export 'src/theme.dart';
+export 'src/tokens.dart';
+export 'src/widgets/mk_app_shell.dart';
+export 'src/widgets/mk_button.dart';
+export 'src/widgets/mk_card.dart';
+export 'src/widgets/mk_data_table.dart';
+export 'src/widgets/mk_feedback.dart';
+export 'src/widgets/mk_fields.dart';
+export 'src/widgets/mk_money.dart';
+export 'src/widgets/mk_nav.dart';
+export 'src/widgets/mk_top_bar.dart';

@@ -6,3 +6,4 @@
 library;
 
 export 'src/khata_core_base.dart';
+export 'src/money.dart';
