@@ -1,0 +1,56 @@
+{
+  "enabledMcpjsonServers": ["supabase"],
+  "permissions": {
+    "allow": [
+      "Bash(flutter analyze *)",
+      "Bash(flutter test *)",
+      "Bash(flutter pub *)",
+      "Bash(flutter gen-l10n *)",
+      "Bash(flutter build *)",
+      "Bash(flutter doctor *)",
+      "Bash(dart format *)",
+      "Bash(dart analyze *)",
+      "Bash(dart test *)",
+      "Bash(dart pub *)",
+      "Bash(dart run build_runner *)",
+      "Bash(supabase start *)",
+      "Bash(supabase status *)",
+      "Bash(supabase db reset *)",
+      "Bash(supabase test db *)",
+      "Bash(supabase migration new *)",
+      "Bash(supabase migration list *)",
+      "Bash(supabase db diff *)",
+      "Bash(supabase db lint *)",
+      "Bash(supabase functions serve *)",
+      "Bash(supabase gen types *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git add *)",
+      "mcp__supabase__list_tables",
+      "mcp__supabase__list_extensions",
+      "mcp__supabase__list_migrations",
+      "mcp__supabase__get_logs",
+      "mcp__supabase__get_advisors",
+      "mcp__supabase__search_docs",
+      "mcp__supabase__list_edge_functions",
+      "mcp__supabase__generate_typescript_types"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(supabase db push *)",
+      "Bash(supabase functions deploy *)",
+      "mcp__supabase__apply_migration",
+      "mcp__supabase__execute_sql",
+      "mcp__supabase__deploy_edge_function"
+    ],
+    "deny": [
+      "Read(./.env.prod)",
+      "Read(./.env.prod.*)",
+      "Bash(supabase link --project-ref *prod*)",
+      "Bash(git push --force *)",
+      "Bash(rm -rf *)"
+    ]
+  }
+}
