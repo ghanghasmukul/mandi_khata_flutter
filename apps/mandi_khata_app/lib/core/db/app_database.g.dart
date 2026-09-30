@@ -6841,6 +6841,761 @@ class LedgerEntriesCompanion extends UpdateCompanion<LedgerEntryRow> {
   }
 }
 
+class $CropsTable extends Crops with TableInfo<$CropsTable, Crop> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CropsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _codeMeta = const VerificationMeta('code');
+  @override
+  late final GeneratedColumn<String> code = GeneratedColumn<String>(
+    'code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameEnMeta = const VerificationMeta('nameEn');
+  @override
+  late final GeneratedColumn<String> nameEn = GeneratedColumn<String>(
+    'name_en',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameHiMeta = const VerificationMeta('nameHi');
+  @override
+  late final GeneratedColumn<String> nameHi = GeneratedColumn<String>(
+    'name_hi',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _namePaMeta = const VerificationMeta('namePa');
+  @override
+  late final GeneratedColumn<String> namePa = GeneratedColumn<String>(
+    'name_pa',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _unitMeta = const VerificationMeta('unit');
+  @override
+  late final GeneratedColumn<String> unit = GeneratedColumn<String>(
+    'unit',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _mspOrStdRateMeta = const VerificationMeta(
+    'mspOrStdRate',
+  );
+  @override
+  late final GeneratedColumn<int> mspOrStdRate = GeneratedColumn<int>(
+    'msp_or_std_rate',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _isActiveMeta = const VerificationMeta(
+    'isActive',
+  );
+  @override
+  late final GeneratedColumn<bool> isActive = GeneratedColumn<bool>(
+    'is_active',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_active" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    code,
+    nameEn,
+    nameHi,
+    namePa,
+    unit,
+    mspOrStdRate,
+    sortOrder,
+    isActive,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'crops';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Crop> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('code')) {
+      context.handle(
+        _codeMeta,
+        code.isAcceptableOrUnknown(data['code']!, _codeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_codeMeta);
+    }
+    if (data.containsKey('name_en')) {
+      context.handle(
+        _nameEnMeta,
+        nameEn.isAcceptableOrUnknown(data['name_en']!, _nameEnMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameEnMeta);
+    }
+    if (data.containsKey('name_hi')) {
+      context.handle(
+        _nameHiMeta,
+        nameHi.isAcceptableOrUnknown(data['name_hi']!, _nameHiMeta),
+      );
+    }
+    if (data.containsKey('name_pa')) {
+      context.handle(
+        _namePaMeta,
+        namePa.isAcceptableOrUnknown(data['name_pa']!, _namePaMeta),
+      );
+    }
+    if (data.containsKey('unit')) {
+      context.handle(
+        _unitMeta,
+        unit.isAcceptableOrUnknown(data['unit']!, _unitMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_unitMeta);
+    }
+    if (data.containsKey('msp_or_std_rate')) {
+      context.handle(
+        _mspOrStdRateMeta,
+        mspOrStdRate.isAcceptableOrUnknown(
+          data['msp_or_std_rate']!,
+          _mspOrStdRateMeta,
+        ),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sortOrderMeta);
+    }
+    if (data.containsKey('is_active')) {
+      context.handle(
+        _isActiveMeta,
+        isActive.isAcceptableOrUnknown(data['is_active']!, _isActiveMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isActiveMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Crop map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Crop(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      code: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}code'],
+      )!,
+      nameEn: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name_en'],
+      )!,
+      nameHi: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name_hi'],
+      ),
+      namePa: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name_pa'],
+      ),
+      unit: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}unit'],
+      )!,
+      mspOrStdRate: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}msp_or_std_rate'],
+      ),
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+      isActive: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_active'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $CropsTable createAlias(String alias) {
+    return $CropsTable(attachedDatabase, alias);
+  }
+}
+
+class Crop extends DataClass implements Insertable<Crop> {
+  final String id;
+  final String tenantId;
+  final String code;
+  final String nameEn;
+  final String? nameHi;
+  final String? namePa;
+  final String unit;
+  final int? mspOrStdRate;
+  final int sortOrder;
+  final bool isActive;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const Crop({
+    required this.id,
+    required this.tenantId,
+    required this.code,
+    required this.nameEn,
+    this.nameHi,
+    this.namePa,
+    required this.unit,
+    this.mspOrStdRate,
+    required this.sortOrder,
+    required this.isActive,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['code'] = Variable<String>(code);
+    map['name_en'] = Variable<String>(nameEn);
+    if (!nullToAbsent || nameHi != null) {
+      map['name_hi'] = Variable<String>(nameHi);
+    }
+    if (!nullToAbsent || namePa != null) {
+      map['name_pa'] = Variable<String>(namePa);
+    }
+    map['unit'] = Variable<String>(unit);
+    if (!nullToAbsent || mspOrStdRate != null) {
+      map['msp_or_std_rate'] = Variable<int>(mspOrStdRate);
+    }
+    map['sort_order'] = Variable<int>(sortOrder);
+    map['is_active'] = Variable<bool>(isActive);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  CropsCompanion toCompanion(bool nullToAbsent) {
+    return CropsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      code: Value(code),
+      nameEn: Value(nameEn),
+      nameHi: nameHi == null && nullToAbsent
+          ? const Value.absent()
+          : Value(nameHi),
+      namePa: namePa == null && nullToAbsent
+          ? const Value.absent()
+          : Value(namePa),
+      unit: Value(unit),
+      mspOrStdRate: mspOrStdRate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mspOrStdRate),
+      sortOrder: Value(sortOrder),
+      isActive: Value(isActive),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory Crop.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Crop(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      code: serializer.fromJson<String>(json['code']),
+      nameEn: serializer.fromJson<String>(json['nameEn']),
+      nameHi: serializer.fromJson<String?>(json['nameHi']),
+      namePa: serializer.fromJson<String?>(json['namePa']),
+      unit: serializer.fromJson<String>(json['unit']),
+      mspOrStdRate: serializer.fromJson<int?>(json['mspOrStdRate']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      isActive: serializer.fromJson<bool>(json['isActive']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'code': serializer.toJson<String>(code),
+      'nameEn': serializer.toJson<String>(nameEn),
+      'nameHi': serializer.toJson<String?>(nameHi),
+      'namePa': serializer.toJson<String?>(namePa),
+      'unit': serializer.toJson<String>(unit),
+      'mspOrStdRate': serializer.toJson<int?>(mspOrStdRate),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+      'isActive': serializer.toJson<bool>(isActive),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  Crop copyWith({
+    String? id,
+    String? tenantId,
+    String? code,
+    String? nameEn,
+    Value<String?> nameHi = const Value.absent(),
+    Value<String?> namePa = const Value.absent(),
+    String? unit,
+    Value<int?> mspOrStdRate = const Value.absent(),
+    int? sortOrder,
+    bool? isActive,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => Crop(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    code: code ?? this.code,
+    nameEn: nameEn ?? this.nameEn,
+    nameHi: nameHi.present ? nameHi.value : this.nameHi,
+    namePa: namePa.present ? namePa.value : this.namePa,
+    unit: unit ?? this.unit,
+    mspOrStdRate: mspOrStdRate.present ? mspOrStdRate.value : this.mspOrStdRate,
+    sortOrder: sortOrder ?? this.sortOrder,
+    isActive: isActive ?? this.isActive,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  Crop copyWithCompanion(CropsCompanion data) {
+    return Crop(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      code: data.code.present ? data.code.value : this.code,
+      nameEn: data.nameEn.present ? data.nameEn.value : this.nameEn,
+      nameHi: data.nameHi.present ? data.nameHi.value : this.nameHi,
+      namePa: data.namePa.present ? data.namePa.value : this.namePa,
+      unit: data.unit.present ? data.unit.value : this.unit,
+      mspOrStdRate: data.mspOrStdRate.present
+          ? data.mspOrStdRate.value
+          : this.mspOrStdRate,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      isActive: data.isActive.present ? data.isActive.value : this.isActive,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Crop(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('code: $code, ')
+          ..write('nameEn: $nameEn, ')
+          ..write('nameHi: $nameHi, ')
+          ..write('namePa: $namePa, ')
+          ..write('unit: $unit, ')
+          ..write('mspOrStdRate: $mspOrStdRate, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('isActive: $isActive, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    code,
+    nameEn,
+    nameHi,
+    namePa,
+    unit,
+    mspOrStdRate,
+    sortOrder,
+    isActive,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Crop &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.code == this.code &&
+          other.nameEn == this.nameEn &&
+          other.nameHi == this.nameHi &&
+          other.namePa == this.namePa &&
+          other.unit == this.unit &&
+          other.mspOrStdRate == this.mspOrStdRate &&
+          other.sortOrder == this.sortOrder &&
+          other.isActive == this.isActive &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class CropsCompanion extends UpdateCompanion<Crop> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> code;
+  final Value<String> nameEn;
+  final Value<String?> nameHi;
+  final Value<String?> namePa;
+  final Value<String> unit;
+  final Value<int?> mspOrStdRate;
+  final Value<int> sortOrder;
+  final Value<bool> isActive;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const CropsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.code = const Value.absent(),
+    this.nameEn = const Value.absent(),
+    this.nameHi = const Value.absent(),
+    this.namePa = const Value.absent(),
+    this.unit = const Value.absent(),
+    this.mspOrStdRate = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.isActive = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CropsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String code,
+    required String nameEn,
+    this.nameHi = const Value.absent(),
+    this.namePa = const Value.absent(),
+    required String unit,
+    this.mspOrStdRate = const Value.absent(),
+    required int sortOrder,
+    required bool isActive,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       code = Value(code),
+       nameEn = Value(nameEn),
+       unit = Value(unit),
+       sortOrder = Value(sortOrder),
+       isActive = Value(isActive);
+  static Insertable<Crop> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? code,
+    Expression<String>? nameEn,
+    Expression<String>? nameHi,
+    Expression<String>? namePa,
+    Expression<String>? unit,
+    Expression<int>? mspOrStdRate,
+    Expression<int>? sortOrder,
+    Expression<bool>? isActive,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (code != null) 'code': code,
+      if (nameEn != null) 'name_en': nameEn,
+      if (nameHi != null) 'name_hi': nameHi,
+      if (namePa != null) 'name_pa': namePa,
+      if (unit != null) 'unit': unit,
+      if (mspOrStdRate != null) 'msp_or_std_rate': mspOrStdRate,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (isActive != null) 'is_active': isActive,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CropsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? code,
+    Value<String>? nameEn,
+    Value<String?>? nameHi,
+    Value<String?>? namePa,
+    Value<String>? unit,
+    Value<int?>? mspOrStdRate,
+    Value<int>? sortOrder,
+    Value<bool>? isActive,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return CropsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      code: code ?? this.code,
+      nameEn: nameEn ?? this.nameEn,
+      nameHi: nameHi ?? this.nameHi,
+      namePa: namePa ?? this.namePa,
+      unit: unit ?? this.unit,
+      mspOrStdRate: mspOrStdRate ?? this.mspOrStdRate,
+      sortOrder: sortOrder ?? this.sortOrder,
+      isActive: isActive ?? this.isActive,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (code.present) {
+      map['code'] = Variable<String>(code.value);
+    }
+    if (nameEn.present) {
+      map['name_en'] = Variable<String>(nameEn.value);
+    }
+    if (nameHi.present) {
+      map['name_hi'] = Variable<String>(nameHi.value);
+    }
+    if (namePa.present) {
+      map['name_pa'] = Variable<String>(namePa.value);
+    }
+    if (unit.present) {
+      map['unit'] = Variable<String>(unit.value);
+    }
+    if (mspOrStdRate.present) {
+      map['msp_or_std_rate'] = Variable<int>(mspOrStdRate.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (isActive.present) {
+      map['is_active'] = Variable<bool>(isActive.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CropsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('code: $code, ')
+          ..write('nameEn: $nameEn, ')
+          ..write('nameHi: $nameHi, ')
+          ..write('namePa: $namePa, ')
+          ..write('unit: $unit, ')
+          ..write('mspOrStdRate: $mspOrStdRate, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('isActive: $isActive, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -7462,6 +8217,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $PartyRolesTable partyRoles = $PartyRolesTable(this);
   late final $NumberSeriesTable numberSeries = $NumberSeriesTable(this);
   late final $LedgerEntriesTable ledgerEntries = $LedgerEntriesTable(this);
+  late final $CropsTable crops = $CropsTable(this);
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -7478,6 +8234,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     partyRoles,
     numberSeries,
     ledgerEntries,
+    crops,
     syncErrors,
   ];
 }
@@ -10784,6 +11541,362 @@ typedef $$LedgerEntriesTableProcessedTableManager =
       LedgerEntryRow,
       PrefetchHooks Function()
     >;
+typedef $$CropsTableCreateCompanionBuilder =
+    CropsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String code,
+      required String nameEn,
+      Value<String?> nameHi,
+      Value<String?> namePa,
+      required String unit,
+      Value<int?> mspOrStdRate,
+      required int sortOrder,
+      required bool isActive,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$CropsTableUpdateCompanionBuilder =
+    CropsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> code,
+      Value<String> nameEn,
+      Value<String?> nameHi,
+      Value<String?> namePa,
+      Value<String> unit,
+      Value<int?> mspOrStdRate,
+      Value<int> sortOrder,
+      Value<bool> isActive,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$CropsTableFilterComposer extends Composer<_$AppDatabase, $CropsTable> {
+  $$CropsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get code => $composableBuilder(
+    column: $table.code,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get nameEn => $composableBuilder(
+    column: $table.nameEn,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get nameHi => $composableBuilder(
+    column: $table.nameHi,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get namePa => $composableBuilder(
+    column: $table.namePa,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get mspOrStdRate => $composableBuilder(
+    column: $table.mspOrStdRate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$CropsTableOrderingComposer
+    extends Composer<_$AppDatabase, $CropsTable> {
+  $$CropsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get code => $composableBuilder(
+    column: $table.code,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get nameEn => $composableBuilder(
+    column: $table.nameEn,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get nameHi => $composableBuilder(
+    column: $table.nameHi,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get namePa => $composableBuilder(
+    column: $table.namePa,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get mspOrStdRate => $composableBuilder(
+    column: $table.mspOrStdRate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$CropsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CropsTable> {
+  $$CropsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get code =>
+      $composableBuilder(column: $table.code, builder: (column) => column);
+
+  GeneratedColumn<String> get nameEn =>
+      $composableBuilder(column: $table.nameEn, builder: (column) => column);
+
+  GeneratedColumn<String> get nameHi =>
+      $composableBuilder(column: $table.nameHi, builder: (column) => column);
+
+  GeneratedColumn<String> get namePa =>
+      $composableBuilder(column: $table.namePa, builder: (column) => column);
+
+  GeneratedColumn<String> get unit =>
+      $composableBuilder(column: $table.unit, builder: (column) => column);
+
+  GeneratedColumn<int> get mspOrStdRate => $composableBuilder(
+    column: $table.mspOrStdRate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<bool> get isActive =>
+      $composableBuilder(column: $table.isActive, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$CropsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $CropsTable,
+          Crop,
+          $$CropsTableFilterComposer,
+          $$CropsTableOrderingComposer,
+          $$CropsTableAnnotationComposer,
+          $$CropsTableCreateCompanionBuilder,
+          $$CropsTableUpdateCompanionBuilder,
+          (Crop, BaseReferences<_$AppDatabase, $CropsTable, Crop>),
+          Crop,
+          PrefetchHooks Function()
+        > {
+  $$CropsTableTableManager(_$AppDatabase db, $CropsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CropsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CropsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CropsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> code = const Value.absent(),
+                Value<String> nameEn = const Value.absent(),
+                Value<String?> nameHi = const Value.absent(),
+                Value<String?> namePa = const Value.absent(),
+                Value<String> unit = const Value.absent(),
+                Value<int?> mspOrStdRate = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<bool> isActive = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CropsCompanion(
+                id: id,
+                tenantId: tenantId,
+                code: code,
+                nameEn: nameEn,
+                nameHi: nameHi,
+                namePa: namePa,
+                unit: unit,
+                mspOrStdRate: mspOrStdRate,
+                sortOrder: sortOrder,
+                isActive: isActive,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String code,
+                required String nameEn,
+                Value<String?> nameHi = const Value.absent(),
+                Value<String?> namePa = const Value.absent(),
+                required String unit,
+                Value<int?> mspOrStdRate = const Value.absent(),
+                required int sortOrder,
+                required bool isActive,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CropsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                code: code,
+                nameEn: nameEn,
+                nameHi: nameHi,
+                namePa: namePa,
+                unit: unit,
+                mspOrStdRate: mspOrStdRate,
+                sortOrder: sortOrder,
+                isActive: isActive,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$CropsTable, Crop>(table),
+                  BaseReferences<_$AppDatabase, $CropsTable, Crop>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$CropsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $CropsTable,
+      Crop,
+      $$CropsTableFilterComposer,
+      $$CropsTableOrderingComposer,
+      $$CropsTableAnnotationComposer,
+      $$CropsTableCreateCompanionBuilder,
+      $$CropsTableUpdateCompanionBuilder,
+      (Crop, BaseReferences<_$AppDatabase, $CropsTable, Crop>),
+      Crop,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -11111,6 +12224,8 @@ class $AppDatabaseManager {
       $$NumberSeriesTableTableManager(_db, _db.numberSeries);
   $$LedgerEntriesTableTableManager get ledgerEntries =>
       $$LedgerEntriesTableTableManager(_db, _db.ledgerEntries);
+  $$CropsTableTableManager get crops =>
+      $$CropsTableTableManager(_db, _db.crops);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }

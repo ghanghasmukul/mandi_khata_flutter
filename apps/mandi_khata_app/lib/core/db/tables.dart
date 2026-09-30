@@ -190,6 +190,25 @@ class LedgerEntries extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+class Crops extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get code => text()();
+  TextColumn get nameEn => text()();
+  TextColumn get nameHi => text().nullable()();
+  TextColumn get namePa => text().nullable()();
+  TextColumn get unit => text()();
+  IntColumn get mspOrStdRate => integer().nullable()();
+  IntColumn get sortOrder => integer()();
+  BoolColumn get isActive => boolean()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 /// Local-only: uploads the server rejected permanently.
 class SyncErrors extends Table {
   TextColumn get id => text()();

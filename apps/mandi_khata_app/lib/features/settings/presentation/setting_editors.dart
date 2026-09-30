@@ -57,28 +57,310 @@ class SettingEditor extends StatelessWidget {
           onSave: onSave,
         );
       case SettingType.structured:
-        return Text(
-          structuredSummary(value),
+        final summary = Text(
+          structuredSummary(l10n, def.key, value),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.bodyMedium,
         );
+        if (!settingHasEditor(def)) return summary;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(child: summary),
+            IconButton(
+              key: ValueKey('edit-${def.key}'),
+              tooltip: l10n.settingsEdit,
+              onPressed: enabled ? () => _editStructured(context) : null,
+              icon: const Icon(Icons.edit_outlined),
+            ),
+          ],
+        );
+    }
+  }
+
+  Future<void> _editStructured(BuildContext context) async {
+    final dialog = switch (def.key) {
+      'mandi.cess' => CessListDialog.show(context, value),
+      'mandi.charges_borne_by' => ChargesBorneByDialog.show(context, value),
+      _ => null,
+    };
+    final edited = await dialog;
+    if (edited == null) return;
+    final error = await onSave(edited);
+    if (error != null && context.mounted) {
+      MkToast.show(context, error, tone: MkToastTone.error);
     }
   }
 }
 
+/// List / map settings that have their own editor. The rest (price tiers,
+/// number series, languages) are shown read-only for now.
+bool settingHasEditor(SettingDef def) =>
+    def.type != SettingType.structured ||
+    def.key == 'mandi.cess' ||
+    def.key == 'mandi.charges_borne_by';
+
+/// Edits a `mandi.cess` list: rows of name + percent. Returns the new list,
+/// or null when cancelled.
+class CessListDialog extends StatefulWidget {
+  const CessListDialog({required this.initial, super.key});
+
+  final List<({String name, String pct})> initial;
+
+  static Future<List<Map<String, String>>?> show(
+    BuildContext context,
+    Object? value,
+  ) => showDialog<List<Map<String, String>>>(
+    context: context,
+    barrierColor: MkColors.scrim,
+    builder: (_) => CessListDialog(
+      initial: [
+        if (value is List)
+          for (final e in value)
+            if (e is Map)
+              (
+                name: '${e['name'] ?? ''}',
+                pct: SettingsSchema.decimalOf(e['pct'])?.toString() ?? '',
+              ),
+      ],
+    ),
+  );
+
+  @override
+  State<CessListDialog> createState() => _CessListDialogState();
+}
+
+class _CessListDialogState extends State<CessListDialog> {
+  late final List<(TextEditingController, TextEditingController)> _rows = [
+    for (final r in widget.initial)
+      (TextEditingController(text: r.name), TextEditingController(text: r.pct)),
+  ];
+  bool _invalid = false;
+
+  @override
+  void dispose() {
+    for (final (a, b) in _rows) {
+      a.dispose();
+      b.dispose();
+    }
+    super.dispose();
+  }
+
+  void _add() => setState(
+    () => _rows.add((TextEditingController(), TextEditingController())),
+  );
+
+  void _remove(int i) {
+    final (a, b) = _rows.removeAt(i);
+    a.dispose();
+    b.dispose();
+    setState(() {});
+  }
+
+  void _save() {
+    final list = [
+      for (final (name, pct) in _rows)
+        if (name.text.trim().isNotEmpty || pct.text.trim().isNotEmpty)
+          {
+            'name': name.text.trim(),
+            'pct': Decimal.tryParse(pct.text.trim())?.toString() ?? '',
+          },
+    ];
+    final def = SettingsSchema.parse('mandi.cess')!.def;
+    if (def.validate(list) != null) {
+      setState(() => _invalid = true);
+      return;
+    }
+    Navigator.of(context).pop(list);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return MkDialog(
+      title: l10n.settingMandiCess,
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final (i, (name, pct)) in _rows.indexed)
+            Padding(
+              padding: const EdgeInsets.only(bottom: MkSpacing.sm),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: MkTextField(
+                      key: ValueKey('cess-name-$i'),
+                      controller: name,
+                      hint: l10n.cessName,
+                      autofocus: i == _rows.length - 1,
+                    ),
+                  ),
+                  const SizedBox(width: MkSpacing.sm),
+                  SizedBox(
+                    width: 90,
+                    child: MkTextField(
+                      key: ValueKey('cess-pct-$i'),
+                      controller: pct,
+                      hint: l10n.cessPct,
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                          RegExp(r'^\d*\.?\d{0,4}'),
+                        ),
+                      ],
+                      suffix: const Padding(
+                        padding: EdgeInsets.only(right: 10),
+                        child: Text('%'),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    tooltip: l10n.cessRemove,
+                    onPressed: () => _remove(i),
+                    icon: const Icon(Icons.delete_outline),
+                  ),
+                ],
+              ),
+            ),
+          Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: TextButton.icon(
+              key: const ValueKey('cess-add'),
+              onPressed: _add,
+              icon: const Icon(Icons.add),
+              label: Text(l10n.cessAdd),
+            ),
+          ),
+          if (_invalid)
+            Text(
+              l10n.settingErrorInvalid,
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
+            ),
+        ],
+      ),
+      actions: [
+        MkButton(
+          label: MaterialLocalizations.of(context).cancelButtonLabel,
+          variant: MkButtonVariant.secondary,
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        MkButton(
+          key: const ValueKey('cess-save'),
+          label: l10n.settingsSave,
+          onPressed: _save,
+        ),
+      ],
+    );
+  }
+}
+
+/// Edits `mandi.charges_borne_by`: one payer per charge. Always returns a
+/// complete map (every charge), or null when cancelled.
+class ChargesBorneByDialog extends StatefulWidget {
+  const ChargesBorneByDialog({required this.initial, super.key});
+
+  final Map<MandiCharge, ChargePayer> initial;
+
+  static Future<Map<String, String>?> show(
+    BuildContext context,
+    Object? value,
+  ) {
+    final map = value is Map ? value : const <String, Object?>{};
+    return showDialog<Map<String, String>>(
+      context: context,
+      barrierColor: MkColors.scrim,
+      builder: (_) => ChargesBorneByDialog(
+        initial: {
+          for (final c in MandiCharge.values)
+            c: ChargePayer.parse('${map[c.key]}') ?? ChargePayer.farmer,
+        },
+      ),
+    );
+  }
+
+  @override
+  State<ChargesBorneByDialog> createState() => _ChargesBorneByDialogState();
+}
+
+class _ChargesBorneByDialogState extends State<ChargesBorneByDialog> {
+  late final Map<MandiCharge, ChargePayer> _payers = {...widget.initial};
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return MkDialog(
+      title: l10n.settingMandiChargesBorneBy,
+      content: Column(
+        children: [
+          for (final c in MandiCharge.values)
+            Padding(
+              padding: const EdgeInsets.only(bottom: MkSpacing.sm),
+              child: Row(
+                children: [
+                  Expanded(child: Text(l10n.mandiCharge(c))),
+                  DropdownButton<ChargePayer>(
+                    key: ValueKey('payer-${c.key}'),
+                    value: _payers[c],
+                    isDense: true,
+                    onChanged: (p) => setState(() => _payers[c] = p!),
+                    items: [
+                      for (final p in ChargePayer.values)
+                        DropdownMenuItem(
+                          value: p,
+                          child: Text(l10n.chargePayer(p)),
+                        ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+      actions: [
+        MkButton(
+          label: MaterialLocalizations.of(context).cancelButtonLabel,
+          variant: MkButtonVariant.secondary,
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        MkButton(
+          key: const ValueKey('payers-save'),
+          label: l10n.settingsSave,
+          onPressed: () => Navigator.of(
+            context,
+          ).pop({for (final c in MandiCharge.values) c.key: _payers[c]!.name}),
+        ),
+      ],
+    );
+  }
+}
+
 /// One-line text for list / map values (cess, tiers, number series).
-String structuredSummary(Object? value) => switch (value) {
-  null => '—',
-  final List<Object?> list when list.isEmpty => '—',
-  final List<Object?> list =>
-    list.map((e) => e is Map ? '${e['name']} ${e['pct']}%' : '$e').join(', '),
-  final Map<Object?, Object?> map when map.containsKey('prefix') =>
-    '${map['prefix']}${map['next']}',
-  final Map<Object?, Object?> map =>
-    map.entries.map((e) => '${e.key}: ${e.value}').join(', '),
-  _ => '$value',
-};
+String structuredSummary(AppLocalizations l10n, String key, Object? value) {
+  if (key == 'mandi.charges_borne_by' && value is Map) {
+    // Only what differs from "farmer pays"; all-farmer shows one word.
+    final notFarmer = [
+      for (final c in MandiCharge.values)
+        if (ChargePayer.parse('${value[c.key]}') case final p?
+            when p != ChargePayer.farmer)
+          '${l10n.mandiCharge(c)}: ${l10n.chargePayer(p)}',
+    ];
+    return notFarmer.isEmpty ? l10n.payerFarmer : notFarmer.join(', ');
+  }
+  return switch (value) {
+    null => '—',
+    final List<Object?> list when list.isEmpty => '—',
+    final List<Object?> list =>
+      list.map((e) => e is Map ? '${e['name']} ${e['pct']}%' : '$e').join(', '),
+    final Map<Object?, Object?> map when map.containsKey('prefix') =>
+      '${map['prefix']}${map['next']}',
+    final Map<Object?, Object?> map =>
+      map.entries.map((e) => '${e.key}: ${e.value}').join(', '),
+    _ => '$value',
+  };
+}
 
 class _NumberSettingField extends StatefulWidget {
   const _NumberSettingField({

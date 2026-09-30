@@ -1743,6 +1743,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No notes.'**
   String get partyNoNotes;
+
+  /// Crops master screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Crops'**
+  String get cropsTitle;
+
+  /// Add crop button / dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Add crop'**
+  String get cropsAdd;
+
+  /// Empty crops list.
+  ///
+  /// In en, this message translates to:
+  /// **'No crops yet.'**
+  String get cropsEmpty;
+
+  /// Toggle to list inactive crops.
+  ///
+  /// In en, this message translates to:
+  /// **'Show crops not in use'**
+  String get cropsShowInactive;
+
+  /// Badge on an inactive crop.
+  ///
+  /// In en, this message translates to:
+  /// **'Not in use'**
+  String get cropInactive;
+
+  /// A rate per quintal.
+  ///
+  /// In en, this message translates to:
+  /// **'{rate}/qtl'**
+  String cropRatePerQtl(String rate);
+
+  /// Crop without a reference rate.
+  ///
+  /// In en, this message translates to:
+  /// **'No MSP / usual rate'**
+  String get cropNoRate;
+
+  /// Edit crop dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit crop'**
+  String get cropEditTitle;
+
+  /// Crop form field.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (English)'**
+  String get cropFieldNameEn;
+
+  /// Crop form field.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (Hindi)'**
+  String get cropFieldNameHi;
+
+  /// Crop form field.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (Punjabi)'**
+  String get cropFieldNamePa;
+
+  /// Crop form field.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get cropFieldCode;
+
+  /// Help under the crop code field.
+  ///
+  /// In en, this message translates to:
+  /// **'Small letters, digits and _. Cannot be changed later.'**
+  String get cropCodeHint;
+
+  /// Crop form field.
+  ///
+  /// In en, this message translates to:
+  /// **'MSP / usual rate per qtl'**
+  String get cropFieldStdRate;
+
+  /// Crop form switch.
+  ///
+  /// In en, this message translates to:
+  /// **'In use'**
+  String get cropFieldActive;
+
+  /// Invalid crop code.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with a letter; use small letters, digits and _ (max 24).'**
+  String get cropErrorCode;
+
+  /// Missing crop name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the English name.'**
+  String get cropErrorName;
+
+  /// Invalid crop rate.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid amount.'**
+  String get cropErrorRate;
+
+  /// Duplicate crop code.
+  ///
+  /// In en, this message translates to:
+  /// **'A crop with this code already exists.'**
+  String get cropErrorCodeTaken;
+
+  /// Crop missing.
+  ///
+  /// In en, this message translates to:
+  /// **'This crop no longer exists.'**
+  String get cropNotFound;
+
+  /// Per-crop settings card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi charges for this crop'**
+  String get cropChargesTitle;
+
+  /// Explains per-crop overrides.
+  ///
+  /// In en, this message translates to:
+  /// **'Values not set here come from the business settings. A rate set for a farmer or a lot still wins.'**
+  String get cropChargesHint;
+
+  /// Heading of the sample calculation.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: {bags} bags · {qtl} qtl @ {rate}/qtl'**
+  String cropExampleTitle(int bags, String qtl, String rate);
+
+  /// Mandi charge name.
+  ///
+  /// In en, this message translates to:
+  /// **'Arhat (commission)'**
+  String get chargeCommission;
+
+  /// Mandi charge name.
+  ///
+  /// In en, this message translates to:
+  /// **'Palledari'**
+  String get chargePalledari;
+
+  /// Mandi charge name.
+  ///
+  /// In en, this message translates to:
+  /// **'Bardana'**
+  String get chargeBardana;
+
+  /// Mandi charge name.
+  ///
+  /// In en, this message translates to:
+  /// **'Tulai'**
+  String get chargeTulai;
+
+  /// Mandi charge name.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi fee'**
+  String get chargeMandiFee;
+
+  /// Mandi charge name.
+  ///
+  /// In en, this message translates to:
+  /// **'Cess'**
+  String get chargeCess;
+
+  /// Who pays a charge.
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer'**
+  String get payerFarmer;
+
+  /// Who pays a charge.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer'**
+  String get payerBuyer;
+
+  /// Who pays a charge.
+  ///
+  /// In en, this message translates to:
+  /// **'Arhtiya (us)'**
+  String get payerArhtiya;
+
+  /// Gross sale value of a lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Gross'**
+  String get mandiGross;
+
+  /// Net amount credited to the farmer.
+  ///
+  /// In en, this message translates to:
+  /// **'Net to farmer (jama)'**
+  String get mandiNetToFarmer;
+
+  /// Total billed to the buyer.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer pays (udhaar)'**
+  String get mandiBuyerTotal;
+
+  /// Who pays a charge line.
+  ///
+  /// In en, this message translates to:
+  /// **'paid by {payer}'**
+  String mandiPaidBy(String payer);
+
+  /// Commission borne by the arhtiya.
+  ///
+  /// In en, this message translates to:
+  /// **'waived'**
+  String get mandiWaived;
+
+  /// Add a cess row.
+  ///
+  /// In en, this message translates to:
+  /// **'Add cess'**
+  String get cessAdd;
+
+  /// Cess name field.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (e.g. RDF)'**
+  String get cessName;
+
+  /// Cess percent field.
+  ///
+  /// In en, this message translates to:
+  /// **'%'**
+  String get cessPct;
+
+  /// Remove a cess row.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get cessRemove;
+
+  /// Edit button for list / map settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get settingsEdit;
+
+  /// Link from settings to the crops screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Crops and per-crop charges'**
+  String get settingsCropsLink;
 }
 
 class _AppLocalizationsDelegate

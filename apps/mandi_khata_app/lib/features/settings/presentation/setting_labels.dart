@@ -1,6 +1,7 @@
 // GENERATED from the settings label table (see docs/decisions.md,
 // 2026-09-30). Every key, option, suffix and group in
 // khata_core's SettingsSchema has a label in en / hi / pa; a test checks it.
+import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 
 extension SettingLabels on AppLocalizations {
@@ -124,5 +125,22 @@ extension SettingLabels on AppLocalizations {
     'print' => settingsGroupPrint,
     'notify' => settingsGroupNotify,
     _ => group,
+  };
+}
+
+extension MandiLabels on AppLocalizations {
+  String mandiCharge(MandiCharge c) => switch (c) {
+    MandiCharge.commission => chargeCommission,
+    MandiCharge.palledari => chargePalledari,
+    MandiCharge.bardana => chargeBardana,
+    MandiCharge.tulai => chargeTulai,
+    MandiCharge.mandiFee => chargeMandiFee,
+    MandiCharge.cess => chargeCess,
+  };
+
+  String chargePayer(ChargePayer p) => switch (p) {
+    ChargePayer.farmer => payerFarmer,
+    ChargePayer.buyer => payerBuyer,
+    ChargePayer.arhtiya => payerArhtiya,
   };
 }

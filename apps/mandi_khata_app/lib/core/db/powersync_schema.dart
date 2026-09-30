@@ -232,6 +232,26 @@ const syncedTables = <SyncedTable>[
     },
     appendOnly: true,
   ),
+  SyncedTable(
+    'crops',
+    {
+      'tenant_id': _t,
+      'code': _t,
+      'name_en': _t,
+      'name_hi': _t,
+      'name_pa': _t,
+      'unit': _t,
+      'msp_or_std_rate': _i,
+      'sort_order': _i,
+      'is_active': _bool,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'tenant_code': ['tenant_id', 'code'],
+    },
+  ),
 ];
 
 /// Changes the server rejected for good (RLS, constraint, bad data). Kept on

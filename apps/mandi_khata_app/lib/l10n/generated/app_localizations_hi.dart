@@ -914,4 +914,142 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get partyNoNotes => 'कोई नोट नहीं।';
+
+  @override
+  String get cropsTitle => 'फसलें';
+
+  @override
+  String get cropsAdd => 'फसल जोड़ें';
+
+  @override
+  String get cropsEmpty => 'अभी कोई फसल नहीं।';
+
+  @override
+  String get cropsShowInactive => 'बंद फसलें भी दिखाएँ';
+
+  @override
+  String get cropInactive => 'बंद';
+
+  @override
+  String cropRatePerQtl(String rate) {
+    return '$rate/क्विंटल';
+  }
+
+  @override
+  String get cropNoRate => 'MSP / आम भाव नहीं';
+
+  @override
+  String get cropEditTitle => 'फसल बदलें';
+
+  @override
+  String get cropFieldNameEn => 'नाम (अंग्रेज़ी)';
+
+  @override
+  String get cropFieldNameHi => 'नाम (हिंदी)';
+
+  @override
+  String get cropFieldNamePa => 'नाम (पंजाबी)';
+
+  @override
+  String get cropFieldCode => 'कोड';
+
+  @override
+  String get cropCodeHint =>
+      'छोटे अंग्रेज़ी अक्षर, अंक और _। बाद में नहीं बदलेगा।';
+
+  @override
+  String get cropFieldStdRate => 'MSP / आम भाव प्रति क्विंटल';
+
+  @override
+  String get cropFieldActive => 'चालू';
+
+  @override
+  String get cropErrorCode =>
+      'अक्षर से शुरू करें; छोटे अक्षर, अंक और _ (अधिकतम 24)।';
+
+  @override
+  String get cropErrorName => 'अंग्रेज़ी नाम लिखें।';
+
+  @override
+  String get cropErrorRate => 'सही रकम लिखें।';
+
+  @override
+  String get cropErrorCodeTaken => 'इस कोड की फसल पहले से है।';
+
+  @override
+  String get cropNotFound => 'यह फसल अब नहीं है।';
+
+  @override
+  String get cropChargesTitle => 'इस फसल के मंडी खर्चे';
+
+  @override
+  String get cropChargesHint =>
+      'जो यहाँ सेट नहीं, वह व्यापार की सेटिंग से आएगा। किसान या लॉट के लिए सेट रेट फिर भी ऊपर रहेगा।';
+
+  @override
+  String cropExampleTitle(int bags, String qtl, String rate) {
+    return 'उदाहरण: $bags बोरी · $qtl क्विंटल @ $rate/क्विंटल';
+  }
+
+  @override
+  String get chargeCommission => 'आढ़त (कमीशन)';
+
+  @override
+  String get chargePalledari => 'पल्लेदारी';
+
+  @override
+  String get chargeBardana => 'बारदाना';
+
+  @override
+  String get chargeTulai => 'तुलाई';
+
+  @override
+  String get chargeMandiFee => 'मंडी फीस';
+
+  @override
+  String get chargeCess => 'सेस';
+
+  @override
+  String get payerFarmer => 'किसान';
+
+  @override
+  String get payerBuyer => 'खरीदार';
+
+  @override
+  String get payerArhtiya => 'आढ़ती (हम)';
+
+  @override
+  String get mandiGross => 'कुल रकम';
+
+  @override
+  String get mandiNetToFarmer => 'किसान को शुद्ध (जमा)';
+
+  @override
+  String get mandiBuyerTotal => 'खरीदार देगा (उधार)';
+
+  @override
+  String mandiPaidBy(String payer) {
+    return '$payer देगा';
+  }
+
+  @override
+  String get mandiWaived => 'माफ़';
+
+  @override
+  String get cessAdd => 'सेस जोड़ें';
+
+  @override
+  String get cessName => 'नाम (जैसे RDF)';
+
+  @override
+  String get cessPct => '%';
+
+  @override
+  String get cessRemove => 'हटाएँ';
+
+  @override
+  String get settingsEdit => 'बदलें';
+
+  @override
+  String get settingsCropsLink => 'फसलें और फसल-वार खर्चे';
 }

@@ -8,6 +8,7 @@ import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/settings/data/party_options.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_labels.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_tile.dart';
@@ -16,7 +17,7 @@ import 'package:mk_ui/mk_ui.dart';
 
 /// The settings a level can hold, grouped for display. Keys with a fixed
 /// suffix list (modules, per-role tiers, number series) get one row each;
-/// per-crop overrides get their editor with crops (step 1.2).
+/// per-crop overrides are edited on the crop screen.
 Map<String, List<SettingEntry>> settingEntriesFor(SettingScope scope) {
   final groups = <String, List<SettingEntry>>{};
   for (final def in SettingsSchema.all) {
@@ -85,6 +86,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             partyId: _partyId,
             onChanged: (id) => setState(() => _partyId = id),
           ),
+          if (_partyId == null)
+            Padding(
+              padding: const EdgeInsets.only(top: MkSpacing.lg),
+              child: MkCard(
+                padding: EdgeInsets.zero,
+                onTap: () => context.go(CropRoutes.list),
+                child: ListTile(
+                  key: const ValueKey('settings-crops'),
+                  leading: const Icon(Icons.grass_outlined),
+                  title: Text(l10n.settingsCropsLink),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => context.go(CropRoutes.list),
+                ),
+              ),
+            ),
           for (final MapEntry(key: group, value: entries) in groups.entries)
             Padding(
               padding: const EdgeInsets.only(top: MkSpacing.lg),

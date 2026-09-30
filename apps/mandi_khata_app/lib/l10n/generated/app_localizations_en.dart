@@ -921,4 +921,142 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get partyNoNotes => 'No notes.';
+
+  @override
+  String get cropsTitle => 'Crops';
+
+  @override
+  String get cropsAdd => 'Add crop';
+
+  @override
+  String get cropsEmpty => 'No crops yet.';
+
+  @override
+  String get cropsShowInactive => 'Show crops not in use';
+
+  @override
+  String get cropInactive => 'Not in use';
+
+  @override
+  String cropRatePerQtl(String rate) {
+    return '$rate/qtl';
+  }
+
+  @override
+  String get cropNoRate => 'No MSP / usual rate';
+
+  @override
+  String get cropEditTitle => 'Edit crop';
+
+  @override
+  String get cropFieldNameEn => 'Name (English)';
+
+  @override
+  String get cropFieldNameHi => 'Name (Hindi)';
+
+  @override
+  String get cropFieldNamePa => 'Name (Punjabi)';
+
+  @override
+  String get cropFieldCode => 'Code';
+
+  @override
+  String get cropCodeHint =>
+      'Small letters, digits and _. Cannot be changed later.';
+
+  @override
+  String get cropFieldStdRate => 'MSP / usual rate per qtl';
+
+  @override
+  String get cropFieldActive => 'In use';
+
+  @override
+  String get cropErrorCode =>
+      'Start with a letter; use small letters, digits and _ (max 24).';
+
+  @override
+  String get cropErrorName => 'Enter the English name.';
+
+  @override
+  String get cropErrorRate => 'Enter a valid amount.';
+
+  @override
+  String get cropErrorCodeTaken => 'A crop with this code already exists.';
+
+  @override
+  String get cropNotFound => 'This crop no longer exists.';
+
+  @override
+  String get cropChargesTitle => 'Mandi charges for this crop';
+
+  @override
+  String get cropChargesHint =>
+      'Values not set here come from the business settings. A rate set for a farmer or a lot still wins.';
+
+  @override
+  String cropExampleTitle(int bags, String qtl, String rate) {
+    return 'Example: $bags bags · $qtl qtl @ $rate/qtl';
+  }
+
+  @override
+  String get chargeCommission => 'Arhat (commission)';
+
+  @override
+  String get chargePalledari => 'Palledari';
+
+  @override
+  String get chargeBardana => 'Bardana';
+
+  @override
+  String get chargeTulai => 'Tulai';
+
+  @override
+  String get chargeMandiFee => 'Mandi fee';
+
+  @override
+  String get chargeCess => 'Cess';
+
+  @override
+  String get payerFarmer => 'Farmer';
+
+  @override
+  String get payerBuyer => 'Buyer';
+
+  @override
+  String get payerArhtiya => 'Arhtiya (us)';
+
+  @override
+  String get mandiGross => 'Gross';
+
+  @override
+  String get mandiNetToFarmer => 'Net to farmer (jama)';
+
+  @override
+  String get mandiBuyerTotal => 'Buyer pays (udhaar)';
+
+  @override
+  String mandiPaidBy(String payer) {
+    return 'paid by $payer';
+  }
+
+  @override
+  String get mandiWaived => 'waived';
+
+  @override
+  String get cessAdd => 'Add cess';
+
+  @override
+  String get cessName => 'Name (e.g. RDF)';
+
+  @override
+  String get cessPct => '%';
+
+  @override
+  String get cessRemove => 'Remove';
+
+  @override
+  String get settingsEdit => 'Edit';
+
+  @override
+  String get settingsCropsLink => 'Crops and per-crop charges';
 }

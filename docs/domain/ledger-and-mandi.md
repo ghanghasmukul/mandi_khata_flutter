@@ -44,10 +44,21 @@ cess_i       = round(gross × cess_i_pct / 100)
 farmer_deductions = Σ charges where charges_borne_by = farmer (+ commission)
 net_to_farmer     = gross − farmer_deductions
 ```
+- Every rounding is **half-up to the paisa, each line on its own** (gross first, then each percentage of the rounded gross). Weight is `qtl_milli` (1/1000 qtl), so `qtl × rate` is exact integer maths.
+- Every charge line is always listed (zero lines too); each cess in `mandi.cess` is its own line and follows the `cess` payer.
+- Who pays (`mandi.charges_borne_by`): **farmer** → deducted from net; **buyer** → added to the buyer's udhaar (`buyer_total = gross + buyer-borne charges`); **arhtiya** → the arhtiya's own cost. Commission "borne by arhtiya" means **waived**: shown, but neither deducted, billed, earned nor counted as a cost.
+- Implemented in khata_core `MandiCharges.calculate(LotInput, MandiConfig)`; `MandiConfig.resolve(settings, cropCode, partyId, lotId)` resolves every `mandi.*` key and `toJson()` is the snapshot.
 - All rates/charges come from the settings cascade (crop-level overrides allowed) and are **snapshotted** into the lot row.
 - Posting a sold lot creates: `jama` entry to farmer for `net_to_farmer`; `udhaar` entry to the buyer (if buyer ledger enabled) for gross + buyer-borne charges; income lines for commission.
 - Qtl can be entered directly or computed from bags × bag weight; show both.
 - Lot states: `arrived → weighed → sold → posted → (reversed)`.
+
+## Crops master
+
+- Table `crops` per tenant: `code, name_en, name_hi, name_pa, unit ('qtl'), msp_or_std_rate (paise per unit, nullable), sort_order, is_active`.
+- `code` is the suffix of per-crop settings (`mandi.commission_pct.<code>`): lowercase identifier (`^[a-z][a-z0-9_]*$`, ≤ 24), unique per business, **never changes**. Ids are UUID v5 of `<tenant>|<code>`.
+- Crops are switched off (`is_active`), never deleted. Adding / editing needs `settings.manage`.
+- Every new business is seeded with: wheat, paddy_pr126, paddy_1509, paddy_1121, mustard, cotton_narma, guar, bajra, moong, chana, maize. `msp_or_std_rate` is a reference only (pre-fill / sample); a lot's rate is entered per lot.
 
 ## Payments
 

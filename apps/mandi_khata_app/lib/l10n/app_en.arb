@@ -1180,5 +1180,198 @@
   "partyNoNotes": "No notes.",
   "@partyNoNotes": {
     "description": "Empty notes."
+  },
+  "cropsTitle": "Crops",
+  "@cropsTitle": {
+    "description": "Crops master screen title."
+  },
+  "cropsAdd": "Add crop",
+  "@cropsAdd": {
+    "description": "Add crop button / dialog title."
+  },
+  "cropsEmpty": "No crops yet.",
+  "@cropsEmpty": {
+    "description": "Empty crops list."
+  },
+  "cropsShowInactive": "Show crops not in use",
+  "@cropsShowInactive": {
+    "description": "Toggle to list inactive crops."
+  },
+  "cropInactive": "Not in use",
+  "@cropInactive": {
+    "description": "Badge on an inactive crop."
+  },
+  "cropRatePerQtl": "{rate}/qtl",
+  "@cropRatePerQtl": {
+    "description": "A rate per quintal.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "cropNoRate": "No MSP / usual rate",
+  "@cropNoRate": {
+    "description": "Crop without a reference rate."
+  },
+  "cropEditTitle": "Edit crop",
+  "@cropEditTitle": {
+    "description": "Edit crop dialog title."
+  },
+  "cropFieldNameEn": "Name (English)",
+  "@cropFieldNameEn": {
+    "description": "Crop form field."
+  },
+  "cropFieldNameHi": "Name (Hindi)",
+  "@cropFieldNameHi": {
+    "description": "Crop form field."
+  },
+  "cropFieldNamePa": "Name (Punjabi)",
+  "@cropFieldNamePa": {
+    "description": "Crop form field."
+  },
+  "cropFieldCode": "Code",
+  "@cropFieldCode": {
+    "description": "Crop form field."
+  },
+  "cropCodeHint": "Small letters, digits and _. Cannot be changed later.",
+  "@cropCodeHint": {
+    "description": "Help under the crop code field."
+  },
+  "cropFieldStdRate": "MSP / usual rate per qtl",
+  "@cropFieldStdRate": {
+    "description": "Crop form field."
+  },
+  "cropFieldActive": "In use",
+  "@cropFieldActive": {
+    "description": "Crop form switch."
+  },
+  "cropErrorCode": "Start with a letter; use small letters, digits and _ (max 24).",
+  "@cropErrorCode": {
+    "description": "Invalid crop code."
+  },
+  "cropErrorName": "Enter the English name.",
+  "@cropErrorName": {
+    "description": "Missing crop name."
+  },
+  "cropErrorRate": "Enter a valid amount.",
+  "@cropErrorRate": {
+    "description": "Invalid crop rate."
+  },
+  "cropErrorCodeTaken": "A crop with this code already exists.",
+  "@cropErrorCodeTaken": {
+    "description": "Duplicate crop code."
+  },
+  "cropNotFound": "This crop no longer exists.",
+  "@cropNotFound": {
+    "description": "Crop missing."
+  },
+  "cropChargesTitle": "Mandi charges for this crop",
+  "@cropChargesTitle": {
+    "description": "Per-crop settings card title."
+  },
+  "cropChargesHint": "Values not set here come from the business settings. A rate set for a farmer or a lot still wins.",
+  "@cropChargesHint": {
+    "description": "Explains per-crop overrides."
+  },
+  "cropExampleTitle": "Example: {bags} bags · {qtl} qtl @ {rate}/qtl",
+  "@cropExampleTitle": {
+    "description": "Heading of the sample calculation.",
+    "placeholders": {
+      "bags": {
+        "type": "int"
+      },
+      "qtl": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "chargeCommission": "Arhat (commission)",
+  "@chargeCommission": {
+    "description": "Mandi charge name."
+  },
+  "chargePalledari": "Palledari",
+  "@chargePalledari": {
+    "description": "Mandi charge name."
+  },
+  "chargeBardana": "Bardana",
+  "@chargeBardana": {
+    "description": "Mandi charge name."
+  },
+  "chargeTulai": "Tulai",
+  "@chargeTulai": {
+    "description": "Mandi charge name."
+  },
+  "chargeMandiFee": "Mandi fee",
+  "@chargeMandiFee": {
+    "description": "Mandi charge name."
+  },
+  "chargeCess": "Cess",
+  "@chargeCess": {
+    "description": "Mandi charge name."
+  },
+  "payerFarmer": "Farmer",
+  "@payerFarmer": {
+    "description": "Who pays a charge."
+  },
+  "payerBuyer": "Buyer",
+  "@payerBuyer": {
+    "description": "Who pays a charge."
+  },
+  "payerArhtiya": "Arhtiya (us)",
+  "@payerArhtiya": {
+    "description": "Who pays a charge."
+  },
+  "mandiGross": "Gross",
+  "@mandiGross": {
+    "description": "Gross sale value of a lot."
+  },
+  "mandiNetToFarmer": "Net to farmer (jama)",
+  "@mandiNetToFarmer": {
+    "description": "Net amount credited to the farmer."
+  },
+  "mandiBuyerTotal": "Buyer pays (udhaar)",
+  "@mandiBuyerTotal": {
+    "description": "Total billed to the buyer."
+  },
+  "mandiPaidBy": "paid by {payer}",
+  "@mandiPaidBy": {
+    "description": "Who pays a charge line.",
+    "placeholders": {
+      "payer": {
+        "type": "String"
+      }
+    }
+  },
+  "mandiWaived": "waived",
+  "@mandiWaived": {
+    "description": "Commission borne by the arhtiya."
+  },
+  "cessAdd": "Add cess",
+  "@cessAdd": {
+    "description": "Add a cess row."
+  },
+  "cessName": "Name (e.g. RDF)",
+  "@cessName": {
+    "description": "Cess name field."
+  },
+  "cessPct": "%",
+  "@cessPct": {
+    "description": "Cess percent field."
+  },
+  "cessRemove": "Remove",
+  "@cessRemove": {
+    "description": "Remove a cess row."
+  },
+  "settingsEdit": "Edit",
+  "@settingsEdit": {
+    "description": "Edit button for list / map settings."
+  },
+  "settingsCropsLink": "Crops and per-crop charges",
+  "@settingsCropsLink": {
+    "description": "Link from settings to the crops screen."
   }
 }

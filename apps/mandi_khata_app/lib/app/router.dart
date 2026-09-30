@@ -7,6 +7,8 @@ import 'package:mandi_khata_app/features/auth/presentation/login_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/select_tenant_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/set_pin_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/splash_screen.dart';
+import 'package:mandi_khata_app/features/crops/presentation/crop_detail_screen.dart';
+import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen.dart';
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
 import 'package:mandi_khata_app/features/diagnostics/presentation/diagnostics_screen.dart';
@@ -92,6 +94,17 @@ GoRouter router(Ref ref) {
                     PartyFormScreen(partyId: state.pathParameters['id']),
               ),
             ],
+          ),
+        ],
+      ),
+      GoRoute(
+        path: CropRoutes.list,
+        builder: (context, state) => const CropsScreen(),
+        routes: [
+          GoRoute(
+            path: ':id',
+            builder: (context, state) =>
+                CropDetailScreen(cropId: state.pathParameters['id']!),
           ),
         ],
       ),

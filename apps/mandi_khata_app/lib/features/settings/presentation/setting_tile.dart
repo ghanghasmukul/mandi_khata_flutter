@@ -26,6 +26,7 @@ class SettingTile extends ConsumerWidget {
     required this.resolved,
     required this.setHere,
     required this.canEdit,
+    this.label,
     super.key,
   });
 
@@ -40,6 +41,9 @@ class SettingTile extends ConsumerWidget {
   /// A value is stored at exactly this level (so it can be reset).
   final bool setHere;
   final bool canEdit;
+
+  /// Replaces the generated label (the crop screen shows the base name).
+  final String? label;
 
   Future<String?> _save(
     BuildContext context,
@@ -85,12 +89,14 @@ class SettingTile extends ConsumerWidget {
     final tokens = MkTokens.of(context);
     final def = entry.def;
     final suffix = entry.suffix;
-    final label = suffix == null
-        ? l10n.settingLabel(def.key)
-        : def.key == 'app.modules'
-        ? l10n.settingSuffix(def.suffixName!, suffix)
-        : '${l10n.settingLabel(def.key)} · '
-              '${l10n.settingSuffix(def.suffixName!, suffix)}';
+    final label =
+        this.label ??
+        (suffix == null
+            ? l10n.settingLabel(def.key)
+            : def.key == 'app.modules'
+            ? l10n.settingSuffix(def.suffixName!, suffix)
+            : '${l10n.settingLabel(def.key)} · '
+                  '${l10n.settingSuffix(def.suffixName!, suffix)}');
     final source = setHere
         ? l10n.settingSetHere
         : settingSourceText(l10n, resolved.level);
@@ -119,8 +125,7 @@ class SettingTile extends ConsumerWidget {
                         InterestRate.per100PerMonthFromPa(perMonth).toString(),
                       ),
                     if (!canEdit) l10n.settingsNoPermission,
-                    if (def.type == SettingType.structured)
-                      l10n.settingsReadOnly,
+                    if (!settingHasEditor(def)) l10n.settingsReadOnly,
                   ].join(' · '),
                   style: TextStyle(
                     fontSize: 12,
@@ -139,7 +144,7 @@ class SettingTile extends ConsumerWidget {
                   key: ValueKey('${scope.name}|$scopeId|${resolved.value}'),
                   def: def,
                   value: resolved.value,
-                  enabled: canEdit && def.type != SettingType.structured,
+                  enabled: canEdit && settingHasEditor(def),
                   onSave: (v) async {
                     if (def.type == SettingType.boolean ||
                         def.type == SettingType.choice) {
