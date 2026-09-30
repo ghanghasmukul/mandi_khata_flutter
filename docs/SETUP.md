@@ -72,7 +72,19 @@ flutter run -d windows
    - `mandi-khata-dev`: Claude Code is allowed to touch this.
    - `mandi-khata-prod`: real customers. **Claude never connects here.** You or GitHub CI push migrations to it.
    Note each project's **Project ref** (Settings → General), **URL** and **anon (publishable) key**.
-2. **PowerSync** (https://www.powersync.com): create an instance for dev (and later one for prod) and connect it to the Supabase project (their dashboard has a Supabase connection wizard). Note the **PowerSync instance URL**.
+2. **PowerSync** (https://www.powersync.com): one instance for dev (later one for prod). Do these in order:
+   1. **Replication role (Supabase dashboard → SQL Editor, dev project).** It has a password, so it is not in a migration. Pick a long random password and keep it in your password manager:
+      ```sql
+      CREATE ROLE powersync_role WITH REPLICATION BYPASSRLS LOGIN PASSWORD '<long random password>';
+      GRANT SELECT ON ALL TABLES IN SCHEMA public TO powersync_role;
+      ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO powersync_role;
+      ```
+      The `powersync` **publication** is already created by the migration `*_powersync_publication.sql`; don't run `CREATE PUBLICATION` by hand.
+   2. **Create the instance** in the PowerSync dashboard (pick a region near Mumbai) and connect it to Supabase: use the **Session pooler / direct connection** details from Supabase → Connect, but with user `powersync_role` and the password above.
+   3. **Client Auth:** tick **"Use Supabase Auth"**. Leave the legacy JWT secret empty unless your project still uses the legacy JWT secret (PowerSync then auto-configures JWKS). Save and deploy.
+   4. **Sync Streams:** paste the contents of `powersync/sync-streams.yaml` and deploy. Every time that file changes, deploy it again.
+   5. Copy the **instance URL** into `.env.dev` as `POWERSYNC_URL`.
+   6. Test: run the app, open **Sync lab** (debug builds), sign in with a dev user who is a member of a business, add a test party, toggle **Go offline / Go online**, and check the row appears in Supabase → Table editor → `parties`.
 3. **Razorpay** (Phase 5 only): test-mode keys.
 4. **Sentry** (optional, Phase 0.7): a Flutter project DSN.
 

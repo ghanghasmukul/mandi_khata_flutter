@@ -56,6 +56,24 @@ Windows is **not** built on the Mac — Flutter cannot cross-compile it. CI buil
 it on a `windows-latest` runner and it is tested on a real Windows PC before the
 pilot.
 
+## Offline database and sync
+
+The app reads and writes only a local SQLite database (PowerSync + Drift);
+PowerSync syncs it with Supabase in the background. Setup of the PowerSync
+instance is in [`docs/SETUP.md`](docs/SETUP.md) (step 2), the sync definitions
+are in `powersync/sync-streams.yaml`.
+
+**Web** needs two files in `apps/mandi_khata_app/web/`, committed to the repo:
+`sqlite3.wasm` and `powersync_db.worker.js`. After upgrading the `powersync`
+package, refresh them:
+
+```bash
+cd apps/mandi_khata_app && dart run powersync:setup_web
+```
+
+Debug builds have a **Sync lab** (`/dev/sync`, button on the home screen) for
+testing offline writes and sync before the real login and screens exist.
+
 ## Test
 
 ```bash

@@ -1,0 +1,15 @@
+{
+  "@@locale": "pa",
+  "syncOff": "ਸਿੰਕ ਬੰਦ",
+  "syncSyncing": "ਸਿੰਕ ਹੋ ਰਿਹਾ ਹੈ…",
+  "syncSyncedJustNow": "ਸਿੰਕ ਹੋਇਆ · ਹੁਣੇ",
+  "syncSyncedMinutesAgo": "{count, plural, other{ਸਿੰਕ ਹੋਇਆ · {count} ਮਿੰਟ ਪਹਿਲਾਂ}}",
+  "syncSyncedHoursAgo": "{count, plural, other{ਸਿੰਕ ਹੋਇਆ · {count} ਘੰਟੇ ਪਹਿਲਾਂ}}",
+  "syncOffline": "ਆਫ਼ਲਾਈਨ",
+  "syncOfflineQueued": "{count, plural, other{ਆਫ਼ਲਾਈਨ · {count} ਬਾਕੀ}}",
+  "syncErrorCount": "{count, plural, other{ਸਿੰਕ ਗਲਤੀ · {count} ਬਦਲਾਅ ਰੱਦ}}",
+  "syncErrorsTitle": "ਸਰਵਰ ਨੇ ਇਹ ਬਦਲਾਅ ਰੱਦ ਕੀਤੇ",
+  "syncErrorsBody": "ਇਹ ਬਦਲਾਅ ਆਨਲਾਈਨ ਸੇਵ ਨਹੀਂ ਹੋਏ। ਬਾਕੀ ਸਭ ਸਿੰਕ ਹੁੰਦਾ ਰਹੇਗਾ।",
+  "syncErrorsDismiss": "ਸਭ ਹਟਾਓ",
+  "commonClose": "ਬੰਦ ਕਰੋ"
+}

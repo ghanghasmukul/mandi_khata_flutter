@@ -1,0 +1,71 @@
+{
+  "@@locale": "en",
+  "syncOff": "Sync off",
+  "@syncOff": {
+    "description": "Shown when this build has no sync server configured."
+  },
+  "syncSyncing": "Syncing…",
+  "@syncSyncing": {
+    "description": "Sync in progress."
+  },
+  "syncSyncedJustNow": "Synced · just now",
+  "@syncSyncedJustNow": {
+    "description": "Last sync under a minute ago."
+  },
+  "syncSyncedMinutesAgo": "{count, plural, =1{Synced · 1 min ago} other{Synced · {count} min ago}}",
+  "@syncSyncedMinutesAgo": {
+    "description": "Minutes since the last sync.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncSyncedHoursAgo": "{count, plural, =1{Synced · 1 hr ago} other{Synced · {count} hr ago}}",
+  "@syncSyncedHoursAgo": {
+    "description": "Hours since the last sync.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncOffline": "Offline",
+  "@syncOffline": {
+    "description": "Not connected; nothing waiting to upload."
+  },
+  "syncOfflineQueued": "{count, plural, =1{Offline · 1 queued} other{Offline · {count} queued}}",
+  "@syncOfflineQueued": {
+    "description": "Not connected; changes waiting to upload.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncErrorCount": "{count, plural, =1{Sync error · 1 change rejected} other{Sync error · {count} changes rejected}}",
+  "@syncErrorCount": {
+    "description": "Server permanently rejected some changes; tap for details.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncErrorsTitle": "Changes the server rejected",
+  "@syncErrorsTitle": {
+    "description": "Title of the sync errors dialog."
+  },
+  "syncErrorsBody": "These changes were not saved online. Everything else keeps syncing.",
+  "@syncErrorsBody": {
+    "description": "Explains the sync errors dialog."
+  },
+  "syncErrorsDismiss": "Dismiss all",
+  "@syncErrorsDismiss": {
+    "description": "Clears the list of rejected changes."
+  },
+  "commonClose": "Close",
+  "@commonClose": {
+    "description": "Generic close button."
+  }
+}

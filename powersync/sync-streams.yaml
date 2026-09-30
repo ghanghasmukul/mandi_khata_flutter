@@ -1,0 +1,53 @@
+# PowerSync Sync Streams for Mandi Khata (deploy in the PowerSync dashboard
+# or with the PowerSync CLI). Every synced table must also be in the
+# `powersync` publication (supabase/migrations/*_powersync_publication.sql),
+# the app's PowerSync schema (lib/core/db/powersync_schema.dart) and the
+# Drift tables (lib/core/db/tables.dart).
+#
+# Access mirrors the RLS policies: a user gets every business they are an
+# ACTIVE member of. Deactivating a member removes that business's data from
+# their devices on the next sync.
+
+config:
+  edition: 3
+
+streams:
+  # Everything a member works with, for every business they belong to.
+  tenant_data:
+    auto_subscribe: true
+    with:
+      my_tenants: >-
+        SELECT tenant_id FROM tenant_members
+        WHERE user_id = auth.user_id() AND is_active = true
+    queries:
+      - SELECT * FROM tenants WHERE id IN my_tenants
+      - SELECT * FROM tenant_members WHERE tenant_id IN my_tenants
+      - SELECT * FROM devices WHERE tenant_id IN my_tenants
+      - SELECT * FROM settings WHERE tenant_id IN my_tenants
+      - SELECT * FROM parties WHERE tenant_id IN my_tenants
+      - SELECT * FROM party_roles WHERE tenant_id IN my_tenants
+      - SELECT * FROM number_series WHERE tenant_id IN my_tenants
+
+  # Names of the people you work with (users screen, audit log, receipts).
+  team_profiles:
+    auto_subscribe: true
+    query: >-
+      SELECT * FROM app_users
+      WHERE id IN (
+        SELECT user_id FROM tenant_members
+        WHERE tenant_id IN (
+          SELECT tenant_id FROM tenant_members
+          WHERE user_id = auth.user_id() AND is_active = true
+        )
+      )
+
+  # The audit log is written by everyone but downloaded only by owners
+  # (RLS: audit.view). Sync streams cannot filter by time, so owners get the
+  # full log rather than the last 30 days — see docs/decisions.md.
+  owner_audit:
+    auto_subscribe: true
+    with:
+      owned_tenants: >-
+        SELECT tenant_id FROM tenant_members
+        WHERE user_id = auth.user_id() AND role = 'owner' AND is_active = true
+    query: SELECT * FROM audit_log WHERE tenant_id IN owned_tenants

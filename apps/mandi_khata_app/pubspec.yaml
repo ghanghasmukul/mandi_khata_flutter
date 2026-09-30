@@ -25,11 +25,17 @@ dependencies:
   logging: ^1.3.0
   mk_ui:
     path: ../../packages/mk_ui
+  path: ^1.9.1
+  path_provider: ^2.1.6
   pdf: ^3.13.1
   powersync: ^2.4.0
   printing: ^5.15.1
   riverpod_annotation: ^4.0.7
   sentry_flutter: ^9.30.1
+  # Pinned: sqlite3_web 0.9.5 made WorkerDatabase `base`, which breaks the web
+  # build of sqlite_async 0.14.5 (used by powersync). Lift once sqlite_async
+  # supports it — see docs/decisions.md (2026-09-30).
+  sqlite3_web: 0.9.4
   supabase_flutter: ^2.17.2
   uuid: ^4.6.0
 

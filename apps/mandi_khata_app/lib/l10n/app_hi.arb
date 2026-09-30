@@ -1,0 +1,15 @@
+{
+  "@@locale": "hi",
+  "syncOff": "सिंक बंद",
+  "syncSyncing": "सिंक हो रहा है…",
+  "syncSyncedJustNow": "सिंक हुआ · अभी",
+  "syncSyncedMinutesAgo": "{count, plural, other{सिंक हुआ · {count} मिनट पहले}}",
+  "syncSyncedHoursAgo": "{count, plural, other{सिंक हुआ · {count} घंटे पहले}}",
+  "syncOffline": "ऑफ़लाइन",
+  "syncOfflineQueued": "{count, plural, other{ऑफ़लाइन · {count} बाकी}}",
+  "syncErrorCount": "{count, plural, other{सिंक त्रुटि · {count} बदलाव अस्वीकार}}",
+  "syncErrorsTitle": "सर्वर ने ये बदलाव अस्वीकार किए",
+  "syncErrorsBody": "ये बदलाव ऑनलाइन सेव नहीं हुए। बाकी सब सिंक होता रहेगा।",
+  "syncErrorsDismiss": "सब हटाएँ",
+  "commonClose": "बंद करें"
+}

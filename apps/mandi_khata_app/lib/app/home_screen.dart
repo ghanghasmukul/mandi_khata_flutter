@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mandi_khata_app/app/env.dart';
 import 'package:mandi_khata_app/app/router.dart';
+import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mk_ui/mk_ui.dart';
 
 /// Placeholder start screen until auth and the dashboard exist.
@@ -25,6 +26,8 @@ class HomeScreen extends StatelessWidget {
               Env.hasSupabase ? 'Configuration loaded' : 'No configuration',
               style: theme.textTheme.bodySmall,
             ),
+            const SizedBox(height: MkSpacing.md),
+            const SyncStatusChip(),
             // Developer-only entry point; the route does not exist in release.
             if (!kReleaseMode) ...[
               const SizedBox(height: MkSpacing.xxl),
@@ -33,6 +36,13 @@ class HomeScreen extends StatelessWidget {
                 variant: MkButtonVariant.secondary,
                 icon: Icons.palette_outlined,
                 onPressed: () => context.go(AppRoutes.gallery),
+              ),
+              const SizedBox(height: MkSpacing.sm),
+              MkButton(
+                label: 'Sync lab',
+                variant: MkButtonVariant.secondary,
+                icon: Icons.sync,
+                onPressed: () => context.go(AppRoutes.sync),
               ),
             ],
           ],
