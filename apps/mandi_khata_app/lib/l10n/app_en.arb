@@ -390,5 +390,464 @@
   "signOutUploadFailed": "Couldn't upload everything. Check the internet and try again.",
   "@signOutUploadFailed": {
     "description": "Upload did not finish in time."
+  },
+  "settingInterestEnabled": "Charge interest",
+  "@settingInterestEnabled": {
+    "description": "Label of setting interest.enabled."
+  },
+  "settingInterestRatePa": "Interest rate (% per year)",
+  "@settingInterestRatePa": {
+    "description": "Label of setting interest.rate_pa."
+  },
+  "settingInterestRateUnitDisplay": "Show rate as",
+  "@settingInterestRateUnitDisplay": {
+    "description": "Label of setting interest.rate_unit_display."
+  },
+  "settingInterestMethod": "Interest method",
+  "@settingInterestMethod": {
+    "description": "Label of setting interest.method."
+  },
+  "settingInterestCompounding": "Compounding period",
+  "@settingInterestCompounding": {
+    "description": "Label of setting interest.compounding."
+  },
+  "settingInterestDayBasis": "Days in a year",
+  "@settingInterestDayBasis": {
+    "description": "Label of setting interest.day_basis."
+  },
+  "settingInterestGraceDays": "Grace days",
+  "@settingInterestGraceDays": {
+    "description": "Label of setting interest.grace_days."
+  },
+  "settingInterestAppropriation": "Repayment goes first to",
+  "@settingInterestAppropriation": {
+    "description": "Label of setting interest.appropriation."
+  },
+  "settingInterestApplyOn": "Charge interest on",
+  "@settingInterestApplyOn": {
+    "description": "Label of setting interest.apply_on."
+  },
+  "settingInterestMinDays": "Ignore periods shorter than (days)",
+  "@settingInterestMinDays": {
+    "description": "Label of setting interest.min_days."
+  },
+  "settingInterestRounding": "Round interest to",
+  "@settingInterestRounding": {
+    "description": "Label of setting interest.rounding."
+  },
+  "settingInterestPostFrequency": "Post interest to khata",
+  "@settingInterestPostFrequency": {
+    "description": "Label of setting interest.post_frequency."
+  },
+  "settingInterestPayOnJama": "Pay interest when we owe the party",
+  "@settingInterestPayOnJama": {
+    "description": "Label of setting interest.pay_on_jama."
+  },
+  "settingInterestPayRatePa": "Rate paid on jama (% per year)",
+  "@settingInterestPayRatePa": {
+    "description": "Label of setting interest.pay_rate_pa."
+  },
+  "settingMandiCommissionPct": "Commission (arhat) %",
+  "@settingMandiCommissionPct": {
+    "description": "Label of setting mandi.commission_pct."
+  },
+  "settingMandiPalledariPerBag": "Palledari per bag",
+  "@settingMandiPalledariPerBag": {
+    "description": "Label of setting mandi.palledari_per_bag."
+  },
+  "settingMandiBardanaPerBag": "Bardana per bag",
+  "@settingMandiBardanaPerBag": {
+    "description": "Label of setting mandi.bardana_per_bag."
+  },
+  "settingMandiTulaiPerQtl": "Tulai per quintal",
+  "@settingMandiTulaiPerQtl": {
+    "description": "Label of setting mandi.tulai_per_qtl."
+  },
+  "settingMandiMandiFeePct": "Mandi fee %",
+  "@settingMandiMandiFeePct": {
+    "description": "Label of setting mandi.mandi_fee_pct."
+  },
+  "settingMandiCess": "Cess",
+  "@settingMandiCess": {
+    "description": "Label of setting mandi.cess."
+  },
+  "settingMandiChargesBorneBy": "Who pays each charge",
+  "@settingMandiChargesBorneBy": {
+    "description": "Label of setting mandi.charges_borne_by."
+  },
+  "settingMandiBagWeightKg": "Bag weight (kg)",
+  "@settingMandiBagWeightKg": {
+    "description": "Label of setting mandi.bag_weight_kg."
+  },
+  "settingShopPriceTiers": "Price tiers",
+  "@settingShopPriceTiers": {
+    "description": "Label of setting shop.price_tiers."
+  },
+  "settingShopDefaultTierForRole": "Default price tier",
+  "@settingShopDefaultTierForRole": {
+    "description": "Label of setting shop.default_tier_for_role."
+  },
+  "settingShopAllowNegativeStock": "Allow selling below zero stock",
+  "@settingShopAllowNegativeStock": {
+    "description": "Label of setting shop.allow_negative_stock."
+  },
+  "settingShopExpiryWarnDays": "Warn before expiry (days)",
+  "@settingShopExpiryWarnDays": {
+    "description": "Label of setting shop.expiry_warn_days."
+  },
+  "settingShopGstEnabled": "GST on invoices",
+  "@settingShopGstEnabled": {
+    "description": "Label of setting shop.gst_enabled."
+  },
+  "settingShopPostCreditSaleToKhata": "Post credit sales to khata",
+  "@settingShopPostCreditSaleToKhata": {
+    "description": "Label of setting shop.post_credit_sale_to_khata."
+  },
+  "settingBusinessFyStartMonth": "Financial year starts in month",
+  "@settingBusinessFyStartMonth": {
+    "description": "Label of setting business.fy_start_month."
+  },
+  "settingBusinessNumberSeries": "Number series",
+  "@settingBusinessNumberSeries": {
+    "description": "Label of setting business.number_series."
+  },
+  "settingAppModules": "Module",
+  "@settingAppModules": {
+    "description": "Label of setting app.modules."
+  },
+  "settingAppLanguages": "Languages",
+  "@settingAppLanguages": {
+    "description": "Label of setting app.languages."
+  },
+  "settingAppDefaultLanguage": "Default language",
+  "@settingAppDefaultLanguage": {
+    "description": "Label of setting app.default_language."
+  },
+  "settingPrintReceiptSize": "Receipt paper",
+  "@settingPrintReceiptSize": {
+    "description": "Label of setting print.receipt_size."
+  },
+  "settingNotifyWhatsappReceipts": "Send receipts on WhatsApp",
+  "@settingNotifyWhatsappReceipts": {
+    "description": "Label of setting notify.whatsapp_receipts."
+  },
+  "settingOptInterestRateUnitDisplayPa": "% per year",
+  "@settingOptInterestRateUnitDisplayPa": {
+    "description": "Option pa of interest.rate_unit_display."
+  },
+  "settingOptInterestRateUnitDisplayPer100PerMonth": "₹ per 100 per month",
+  "@settingOptInterestRateUnitDisplayPer100PerMonth": {
+    "description": "Option per100_per_month of interest.rate_unit_display."
+  },
+  "settingOptInterestMethodSimple": "Simple",
+  "@settingOptInterestMethodSimple": {
+    "description": "Option simple of interest.method."
+  },
+  "settingOptInterestMethodCompound": "Compound (chakravridhi)",
+  "@settingOptInterestMethodCompound": {
+    "description": "Option compound of interest.method."
+  },
+  "settingOptInterestCompoundingMonthly": "Monthly",
+  "@settingOptInterestCompoundingMonthly": {
+    "description": "Option monthly of interest.compounding."
+  },
+  "settingOptInterestCompoundingQuarterly": "Quarterly",
+  "@settingOptInterestCompoundingQuarterly": {
+    "description": "Option quarterly of interest.compounding."
+  },
+  "settingOptInterestCompoundingHalfyearly": "Half-yearly",
+  "@settingOptInterestCompoundingHalfyearly": {
+    "description": "Option halfyearly of interest.compounding."
+  },
+  "settingOptInterestCompoundingYearly": "Yearly",
+  "@settingOptInterestCompoundingYearly": {
+    "description": "Option yearly of interest.compounding."
+  },
+  "settingOptInterestCompoundingOnFyClose": "At financial year close",
+  "@settingOptInterestCompoundingOnFyClose": {
+    "description": "Option on_fy_close of interest.compounding."
+  },
+  "settingOptInterestAppropriationInterestFirst": "Interest",
+  "@settingOptInterestAppropriationInterestFirst": {
+    "description": "Option interest_first of interest.appropriation."
+  },
+  "settingOptInterestAppropriationPrincipalFirst": "Principal",
+  "@settingOptInterestAppropriationPrincipalFirst": {
+    "description": "Option principal_first of interest.appropriation."
+  },
+  "settingOptInterestApplyOnNetUdhaar": "Net udhaar only",
+  "@settingOptInterestApplyOnNetUdhaar": {
+    "description": "Option net_udhaar of interest.apply_on."
+  },
+  "settingOptInterestApplyOnLoansOnly": "Loans (karza) only",
+  "@settingOptInterestApplyOnLoansOnly": {
+    "description": "Option loans_only of interest.apply_on."
+  },
+  "settingOptInterestApplyOnNone": "No interest",
+  "@settingOptInterestApplyOnNone": {
+    "description": "Option none of interest.apply_on."
+  },
+  "settingOptInterestRoundingPaise": "Paise",
+  "@settingOptInterestRoundingPaise": {
+    "description": "Option paise of interest.rounding."
+  },
+  "settingOptInterestRoundingRupee": "Rupee",
+  "@settingOptInterestRoundingRupee": {
+    "description": "Option rupee of interest.rounding."
+  },
+  "settingOptInterestRoundingTenRupee": "₹10",
+  "@settingOptInterestRoundingTenRupee": {
+    "description": "Option ten_rupee of interest.rounding."
+  },
+  "settingOptInterestPostFrequencyOnDemand": "When I choose",
+  "@settingOptInterestPostFrequencyOnDemand": {
+    "description": "Option on_demand of interest.post_frequency."
+  },
+  "settingOptInterestPostFrequencyMonthly": "Monthly",
+  "@settingOptInterestPostFrequencyMonthly": {
+    "description": "Option monthly of interest.post_frequency."
+  },
+  "settingOptInterestPostFrequencyQuarterly": "Quarterly",
+  "@settingOptInterestPostFrequencyQuarterly": {
+    "description": "Option quarterly of interest.post_frequency."
+  },
+  "settingOptInterestPostFrequencyFyClose": "At financial year close",
+  "@settingOptInterestPostFrequencyFyClose": {
+    "description": "Option fy_close of interest.post_frequency."
+  },
+  "settingOptAppDefaultLanguageEn": "English",
+  "@settingOptAppDefaultLanguageEn": {
+    "description": "Option en of app.default_language."
+  },
+  "settingOptAppDefaultLanguageHi": "हिंदी",
+  "@settingOptAppDefaultLanguageHi": {
+    "description": "Option hi of app.default_language."
+  },
+  "settingOptAppDefaultLanguagePa": "ਪੰਜਾਬੀ",
+  "@settingOptAppDefaultLanguagePa": {
+    "description": "Option pa of app.default_language."
+  },
+  "settingOptPrintReceiptSizeA5": "A5 paper",
+  "@settingOptPrintReceiptSizeA5": {
+    "description": "Option a5 of print.receipt_size."
+  },
+  "settingOptPrintReceiptSizeThermal80": "Thermal 80 mm",
+  "@settingOptPrintReceiptSizeThermal80": {
+    "description": "Option thermal_80 of print.receipt_size."
+  },
+  "settingOptPrintReceiptSizeThermal58": "Thermal 58 mm",
+  "@settingOptPrintReceiptSizeThermal58": {
+    "description": "Option thermal_58 of print.receipt_size."
+  },
+  "settingSuffixRoleFarmer": "Farmer",
+  "@settingSuffixRoleFarmer": {
+    "description": "role farmer."
+  },
+  "settingSuffixRoleCustomer": "Customer",
+  "@settingSuffixRoleCustomer": {
+    "description": "role customer."
+  },
+  "settingSuffixRoleSupplier": "Supplier",
+  "@settingSuffixRoleSupplier": {
+    "description": "role supplier."
+  },
+  "settingSuffixRoleVendor": "Vendor",
+  "@settingSuffixRoleVendor": {
+    "description": "role vendor."
+  },
+  "settingSuffixRoleAgency": "Agency",
+  "@settingSuffixRoleAgency": {
+    "description": "role agency."
+  },
+  "settingSuffixRoleBuyer": "Buyer",
+  "@settingSuffixRoleBuyer": {
+    "description": "role buyer."
+  },
+  "settingSuffixDocReceipt": "Receipts",
+  "@settingSuffixDocReceipt": {
+    "description": "doc receipt."
+  },
+  "settingSuffixDocLot": "Lots",
+  "@settingSuffixDocLot": {
+    "description": "doc lot."
+  },
+  "settingSuffixDocSalesInvoice": "Sales invoices",
+  "@settingSuffixDocSalesInvoice": {
+    "description": "doc sales_invoice."
+  },
+  "settingSuffixDocPurchaseInvoice": "Purchase invoices",
+  "@settingSuffixDocPurchaseInvoice": {
+    "description": "doc purchase_invoice."
+  },
+  "settingSuffixDocKarza": "Karza",
+  "@settingSuffixDocKarza": {
+    "description": "doc karza."
+  },
+  "settingSuffixDocVoucher": "Vouchers",
+  "@settingSuffixDocVoucher": {
+    "description": "doc voucher."
+  },
+  "settingSuffixModuleKhata": "Khata",
+  "@settingSuffixModuleKhata": {
+    "description": "module khata."
+  },
+  "settingSuffixModuleArrivals": "Arrivals & lots",
+  "@settingSuffixModuleArrivals": {
+    "description": "module arrivals."
+  },
+  "settingSuffixModuleKarza": "Karza & byaj",
+  "@settingSuffixModuleKarza": {
+    "description": "module karza."
+  },
+  "settingSuffixModuleAccounting": "Accounting",
+  "@settingSuffixModuleAccounting": {
+    "description": "module accounting."
+  },
+  "settingSuffixModuleShop": "Input shop",
+  "@settingSuffixModuleShop": {
+    "description": "module shop."
+  },
+  "settingsGroupInterest": "Interest (byaj)",
+  "@settingsGroupInterest": {
+    "description": "Settings group interest."
+  },
+  "settingsGroupMandi": "Mandi charges",
+  "@settingsGroupMandi": {
+    "description": "Settings group mandi."
+  },
+  "settingsGroupShop": "Input shop",
+  "@settingsGroupShop": {
+    "description": "Settings group shop."
+  },
+  "settingsGroupBusiness": "Business",
+  "@settingsGroupBusiness": {
+    "description": "Settings group business."
+  },
+  "settingsGroupModules": "Modules",
+  "@settingsGroupModules": {
+    "description": "Settings group modules."
+  },
+  "settingsGroupApp": "App",
+  "@settingsGroupApp": {
+    "description": "Settings group app."
+  },
+  "settingsGroupPrint": "Printing",
+  "@settingsGroupPrint": {
+    "description": "Settings group print."
+  },
+  "settingsGroupNotify": "Messages",
+  "@settingsGroupNotify": {
+    "description": "Settings group notify."
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings screen title."
+  },
+  "settingsScopeLabel": "Settings for",
+  "@settingsScopeLabel": {
+    "description": "Scope picker label."
+  },
+  "settingsScopeBusiness": "Whole business",
+  "@settingsScopeBusiness": {
+    "description": "Business-level scope option."
+  },
+  "settingsScopeHint": "Pick a party to give them their own rates. Blank values follow the business.",
+  "@settingsScopeHint": {
+    "description": "Explains party scope."
+  },
+  "settingsReset": "Reset to inherited",
+  "@settingsReset": {
+    "description": "Clears the value at this level."
+  },
+  "settingsSave": "Save",
+  "@settingsSave": {
+    "description": "Save a typed setting value."
+  },
+  "settingsSaved": "Saved",
+  "@settingsSaved": {
+    "description": "Toast after saving a setting."
+  },
+  "settingsReadOnly": "Edited on its own screen (coming soon).",
+  "@settingsReadOnly": {
+    "description": "Structured settings not editable here yet."
+  },
+  "settingsNoPermission": "You don't have permission to change this.",
+  "@settingsNoPermission": {
+    "description": "Setting is read-only for this member."
+  },
+  "settingsNoTenant": "Choose a business first.",
+  "@settingsNoTenant": {
+    "description": "No active business."
+  },
+  "settingSetHere": "Set here",
+  "@settingSetHere": {
+    "description": "Value is set at the level being edited."
+  },
+  "settingFromDocument": "From this document",
+  "@settingFromDocument": {
+    "description": "Source level."
+  },
+  "settingFromParty": "From the party",
+  "@settingFromParty": {
+    "description": "Source level."
+  },
+  "settingFromPartyGroup": "From the party group",
+  "@settingFromPartyGroup": {
+    "description": "Source level."
+  },
+  "settingFromBusiness": "From business setting",
+  "@settingFromBusiness": {
+    "description": "Source level."
+  },
+  "settingFromPlan": "From your plan",
+  "@settingFromPlan": {
+    "description": "Source level."
+  },
+  "settingFromDefault": "App default",
+  "@settingFromDefault": {
+    "description": "Source level."
+  },
+  "settingErrorWrongType": "Enter a valid value",
+  "@settingErrorWrongType": {
+    "description": "Validation error."
+  },
+  "settingErrorTooSmall": "Too small (minimum {min})",
+  "@settingErrorTooSmall": {
+    "description": "Validation error.",
+    "placeholders": {
+      "min": {
+        "type": "String"
+      }
+    }
+  },
+  "settingErrorTooLarge": "Too large (maximum {max})",
+  "@settingErrorTooLarge": {
+    "description": "Validation error.",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "settingErrorNotAllowed": "Not an allowed value",
+  "@settingErrorNotAllowed": {
+    "description": "Validation error."
+  },
+  "settingErrorInvalid": "Invalid value",
+  "@settingErrorInvalid": {
+    "description": "Validation error."
+  },
+  "settingErrorNotHere": "This can't be set here",
+  "@settingErrorNotHere": {
+    "description": "Key not allowed at this level."
+  },
+  "settingRatePerMonth": "= ₹{amount} per 100 per month",
+  "@settingRatePerMonth": {
+    "description": "Interest rate in mandi units.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
   }
 }

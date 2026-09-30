@@ -9,6 +9,7 @@ import 'package:mandi_khata_app/features/auth/presentation/set_pin_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/splash_screen.dart';
 import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen.dart';
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
+import 'package:mandi_khata_app/features/settings/presentation/settings_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
@@ -19,6 +20,7 @@ abstract final class AppRoutes {
   static const String selectTenant = GateRoutes.selectTenant;
   static const String lock = GateRoutes.lock;
   static const String setPin = GateRoutes.setPin;
+  static const settings = '/settings';
 
   /// Design-system gallery. Not registered in release builds.
   static const gallery = '/dev/gallery';
@@ -62,6 +64,10 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: AppRoutes.setPin,
         builder: (context, state) => const SetPinScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.settings,
+        builder: (context, state) => const SettingsScreen(),
       ),
       if (!kReleaseMode) ...[
         GoRoute(

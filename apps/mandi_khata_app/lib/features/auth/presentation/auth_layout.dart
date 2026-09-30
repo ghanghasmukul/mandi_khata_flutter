@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/auth/auth_repository.dart';
-import 'package:mandi_khata_app/core/tenant/membership_repository.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 

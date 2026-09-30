@@ -46,6 +46,12 @@ class HomeScreen extends ConsumerWidget {
                       style: theme.textTheme.bodySmall,
                     ),
                   ],
+                  const SizedBox(height: MkSpacing.xl),
+                  MkButton(
+                    label: l10n.settingsTitle,
+                    icon: Icons.tune,
+                    onPressed: () => context.go(AppRoutes.settings),
+                  ),
                   // Developer-only entry points; the routes do not exist in
                   // release builds.
                   if (!kReleaseMode) ...[

@@ -320,4 +320,345 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get signOutUploadFailed =>
       'सब कुछ अपलोड नहीं हो सका। इंटरनेट जाँचकर फिर कोशिश करें।';
+
+  @override
+  String get settingInterestEnabled => 'ब्याज लगाएँ';
+
+  @override
+  String get settingInterestRatePa => 'ब्याज दर (% सालाना)';
+
+  @override
+  String get settingInterestRateUnitDisplay => 'दर ऐसे दिखाएँ';
+
+  @override
+  String get settingInterestMethod => 'ब्याज का तरीका';
+
+  @override
+  String get settingInterestCompounding => 'चक्रवृद्धि अवधि';
+
+  @override
+  String get settingInterestDayBasis => 'साल के दिन';
+
+  @override
+  String get settingInterestGraceDays => 'छूट के दिन';
+
+  @override
+  String get settingInterestAppropriation => 'भुगतान पहले किसमें जाए';
+
+  @override
+  String get settingInterestApplyOn => 'ब्याज किस पर लगे';
+
+  @override
+  String get settingInterestMinDays => 'इससे कम दिनों की अवधि छोड़ें';
+
+  @override
+  String get settingInterestRounding => 'ब्याज को गोल करें';
+
+  @override
+  String get settingInterestPostFrequency => 'ब्याज खाते में कब चढ़े';
+
+  @override
+  String get settingInterestPayOnJama => 'जमा पर ब्याज दें';
+
+  @override
+  String get settingInterestPayRatePa => 'जमा पर दर (% सालाना)';
+
+  @override
+  String get settingMandiCommissionPct => 'आढ़त कमीशन %';
+
+  @override
+  String get settingMandiPalledariPerBag => 'पल्लेदारी प्रति बोरी';
+
+  @override
+  String get settingMandiBardanaPerBag => 'बारदाना प्रति बोरी';
+
+  @override
+  String get settingMandiTulaiPerQtl => 'तुलाई प्रति क्विंटल';
+
+  @override
+  String get settingMandiMandiFeePct => 'मंडी शुल्क %';
+
+  @override
+  String get settingMandiCess => 'सेस';
+
+  @override
+  String get settingMandiChargesBorneBy => 'कौन-सा खर्च कौन दे';
+
+  @override
+  String get settingMandiBagWeightKg => 'बोरी का वज़न (किलो)';
+
+  @override
+  String get settingShopPriceTiers => 'मूल्य श्रेणियाँ';
+
+  @override
+  String get settingShopDefaultTierForRole => 'डिफ़ॉल्ट मूल्य श्रेणी';
+
+  @override
+  String get settingShopAllowNegativeStock => 'शून्य से कम स्टॉक पर भी बेचें';
+
+  @override
+  String get settingShopExpiryWarnDays => 'समाप्ति से पहले चेतावनी (दिन)';
+
+  @override
+  String get settingShopGstEnabled => 'बिल पर GST';
+
+  @override
+  String get settingShopPostCreditSaleToKhata => 'उधार बिक्री खाते में चढ़ाएँ';
+
+  @override
+  String get settingBusinessFyStartMonth => 'वित्त वर्ष शुरू होने का महीना';
+
+  @override
+  String get settingBusinessNumberSeries => 'नंबर सीरीज़';
+
+  @override
+  String get settingAppModules => 'मॉड्यूल';
+
+  @override
+  String get settingAppLanguages => 'भाषाएँ';
+
+  @override
+  String get settingAppDefaultLanguage => 'डिफ़ॉल्ट भाषा';
+
+  @override
+  String get settingPrintReceiptSize => 'रसीद का कागज़';
+
+  @override
+  String get settingNotifyWhatsappReceipts => 'WhatsApp पर रसीद भेजें';
+
+  @override
+  String get settingOptInterestRateUnitDisplayPa => '% सालाना';
+
+  @override
+  String get settingOptInterestRateUnitDisplayPer100PerMonth =>
+      '₹ प्रति 100 प्रति माह';
+
+  @override
+  String get settingOptInterestMethodSimple => 'साधारण';
+
+  @override
+  String get settingOptInterestMethodCompound => 'चक्रवृद्धि';
+
+  @override
+  String get settingOptInterestCompoundingMonthly => 'मासिक';
+
+  @override
+  String get settingOptInterestCompoundingQuarterly => 'तिमाही';
+
+  @override
+  String get settingOptInterestCompoundingHalfyearly => 'छमाही';
+
+  @override
+  String get settingOptInterestCompoundingYearly => 'सालाना';
+
+  @override
+  String get settingOptInterestCompoundingOnFyClose => 'वित्त वर्ष के अंत में';
+
+  @override
+  String get settingOptInterestAppropriationInterestFirst => 'ब्याज';
+
+  @override
+  String get settingOptInterestAppropriationPrincipalFirst => 'मूलधन';
+
+  @override
+  String get settingOptInterestApplyOnNetUdhaar => 'सिर्फ़ शुद्ध उधार';
+
+  @override
+  String get settingOptInterestApplyOnLoansOnly => 'सिर्फ़ कर्ज़';
+
+  @override
+  String get settingOptInterestApplyOnNone => 'ब्याज नहीं';
+
+  @override
+  String get settingOptInterestRoundingPaise => 'पैसे';
+
+  @override
+  String get settingOptInterestRoundingRupee => 'रुपया';
+
+  @override
+  String get settingOptInterestRoundingTenRupee => '₹10';
+
+  @override
+  String get settingOptInterestPostFrequencyOnDemand => 'जब मैं चुनूँ';
+
+  @override
+  String get settingOptInterestPostFrequencyMonthly => 'मासिक';
+
+  @override
+  String get settingOptInterestPostFrequencyQuarterly => 'तिमाही';
+
+  @override
+  String get settingOptInterestPostFrequencyFyClose => 'वित्त वर्ष के अंत में';
+
+  @override
+  String get settingOptAppDefaultLanguageEn => 'English';
+
+  @override
+  String get settingOptAppDefaultLanguageHi => 'हिंदी';
+
+  @override
+  String get settingOptAppDefaultLanguagePa => 'ਪੰਜਾਬੀ';
+
+  @override
+  String get settingOptPrintReceiptSizeA5 => 'A5 कागज़';
+
+  @override
+  String get settingOptPrintReceiptSizeThermal80 => 'थर्मल 80 मिमी';
+
+  @override
+  String get settingOptPrintReceiptSizeThermal58 => 'थर्मल 58 मिमी';
+
+  @override
+  String get settingSuffixRoleFarmer => 'किसान';
+
+  @override
+  String get settingSuffixRoleCustomer => 'ग्राहक';
+
+  @override
+  String get settingSuffixRoleSupplier => 'सप्लायर';
+
+  @override
+  String get settingSuffixRoleVendor => 'वेंडर';
+
+  @override
+  String get settingSuffixRoleAgency => 'एजेंसी';
+
+  @override
+  String get settingSuffixRoleBuyer => 'खरीदार';
+
+  @override
+  String get settingSuffixDocReceipt => 'रसीदें';
+
+  @override
+  String get settingSuffixDocLot => 'लॉट';
+
+  @override
+  String get settingSuffixDocSalesInvoice => 'बिक्री बिल';
+
+  @override
+  String get settingSuffixDocPurchaseInvoice => 'खरीद बिल';
+
+  @override
+  String get settingSuffixDocKarza => 'कर्ज़';
+
+  @override
+  String get settingSuffixDocVoucher => 'वाउचर';
+
+  @override
+  String get settingSuffixModuleKhata => 'खाता';
+
+  @override
+  String get settingSuffixModuleArrivals => 'आवक और लॉट';
+
+  @override
+  String get settingSuffixModuleKarza => 'कर्ज़ और ब्याज';
+
+  @override
+  String get settingSuffixModuleAccounting => 'लेखा';
+
+  @override
+  String get settingSuffixModuleShop => 'खाद-बीज दुकान';
+
+  @override
+  String get settingsGroupInterest => 'ब्याज';
+
+  @override
+  String get settingsGroupMandi => 'मंडी खर्चे';
+
+  @override
+  String get settingsGroupShop => 'खाद-बीज दुकान';
+
+  @override
+  String get settingsGroupBusiness => 'व्यापार';
+
+  @override
+  String get settingsGroupModules => 'मॉड्यूल';
+
+  @override
+  String get settingsGroupApp => 'ऐप';
+
+  @override
+  String get settingsGroupPrint => 'प्रिंटिंग';
+
+  @override
+  String get settingsGroupNotify => 'संदेश';
+
+  @override
+  String get settingsTitle => 'सेटिंग्स';
+
+  @override
+  String get settingsScopeLabel => 'सेटिंग्स किसके लिए';
+
+  @override
+  String get settingsScopeBusiness => 'पूरा व्यापार';
+
+  @override
+  String get settingsScopeHint =>
+      'किसी पार्टी को चुनकर उसकी अलग दरें रखें। खाली मान व्यापार की सेटिंग मानते हैं।';
+
+  @override
+  String get settingsReset => 'पहले जैसा करें';
+
+  @override
+  String get settingsSave => 'सेव करें';
+
+  @override
+  String get settingsSaved => 'सेव हो गया';
+
+  @override
+  String get settingsReadOnly => 'इसकी अलग स्क्रीन पर बदलेगा (जल्द)।';
+
+  @override
+  String get settingsNoPermission => 'आपको इसे बदलने की अनुमति नहीं है।';
+
+  @override
+  String get settingsNoTenant => 'पहले व्यापार चुनें।';
+
+  @override
+  String get settingSetHere => 'यहाँ सेट है';
+
+  @override
+  String get settingFromDocument => 'इस दस्तावेज़ से';
+
+  @override
+  String get settingFromParty => 'पार्टी से';
+
+  @override
+  String get settingFromPartyGroup => 'पार्टी समूह से';
+
+  @override
+  String get settingFromBusiness => 'व्यापार की सेटिंग से';
+
+  @override
+  String get settingFromPlan => 'आपके प्लान से';
+
+  @override
+  String get settingFromDefault => 'ऐप डिफ़ॉल्ट';
+
+  @override
+  String get settingErrorWrongType => 'सही मान डालें';
+
+  @override
+  String settingErrorTooSmall(String min) {
+    return 'बहुत कम (न्यूनतम $min)';
+  }
+
+  @override
+  String settingErrorTooLarge(String max) {
+    return 'बहुत ज़्यादा (अधिकतम $max)';
+  }
+
+  @override
+  String get settingErrorNotAllowed => 'यह मान मान्य नहीं है';
+
+  @override
+  String get settingErrorInvalid => 'गलत मान';
+
+  @override
+  String get settingErrorNotHere => 'इसे यहाँ सेट नहीं किया जा सकता';
+
+  @override
+  String settingRatePerMonth(String amount) {
+    return '= ₹$amount प्रति 100 प्रति माह';
+  }
 }

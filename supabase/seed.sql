@@ -81,9 +81,9 @@ cross join (values ('W1'), ('A1')) as d (code);
 
 -- A few business-wide settings (the rest fall back to system defaults).
 insert into public.settings (id, tenant_id, scope, key, value) values
-  (md5('seed-setting-1')::uuid, '0e000000-0000-4000-8000-000000000001', 'tenant', 'mandi.commission_pct', '2.5'),
-  (md5('seed-setting-2')::uuid, '0e000000-0000-4000-8000-000000000001', 'tenant', 'interest.rate_pa', '18'),
-  (md5('seed-setting-3')::uuid, '0e000000-0000-4000-8000-000000000002', 'tenant', 'mandi.commission_pct', '2'),
+  (md5('seed-setting-1')::uuid, '0e000000-0000-4000-8000-000000000001', 'tenant', 'mandi.commission_pct', '"2.5"'),
+  (md5('seed-setting-2')::uuid, '0e000000-0000-4000-8000-000000000001', 'tenant', 'interest.rate_pa', '"18"'),
+  (md5('seed-setting-3')::uuid, '0e000000-0000-4000-8000-000000000002', 'tenant', 'mandi.commission_pct', '"2"'),
   (md5('seed-setting-4')::uuid, '0e000000-0000-4000-8000-000000000002', 'tenant', 'interest.method', '"compound"');
 
 -- ---------------------------------------------------------------------------

@@ -13,6 +13,16 @@ document (loan / lot / invoice)   ← most specific, wins
 
 A `null` at a level means "inherit". The resolved value AND the level it came from must be shown in the UI (e.g. "18% · from business default"), so the owner always knows why a number was used.
 
+## Resolution details
+
+- **Per-crop (and other suffixed) keys — level first.** A key like `mandi.commission_pct.wheat` is looked up level by level, most specific first; *within* each level the suffixed key beats the generic one (`mandi.commission_pct`). So a party's negotiated general commission beats the business's wheat rate:
+  `lot(wheat → generic) → party(wheat → generic) → party group(…) → business(…) → plan(…) → system(generic)`.
+- A stored value that fails validation (e.g. written by a newer app version) is treated as `null` (inherit), never used.
+- "Reset to inherited" writes `null`; setting rows are never deleted.
+- **Where a key may be set:** `interest.*` and `mandi.*` at every level; everything else (shop, business, app, print, notify) at business level only.
+- **Who may set it** (enforced by RLS `can_write_setting` and in the UI): `interest.*` needs `loans.manage` at every level; other keys need `settings.manage` at business / party-group level and only membership at party / document level.
+- Percentages and other decimals are stored as JSON **strings** (`"18"`, `"2.5"`) and handled as exact decimals; money as integer paise.
+
 ## Storage
 
 - `settings` table: `(id, tenant_id, scope, scope_id, key, value jsonb, updated_by, updated_at)`

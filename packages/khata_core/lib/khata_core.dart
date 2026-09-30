@@ -7,3 +7,8 @@ library;
 
 export 'src/khata_core_base.dart';
 export 'src/money.dart';
+export 'src/permissions.dart';
+export 'src/settings/interest_rate.dart';
+export 'src/settings/setting_scope.dart';
+export 'src/settings/settings_resolver.dart';
+export 'src/settings/settings_schema.dart';

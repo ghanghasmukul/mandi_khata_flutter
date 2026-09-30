@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/db/app_database.dart';
 import 'package:mandi_khata_app/core/db/powersync_schema.dart';
 import 'package:mandi_khata_app/core/tenant/membership_repository.dart';

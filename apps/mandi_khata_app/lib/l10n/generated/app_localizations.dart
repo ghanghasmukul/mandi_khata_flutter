@@ -603,6 +603,672 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t upload everything. Check the internet and try again.'**
   String get signOutUploadFailed;
+
+  /// Label of setting interest.enabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge interest'**
+  String get settingInterestEnabled;
+
+  /// Label of setting interest.rate_pa.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest rate (% per year)'**
+  String get settingInterestRatePa;
+
+  /// Label of setting interest.rate_unit_display.
+  ///
+  /// In en, this message translates to:
+  /// **'Show rate as'**
+  String get settingInterestRateUnitDisplay;
+
+  /// Label of setting interest.method.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest method'**
+  String get settingInterestMethod;
+
+  /// Label of setting interest.compounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Compounding period'**
+  String get settingInterestCompounding;
+
+  /// Label of setting interest.day_basis.
+  ///
+  /// In en, this message translates to:
+  /// **'Days in a year'**
+  String get settingInterestDayBasis;
+
+  /// Label of setting interest.grace_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Grace days'**
+  String get settingInterestGraceDays;
+
+  /// Label of setting interest.appropriation.
+  ///
+  /// In en, this message translates to:
+  /// **'Repayment goes first to'**
+  String get settingInterestAppropriation;
+
+  /// Label of setting interest.apply_on.
+  ///
+  /// In en, this message translates to:
+  /// **'Charge interest on'**
+  String get settingInterestApplyOn;
+
+  /// Label of setting interest.min_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore periods shorter than (days)'**
+  String get settingInterestMinDays;
+
+  /// Label of setting interest.rounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Round interest to'**
+  String get settingInterestRounding;
+
+  /// Label of setting interest.post_frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Post interest to khata'**
+  String get settingInterestPostFrequency;
+
+  /// Label of setting interest.pay_on_jama.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay interest when we owe the party'**
+  String get settingInterestPayOnJama;
+
+  /// Label of setting interest.pay_rate_pa.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate paid on jama (% per year)'**
+  String get settingInterestPayRatePa;
+
+  /// Label of setting mandi.commission_pct.
+  ///
+  /// In en, this message translates to:
+  /// **'Commission (arhat) %'**
+  String get settingMandiCommissionPct;
+
+  /// Label of setting mandi.palledari_per_bag.
+  ///
+  /// In en, this message translates to:
+  /// **'Palledari per bag'**
+  String get settingMandiPalledariPerBag;
+
+  /// Label of setting mandi.bardana_per_bag.
+  ///
+  /// In en, this message translates to:
+  /// **'Bardana per bag'**
+  String get settingMandiBardanaPerBag;
+
+  /// Label of setting mandi.tulai_per_qtl.
+  ///
+  /// In en, this message translates to:
+  /// **'Tulai per quintal'**
+  String get settingMandiTulaiPerQtl;
+
+  /// Label of setting mandi.mandi_fee_pct.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi fee %'**
+  String get settingMandiMandiFeePct;
+
+  /// Label of setting mandi.cess.
+  ///
+  /// In en, this message translates to:
+  /// **'Cess'**
+  String get settingMandiCess;
+
+  /// Label of setting mandi.charges_borne_by.
+  ///
+  /// In en, this message translates to:
+  /// **'Who pays each charge'**
+  String get settingMandiChargesBorneBy;
+
+  /// Label of setting mandi.bag_weight_kg.
+  ///
+  /// In en, this message translates to:
+  /// **'Bag weight (kg)'**
+  String get settingMandiBagWeightKg;
+
+  /// Label of setting shop.price_tiers.
+  ///
+  /// In en, this message translates to:
+  /// **'Price tiers'**
+  String get settingShopPriceTiers;
+
+  /// Label of setting shop.default_tier_for_role.
+  ///
+  /// In en, this message translates to:
+  /// **'Default price tier'**
+  String get settingShopDefaultTierForRole;
+
+  /// Label of setting shop.allow_negative_stock.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow selling below zero stock'**
+  String get settingShopAllowNegativeStock;
+
+  /// Label of setting shop.expiry_warn_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Warn before expiry (days)'**
+  String get settingShopExpiryWarnDays;
+
+  /// Label of setting shop.gst_enabled.
+  ///
+  /// In en, this message translates to:
+  /// **'GST on invoices'**
+  String get settingShopGstEnabled;
+
+  /// Label of setting shop.post_credit_sale_to_khata.
+  ///
+  /// In en, this message translates to:
+  /// **'Post credit sales to khata'**
+  String get settingShopPostCreditSaleToKhata;
+
+  /// Label of setting business.fy_start_month.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial year starts in month'**
+  String get settingBusinessFyStartMonth;
+
+  /// Label of setting business.number_series.
+  ///
+  /// In en, this message translates to:
+  /// **'Number series'**
+  String get settingBusinessNumberSeries;
+
+  /// Label of setting app.modules.
+  ///
+  /// In en, this message translates to:
+  /// **'Module'**
+  String get settingAppModules;
+
+  /// Label of setting app.languages.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages'**
+  String get settingAppLanguages;
+
+  /// Label of setting app.default_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Default language'**
+  String get settingAppDefaultLanguage;
+
+  /// Label of setting print.receipt_size.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt paper'**
+  String get settingPrintReceiptSize;
+
+  /// Label of setting notify.whatsapp_receipts.
+  ///
+  /// In en, this message translates to:
+  /// **'Send receipts on WhatsApp'**
+  String get settingNotifyWhatsappReceipts;
+
+  /// Option pa of interest.rate_unit_display.
+  ///
+  /// In en, this message translates to:
+  /// **'% per year'**
+  String get settingOptInterestRateUnitDisplayPa;
+
+  /// Option per100_per_month of interest.rate_unit_display.
+  ///
+  /// In en, this message translates to:
+  /// **'₹ per 100 per month'**
+  String get settingOptInterestRateUnitDisplayPer100PerMonth;
+
+  /// Option simple of interest.method.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple'**
+  String get settingOptInterestMethodSimple;
+
+  /// Option compound of interest.method.
+  ///
+  /// In en, this message translates to:
+  /// **'Compound (chakravridhi)'**
+  String get settingOptInterestMethodCompound;
+
+  /// Option monthly of interest.compounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get settingOptInterestCompoundingMonthly;
+
+  /// Option quarterly of interest.compounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Quarterly'**
+  String get settingOptInterestCompoundingQuarterly;
+
+  /// Option halfyearly of interest.compounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Half-yearly'**
+  String get settingOptInterestCompoundingHalfyearly;
+
+  /// Option yearly of interest.compounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly'**
+  String get settingOptInterestCompoundingYearly;
+
+  /// Option on_fy_close of interest.compounding.
+  ///
+  /// In en, this message translates to:
+  /// **'At financial year close'**
+  String get settingOptInterestCompoundingOnFyClose;
+
+  /// Option interest_first of interest.appropriation.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest'**
+  String get settingOptInterestAppropriationInterestFirst;
+
+  /// Option principal_first of interest.appropriation.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal'**
+  String get settingOptInterestAppropriationPrincipalFirst;
+
+  /// Option net_udhaar of interest.apply_on.
+  ///
+  /// In en, this message translates to:
+  /// **'Net udhaar only'**
+  String get settingOptInterestApplyOnNetUdhaar;
+
+  /// Option loans_only of interest.apply_on.
+  ///
+  /// In en, this message translates to:
+  /// **'Loans (karza) only'**
+  String get settingOptInterestApplyOnLoansOnly;
+
+  /// Option none of interest.apply_on.
+  ///
+  /// In en, this message translates to:
+  /// **'No interest'**
+  String get settingOptInterestApplyOnNone;
+
+  /// Option paise of interest.rounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Paise'**
+  String get settingOptInterestRoundingPaise;
+
+  /// Option rupee of interest.rounding.
+  ///
+  /// In en, this message translates to:
+  /// **'Rupee'**
+  String get settingOptInterestRoundingRupee;
+
+  /// Option ten_rupee of interest.rounding.
+  ///
+  /// In en, this message translates to:
+  /// **'₹10'**
+  String get settingOptInterestRoundingTenRupee;
+
+  /// Option on_demand of interest.post_frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'When I choose'**
+  String get settingOptInterestPostFrequencyOnDemand;
+
+  /// Option monthly of interest.post_frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get settingOptInterestPostFrequencyMonthly;
+
+  /// Option quarterly of interest.post_frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Quarterly'**
+  String get settingOptInterestPostFrequencyQuarterly;
+
+  /// Option fy_close of interest.post_frequency.
+  ///
+  /// In en, this message translates to:
+  /// **'At financial year close'**
+  String get settingOptInterestPostFrequencyFyClose;
+
+  /// Option en of app.default_language.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get settingOptAppDefaultLanguageEn;
+
+  /// Option hi of app.default_language.
+  ///
+  /// In en, this message translates to:
+  /// **'हिंदी'**
+  String get settingOptAppDefaultLanguageHi;
+
+  /// Option pa of app.default_language.
+  ///
+  /// In en, this message translates to:
+  /// **'ਪੰਜਾਬੀ'**
+  String get settingOptAppDefaultLanguagePa;
+
+  /// Option a5 of print.receipt_size.
+  ///
+  /// In en, this message translates to:
+  /// **'A5 paper'**
+  String get settingOptPrintReceiptSizeA5;
+
+  /// Option thermal_80 of print.receipt_size.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermal 80 mm'**
+  String get settingOptPrintReceiptSizeThermal80;
+
+  /// Option thermal_58 of print.receipt_size.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermal 58 mm'**
+  String get settingOptPrintReceiptSizeThermal58;
+
+  /// role farmer.
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer'**
+  String get settingSuffixRoleFarmer;
+
+  /// role customer.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer'**
+  String get settingSuffixRoleCustomer;
+
+  /// role supplier.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier'**
+  String get settingSuffixRoleSupplier;
+
+  /// role vendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendor'**
+  String get settingSuffixRoleVendor;
+
+  /// role agency.
+  ///
+  /// In en, this message translates to:
+  /// **'Agency'**
+  String get settingSuffixRoleAgency;
+
+  /// role buyer.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer'**
+  String get settingSuffixRoleBuyer;
+
+  /// doc receipt.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipts'**
+  String get settingSuffixDocReceipt;
+
+  /// doc lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Lots'**
+  String get settingSuffixDocLot;
+
+  /// doc sales_invoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales invoices'**
+  String get settingSuffixDocSalesInvoice;
+
+  /// doc purchase_invoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase invoices'**
+  String get settingSuffixDocPurchaseInvoice;
+
+  /// doc karza.
+  ///
+  /// In en, this message translates to:
+  /// **'Karza'**
+  String get settingSuffixDocKarza;
+
+  /// doc voucher.
+  ///
+  /// In en, this message translates to:
+  /// **'Vouchers'**
+  String get settingSuffixDocVoucher;
+
+  /// module khata.
+  ///
+  /// In en, this message translates to:
+  /// **'Khata'**
+  String get settingSuffixModuleKhata;
+
+  /// module arrivals.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrivals & lots'**
+  String get settingSuffixModuleArrivals;
+
+  /// module karza.
+  ///
+  /// In en, this message translates to:
+  /// **'Karza & byaj'**
+  String get settingSuffixModuleKarza;
+
+  /// module accounting.
+  ///
+  /// In en, this message translates to:
+  /// **'Accounting'**
+  String get settingSuffixModuleAccounting;
+
+  /// module shop.
+  ///
+  /// In en, this message translates to:
+  /// **'Input shop'**
+  String get settingSuffixModuleShop;
+
+  /// Settings group interest.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest (byaj)'**
+  String get settingsGroupInterest;
+
+  /// Settings group mandi.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi charges'**
+  String get settingsGroupMandi;
+
+  /// Settings group shop.
+  ///
+  /// In en, this message translates to:
+  /// **'Input shop'**
+  String get settingsGroupShop;
+
+  /// Settings group business.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get settingsGroupBusiness;
+
+  /// Settings group modules.
+  ///
+  /// In en, this message translates to:
+  /// **'Modules'**
+  String get settingsGroupModules;
+
+  /// Settings group app.
+  ///
+  /// In en, this message translates to:
+  /// **'App'**
+  String get settingsGroupApp;
+
+  /// Settings group print.
+  ///
+  /// In en, this message translates to:
+  /// **'Printing'**
+  String get settingsGroupPrint;
+
+  /// Settings group notify.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages'**
+  String get settingsGroupNotify;
+
+  /// Settings screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// Scope picker label.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings for'**
+  String get settingsScopeLabel;
+
+  /// Business-level scope option.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole business'**
+  String get settingsScopeBusiness;
+
+  /// Explains party scope.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a party to give them their own rates. Blank values follow the business.'**
+  String get settingsScopeHint;
+
+  /// Clears the value at this level.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset to inherited'**
+  String get settingsReset;
+
+  /// Save a typed setting value.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get settingsSave;
+
+  /// Toast after saving a setting.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get settingsSaved;
+
+  /// Structured settings not editable here yet.
+  ///
+  /// In en, this message translates to:
+  /// **'Edited on its own screen (coming soon).'**
+  String get settingsReadOnly;
+
+  /// Setting is read-only for this member.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have permission to change this.'**
+  String get settingsNoPermission;
+
+  /// No active business.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a business first.'**
+  String get settingsNoTenant;
+
+  /// Value is set at the level being edited.
+  ///
+  /// In en, this message translates to:
+  /// **'Set here'**
+  String get settingSetHere;
+
+  /// Source level.
+  ///
+  /// In en, this message translates to:
+  /// **'From this document'**
+  String get settingFromDocument;
+
+  /// Source level.
+  ///
+  /// In en, this message translates to:
+  /// **'From the party'**
+  String get settingFromParty;
+
+  /// Source level.
+  ///
+  /// In en, this message translates to:
+  /// **'From the party group'**
+  String get settingFromPartyGroup;
+
+  /// Source level.
+  ///
+  /// In en, this message translates to:
+  /// **'From business setting'**
+  String get settingFromBusiness;
+
+  /// Source level.
+  ///
+  /// In en, this message translates to:
+  /// **'From your plan'**
+  String get settingFromPlan;
+
+  /// Source level.
+  ///
+  /// In en, this message translates to:
+  /// **'App default'**
+  String get settingFromDefault;
+
+  /// Validation error.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid value'**
+  String get settingErrorWrongType;
+
+  /// Validation error.
+  ///
+  /// In en, this message translates to:
+  /// **'Too small (minimum {min})'**
+  String settingErrorTooSmall(String min);
+
+  /// Validation error.
+  ///
+  /// In en, this message translates to:
+  /// **'Too large (maximum {max})'**
+  String settingErrorTooLarge(String max);
+
+  /// Validation error.
+  ///
+  /// In en, this message translates to:
+  /// **'Not an allowed value'**
+  String get settingErrorNotAllowed;
+
+  /// Validation error.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid value'**
+  String get settingErrorInvalid;
+
+  /// Key not allowed at this level.
+  ///
+  /// In en, this message translates to:
+  /// **'This can\'t be set here'**
+  String get settingErrorNotHere;
+
+  /// Interest rate in mandi units.
+  ///
+  /// In en, this message translates to:
+  /// **'= ₹{amount} per 100 per month'**
+  String settingRatePerMonth(String amount);
 }
 
 class _AppLocalizationsDelegate

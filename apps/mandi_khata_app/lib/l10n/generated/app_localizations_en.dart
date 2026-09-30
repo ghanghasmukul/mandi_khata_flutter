@@ -325,4 +325,348 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get signOutUploadFailed =>
       'Couldn\'t upload everything. Check the internet and try again.';
+
+  @override
+  String get settingInterestEnabled => 'Charge interest';
+
+  @override
+  String get settingInterestRatePa => 'Interest rate (% per year)';
+
+  @override
+  String get settingInterestRateUnitDisplay => 'Show rate as';
+
+  @override
+  String get settingInterestMethod => 'Interest method';
+
+  @override
+  String get settingInterestCompounding => 'Compounding period';
+
+  @override
+  String get settingInterestDayBasis => 'Days in a year';
+
+  @override
+  String get settingInterestGraceDays => 'Grace days';
+
+  @override
+  String get settingInterestAppropriation => 'Repayment goes first to';
+
+  @override
+  String get settingInterestApplyOn => 'Charge interest on';
+
+  @override
+  String get settingInterestMinDays => 'Ignore periods shorter than (days)';
+
+  @override
+  String get settingInterestRounding => 'Round interest to';
+
+  @override
+  String get settingInterestPostFrequency => 'Post interest to khata';
+
+  @override
+  String get settingInterestPayOnJama => 'Pay interest when we owe the party';
+
+  @override
+  String get settingInterestPayRatePa => 'Rate paid on jama (% per year)';
+
+  @override
+  String get settingMandiCommissionPct => 'Commission (arhat) %';
+
+  @override
+  String get settingMandiPalledariPerBag => 'Palledari per bag';
+
+  @override
+  String get settingMandiBardanaPerBag => 'Bardana per bag';
+
+  @override
+  String get settingMandiTulaiPerQtl => 'Tulai per quintal';
+
+  @override
+  String get settingMandiMandiFeePct => 'Mandi fee %';
+
+  @override
+  String get settingMandiCess => 'Cess';
+
+  @override
+  String get settingMandiChargesBorneBy => 'Who pays each charge';
+
+  @override
+  String get settingMandiBagWeightKg => 'Bag weight (kg)';
+
+  @override
+  String get settingShopPriceTiers => 'Price tiers';
+
+  @override
+  String get settingShopDefaultTierForRole => 'Default price tier';
+
+  @override
+  String get settingShopAllowNegativeStock => 'Allow selling below zero stock';
+
+  @override
+  String get settingShopExpiryWarnDays => 'Warn before expiry (days)';
+
+  @override
+  String get settingShopGstEnabled => 'GST on invoices';
+
+  @override
+  String get settingShopPostCreditSaleToKhata => 'Post credit sales to khata';
+
+  @override
+  String get settingBusinessFyStartMonth => 'Financial year starts in month';
+
+  @override
+  String get settingBusinessNumberSeries => 'Number series';
+
+  @override
+  String get settingAppModules => 'Module';
+
+  @override
+  String get settingAppLanguages => 'Languages';
+
+  @override
+  String get settingAppDefaultLanguage => 'Default language';
+
+  @override
+  String get settingPrintReceiptSize => 'Receipt paper';
+
+  @override
+  String get settingNotifyWhatsappReceipts => 'Send receipts on WhatsApp';
+
+  @override
+  String get settingOptInterestRateUnitDisplayPa => '% per year';
+
+  @override
+  String get settingOptInterestRateUnitDisplayPer100PerMonth =>
+      '₹ per 100 per month';
+
+  @override
+  String get settingOptInterestMethodSimple => 'Simple';
+
+  @override
+  String get settingOptInterestMethodCompound => 'Compound (chakravridhi)';
+
+  @override
+  String get settingOptInterestCompoundingMonthly => 'Monthly';
+
+  @override
+  String get settingOptInterestCompoundingQuarterly => 'Quarterly';
+
+  @override
+  String get settingOptInterestCompoundingHalfyearly => 'Half-yearly';
+
+  @override
+  String get settingOptInterestCompoundingYearly => 'Yearly';
+
+  @override
+  String get settingOptInterestCompoundingOnFyClose =>
+      'At financial year close';
+
+  @override
+  String get settingOptInterestAppropriationInterestFirst => 'Interest';
+
+  @override
+  String get settingOptInterestAppropriationPrincipalFirst => 'Principal';
+
+  @override
+  String get settingOptInterestApplyOnNetUdhaar => 'Net udhaar only';
+
+  @override
+  String get settingOptInterestApplyOnLoansOnly => 'Loans (karza) only';
+
+  @override
+  String get settingOptInterestApplyOnNone => 'No interest';
+
+  @override
+  String get settingOptInterestRoundingPaise => 'Paise';
+
+  @override
+  String get settingOptInterestRoundingRupee => 'Rupee';
+
+  @override
+  String get settingOptInterestRoundingTenRupee => '₹10';
+
+  @override
+  String get settingOptInterestPostFrequencyOnDemand => 'When I choose';
+
+  @override
+  String get settingOptInterestPostFrequencyMonthly => 'Monthly';
+
+  @override
+  String get settingOptInterestPostFrequencyQuarterly => 'Quarterly';
+
+  @override
+  String get settingOptInterestPostFrequencyFyClose =>
+      'At financial year close';
+
+  @override
+  String get settingOptAppDefaultLanguageEn => 'English';
+
+  @override
+  String get settingOptAppDefaultLanguageHi => 'हिंदी';
+
+  @override
+  String get settingOptAppDefaultLanguagePa => 'ਪੰਜਾਬੀ';
+
+  @override
+  String get settingOptPrintReceiptSizeA5 => 'A5 paper';
+
+  @override
+  String get settingOptPrintReceiptSizeThermal80 => 'Thermal 80 mm';
+
+  @override
+  String get settingOptPrintReceiptSizeThermal58 => 'Thermal 58 mm';
+
+  @override
+  String get settingSuffixRoleFarmer => 'Farmer';
+
+  @override
+  String get settingSuffixRoleCustomer => 'Customer';
+
+  @override
+  String get settingSuffixRoleSupplier => 'Supplier';
+
+  @override
+  String get settingSuffixRoleVendor => 'Vendor';
+
+  @override
+  String get settingSuffixRoleAgency => 'Agency';
+
+  @override
+  String get settingSuffixRoleBuyer => 'Buyer';
+
+  @override
+  String get settingSuffixDocReceipt => 'Receipts';
+
+  @override
+  String get settingSuffixDocLot => 'Lots';
+
+  @override
+  String get settingSuffixDocSalesInvoice => 'Sales invoices';
+
+  @override
+  String get settingSuffixDocPurchaseInvoice => 'Purchase invoices';
+
+  @override
+  String get settingSuffixDocKarza => 'Karza';
+
+  @override
+  String get settingSuffixDocVoucher => 'Vouchers';
+
+  @override
+  String get settingSuffixModuleKhata => 'Khata';
+
+  @override
+  String get settingSuffixModuleArrivals => 'Arrivals & lots';
+
+  @override
+  String get settingSuffixModuleKarza => 'Karza & byaj';
+
+  @override
+  String get settingSuffixModuleAccounting => 'Accounting';
+
+  @override
+  String get settingSuffixModuleShop => 'Input shop';
+
+  @override
+  String get settingsGroupInterest => 'Interest (byaj)';
+
+  @override
+  String get settingsGroupMandi => 'Mandi charges';
+
+  @override
+  String get settingsGroupShop => 'Input shop';
+
+  @override
+  String get settingsGroupBusiness => 'Business';
+
+  @override
+  String get settingsGroupModules => 'Modules';
+
+  @override
+  String get settingsGroupApp => 'App';
+
+  @override
+  String get settingsGroupPrint => 'Printing';
+
+  @override
+  String get settingsGroupNotify => 'Messages';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get settingsScopeLabel => 'Settings for';
+
+  @override
+  String get settingsScopeBusiness => 'Whole business';
+
+  @override
+  String get settingsScopeHint =>
+      'Pick a party to give them their own rates. Blank values follow the business.';
+
+  @override
+  String get settingsReset => 'Reset to inherited';
+
+  @override
+  String get settingsSave => 'Save';
+
+  @override
+  String get settingsSaved => 'Saved';
+
+  @override
+  String get settingsReadOnly => 'Edited on its own screen (coming soon).';
+
+  @override
+  String get settingsNoPermission =>
+      'You don\'t have permission to change this.';
+
+  @override
+  String get settingsNoTenant => 'Choose a business first.';
+
+  @override
+  String get settingSetHere => 'Set here';
+
+  @override
+  String get settingFromDocument => 'From this document';
+
+  @override
+  String get settingFromParty => 'From the party';
+
+  @override
+  String get settingFromPartyGroup => 'From the party group';
+
+  @override
+  String get settingFromBusiness => 'From business setting';
+
+  @override
+  String get settingFromPlan => 'From your plan';
+
+  @override
+  String get settingFromDefault => 'App default';
+
+  @override
+  String get settingErrorWrongType => 'Enter a valid value';
+
+  @override
+  String settingErrorTooSmall(String min) {
+    return 'Too small (minimum $min)';
+  }
+
+  @override
+  String settingErrorTooLarge(String max) {
+    return 'Too large (maximum $max)';
+  }
+
+  @override
+  String get settingErrorNotAllowed => 'Not an allowed value';
+
+  @override
+  String get settingErrorInvalid => 'Invalid value';
+
+  @override
+  String get settingErrorNotHere => 'This can\'t be set here';
+
+  @override
+  String settingRatePerMonth(String amount) {
+    return '= ₹$amount per 100 per month';
+  }
 }

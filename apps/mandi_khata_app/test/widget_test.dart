@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/auth/app_lock/pin_hasher.dart';
 import 'package:mandi_khata_app/core/auth/auth_repository.dart';

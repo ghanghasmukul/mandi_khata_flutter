@@ -43,3 +43,15 @@
 | 2026-09-30 | Sign-out wipes the local DB. With changes queued the user must choose: wait for upload (up to 30 s) or delete them | Spec: logout clears local data after confirming unsynced changes |
 | 2026-09-30 | Android: MainActivity → FlutterFragmentActivity, AppCompat launch theme, USE_BIOMETRIC; INTERNET added to the main manifest; macOS sandbox gets `network.client` | local_auth requirements; release builds could not reach Supabase before |
 | 2026-09-30 | `MkTopBar`: on phone width the title expands and ellipsizes | A long business name overflowed next to the sync chip and account menu |
+| 2026-09-30 | Per-crop (suffixed) setting keys resolve **level first**: at each level the crop key beats the generic key, but a more specific level always wins (a party's general 2% beats the business's wheat 2.5%) | Decided by the user; a negotiated party rate should not be overridden by a business crop default. Recorded in docs/domain/settings-cascade.md |
+| 2026-09-30 | Percentages and other setting decimals are stored as JSON strings (`"18"`, `"2.5"`) and handled as exact `Decimal`; JSON numbers from older rows are still read | No float rounding in rates; the seed was updated to strings |
+| 2026-09-30 | System defaults live in `khata_core/lib/src/settings/settings_schema.dart` (not a separate `defaults.dart`), next to each key's type and limits | One definition per key; the doc's file name was illustrative |
+| 2026-09-30 | Setting row ids are deterministic (UUID v5 of tenant, scope, scope_id, key) for new rows | Two devices creating the same setting offline upload to the same row (last write wins) instead of a unique-constraint rejection. Still client-generated, so rule 3 holds in spirit |
+| 2026-09-30 | "Reset to inherited" writes `null`; setting rows are never deleted | Clients have no delete permission; null = inherit in the cascade |
+| 2026-09-30 | Invalid stored setting values are skipped (inherit) by the resolver | A value from a newer app version must never be used as-is |
+| 2026-09-30 | Only `interest.*` and `mandi.*` can be set below business level; shop, business, app, print, notify are business-only | They describe the business, not a party or document |
+| 2026-09-30 | `app.modules.*` default to on and plan defaults are empty until step 5.1 | Plans do not exist yet; the resolver already accepts plan defaults |
+| 2026-09-30 | `shop.default_tier_for_role.<role>`: farmer→farmer, vendor→vendor as specified; every other role → `retail` | The domain doc names only two roles |
+| 2026-09-30 | Settings writes add their audit row in the repository for now; step 0.7's AuditWriter will take over | Rule 8 applies from the first write |
+| 2026-09-30 | `MemberRole` / `Permission` rules live in khata_core; an app test parses `private.role_allows()` from the migrations and fails if the two disagree | UI gating must match RLS; drift would show wrong buttons |
+| 2026-09-30 | The settings editor shows structured keys (cess, charges borne by, price tiers, number series, languages) read-only, and per-crop overrides are not listed yet | They need their own editors (crops arrive in 1.2; numbering in 0.7) |
