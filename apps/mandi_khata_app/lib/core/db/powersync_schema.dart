@@ -10,10 +10,19 @@ enum ColumnKind { text, integer, real, json, boolean }
 
 /// A synced table: its columns (besides `id`) and local indexes.
 class SyncedTable {
-  const SyncedTable(this.name, this.columns, {this.indexes = const {}});
+  const SyncedTable(
+    this.name,
+    this.columns, {
+    this.indexes = const {},
+    this.appendOnly = false,
+  });
 
   final String name;
   final Map<String, ColumnKind> columns;
+
+  /// Rows are only ever inserted. The server grants no UPDATE on these
+  /// tables, so uploads must be a plain INSERT, never an upsert.
+  final bool appendOnly;
 
   /// Index name → indexed columns.
   final Map<String, List<String>> indexes;
@@ -135,6 +144,7 @@ const syncedTables = <SyncedTable>[
       'tenant_time': ['tenant_id', 'created_at'],
       'row': ['tenant_id', 'table_name', 'row_id'],
     },
+    appendOnly: true,
   ),
   SyncedTable(
     'parties',

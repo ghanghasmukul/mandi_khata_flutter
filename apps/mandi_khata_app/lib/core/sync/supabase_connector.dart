@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:logging/logging.dart';
+import 'package:mandi_khata_app/core/db/powersync_schema.dart';
 import 'package:mandi_khata_app/core/sync/upload_policy.dart';
 import 'package:powersync/powersync.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -40,6 +41,8 @@ class SupabaseCrudApplier implements CrudApplier {
     final data = toServerPayload(entry.table, entry.opData ?? const {});
     try {
       switch (entry.op) {
+        case UpdateType.put when syncedTable(entry.table)?.appendOnly ?? false:
+          await _insertOnce(table, {...data, 'id': entry.id});
         case UpdateType.put:
           await table.upsert({...data, 'id': entry.id});
         case UpdateType.patch:
@@ -53,7 +56,23 @@ class SupabaseCrudApplier implements CrudApplier {
       throw UploadException(e.message, code: e.code);
     }
   }
+
+  /// Append-only tables have no UPDATE grant, so an upsert is refused. A
+  /// duplicate key means an earlier attempt already landed (its response was
+  /// lost), so the row is there and the upload counts as done.
+  Future<void> _insertOnce(
+    SupabaseQueryBuilder table,
+    Map<String, Object?> row,
+  ) async {
+    try {
+      await table.insert(row);
+    } on PostgrestException catch (e) {
+      if (e.code != _uniqueViolation) rethrow;
+    }
+  }
 }
+
+const _uniqueViolation = '23505';
 
 /// PowerSync ⇄ Supabase: credentials from the Supabase session, uploads via
 /// [CrudApplier], one local transaction at a time.

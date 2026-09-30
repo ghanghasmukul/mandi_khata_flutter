@@ -7,9 +7,9 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 ## Setup (you, once): see docs/SETUP.md
 - [ ] 🧑 Tools installed, `flutter doctor` green for macOS + Android + Web on the Mac; Windows target verified on a Windows machine or CI
 - [ ] 🧑 Supabase dev + prod projects (Mumbai), PowerSync dev instance
-- [ ] 🧑 `.mcp.json` has the dev project ref; `/mcp` shows supabase connected
-- [ ] 🧑 Dart & Flutter plugin installed in Claude Code
-- [x] 🧑 `.env.dev` created; `supabase link` to dev done (2026-09-29): linked to `nqsaezlfqfrbrrleilyb`; `POWERSYNC_URL` still blank until the PowerSync instance exists
+- [x] 🧑 `.mcp.json` has the dev project ref; `/mcp` shows supabase connected (2026-09-30): OAuth re-done after "Unrecognized client_id"
+- [x] 🧑 Dart & Flutter plugin installed in Claude Code (2026-09-30)
+- [x] 🧑 `.env.dev` created; `supabase link` to dev done (2026-09-29): linked to `nqsaezlfqfrbrrleilyb`; `POWERSYNC_URL` set 2026-09-30, PowerSync replication slot active
 
 ## Phase 0: Foundation
 - [x] 0.1 Monorepo scaffold (2026-09-29): pub workspace + app/khata_core/mk_ui, very_good_analysis clean, 3 tests pass, `flutter build web` OK. Manual run on macOS/Chrome/emulator still to be confirmed by user.
