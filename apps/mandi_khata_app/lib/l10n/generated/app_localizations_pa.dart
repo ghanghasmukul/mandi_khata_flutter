@@ -724,4 +724,195 @@ class AppLocalizationsPa extends AppLocalizations {
   @override
   String get diagnosticsNotRetryable =>
       'ਇਹ ਬਦਲਾਅ ਦੁਬਾਰਾ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਦਾ। ਇਸ ਨੂੰ ਹਟਾ ਦਿਓ।';
+
+  @override
+  String get settingSuffixDocParty => 'ਪਾਰਟੀ ਕੋਡ';
+
+  @override
+  String get partiesTitle => 'ਪਾਰਟੀਆਂ';
+
+  @override
+  String get partiesSearchHint => 'ਨਾਮ, ਪਿੰਡ, ਮੋਬਾਈਲ, ਕੋਡ ਖੋਜੋ';
+
+  @override
+  String get partiesAll => 'ਸਾਰੇ';
+
+  @override
+  String partiesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ਪਾਰਟੀਆਂ',
+      one: '1 ਪਾਰਟੀ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get partiesEmptyTitle => 'ਅਜੇ ਕੋਈ ਪਾਰਟੀ ਨਹੀਂ';
+
+  @override
+  String get partiesEmptyBody =>
+      'ਜਿਨ੍ਹਾਂ ਕਿਸਾਨਾਂ, ਖਰੀਦਦਾਰਾਂ ਅਤੇ ਸਪਲਾਇਰਾਂ ਨਾਲ ਕੰਮ ਹੁੰਦਾ ਹੈ, ਉਨ੍ਹਾਂ ਨੂੰ ਜੋੜੋ।';
+
+  @override
+  String get partiesNoMatch => 'ਖੋਜ ਨਾਲ ਕੋਈ ਪਾਰਟੀ ਨਹੀਂ ਮਿਲੀ।';
+
+  @override
+  String get partiesAdd => 'ਪਾਰਟੀ ਜੋੜੋ';
+
+  @override
+  String get partyEditTitle => 'ਪਾਰਟੀ ਬਦਲੋ';
+
+  @override
+  String get partyFieldCode => 'ਕੋਡ';
+
+  @override
+  String partyCodeAutoHint(String code) {
+    return 'ਖਾਲੀ ਛੱਡੋ ਤਾਂ $code';
+  }
+
+  @override
+  String get partyFieldName => 'ਨਾਮ';
+
+  @override
+  String get partyFieldRoles => 'ਭੂਮਿਕਾ';
+
+  @override
+  String get partyFieldRelation => 'ਸਬੰਧ';
+
+  @override
+  String get partyRelationNone => 'ਕੋਈ ਨਹੀਂ';
+
+  @override
+  String get partyRelationSonOf => 'ਪੁੱਤਰ';
+
+  @override
+  String get partyRelationDaughterOf => 'ਧੀ';
+
+  @override
+  String get partyRelationWifeOf => 'ਪਤਨੀ';
+
+  @override
+  String get partyRelationProprietor => 'ਪ੍ਰੋਪਰਾਈਟਰ';
+
+  @override
+  String get partyFieldFatherOrHusband => 'ਪਿਤਾ / ਪਤੀ ਦਾ ਨਾਮ';
+
+  @override
+  String get partyFieldMobile => 'ਮੋਬਾਈਲ';
+
+  @override
+  String get partyFieldAltMobile => 'ਦੂਜਾ ਮੋਬਾਈਲ';
+
+  @override
+  String get partyFieldVillage => 'ਪਿੰਡ';
+
+  @override
+  String get partyFieldDistrict => 'ਜ਼ਿਲ੍ਹਾ';
+
+  @override
+  String get partyFieldState => 'ਰਾਜ';
+
+  @override
+  String get partyFieldAadhaar => 'ਆਧਾਰ (ਆਖਰੀ 4 ਅੰਕ)';
+
+  @override
+  String get partyFieldBankName => 'ਬੈਂਕ';
+
+  @override
+  String get partyFieldBankAccount => 'ਖਾਤਾ ਨੰਬਰ';
+
+  @override
+  String get partyBankAccountHint => 'ਸਿਰਫ਼ ਆਖਰੀ 4 ਅੰਕ ਰੱਖੇ ਜਾਂਦੇ ਹਨ';
+
+  @override
+  String get partyFieldIfsc => 'IFSC';
+
+  @override
+  String get partyFieldGstin => 'GSTIN';
+
+  @override
+  String get partyFieldNotes => 'ਨੋਟ';
+
+  @override
+  String get partySectionIdentity => 'ਪਾਰਟੀ';
+
+  @override
+  String get partySectionContact => 'ਸੰਪਰਕ ਅਤੇ ਪਤਾ';
+
+  @override
+  String get partySectionBank => 'ਬੈਂਕ ਅਤੇ ਟੈਕਸ';
+
+  @override
+  String get partyErrorRequired => 'ਲੋੜੀਂਦਾ';
+
+  @override
+  String get partyErrorRoles => 'ਘੱਟੋ-ਘੱਟ ਇੱਕ ਭੂਮਿਕਾ ਚੁਣੋ';
+
+  @override
+  String get partyErrorMobile => '10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਪਾਓ';
+
+  @override
+  String get partyErrorIfsc => 'ਸਹੀ IFSC ਪਾਓ, ਜਿਵੇਂ SBIN0001234';
+
+  @override
+  String get partyErrorGstin => 'ਸਹੀ 15 ਅੱਖਰਾਂ ਦਾ GSTIN ਪਾਓ';
+
+  @override
+  String get partyErrorAadhaar => 'ਸਿਰਫ਼ ਆਖਰੀ 4 ਅੰਕ ਪਾਓ';
+
+  @override
+  String get partyErrorCodeTaken => 'ਇਹ ਕੋਡ ਕਿਸੇ ਹੋਰ ਪਾਰਟੀ ਦਾ ਹੈ';
+
+  @override
+  String get partyNotFound => 'ਇਹ ਪਾਰਟੀ ਹਟਾ ਦਿੱਤੀ ਗਈ ਹੈ।';
+
+  @override
+  String get partySave => 'ਪਾਰਟੀ ਸੇਵ ਕਰੋ';
+
+  @override
+  String get partySaved => 'ਪਾਰਟੀ ਸੇਵ ਹੋ ਗਈ';
+
+  @override
+  String get partyEdit => 'ਬਦਲੋ';
+
+  @override
+  String get partyDelete => 'ਹਟਾਓ';
+
+  @override
+  String partyDeleteTitle(String name) {
+    return '$name ਨੂੰ ਹਟਾਉਣਾ ਹੈ?';
+  }
+
+  @override
+  String get partyDeleteBody =>
+      'ਪਾਰਟੀ ਸੂਚੀ ਤੋਂ ਲੁਕ ਜਾਵੇਗੀ। ਉਸ ਦਾ ਇਤਿਹਾਸ ਅਤੇ ਆਡਿਟ ਲੌਗ ਰਹੇਗਾ।';
+
+  @override
+  String get partyDeleted => 'ਪਾਰਟੀ ਹਟਾ ਦਿੱਤੀ ਗਈ';
+
+  @override
+  String get partyTabKhata => 'ਖਾਤਾ';
+
+  @override
+  String get partyTabLots => 'ਲਾਟ';
+
+  @override
+  String get partyTabLoans => 'ਕਰਜ਼ੇ';
+
+  @override
+  String get partyTabShop => 'ਦੁਕਾਨ';
+
+  @override
+  String get partyTabDocuments => 'ਦਸਤਾਵੇਜ਼';
+
+  @override
+  String get partyTabNotes => 'ਨੋਟ';
+
+  @override
+  String get partyTabComingSoon => 'ਇਹ ਹਿੱਸਾ ਅਗਲੇ ਅਪਡੇਟ ਵਿੱਚ ਆਵੇਗਾ।';
+
+  @override
+  String get partyNoNotes => 'ਕੋਈ ਨੋਟ ਨਹੀਂ।';
 }

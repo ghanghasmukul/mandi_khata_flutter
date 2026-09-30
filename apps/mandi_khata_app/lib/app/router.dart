@@ -10,6 +10,9 @@ import 'package:mandi_khata_app/features/auth/presentation/splash_screen.dart';
 import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen.dart';
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
 import 'package:mandi_khata_app/features/diagnostics/presentation/diagnostics_screen.dart';
+import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
+import 'package:mandi_khata_app/features/parties/presentation/party_detail_screen.dart';
+import 'package:mandi_khata_app/features/parties/presentation/party_form_screen.dart';
 import 'package:mandi_khata_app/features/settings/presentation/settings_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -68,6 +71,29 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: AppRoutes.setPin,
         builder: (context, state) => const SetPinScreen(),
+      ),
+      GoRoute(
+        path: PartyRoutes.list,
+        builder: (context, state) => const PartiesScreen(),
+        routes: [
+          // Before ':id' so "new" is never read as an id.
+          GoRoute(
+            path: 'new',
+            builder: (context, state) => const PartyFormScreen(),
+          ),
+          GoRoute(
+            path: ':id',
+            builder: (context, state) =>
+                PartyDetailScreen(partyId: state.pathParameters['id']!),
+            routes: [
+              GoRoute(
+                path: 'edit',
+                builder: (context, state) =>
+                    PartyFormScreen(partyId: state.pathParameters['id']),
+              ),
+            ],
+          ),
+        ],
       ),
       GoRoute(
         path: AppRoutes.settings,

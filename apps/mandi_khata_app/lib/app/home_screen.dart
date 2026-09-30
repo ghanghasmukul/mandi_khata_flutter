@@ -10,6 +10,7 @@ import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/sign_out_flow.dart';
+import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mandi_khata_app/shared/language_switcher.dart';
 import 'package:mk_ui/mk_ui.dart';
@@ -54,7 +55,14 @@ class HomeScreen extends ConsumerWidget {
                   ],
                   const SizedBox(height: MkSpacing.xl),
                   MkButton(
+                    label: l10n.partiesTitle,
+                    icon: Icons.groups_outlined,
+                    onPressed: () => context.go(PartyRoutes.list),
+                  ),
+                  const SizedBox(height: MkSpacing.sm),
+                  MkButton(
                     label: l10n.settingsTitle,
+                    variant: MkButtonVariant.secondary,
                     icon: Icons.tune,
                     onPressed: () => context.go(AppRoutes.settings),
                   ),

@@ -437,6 +437,7 @@ abstract final class SettingsSchema {
         'purchase_invoice',
         'karza',
         'voucher',
+        'party',
       ],
       suffixDefaults: {
         'receipt': {'prefix': 'R-', 'next': 1},
@@ -445,6 +446,7 @@ abstract final class SettingsSchema {
         'purchase_invoice': {'prefix': 'PI-', 'next': 1},
         'karza': {'prefix': 'KZ-', 'next': 1},
         'voucher': {'prefix': 'V-', 'next': 1},
+        'party': {'prefix': 'P-', 'next': 1},
       },
     ),
     SettingDef.boolean(

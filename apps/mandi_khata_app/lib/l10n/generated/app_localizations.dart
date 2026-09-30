@@ -1389,6 +1389,360 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This change can\'t be sent again. Discard it instead.'**
   String get diagnosticsNotRetryable;
+
+  /// doc party.
+  ///
+  /// In en, this message translates to:
+  /// **'Party codes'**
+  String get settingSuffixDocParty;
+
+  /// Parties screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Parties'**
+  String get partiesTitle;
+
+  /// Search field hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search name, village, mobile, code'**
+  String get partiesSearchHint;
+
+  /// Role filter: no filter.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get partiesAll;
+
+  /// Number of parties shown.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 party} other{{count} parties}}'**
+  String partiesCount(int count);
+
+  /// Empty list title.
+  ///
+  /// In en, this message translates to:
+  /// **'No parties yet'**
+  String get partiesEmptyTitle;
+
+  /// Empty list body.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the farmers, buyers and suppliers you deal with.'**
+  String get partiesEmptyBody;
+
+  /// No search results.
+  ///
+  /// In en, this message translates to:
+  /// **'No party matches your search.'**
+  String get partiesNoMatch;
+
+  /// Add party button / form title.
+  ///
+  /// In en, this message translates to:
+  /// **'Add party'**
+  String get partiesAdd;
+
+  /// Edit form title.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit party'**
+  String get partyEditTitle;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get partyFieldCode;
+
+  /// Hint: an automatic code will be used.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave blank for {code}'**
+  String partyCodeAutoHint(String code);
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get partyFieldName;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Roles'**
+  String get partyFieldRoles;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Relation'**
+  String get partyFieldRelation;
+
+  /// No relation.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get partyRelationNone;
+
+  /// Son of.
+  ///
+  /// In en, this message translates to:
+  /// **'S/o'**
+  String get partyRelationSonOf;
+
+  /// Daughter of.
+  ///
+  /// In en, this message translates to:
+  /// **'D/o'**
+  String get partyRelationDaughterOf;
+
+  /// Wife of.
+  ///
+  /// In en, this message translates to:
+  /// **'W/o'**
+  String get partyRelationWifeOf;
+
+  /// Proprietor of a firm.
+  ///
+  /// In en, this message translates to:
+  /// **'Prop.'**
+  String get partyRelationProprietor;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Father / husband name'**
+  String get partyFieldFatherOrHusband;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile'**
+  String get partyFieldMobile;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Other mobile'**
+  String get partyFieldAltMobile;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Village'**
+  String get partyFieldVillage;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get partyFieldDistrict;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'State'**
+  String get partyFieldState;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Aadhaar (last 4 digits)'**
+  String get partyFieldAadhaar;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get partyFieldBankName;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Account number'**
+  String get partyFieldBankAccount;
+
+  /// Privacy note.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the last 4 digits are kept'**
+  String get partyBankAccountHint;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'IFSC'**
+  String get partyFieldIfsc;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'GSTIN'**
+  String get partyFieldGstin;
+
+  /// Field label.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get partyFieldNotes;
+
+  /// Form section.
+  ///
+  /// In en, this message translates to:
+  /// **'Party'**
+  String get partySectionIdentity;
+
+  /// Form section.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact & address'**
+  String get partySectionContact;
+
+  /// Form section.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank & tax'**
+  String get partySectionBank;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get partyErrorRequired;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick at least one role'**
+  String get partyErrorRoles;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a 10-digit mobile number'**
+  String get partyErrorMobile;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid IFSC, e.g. SBIN0001234'**
+  String get partyErrorIfsc;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid 15-character GSTIN'**
+  String get partyErrorGstin;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter only the last 4 digits'**
+  String get partyErrorAadhaar;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Another party already has this code'**
+  String get partyErrorCodeTaken;
+
+  /// Party missing.
+  ///
+  /// In en, this message translates to:
+  /// **'This party was deleted.'**
+  String get partyNotFound;
+
+  /// Save button.
+  ///
+  /// In en, this message translates to:
+  /// **'Save party'**
+  String get partySave;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Party saved'**
+  String get partySaved;
+
+  /// Edit button.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get partyEdit;
+
+  /// Delete button.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get partyDelete;
+
+  /// Delete confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}?'**
+  String partyDeleteTitle(String name);
+
+  /// Delete confirmation body.
+  ///
+  /// In en, this message translates to:
+  /// **'The party is hidden from lists. Its history and audit log stay.'**
+  String get partyDeleteBody;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Party deleted'**
+  String get partyDeleted;
+
+  /// Tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Khata'**
+  String get partyTabKhata;
+
+  /// Tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Lots'**
+  String get partyTabLots;
+
+  /// Tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Loans'**
+  String get partyTabLoans;
+
+  /// Tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get partyTabShop;
+
+  /// Tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents'**
+  String get partyTabDocuments;
+
+  /// Tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get partyTabNotes;
+
+  /// Placeholder tab.
+  ///
+  /// In en, this message translates to:
+  /// **'This part arrives in a later update.'**
+  String get partyTabComingSoon;
+
+  /// Empty notes.
+  ///
+  /// In en, this message translates to:
+  /// **'No notes.'**
+  String get partyNoNotes;
 }
 
 class _AppLocalizationsDelegate

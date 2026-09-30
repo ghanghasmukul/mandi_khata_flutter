@@ -929,5 +929,256 @@
   "diagnosticsNotRetryable": "This change can't be sent again. Discard it instead.",
   "@diagnosticsNotRetryable": {
     "description": "Retry not possible."
+  },
+  "settingSuffixDocParty": "Party codes",
+  "@settingSuffixDocParty": {
+    "description": "doc party."
+  },
+  "partiesTitle": "Parties",
+  "@partiesTitle": {
+    "description": "Parties screen title."
+  },
+  "partiesSearchHint": "Search name, village, mobile, code",
+  "@partiesSearchHint": {
+    "description": "Search field hint."
+  },
+  "partiesAll": "All",
+  "@partiesAll": {
+    "description": "Role filter: no filter."
+  },
+  "partiesCount": "{count, plural, =1{1 party} other{{count} parties}}",
+  "@partiesCount": {
+    "description": "Number of parties shown.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "partiesEmptyTitle": "No parties yet",
+  "@partiesEmptyTitle": {
+    "description": "Empty list title."
+  },
+  "partiesEmptyBody": "Add the farmers, buyers and suppliers you deal with.",
+  "@partiesEmptyBody": {
+    "description": "Empty list body."
+  },
+  "partiesNoMatch": "No party matches your search.",
+  "@partiesNoMatch": {
+    "description": "No search results."
+  },
+  "partiesAdd": "Add party",
+  "@partiesAdd": {
+    "description": "Add party button / form title."
+  },
+  "partyEditTitle": "Edit party",
+  "@partyEditTitle": {
+    "description": "Edit form title."
+  },
+  "partyFieldCode": "Code",
+  "@partyFieldCode": {
+    "description": "Field label."
+  },
+  "partyCodeAutoHint": "Leave blank for {code}",
+  "@partyCodeAutoHint": {
+    "description": "Hint: an automatic code will be used.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "partyFieldName": "Name",
+  "@partyFieldName": {
+    "description": "Field label."
+  },
+  "partyFieldRoles": "Roles",
+  "@partyFieldRoles": {
+    "description": "Field label."
+  },
+  "partyFieldRelation": "Relation",
+  "@partyFieldRelation": {
+    "description": "Field label."
+  },
+  "partyRelationNone": "None",
+  "@partyRelationNone": {
+    "description": "No relation."
+  },
+  "partyRelationSonOf": "S/o",
+  "@partyRelationSonOf": {
+    "description": "Son of."
+  },
+  "partyRelationDaughterOf": "D/o",
+  "@partyRelationDaughterOf": {
+    "description": "Daughter of."
+  },
+  "partyRelationWifeOf": "W/o",
+  "@partyRelationWifeOf": {
+    "description": "Wife of."
+  },
+  "partyRelationProprietor": "Prop.",
+  "@partyRelationProprietor": {
+    "description": "Proprietor of a firm."
+  },
+  "partyFieldFatherOrHusband": "Father / husband name",
+  "@partyFieldFatherOrHusband": {
+    "description": "Field label."
+  },
+  "partyFieldMobile": "Mobile",
+  "@partyFieldMobile": {
+    "description": "Field label."
+  },
+  "partyFieldAltMobile": "Other mobile",
+  "@partyFieldAltMobile": {
+    "description": "Field label."
+  },
+  "partyFieldVillage": "Village",
+  "@partyFieldVillage": {
+    "description": "Field label."
+  },
+  "partyFieldDistrict": "District",
+  "@partyFieldDistrict": {
+    "description": "Field label."
+  },
+  "partyFieldState": "State",
+  "@partyFieldState": {
+    "description": "Field label."
+  },
+  "partyFieldAadhaar": "Aadhaar (last 4 digits)",
+  "@partyFieldAadhaar": {
+    "description": "Field label."
+  },
+  "partyFieldBankName": "Bank",
+  "@partyFieldBankName": {
+    "description": "Field label."
+  },
+  "partyFieldBankAccount": "Account number",
+  "@partyFieldBankAccount": {
+    "description": "Field label."
+  },
+  "partyBankAccountHint": "Only the last 4 digits are kept",
+  "@partyBankAccountHint": {
+    "description": "Privacy note."
+  },
+  "partyFieldIfsc": "IFSC",
+  "@partyFieldIfsc": {
+    "description": "Field label."
+  },
+  "partyFieldGstin": "GSTIN",
+  "@partyFieldGstin": {
+    "description": "Field label."
+  },
+  "partyFieldNotes": "Notes",
+  "@partyFieldNotes": {
+    "description": "Field label."
+  },
+  "partySectionIdentity": "Party",
+  "@partySectionIdentity": {
+    "description": "Form section."
+  },
+  "partySectionContact": "Contact & address",
+  "@partySectionContact": {
+    "description": "Form section."
+  },
+  "partySectionBank": "Bank & tax",
+  "@partySectionBank": {
+    "description": "Form section."
+  },
+  "partyErrorRequired": "Required",
+  "@partyErrorRequired": {
+    "description": "Validation."
+  },
+  "partyErrorRoles": "Pick at least one role",
+  "@partyErrorRoles": {
+    "description": "Validation."
+  },
+  "partyErrorMobile": "Enter a 10-digit mobile number",
+  "@partyErrorMobile": {
+    "description": "Validation."
+  },
+  "partyErrorIfsc": "Enter a valid IFSC, e.g. SBIN0001234",
+  "@partyErrorIfsc": {
+    "description": "Validation."
+  },
+  "partyErrorGstin": "Enter a valid 15-character GSTIN",
+  "@partyErrorGstin": {
+    "description": "Validation."
+  },
+  "partyErrorAadhaar": "Enter only the last 4 digits",
+  "@partyErrorAadhaar": {
+    "description": "Validation."
+  },
+  "partyErrorCodeTaken": "Another party already has this code",
+  "@partyErrorCodeTaken": {
+    "description": "Validation."
+  },
+  "partyNotFound": "This party was deleted.",
+  "@partyNotFound": {
+    "description": "Party missing."
+  },
+  "partySave": "Save party",
+  "@partySave": {
+    "description": "Save button."
+  },
+  "partySaved": "Party saved",
+  "@partySaved": {
+    "description": "Toast."
+  },
+  "partyEdit": "Edit",
+  "@partyEdit": {
+    "description": "Edit button."
+  },
+  "partyDelete": "Delete",
+  "@partyDelete": {
+    "description": "Delete button."
+  },
+  "partyDeleteTitle": "Delete {name}?",
+  "@partyDeleteTitle": {
+    "description": "Delete confirmation.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "partyDeleteBody": "The party is hidden from lists. Its history and audit log stay.",
+  "@partyDeleteBody": {
+    "description": "Delete confirmation body."
+  },
+  "partyDeleted": "Party deleted",
+  "@partyDeleted": {
+    "description": "Toast."
+  },
+  "partyTabKhata": "Khata",
+  "@partyTabKhata": {
+    "description": "Tab."
+  },
+  "partyTabLots": "Lots",
+  "@partyTabLots": {
+    "description": "Tab."
+  },
+  "partyTabLoans": "Loans",
+  "@partyTabLoans": {
+    "description": "Tab."
+  },
+  "partyTabShop": "Shop",
+  "@partyTabShop": {
+    "description": "Tab."
+  },
+  "partyTabDocuments": "Documents",
+  "@partyTabDocuments": {
+    "description": "Tab."
+  },
+  "partyTabNotes": "Notes",
+  "@partyTabNotes": {
+    "description": "Tab."
+  },
+  "partyTabComingSoon": "This part arrives in a later update.",
+  "@partyTabComingSoon": {
+    "description": "Placeholder tab."
+  },
+  "partyNoNotes": "No notes.",
+  "@partyNoNotes": {
+    "description": "Empty notes."
   }
 }

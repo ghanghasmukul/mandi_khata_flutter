@@ -8,6 +8,7 @@ library;
 export 'src/document_number.dart';
 export 'src/khata_core_base.dart';
 export 'src/money.dart';
+export 'src/party_rules.dart';
 export 'src/permissions.dart';
 export 'src/settings/interest_rate.dart';
 export 'src/settings/setting_scope.dart';

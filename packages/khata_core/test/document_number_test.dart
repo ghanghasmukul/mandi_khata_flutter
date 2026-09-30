@@ -10,6 +10,7 @@ void main() {
       expect(DocumentSeries.purchaseInvoice.code, 'PI');
       expect(DocumentSeries.karza.code, 'KZ');
       expect(DocumentSeries.voucher.code, 'V');
+      expect(DocumentSeries.party.code, 'P');
       for (final s in DocumentSeries.values) {
         expect(RegExp(r'^[A-Z]{1,4}$').hasMatch(s.code), isTrue);
       }

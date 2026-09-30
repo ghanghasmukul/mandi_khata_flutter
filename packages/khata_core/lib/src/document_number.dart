@@ -9,7 +9,10 @@ enum DocumentSeries {
   salesInvoice('SI', 'sales_invoice'),
   purchaseInvoice('PI', 'purchase_invoice'),
   karza('KZ', 'karza'),
-  voucher('V', 'voucher');
+  voucher('V', 'voucher'),
+
+  /// Party codes made on a device (`P-W1-0001`); editable before saving.
+  party('P', 'party');
 
   const DocumentSeries(this.code, this.doc);
 

@@ -223,7 +223,9 @@ Inside Claude Code:
 gh auth login
 gh repo create mandi-khata --private --source . --push
 ```
-Claude Code can then open PRs, and CI (set up in Step 0.8) runs tests on every push.
+Claude Code can then open PRs, and CI (`.github/workflows/ci.yml`, step 0.8) runs on every push to `main` and every pull request: format, generated-code check, analyze, all tests, Supabase migrations + pgTAP RLS tests, and builds for web, Android, macOS and **Windows** (`windows-latest`). CI needs no secrets.
+
+**Windows build to test on a real PC:** open the latest green run under GitHub → Actions → CI, download the `windows-release` artifact, unzip it on the Windows machine and run `mandi_khata_app.exe`. The Android debug APK is there too (`android-debug-apk`).
 
 Add these GitHub **Actions secrets** for the production deploy workflow (Phase 6): `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROD_PROJECT_REF`, `SUPABASE_PROD_DB_PASSWORD`.
 

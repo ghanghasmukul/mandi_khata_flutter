@@ -730,4 +730,195 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get diagnosticsNotRetryable =>
       'This change can\'t be sent again. Discard it instead.';
+
+  @override
+  String get settingSuffixDocParty => 'Party codes';
+
+  @override
+  String get partiesTitle => 'Parties';
+
+  @override
+  String get partiesSearchHint => 'Search name, village, mobile, code';
+
+  @override
+  String get partiesAll => 'All';
+
+  @override
+  String partiesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count parties',
+      one: '1 party',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get partiesEmptyTitle => 'No parties yet';
+
+  @override
+  String get partiesEmptyBody =>
+      'Add the farmers, buyers and suppliers you deal with.';
+
+  @override
+  String get partiesNoMatch => 'No party matches your search.';
+
+  @override
+  String get partiesAdd => 'Add party';
+
+  @override
+  String get partyEditTitle => 'Edit party';
+
+  @override
+  String get partyFieldCode => 'Code';
+
+  @override
+  String partyCodeAutoHint(String code) {
+    return 'Leave blank for $code';
+  }
+
+  @override
+  String get partyFieldName => 'Name';
+
+  @override
+  String get partyFieldRoles => 'Roles';
+
+  @override
+  String get partyFieldRelation => 'Relation';
+
+  @override
+  String get partyRelationNone => 'None';
+
+  @override
+  String get partyRelationSonOf => 'S/o';
+
+  @override
+  String get partyRelationDaughterOf => 'D/o';
+
+  @override
+  String get partyRelationWifeOf => 'W/o';
+
+  @override
+  String get partyRelationProprietor => 'Prop.';
+
+  @override
+  String get partyFieldFatherOrHusband => 'Father / husband name';
+
+  @override
+  String get partyFieldMobile => 'Mobile';
+
+  @override
+  String get partyFieldAltMobile => 'Other mobile';
+
+  @override
+  String get partyFieldVillage => 'Village';
+
+  @override
+  String get partyFieldDistrict => 'District';
+
+  @override
+  String get partyFieldState => 'State';
+
+  @override
+  String get partyFieldAadhaar => 'Aadhaar (last 4 digits)';
+
+  @override
+  String get partyFieldBankName => 'Bank';
+
+  @override
+  String get partyFieldBankAccount => 'Account number';
+
+  @override
+  String get partyBankAccountHint => 'Only the last 4 digits are kept';
+
+  @override
+  String get partyFieldIfsc => 'IFSC';
+
+  @override
+  String get partyFieldGstin => 'GSTIN';
+
+  @override
+  String get partyFieldNotes => 'Notes';
+
+  @override
+  String get partySectionIdentity => 'Party';
+
+  @override
+  String get partySectionContact => 'Contact & address';
+
+  @override
+  String get partySectionBank => 'Bank & tax';
+
+  @override
+  String get partyErrorRequired => 'Required';
+
+  @override
+  String get partyErrorRoles => 'Pick at least one role';
+
+  @override
+  String get partyErrorMobile => 'Enter a 10-digit mobile number';
+
+  @override
+  String get partyErrorIfsc => 'Enter a valid IFSC, e.g. SBIN0001234';
+
+  @override
+  String get partyErrorGstin => 'Enter a valid 15-character GSTIN';
+
+  @override
+  String get partyErrorAadhaar => 'Enter only the last 4 digits';
+
+  @override
+  String get partyErrorCodeTaken => 'Another party already has this code';
+
+  @override
+  String get partyNotFound => 'This party was deleted.';
+
+  @override
+  String get partySave => 'Save party';
+
+  @override
+  String get partySaved => 'Party saved';
+
+  @override
+  String get partyEdit => 'Edit';
+
+  @override
+  String get partyDelete => 'Delete';
+
+  @override
+  String partyDeleteTitle(String name) {
+    return 'Delete $name?';
+  }
+
+  @override
+  String get partyDeleteBody =>
+      'The party is hidden from lists. Its history and audit log stay.';
+
+  @override
+  String get partyDeleted => 'Party deleted';
+
+  @override
+  String get partyTabKhata => 'Khata';
+
+  @override
+  String get partyTabLots => 'Lots';
+
+  @override
+  String get partyTabLoans => 'Loans';
+
+  @override
+  String get partyTabShop => 'Shop';
+
+  @override
+  String get partyTabDocuments => 'Documents';
+
+  @override
+  String get partyTabNotes => 'Notes';
+
+  @override
+  String get partyTabComingSoon => 'This part arrives in a later update.';
+
+  @override
+  String get partyNoNotes => 'No notes.';
 }

@@ -101,6 +101,7 @@ extension SettingLabels on AppLocalizations {
     'doc=purchase_invoice' => settingSuffixDocPurchaseInvoice,
     'doc=karza' => settingSuffixDocKarza,
     'doc=voucher' => settingSuffixDocVoucher,
+    'doc=party' => settingSuffixDocParty,
     'module=khata' => settingSuffixModuleKhata,
     'module=arrivals' => settingSuffixModuleArrivals,
     'module=karza' => settingSuffixModuleKarza,

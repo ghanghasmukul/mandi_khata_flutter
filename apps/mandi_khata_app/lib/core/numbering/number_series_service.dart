@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
-import 'package:sqlite_async/sqlite_async.dart' show SqliteWriteContext;
+import 'package:sqlite_async/sqlite_async.dart'
+    show SqliteReadContext, SqliteWriteContext;
 import 'package:uuid/uuid.dart';
 
 /// Hands out human-readable document numbers (`R-W1-0042`) offline.
@@ -64,10 +65,26 @@ abstract final class NumberSeriesService {
     return formatDocumentNumber(config.prefix, ctx.deviceCode, counter);
   }
 
+  /// The number [next] would hand out, without using it (for a form hint).
+  static Future<String> peek(
+    SqliteReadContext tx,
+    WriteContext ctx,
+    DocumentSeries series,
+  ) async {
+    final config = await _config(tx, ctx.tenantId, series);
+    final row = await tx.getOptional(
+      'SELECT next_value FROM number_series '
+      'WHERE tenant_id = ? AND series = ? AND device_code = ?',
+      [ctx.tenantId, series.code, ctx.deviceCode],
+    );
+    final counter = row?['next_value'] as int? ?? config.start;
+    return formatDocumentNumber(config.prefix, ctx.deviceCode, counter);
+  }
+
   /// Prefix and a new device's first counter, from the business setting
   /// `business.number_series.<doc>` (only settable at business level).
   static Future<({String prefix, int start})> _config(
-    SqliteWriteContext tx,
+    SqliteReadContext tx,
     String tenantId,
     DocumentSeries series,
   ) async {
