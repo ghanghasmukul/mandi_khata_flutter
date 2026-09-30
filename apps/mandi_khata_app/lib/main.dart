@@ -4,6 +4,8 @@ import 'package:logging/logging.dart';
 import 'package:mandi_khata_app/app/env.dart';
 import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
+import 'package:mandi_khata_app/core/errors/error_reporting.dart';
+import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/storage/app_prefs.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
@@ -15,9 +17,10 @@ final _log = Logger('app');
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Logger.root.onRecord.listen(
-    (r) => debugPrint('${r.level.name} ${r.loggerName}: ${r.message}'),
-  );
+  Logger.root.onRecord.listen((r) {
+    debugPrint('${r.level.name} ${r.loggerName}: ${r.message}');
+    ErrorReporting.captureLog(r);
+  });
   if (Env.hasSupabase) {
     try {
       // Restores a cached session from disk, so an offline launch stays
@@ -31,10 +34,12 @@ Future<void> main() async {
     }
   }
   final prefs = AppPrefs(await SharedPreferences.getInstance());
-  runApp(
-    ProviderScope(
-      overrides: [appPrefsProvider.overrideWithValue(prefs)],
-      child: const MandiKhataApp(),
+  await ErrorReporting.run(
+    () => runApp(
+      ProviderScope(
+        overrides: [appPrefsProvider.overrideWithValue(prefs)],
+        child: const MandiKhataApp(),
+      ),
     ),
   );
 }
@@ -68,7 +73,11 @@ class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
   @override
   Widget build(BuildContext context) {
     // Keeps sync running (connect while signed in) for the app's lifetime.
-    ref.watch(syncControllerProvider);
+    ref
+      ..watch(syncControllerProvider)
+      // Tags error reports with the business id and device code.
+      ..watch(errorReportingTagsProvider);
+    final language = ref.watch(appLanguageProvider);
     final router = ref.watch(routerProvider);
     return MaterialApp.router(
       title: 'Mandi Khata',
@@ -78,6 +87,8 @@ class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
       themeMode: ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      // Null follows the device, falling back to English.
+      locale: language == null ? null : Locale(language),
       routerConfig: router,
     );
   }

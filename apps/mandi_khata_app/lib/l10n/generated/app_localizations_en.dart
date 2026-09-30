@@ -669,4 +669,65 @@ class AppLocalizationsEn extends AppLocalizations {
   String settingRatePerMonth(String amount) {
     return '= ₹$amount per 100 per month';
   }
+
+  @override
+  String get accountLanguage => 'Language';
+
+  @override
+  String get accountDiagnostics => 'Diagnostics';
+
+  @override
+  String get diagnosticsTitle => 'Diagnostics';
+
+  @override
+  String get diagnosticsOwnerOnly => 'Only the owner can open diagnostics.';
+
+  @override
+  String get diagnosticsDatabase => 'This device';
+
+  @override
+  String get diagnosticsDeviceCode => 'Device code';
+
+  @override
+  String get diagnosticsConnection => 'Sync connection';
+
+  @override
+  String get diagnosticsOnline => 'Connected';
+
+  @override
+  String get diagnosticsOffline => 'Not connected';
+
+  @override
+  String get diagnosticsLastSync => 'Last sync';
+
+  @override
+  String get diagnosticsNever => 'Never';
+
+  @override
+  String get diagnosticsQueued => 'Changes waiting to upload';
+
+  @override
+  String get diagnosticsDbSize => 'Local database size';
+
+  @override
+  String get diagnosticsRefresh => 'Refresh';
+
+  @override
+  String get diagnosticsRejected => 'Changes the server rejected';
+
+  @override
+  String get diagnosticsNoRejected => 'No rejected changes.';
+
+  @override
+  String get diagnosticsRetry => 'Retry';
+
+  @override
+  String get diagnosticsDiscard => 'Discard';
+
+  @override
+  String get diagnosticsRequeued => 'Queued for upload again';
+
+  @override
+  String get diagnosticsNotRetryable =>
+      'This change can\'t be sent again. Discard it instead.';
 }

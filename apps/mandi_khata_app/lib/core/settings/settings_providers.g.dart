@@ -420,7 +420,7 @@ final class SettingsWriterProvider
         argument: null,
         retry: null,
         name: r'settingsWriterProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -447,4 +447,4 @@ final class SettingsWriterProvider
   }
 }
 
-String _$settingsWriterHash() => r'abe631eb42a6e110310150ddc508a04e418b70a2';
+String _$settingsWriterHash() => r'925ba596068c4ff96926ec4d0b505d726469c134';

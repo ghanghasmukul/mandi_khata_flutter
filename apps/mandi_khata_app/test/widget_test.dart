@@ -9,6 +9,7 @@ import 'package:mandi_khata_app/core/auth/app_lock/pin_hasher.dart';
 import 'package:mandi_khata_app/core/auth/auth_repository.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/auth/sign_out_service.dart';
+import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/storage/app_prefs.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/device_registrar.dart';
@@ -59,6 +60,7 @@ void main() {
             (ref) => Stream.value(memberships),
           ),
           hasSyncedProvider.overrideWithValue(true),
+          profileLanguageProvider.overrideWith((ref) => Stream.value(null)),
           appLockSupportedProvider.overrideWithValue(true),
           signOutServiceProvider.overrideWith(
             (ref) => SignOutService(
@@ -117,6 +119,20 @@ void main() {
     expect(find.text('Gupta Trading Co.'), findsOneWidget);
     expect(find.text('This device: A1'), findsOneWidget);
     expect(find.text('Sync off'), findsOneWidget);
+  });
+
+  testWidgets('language switch on the sign-in screen, remembered', (
+    tester,
+  ) async {
+    await pumpApp(tester);
+    await tester.tap(find.text('हिं'));
+    await tester.pumpAndSettle();
+    expect(find.text('मंडी खाता में साइन इन करें'), findsOneWidget);
+    expect(prefs.uiLanguage, 'hi');
+
+    await tester.tap(find.text('ਪੰ'));
+    await tester.pumpAndSettle();
+    expect(find.text('ਮੰਡੀ ਖਾਤਾ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ'), findsOneWidget);
   });
 
   testWidgets('wrong OTP shows the server reason', (tester) async {

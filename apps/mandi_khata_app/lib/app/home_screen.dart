@@ -2,13 +2,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
+import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/sign_out_flow.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
+import 'package:mandi_khata_app/shared/language_switcher.dart';
 import 'package:mk_ui/mk_ui.dart';
 
 /// Placeholder start screen until the dashboard (step 1.6) exists: shows the
@@ -31,6 +34,9 @@ class HomeScreen extends ConsumerWidget {
             roleLabel: membership == null
                 ? null
                 : l10n.roleName(membership.role),
+            languages: appLanguages,
+            language: Localizations.localeOf(context).languageCode,
+            onLanguage: (c) => ref.read(appLanguageProvider.notifier).set(c),
             actions: const [SyncStatusChip(), _AccountMenu()],
           ),
           Expanded(
@@ -80,7 +86,15 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-enum _AccountAction { switchBusiness, lockNow, setPin, removePin, signOut }
+enum _AccountAction {
+  switchBusiness,
+  language,
+  lockNow,
+  setPin,
+  removePin,
+  diagnostics,
+  signOut,
+}
 
 class _AccountMenu extends ConsumerWidget {
   const _AccountMenu();
@@ -93,6 +107,14 @@ class _AccountMenu extends ConsumerWidget {
     switch (action) {
       case _AccountAction.switchBusiness:
         await ref.read(activeTenantProvider.notifier).clear();
+      case _AccountAction.language:
+        await MkDialog.show<void>(
+          context,
+          title: AppLocalizations.of(context).accountLanguage,
+          content: const Center(child: AppLanguageSwitcher()),
+        );
+      case _AccountAction.diagnostics:
+        context.go(AppRoutes.diagnostics);
       case _AccountAction.lockNow:
         ref.read(appLockProvider.notifier).lockNow();
       case _AccountAction.setPin:
@@ -108,6 +130,8 @@ class _AccountMenu extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final lock = ref.watch(appLockProvider);
+    final isOwner =
+        ref.watch(activeMembershipProvider)?.role == MemberRole.owner;
     PopupMenuItem<_AccountAction> item(
       _AccountAction value,
       IconData icon,
@@ -150,6 +174,13 @@ class _AccountMenu extends ConsumerWidget {
               l10n.accountRemovePin,
             ),
         ],
+        item(_AccountAction.language, Icons.translate, l10n.accountLanguage),
+        if (isOwner)
+          item(
+            _AccountAction.diagnostics,
+            Icons.monitor_heart_outlined,
+            l10n.accountDiagnostics,
+          ),
         item(_AccountAction.signOut, Icons.logout, l10n.accountSignOut),
       ],
     );

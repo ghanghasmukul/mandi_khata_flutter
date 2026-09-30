@@ -99,11 +99,13 @@ Stream<int> uploadQueueCount(Ref ref) async* {
 
 /// A change the server rejected for good (a row of local `sync_errors`).
 typedef RejectedChange = ({
+  String id,
   String table,
   String rowId,
   String op,
   String? code,
   String message,
+  DateTime? at,
 });
 
 /// Changes the server rejected for good, newest first.
@@ -116,11 +118,13 @@ Stream<List<RejectedChange>> syncErrors(Ref ref) async* {
     (rows) => [
       for (final r in rows)
         (
+          id: r.id,
           table: r.tableNameValue,
           rowId: r.rowId,
           op: r.op,
           code: r.errorCode,
           message: r.message,
+          at: DateTime.tryParse(r.createdAt),
         ),
     ],
   );

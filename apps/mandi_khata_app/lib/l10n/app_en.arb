@@ -849,5 +849,85 @@
         "type": "String"
       }
     }
+  },
+  "accountLanguage": "Language",
+  "@accountLanguage": {
+    "description": "Account menu: change the UI language."
+  },
+  "accountDiagnostics": "Diagnostics",
+  "@accountDiagnostics": {
+    "description": "Account menu: open diagnostics (owner)."
+  },
+  "diagnosticsTitle": "Diagnostics",
+  "@diagnosticsTitle": {
+    "description": "Diagnostics screen title."
+  },
+  "diagnosticsOwnerOnly": "Only the owner can open diagnostics.",
+  "@diagnosticsOwnerOnly": {
+    "description": "Shown to non-owners."
+  },
+  "diagnosticsDatabase": "This device",
+  "@diagnosticsDatabase": {
+    "description": "Status card title."
+  },
+  "diagnosticsDeviceCode": "Device code",
+  "@diagnosticsDeviceCode": {
+    "description": "Label."
+  },
+  "diagnosticsConnection": "Sync connection",
+  "@diagnosticsConnection": {
+    "description": "Label."
+  },
+  "diagnosticsOnline": "Connected",
+  "@diagnosticsOnline": {
+    "description": "Sync connected."
+  },
+  "diagnosticsOffline": "Not connected",
+  "@diagnosticsOffline": {
+    "description": "Sync not connected."
+  },
+  "diagnosticsLastSync": "Last sync",
+  "@diagnosticsLastSync": {
+    "description": "Label."
+  },
+  "diagnosticsNever": "Never",
+  "@diagnosticsNever": {
+    "description": "No sync yet."
+  },
+  "diagnosticsQueued": "Changes waiting to upload",
+  "@diagnosticsQueued": {
+    "description": "Label."
+  },
+  "diagnosticsDbSize": "Local database size",
+  "@diagnosticsDbSize": {
+    "description": "Label."
+  },
+  "diagnosticsRefresh": "Refresh",
+  "@diagnosticsRefresh": {
+    "description": "Refresh button."
+  },
+  "diagnosticsRejected": "Changes the server rejected",
+  "@diagnosticsRejected": {
+    "description": "Card title."
+  },
+  "diagnosticsNoRejected": "No rejected changes.",
+  "@diagnosticsNoRejected": {
+    "description": "Empty list."
+  },
+  "diagnosticsRetry": "Retry",
+  "@diagnosticsRetry": {
+    "description": "Re-queue a rejected change."
+  },
+  "diagnosticsDiscard": "Discard",
+  "@diagnosticsDiscard": {
+    "description": "Forget a rejected change."
+  },
+  "diagnosticsRequeued": "Queued for upload again",
+  "@diagnosticsRequeued": {
+    "description": "Toast after retry."
+  },
+  "diagnosticsNotRetryable": "This change can't be sent again. Discard it instead.",
+  "@diagnosticsNotRetryable": {
+    "description": "Retry not possible."
   }
 }

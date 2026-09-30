@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:khata_core/khata_core.dart';
+import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/auth/auth_repository.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
@@ -42,15 +43,13 @@ class FakeSettingsRepository implements SettingsRepository {
   }
 
   @override
-  Future<SettingWriteFailure?> write({
-    required String tenantId,
+  Future<SettingWriteFailure?> write(
+    WriteContext ctx, {
     required SettingScope scope,
     required String key,
     required Object? value,
-    required String userId,
     required bool Function(Permission) can,
     String? scopeId,
-    String? deviceId,
     DateTime? now,
   }) async {
     final def = SettingsSchema.parse(key)!.def;

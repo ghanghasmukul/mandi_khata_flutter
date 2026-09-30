@@ -5,6 +5,7 @@
 /// are implemented, and it is unit tested in full.
 library;
 
+export 'src/document_number.dart';
 export 'src/khata_core_base.dart';
 export 'src/money.dart';
 export 'src/permissions.dart';

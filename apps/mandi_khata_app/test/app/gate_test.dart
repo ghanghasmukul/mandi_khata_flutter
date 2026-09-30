@@ -40,10 +40,17 @@ void main() {
       expect(redirectFor(GateStep.ready, '/set-pin'), isNull);
     });
 
-    test('developer pages are never redirected', () {
+    test('debug-only developer pages are never redirected', () {
       for (final step in GateStep.values) {
         expect(redirectFor(step, '/dev/sync'), isNull, reason: '$step');
+        expect(redirectFor(step, '/dev/gallery'), isNull, reason: '$step');
       }
+    });
+
+    test('diagnostics ships in release, so it is guarded', () {
+      expect(redirectFor(GateStep.signedOut, '/dev/diagnostics'), '/login');
+      expect(redirectFor(GateStep.locked, '/dev/diagnostics'), '/lock');
+      expect(redirectFor(GateStep.ready, '/dev/diagnostics'), isNull);
     });
   });
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:khata_core/khata_core.dart';
+import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/powersync_schema.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:powersync/powersync.dart';
@@ -42,13 +43,16 @@ void main() {
     String tenant = t1,
     bool Function(Permission) can = owner,
   }) => repo.write(
-    tenantId: tenant,
+    WriteContext(
+      tenantId: tenant,
+      userId: 'user-a',
+      deviceId: 'device-1',
+      deviceCode: 'W1',
+    ),
     scope: scope,
     scopeId: scopeId,
     key: key,
     value: value,
-    userId: 'user-a',
-    deviceId: 'device-1',
     can: can,
     // Each write a second later, so the audit log has a clear order.
     now: start.add(Duration(seconds: writes++)),

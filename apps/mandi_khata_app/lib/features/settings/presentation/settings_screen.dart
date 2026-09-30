@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
+import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
@@ -119,6 +120,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           MkTopBar(
             title: l10n.settingsTitle,
             subtitle: member?.tenantName,
+            languages: appLanguages,
+            language: Localizations.localeOf(context).languageCode,
+            onLanguage: (c) => ref.read(appLanguageProvider.notifier).set(c),
             actions: [
               const SyncStatusChip(),
               IconButton(

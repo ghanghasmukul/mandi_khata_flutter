@@ -1269,6 +1269,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'= ₹{amount} per 100 per month'**
   String settingRatePerMonth(String amount);
+
+  /// Account menu: change the UI language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get accountLanguage;
+
+  /// Account menu: open diagnostics (owner).
+  ///
+  /// In en, this message translates to:
+  /// **'Diagnostics'**
+  String get accountDiagnostics;
+
+  /// Diagnostics screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagnostics'**
+  String get diagnosticsTitle;
+
+  /// Shown to non-owners.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can open diagnostics.'**
+  String get diagnosticsOwnerOnly;
+
+  /// Status card title.
+  ///
+  /// In en, this message translates to:
+  /// **'This device'**
+  String get diagnosticsDatabase;
+
+  /// Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Device code'**
+  String get diagnosticsDeviceCode;
+
+  /// Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync connection'**
+  String get diagnosticsConnection;
+
+  /// Sync connected.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected'**
+  String get diagnosticsOnline;
+
+  /// Sync not connected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not connected'**
+  String get diagnosticsOffline;
+
+  /// Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Last sync'**
+  String get diagnosticsLastSync;
+
+  /// No sync yet.
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get diagnosticsNever;
+
+  /// Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes waiting to upload'**
+  String get diagnosticsQueued;
+
+  /// Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Local database size'**
+  String get diagnosticsDbSize;
+
+  /// Refresh button.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get diagnosticsRefresh;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes the server rejected'**
+  String get diagnosticsRejected;
+
+  /// Empty list.
+  ///
+  /// In en, this message translates to:
+  /// **'No rejected changes.'**
+  String get diagnosticsNoRejected;
+
+  /// Re-queue a rejected change.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get diagnosticsRetry;
+
+  /// Forget a rejected change.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard'**
+  String get diagnosticsDiscard;
+
+  /// Toast after retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Queued for upload again'**
+  String get diagnosticsRequeued;
+
+  /// Retry not possible.
+  ///
+  /// In en, this message translates to:
+  /// **'This change can\'t be sent again. Discard it instead.'**
+  String get diagnosticsNotRetryable;
 }
 
 class _AppLocalizationsDelegate

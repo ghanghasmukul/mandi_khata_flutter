@@ -230,7 +230,7 @@ final class SyncErrorsProvider
   }
 }
 
-String _$syncErrorsHash() => r'c536493be99fd7af71222bb5c06d2562dd9abc80';
+String _$syncErrorsHash() => r'de8b15c32911efb356a7c45797bba01d9402377e';
 
 /// What the top-bar chip shows. Null while the database is still opening.
 

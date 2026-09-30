@@ -663,4 +663,65 @@ class AppLocalizationsPa extends AppLocalizations {
   String settingRatePerMonth(String amount) {
     return '= ₹$amount ਪ੍ਰਤੀ 100 ਪ੍ਰਤੀ ਮਹੀਨਾ';
   }
+
+  @override
+  String get accountLanguage => 'ਭਾਸ਼ਾ';
+
+  @override
+  String get accountDiagnostics => 'ਡਾਇਗਨੌਸਟਿਕਸ';
+
+  @override
+  String get diagnosticsTitle => 'ਡਾਇਗਨੌਸਟਿਕਸ';
+
+  @override
+  String get diagnosticsOwnerOnly => 'ਡਾਇਗਨੌਸਟਿਕਸ ਸਿਰਫ਼ ਮਾਲਕ ਖੋਲ੍ਹ ਸਕਦੇ ਹਨ।';
+
+  @override
+  String get diagnosticsDatabase => 'ਇਹ ਡਿਵਾਈਸ';
+
+  @override
+  String get diagnosticsDeviceCode => 'ਡਿਵਾਈਸ ਕੋਡ';
+
+  @override
+  String get diagnosticsConnection => 'ਸਿੰਕ ਕਨੈਕਸ਼ਨ';
+
+  @override
+  String get diagnosticsOnline => 'ਜੁੜਿਆ ਹੈ';
+
+  @override
+  String get diagnosticsOffline => 'ਜੁੜਿਆ ਨਹੀਂ';
+
+  @override
+  String get diagnosticsLastSync => 'ਆਖਰੀ ਸਿੰਕ';
+
+  @override
+  String get diagnosticsNever => 'ਕਦੇ ਨਹੀਂ';
+
+  @override
+  String get diagnosticsQueued => 'ਅੱਪਲੋਡ ਲਈ ਬਾਕੀ ਬਦਲਾਅ';
+
+  @override
+  String get diagnosticsDbSize => 'ਲੋਕਲ ਡੇਟਾਬੇਸ ਦਾ ਆਕਾਰ';
+
+  @override
+  String get diagnosticsRefresh => 'ਰਿਫ੍ਰੈਸ਼ ਕਰੋ';
+
+  @override
+  String get diagnosticsRejected => 'ਸਰਵਰ ਨੇ ਜੋ ਬਦਲਾਅ ਨਹੀਂ ਮੰਨੇ';
+
+  @override
+  String get diagnosticsNoRejected => 'ਕੋਈ ਬਦਲਾਅ ਰੱਦ ਨਹੀਂ ਹੋਇਆ।';
+
+  @override
+  String get diagnosticsRetry => 'ਫਿਰ ਭੇਜੋ';
+
+  @override
+  String get diagnosticsDiscard => 'ਹਟਾਓ';
+
+  @override
+  String get diagnosticsRequeued => 'ਮੁੜ ਅੱਪਲੋਡ ਲਈ ਰੱਖਿਆ ਗਿਆ';
+
+  @override
+  String get diagnosticsNotRetryable =>
+      'ਇਹ ਬਦਲਾਅ ਦੁਬਾਰਾ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਦਾ। ਇਸ ਨੂੰ ਹਟਾ ਦਿਓ।';
 }

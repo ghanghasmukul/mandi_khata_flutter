@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:khata_core/khata_core.dart';
 import 'package:logging/logging.dart';
+import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:powersync/powersync.dart';
 import 'package:uuid/uuid.dart';
 
@@ -111,16 +112,14 @@ class SettingsRepository {
 
   /// Sets [key] at [scope] / [scopeId] to [value] (null = back to
   /// inherited). Validates against the schema, checks [can] and writes the
-  /// row and its audit entry in one local transaction.
-  Future<SettingWriteFailure?> write({
-    required String tenantId,
+  /// row and its audit entry ([AuditWriter]) in one local transaction.
+  Future<SettingWriteFailure?> write(
+    WriteContext ctx, {
     required SettingScope scope,
     required String key,
     required Object? value,
-    required String userId,
     required bool Function(Permission) can,
     String? scopeId,
-    String? deviceId,
     DateTime? now,
   }) async {
     assert(
@@ -134,7 +133,10 @@ class SettingsRepository {
     if (error != null) return InvalidSettingValue(error);
     if (!canWriteSetting(key, scope, can)) return const SettingNotPermitted();
 
-    final at = (now ?? DateTime.now()).toUtc().toIso8601String();
+    final tenantId = ctx.tenantId;
+    final userId = ctx.userId;
+    final when = now ?? DateTime.now();
+    final at = when.toUtc().toIso8601String();
     final json = value == null ? null : jsonEncode(value);
     await _db.writeTransaction((tx) async {
       final existing = await tx.getOptional(
@@ -173,33 +175,23 @@ class SettingsRepository {
         );
       }
 
-      // Audit in the same transaction (CLAUDE.md rule 8). Step 0.7 moves
-      // this into the shared AuditWriter.
       Map<String, Object?> snapshot(String? v) => {
         'scope': scope.dbName,
         'scope_id': scopeId,
         'key': key,
         'value': v == null ? null : jsonDecode(v),
       };
-      await tx.execute(
-        'INSERT INTO audit_log (id, tenant_id, table_name, row_id, action, '
-        'before, after, user_id, device_id, created_at) '
-        'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        [
-          const Uuid().v4(),
-          tenantId,
-          'settings',
-          rowId,
-          if (existing == null) 'insert' else 'update',
-          if (existing == null)
-            null
-          else
-            jsonEncode(snapshot(existing['value'] as String?)),
-          jsonEncode(snapshot(json)),
-          userId,
-          deviceId,
-          at,
-        ],
+      await AuditWriter.record(
+        tx,
+        ctx,
+        table: 'settings',
+        rowId: rowId,
+        action: existing == null ? AuditAction.insert : AuditAction.update,
+        before: existing == null
+            ? null
+            : snapshot(existing['value'] as String?),
+        after: snapshot(json),
+        at: when,
       );
     });
     return null;

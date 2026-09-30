@@ -39,6 +39,7 @@ dependencies:
   # supports it — see docs/decisions.md (2026-09-30).
   shared_preferences: ^2.5.5
   sqlite3_web: 0.9.4
+  sqlite_async: ^0.14.5
   supabase_flutter: ^2.17.2
   uuid: ^4.6.0
 

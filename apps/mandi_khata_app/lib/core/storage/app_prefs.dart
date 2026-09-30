@@ -30,6 +30,10 @@ class AppPrefs {
   static const _pinFailures = '${_prefix}pinFailures';
   static const _pinCooldownUntil = '${_prefix}pinCooldownUntil';
 
+  /// Device-level UI choices survive sign-out, so they use another prefix
+  /// that [clearAll] leaves alone.
+  static const _uiLanguage = 'ui.language';
+
   /// The user whose data is in the local database. A different user signing
   /// in on this install starts from an empty database.
   String? get dataOwnerUserId => _prefs.getString(_dataOwner);
@@ -92,7 +96,14 @@ class AppPrefs {
     }
   }
 
-  /// Forgets everything above (sign-out, or another user signing in).
+  /// Language picked on this install (`en` / `hi` / `pa`), or null to
+  /// follow the profile / device.
+  String? get uiLanguage => _prefs.getString(_uiLanguage);
+  Future<void> setUiLanguage(String code) =>
+      _prefs.setString(_uiLanguage, code);
+
+  /// Forgets everything above except the UI language (sign-out, or another
+  /// user signing in).
   Future<void> clearAll() async {
     for (final key in _prefs.getKeys().toList()) {
       if (key.startsWith(_prefix)) await _prefs.remove(key);

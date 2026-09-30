@@ -104,7 +104,7 @@ flutter run -d windows
       ```
       A phone user appears in `auth.users` after their first OTP sign-in; until they are a member the app shows "No business linked yet".
 4. **Razorpay** (Phase 5 only): test-mode keys.
-5. **Sentry** (optional, Phase 0.7): a Flutter project DSN.
+5. **Sentry** (optional, Phase 0.7): create a Flutter project (region EU or US) and put its DSN in `.env.dev` as `SENTRY_DSN=...`. Leave it blank to keep error reporting off. Events carry only the business id and device code as tags, never names, phones or emails.
 
 The app always talks to these **online** services via `.env.dev`. That is the normal development path.
 

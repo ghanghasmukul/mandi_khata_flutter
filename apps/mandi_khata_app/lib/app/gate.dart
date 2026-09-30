@@ -43,13 +43,18 @@ abstract final class GateRoutes {
   static const lock = '/lock';
   static const selectTenant = '/select-tenant';
   static const setPin = '/set-pin';
+
+  /// Developer pages that exist only in debug builds and work signed out.
+  static const debugOnly = {'/dev/gallery', '/dev/sync'};
 }
 
 /// The go_router redirect: null to stay, else where to go.
 ///
-/// Developer pages (`/dev/…`, debug builds only) are never redirected.
+/// Debug-only developer pages ([GateRoutes.debugOnly]) are never
+/// redirected; `/dev/diagnostics` ships in release and is guarded like any
+/// other page.
 String? redirectFor(GateStep step, String location) {
-  if (location.startsWith('/dev/')) return null;
+  if (GateRoutes.debugOnly.contains(location)) return null;
   final required = switch (step) {
     GateStep.starting => GateRoutes.splash,
     GateStep.signedOut => GateRoutes.login,

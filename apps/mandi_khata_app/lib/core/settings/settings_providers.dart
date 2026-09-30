@@ -1,5 +1,5 @@
 import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/core/auth/session.dart';
+import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
@@ -66,23 +66,17 @@ class SettingsWriter {
     required Object? value,
     String? scopeId,
   }) async {
-    final tenantId = _ref.read(activeTenantProvider);
-    final session = _ref.read(sessionProvider);
-    final member = _ref.read(activeMembershipProvider);
-    if (tenantId == null || session is! SignedIn || member == null) {
-      return const SettingNotPermitted();
-    }
     // Read everything before the first await.
-    final deviceId = _ref.read(activeDeviceProvider)?.id;
+    final ctx = _ref.read(writeContextProvider);
+    final member = _ref.read(activeMembershipProvider);
+    if (ctx == null || member == null) return const SettingNotPermitted();
     final repo = await _ref.read(settingsRepositoryProvider.future);
     return await repo.write(
-      tenantId: tenantId,
+      ctx,
       scope: scope,
       scopeId: scopeId,
       key: key,
       value: value,
-      userId: session.user.id,
-      deviceId: deviceId,
       can: member.can,
     );
   }

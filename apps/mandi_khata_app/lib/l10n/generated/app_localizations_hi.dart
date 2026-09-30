@@ -661,4 +661,66 @@ class AppLocalizationsHi extends AppLocalizations {
   String settingRatePerMonth(String amount) {
     return '= ₹$amount प्रति 100 प्रति माह';
   }
+
+  @override
+  String get accountLanguage => 'भाषा';
+
+  @override
+  String get accountDiagnostics => 'डायग्नोस्टिक्स';
+
+  @override
+  String get diagnosticsTitle => 'डायग्नोस्टिक्स';
+
+  @override
+  String get diagnosticsOwnerOnly =>
+      'डायग्नोस्टिक्स सिर्फ़ मालिक खोल सकते हैं।';
+
+  @override
+  String get diagnosticsDatabase => 'यह डिवाइस';
+
+  @override
+  String get diagnosticsDeviceCode => 'डिवाइस कोड';
+
+  @override
+  String get diagnosticsConnection => 'सिंक कनेक्शन';
+
+  @override
+  String get diagnosticsOnline => 'जुड़ा है';
+
+  @override
+  String get diagnosticsOffline => 'जुड़ा नहीं';
+
+  @override
+  String get diagnosticsLastSync => 'आख़िरी सिंक';
+
+  @override
+  String get diagnosticsNever => 'कभी नहीं';
+
+  @override
+  String get diagnosticsQueued => 'अपलोड के लिए बचे बदलाव';
+
+  @override
+  String get diagnosticsDbSize => 'लोकल डेटाबेस का आकार';
+
+  @override
+  String get diagnosticsRefresh => 'रिफ़्रेश करें';
+
+  @override
+  String get diagnosticsRejected => 'सर्वर ने जो बदलाव नहीं माने';
+
+  @override
+  String get diagnosticsNoRejected => 'कोई बदलाव अस्वीकार नहीं हुआ।';
+
+  @override
+  String get diagnosticsRetry => 'फिर भेजें';
+
+  @override
+  String get diagnosticsDiscard => 'हटाएँ';
+
+  @override
+  String get diagnosticsRequeued => 'फिर से अपलोड के लिए रखा गया';
+
+  @override
+  String get diagnosticsNotRetryable =>
+      'यह बदलाव दोबारा नहीं भेजा जा सकता। इसे हटा दें।';
 }

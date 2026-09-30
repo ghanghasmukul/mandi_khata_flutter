@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/auth/auth_repository.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
+import 'package:mandi_khata_app/shared/language_switcher.dart';
 import 'package:mk_ui/mk_ui.dart';
 
 /// Centred brand + card layout shared by the login, business picker, PIN
@@ -33,6 +34,11 @@ class AuthLayout extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: AppLanguageSwitcher(),
+                  ),
+                  const SizedBox(height: MkSpacing.md),
                   const Center(
                     child: MkSidebarBrand(
                       appName: 'Mandi Khata',
