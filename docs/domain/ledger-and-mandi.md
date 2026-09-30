@@ -63,13 +63,19 @@ net_to_farmer     = gross − farmer_deductions
 
 ## Roles & permissions (defaults; editable per tenant)
 
-| Permission | Owner | Accountant | Munshi |
-|---|---|---|---|
-| View/add parties | ✓ | ✓ | ✓ |
-| Arrivals, lots | ✓ | ✓ | ✓ |
-| Payments (create) | ✓ | ✓ | ✓ (limit configurable) |
-| Edit / reverse past entries | ✓ | ✓ | ✗ |
-| Issue karza, change interest | ✓ | ✗ | ✗ |
-| Bank details, profit, reports export | ✓ | ✓ | ✗ |
-| Modules, users, subscription | ✓ | ✗ | ✗ |
-| Delete master data | ✓ | ✗ | ✗ |
+| Permission | Key | Owner | Accountant | Munshi |
+|---|---|---|---|---|
+| View/add parties | `parties.manage` | ✓ | ✓ | ✓ |
+| Arrivals, lots | `arrivals.manage` | ✓ | ✓ | ✓ |
+| Payments (create) | `payments.create` | ✓ | ✓ | ✓ (limit configurable) |
+| Edit / reverse past entries | `entries.reverse` | ✓ | ✓ | ✗ |
+| Issue karza, change interest | `loans.manage` | ✓ | ✗ | ✗ |
+| Bank details, profit, reports export | `finance.view` | ✓ | ✓ | ✗ |
+| Modules, users, subscription | `admin.manage` | ✓ | ✗ | ✗ |
+| Delete master data | `master.delete` | ✓ | ✗ | ✗ |
+| Business-wide settings (tenant / party-group scope) | `settings.manage` | ✓ | ✗ | ✗ |
+| View the audit log | `audit.view` | ✓ | ✗ | ✗ |
+
+- The key is what `tenant_members.custom_permissions` and the SQL `private.has_permission()` use. `custom_permissions` is `{"<key>": true|false}` and overrides the role default for that member; a `custom` role starts with nothing.
+- Owners always have every permission (custom entries cannot lock an owner out), and a business must keep at least one active owner.
+- Settings: `interest.*` keys need `loans.manage` at every scope; other keys need `settings.manage` at tenant / party-group scope and only membership at party / document scope.

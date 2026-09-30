@@ -14,7 +14,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 ## Phase 0: Foundation
 - [x] 0.1 Monorepo scaffold (2026-09-29): pub workspace + app/khata_core/mk_ui, very_good_analysis clean, 3 tests pass, `flutter build web` OK. Manual run on macOS/Chrome/emulator still to be confirmed by user.
 - [x] 0.2 Design system (mk_ui) (2026-09-29): tokens, light theme + dark stub, bundled offline fonts (Plex Sans/Mono, Noto Devanagari/Gurmukhi), 15 widgets + responsive MkAppShell (sidebar ≥1000 / rail 600–999 / bottom <600, Ctrl/⌘K), `Money` format/short/tryParse in khata_core, `/dev/gallery` (debug only). 80 tests pass; web, macOS and debug APK build.
-- [ ] 0.3 Supabase schema: tenancy, users, settings, audit, parties
+- [x] 0.3 Supabase schema: tenancy, users, settings, audit, parties (2026-09-30): 2 migrations, 9 tables with RLS, `private.auth_tenant_ids()` / `has_permission()`, `register_device()`, append-only audit log, seed (2 businesses × 3 users × 12 parties). 63 pgTAP tests pass locally, db lint clean, pushed to dev; advisors: 1 accepted warning, 9 unused-index infos (see decisions.md).
 - [ ] 0.4 PowerSync sync rules + local database (🧑 paste sync rules into PowerSync dashboard / deploy via CLI)
 - [ ] 0.5 Auth, tenant selection, devices (🧑 enable Phone auth + SMS provider in Supabase dashboard)
 - [ ] 0.6 Settings cascade + permissions
