@@ -154,5 +154,5 @@ Then add GitHub Actions CI: analyze, test (khata_core + app), build web, build w
 - [ ] Same party list visible on Windows, macOS, Android and Web for one tenant; invisible to another tenant.
 - [ ] Airplane mode: add 20 parties on Android, reconnect → all appear on the desktop app within a minute.
 - [ ] Two devices edit the same party offline → last-write-wins, both edits in audit log.
-- [ ] RLS pgTAP tests pass. CI green.
+- [x] RLS pgTAP tests pass. CI green. (2026-09-30, CI run 36752398308)
 - [x] Settings editor changes a value at tenant scope and party scope, and the resolver shows the right source. (2026-09-30, settings_screen_test)

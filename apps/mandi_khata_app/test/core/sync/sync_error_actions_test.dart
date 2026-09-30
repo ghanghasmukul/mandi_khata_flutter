@@ -103,4 +103,117 @@ void main() {
     expect(await actions.retry('missing'), RetryResult.notRetryable);
     expect(await queued(), 0);
   });
+
+  group('a rejected transaction is one batch', () {
+    Future<void> rejectBatch(
+      List<(String table, String rowId, String op, Map<String, Object?>)> rows,
+    ) async {
+      for (final (i, (table, rowId, op, data)) in rows.indexed) {
+        await db.execute(
+          'INSERT INTO sync_errors (id, table_name, row_id, op, op_data, '
+          'error_code, message, created_at, batch_id, batch_seq) '
+          'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+          [
+            'b$i',
+            table,
+            rowId,
+            op,
+            jsonEncode(data),
+            '42501',
+            'row-level security',
+            '2026-09-30T10:00:00Z',
+            'batch-1',
+            i,
+          ],
+        );
+      }
+    }
+
+    final party = (
+      'parties',
+      'p1',
+      'PUT',
+      <String, Object?>{'tenant_id': tenant, 'code': 'F-1', 'name': 'Ram'},
+    );
+    final partyEdit = (
+      'parties',
+      'p1',
+      'PATCH',
+      <String, Object?>{'village': 'Mansa'},
+    );
+    final entry = (
+      'ledger_entries',
+      'l1',
+      'PUT',
+      <String, Object?>{
+        'tenant_id': tenant,
+        'party_id': 'p1',
+        'entry_date': '2026-04-01',
+        'side': 'udhaar',
+        'amount_paise': 125000,
+        'ref_type': 'opening_balance',
+        'created_at': '2026-09-30T10:00:00Z',
+      },
+    );
+
+    test(
+      'retry re-queues every change, in order, as one transaction',
+      () async {
+        await rejectBatch([party, partyEdit, entry]);
+
+        expect(await actions.retry('b2'), RetryResult.requeued);
+
+        expect(await db.getAll('SELECT * FROM sync_errors'), isEmpty);
+        final row = await db.get('SELECT * FROM parties WHERE id = ?', ['p1']);
+        expect((row['name'], row['village']), ('Ram', 'Mansa'));
+        final crud = await db.getAll('SELECT tx_id, data FROM ps_crud');
+        expect(
+          crud.map((c) => (jsonDecode(c['data']! as String) as Map)['type']),
+          ['parties', 'parties', 'ledger_entries'],
+        );
+        expect(crud.map((c) => c['tx_id']).toSet(), hasLength(1));
+      },
+    );
+
+    test('discard forgets the whole batch', () async {
+      await rejectBatch([party, entry]);
+      await actions.discard('b0');
+      expect(await db.getAll('SELECT * FROM sync_errors'), isEmpty);
+      expect(await queued(), 0);
+    });
+
+    test('one change that cannot be retried keeps the whole batch', () async {
+      await rejectBatch([
+        party,
+        ('parties', 'p9', 'DELETE', <String, Object?>{'x': 1}),
+      ]);
+      expect(await actions.retry('b0'), RetryResult.notRetryable);
+      expect(await db.getAll('SELECT * FROM sync_errors'), hasLength(2));
+      expect(await db.getAll('SELECT * FROM parties'), isEmpty);
+      expect(await queued(), 0);
+    });
+
+    test('an append-only row still on this device waits for a sync', () async {
+      await db.execute(
+        'INSERT INTO ledger_entries (id, tenant_id, party_id, entry_date, '
+        'side, amount_paise, ref_type, created_at) '
+        'VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        [
+          'l1',
+          tenant,
+          'p1',
+          '2026-04-01',
+          'udhaar',
+          125000,
+          'opening_balance',
+          '2026-09-30T10:00:00Z',
+        ],
+      );
+      await db.execute('DELETE FROM ps_crud');
+      await rejectBatch([entry]);
+
+      expect(await actions.retry('b0'), RetryResult.notRetryable);
+      expect(await queued(), 0);
+    });
+  });
 }

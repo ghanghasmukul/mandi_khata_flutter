@@ -168,6 +168,28 @@ class NumberSeries extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+@DataClassName('LedgerEntryRow')
+class LedgerEntries extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get partyId => text()();
+  TextColumn get entryDate => text()();
+  TextColumn get side => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get refType => text()();
+  TextColumn get refId => text().nullable()();
+  TextColumn get narration => text().nullable()();
+  TextColumn get reversesId => text().nullable()();
+  TextColumn get replacesId => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text()();
+  TextColumn get receivedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 /// Local-only: uploads the server rejected permanently.
 class SyncErrors extends Table {
   TextColumn get id => text()();
@@ -178,6 +200,8 @@ class SyncErrors extends Table {
   TextColumn get errorCode => text().nullable()();
   TextColumn get message => text()();
   TextColumn get createdAt => text()();
+  TextColumn get batchId => text().nullable()();
+  IntColumn get batchSeq => integer().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};

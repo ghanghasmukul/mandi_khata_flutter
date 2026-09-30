@@ -23,7 +23,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [ ] Phase 0 review (`/phase-review 0`) + 🧑 manual offline test on a real Android phone — review run 2026-09-30, see docs/reviews/phase-0.md; open: Windows CI, phone + two-device tests
 
 ## Phase 1: Core Mandi Khata (MVP)
-- [ ] 1.1 Ledger core
+- [x] 1.1 Ledger core (2026-09-30): khata_core ledger (LedgerDate, entry, calculator, statement with running baki, reversal / correction builder, posting permissions; ledger.dart 100%), append-only `ledger_entries` (no update/delete, mirrored reversals, reversed once, own-device check, server received_at, per-ref-type RLS), `apply_crud_transaction` all-or-nothing uploads with batch retry/discard (review R3), LedgerRepository (append/post/reverse/correct, live statement + balances, audited). khata_core 181, app 229, pgTAP 99; pushed to dev; advisors: FK indexes fixed, only unused-index infos. 🧑 deploy updated sync streams in PowerSync.
 - [ ] 1.2 Crops & mandi charge settings
 - [ ] 1.3 Arrivals & lots
 - [ ] 1.4 Khata screens

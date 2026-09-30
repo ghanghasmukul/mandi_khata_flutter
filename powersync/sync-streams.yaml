@@ -27,6 +27,7 @@ streams:
       - SELECT * FROM parties WHERE tenant_id IN my_tenants
       - SELECT * FROM party_roles WHERE tenant_id IN my_tenants
       - SELECT * FROM number_series WHERE tenant_id IN my_tenants
+      - SELECT * FROM ledger_entries WHERE tenant_id IN my_tenants
 
   # Names of the people you work with (users screen, audit log, receipts).
   team_profiles:

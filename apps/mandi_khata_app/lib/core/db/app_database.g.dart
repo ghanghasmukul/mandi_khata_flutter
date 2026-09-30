@@ -5979,6 +5979,868 @@ class NumberSeriesCompanion extends UpdateCompanion<NumberSeriesRow> {
   }
 }
 
+class $LedgerEntriesTable extends LedgerEntries
+    with TableInfo<$LedgerEntriesTable, LedgerEntryRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LedgerEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sideMeta = const VerificationMeta('side');
+  @override
+  late final GeneratedColumn<String> side = GeneratedColumn<String>(
+    'side',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountPaiseMeta = const VerificationMeta(
+    'amountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> amountPaise = GeneratedColumn<int>(
+    'amount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refTypeMeta = const VerificationMeta(
+    'refType',
+  );
+  @override
+  late final GeneratedColumn<String> refType = GeneratedColumn<String>(
+    'ref_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refIdMeta = const VerificationMeta('refId');
+  @override
+  late final GeneratedColumn<String> refId = GeneratedColumn<String>(
+    'ref_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _narrationMeta = const VerificationMeta(
+    'narration',
+  );
+  @override
+  late final GeneratedColumn<String> narration = GeneratedColumn<String>(
+    'narration',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reversesIdMeta = const VerificationMeta(
+    'reversesId',
+  );
+  @override
+  late final GeneratedColumn<String> reversesId = GeneratedColumn<String>(
+    'reverses_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _replacesIdMeta = const VerificationMeta(
+    'replacesId',
+  );
+  @override
+  late final GeneratedColumn<String> replacesId = GeneratedColumn<String>(
+    'replaces_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _receivedAtMeta = const VerificationMeta(
+    'receivedAt',
+  );
+  @override
+  late final GeneratedColumn<String> receivedAt = GeneratedColumn<String>(
+    'received_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    partyId,
+    entryDate,
+    side,
+    amountPaise,
+    refType,
+    refId,
+    narration,
+    reversesId,
+    replacesId,
+    deviceId,
+    createdBy,
+    createdAt,
+    receivedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'ledger_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LedgerEntryRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyIdMeta);
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('side')) {
+      context.handle(
+        _sideMeta,
+        side.isAcceptableOrUnknown(data['side']!, _sideMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sideMeta);
+    }
+    if (data.containsKey('amount_paise')) {
+      context.handle(
+        _amountPaiseMeta,
+        amountPaise.isAcceptableOrUnknown(
+          data['amount_paise']!,
+          _amountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountPaiseMeta);
+    }
+    if (data.containsKey('ref_type')) {
+      context.handle(
+        _refTypeMeta,
+        refType.isAcceptableOrUnknown(data['ref_type']!, _refTypeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_refTypeMeta);
+    }
+    if (data.containsKey('ref_id')) {
+      context.handle(
+        _refIdMeta,
+        refId.isAcceptableOrUnknown(data['ref_id']!, _refIdMeta),
+      );
+    }
+    if (data.containsKey('narration')) {
+      context.handle(
+        _narrationMeta,
+        narration.isAcceptableOrUnknown(data['narration']!, _narrationMeta),
+      );
+    }
+    if (data.containsKey('reverses_id')) {
+      context.handle(
+        _reversesIdMeta,
+        reversesId.isAcceptableOrUnknown(data['reverses_id']!, _reversesIdMeta),
+      );
+    }
+    if (data.containsKey('replaces_id')) {
+      context.handle(
+        _replacesIdMeta,
+        replacesId.isAcceptableOrUnknown(data['replaces_id']!, _replacesIdMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('received_at')) {
+      context.handle(
+        _receivedAtMeta,
+        receivedAt.isAcceptableOrUnknown(data['received_at']!, _receivedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LedgerEntryRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LedgerEntryRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      side: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}side'],
+      )!,
+      amountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_paise'],
+      )!,
+      refType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_type'],
+      )!,
+      refId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_id'],
+      ),
+      narration: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}narration'],
+      ),
+      reversesId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reverses_id'],
+      ),
+      replacesId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}replaces_id'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      )!,
+      receivedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}received_at'],
+      ),
+    );
+  }
+
+  @override
+  $LedgerEntriesTable createAlias(String alias) {
+    return $LedgerEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class LedgerEntryRow extends DataClass implements Insertable<LedgerEntryRow> {
+  final String id;
+  final String tenantId;
+  final String partyId;
+  final String entryDate;
+  final String side;
+  final int amountPaise;
+  final String refType;
+  final String? refId;
+  final String? narration;
+  final String? reversesId;
+  final String? replacesId;
+  final String? deviceId;
+  final String? createdBy;
+  final String createdAt;
+  final String? receivedAt;
+  const LedgerEntryRow({
+    required this.id,
+    required this.tenantId,
+    required this.partyId,
+    required this.entryDate,
+    required this.side,
+    required this.amountPaise,
+    required this.refType,
+    this.refId,
+    this.narration,
+    this.reversesId,
+    this.replacesId,
+    this.deviceId,
+    this.createdBy,
+    required this.createdAt,
+    this.receivedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['party_id'] = Variable<String>(partyId);
+    map['entry_date'] = Variable<String>(entryDate);
+    map['side'] = Variable<String>(side);
+    map['amount_paise'] = Variable<int>(amountPaise);
+    map['ref_type'] = Variable<String>(refType);
+    if (!nullToAbsent || refId != null) {
+      map['ref_id'] = Variable<String>(refId);
+    }
+    if (!nullToAbsent || narration != null) {
+      map['narration'] = Variable<String>(narration);
+    }
+    if (!nullToAbsent || reversesId != null) {
+      map['reverses_id'] = Variable<String>(reversesId);
+    }
+    if (!nullToAbsent || replacesId != null) {
+      map['replaces_id'] = Variable<String>(replacesId);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    map['created_at'] = Variable<String>(createdAt);
+    if (!nullToAbsent || receivedAt != null) {
+      map['received_at'] = Variable<String>(receivedAt);
+    }
+    return map;
+  }
+
+  LedgerEntriesCompanion toCompanion(bool nullToAbsent) {
+    return LedgerEntriesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      partyId: Value(partyId),
+      entryDate: Value(entryDate),
+      side: Value(side),
+      amountPaise: Value(amountPaise),
+      refType: Value(refType),
+      refId: refId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(refId),
+      narration: narration == null && nullToAbsent
+          ? const Value.absent()
+          : Value(narration),
+      reversesId: reversesId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversesId),
+      replacesId: replacesId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(replacesId),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: Value(createdAt),
+      receivedAt: receivedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(receivedAt),
+    );
+  }
+
+  factory LedgerEntryRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LedgerEntryRow(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      side: serializer.fromJson<String>(json['side']),
+      amountPaise: serializer.fromJson<int>(json['amountPaise']),
+      refType: serializer.fromJson<String>(json['refType']),
+      refId: serializer.fromJson<String?>(json['refId']),
+      narration: serializer.fromJson<String?>(json['narration']),
+      reversesId: serializer.fromJson<String?>(json['reversesId']),
+      replacesId: serializer.fromJson<String?>(json['replacesId']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String>(json['createdAt']),
+      receivedAt: serializer.fromJson<String?>(json['receivedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'partyId': serializer.toJson<String>(partyId),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'side': serializer.toJson<String>(side),
+      'amountPaise': serializer.toJson<int>(amountPaise),
+      'refType': serializer.toJson<String>(refType),
+      'refId': serializer.toJson<String?>(refId),
+      'narration': serializer.toJson<String?>(narration),
+      'reversesId': serializer.toJson<String?>(reversesId),
+      'replacesId': serializer.toJson<String?>(replacesId),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String>(createdAt),
+      'receivedAt': serializer.toJson<String?>(receivedAt),
+    };
+  }
+
+  LedgerEntryRow copyWith({
+    String? id,
+    String? tenantId,
+    String? partyId,
+    String? entryDate,
+    String? side,
+    int? amountPaise,
+    String? refType,
+    Value<String?> refId = const Value.absent(),
+    Value<String?> narration = const Value.absent(),
+    Value<String?> reversesId = const Value.absent(),
+    Value<String?> replacesId = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    String? createdAt,
+    Value<String?> receivedAt = const Value.absent(),
+  }) => LedgerEntryRow(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    partyId: partyId ?? this.partyId,
+    entryDate: entryDate ?? this.entryDate,
+    side: side ?? this.side,
+    amountPaise: amountPaise ?? this.amountPaise,
+    refType: refType ?? this.refType,
+    refId: refId.present ? refId.value : this.refId,
+    narration: narration.present ? narration.value : this.narration,
+    reversesId: reversesId.present ? reversesId.value : this.reversesId,
+    replacesId: replacesId.present ? replacesId.value : this.replacesId,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt ?? this.createdAt,
+    receivedAt: receivedAt.present ? receivedAt.value : this.receivedAt,
+  );
+  LedgerEntryRow copyWithCompanion(LedgerEntriesCompanion data) {
+    return LedgerEntryRow(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      side: data.side.present ? data.side.value : this.side,
+      amountPaise: data.amountPaise.present
+          ? data.amountPaise.value
+          : this.amountPaise,
+      refType: data.refType.present ? data.refType.value : this.refType,
+      refId: data.refId.present ? data.refId.value : this.refId,
+      narration: data.narration.present ? data.narration.value : this.narration,
+      reversesId: data.reversesId.present
+          ? data.reversesId.value
+          : this.reversesId,
+      replacesId: data.replacesId.present
+          ? data.replacesId.value
+          : this.replacesId,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      receivedAt: data.receivedAt.present
+          ? data.receivedAt.value
+          : this.receivedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerEntryRow(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('partyId: $partyId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('side: $side, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('narration: $narration, ')
+          ..write('reversesId: $reversesId, ')
+          ..write('replacesId: $replacesId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('receivedAt: $receivedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    partyId,
+    entryDate,
+    side,
+    amountPaise,
+    refType,
+    refId,
+    narration,
+    reversesId,
+    replacesId,
+    deviceId,
+    createdBy,
+    createdAt,
+    receivedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LedgerEntryRow &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.partyId == this.partyId &&
+          other.entryDate == this.entryDate &&
+          other.side == this.side &&
+          other.amountPaise == this.amountPaise &&
+          other.refType == this.refType &&
+          other.refId == this.refId &&
+          other.narration == this.narration &&
+          other.reversesId == this.reversesId &&
+          other.replacesId == this.replacesId &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.receivedAt == this.receivedAt);
+}
+
+class LedgerEntriesCompanion extends UpdateCompanion<LedgerEntryRow> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> partyId;
+  final Value<String> entryDate;
+  final Value<String> side;
+  final Value<int> amountPaise;
+  final Value<String> refType;
+  final Value<String?> refId;
+  final Value<String?> narration;
+  final Value<String?> reversesId;
+  final Value<String?> replacesId;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String> createdAt;
+  final Value<String?> receivedAt;
+  final Value<int> rowid;
+  const LedgerEntriesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.side = const Value.absent(),
+    this.amountPaise = const Value.absent(),
+    this.refType = const Value.absent(),
+    this.refId = const Value.absent(),
+    this.narration = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.replacesId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.receivedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LedgerEntriesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String partyId,
+    required String entryDate,
+    required String side,
+    required int amountPaise,
+    required String refType,
+    this.refId = const Value.absent(),
+    this.narration = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.replacesId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    required String createdAt,
+    this.receivedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       partyId = Value(partyId),
+       entryDate = Value(entryDate),
+       side = Value(side),
+       amountPaise = Value(amountPaise),
+       refType = Value(refType),
+       createdAt = Value(createdAt);
+  static Insertable<LedgerEntryRow> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? partyId,
+    Expression<String>? entryDate,
+    Expression<String>? side,
+    Expression<int>? amountPaise,
+    Expression<String>? refType,
+    Expression<String>? refId,
+    Expression<String>? narration,
+    Expression<String>? reversesId,
+    Expression<String>? replacesId,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? receivedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (partyId != null) 'party_id': partyId,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (side != null) 'side': side,
+      if (amountPaise != null) 'amount_paise': amountPaise,
+      if (refType != null) 'ref_type': refType,
+      if (refId != null) 'ref_id': refId,
+      if (narration != null) 'narration': narration,
+      if (reversesId != null) 'reverses_id': reversesId,
+      if (replacesId != null) 'replaces_id': replacesId,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (receivedAt != null) 'received_at': receivedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LedgerEntriesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? partyId,
+    Value<String>? entryDate,
+    Value<String>? side,
+    Value<int>? amountPaise,
+    Value<String>? refType,
+    Value<String?>? refId,
+    Value<String?>? narration,
+    Value<String?>? reversesId,
+    Value<String?>? replacesId,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String>? createdAt,
+    Value<String?>? receivedAt,
+    Value<int>? rowid,
+  }) {
+    return LedgerEntriesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      partyId: partyId ?? this.partyId,
+      entryDate: entryDate ?? this.entryDate,
+      side: side ?? this.side,
+      amountPaise: amountPaise ?? this.amountPaise,
+      refType: refType ?? this.refType,
+      refId: refId ?? this.refId,
+      narration: narration ?? this.narration,
+      reversesId: reversesId ?? this.reversesId,
+      replacesId: replacesId ?? this.replacesId,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      receivedAt: receivedAt ?? this.receivedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (side.present) {
+      map['side'] = Variable<String>(side.value);
+    }
+    if (amountPaise.present) {
+      map['amount_paise'] = Variable<int>(amountPaise.value);
+    }
+    if (refType.present) {
+      map['ref_type'] = Variable<String>(refType.value);
+    }
+    if (refId.present) {
+      map['ref_id'] = Variable<String>(refId.value);
+    }
+    if (narration.present) {
+      map['narration'] = Variable<String>(narration.value);
+    }
+    if (reversesId.present) {
+      map['reverses_id'] = Variable<String>(reversesId.value);
+    }
+    if (replacesId.present) {
+      map['replaces_id'] = Variable<String>(replacesId.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (receivedAt.present) {
+      map['received_at'] = Variable<String>(receivedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerEntriesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('partyId: $partyId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('side: $side, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('narration: $narration, ')
+          ..write('reversesId: $reversesId, ')
+          ..write('replacesId: $replacesId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('receivedAt: $receivedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -6065,6 +6927,28 @@ class $SyncErrorsTable extends SyncErrors
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _batchIdMeta = const VerificationMeta(
+    'batchId',
+  );
+  @override
+  late final GeneratedColumn<String> batchId = GeneratedColumn<String>(
+    'batch_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _batchSeqMeta = const VerificationMeta(
+    'batchSeq',
+  );
+  @override
+  late final GeneratedColumn<int> batchSeq = GeneratedColumn<int>(
+    'batch_seq',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -6075,6 +6959,8 @@ class $SyncErrorsTable extends SyncErrors
     errorCode,
     message,
     createdAt,
+    batchId,
+    batchSeq,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -6145,6 +7031,18 @@ class $SyncErrorsTable extends SyncErrors
     } else if (isInserting) {
       context.missing(_createdAtMeta);
     }
+    if (data.containsKey('batch_id')) {
+      context.handle(
+        _batchIdMeta,
+        batchId.isAcceptableOrUnknown(data['batch_id']!, _batchIdMeta),
+      );
+    }
+    if (data.containsKey('batch_seq')) {
+      context.handle(
+        _batchSeqMeta,
+        batchSeq.isAcceptableOrUnknown(data['batch_seq']!, _batchSeqMeta),
+      );
+    }
     return context;
   }
 
@@ -6186,6 +7084,14 @@ class $SyncErrorsTable extends SyncErrors
         DriftSqlType.string,
         data['${effectivePrefix}created_at'],
       )!,
+      batchId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_id'],
+      ),
+      batchSeq: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}batch_seq'],
+      ),
     );
   }
 
@@ -6204,6 +7110,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
   final String? errorCode;
   final String message;
   final String createdAt;
+  final String? batchId;
+  final int? batchSeq;
   const SyncError({
     required this.id,
     required this.tableNameValue,
@@ -6213,6 +7121,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
     this.errorCode,
     required this.message,
     required this.createdAt,
+    this.batchId,
+    this.batchSeq,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -6229,6 +7139,12 @@ class SyncError extends DataClass implements Insertable<SyncError> {
     }
     map['message'] = Variable<String>(message);
     map['created_at'] = Variable<String>(createdAt);
+    if (!nullToAbsent || batchId != null) {
+      map['batch_id'] = Variable<String>(batchId);
+    }
+    if (!nullToAbsent || batchSeq != null) {
+      map['batch_seq'] = Variable<int>(batchSeq);
+    }
     return map;
   }
 
@@ -6246,6 +7162,12 @@ class SyncError extends DataClass implements Insertable<SyncError> {
           : Value(errorCode),
       message: Value(message),
       createdAt: Value(createdAt),
+      batchId: batchId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(batchId),
+      batchSeq: batchSeq == null && nullToAbsent
+          ? const Value.absent()
+          : Value(batchSeq),
     );
   }
 
@@ -6263,6 +7185,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
       errorCode: serializer.fromJson<String?>(json['errorCode']),
       message: serializer.fromJson<String>(json['message']),
       createdAt: serializer.fromJson<String>(json['createdAt']),
+      batchId: serializer.fromJson<String?>(json['batchId']),
+      batchSeq: serializer.fromJson<int?>(json['batchSeq']),
     );
   }
   @override
@@ -6277,6 +7201,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
       'errorCode': serializer.toJson<String?>(errorCode),
       'message': serializer.toJson<String>(message),
       'createdAt': serializer.toJson<String>(createdAt),
+      'batchId': serializer.toJson<String?>(batchId),
+      'batchSeq': serializer.toJson<int?>(batchSeq),
     };
   }
 
@@ -6289,6 +7215,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
     Value<String?> errorCode = const Value.absent(),
     String? message,
     String? createdAt,
+    Value<String?> batchId = const Value.absent(),
+    Value<int?> batchSeq = const Value.absent(),
   }) => SyncError(
     id: id ?? this.id,
     tableNameValue: tableNameValue ?? this.tableNameValue,
@@ -6298,6 +7226,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
     errorCode: errorCode.present ? errorCode.value : this.errorCode,
     message: message ?? this.message,
     createdAt: createdAt ?? this.createdAt,
+    batchId: batchId.present ? batchId.value : this.batchId,
+    batchSeq: batchSeq.present ? batchSeq.value : this.batchSeq,
   );
   SyncError copyWithCompanion(SyncErrorsCompanion data) {
     return SyncError(
@@ -6311,6 +7241,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
       errorCode: data.errorCode.present ? data.errorCode.value : this.errorCode,
       message: data.message.present ? data.message.value : this.message,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      batchId: data.batchId.present ? data.batchId.value : this.batchId,
+      batchSeq: data.batchSeq.present ? data.batchSeq.value : this.batchSeq,
     );
   }
 
@@ -6324,7 +7256,9 @@ class SyncError extends DataClass implements Insertable<SyncError> {
           ..write('opData: $opData, ')
           ..write('errorCode: $errorCode, ')
           ..write('message: $message, ')
-          ..write('createdAt: $createdAt')
+          ..write('createdAt: $createdAt, ')
+          ..write('batchId: $batchId, ')
+          ..write('batchSeq: $batchSeq')
           ..write(')'))
         .toString();
   }
@@ -6339,6 +7273,8 @@ class SyncError extends DataClass implements Insertable<SyncError> {
     errorCode,
     message,
     createdAt,
+    batchId,
+    batchSeq,
   );
   @override
   bool operator ==(Object other) =>
@@ -6351,7 +7287,9 @@ class SyncError extends DataClass implements Insertable<SyncError> {
           other.opData == this.opData &&
           other.errorCode == this.errorCode &&
           other.message == this.message &&
-          other.createdAt == this.createdAt);
+          other.createdAt == this.createdAt &&
+          other.batchId == this.batchId &&
+          other.batchSeq == this.batchSeq);
 }
 
 class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
@@ -6363,6 +7301,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
   final Value<String?> errorCode;
   final Value<String> message;
   final Value<String> createdAt;
+  final Value<String?> batchId;
+  final Value<int?> batchSeq;
   final Value<int> rowid;
   const SyncErrorsCompanion({
     this.id = const Value.absent(),
@@ -6373,6 +7313,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
     this.errorCode = const Value.absent(),
     this.message = const Value.absent(),
     this.createdAt = const Value.absent(),
+    this.batchId = const Value.absent(),
+    this.batchSeq = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   SyncErrorsCompanion.insert({
@@ -6384,6 +7326,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
     this.errorCode = const Value.absent(),
     required String message,
     required String createdAt,
+    this.batchId = const Value.absent(),
+    this.batchSeq = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : id = Value(id),
        tableNameValue = Value(tableNameValue),
@@ -6400,6 +7344,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
     Expression<String>? errorCode,
     Expression<String>? message,
     Expression<String>? createdAt,
+    Expression<String>? batchId,
+    Expression<int>? batchSeq,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -6411,6 +7357,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
       if (errorCode != null) 'error_code': errorCode,
       if (message != null) 'message': message,
       if (createdAt != null) 'created_at': createdAt,
+      if (batchId != null) 'batch_id': batchId,
+      if (batchSeq != null) 'batch_seq': batchSeq,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -6424,6 +7372,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
     Value<String?>? errorCode,
     Value<String>? message,
     Value<String>? createdAt,
+    Value<String?>? batchId,
+    Value<int?>? batchSeq,
     Value<int>? rowid,
   }) {
     return SyncErrorsCompanion(
@@ -6435,6 +7385,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
       errorCode: errorCode ?? this.errorCode,
       message: message ?? this.message,
       createdAt: createdAt ?? this.createdAt,
+      batchId: batchId ?? this.batchId,
+      batchSeq: batchSeq ?? this.batchSeq,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -6466,6 +7418,12 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
     if (createdAt.present) {
       map['created_at'] = Variable<String>(createdAt.value);
     }
+    if (batchId.present) {
+      map['batch_id'] = Variable<String>(batchId.value);
+    }
+    if (batchSeq.present) {
+      map['batch_seq'] = Variable<int>(batchSeq.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -6483,6 +7441,8 @@ class SyncErrorsCompanion extends UpdateCompanion<SyncError> {
           ..write('errorCode: $errorCode, ')
           ..write('message: $message, ')
           ..write('createdAt: $createdAt, ')
+          ..write('batchId: $batchId, ')
+          ..write('batchSeq: $batchSeq, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -6501,6 +7461,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $PartiesTable parties = $PartiesTable(this);
   late final $PartyRolesTable partyRoles = $PartyRolesTable(this);
   late final $NumberSeriesTable numberSeries = $NumberSeriesTable(this);
+  late final $LedgerEntriesTable ledgerEntries = $LedgerEntriesTable(this);
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -6516,6 +7477,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     parties,
     partyRoles,
     numberSeries,
+    ledgerEntries,
     syncErrors,
   ];
 }
@@ -9415,6 +10377,413 @@ typedef $$NumberSeriesTableProcessedTableManager =
       NumberSeriesRow,
       PrefetchHooks Function()
     >;
+typedef $$LedgerEntriesTableCreateCompanionBuilder =
+    LedgerEntriesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String partyId,
+      required String entryDate,
+      required String side,
+      required int amountPaise,
+      required String refType,
+      Value<String?> refId,
+      Value<String?> narration,
+      Value<String?> reversesId,
+      Value<String?> replacesId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      required String createdAt,
+      Value<String?> receivedAt,
+      Value<int> rowid,
+    });
+typedef $$LedgerEntriesTableUpdateCompanionBuilder =
+    LedgerEntriesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> partyId,
+      Value<String> entryDate,
+      Value<String> side,
+      Value<int> amountPaise,
+      Value<String> refType,
+      Value<String?> refId,
+      Value<String?> narration,
+      Value<String?> reversesId,
+      Value<String?> replacesId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String> createdAt,
+      Value<String?> receivedAt,
+      Value<int> rowid,
+    });
+
+class $$LedgerEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $LedgerEntriesTable> {
+  $$LedgerEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get side => $composableBuilder(
+    column: $table.side,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get replacesId => $composableBuilder(
+    column: $table.replacesId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get receivedAt => $composableBuilder(
+    column: $table.receivedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$LedgerEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $LedgerEntriesTable> {
+  $$LedgerEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get side => $composableBuilder(
+    column: $table.side,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get replacesId => $composableBuilder(
+    column: $table.replacesId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get receivedAt => $composableBuilder(
+    column: $table.receivedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$LedgerEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LedgerEntriesTable> {
+  $$LedgerEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<String> get side =>
+      $composableBuilder(column: $table.side, builder: (column) => column);
+
+  GeneratedColumn<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get refType =>
+      $composableBuilder(column: $table.refType, builder: (column) => column);
+
+  GeneratedColumn<String> get refId =>
+      $composableBuilder(column: $table.refId, builder: (column) => column);
+
+  GeneratedColumn<String> get narration =>
+      $composableBuilder(column: $table.narration, builder: (column) => column);
+
+  GeneratedColumn<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get replacesId => $composableBuilder(
+    column: $table.replacesId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get receivedAt => $composableBuilder(
+    column: $table.receivedAt,
+    builder: (column) => column,
+  );
+}
+
+class $$LedgerEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $LedgerEntriesTable,
+          LedgerEntryRow,
+          $$LedgerEntriesTableFilterComposer,
+          $$LedgerEntriesTableOrderingComposer,
+          $$LedgerEntriesTableAnnotationComposer,
+          $$LedgerEntriesTableCreateCompanionBuilder,
+          $$LedgerEntriesTableUpdateCompanionBuilder,
+          (
+            LedgerEntryRow,
+            BaseReferences<_$AppDatabase, $LedgerEntriesTable, LedgerEntryRow>,
+          ),
+          LedgerEntryRow,
+          PrefetchHooks Function()
+        > {
+  $$LedgerEntriesTableTableManager(_$AppDatabase db, $LedgerEntriesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LedgerEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LedgerEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LedgerEntriesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<String> side = const Value.absent(),
+                Value<int> amountPaise = const Value.absent(),
+                Value<String> refType = const Value.absent(),
+                Value<String?> refId = const Value.absent(),
+                Value<String?> narration = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<String?> replacesId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String> createdAt = const Value.absent(),
+                Value<String?> receivedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerEntriesCompanion(
+                id: id,
+                tenantId: tenantId,
+                partyId: partyId,
+                entryDate: entryDate,
+                side: side,
+                amountPaise: amountPaise,
+                refType: refType,
+                refId: refId,
+                narration: narration,
+                reversesId: reversesId,
+                replacesId: replacesId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                receivedAt: receivedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String partyId,
+                required String entryDate,
+                required String side,
+                required int amountPaise,
+                required String refType,
+                Value<String?> refId = const Value.absent(),
+                Value<String?> narration = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<String?> replacesId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                required String createdAt,
+                Value<String?> receivedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerEntriesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                partyId: partyId,
+                entryDate: entryDate,
+                side: side,
+                amountPaise: amountPaise,
+                refType: refType,
+                refId: refId,
+                narration: narration,
+                reversesId: reversesId,
+                replacesId: replacesId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                receivedAt: receivedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$LedgerEntriesTable, LedgerEntryRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $LedgerEntriesTable,
+                    LedgerEntryRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$LedgerEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $LedgerEntriesTable,
+      LedgerEntryRow,
+      $$LedgerEntriesTableFilterComposer,
+      $$LedgerEntriesTableOrderingComposer,
+      $$LedgerEntriesTableAnnotationComposer,
+      $$LedgerEntriesTableCreateCompanionBuilder,
+      $$LedgerEntriesTableUpdateCompanionBuilder,
+      (
+        LedgerEntryRow,
+        BaseReferences<_$AppDatabase, $LedgerEntriesTable, LedgerEntryRow>,
+      ),
+      LedgerEntryRow,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -9425,6 +10794,8 @@ typedef $$SyncErrorsTableCreateCompanionBuilder =
       Value<String?> errorCode,
       required String message,
       required String createdAt,
+      Value<String?> batchId,
+      Value<int?> batchSeq,
       Value<int> rowid,
     });
 typedef $$SyncErrorsTableUpdateCompanionBuilder =
@@ -9437,6 +10808,8 @@ typedef $$SyncErrorsTableUpdateCompanionBuilder =
       Value<String?> errorCode,
       Value<String> message,
       Value<String> createdAt,
+      Value<String?> batchId,
+      Value<int?> batchSeq,
       Value<int> rowid,
     });
 
@@ -9486,6 +10859,16 @@ class $$SyncErrorsTableFilterComposer
 
   ColumnFilters<String> get createdAt => $composableBuilder(
     column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get batchSeq => $composableBuilder(
+    column: $table.batchSeq,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -9538,6 +10921,16 @@ class $$SyncErrorsTableOrderingComposer
     column: $table.createdAt,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get batchSeq => $composableBuilder(
+    column: $table.batchSeq,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SyncErrorsTableAnnotationComposer
@@ -9574,6 +10967,12 @@ class $$SyncErrorsTableAnnotationComposer
 
   GeneratedColumn<String> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get batchId =>
+      $composableBuilder(column: $table.batchId, builder: (column) => column);
+
+  GeneratedColumn<int> get batchSeq =>
+      $composableBuilder(column: $table.batchSeq, builder: (column) => column);
 }
 
 class $$SyncErrorsTableTableManager
@@ -9615,6 +11014,8 @@ class $$SyncErrorsTableTableManager
                 Value<String?> errorCode = const Value.absent(),
                 Value<String> message = const Value.absent(),
                 Value<String> createdAt = const Value.absent(),
+                Value<String?> batchId = const Value.absent(),
+                Value<int?> batchSeq = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => SyncErrorsCompanion(
                 id: id,
@@ -9625,6 +11026,8 @@ class $$SyncErrorsTableTableManager
                 errorCode: errorCode,
                 message: message,
                 createdAt: createdAt,
+                batchId: batchId,
+                batchSeq: batchSeq,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -9637,6 +11040,8 @@ class $$SyncErrorsTableTableManager
                 Value<String?> errorCode = const Value.absent(),
                 required String message,
                 required String createdAt,
+                Value<String?> batchId = const Value.absent(),
+                Value<int?> batchSeq = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => SyncErrorsCompanion.insert(
                 id: id,
@@ -9647,6 +11052,8 @@ class $$SyncErrorsTableTableManager
                 errorCode: errorCode,
                 message: message,
                 createdAt: createdAt,
+                batchId: batchId,
+                batchSeq: batchSeq,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
@@ -9702,6 +11109,8 @@ class $AppDatabaseManager {
       $$PartyRolesTableTableManager(_db, _db.partyRoles);
   $$NumberSeriesTableTableManager get numberSeries =>
       $$NumberSeriesTableTableManager(_db, _db.numberSeries);
+  $$LedgerEntriesTableTableManager get ledgerEntries =>
+      $$LedgerEntriesTableTableManager(_db, _db.ledgerEntries);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }

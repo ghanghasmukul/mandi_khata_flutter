@@ -22,6 +22,7 @@ part 'app_database.g.dart';
     Parties,
     PartyRoles,
     NumberSeries,
+    LedgerEntries,
     SyncErrors,
   ],
 )

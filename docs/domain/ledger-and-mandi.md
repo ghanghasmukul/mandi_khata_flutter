@@ -3,10 +3,22 @@
 ## Ledger (khata)
 
 - One ledger per party per tenant. Table `ledger_entries`:
-  `id, tenant_id, party_id, entry_date, side ('udhaar'|'jama'), amount_paise (>0), ref_type, ref_id, narration, reverses_id, reversed_by_id, device_id, created_by, created_at`.
+  `id, tenant_id, party_id, entry_date, side ('udhaar'|'jama'), amount_paise (>0), ref_type, ref_id, narration, reverses_id, replaces_id, device_id, created_by, created_at, received_at`.
+  - `created_at` = when recorded on the device; `received_at` = when the server got it (set by the server).
+  - "Reversed by" is not stored (that would be an update); it is derived from the reversal's `reverses_id`.
 - `ref_type` ∈ `arrival | payment | receipt | shop_sale | shop_return | purchase | loan_disbursal | loan_repayment | interest | expense | journal | opening_balance | reversal`.
 - **Balance** = Σ jama − Σ udhaar. Positive → "we owe" (green, Jama). Negative → "party owes" (red, Udhaar).
-- **Append-only.** Edit = reversal entry (`ref_type=reversal`, opposite side, same amount, `reverses_id`) + new entry. UI shows the reversed pair struck-through; the audit log shows before → after.
+- **Statement order** (same on every device): `entry_date`, then `created_at`, then `id`.
+- **Append-only.** No update or delete, ever (not even by the service role). Edit = reversal entry (`ref_type=reversal`, opposite side, same amount and party, `reverses_id`) + new entry (`replaces_id` = the original), posted in one transaction. UI shows the reversed pair struck-through; the audit log shows before → after.
+  - A reversal is dated like the original (so balances on past dates are corrected) unless the event has its own date (bounced cheque → the bounce date).
+  - An entry is reversed at most once (unique `reverses_id`, so two devices reversing offline cannot both succeed). A reversal is never reversed; post a new entry instead.
+- **Who may post** (server policy + app check, khata_core `LedgerPosting`):
+  - reversal, correction (`replaces_id`), journal, opening balance → `entries.reverse`
+  - arrival → `arrivals.manage`
+  - payment, receipt, loan repayment → `payments.create`
+  - loan disbursal, interest → `loans.manage`
+  - shop sale / return, purchase, expense → any active member (until phases 3–4 add their permissions)
+- **Uploads are all-or-nothing per local transaction** (`apply_crud_transaction`): a document and its ledger entries, or a reversal and its replacement, reach the server together or not at all.
 - **Opening balance** per party when onboarding a tenant (`ref_type=opening_balance`, dated FY start or go-live date).
 - **Every business document posts to the khata in the same local transaction** as the document itself. Never "post later".
 

@@ -2,7 +2,7 @@
 
 Date: 2026-09-30 · Reviewed range: `9c5ef25..HEAD` (steps 0.1–0.8 + fixes found in the first real sync test)
 
-**Verdict: not closed yet.** Code, tests and database checks pass. Phase 0 stays open until the manual device tests and a green CI Windows build are done (see "Open items").
+**Verdict: not closed yet.** Code, tests and database checks pass. CI is fully green (Windows included) since a33b007. Phase 0 stays open only for the manual device tests (see "Open items").
 
 ## Exit criteria
 
@@ -11,7 +11,7 @@ Date: 2026-09-30 · Reviewed range: `9c5ef25..HEAD` (steps 0.1–0.8 + fixes fou
 | 1 | Same party list on Windows, macOS, Android and Web for one tenant; invisible to another tenant | **Partly proven, manual pending** | Isolation: pgTAP `01_tenant_isolation` (63/63 pass, local reset); `membership_repository_test` "never shows another user their businesses"; `schema_consistency_test` "every synced table has tenant_id"; dev DB on 2026-09-30: Mukul Arhat Co. 4 parties / Bali Traders 5, 0 audit rows pointing across businesses. Same list on every platform: manual (Chrome done; Android, macOS, Windows pending) |
 | 2 | Airplane mode: 20 parties on Android, reconnect → on desktop within a minute | **Manual pending** | Upload queue / backoff covered by `upload_pending_test`; needs a real phone |
 | 3 | Two devices edit the same party offline → last-write-wins, both edits in audit log | **Mechanism proven, manual pending** | `parties_repository_test` "writes only the changed fields (per-field last write wins)": the update uploads as PATCH of changed columns only, and each edit writes its own audit row (before/after). Needs two real devices |
-| 4 | RLS pgTAP tests pass. CI green | **pgTAP pass; CI red (Windows)** | `supabase test db` 63/63, `db lint` clean. CI run 36749635105: checks, pgTAP, web, Android and macOS pass; **Windows failed** (STL1011, see fix F2). Fix is committed locally, not pushed yet |
+| 4 | RLS pgTAP tests pass. CI green | **Pass** | `supabase test db` 63/63, `db lint` clean. CI run 36752398308 (a33b007): checks, pgTAP, web, Android, macOS and **Windows** all green after fix F2 |
 | 5 | Settings editor changes a value at tenant and party scope; resolver shows the right source | **Pass** | `settings_screen_test` "owner sets a business rate; a party inherits it, then gets …"; khata_core resolver tests (100% covered) |
 
 ## Quality gate (`/verify full`)
@@ -27,7 +27,7 @@ Date: 2026-09-30 · Reviewed range: `9c5ef25..HEAD` (steps 0.1–0.8 + fixes fou
 | `flutter build web` | pass |
 | `flutter build apk --debug` | pass |
 | `flutter build macos` | **fails locally only**: stale Sentry package in `build/macos` (`no submodule named '_Hybrid'`). The same commit builds in CI. Fix: `flutter clean` (see open items) |
-| Windows | CI only; failed before fix F2 |
+| Windows | CI only; green after fix F2 (run 36752398308) |
 | Rule scan: money as `double`, missing `tenant_id`, direct Supabase calls from screens, hard-coded rates | none found (review agent + schema consistency test) |
 
 ## Supabase advisors (dev)
@@ -46,10 +46,10 @@ Clean areas: RLS on every table checks tenant; `keep_tenant_id` on every updatab
 |---|---|---|---|
 | R1 | Medium (reported high) | A different user signing in wipes the local DB, including the previous user's unsent changes (`session.dart` `_adopt`) | **Open.** Downgraded because the normal sign-out already warns and offers "Upload, then sign out" (`sign_out_flow.dart`). Remaining gap: sign-out that skips the flow (session revoked or expired). Fix in 1.10 hardening: refuse to adopt a new user while `ps_crud` is not empty, with an owner-only "discard" |
 | R2 | Medium | PATCH hidden by RLS updates 0 rows with no error → marked uploaded, change silently lost (`supabase_connector.dart`) | **Fixed (F1)** |
-| R3 | Medium | A rejected entry doesn't stop the rest of its local transaction: e.g. duplicate party code → party rejected but its audit row lands | **Open**, needs a design choice: atomic upload per transaction (RPC / Edge Function). Decide before the ledger (step 1.1), where half-applied transactions matter much more. Also: local code check is case-insensitive, server unique is case-sensitive |
+| R3 | Medium | A rejected entry doesn't stop the rest of its local transaction: e.g. duplicate party code → party rejected but its audit row lands | **Fixed in step 1.1**: `apply_crud_transaction` uploads each local transaction all-or-nothing; rejected transactions are kept, retried and discarded as one batch. Still open (low): local code check is case-insensitive, server unique is case-sensitive |
 | R4 | Medium | Retry of a rejected insert when the row still exists locally re-queues it as PATCH | **Mitigated by F1**: it now lands back in sync_errors instead of vanishing. Proper fix (re-queue as PUT) in 1.10 |
 | R5 | Medium | Audit log is client-written only; a member calling PostgREST directly can skip or forge audit rows (`device_id`, `created_at`) | **Open.** Add server-side audit triggers and a server receive time before the pilot (1.10); required for the ledger |
-| R6 | Medium (product) | Any member (e.g. munshi) can set party / lot level commission and charges, per `settings-cascade.md` | **🧑 Decision needed** (below) |
+| R6 | Medium (product) | Any member (e.g. munshi) can set party / lot level commission and charges, per `settings-cascade.md` | **Accepted** by the owner 2026-09-30: munshis may change them; audited (decisions.md) |
 | R7–R13 | Low | Unknown error codes retried forever (can block the queue); duplicate sync_errors rows on transient retry; `owner_audit` stream is role-based but RLS is permission-based; owner can add any user id without an invite; server-created settings rows use different ids from device v5 ids; dev sync panel writes differ from production; number_series counters not audited | **Open**, backlog for 1.10 hardening |
 
 ## Fixes applied in this review
@@ -63,10 +63,10 @@ Clean areas: RLS on every table checks tenant; `keep_tenant_id` on every updatab
 
 ## Open items for you (🧑)
 
-1. Push the fixes and confirm the CI **Windows** job is green; run `windows-release` on a Windows PC and check the same parties appear.
+1. ~~CI Windows green~~ (done, run 36752398308). Run `windows-release` on a Windows PC and check the same parties appear.
 2. Real Android phone: airplane mode, add 20 parties, reconnect → all on Chrome/macOS within a minute.
 3. Two devices (phone + emulator/Chrome) offline, edit the same party, reconnect → last sync wins, both edits in Supabase `audit_log`.
 4. As bali: `/dev/diagnostics` → Retry the 2 old rejected `audit_log` rows.
 5. `cd apps/mandi_khata_app && flutter clean && flutter build macos` to clear the stale Sentry cache.
-6. Decide R6: may a munshi change commission / charges on a party or lot?
+6. ~~Decide R6~~: decided 2026-09-30, munshis may change them.
 7. Optional: leaked-password protection in Supabase Auth.

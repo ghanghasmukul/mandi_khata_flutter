@@ -6,18 +6,22 @@ import 'package:mandi_khata_app/core/sync/supabase_connector.dart';
 import 'package:mandi_khata_app/core/sync/upload_policy.dart';
 import 'package:powersync/powersync.dart';
 
-/// Records what would be sent; fails according to [fail].
+/// Records what would be sent, a whole transaction at a time; fails a
+/// transaction according to [fail] (and then applies none of it, like the
+/// server).
 class FakeApplier implements CrudApplier {
   FakeApplier([this.fail]);
 
-  final Exception? Function(CrudEntry entry)? fail;
-  final applied = <CrudEntry>[];
+  final Exception? Function(List<CrudEntry> entries)? fail;
+  final transactions = <List<CrudEntry>>[];
+
+  List<CrudEntry> get applied => [for (final t in transactions) ...t];
 
   @override
-  Future<void> apply(CrudEntry entry) async {
-    final error = fail?.call(entry);
+  Future<void> applyTransaction(List<CrudEntry> entries) async {
+    final error = fail?.call(entries);
     if (error != null) throw error;
-    applied.add(entry);
+    transactions.add(entries);
   }
 }
 
@@ -81,28 +85,53 @@ void main() {
   );
 
   test(
-    'a permanent rejection goes to sync_errors and unblocks the queue',
+    'a rejected transaction goes to sync_errors whole and unblocks the queue',
     () async {
       await addPartyOffline('p1', 'F-1');
       await addPartyOffline('p2', 'F-2');
 
       final applier = FakeApplier(
-        (e) => e.table == 'parties' && e.id == 'p1'
-            ? const UploadException('new row violates RLS', code: '42501')
+        (entries) => entries.first.id == 'p1'
+            ? const UploadException(
+                'duplicate key',
+                code: '23505',
+                failedIndex: 0,
+              )
             : null,
       );
       await uploadPending(db, applier, UploadBackoff(), wait: recordWait);
       await uploadPending(db, applier, UploadBackoff(), wait: recordWait);
 
-      expect(await rejected(), 1);
-      final error = await db.get('SELECT * FROM sync_errors');
-      expect(error['table_name'], 'parties');
-      expect(error['row_id'], 'p1');
-      expect(error['error_code'], '42501');
-      // p1's audit row and all of p2 still went through.
-      expect(applier.applied.map((e) => e.id), ['a-p1', 'p2', 'a-p2']);
+      // p1's audit row is NOT uploaded without its party.
+      expect(applier.applied.map((e) => e.id), ['p2', 'a-p2']);
       expect(await queued(), 0);
       expect(waits, isEmpty);
+
+      final errors = await db.getAll(
+        'SELECT * FROM sync_errors ORDER BY batch_seq',
+      );
+      expect(errors.map((e) => e['row_id']), ['p1', 'a-p1']);
+      expect(errors.map((e) => e['batch_seq']), [0, 1]);
+      expect(errors.map((e) => e['batch_id']).toSet(), hasLength(1));
+      expect(errors.map((e) => e['error_code']).toSet(), {'23505'});
+      expect(errors[0]['message'], 'duplicate key');
+      expect(
+        errors[1]['message'],
+        'Not saved: parties/p1 in the same save was rejected (duplicate key)',
+      );
+    },
+  );
+
+  test(
+    'without a failing position every change keeps the server message',
+    () async {
+      await addPartyOffline('p1', 'F-1');
+      final applier = FakeApplier(
+        (_) => const UploadException('RLS', code: '42501'),
+      );
+      await uploadPending(db, applier, UploadBackoff(), wait: recordWait);
+      final messages = await db.getAll('SELECT message FROM sync_errors');
+      expect(messages.map((m) => m['message']), ['RLS', 'RLS']);
     },
   );
 

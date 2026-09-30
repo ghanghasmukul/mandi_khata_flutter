@@ -207,6 +207,31 @@ const syncedTables = <SyncedTable>[
       'device': ['tenant_id', 'series', 'device_code'],
     },
   ),
+  SyncedTable(
+    'ledger_entries',
+    {
+      'tenant_id': _t,
+      'party_id': _t,
+      'entry_date': _t,
+      'side': _t,
+      'amount_paise': _i,
+      'ref_type': _t,
+      'ref_id': _t,
+      'narration': _t,
+      'reverses_id': _t,
+      'replaces_id': _t,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+      'received_at': _t,
+    },
+    indexes: {
+      'party_date': ['tenant_id', 'party_id', 'entry_date'],
+      'tenant_date': ['tenant_id', 'entry_date'],
+      'reverses': ['reverses_id'],
+    },
+    appendOnly: true,
+  ),
 ];
 
 /// Changes the server rejected for good (RLS, constraint, bad data). Kept on
@@ -219,6 +244,10 @@ const syncErrorsTable = Table.localOnly('sync_errors', [
   Column.text('error_code'),
   Column.text('message'),
   Column.text('created_at'),
+  // Rejected changes from one local transaction share a batch: the server
+  // applies a transaction all-or-nothing, so it is retried or discarded whole.
+  Column.text('batch_id'),
+  Column.integer('batch_seq'),
 ]);
 
 final powerSyncSchema = Schema([

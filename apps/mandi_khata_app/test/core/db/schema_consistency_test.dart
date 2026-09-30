@@ -51,9 +51,13 @@ void main() {
       'create publication powersync for table([^;]+);',
     ).firstMatch(migrations);
     expect(match, isNotNull);
-    final published = RegExp(
-      r'public\.([a-z_]+)',
-    ).allMatches(match!.group(1)!).map((m) => m.group(1)!).toSet();
+    final added = RegExp(
+      'alter publication powersync add table ([^;]+);',
+    ).allMatches(migrations).map((m) => m.group(1)!);
+    final published = RegExp(r'public\.([a-z_]+)')
+        .allMatches([match!.group(1)!, ...added].join(','))
+        .map((m) => m.group(1)!)
+        .toSet();
     expect(published, names);
   });
 
