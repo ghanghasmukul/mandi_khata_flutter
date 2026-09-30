@@ -46,7 +46,19 @@ class SupabaseCrudApplier implements CrudApplier {
         case UpdateType.put:
           await table.upsert({...data, 'id': entry.id});
         case UpdateType.patch:
-          await table.update(data).eq('id', entry.id);
+          // RLS hides rows the user may no longer change, and PostgREST then
+          // updates nothing without an error. Ask for the row back so that
+          // case is a rejection (sync_errors), not a silent loss.
+          final updated = await table
+              .update(data)
+              .eq('id', entry.id)
+              .select('id');
+          if (updated.isEmpty) {
+            throw const UploadException(
+              'Row not found or not allowed to change',
+              code: _notAllowed,
+            );
+          }
         case UpdateType.delete:
           // No table allows client deletes; the server rejects this and it
           // lands in sync_errors, which is what we want to see.
@@ -73,6 +85,7 @@ class SupabaseCrudApplier implements CrudApplier {
 }
 
 const _uniqueViolation = '23505';
+const _notAllowed = '42501';
 
 /// PowerSync ⇄ Supabase: credentials from the Supabase session, uploads via
 /// [CrudApplier], one local transaction at a time.

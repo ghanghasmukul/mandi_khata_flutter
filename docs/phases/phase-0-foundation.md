@@ -155,4 +155,4 @@ Then add GitHub Actions CI: analyze, test (khata_core + app), build web, build w
 - [ ] Airplane mode: add 20 parties on Android, reconnect → all appear on the desktop app within a minute.
 - [ ] Two devices edit the same party offline → last-write-wins, both edits in audit log.
 - [ ] RLS pgTAP tests pass. CI green.
-- [ ] Settings editor changes a value at tenant scope and party scope, and the resolver shows the right source.
+- [x] Settings editor changes a value at tenant scope and party scope, and the resolver shows the right source. (2026-09-30, settings_screen_test)

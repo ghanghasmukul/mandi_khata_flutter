@@ -85,4 +85,46 @@ void main() {
       contains('resolution=merge-duplicates'),
     );
   });
+
+  group('patch', () {
+    final patch = CrudEntry(1, UpdateType.patch, 'parties', _row, 1, {
+      'village': 'Mansa',
+    });
+
+    test('asks for the changed row back', () async {
+      respond = (request) => http.Response(
+        jsonEncode([
+          {'id': _row},
+        ]),
+        200,
+        headers: {'content-type': 'application/json'},
+        request: request,
+      );
+
+      await applier().apply(patch);
+
+      final request = requests.single;
+      expect(request.method, 'PATCH');
+      expect(request.url.queryParameters['select'], 'id');
+    });
+
+    test(
+      'no row changed (hidden by RLS) is a rejection, not a success',
+      () async {
+        respond = (request) => http.Response(
+          '[]',
+          200,
+          headers: {'content-type': 'application/json'},
+          request: request,
+        );
+
+        await expectLater(
+          applier().apply(patch),
+          throwsA(
+            isA<UploadException>().having((e) => e.code, 'code', '42501'),
+          ),
+        );
+      },
+    );
+  });
 }
