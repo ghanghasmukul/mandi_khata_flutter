@@ -83,28 +83,41 @@ class MkTopBar extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Flexible(
-                        flex: 0,
-                        child: Text(
-                          title,
-                          style: theme.textTheme.titleLarge,
-                          overflow: TextOverflow.ellipsis,
+                      // On phones the title takes the free space and
+                      // ellipsizes, so a long business name never overflows.
+                      if (narrow)
+                        Expanded(
+                          child: Text(
+                            title,
+                            maxLines: 1,
+                            style: theme.textTheme.titleLarge,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        )
+                      else
+                        Flexible(
+                          flex: 0,
+                          child: Text(
+                            title,
+                            style: theme.textTheme.titleLarge,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
                       const SizedBox(width: 14),
-                      Expanded(
-                        child: narrow || subtitle == null
-                            ? const SizedBox.shrink()
-                            : Text(
-                                subtitle!,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 12.5,
-                                  color: tokens.textMuted,
+                      if (!narrow)
+                        Expanded(
+                          child: subtitle == null
+                              ? const SizedBox.shrink()
+                              : Text(
+                                  subtitle!,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 12.5,
+                                    color: tokens.textMuted,
+                                  ),
                                 ),
-                              ),
-                      ),
+                        ),
                       if (onSearch != null && narrow)
                         IconButton(
                           onPressed: onSearch,

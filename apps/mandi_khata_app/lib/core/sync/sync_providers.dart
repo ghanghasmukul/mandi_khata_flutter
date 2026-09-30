@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:drift/drift.dart';
 import 'package:mandi_khata_app/app/env.dart';
+import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/db/app_database.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
 import 'package:mandi_khata_app/core/sync/supabase_connector.dart';
@@ -34,17 +35,22 @@ class SyncController extends _$SyncController {
     );
     _connector = connector;
 
-    final sub = client.auth.onAuthStateChange.listen((state) async {
-      final event = state.event;
-      if (event == AuthChangeEvent.signedOut) {
-        await db.disconnect();
-      } else if ((event == AuthChangeEvent.initialSession ||
-              event == AuthChangeEvent.signedIn) &&
-          state.session != null) {
-        await db.connect(connector: connector);
+    // Follows the session (not raw auth events) so a new user's first sync
+    // starts only after the previous user's data has been cleared.
+    ref.listen(sessionProvider, (previous, session) async {
+      if (previous is SignedIn &&
+          session is SignedIn &&
+          previous.user.id == session.user.id) {
+        return;
       }
-    });
-    ref.onDispose(sub.cancel);
+      switch (session) {
+        case SignedIn():
+          await db.connect(connector: connector);
+        case SignedOut():
+        case SessionPreparing():
+          await db.disconnect();
+      }
+    }, fireImmediately: true);
   }
 
   /// Stops syncing (local work continues). Used by the dev sync page to
@@ -70,16 +76,25 @@ Stream<SyncStatus> syncStatus(Ref ref) async* {
   yield* db.statusStream;
 }
 
+/// Whether a full sync has completed at least once on this database (so an
+/// empty table means "really empty", not "not downloaded yet").
+@riverpod
+bool hasSynced(Ref ref) =>
+    ref.watch(syncStatusProvider).value?.hasSynced ?? false;
+
+/// Number of local changes not yet uploaded, live.
+Stream<int> watchUploadQueue(PowerSyncDatabase db) => db
+    .watch(
+      'SELECT count(*) AS n FROM ps_crud',
+      triggerOnTables: const {'ps_crud'},
+    )
+    .map((rows) => rows.first['n'] as int);
+
 /// Local changes not yet uploaded.
 @riverpod
 Stream<int> uploadQueueCount(Ref ref) async* {
   final db = await ref.watch(powerSyncDatabaseProvider.future);
-  yield* db
-      .watch(
-        'SELECT count(*) AS n FROM ps_crud',
-        triggerOnTables: const {'ps_crud'},
-      )
-      .map((rows) => rows.first['n'] as int);
+  yield* watchUploadQueue(db);
 }
 
 /// A change the server rejected for good (a row of local `sync_errors`).

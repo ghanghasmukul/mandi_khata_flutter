@@ -85,8 +85,26 @@ flutter run -d windows
    4. **Sync Streams:** paste the contents of `powersync/sync-streams.yaml` and deploy. Every time that file changes, deploy it again.
    5. Copy the **instance URL** into `.env.dev` as `POWERSYNC_URL`.
    6. Test: run the app, open **Sync lab** (debug builds), sign in with a dev user who is a member of a business, add a test party, toggle **Go offline / Go online**, and check the row appears in Supabase → Table editor → `parties`.
-3. **Razorpay** (Phase 5 only): test-mode keys.
-4. **Sentry** (optional, Phase 0.7): a Flutter project DSN.
+3. **Sign-in (Supabase dashboard → Authentication, dev project)** — needed from step 0.5:
+   1. **Sign In / Providers → Phone:** enable it and pick an SMS provider (Twilio, MessageBird, Textlocal or Vonage) with its keys. For development you can skip real SMS: under **Phone → Test phone numbers and OTPs** add e.g. `919814022110=123456`, and that number always accepts code `123456`.
+   2. **Email** stays enabled (fallback for web / accountants). Create a dev user under **Users → Add user → Create new user** (email + password, *Auto Confirm User* ticked).
+   3. **Give the user a business.** Businesses are created only by the server (never by the app), so for dev run this once in **SQL Editor** (replace the email or phone):
+      ```sql
+      with u as (
+        select id from auth.users
+        where email = 'you@example.com' or phone = '919814022110'
+        limit 1
+      ), t as (
+        insert into public.tenants (id, name, mandi_name, state_code)
+        values (gen_random_uuid(), 'Dev Arhat Co.', 'Sirsa Mandi', '06')
+        returning id
+      )
+      insert into public.tenant_members (id, tenant_id, user_id, role)
+      select gen_random_uuid(), t.id, u.id, 'owner' from t, u;
+      ```
+      A phone user appears in `auth.users` after their first OTP sign-in; until they are a member the app shows "No business linked yet".
+4. **Razorpay** (Phase 5 only): test-mode keys.
+5. **Sentry** (optional, Phase 0.7): a Flutter project DSN.
 
 The app always talks to these **online** services via `.env.dev`. That is the normal development path.
 

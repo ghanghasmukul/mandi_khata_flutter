@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 import 'package:mandi_khata_app/app/env.dart';
 import 'package:mandi_khata_app/app/router.dart';
+import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
+import 'package:mandi_khata_app/core/storage/app_prefs.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 final _log = Logger('app');
@@ -28,7 +30,13 @@ Future<void> main() async {
       _log.warning('Supabase init failed, continuing offline: $e');
     }
   }
-  runApp(const ProviderScope(child: MandiKhataApp()));
+  final prefs = AppPrefs(await SharedPreferences.getInstance());
+  runApp(
+    ProviderScope(
+      overrides: [appPrefsProvider.overrideWithValue(prefs)],
+      child: const MandiKhataApp(),
+    ),
+  );
 }
 
 class MandiKhataApp extends ConsumerStatefulWidget {
@@ -39,11 +47,21 @@ class MandiKhataApp extends ConsumerStatefulWidget {
 }
 
 class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
-  final GoRouter _router = buildRouter();
+  late final AppLifecycleListener _lifecycle;
+
+  @override
+  void initState() {
+    super.initState();
+    // Feeds the app lock's "locked again after 2 min away" rule.
+    _lifecycle = AppLifecycleListener(
+      onHide: () => ref.read(appLockProvider.notifier).onBackgrounded(),
+      onShow: () => ref.read(appLockProvider.notifier).onResumed(),
+    );
+  }
 
   @override
   void dispose() {
-    _router.dispose();
+    _lifecycle.dispose();
     super.dispose();
   }
 
@@ -51,6 +69,7 @@ class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
   Widget build(BuildContext context) {
     // Keeps sync running (connect while signed in) for the app's lifetime.
     ref.watch(syncControllerProvider);
+    final router = ref.watch(routerProvider);
     return MaterialApp.router(
       title: 'Mandi Khata',
       debugShowCheckedModeBanner: false,
@@ -59,7 +78,7 @@ class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
       themeMode: ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      routerConfig: _router,
+      routerConfig: router,
     );
   }
 }

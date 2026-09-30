@@ -8,6 +8,7 @@ environment:
   sdk: ^3.12.0
 
 dependencies:
+  crypto: ^3.0.7
   decimal: ^3.2.6
   drift: ^2.35.0
   drift_sqlite_async: ^0.3.1
@@ -22,6 +23,7 @@ dependencies:
   json_annotation: ^4.12.0
   khata_core:
     path: ../../packages/khata_core
+  local_auth: ^3.0.2
   logging: ^1.3.0
   mk_ui:
     path: ../../packages/mk_ui
@@ -35,6 +37,7 @@ dependencies:
   # Pinned: sqlite3_web 0.9.5 made WorkerDatabase `base`, which breaks the web
   # build of sqlite_async 0.14.5 (used by powersync). Lift once sqlite_async
   # supports it — see docs/decisions.md (2026-09-30).
+  shared_preferences: ^2.5.5
   sqlite3_web: 0.9.4
   supabase_flutter: ^2.17.2
   uuid: ^4.6.0

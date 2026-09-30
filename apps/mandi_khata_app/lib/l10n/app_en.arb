@@ -67,5 +67,328 @@
   "commonClose": "Close",
   "@commonClose": {
     "description": "Generic close button."
+  },
+  "commonCancel": "Cancel",
+  "@commonCancel": {
+    "description": "Generic cancel button."
+  },
+  "commonRetry": "Try again",
+  "@commonRetry": {
+    "description": "Generic retry button."
+  },
+  "splashLoading": "Getting things ready…",
+  "@splashLoading": {
+    "description": "Shown while local data is being prepared after sign-in."
+  },
+  "loginTitle": "Sign in to Mandi Khata",
+  "@loginTitle": {
+    "description": "Login screen heading."
+  },
+  "loginSubtitle": "We'll send a 6-digit code to your mobile by SMS.",
+  "@loginSubtitle": {
+    "description": "Login screen explanation for phone sign-in."
+  },
+  "loginTabPhone": "Mobile number",
+  "@loginTabPhone": {
+    "description": "Tab: sign in with phone OTP."
+  },
+  "loginTabEmail": "Email",
+  "@loginTabEmail": {
+    "description": "Tab: sign in with email and password."
+  },
+  "loginPhoneLabel": "Mobile number",
+  "@loginPhoneLabel": {
+    "description": "Phone field label."
+  },
+  "loginPhoneInvalid": "Enter a 10-digit Indian mobile number",
+  "@loginPhoneInvalid": {
+    "description": "Phone number validation error."
+  },
+  "loginSendOtp": "Send code",
+  "@loginSendOtp": {
+    "description": "Button that sends the SMS code."
+  },
+  "loginOtpLabel": "6-digit code",
+  "@loginOtpLabel": {
+    "description": "OTP field label."
+  },
+  "loginOtpSentTo": "Code sent to {phone}",
+  "@loginOtpSentTo": {
+    "description": "Confirms where the SMS code went.",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "loginOtpInvalidFormat": "Enter the 6-digit code",
+  "@loginOtpInvalidFormat": {
+    "description": "OTP validation error."
+  },
+  "loginVerify": "Verify and sign in",
+  "@loginVerify": {
+    "description": "Button that checks the SMS code."
+  },
+  "loginResendIn": "Resend code in {seconds}s",
+  "@loginResendIn": {
+    "description": "Countdown before the code can be resent.",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "loginResend": "Resend code",
+  "@loginResend": {
+    "description": "Button to resend the SMS code."
+  },
+  "loginChangeNumber": "Change number",
+  "@loginChangeNumber": {
+    "description": "Go back and edit the phone number."
+  },
+  "loginEmailLabel": "Email",
+  "@loginEmailLabel": {
+    "description": "Email field label."
+  },
+  "loginPasswordLabel": "Password",
+  "@loginPasswordLabel": {
+    "description": "Password field label."
+  },
+  "loginEmailSignIn": "Sign in",
+  "@loginEmailSignIn": {
+    "description": "Email sign-in button."
+  },
+  "loginEmailInvalid": "Enter your email and password",
+  "@loginEmailInvalid": {
+    "description": "Email form validation error."
+  },
+  "authErrorNotConfigured": "Sign-in is not set up in this build.",
+  "@authErrorNotConfigured": {
+    "description": "The app has no server configuration."
+  },
+  "authErrorNetwork": "No internet connection. Connect and try again.",
+  "@authErrorNetwork": {
+    "description": "Sign-in needs internet."
+  },
+  "authErrorInvalidOtp": "That code is wrong or has expired.",
+  "@authErrorInvalidOtp": {
+    "description": "Wrong or expired SMS code."
+  },
+  "authErrorInvalidCredentials": "Wrong email or password.",
+  "@authErrorInvalidCredentials": {
+    "description": "Wrong email/password."
+  },
+  "authErrorRateLimited": "Too many attempts. Wait a few minutes and try again.",
+  "@authErrorRateLimited": {
+    "description": "Rate limited by the server."
+  },
+  "authErrorSms": "Couldn't send the SMS. Try again later or sign in with email.",
+  "@authErrorSms": {
+    "description": "Phone sign-in unavailable."
+  },
+  "authErrorUnknown": "Sign-in failed. Try again.",
+  "@authErrorUnknown": {
+    "description": "Unexpected sign-in error."
+  },
+  "tenantPickerTitle": "Choose a business",
+  "@tenantPickerTitle": {
+    "description": "Business picker heading."
+  },
+  "tenantPickerSubtitle": "You can switch later from the account menu.",
+  "@tenantPickerSubtitle": {
+    "description": "Business picker explanation."
+  },
+  "tenantPickerLoading": "Downloading your businesses… This needs internet the first time.",
+  "@tenantPickerLoading": {
+    "description": "Waiting for the first sync after sign-in."
+  },
+  "tenantPickerNoSync": "Sync is not set up in this build, so your businesses can't be loaded.",
+  "@tenantPickerNoSync": {
+    "description": "Sync is not configured."
+  },
+  "tenantPickerEmptyTitle": "No business linked yet",
+  "@tenantPickerEmptyTitle": {
+    "description": "Signed-in user belongs to no business."
+  },
+  "tenantPickerEmptyBody": "Your account isn't part of any business. Ask the owner to add you, then open the app again.",
+  "@tenantPickerEmptyBody": {
+    "description": "Explains what to do with no business."
+  },
+  "deviceSetupOffline": "Connect to the internet once to set up this device for {business}.",
+  "@deviceSetupOffline": {
+    "description": "Device registration needs internet once per business.",
+    "placeholders": {
+      "business": {
+        "type": "String"
+      }
+    }
+  },
+  "deviceSetupFailed": "This device couldn't be set up for {business}.",
+  "@deviceSetupFailed": {
+    "description": "Server refused device registration.",
+    "placeholders": {
+      "business": {
+        "type": "String"
+      }
+    }
+  },
+  "roleOwner": "Owner",
+  "@roleOwner": {
+    "description": "Role name."
+  },
+  "roleAccountant": "Accountant",
+  "@roleAccountant": {
+    "description": "Role name."
+  },
+  "roleMunshi": "Munshi",
+  "@roleMunshi": {
+    "description": "Role name."
+  },
+  "roleCustom": "Custom role",
+  "@roleCustom": {
+    "description": "Role name."
+  },
+  "pinSetupTitle": "Set an app PIN",
+  "@pinSetupTitle": {
+    "description": "PIN setup heading."
+  },
+  "pinSetupBody": "Asked when the app opens, so others can't see your khata. 4–6 digits, stays on this device.",
+  "@pinSetupBody": {
+    "description": "Explains the app PIN."
+  },
+  "pinConfirmTitle": "Enter the PIN again",
+  "@pinConfirmTitle": {
+    "description": "PIN confirmation step."
+  },
+  "pinMismatch": "PINs don't match. Try again.",
+  "@pinMismatch": {
+    "description": "The two PIN entries differ."
+  },
+  "pinTooShort": "Use 4 to 6 digits",
+  "@pinTooShort": {
+    "description": "PIN length validation."
+  },
+  "pinSkip": "Skip for now",
+  "@pinSkip": {
+    "description": "Skip setting a PIN."
+  },
+  "pinSaved": "App PIN saved",
+  "@pinSaved": {
+    "description": "Toast after setting the PIN."
+  },
+  "pinBiometricOption": "Also unlock with fingerprint or face",
+  "@pinBiometricOption": {
+    "description": "Enable biometric unlock."
+  },
+  "pinPadDelete": "Delete digit",
+  "@pinPadDelete": {
+    "description": "PIN pad backspace (screen reader)."
+  },
+  "pinPadOk": "OK",
+  "@pinPadOk": {
+    "description": "PIN pad confirm key."
+  },
+  "lockTitle": "Enter your PIN",
+  "@lockTitle": {
+    "description": "Lock screen heading."
+  },
+  "lockWrongPin": "Wrong PIN",
+  "@lockWrongPin": {
+    "description": "Lock screen error."
+  },
+  "lockCooldown": "Too many wrong tries. Try again in {seconds}s.",
+  "@lockCooldown": {
+    "description": "Lock screen cooldown.",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "lockUseBiometric": "Use fingerprint",
+  "@lockUseBiometric": {
+    "description": "Biometric unlock button."
+  },
+  "lockBiometricReason": "Unlock Mandi Khata",
+  "@lockBiometricReason": {
+    "description": "System biometric prompt text."
+  },
+  "lockForgotPin": "Forgot PIN? Sign out",
+  "@lockForgotPin": {
+    "description": "Escape hatch from the lock screen."
+  },
+  "accountMenu": "Account",
+  "@accountMenu": {
+    "description": "Account menu tooltip."
+  },
+  "accountSwitchBusiness": "Switch business",
+  "@accountSwitchBusiness": {
+    "description": "Account menu item."
+  },
+  "accountLockNow": "Lock now",
+  "@accountLockNow": {
+    "description": "Account menu item."
+  },
+  "accountSetPin": "Set app PIN",
+  "@accountSetPin": {
+    "description": "Account menu item."
+  },
+  "accountChangePin": "Change app PIN",
+  "@accountChangePin": {
+    "description": "Account menu item."
+  },
+  "accountRemovePin": "Remove app PIN",
+  "@accountRemovePin": {
+    "description": "Account menu item."
+  },
+  "accountSignOut": "Sign out",
+  "@accountSignOut": {
+    "description": "Account menu item."
+  },
+  "homeDeviceCode": "This device: {code}",
+  "@homeDeviceCode": {
+    "description": "Shows the device code (e.g. W1).",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "homePlaceholder": "Your dashboard will appear here.",
+  "@homePlaceholder": {
+    "description": "Placeholder until the dashboard exists."
+  },
+  "signOutTitle": "Sign out?",
+  "@signOutTitle": {
+    "description": "Sign-out confirmation title."
+  },
+  "signOutBody": "This device's copy of the data will be removed. You'll need internet to sign in again.",
+  "@signOutBody": {
+    "description": "Sign-out confirmation body."
+  },
+  "signOutPendingBody": "{count, plural, =1{1 change hasn't been uploaded yet. Signing out now deletes it from this device.} other{{count} changes haven't been uploaded yet. Signing out now deletes them from this device.}}",
+  "@signOutPendingBody": {
+    "description": "Warns that unsynced changes would be lost.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "signOutUploadFirst": "Upload, then sign out",
+  "@signOutUploadFirst": {
+    "description": "Wait for upload before signing out."
+  },
+  "signOutAnyway": "Sign out and delete them",
+  "@signOutAnyway": {
+    "description": "Sign out losing unsynced changes."
+  },
+  "signOutUploading": "Uploading changes…",
+  "@signOutUploading": {
+    "description": "Progress while waiting for upload."
+  },
+  "signOutUploadFailed": "Couldn't upload everything. Check the internet and try again.",
+  "@signOutUploadFailed": {
+    "description": "Upload did not finish in time."
   }
 }

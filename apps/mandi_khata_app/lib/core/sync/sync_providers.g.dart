@@ -39,7 +39,7 @@ final class SyncControllerProvider
   SyncController create() => SyncController();
 }
 
-String _$syncControllerHash() => r'b51abf3ce12b001213c31b57bf2c8e99ecc40897';
+String _$syncControllerHash() => r'25e9e9c019ef40925d01d1a4afffff055337a197';
 
 /// Connects PowerSync while someone is signed in and disconnects on sign-out.
 /// The app works fully offline either way; this only moves data.
@@ -100,6 +100,54 @@ final class SyncStatusProvider
 
 String _$syncStatusHash() => r'fbab0263ee61aef80cbd236bdfdbd3f339c0dbae';
 
+/// Whether a full sync has completed at least once on this database (so an
+/// empty table means "really empty", not "not downloaded yet").
+
+@ProviderFor(hasSynced)
+final hasSyncedProvider = HasSyncedProvider._();
+
+/// Whether a full sync has completed at least once on this database (so an
+/// empty table means "really empty", not "not downloaded yet").
+
+final class HasSyncedProvider extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  /// Whether a full sync has completed at least once on this database (so an
+  /// empty table means "really empty", not "not downloaded yet").
+  HasSyncedProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'hasSyncedProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$hasSyncedHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return hasSynced(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$hasSyncedHash() => r'dd74dce3a4108ff32ef5f6d6a25253a433bd53a6';
+
 /// Local changes not yet uploaded.
 
 @ProviderFor(uploadQueueCount)
@@ -136,7 +184,7 @@ final class UploadQueueCountProvider
   }
 }
 
-String _$uploadQueueCountHash() => r'72c4ef6ec62a0aa67312e03c4c29f7374c735b97';
+String _$uploadQueueCountHash() => r'c7f152b08f5e66e3af127809ee9f39bc6109b5fc';
 
 /// Changes the server rejected for good, newest first.
 
