@@ -23,6 +23,7 @@ class Party {
     this.ifsc,
     this.gstin,
     this.notes,
+    this.partyGroupId,
   });
 
   /// From a `parties` row plus `roles` = comma-separated active roles.
@@ -47,6 +48,7 @@ class Party {
     ifsc: r['ifsc'] as String?,
     gstin: r['gstin'] as String?,
     notes: r['notes'] as String?,
+    partyGroupId: r['party_group_id'] as String?,
   );
 
   final String id;
@@ -66,6 +68,9 @@ class Party {
   final String? ifsc;
   final String? gstin;
   final String? notes;
+
+  /// Settings group (cascade level between business and party).
+  final String? partyGroupId;
 
   /// Pre-fills the edit form.
   PartyInput toInput() => PartyInput(
@@ -98,7 +103,8 @@ class Party {
       other.fatherOrHusbandName == fatherOrHusbandName &&
       other.village == village &&
       other.mobile == mobile &&
-      other.notes == notes;
+      other.notes == notes &&
+      other.partyGroupId == partyGroupId;
 
   @override
   int get hashCode => Object.hash(id, code, name, village, mobile);

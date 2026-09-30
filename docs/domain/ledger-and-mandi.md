@@ -49,9 +49,20 @@ net_to_farmer     = gross − farmer_deductions
 - Who pays (`mandi.charges_borne_by`): **farmer** → deducted from net; **buyer** → added to the buyer's udhaar (`buyer_total = gross + buyer-borne charges`); **arhtiya** → the arhtiya's own cost. Commission "borne by arhtiya" means **waived**: shown, but neither deducted, billed, earned nor counted as a cost.
 - Implemented in khata_core `MandiCharges.calculate(LotInput, MandiConfig)`; `MandiConfig.resolve(settings, cropCode, partyId, lotId)` resolves every `mandi.*` key and `toJson()` is the snapshot.
 - All rates/charges come from the settings cascade (crop-level overrides allowed) and are **snapshotted** into the lot row.
-- Posting a sold lot creates: `jama` entry to farmer for `net_to_farmer`; `udhaar` entry to the buyer (if buyer ledger enabled) for gross + buyer-borne charges; income lines for commission.
-- Qtl can be entered directly or computed from bags × bag weight; show both.
-- Lot states: `arrived → weighed → sold → posted → (reversed)`.
+- Posting a lot creates, in ONE local transaction with the lot row and audit rows (`ref_type=arrival`, `ref_id=lot.id`, narration = lot number, dated like the lot):
+  - `jama` to the farmer for `net_to_farmer` (must be > 0, else posting is refused);
+  - `udhaar` to the buyer for `gross + buyer-borne charges`, when a buyer is picked. **A buyer is required** when any buyer-borne charge is above zero.
+  - Commission income is not a khata entry: it stays on the lot (`lots.commission` = commission earned, zero when waived) until the chart of accounts (phase 3) posts it.
+- Qtl can be entered directly or computed from bags × `mandi.bag_weight_kg` (`qtl_from_bags`); show both.
+- Lot states: `arrived → weighed → sold → posted → (reversed)`. Rules (khata_core `LotStatus` / `LotRules`, server trigger `private.guard_lot`):
+  - An **open** lot (arrived / weighed / sold) is edited freely (`arrivals.manage`); its status follows what is filled in (no weight → arrived, weight → weighed, weight + rate → sold).
+  - At the counter, **Save posts the lot as soon as it has weight and rate** (status → posted). "Hold" keeps a complete lot as sold. The gate wizard (munshi, phone) saves farmer + crop + bags as arrived.
+  - A **posted** lot is frozen. It can only be **reversed** (`entries.reverse`): every entry it posted is reversed (same date) and the lot becomes `reversed`, in one transaction. A correct lot is then entered again as a new lot ("Enter again" copies it).
+  - An open lot that never happened is **cancelled** (`arrivals.manage`): status `reversed` with `posted_at` null; nothing was posted. `reversed` is final.
+  - Lot numbers `L-<device>-<n>` come from the `lot` number series when the lot is first saved and never change. Lots are never deleted.
+
+### Table `lots`
+`id, tenant_id, lot_no (unique per tenant), entry_date, farmer_id, crop_id, bags, qtl_milli (1/1000 qtl), qtl_from_bags, rate_paise_per_qtl, buyer_party_id, j_form_no, vehicle_no, notes, status, charges_snapshot (MandiConfig.toJson), gross, commission (earned), net_to_farmer, buyer_total, posted_at, device_id, created_by, created_at, updated_at`. Money in paise. A posted lot must have weight, rate, snapshot and amounts (check constraints); the farmer, buyer and crop must be in the same business (composite FKs).
 
 ## Crops master
 

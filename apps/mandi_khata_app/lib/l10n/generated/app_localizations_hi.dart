@@ -1052,4 +1052,300 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get settingsCropsLink => 'फसलें और फसल-वार खर्चे';
+
+  @override
+  String get arrivalsTitle => 'आवक';
+
+  @override
+  String get arrivalsEmpty => 'इन फ़िल्टर में कोई लॉट नहीं';
+
+  @override
+  String get arrivalsSearchHint => 'किसान या लॉट नंबर खोजें';
+
+  @override
+  String get arrivalsAllCrops => 'सभी फ़सलें';
+
+  @override
+  String get arrivalsAllStatuses => 'सभी स्थिति';
+
+  @override
+  String get rangeToday => 'आज';
+
+  @override
+  String get rangeYesterday => 'कल';
+
+  @override
+  String get rangeWeek => 'पिछले 7 दिन';
+
+  @override
+  String get rangeAll => 'सभी तारीखें';
+
+  @override
+  String get rangeCustom => 'तारीखें चुनें…';
+
+  @override
+  String get lotNo => 'लॉट नं.';
+
+  @override
+  String get lotDate => 'तारीख';
+
+  @override
+  String get lotFarmer => 'किसान';
+
+  @override
+  String get lotCrop => 'फ़सल';
+
+  @override
+  String get lotBags => 'बोरी';
+
+  @override
+  String lotBagsCount(int count) {
+    return '$count बोरी';
+  }
+
+  @override
+  String get lotQtl => 'क्विंटल';
+
+  @override
+  String get lotQtlUnit => 'क्विंटल';
+
+  @override
+  String lotQtlFromBags(String kg) {
+    return 'बोरी × $kg किलो से';
+  }
+
+  @override
+  String get lotQtlFromBagsShort => 'बोरी से';
+
+  @override
+  String get lotRate => 'भाव';
+
+  @override
+  String get lotPerQtl => '/ क्विंटल';
+
+  @override
+  String get lotBuyer => 'खरीदार';
+
+  @override
+  String get lotBuyerHint => 'वैकल्पिक — 3 अक्षर लिखें';
+
+  @override
+  String get lotJForm => 'जे-फ़ॉर्म नं.';
+
+  @override
+  String get lotVehicle => 'वाहन नं.';
+
+  @override
+  String get lotNotes => 'टिप्पणी';
+
+  @override
+  String get lotStatusLabel => 'स्थिति';
+
+  @override
+  String get lotPostedAt => 'खाते में दर्ज';
+
+  @override
+  String get lotStatusArrived => 'आया';
+
+  @override
+  String get lotStatusWeighed => 'तुला';
+
+  @override
+  String get lotStatusSold => 'बिका';
+
+  @override
+  String get lotStatusPosted => 'खाते में';
+
+  @override
+  String get lotStatusReversed => 'उलटा गया';
+
+  @override
+  String get lotStatusCancelled => 'रद्द';
+
+  @override
+  String get lotProblemBags => 'बोरी ऋण में नहीं हो सकतीं';
+
+  @override
+  String get lotProblemWeight => 'वज़न लिखें';
+
+  @override
+  String get lotProblemRate => 'भाव शून्य से ज़्यादा हो';
+
+  @override
+  String get lotProblemBuyerIsFarmer => 'खरीदार और किसान एक नहीं हो सकते';
+
+  @override
+  String get lotProblemNoWeight => 'खाते में डालने के लिए वज़न चाहिए';
+
+  @override
+  String get lotProblemNoRate => 'खाते में डालने के लिए भाव चाहिए';
+
+  @override
+  String get lotProblemBuyerRequired =>
+      'खरीदार चुनें: कुछ ख़र्चे खरीदार से लिए जाते हैं';
+
+  @override
+  String get lotProblemNetNotPositive =>
+      'ख़र्चे बिक्री से ज़्यादा हैं; किसान को जमा करने को कुछ नहीं';
+
+  @override
+  String get lotErrorNotPermitted => 'आपको इसकी अनुमति नहीं है';
+
+  @override
+  String get lotErrorNotFound => 'लॉट, किसान, खरीदार या फ़सल नहीं मिली';
+
+  @override
+  String get lotErrorLocked =>
+      'यह लॉट खाते में दर्ज या उलटा जा चुका है, बदला नहीं जा सकता';
+
+  @override
+  String get lotErrorPickFarmer => 'किसान चुनें';
+
+  @override
+  String get lotErrorPickCrop => 'फ़सल चुनें';
+
+  @override
+  String get lotNewTitle => 'नई आवक';
+
+  @override
+  String get lotEditTitle => 'लॉट बदलें';
+
+  @override
+  String lotNextNo(String number) {
+    return 'लॉट $number';
+  }
+
+  @override
+  String get lotSave => 'सेव करें (F10)';
+
+  @override
+  String get lotSavePost => 'सेव करें और खाते में डालें (F10)';
+
+  @override
+  String get lotSaveNew => 'सेव करें और नया (Shift+F10)';
+
+  @override
+  String get lotHold => 'रोकें — खाते में न डालें';
+
+  @override
+  String lotSavedToast(String lotNo) {
+    return 'लॉट $lotNo सेव हुआ';
+  }
+
+  @override
+  String lotPostedToast(String lotNo) {
+    return 'लॉट $lotNo खाते में दर्ज';
+  }
+
+  @override
+  String get lotPreviewTitle => 'हिसाब';
+
+  @override
+  String get lotPreviewEmpty =>
+      'आढ़त, ख़र्चे और शुद्ध रकम देखने के लिए फ़सल, वज़न और भाव लिखें।';
+
+  @override
+  String get lotPostsTitle => 'खाते में यह दर्ज होगा:';
+
+  @override
+  String get lotPostsFarmer => 'किसान को जमा';
+
+  @override
+  String get lotPostsBuyer => 'खरीदार पर उधार';
+
+  @override
+  String get lotCancel => 'लॉट रद्द करें';
+
+  @override
+  String lotCancelTitle(String lotNo) {
+    return 'लॉट $lotNo रद्द करें?';
+  }
+
+  @override
+  String get lotCancelBody =>
+      'जब फ़सल आई ही नहीं या ग़लती से दर्ज हुई हो। खाते में कुछ दर्ज नहीं हुआ था। यह वापस नहीं होगा।';
+
+  @override
+  String lotCancelledToast(String lotNo) {
+    return 'लॉट $lotNo रद्द';
+  }
+
+  @override
+  String get lotReverse => 'लॉट उलटें';
+
+  @override
+  String lotReverseTitle(String lotNo) {
+    return 'लॉट $lotNo उलटें?';
+  }
+
+  @override
+  String get lotReverseBody =>
+      'इसकी खाता एंट्री (किसान का जमा, खरीदार का उधार) उसी तारीख पर उलटी होंगी। लॉट रिकॉर्ड में \'उलटा गया\' रहेगा। फिर आप इसे सही से दोबारा दर्ज कर सकते हैं।';
+
+  @override
+  String lotReversedToast(String lotNo) {
+    return 'लॉट $lotNo उलटा गया';
+  }
+
+  @override
+  String get lotReenter => 'दोबारा दर्ज करें';
+
+  @override
+  String get lotEdit => 'बदलें';
+
+  @override
+  String get lotAddWeightRate => 'वज़न और भाव डालें';
+
+  @override
+  String get lotDetailsTitle => 'लॉट';
+
+  @override
+  String get lotCalculationTitle => 'आढ़त और ख़र्चे';
+
+  @override
+  String get lotNotPostedYet =>
+      'लॉट खाते में दर्ज होने पर दिखेगा (उस दिन के रेट से)।';
+
+  @override
+  String get lotEntriesTitle => 'खाता एंट्री';
+
+  @override
+  String get lotEntryArrival => 'फ़सल बिक्री';
+
+  @override
+  String get lotEntryReversal => 'उलट एंट्री';
+
+  @override
+  String get lotsTotalCount => 'लॉट';
+
+  @override
+  String get wizardStepFarmer => 'किसान';
+
+  @override
+  String get wizardStepCrop => 'फ़सल और बोरी';
+
+  @override
+  String get wizardStepConfirm => 'पुष्टि';
+
+  @override
+  String wizardStepOf(int step, int total, String title) {
+    return 'चरण $step/$total: $title';
+  }
+
+  @override
+  String get wizardBack => 'पीछे';
+
+  @override
+  String get wizardNext => 'आगे';
+
+  @override
+  String get wizardRateLater => 'वज़न और भाव काउंटर पर डाले जाएँगे।';
+
+  @override
+  String partyPickerHint(int count) {
+    return 'खोजने के लिए $count अक्षर लिखें';
+  }
+
+  @override
+  String get partyPickerChange => 'बदलें';
 }

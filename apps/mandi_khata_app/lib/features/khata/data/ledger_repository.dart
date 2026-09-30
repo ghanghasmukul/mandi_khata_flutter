@@ -106,30 +106,51 @@ class LedgerRepository {
     if (!can(Permission.entriesReverse)) {
       return const LedgerNotPermitted(Permission.entriesReverse);
     }
-    final when = now ?? DateTime.now();
-    return await _db.writeTransaction((tx) async {
-      final (:original, :problem) = await _reversible(tx, ctx.tenantId, id);
-      if (original == null) return problem!;
-      final reversal = ReversalBuilder.reverse(
-        original,
-        id: const Uuid().v4(),
-        createdAt: when.toUtc(),
-        entryDate: entryDate,
-        narration: _clean(narration),
-      );
-      await _insert(tx, ctx, reversal);
-      await AuditWriter.record(
+    return await _db.writeTransaction(
+      (tx) => reverseIn(
         tx,
         ctx,
-        table: 'ledger_entries',
-        rowId: reversal.id,
-        action: AuditAction.reverse,
-        before: _auditValues(original),
-        after: _auditValues(reversal),
-        at: when,
-      );
-      return LedgerPosted([reversal]);
-    });
+        id,
+        entryDate: entryDate,
+        narration: narration,
+        now: now,
+      ),
+    );
+  }
+
+  /// Reverses entry [id] inside [tx], the caller's transaction (a document
+  /// being reversed reverses its entries with it). The caller checks
+  /// permission.
+  static Future<LedgerPostResult> reverseIn(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    String id, {
+    LedgerDate? entryDate,
+    String? narration,
+    DateTime? now,
+  }) async {
+    final when = now ?? DateTime.now();
+    final (:original, :problem) = await _reversible(tx, ctx.tenantId, id);
+    if (original == null) return problem!;
+    final reversal = ReversalBuilder.reverse(
+      original,
+      id: const Uuid().v4(),
+      createdAt: when.toUtc(),
+      entryDate: entryDate,
+      narration: _clean(narration),
+    );
+    await _insert(tx, ctx, reversal);
+    await AuditWriter.record(
+      tx,
+      ctx,
+      table: 'ledger_entries',
+      rowId: reversal.id,
+      action: AuditAction.reverse,
+      before: _auditValues(original),
+      after: _auditValues(reversal),
+      at: when,
+    );
+    return LedgerPosted([reversal]);
   }
 
   /// Edits entry [id]: reverses it and posts a replacement with the given

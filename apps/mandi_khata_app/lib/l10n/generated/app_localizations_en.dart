@@ -1059,4 +1059,306 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsCropsLink => 'Crops and per-crop charges';
+
+  @override
+  String get arrivalsTitle => 'Arrivals';
+
+  @override
+  String get arrivalsEmpty => 'No lots for these filters';
+
+  @override
+  String get arrivalsSearchHint => 'Search farmer or lot no';
+
+  @override
+  String get arrivalsAllCrops => 'All crops';
+
+  @override
+  String get arrivalsAllStatuses => 'All statuses';
+
+  @override
+  String get rangeToday => 'Today';
+
+  @override
+  String get rangeYesterday => 'Yesterday';
+
+  @override
+  String get rangeWeek => 'Last 7 days';
+
+  @override
+  String get rangeAll => 'All dates';
+
+  @override
+  String get rangeCustom => 'Pick dates…';
+
+  @override
+  String get lotNo => 'Lot no';
+
+  @override
+  String get lotDate => 'Date';
+
+  @override
+  String get lotFarmer => 'Farmer';
+
+  @override
+  String get lotCrop => 'Crop';
+
+  @override
+  String get lotBags => 'Bags';
+
+  @override
+  String lotBagsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count bags',
+      one: '1 bag',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get lotQtl => 'Qtl';
+
+  @override
+  String get lotQtlUnit => 'qtl';
+
+  @override
+  String lotQtlFromBags(String kg) {
+    return 'From bags × $kg kg';
+  }
+
+  @override
+  String get lotQtlFromBagsShort => 'from bags';
+
+  @override
+  String get lotRate => 'Rate';
+
+  @override
+  String get lotPerQtl => '/ qtl';
+
+  @override
+  String get lotBuyer => 'Buyer';
+
+  @override
+  String get lotBuyerHint => 'Optional — type 3 letters';
+
+  @override
+  String get lotJForm => 'J-form no';
+
+  @override
+  String get lotVehicle => 'Vehicle no';
+
+  @override
+  String get lotNotes => 'Notes';
+
+  @override
+  String get lotStatusLabel => 'Status';
+
+  @override
+  String get lotPostedAt => 'Posted';
+
+  @override
+  String get lotStatusArrived => 'Arrived';
+
+  @override
+  String get lotStatusWeighed => 'Weighed';
+
+  @override
+  String get lotStatusSold => 'Sold';
+
+  @override
+  String get lotStatusPosted => 'Posted';
+
+  @override
+  String get lotStatusReversed => 'Reversed';
+
+  @override
+  String get lotStatusCancelled => 'Cancelled';
+
+  @override
+  String get lotProblemBags => 'Bags cannot be negative';
+
+  @override
+  String get lotProblemWeight => 'Enter the weight';
+
+  @override
+  String get lotProblemRate => 'Rate must be more than zero';
+
+  @override
+  String get lotProblemBuyerIsFarmer => 'The buyer cannot be the farmer';
+
+  @override
+  String get lotProblemNoWeight => 'Weight is needed to post';
+
+  @override
+  String get lotProblemNoRate => 'Rate is needed to post';
+
+  @override
+  String get lotProblemBuyerRequired =>
+      'Pick the buyer: some charges are billed to the buyer';
+
+  @override
+  String get lotProblemNetNotPositive =>
+      'Charges are more than the sale; nothing to credit to the farmer';
+
+  @override
+  String get lotErrorNotPermitted => 'You are not allowed to do this';
+
+  @override
+  String get lotErrorNotFound => 'Lot, farmer, buyer or crop not found';
+
+  @override
+  String get lotErrorLocked =>
+      'This lot is posted or reversed and cannot be changed';
+
+  @override
+  String get lotErrorPickFarmer => 'Pick the farmer';
+
+  @override
+  String get lotErrorPickCrop => 'Pick the crop';
+
+  @override
+  String get lotNewTitle => 'New arrival';
+
+  @override
+  String get lotEditTitle => 'Edit lot';
+
+  @override
+  String lotNextNo(String number) {
+    return 'Lot $number';
+  }
+
+  @override
+  String get lotSave => 'Save (F10)';
+
+  @override
+  String get lotSavePost => 'Save & post (F10)';
+
+  @override
+  String get lotSaveNew => 'Save & new (Shift+F10)';
+
+  @override
+  String get lotHold => 'Hold — don\'t post';
+
+  @override
+  String lotSavedToast(String lotNo) {
+    return 'Lot $lotNo saved';
+  }
+
+  @override
+  String lotPostedToast(String lotNo) {
+    return 'Lot $lotNo posted to the khata';
+  }
+
+  @override
+  String get lotPreviewTitle => 'Calculation';
+
+  @override
+  String get lotPreviewEmpty =>
+      'Enter crop, weight and rate to see arhat, charges and net.';
+
+  @override
+  String get lotPostsTitle => 'Posting writes to the khata:';
+
+  @override
+  String get lotPostsFarmer => 'Jama to farmer';
+
+  @override
+  String get lotPostsBuyer => 'Udhaar to buyer';
+
+  @override
+  String get lotCancel => 'Cancel lot';
+
+  @override
+  String lotCancelTitle(String lotNo) {
+    return 'Cancel lot $lotNo?';
+  }
+
+  @override
+  String get lotCancelBody =>
+      'Use this when the crop never came or was entered by mistake. Nothing was posted to the khata. This cannot be undone.';
+
+  @override
+  String lotCancelledToast(String lotNo) {
+    return 'Lot $lotNo cancelled';
+  }
+
+  @override
+  String get lotReverse => 'Reverse lot';
+
+  @override
+  String lotReverseTitle(String lotNo) {
+    return 'Reverse lot $lotNo?';
+  }
+
+  @override
+  String get lotReverseBody =>
+      'Its khata entries (farmer\'s jama, buyer\'s udhaar) are reversed on the same date. The lot stays in the records, marked reversed. You can then enter it again correctly.';
+
+  @override
+  String lotReversedToast(String lotNo) {
+    return 'Lot $lotNo reversed';
+  }
+
+  @override
+  String get lotReenter => 'Enter again';
+
+  @override
+  String get lotEdit => 'Edit';
+
+  @override
+  String get lotAddWeightRate => 'Add weight & rate';
+
+  @override
+  String get lotDetailsTitle => 'Lot';
+
+  @override
+  String get lotCalculationTitle => 'Arhat & charges';
+
+  @override
+  String get lotNotPostedYet =>
+      'Shown once the lot is posted (with the rates of that day).';
+
+  @override
+  String get lotEntriesTitle => 'Khata entries';
+
+  @override
+  String get lotEntryArrival => 'Crop sale';
+
+  @override
+  String get lotEntryReversal => 'Reversal';
+
+  @override
+  String get lotsTotalCount => 'Lots';
+
+  @override
+  String get wizardStepFarmer => 'Farmer';
+
+  @override
+  String get wizardStepCrop => 'Crop & bags';
+
+  @override
+  String get wizardStepConfirm => 'Confirm';
+
+  @override
+  String wizardStepOf(int step, int total, String title) {
+    return 'Step $step of $total: $title';
+  }
+
+  @override
+  String get wizardBack => 'Back';
+
+  @override
+  String get wizardNext => 'Next';
+
+  @override
+  String get wizardRateLater => 'Weight and rate are added at the counter.';
+
+  @override
+  String partyPickerHint(int count) {
+    return 'Type $count letters to search';
+  }
+
+  @override
+  String get partyPickerChange => 'Change';
 }

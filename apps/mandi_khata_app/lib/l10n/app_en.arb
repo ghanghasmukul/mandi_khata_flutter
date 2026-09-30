@@ -1373,5 +1373,422 @@
   "settingsCropsLink": "Crops and per-crop charges",
   "@settingsCropsLink": {
     "description": "Link from settings to the crops screen."
+  },
+  "arrivalsTitle": "Arrivals",
+  "@arrivalsTitle": {
+    "description": "Arrivals (lots) screen title."
+  },
+  "arrivalsEmpty": "No lots for these filters",
+  "@arrivalsEmpty": {
+    "description": "Empty arrivals list."
+  },
+  "arrivalsSearchHint": "Search farmer or lot no",
+  "@arrivalsSearchHint": {
+    "description": "Arrivals search hint."
+  },
+  "arrivalsAllCrops": "All crops",
+  "@arrivalsAllCrops": {
+    "description": "Crop filter: no filter."
+  },
+  "arrivalsAllStatuses": "All statuses",
+  "@arrivalsAllStatuses": {
+    "description": "Status filter: no filter."
+  },
+  "rangeToday": "Today",
+  "@rangeToday": {
+    "description": "Date filter chip."
+  },
+  "rangeYesterday": "Yesterday",
+  "@rangeYesterday": {
+    "description": "Date filter chip (the day before today)."
+  },
+  "rangeWeek": "Last 7 days",
+  "@rangeWeek": {
+    "description": "Date filter chip."
+  },
+  "rangeAll": "All dates",
+  "@rangeAll": {
+    "description": "Date filter chip."
+  },
+  "rangeCustom": "Pick dates…",
+  "@rangeCustom": {
+    "description": "Date filter chip that opens a range picker."
+  },
+  "lotNo": "Lot no",
+  "@lotNo": {
+    "description": "Lot number column."
+  },
+  "lotDate": "Date",
+  "@lotDate": {
+    "description": "Lot business date."
+  },
+  "lotFarmer": "Farmer",
+  "@lotFarmer": {
+    "description": "Lot farmer field."
+  },
+  "lotCrop": "Crop",
+  "@lotCrop": {
+    "description": "Lot crop field."
+  },
+  "lotBags": "Bags",
+  "@lotBags": {
+    "description": "Number of bags."
+  },
+  "lotBagsCount": "{count, plural, =1{1 bag} other{{count} bags}}",
+  "@lotBagsCount": {
+    "description": "Bag count in a list row.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lotQtl": "Qtl",
+  "@lotQtl": {
+    "description": "Weight in quintals."
+  },
+  "lotQtlUnit": "qtl",
+  "@lotQtlUnit": {
+    "description": "Quintal unit after a number."
+  },
+  "lotQtlFromBags": "From bags × {kg} kg",
+  "@lotQtlFromBags": {
+    "description": "Checkbox: work out the weight from the bag count.",
+    "placeholders": {
+      "kg": {
+        "type": "String"
+      }
+    }
+  },
+  "lotQtlFromBagsShort": "from bags",
+  "@lotQtlFromBagsShort": {
+    "description": "Note that the weight was worked out from bags."
+  },
+  "lotRate": "Rate",
+  "@lotRate": {
+    "description": "Rate per quintal."
+  },
+  "lotPerQtl": "/ qtl",
+  "@lotPerQtl": {
+    "description": "Suffix after a per-quintal rate."
+  },
+  "lotBuyer": "Buyer",
+  "@lotBuyer": {
+    "description": "Lot buyer field."
+  },
+  "lotBuyerHint": "Optional — type 3 letters",
+  "@lotBuyerHint": {
+    "description": "Buyer search hint."
+  },
+  "lotJForm": "J-form no",
+  "@lotJForm": {
+    "description": "J-form number (mandi sale slip)."
+  },
+  "lotVehicle": "Vehicle no",
+  "@lotVehicle": {
+    "description": "Tractor/truck number."
+  },
+  "lotNotes": "Notes",
+  "@lotNotes": {
+    "description": "Lot notes."
+  },
+  "lotStatusLabel": "Status",
+  "@lotStatusLabel": {
+    "description": "Lot status column."
+  },
+  "lotPostedAt": "Posted",
+  "@lotPostedAt": {
+    "description": "When the lot was posted."
+  },
+  "lotStatusArrived": "Arrived",
+  "@lotStatusArrived": {
+    "description": "Lot status."
+  },
+  "lotStatusWeighed": "Weighed",
+  "@lotStatusWeighed": {
+    "description": "Lot status."
+  },
+  "lotStatusSold": "Sold",
+  "@lotStatusSold": {
+    "description": "Lot status."
+  },
+  "lotStatusPosted": "Posted",
+  "@lotStatusPosted": {
+    "description": "Lot status: posted to the khata."
+  },
+  "lotStatusReversed": "Reversed",
+  "@lotStatusReversed": {
+    "description": "Lot status."
+  },
+  "lotStatusCancelled": "Cancelled",
+  "@lotStatusCancelled": {
+    "description": "Lot reversed before it was ever posted."
+  },
+  "lotProblemBags": "Bags cannot be negative",
+  "@lotProblemBags": {
+    "description": "Validation."
+  },
+  "lotProblemWeight": "Enter the weight",
+  "@lotProblemWeight": {
+    "description": "Validation: weight missing or zero."
+  },
+  "lotProblemRate": "Rate must be more than zero",
+  "@lotProblemRate": {
+    "description": "Validation."
+  },
+  "lotProblemBuyerIsFarmer": "The buyer cannot be the farmer",
+  "@lotProblemBuyerIsFarmer": {
+    "description": "Validation."
+  },
+  "lotProblemNoWeight": "Weight is needed to post",
+  "@lotProblemNoWeight": {
+    "description": "Posting needs weight."
+  },
+  "lotProblemNoRate": "Rate is needed to post",
+  "@lotProblemNoRate": {
+    "description": "Posting needs rate."
+  },
+  "lotProblemBuyerRequired": "Pick the buyer: some charges are billed to the buyer",
+  "@lotProblemBuyerRequired": {
+    "description": "Posting needs a buyer."
+  },
+  "lotProblemNetNotPositive": "Charges are more than the sale; nothing to credit to the farmer",
+  "@lotProblemNetNotPositive": {
+    "description": "Posting blocked: net would be zero or less."
+  },
+  "lotErrorNotPermitted": "You are not allowed to do this",
+  "@lotErrorNotPermitted": {
+    "description": "Permission error."
+  },
+  "lotErrorNotFound": "Lot, farmer, buyer or crop not found",
+  "@lotErrorNotFound": {
+    "description": "Missing record."
+  },
+  "lotErrorLocked": "This lot is posted or reversed and cannot be changed",
+  "@lotErrorLocked": {
+    "description": "Locked lot."
+  },
+  "lotErrorPickFarmer": "Pick the farmer",
+  "@lotErrorPickFarmer": {
+    "description": "Validation."
+  },
+  "lotErrorPickCrop": "Pick the crop",
+  "@lotErrorPickCrop": {
+    "description": "Validation."
+  },
+  "lotNewTitle": "New arrival",
+  "@lotNewTitle": {
+    "description": "New lot title / button."
+  },
+  "lotEditTitle": "Edit lot",
+  "@lotEditTitle": {
+    "description": "Edit lot title."
+  },
+  "lotNextNo": "Lot {number}",
+  "@lotNextNo": {
+    "description": "The number the new lot will get.",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "lotSave": "Save (F10)",
+  "@lotSave": {
+    "description": "Save an incomplete lot."
+  },
+  "lotSavePost": "Save & post (F10)",
+  "@lotSavePost": {
+    "description": "Save and post a complete lot."
+  },
+  "lotSaveNew": "Save & new (Shift+F10)",
+  "@lotSaveNew": {
+    "description": "Save and start the next lot."
+  },
+  "lotHold": "Hold — don't post",
+  "@lotHold": {
+    "description": "Save a sold lot without posting it."
+  },
+  "lotSavedToast": "Lot {lotNo} saved",
+  "@lotSavedToast": {
+    "description": "Toast.",
+    "placeholders": {
+      "lotNo": {
+        "type": "String"
+      }
+    }
+  },
+  "lotPostedToast": "Lot {lotNo} posted to the khata",
+  "@lotPostedToast": {
+    "description": "Toast.",
+    "placeholders": {
+      "lotNo": {
+        "type": "String"
+      }
+    }
+  },
+  "lotPreviewTitle": "Calculation",
+  "@lotPreviewTitle": {
+    "description": "Live calculation panel title."
+  },
+  "lotPreviewEmpty": "Enter crop, weight and rate to see arhat, charges and net.",
+  "@lotPreviewEmpty": {
+    "description": "Calculation placeholder."
+  },
+  "lotPostsTitle": "Posting writes to the khata:",
+  "@lotPostsTitle": {
+    "description": "Heading of the entries posting will make."
+  },
+  "lotPostsFarmer": "Jama to farmer",
+  "@lotPostsFarmer": {
+    "description": "Farmer's entry."
+  },
+  "lotPostsBuyer": "Udhaar to buyer",
+  "@lotPostsBuyer": {
+    "description": "Buyer's entry."
+  },
+  "lotCancel": "Cancel lot",
+  "@lotCancel": {
+    "description": "Cancel an open lot."
+  },
+  "lotCancelTitle": "Cancel lot {lotNo}?",
+  "@lotCancelTitle": {
+    "description": "Confirm dialog title.",
+    "placeholders": {
+      "lotNo": {
+        "type": "String"
+      }
+    }
+  },
+  "lotCancelBody": "Use this when the crop never came or was entered by mistake. Nothing was posted to the khata. This cannot be undone.",
+  "@lotCancelBody": {
+    "description": "Confirm dialog body."
+  },
+  "lotCancelledToast": "Lot {lotNo} cancelled",
+  "@lotCancelledToast": {
+    "description": "Toast.",
+    "placeholders": {
+      "lotNo": {
+        "type": "String"
+      }
+    }
+  },
+  "lotReverse": "Reverse lot",
+  "@lotReverse": {
+    "description": "Reverse a posted lot."
+  },
+  "lotReverseTitle": "Reverse lot {lotNo}?",
+  "@lotReverseTitle": {
+    "description": "Confirm dialog title.",
+    "placeholders": {
+      "lotNo": {
+        "type": "String"
+      }
+    }
+  },
+  "lotReverseBody": "Its khata entries (farmer's jama, buyer's udhaar) are reversed on the same date. The lot stays in the records, marked reversed. You can then enter it again correctly.",
+  "@lotReverseBody": {
+    "description": "Confirm dialog body."
+  },
+  "lotReversedToast": "Lot {lotNo} reversed",
+  "@lotReversedToast": {
+    "description": "Toast.",
+    "placeholders": {
+      "lotNo": {
+        "type": "String"
+      }
+    }
+  },
+  "lotReenter": "Enter again",
+  "@lotReenter": {
+    "description": "Start a new lot copied from a reversed one."
+  },
+  "lotEdit": "Edit",
+  "@lotEdit": {
+    "description": "Edit an open lot."
+  },
+  "lotAddWeightRate": "Add weight & rate",
+  "@lotAddWeightRate": {
+    "description": "Edit an arrived lot at the counter."
+  },
+  "lotDetailsTitle": "Lot",
+  "@lotDetailsTitle": {
+    "description": "Details card title."
+  },
+  "lotCalculationTitle": "Arhat & charges",
+  "@lotCalculationTitle": {
+    "description": "Calculation card title."
+  },
+  "lotNotPostedYet": "Shown once the lot is posted (with the rates of that day).",
+  "@lotNotPostedYet": {
+    "description": "Calculation placeholder for open lots."
+  },
+  "lotEntriesTitle": "Khata entries",
+  "@lotEntriesTitle": {
+    "description": "Ledger entries of a lot."
+  },
+  "lotEntryArrival": "Crop sale",
+  "@lotEntryArrival": {
+    "description": "Entry made by posting a lot."
+  },
+  "lotEntryReversal": "Reversal",
+  "@lotEntryReversal": {
+    "description": "Reversal entry."
+  },
+  "lotsTotalCount": "Lots",
+  "@lotsTotalCount": {
+    "description": "Totals row: number of lots."
+  },
+  "wizardStepFarmer": "Farmer",
+  "@wizardStepFarmer": {
+    "description": "Wizard step 1."
+  },
+  "wizardStepCrop": "Crop & bags",
+  "@wizardStepCrop": {
+    "description": "Wizard step 2."
+  },
+  "wizardStepConfirm": "Confirm",
+  "@wizardStepConfirm": {
+    "description": "Wizard step 3."
+  },
+  "wizardStepOf": "Step {step} of {total}: {title}",
+  "@wizardStepOf": {
+    "description": "Wizard progress.",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wizardBack": "Back",
+  "@wizardBack": {
+    "description": "Wizard back."
+  },
+  "wizardNext": "Next",
+  "@wizardNext": {
+    "description": "Wizard next."
+  },
+  "wizardRateLater": "Weight and rate are added at the counter.",
+  "@wizardRateLater": {
+    "description": "Wizard note."
+  },
+  "partyPickerHint": "Type {count} letters to search",
+  "@partyPickerHint": {
+    "description": "Party search hint.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "partyPickerChange": "Change",
+  "@partyPickerChange": {
+    "description": "Clear the picked party."
   }
 }

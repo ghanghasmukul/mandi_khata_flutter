@@ -7596,6 +7596,1373 @@ class CropsCompanion extends UpdateCompanion<Crop> {
   }
 }
 
+class $LotsTable extends Lots with TableInfo<$LotsTable, Lot> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LotsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lotNoMeta = const VerificationMeta('lotNo');
+  @override
+  late final GeneratedColumn<String> lotNo = GeneratedColumn<String>(
+    'lot_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _farmerIdMeta = const VerificationMeta(
+    'farmerId',
+  );
+  @override
+  late final GeneratedColumn<String> farmerId = GeneratedColumn<String>(
+    'farmer_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cropIdMeta = const VerificationMeta('cropId');
+  @override
+  late final GeneratedColumn<String> cropId = GeneratedColumn<String>(
+    'crop_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bagsMeta = const VerificationMeta('bags');
+  @override
+  late final GeneratedColumn<int> bags = GeneratedColumn<int>(
+    'bags',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _qtlMilliMeta = const VerificationMeta(
+    'qtlMilli',
+  );
+  @override
+  late final GeneratedColumn<int> qtlMilli = GeneratedColumn<int>(
+    'qtl_milli',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _qtlFromBagsMeta = const VerificationMeta(
+    'qtlFromBags',
+  );
+  @override
+  late final GeneratedColumn<bool> qtlFromBags = GeneratedColumn<bool>(
+    'qtl_from_bags',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("qtl_from_bags" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _ratePaisePerQtlMeta = const VerificationMeta(
+    'ratePaisePerQtl',
+  );
+  @override
+  late final GeneratedColumn<int> ratePaisePerQtl = GeneratedColumn<int>(
+    'rate_paise_per_qtl',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _buyerPartyIdMeta = const VerificationMeta(
+    'buyerPartyId',
+  );
+  @override
+  late final GeneratedColumn<String> buyerPartyId = GeneratedColumn<String>(
+    'buyer_party_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _jFormNoMeta = const VerificationMeta(
+    'jFormNo',
+  );
+  @override
+  late final GeneratedColumn<String> jFormNo = GeneratedColumn<String>(
+    'j_form_no',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _vehicleNoMeta = const VerificationMeta(
+    'vehicleNo',
+  );
+  @override
+  late final GeneratedColumn<String> vehicleNo = GeneratedColumn<String>(
+    'vehicle_no',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _chargesSnapshotMeta = const VerificationMeta(
+    'chargesSnapshot',
+  );
+  @override
+  late final GeneratedColumn<String> chargesSnapshot = GeneratedColumn<String>(
+    'charges_snapshot',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _grossMeta = const VerificationMeta('gross');
+  @override
+  late final GeneratedColumn<int> gross = GeneratedColumn<int>(
+    'gross',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _commissionMeta = const VerificationMeta(
+    'commission',
+  );
+  @override
+  late final GeneratedColumn<int> commission = GeneratedColumn<int>(
+    'commission',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _netToFarmerMeta = const VerificationMeta(
+    'netToFarmer',
+  );
+  @override
+  late final GeneratedColumn<int> netToFarmer = GeneratedColumn<int>(
+    'net_to_farmer',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _buyerTotalMeta = const VerificationMeta(
+    'buyerTotal',
+  );
+  @override
+  late final GeneratedColumn<int> buyerTotal = GeneratedColumn<int>(
+    'buyer_total',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _postedAtMeta = const VerificationMeta(
+    'postedAt',
+  );
+  @override
+  late final GeneratedColumn<String> postedAt = GeneratedColumn<String>(
+    'posted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    lotNo,
+    entryDate,
+    farmerId,
+    cropId,
+    bags,
+    qtlMilli,
+    qtlFromBags,
+    ratePaisePerQtl,
+    buyerPartyId,
+    jFormNo,
+    vehicleNo,
+    notes,
+    status,
+    chargesSnapshot,
+    gross,
+    commission,
+    netToFarmer,
+    buyerTotal,
+    postedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'lots';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Lot> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('lot_no')) {
+      context.handle(
+        _lotNoMeta,
+        lotNo.isAcceptableOrUnknown(data['lot_no']!, _lotNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lotNoMeta);
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('farmer_id')) {
+      context.handle(
+        _farmerIdMeta,
+        farmerId.isAcceptableOrUnknown(data['farmer_id']!, _farmerIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_farmerIdMeta);
+    }
+    if (data.containsKey('crop_id')) {
+      context.handle(
+        _cropIdMeta,
+        cropId.isAcceptableOrUnknown(data['crop_id']!, _cropIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cropIdMeta);
+    }
+    if (data.containsKey('bags')) {
+      context.handle(
+        _bagsMeta,
+        bags.isAcceptableOrUnknown(data['bags']!, _bagsMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_bagsMeta);
+    }
+    if (data.containsKey('qtl_milli')) {
+      context.handle(
+        _qtlMilliMeta,
+        qtlMilli.isAcceptableOrUnknown(data['qtl_milli']!, _qtlMilliMeta),
+      );
+    }
+    if (data.containsKey('qtl_from_bags')) {
+      context.handle(
+        _qtlFromBagsMeta,
+        qtlFromBags.isAcceptableOrUnknown(
+          data['qtl_from_bags']!,
+          _qtlFromBagsMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_qtlFromBagsMeta);
+    }
+    if (data.containsKey('rate_paise_per_qtl')) {
+      context.handle(
+        _ratePaisePerQtlMeta,
+        ratePaisePerQtl.isAcceptableOrUnknown(
+          data['rate_paise_per_qtl']!,
+          _ratePaisePerQtlMeta,
+        ),
+      );
+    }
+    if (data.containsKey('buyer_party_id')) {
+      context.handle(
+        _buyerPartyIdMeta,
+        buyerPartyId.isAcceptableOrUnknown(
+          data['buyer_party_id']!,
+          _buyerPartyIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('j_form_no')) {
+      context.handle(
+        _jFormNoMeta,
+        jFormNo.isAcceptableOrUnknown(data['j_form_no']!, _jFormNoMeta),
+      );
+    }
+    if (data.containsKey('vehicle_no')) {
+      context.handle(
+        _vehicleNoMeta,
+        vehicleNo.isAcceptableOrUnknown(data['vehicle_no']!, _vehicleNoMeta),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('charges_snapshot')) {
+      context.handle(
+        _chargesSnapshotMeta,
+        chargesSnapshot.isAcceptableOrUnknown(
+          data['charges_snapshot']!,
+          _chargesSnapshotMeta,
+        ),
+      );
+    }
+    if (data.containsKey('gross')) {
+      context.handle(
+        _grossMeta,
+        gross.isAcceptableOrUnknown(data['gross']!, _grossMeta),
+      );
+    }
+    if (data.containsKey('commission')) {
+      context.handle(
+        _commissionMeta,
+        commission.isAcceptableOrUnknown(data['commission']!, _commissionMeta),
+      );
+    }
+    if (data.containsKey('net_to_farmer')) {
+      context.handle(
+        _netToFarmerMeta,
+        netToFarmer.isAcceptableOrUnknown(
+          data['net_to_farmer']!,
+          _netToFarmerMeta,
+        ),
+      );
+    }
+    if (data.containsKey('buyer_total')) {
+      context.handle(
+        _buyerTotalMeta,
+        buyerTotal.isAcceptableOrUnknown(data['buyer_total']!, _buyerTotalMeta),
+      );
+    }
+    if (data.containsKey('posted_at')) {
+      context.handle(
+        _postedAtMeta,
+        postedAt.isAcceptableOrUnknown(data['posted_at']!, _postedAtMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Lot map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Lot(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      lotNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}lot_no'],
+      )!,
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      farmerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}farmer_id'],
+      )!,
+      cropId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}crop_id'],
+      )!,
+      bags: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}bags'],
+      )!,
+      qtlMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}qtl_milli'],
+      ),
+      qtlFromBags: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}qtl_from_bags'],
+      )!,
+      ratePaisePerQtl: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rate_paise_per_qtl'],
+      ),
+      buyerPartyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}buyer_party_id'],
+      ),
+      jFormNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}j_form_no'],
+      ),
+      vehicleNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}vehicle_no'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      chargesSnapshot: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}charges_snapshot'],
+      ),
+      gross: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}gross'],
+      ),
+      commission: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}commission'],
+      ),
+      netToFarmer: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}net_to_farmer'],
+      ),
+      buyerTotal: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}buyer_total'],
+      ),
+      postedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}posted_at'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $LotsTable createAlias(String alias) {
+    return $LotsTable(attachedDatabase, alias);
+  }
+}
+
+class Lot extends DataClass implements Insertable<Lot> {
+  final String id;
+  final String tenantId;
+  final String lotNo;
+  final String entryDate;
+  final String farmerId;
+  final String cropId;
+  final int bags;
+  final int? qtlMilli;
+  final bool qtlFromBags;
+  final int? ratePaisePerQtl;
+  final String? buyerPartyId;
+  final String? jFormNo;
+  final String? vehicleNo;
+  final String? notes;
+  final String status;
+  final String? chargesSnapshot;
+  final int? gross;
+  final int? commission;
+  final int? netToFarmer;
+  final int? buyerTotal;
+  final String? postedAt;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const Lot({
+    required this.id,
+    required this.tenantId,
+    required this.lotNo,
+    required this.entryDate,
+    required this.farmerId,
+    required this.cropId,
+    required this.bags,
+    this.qtlMilli,
+    required this.qtlFromBags,
+    this.ratePaisePerQtl,
+    this.buyerPartyId,
+    this.jFormNo,
+    this.vehicleNo,
+    this.notes,
+    required this.status,
+    this.chargesSnapshot,
+    this.gross,
+    this.commission,
+    this.netToFarmer,
+    this.buyerTotal,
+    this.postedAt,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['lot_no'] = Variable<String>(lotNo);
+    map['entry_date'] = Variable<String>(entryDate);
+    map['farmer_id'] = Variable<String>(farmerId);
+    map['crop_id'] = Variable<String>(cropId);
+    map['bags'] = Variable<int>(bags);
+    if (!nullToAbsent || qtlMilli != null) {
+      map['qtl_milli'] = Variable<int>(qtlMilli);
+    }
+    map['qtl_from_bags'] = Variable<bool>(qtlFromBags);
+    if (!nullToAbsent || ratePaisePerQtl != null) {
+      map['rate_paise_per_qtl'] = Variable<int>(ratePaisePerQtl);
+    }
+    if (!nullToAbsent || buyerPartyId != null) {
+      map['buyer_party_id'] = Variable<String>(buyerPartyId);
+    }
+    if (!nullToAbsent || jFormNo != null) {
+      map['j_form_no'] = Variable<String>(jFormNo);
+    }
+    if (!nullToAbsent || vehicleNo != null) {
+      map['vehicle_no'] = Variable<String>(vehicleNo);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || chargesSnapshot != null) {
+      map['charges_snapshot'] = Variable<String>(chargesSnapshot);
+    }
+    if (!nullToAbsent || gross != null) {
+      map['gross'] = Variable<int>(gross);
+    }
+    if (!nullToAbsent || commission != null) {
+      map['commission'] = Variable<int>(commission);
+    }
+    if (!nullToAbsent || netToFarmer != null) {
+      map['net_to_farmer'] = Variable<int>(netToFarmer);
+    }
+    if (!nullToAbsent || buyerTotal != null) {
+      map['buyer_total'] = Variable<int>(buyerTotal);
+    }
+    if (!nullToAbsent || postedAt != null) {
+      map['posted_at'] = Variable<String>(postedAt);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  LotsCompanion toCompanion(bool nullToAbsent) {
+    return LotsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      lotNo: Value(lotNo),
+      entryDate: Value(entryDate),
+      farmerId: Value(farmerId),
+      cropId: Value(cropId),
+      bags: Value(bags),
+      qtlMilli: qtlMilli == null && nullToAbsent
+          ? const Value.absent()
+          : Value(qtlMilli),
+      qtlFromBags: Value(qtlFromBags),
+      ratePaisePerQtl: ratePaisePerQtl == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ratePaisePerQtl),
+      buyerPartyId: buyerPartyId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(buyerPartyId),
+      jFormNo: jFormNo == null && nullToAbsent
+          ? const Value.absent()
+          : Value(jFormNo),
+      vehicleNo: vehicleNo == null && nullToAbsent
+          ? const Value.absent()
+          : Value(vehicleNo),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      status: Value(status),
+      chargesSnapshot: chargesSnapshot == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chargesSnapshot),
+      gross: gross == null && nullToAbsent
+          ? const Value.absent()
+          : Value(gross),
+      commission: commission == null && nullToAbsent
+          ? const Value.absent()
+          : Value(commission),
+      netToFarmer: netToFarmer == null && nullToAbsent
+          ? const Value.absent()
+          : Value(netToFarmer),
+      buyerTotal: buyerTotal == null && nullToAbsent
+          ? const Value.absent()
+          : Value(buyerTotal),
+      postedAt: postedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(postedAt),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory Lot.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Lot(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      lotNo: serializer.fromJson<String>(json['lotNo']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      farmerId: serializer.fromJson<String>(json['farmerId']),
+      cropId: serializer.fromJson<String>(json['cropId']),
+      bags: serializer.fromJson<int>(json['bags']),
+      qtlMilli: serializer.fromJson<int?>(json['qtlMilli']),
+      qtlFromBags: serializer.fromJson<bool>(json['qtlFromBags']),
+      ratePaisePerQtl: serializer.fromJson<int?>(json['ratePaisePerQtl']),
+      buyerPartyId: serializer.fromJson<String?>(json['buyerPartyId']),
+      jFormNo: serializer.fromJson<String?>(json['jFormNo']),
+      vehicleNo: serializer.fromJson<String?>(json['vehicleNo']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      status: serializer.fromJson<String>(json['status']),
+      chargesSnapshot: serializer.fromJson<String?>(json['chargesSnapshot']),
+      gross: serializer.fromJson<int?>(json['gross']),
+      commission: serializer.fromJson<int?>(json['commission']),
+      netToFarmer: serializer.fromJson<int?>(json['netToFarmer']),
+      buyerTotal: serializer.fromJson<int?>(json['buyerTotal']),
+      postedAt: serializer.fromJson<String?>(json['postedAt']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'lotNo': serializer.toJson<String>(lotNo),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'farmerId': serializer.toJson<String>(farmerId),
+      'cropId': serializer.toJson<String>(cropId),
+      'bags': serializer.toJson<int>(bags),
+      'qtlMilli': serializer.toJson<int?>(qtlMilli),
+      'qtlFromBags': serializer.toJson<bool>(qtlFromBags),
+      'ratePaisePerQtl': serializer.toJson<int?>(ratePaisePerQtl),
+      'buyerPartyId': serializer.toJson<String?>(buyerPartyId),
+      'jFormNo': serializer.toJson<String?>(jFormNo),
+      'vehicleNo': serializer.toJson<String?>(vehicleNo),
+      'notes': serializer.toJson<String?>(notes),
+      'status': serializer.toJson<String>(status),
+      'chargesSnapshot': serializer.toJson<String?>(chargesSnapshot),
+      'gross': serializer.toJson<int?>(gross),
+      'commission': serializer.toJson<int?>(commission),
+      'netToFarmer': serializer.toJson<int?>(netToFarmer),
+      'buyerTotal': serializer.toJson<int?>(buyerTotal),
+      'postedAt': serializer.toJson<String?>(postedAt),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  Lot copyWith({
+    String? id,
+    String? tenantId,
+    String? lotNo,
+    String? entryDate,
+    String? farmerId,
+    String? cropId,
+    int? bags,
+    Value<int?> qtlMilli = const Value.absent(),
+    bool? qtlFromBags,
+    Value<int?> ratePaisePerQtl = const Value.absent(),
+    Value<String?> buyerPartyId = const Value.absent(),
+    Value<String?> jFormNo = const Value.absent(),
+    Value<String?> vehicleNo = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+    String? status,
+    Value<String?> chargesSnapshot = const Value.absent(),
+    Value<int?> gross = const Value.absent(),
+    Value<int?> commission = const Value.absent(),
+    Value<int?> netToFarmer = const Value.absent(),
+    Value<int?> buyerTotal = const Value.absent(),
+    Value<String?> postedAt = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => Lot(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    lotNo: lotNo ?? this.lotNo,
+    entryDate: entryDate ?? this.entryDate,
+    farmerId: farmerId ?? this.farmerId,
+    cropId: cropId ?? this.cropId,
+    bags: bags ?? this.bags,
+    qtlMilli: qtlMilli.present ? qtlMilli.value : this.qtlMilli,
+    qtlFromBags: qtlFromBags ?? this.qtlFromBags,
+    ratePaisePerQtl: ratePaisePerQtl.present
+        ? ratePaisePerQtl.value
+        : this.ratePaisePerQtl,
+    buyerPartyId: buyerPartyId.present ? buyerPartyId.value : this.buyerPartyId,
+    jFormNo: jFormNo.present ? jFormNo.value : this.jFormNo,
+    vehicleNo: vehicleNo.present ? vehicleNo.value : this.vehicleNo,
+    notes: notes.present ? notes.value : this.notes,
+    status: status ?? this.status,
+    chargesSnapshot: chargesSnapshot.present
+        ? chargesSnapshot.value
+        : this.chargesSnapshot,
+    gross: gross.present ? gross.value : this.gross,
+    commission: commission.present ? commission.value : this.commission,
+    netToFarmer: netToFarmer.present ? netToFarmer.value : this.netToFarmer,
+    buyerTotal: buyerTotal.present ? buyerTotal.value : this.buyerTotal,
+    postedAt: postedAt.present ? postedAt.value : this.postedAt,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  Lot copyWithCompanion(LotsCompanion data) {
+    return Lot(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      lotNo: data.lotNo.present ? data.lotNo.value : this.lotNo,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      farmerId: data.farmerId.present ? data.farmerId.value : this.farmerId,
+      cropId: data.cropId.present ? data.cropId.value : this.cropId,
+      bags: data.bags.present ? data.bags.value : this.bags,
+      qtlMilli: data.qtlMilli.present ? data.qtlMilli.value : this.qtlMilli,
+      qtlFromBags: data.qtlFromBags.present
+          ? data.qtlFromBags.value
+          : this.qtlFromBags,
+      ratePaisePerQtl: data.ratePaisePerQtl.present
+          ? data.ratePaisePerQtl.value
+          : this.ratePaisePerQtl,
+      buyerPartyId: data.buyerPartyId.present
+          ? data.buyerPartyId.value
+          : this.buyerPartyId,
+      jFormNo: data.jFormNo.present ? data.jFormNo.value : this.jFormNo,
+      vehicleNo: data.vehicleNo.present ? data.vehicleNo.value : this.vehicleNo,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      status: data.status.present ? data.status.value : this.status,
+      chargesSnapshot: data.chargesSnapshot.present
+          ? data.chargesSnapshot.value
+          : this.chargesSnapshot,
+      gross: data.gross.present ? data.gross.value : this.gross,
+      commission: data.commission.present
+          ? data.commission.value
+          : this.commission,
+      netToFarmer: data.netToFarmer.present
+          ? data.netToFarmer.value
+          : this.netToFarmer,
+      buyerTotal: data.buyerTotal.present
+          ? data.buyerTotal.value
+          : this.buyerTotal,
+      postedAt: data.postedAt.present ? data.postedAt.value : this.postedAt,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Lot(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('lotNo: $lotNo, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('farmerId: $farmerId, ')
+          ..write('cropId: $cropId, ')
+          ..write('bags: $bags, ')
+          ..write('qtlMilli: $qtlMilli, ')
+          ..write('qtlFromBags: $qtlFromBags, ')
+          ..write('ratePaisePerQtl: $ratePaisePerQtl, ')
+          ..write('buyerPartyId: $buyerPartyId, ')
+          ..write('jFormNo: $jFormNo, ')
+          ..write('vehicleNo: $vehicleNo, ')
+          ..write('notes: $notes, ')
+          ..write('status: $status, ')
+          ..write('chargesSnapshot: $chargesSnapshot, ')
+          ..write('gross: $gross, ')
+          ..write('commission: $commission, ')
+          ..write('netToFarmer: $netToFarmer, ')
+          ..write('buyerTotal: $buyerTotal, ')
+          ..write('postedAt: $postedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    id,
+    tenantId,
+    lotNo,
+    entryDate,
+    farmerId,
+    cropId,
+    bags,
+    qtlMilli,
+    qtlFromBags,
+    ratePaisePerQtl,
+    buyerPartyId,
+    jFormNo,
+    vehicleNo,
+    notes,
+    status,
+    chargesSnapshot,
+    gross,
+    commission,
+    netToFarmer,
+    buyerTotal,
+    postedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Lot &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.lotNo == this.lotNo &&
+          other.entryDate == this.entryDate &&
+          other.farmerId == this.farmerId &&
+          other.cropId == this.cropId &&
+          other.bags == this.bags &&
+          other.qtlMilli == this.qtlMilli &&
+          other.qtlFromBags == this.qtlFromBags &&
+          other.ratePaisePerQtl == this.ratePaisePerQtl &&
+          other.buyerPartyId == this.buyerPartyId &&
+          other.jFormNo == this.jFormNo &&
+          other.vehicleNo == this.vehicleNo &&
+          other.notes == this.notes &&
+          other.status == this.status &&
+          other.chargesSnapshot == this.chargesSnapshot &&
+          other.gross == this.gross &&
+          other.commission == this.commission &&
+          other.netToFarmer == this.netToFarmer &&
+          other.buyerTotal == this.buyerTotal &&
+          other.postedAt == this.postedAt &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class LotsCompanion extends UpdateCompanion<Lot> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> lotNo;
+  final Value<String> entryDate;
+  final Value<String> farmerId;
+  final Value<String> cropId;
+  final Value<int> bags;
+  final Value<int?> qtlMilli;
+  final Value<bool> qtlFromBags;
+  final Value<int?> ratePaisePerQtl;
+  final Value<String?> buyerPartyId;
+  final Value<String?> jFormNo;
+  final Value<String?> vehicleNo;
+  final Value<String?> notes;
+  final Value<String> status;
+  final Value<String?> chargesSnapshot;
+  final Value<int?> gross;
+  final Value<int?> commission;
+  final Value<int?> netToFarmer;
+  final Value<int?> buyerTotal;
+  final Value<String?> postedAt;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const LotsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.lotNo = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.farmerId = const Value.absent(),
+    this.cropId = const Value.absent(),
+    this.bags = const Value.absent(),
+    this.qtlMilli = const Value.absent(),
+    this.qtlFromBags = const Value.absent(),
+    this.ratePaisePerQtl = const Value.absent(),
+    this.buyerPartyId = const Value.absent(),
+    this.jFormNo = const Value.absent(),
+    this.vehicleNo = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.status = const Value.absent(),
+    this.chargesSnapshot = const Value.absent(),
+    this.gross = const Value.absent(),
+    this.commission = const Value.absent(),
+    this.netToFarmer = const Value.absent(),
+    this.buyerTotal = const Value.absent(),
+    this.postedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LotsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String lotNo,
+    required String entryDate,
+    required String farmerId,
+    required String cropId,
+    required int bags,
+    this.qtlMilli = const Value.absent(),
+    required bool qtlFromBags,
+    this.ratePaisePerQtl = const Value.absent(),
+    this.buyerPartyId = const Value.absent(),
+    this.jFormNo = const Value.absent(),
+    this.vehicleNo = const Value.absent(),
+    this.notes = const Value.absent(),
+    required String status,
+    this.chargesSnapshot = const Value.absent(),
+    this.gross = const Value.absent(),
+    this.commission = const Value.absent(),
+    this.netToFarmer = const Value.absent(),
+    this.buyerTotal = const Value.absent(),
+    this.postedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       lotNo = Value(lotNo),
+       entryDate = Value(entryDate),
+       farmerId = Value(farmerId),
+       cropId = Value(cropId),
+       bags = Value(bags),
+       qtlFromBags = Value(qtlFromBags),
+       status = Value(status);
+  static Insertable<Lot> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? lotNo,
+    Expression<String>? entryDate,
+    Expression<String>? farmerId,
+    Expression<String>? cropId,
+    Expression<int>? bags,
+    Expression<int>? qtlMilli,
+    Expression<bool>? qtlFromBags,
+    Expression<int>? ratePaisePerQtl,
+    Expression<String>? buyerPartyId,
+    Expression<String>? jFormNo,
+    Expression<String>? vehicleNo,
+    Expression<String>? notes,
+    Expression<String>? status,
+    Expression<String>? chargesSnapshot,
+    Expression<int>? gross,
+    Expression<int>? commission,
+    Expression<int>? netToFarmer,
+    Expression<int>? buyerTotal,
+    Expression<String>? postedAt,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (lotNo != null) 'lot_no': lotNo,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (farmerId != null) 'farmer_id': farmerId,
+      if (cropId != null) 'crop_id': cropId,
+      if (bags != null) 'bags': bags,
+      if (qtlMilli != null) 'qtl_milli': qtlMilli,
+      if (qtlFromBags != null) 'qtl_from_bags': qtlFromBags,
+      if (ratePaisePerQtl != null) 'rate_paise_per_qtl': ratePaisePerQtl,
+      if (buyerPartyId != null) 'buyer_party_id': buyerPartyId,
+      if (jFormNo != null) 'j_form_no': jFormNo,
+      if (vehicleNo != null) 'vehicle_no': vehicleNo,
+      if (notes != null) 'notes': notes,
+      if (status != null) 'status': status,
+      if (chargesSnapshot != null) 'charges_snapshot': chargesSnapshot,
+      if (gross != null) 'gross': gross,
+      if (commission != null) 'commission': commission,
+      if (netToFarmer != null) 'net_to_farmer': netToFarmer,
+      if (buyerTotal != null) 'buyer_total': buyerTotal,
+      if (postedAt != null) 'posted_at': postedAt,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LotsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? lotNo,
+    Value<String>? entryDate,
+    Value<String>? farmerId,
+    Value<String>? cropId,
+    Value<int>? bags,
+    Value<int?>? qtlMilli,
+    Value<bool>? qtlFromBags,
+    Value<int?>? ratePaisePerQtl,
+    Value<String?>? buyerPartyId,
+    Value<String?>? jFormNo,
+    Value<String?>? vehicleNo,
+    Value<String?>? notes,
+    Value<String>? status,
+    Value<String?>? chargesSnapshot,
+    Value<int?>? gross,
+    Value<int?>? commission,
+    Value<int?>? netToFarmer,
+    Value<int?>? buyerTotal,
+    Value<String?>? postedAt,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return LotsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      lotNo: lotNo ?? this.lotNo,
+      entryDate: entryDate ?? this.entryDate,
+      farmerId: farmerId ?? this.farmerId,
+      cropId: cropId ?? this.cropId,
+      bags: bags ?? this.bags,
+      qtlMilli: qtlMilli ?? this.qtlMilli,
+      qtlFromBags: qtlFromBags ?? this.qtlFromBags,
+      ratePaisePerQtl: ratePaisePerQtl ?? this.ratePaisePerQtl,
+      buyerPartyId: buyerPartyId ?? this.buyerPartyId,
+      jFormNo: jFormNo ?? this.jFormNo,
+      vehicleNo: vehicleNo ?? this.vehicleNo,
+      notes: notes ?? this.notes,
+      status: status ?? this.status,
+      chargesSnapshot: chargesSnapshot ?? this.chargesSnapshot,
+      gross: gross ?? this.gross,
+      commission: commission ?? this.commission,
+      netToFarmer: netToFarmer ?? this.netToFarmer,
+      buyerTotal: buyerTotal ?? this.buyerTotal,
+      postedAt: postedAt ?? this.postedAt,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (lotNo.present) {
+      map['lot_no'] = Variable<String>(lotNo.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (farmerId.present) {
+      map['farmer_id'] = Variable<String>(farmerId.value);
+    }
+    if (cropId.present) {
+      map['crop_id'] = Variable<String>(cropId.value);
+    }
+    if (bags.present) {
+      map['bags'] = Variable<int>(bags.value);
+    }
+    if (qtlMilli.present) {
+      map['qtl_milli'] = Variable<int>(qtlMilli.value);
+    }
+    if (qtlFromBags.present) {
+      map['qtl_from_bags'] = Variable<bool>(qtlFromBags.value);
+    }
+    if (ratePaisePerQtl.present) {
+      map['rate_paise_per_qtl'] = Variable<int>(ratePaisePerQtl.value);
+    }
+    if (buyerPartyId.present) {
+      map['buyer_party_id'] = Variable<String>(buyerPartyId.value);
+    }
+    if (jFormNo.present) {
+      map['j_form_no'] = Variable<String>(jFormNo.value);
+    }
+    if (vehicleNo.present) {
+      map['vehicle_no'] = Variable<String>(vehicleNo.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (chargesSnapshot.present) {
+      map['charges_snapshot'] = Variable<String>(chargesSnapshot.value);
+    }
+    if (gross.present) {
+      map['gross'] = Variable<int>(gross.value);
+    }
+    if (commission.present) {
+      map['commission'] = Variable<int>(commission.value);
+    }
+    if (netToFarmer.present) {
+      map['net_to_farmer'] = Variable<int>(netToFarmer.value);
+    }
+    if (buyerTotal.present) {
+      map['buyer_total'] = Variable<int>(buyerTotal.value);
+    }
+    if (postedAt.present) {
+      map['posted_at'] = Variable<String>(postedAt.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LotsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('lotNo: $lotNo, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('farmerId: $farmerId, ')
+          ..write('cropId: $cropId, ')
+          ..write('bags: $bags, ')
+          ..write('qtlMilli: $qtlMilli, ')
+          ..write('qtlFromBags: $qtlFromBags, ')
+          ..write('ratePaisePerQtl: $ratePaisePerQtl, ')
+          ..write('buyerPartyId: $buyerPartyId, ')
+          ..write('jFormNo: $jFormNo, ')
+          ..write('vehicleNo: $vehicleNo, ')
+          ..write('notes: $notes, ')
+          ..write('status: $status, ')
+          ..write('chargesSnapshot: $chargesSnapshot, ')
+          ..write('gross: $gross, ')
+          ..write('commission: $commission, ')
+          ..write('netToFarmer: $netToFarmer, ')
+          ..write('buyerTotal: $buyerTotal, ')
+          ..write('postedAt: $postedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -8218,6 +9585,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $NumberSeriesTable numberSeries = $NumberSeriesTable(this);
   late final $LedgerEntriesTable ledgerEntries = $LedgerEntriesTable(this);
   late final $CropsTable crops = $CropsTable(this);
+  late final $LotsTable lots = $LotsTable(this);
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -8235,6 +9603,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     numberSeries,
     ledgerEntries,
     crops,
+    lots,
     syncErrors,
   ];
 }
@@ -11897,6 +13266,597 @@ typedef $$CropsTableProcessedTableManager =
       Crop,
       PrefetchHooks Function()
     >;
+typedef $$LotsTableCreateCompanionBuilder =
+    LotsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String lotNo,
+      required String entryDate,
+      required String farmerId,
+      required String cropId,
+      required int bags,
+      Value<int?> qtlMilli,
+      required bool qtlFromBags,
+      Value<int?> ratePaisePerQtl,
+      Value<String?> buyerPartyId,
+      Value<String?> jFormNo,
+      Value<String?> vehicleNo,
+      Value<String?> notes,
+      required String status,
+      Value<String?> chargesSnapshot,
+      Value<int?> gross,
+      Value<int?> commission,
+      Value<int?> netToFarmer,
+      Value<int?> buyerTotal,
+      Value<String?> postedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$LotsTableUpdateCompanionBuilder =
+    LotsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> lotNo,
+      Value<String> entryDate,
+      Value<String> farmerId,
+      Value<String> cropId,
+      Value<int> bags,
+      Value<int?> qtlMilli,
+      Value<bool> qtlFromBags,
+      Value<int?> ratePaisePerQtl,
+      Value<String?> buyerPartyId,
+      Value<String?> jFormNo,
+      Value<String?> vehicleNo,
+      Value<String?> notes,
+      Value<String> status,
+      Value<String?> chargesSnapshot,
+      Value<int?> gross,
+      Value<int?> commission,
+      Value<int?> netToFarmer,
+      Value<int?> buyerTotal,
+      Value<String?> postedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$LotsTableFilterComposer extends Composer<_$AppDatabase, $LotsTable> {
+  $$LotsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lotNo => $composableBuilder(
+    column: $table.lotNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get farmerId => $composableBuilder(
+    column: $table.farmerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get cropId => $composableBuilder(
+    column: $table.cropId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get bags => $composableBuilder(
+    column: $table.bags,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get qtlMilli => $composableBuilder(
+    column: $table.qtlMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get qtlFromBags => $composableBuilder(
+    column: $table.qtlFromBags,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get ratePaisePerQtl => $composableBuilder(
+    column: $table.ratePaisePerQtl,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get buyerPartyId => $composableBuilder(
+    column: $table.buyerPartyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get jFormNo => $composableBuilder(
+    column: $table.jFormNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get vehicleNo => $composableBuilder(
+    column: $table.vehicleNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get chargesSnapshot => $composableBuilder(
+    column: $table.chargesSnapshot,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get gross => $composableBuilder(
+    column: $table.gross,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get commission => $composableBuilder(
+    column: $table.commission,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get netToFarmer => $composableBuilder(
+    column: $table.netToFarmer,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get buyerTotal => $composableBuilder(
+    column: $table.buyerTotal,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get postedAt => $composableBuilder(
+    column: $table.postedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$LotsTableOrderingComposer extends Composer<_$AppDatabase, $LotsTable> {
+  $$LotsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lotNo => $composableBuilder(
+    column: $table.lotNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get farmerId => $composableBuilder(
+    column: $table.farmerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get cropId => $composableBuilder(
+    column: $table.cropId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get bags => $composableBuilder(
+    column: $table.bags,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get qtlMilli => $composableBuilder(
+    column: $table.qtlMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get qtlFromBags => $composableBuilder(
+    column: $table.qtlFromBags,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get ratePaisePerQtl => $composableBuilder(
+    column: $table.ratePaisePerQtl,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get buyerPartyId => $composableBuilder(
+    column: $table.buyerPartyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get jFormNo => $composableBuilder(
+    column: $table.jFormNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get vehicleNo => $composableBuilder(
+    column: $table.vehicleNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get chargesSnapshot => $composableBuilder(
+    column: $table.chargesSnapshot,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get gross => $composableBuilder(
+    column: $table.gross,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get commission => $composableBuilder(
+    column: $table.commission,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get netToFarmer => $composableBuilder(
+    column: $table.netToFarmer,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get buyerTotal => $composableBuilder(
+    column: $table.buyerTotal,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get postedAt => $composableBuilder(
+    column: $table.postedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$LotsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LotsTable> {
+  $$LotsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get lotNo =>
+      $composableBuilder(column: $table.lotNo, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<String> get farmerId =>
+      $composableBuilder(column: $table.farmerId, builder: (column) => column);
+
+  GeneratedColumn<String> get cropId =>
+      $composableBuilder(column: $table.cropId, builder: (column) => column);
+
+  GeneratedColumn<int> get bags =>
+      $composableBuilder(column: $table.bags, builder: (column) => column);
+
+  GeneratedColumn<int> get qtlMilli =>
+      $composableBuilder(column: $table.qtlMilli, builder: (column) => column);
+
+  GeneratedColumn<bool> get qtlFromBags => $composableBuilder(
+    column: $table.qtlFromBags,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get ratePaisePerQtl => $composableBuilder(
+    column: $table.ratePaisePerQtl,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get buyerPartyId => $composableBuilder(
+    column: $table.buyerPartyId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get jFormNo =>
+      $composableBuilder(column: $table.jFormNo, builder: (column) => column);
+
+  GeneratedColumn<String> get vehicleNo =>
+      $composableBuilder(column: $table.vehicleNo, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get chargesSnapshot => $composableBuilder(
+    column: $table.chargesSnapshot,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get gross =>
+      $composableBuilder(column: $table.gross, builder: (column) => column);
+
+  GeneratedColumn<int> get commission => $composableBuilder(
+    column: $table.commission,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get netToFarmer => $composableBuilder(
+    column: $table.netToFarmer,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get buyerTotal => $composableBuilder(
+    column: $table.buyerTotal,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get postedAt =>
+      $composableBuilder(column: $table.postedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$LotsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $LotsTable,
+          Lot,
+          $$LotsTableFilterComposer,
+          $$LotsTableOrderingComposer,
+          $$LotsTableAnnotationComposer,
+          $$LotsTableCreateCompanionBuilder,
+          $$LotsTableUpdateCompanionBuilder,
+          (Lot, BaseReferences<_$AppDatabase, $LotsTable, Lot>),
+          Lot,
+          PrefetchHooks Function()
+        > {
+  $$LotsTableTableManager(_$AppDatabase db, $LotsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LotsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LotsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LotsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> lotNo = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<String> farmerId = const Value.absent(),
+                Value<String> cropId = const Value.absent(),
+                Value<int> bags = const Value.absent(),
+                Value<int?> qtlMilli = const Value.absent(),
+                Value<bool> qtlFromBags = const Value.absent(),
+                Value<int?> ratePaisePerQtl = const Value.absent(),
+                Value<String?> buyerPartyId = const Value.absent(),
+                Value<String?> jFormNo = const Value.absent(),
+                Value<String?> vehicleNo = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> chargesSnapshot = const Value.absent(),
+                Value<int?> gross = const Value.absent(),
+                Value<int?> commission = const Value.absent(),
+                Value<int?> netToFarmer = const Value.absent(),
+                Value<int?> buyerTotal = const Value.absent(),
+                Value<String?> postedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LotsCompanion(
+                id: id,
+                tenantId: tenantId,
+                lotNo: lotNo,
+                entryDate: entryDate,
+                farmerId: farmerId,
+                cropId: cropId,
+                bags: bags,
+                qtlMilli: qtlMilli,
+                qtlFromBags: qtlFromBags,
+                ratePaisePerQtl: ratePaisePerQtl,
+                buyerPartyId: buyerPartyId,
+                jFormNo: jFormNo,
+                vehicleNo: vehicleNo,
+                notes: notes,
+                status: status,
+                chargesSnapshot: chargesSnapshot,
+                gross: gross,
+                commission: commission,
+                netToFarmer: netToFarmer,
+                buyerTotal: buyerTotal,
+                postedAt: postedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String lotNo,
+                required String entryDate,
+                required String farmerId,
+                required String cropId,
+                required int bags,
+                Value<int?> qtlMilli = const Value.absent(),
+                required bool qtlFromBags,
+                Value<int?> ratePaisePerQtl = const Value.absent(),
+                Value<String?> buyerPartyId = const Value.absent(),
+                Value<String?> jFormNo = const Value.absent(),
+                Value<String?> vehicleNo = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                required String status,
+                Value<String?> chargesSnapshot = const Value.absent(),
+                Value<int?> gross = const Value.absent(),
+                Value<int?> commission = const Value.absent(),
+                Value<int?> netToFarmer = const Value.absent(),
+                Value<int?> buyerTotal = const Value.absent(),
+                Value<String?> postedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LotsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                lotNo: lotNo,
+                entryDate: entryDate,
+                farmerId: farmerId,
+                cropId: cropId,
+                bags: bags,
+                qtlMilli: qtlMilli,
+                qtlFromBags: qtlFromBags,
+                ratePaisePerQtl: ratePaisePerQtl,
+                buyerPartyId: buyerPartyId,
+                jFormNo: jFormNo,
+                vehicleNo: vehicleNo,
+                notes: notes,
+                status: status,
+                chargesSnapshot: chargesSnapshot,
+                gross: gross,
+                commission: commission,
+                netToFarmer: netToFarmer,
+                buyerTotal: buyerTotal,
+                postedAt: postedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$LotsTable, Lot>(table),
+                  BaseReferences<_$AppDatabase, $LotsTable, Lot>(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$LotsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $LotsTable,
+      Lot,
+      $$LotsTableFilterComposer,
+      $$LotsTableOrderingComposer,
+      $$LotsTableAnnotationComposer,
+      $$LotsTableCreateCompanionBuilder,
+      $$LotsTableUpdateCompanionBuilder,
+      (Lot, BaseReferences<_$AppDatabase, $LotsTable, Lot>),
+      Lot,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -12226,6 +14186,7 @@ class $AppDatabaseManager {
       $$LedgerEntriesTableTableManager(_db, _db.ledgerEntries);
   $$CropsTableTableManager get crops =>
       $$CropsTableTableManager(_db, _db.crops);
+  $$LotsTableTableManager get lots => $$LotsTableTableManager(_db, _db.lots);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }

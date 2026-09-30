@@ -2,6 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/app/home_screen.dart';
+import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
+import 'package:mandi_khata_app/features/arrivals/presentation/lot_detail_screen.dart';
+import 'package:mandi_khata_app/features/arrivals/presentation/lot_form_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/lock_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/login_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/select_tenant_screen.dart';
@@ -92,6 +95,30 @@ GoRouter router(Ref ref) {
                 path: 'edit',
                 builder: (context, state) =>
                     PartyFormScreen(partyId: state.pathParameters['id']),
+              ),
+            ],
+          ),
+        ],
+      ),
+      GoRoute(
+        path: ArrivalRoutes.list,
+        builder: (context, state) => const ArrivalsScreen(),
+        routes: [
+          // Before ':id' so "new" is never read as an id.
+          GoRoute(
+            path: 'new',
+            builder: (context, state) =>
+                LotFormScreen(copyFromId: state.uri.queryParameters['from']),
+          ),
+          GoRoute(
+            path: ':id',
+            builder: (context, state) =>
+                LotDetailScreen(lotId: state.pathParameters['id']!),
+            routes: [
+              GoRoute(
+                path: 'edit',
+                builder: (context, state) =>
+                    LotFormScreen(lotId: state.pathParameters['id']),
               ),
             ],
           ),

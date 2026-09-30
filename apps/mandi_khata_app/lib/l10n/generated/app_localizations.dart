@@ -2001,6 +2001,540 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Crops and per-crop charges'**
   String get settingsCropsLink;
+
+  /// Arrivals (lots) screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrivals'**
+  String get arrivalsTitle;
+
+  /// Empty arrivals list.
+  ///
+  /// In en, this message translates to:
+  /// **'No lots for these filters'**
+  String get arrivalsEmpty;
+
+  /// Arrivals search hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search farmer or lot no'**
+  String get arrivalsSearchHint;
+
+  /// Crop filter: no filter.
+  ///
+  /// In en, this message translates to:
+  /// **'All crops'**
+  String get arrivalsAllCrops;
+
+  /// Status filter: no filter.
+  ///
+  /// In en, this message translates to:
+  /// **'All statuses'**
+  String get arrivalsAllStatuses;
+
+  /// Date filter chip.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get rangeToday;
+
+  /// Date filter chip (the day before today).
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get rangeYesterday;
+
+  /// Date filter chip.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get rangeWeek;
+
+  /// Date filter chip.
+  ///
+  /// In en, this message translates to:
+  /// **'All dates'**
+  String get rangeAll;
+
+  /// Date filter chip that opens a range picker.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick dates…'**
+  String get rangeCustom;
+
+  /// Lot number column.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot no'**
+  String get lotNo;
+
+  /// Lot business date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get lotDate;
+
+  /// Lot farmer field.
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer'**
+  String get lotFarmer;
+
+  /// Lot crop field.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop'**
+  String get lotCrop;
+
+  /// Number of bags.
+  ///
+  /// In en, this message translates to:
+  /// **'Bags'**
+  String get lotBags;
+
+  /// Bag count in a list row.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 bag} other{{count} bags}}'**
+  String lotBagsCount(int count);
+
+  /// Weight in quintals.
+  ///
+  /// In en, this message translates to:
+  /// **'Qtl'**
+  String get lotQtl;
+
+  /// Quintal unit after a number.
+  ///
+  /// In en, this message translates to:
+  /// **'qtl'**
+  String get lotQtlUnit;
+
+  /// Checkbox: work out the weight from the bag count.
+  ///
+  /// In en, this message translates to:
+  /// **'From bags × {kg} kg'**
+  String lotQtlFromBags(String kg);
+
+  /// Note that the weight was worked out from bags.
+  ///
+  /// In en, this message translates to:
+  /// **'from bags'**
+  String get lotQtlFromBagsShort;
+
+  /// Rate per quintal.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate'**
+  String get lotRate;
+
+  /// Suffix after a per-quintal rate.
+  ///
+  /// In en, this message translates to:
+  /// **'/ qtl'**
+  String get lotPerQtl;
+
+  /// Lot buyer field.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer'**
+  String get lotBuyer;
+
+  /// Buyer search hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional — type 3 letters'**
+  String get lotBuyerHint;
+
+  /// J-form number (mandi sale slip).
+  ///
+  /// In en, this message translates to:
+  /// **'J-form no'**
+  String get lotJForm;
+
+  /// Tractor/truck number.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle no'**
+  String get lotVehicle;
+
+  /// Lot notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get lotNotes;
+
+  /// Lot status column.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get lotStatusLabel;
+
+  /// When the lot was posted.
+  ///
+  /// In en, this message translates to:
+  /// **'Posted'**
+  String get lotPostedAt;
+
+  /// Lot status.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrived'**
+  String get lotStatusArrived;
+
+  /// Lot status.
+  ///
+  /// In en, this message translates to:
+  /// **'Weighed'**
+  String get lotStatusWeighed;
+
+  /// Lot status.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold'**
+  String get lotStatusSold;
+
+  /// Lot status: posted to the khata.
+  ///
+  /// In en, this message translates to:
+  /// **'Posted'**
+  String get lotStatusPosted;
+
+  /// Lot status.
+  ///
+  /// In en, this message translates to:
+  /// **'Reversed'**
+  String get lotStatusReversed;
+
+  /// Lot reversed before it was ever posted.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get lotStatusCancelled;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Bags cannot be negative'**
+  String get lotProblemBags;
+
+  /// Validation: weight missing or zero.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the weight'**
+  String get lotProblemWeight;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate must be more than zero'**
+  String get lotProblemRate;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'The buyer cannot be the farmer'**
+  String get lotProblemBuyerIsFarmer;
+
+  /// Posting needs weight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight is needed to post'**
+  String get lotProblemNoWeight;
+
+  /// Posting needs rate.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate is needed to post'**
+  String get lotProblemNoRate;
+
+  /// Posting needs a buyer.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the buyer: some charges are billed to the buyer'**
+  String get lotProblemBuyerRequired;
+
+  /// Posting blocked: net would be zero or less.
+  ///
+  /// In en, this message translates to:
+  /// **'Charges are more than the sale; nothing to credit to the farmer'**
+  String get lotProblemNetNotPositive;
+
+  /// Permission error.
+  ///
+  /// In en, this message translates to:
+  /// **'You are not allowed to do this'**
+  String get lotErrorNotPermitted;
+
+  /// Missing record.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot, farmer, buyer or crop not found'**
+  String get lotErrorNotFound;
+
+  /// Locked lot.
+  ///
+  /// In en, this message translates to:
+  /// **'This lot is posted or reversed and cannot be changed'**
+  String get lotErrorLocked;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the farmer'**
+  String get lotErrorPickFarmer;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the crop'**
+  String get lotErrorPickCrop;
+
+  /// New lot title / button.
+  ///
+  /// In en, this message translates to:
+  /// **'New arrival'**
+  String get lotNewTitle;
+
+  /// Edit lot title.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit lot'**
+  String get lotEditTitle;
+
+  /// The number the new lot will get.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot {number}'**
+  String lotNextNo(String number);
+
+  /// Save an incomplete lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Save (F10)'**
+  String get lotSave;
+
+  /// Save and post a complete lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Save & post (F10)'**
+  String get lotSavePost;
+
+  /// Save and start the next lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Save & new (Shift+F10)'**
+  String get lotSaveNew;
+
+  /// Save a sold lot without posting it.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold — don\'t post'**
+  String get lotHold;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot {lotNo} saved'**
+  String lotSavedToast(String lotNo);
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot {lotNo} posted to the khata'**
+  String lotPostedToast(String lotNo);
+
+  /// Live calculation panel title.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculation'**
+  String get lotPreviewTitle;
+
+  /// Calculation placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter crop, weight and rate to see arhat, charges and net.'**
+  String get lotPreviewEmpty;
+
+  /// Heading of the entries posting will make.
+  ///
+  /// In en, this message translates to:
+  /// **'Posting writes to the khata:'**
+  String get lotPostsTitle;
+
+  /// Farmer's entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Jama to farmer'**
+  String get lotPostsFarmer;
+
+  /// Buyer's entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar to buyer'**
+  String get lotPostsBuyer;
+
+  /// Cancel an open lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel lot'**
+  String get lotCancel;
+
+  /// Confirm dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel lot {lotNo}?'**
+  String lotCancelTitle(String lotNo);
+
+  /// Confirm dialog body.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this when the crop never came or was entered by mistake. Nothing was posted to the khata. This cannot be undone.'**
+  String get lotCancelBody;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot {lotNo} cancelled'**
+  String lotCancelledToast(String lotNo);
+
+  /// Reverse a posted lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse lot'**
+  String get lotReverse;
+
+  /// Confirm dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse lot {lotNo}?'**
+  String lotReverseTitle(String lotNo);
+
+  /// Confirm dialog body.
+  ///
+  /// In en, this message translates to:
+  /// **'Its khata entries (farmer\'s jama, buyer\'s udhaar) are reversed on the same date. The lot stays in the records, marked reversed. You can then enter it again correctly.'**
+  String get lotReverseBody;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot {lotNo} reversed'**
+  String lotReversedToast(String lotNo);
+
+  /// Start a new lot copied from a reversed one.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter again'**
+  String get lotReenter;
+
+  /// Edit an open lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get lotEdit;
+
+  /// Edit an arrived lot at the counter.
+  ///
+  /// In en, this message translates to:
+  /// **'Add weight & rate'**
+  String get lotAddWeightRate;
+
+  /// Details card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot'**
+  String get lotDetailsTitle;
+
+  /// Calculation card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Arhat & charges'**
+  String get lotCalculationTitle;
+
+  /// Calculation placeholder for open lots.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown once the lot is posted (with the rates of that day).'**
+  String get lotNotPostedYet;
+
+  /// Ledger entries of a lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Khata entries'**
+  String get lotEntriesTitle;
+
+  /// Entry made by posting a lot.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop sale'**
+  String get lotEntryArrival;
+
+  /// Reversal entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Reversal'**
+  String get lotEntryReversal;
+
+  /// Totals row: number of lots.
+  ///
+  /// In en, this message translates to:
+  /// **'Lots'**
+  String get lotsTotalCount;
+
+  /// Wizard step 1.
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer'**
+  String get wizardStepFarmer;
+
+  /// Wizard step 2.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop & bags'**
+  String get wizardStepCrop;
+
+  /// Wizard step 3.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get wizardStepConfirm;
+
+  /// Wizard progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {step} of {total}: {title}'**
+  String wizardStepOf(int step, int total, String title);
+
+  /// Wizard back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get wizardBack;
+
+  /// Wizard next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get wizardNext;
+
+  /// Wizard note.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight and rate are added at the counter.'**
+  String get wizardRateLater;
+
+  /// Party search hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type {count} letters to search'**
+  String partyPickerHint(int count);
+
+  /// Clear the picked party.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get partyPickerChange;
 }
 
 class _AppLocalizationsDelegate

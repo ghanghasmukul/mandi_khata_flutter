@@ -209,6 +209,37 @@ class Crops extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+class Lots extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get lotNo => text()();
+  TextColumn get entryDate => text()();
+  TextColumn get farmerId => text()();
+  TextColumn get cropId => text()();
+  IntColumn get bags => integer()();
+  IntColumn get qtlMilli => integer().nullable()();
+  BoolColumn get qtlFromBags => boolean()();
+  IntColumn get ratePaisePerQtl => integer().nullable()();
+  TextColumn get buyerPartyId => text().nullable()();
+  TextColumn get jFormNo => text().nullable()();
+  TextColumn get vehicleNo => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get chargesSnapshot => text().nullable()();
+  IntColumn get gross => integer().nullable()();
+  IntColumn get commission => integer().nullable()();
+  IntColumn get netToFarmer => integer().nullable()();
+  IntColumn get buyerTotal => integer().nullable()();
+  TextColumn get postedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 /// Local-only: uploads the server rejected permanently.
 class SyncErrors extends Table {
   TextColumn get id => text()();

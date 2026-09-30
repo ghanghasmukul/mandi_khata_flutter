@@ -4,6 +4,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:logging/logging.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:powersync/powersync.dart';
+import 'package:sqlite_async/sqlite_async.dart' show SqliteReadContext;
 import 'package:uuid/uuid.dart';
 
 final _log = Logger('settings');
@@ -67,27 +68,41 @@ class SettingsRepository {
     '$tenantId|${scope.dbName}|${scopeId ?? ''}|$key',
   );
 
+  static const _rowsSql =
+      'SELECT scope, scope_id, key, value FROM settings '
+      'WHERE tenant_id = ? AND ( '
+      "scope = 'tenant' "
+      "OR (scope = 'party_group' AND scope_id = ?) "
+      "OR (scope = 'party' AND scope_id = ?) "
+      "OR (scope IN ('loan', 'lot', 'invoice') AND scope_id = ?))";
+
+  static List<Object?> _rowsParams(String tenantId, SettingsTarget target) => [
+    tenantId,
+    target.partyGroupId,
+    target.partyId,
+    target.documentId,
+  ];
+
   /// Rows that can apply to [target] in [tenantId]: business rows, plus
   /// rows for the target's group, party and document. Live.
-  Stream<List<SettingRow>> watch(String tenantId, SettingsTarget target) {
-    return _db
-        .watch(
-          'SELECT scope, scope_id, key, value FROM settings '
-          'WHERE tenant_id = ? AND ( '
-          "scope = 'tenant' "
-          "OR (scope = 'party_group' AND scope_id = ?) "
-          "OR (scope = 'party' AND scope_id = ?) "
-          "OR (scope IN ('loan', 'lot', 'invoice') AND scope_id = ?))",
-          parameters: [
-            tenantId,
-            target.partyGroupId,
-            target.partyId,
-            target.documentId,
-          ],
-          triggerOnTables: const {'settings'},
-        )
-        .map((rows) => [for (final r in rows) ?_toRow(r)]);
-  }
+  Stream<List<SettingRow>> watch(String tenantId, SettingsTarget target) => _db
+      .watch(
+        _rowsSql,
+        parameters: _rowsParams(tenantId, target),
+        triggerOnTables: const {'settings'},
+      )
+      .map((rows) => [for (final r in rows) ?_toRow(r)]);
+
+  /// The same rows as [watch], read once inside [tx] (e.g. to snapshot the
+  /// rates a document is posted with, in its own write transaction).
+  static Future<List<SettingRow>> rowsIn(
+    SqliteReadContext tx,
+    String tenantId,
+    SettingsTarget target,
+  ) async => [
+    for (final r in await tx.getAll(_rowsSql, _rowsParams(tenantId, target)))
+      ?_toRow(r),
+  ];
 
   static SettingRow? _toRow(Map<String, Object?> r) {
     final scope = SettingScope.parse(r['scope']! as String);

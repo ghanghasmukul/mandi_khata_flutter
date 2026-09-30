@@ -1053,4 +1053,300 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get settingsCropsLink => 'ਫ਼ਸਲਾਂ ਤੇ ਫ਼ਸਲ-ਵਾਰ ਖ਼ਰਚੇ';
+
+  @override
+  String get arrivalsTitle => 'ਆਮਦ';
+
+  @override
+  String get arrivalsEmpty => 'ਇਨ੍ਹਾਂ ਫ਼ਿਲਟਰਾਂ ਵਿੱਚ ਕੋਈ ਲਾਟ ਨਹੀਂ';
+
+  @override
+  String get arrivalsSearchHint => 'ਕਿਸਾਨ ਜਾਂ ਲਾਟ ਨੰਬਰ ਲੱਭੋ';
+
+  @override
+  String get arrivalsAllCrops => 'ਸਾਰੀਆਂ ਫ਼ਸਲਾਂ';
+
+  @override
+  String get arrivalsAllStatuses => 'ਸਾਰੀਆਂ ਸਥਿਤੀਆਂ';
+
+  @override
+  String get rangeToday => 'ਅੱਜ';
+
+  @override
+  String get rangeYesterday => 'ਕੱਲ੍ਹ';
+
+  @override
+  String get rangeWeek => 'ਪਿਛਲੇ 7 ਦਿਨ';
+
+  @override
+  String get rangeAll => 'ਸਾਰੀਆਂ ਤਾਰੀਖ਼ਾਂ';
+
+  @override
+  String get rangeCustom => 'ਤਾਰੀਖ਼ਾਂ ਚੁਣੋ…';
+
+  @override
+  String get lotNo => 'ਲਾਟ ਨੰ.';
+
+  @override
+  String get lotDate => 'ਤਾਰੀਖ਼';
+
+  @override
+  String get lotFarmer => 'ਕਿਸਾਨ';
+
+  @override
+  String get lotCrop => 'ਫ਼ਸਲ';
+
+  @override
+  String get lotBags => 'ਬੋਰੀਆਂ';
+
+  @override
+  String lotBagsCount(int count) {
+    return '$count ਬੋਰੀਆਂ';
+  }
+
+  @override
+  String get lotQtl => 'ਕੁਇੰਟਲ';
+
+  @override
+  String get lotQtlUnit => 'ਕੁਇੰਟਲ';
+
+  @override
+  String lotQtlFromBags(String kg) {
+    return 'ਬੋਰੀਆਂ × $kg ਕਿਲੋ ਤੋਂ';
+  }
+
+  @override
+  String get lotQtlFromBagsShort => 'ਬੋਰੀਆਂ ਤੋਂ';
+
+  @override
+  String get lotRate => 'ਭਾਅ';
+
+  @override
+  String get lotPerQtl => '/ ਕੁਇੰਟਲ';
+
+  @override
+  String get lotBuyer => 'ਖ਼ਰੀਦਦਾਰ';
+
+  @override
+  String get lotBuyerHint => 'ਚੋਣਵਾਂ — 3 ਅੱਖਰ ਲਿਖੋ';
+
+  @override
+  String get lotJForm => 'ਜੇ-ਫ਼ਾਰਮ ਨੰ.';
+
+  @override
+  String get lotVehicle => 'ਗੱਡੀ ਨੰ.';
+
+  @override
+  String get lotNotes => 'ਨੋਟ';
+
+  @override
+  String get lotStatusLabel => 'ਸਥਿਤੀ';
+
+  @override
+  String get lotPostedAt => 'ਖਾਤੇ ਵਿੱਚ ਦਰਜ';
+
+  @override
+  String get lotStatusArrived => 'ਆਇਆ';
+
+  @override
+  String get lotStatusWeighed => 'ਤੁਲਿਆ';
+
+  @override
+  String get lotStatusSold => 'ਵਿਕਿਆ';
+
+  @override
+  String get lotStatusPosted => 'ਖਾਤੇ ਵਿੱਚ';
+
+  @override
+  String get lotStatusReversed => 'ਉਲਟਾਇਆ';
+
+  @override
+  String get lotStatusCancelled => 'ਰੱਦ';
+
+  @override
+  String get lotProblemBags => 'ਬੋਰੀਆਂ ਘਟਾਓ ਵਿੱਚ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ';
+
+  @override
+  String get lotProblemWeight => 'ਵਜ਼ਨ ਲਿਖੋ';
+
+  @override
+  String get lotProblemRate => 'ਭਾਅ ਸਿਫ਼ਰ ਤੋਂ ਵੱਧ ਹੋਵੇ';
+
+  @override
+  String get lotProblemBuyerIsFarmer => 'ਖ਼ਰੀਦਦਾਰ ਤੇ ਕਿਸਾਨ ਇੱਕ ਨਹੀਂ ਹੋ ਸਕਦੇ';
+
+  @override
+  String get lotProblemNoWeight => 'ਖਾਤੇ ਵਿੱਚ ਪਾਉਣ ਲਈ ਵਜ਼ਨ ਚਾਹੀਦਾ ਹੈ';
+
+  @override
+  String get lotProblemNoRate => 'ਖਾਤੇ ਵਿੱਚ ਪਾਉਣ ਲਈ ਭਾਅ ਚਾਹੀਦਾ ਹੈ';
+
+  @override
+  String get lotProblemBuyerRequired =>
+      'ਖ਼ਰੀਦਦਾਰ ਚੁਣੋ: ਕੁਝ ਖ਼ਰਚੇ ਖ਼ਰੀਦਦਾਰ ਤੋਂ ਲਏ ਜਾਂਦੇ ਹਨ';
+
+  @override
+  String get lotProblemNetNotPositive =>
+      'ਖ਼ਰਚੇ ਵਿਕਰੀ ਤੋਂ ਵੱਧ ਹਨ; ਕਿਸਾਨ ਨੂੰ ਜਮ੍ਹਾਂ ਕਰਨ ਲਈ ਕੁਝ ਨਹੀਂ';
+
+  @override
+  String get lotErrorNotPermitted => 'ਤੁਹਾਨੂੰ ਇਸ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ';
+
+  @override
+  String get lotErrorNotFound => 'ਲਾਟ, ਕਿਸਾਨ, ਖ਼ਰੀਦਦਾਰ ਜਾਂ ਫ਼ਸਲ ਨਹੀਂ ਮਿਲੀ';
+
+  @override
+  String get lotErrorLocked =>
+      'ਇਹ ਲਾਟ ਖਾਤੇ ਵਿੱਚ ਦਰਜ ਜਾਂ ਉਲਟਾਇਆ ਜਾ ਚੁੱਕਾ ਹੈ, ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ';
+
+  @override
+  String get lotErrorPickFarmer => 'ਕਿਸਾਨ ਚੁਣੋ';
+
+  @override
+  String get lotErrorPickCrop => 'ਫ਼ਸਲ ਚੁਣੋ';
+
+  @override
+  String get lotNewTitle => 'ਨਵੀਂ ਆਮਦ';
+
+  @override
+  String get lotEditTitle => 'ਲਾਟ ਬਦਲੋ';
+
+  @override
+  String lotNextNo(String number) {
+    return 'ਲਾਟ $number';
+  }
+
+  @override
+  String get lotSave => 'ਸੇਵ ਕਰੋ (F10)';
+
+  @override
+  String get lotSavePost => 'ਸੇਵ ਕਰੋ ਤੇ ਖਾਤੇ ਵਿੱਚ ਪਾਓ (F10)';
+
+  @override
+  String get lotSaveNew => 'ਸੇਵ ਕਰੋ ਤੇ ਨਵਾਂ (Shift+F10)';
+
+  @override
+  String get lotHold => 'ਰੋਕੋ — ਖਾਤੇ ਵਿੱਚ ਨਾ ਪਾਓ';
+
+  @override
+  String lotSavedToast(String lotNo) {
+    return 'ਲਾਟ $lotNo ਸੇਵ ਹੋਇਆ';
+  }
+
+  @override
+  String lotPostedToast(String lotNo) {
+    return 'ਲਾਟ $lotNo ਖਾਤੇ ਵਿੱਚ ਦਰਜ';
+  }
+
+  @override
+  String get lotPreviewTitle => 'ਹਿਸਾਬ';
+
+  @override
+  String get lotPreviewEmpty =>
+      'ਆੜ੍ਹਤ, ਖ਼ਰਚੇ ਤੇ ਸ਼ੁੱਧ ਰਕਮ ਵੇਖਣ ਲਈ ਫ਼ਸਲ, ਵਜ਼ਨ ਤੇ ਭਾਅ ਲਿਖੋ।';
+
+  @override
+  String get lotPostsTitle => 'ਖਾਤੇ ਵਿੱਚ ਇਹ ਦਰਜ ਹੋਵੇਗਾ:';
+
+  @override
+  String get lotPostsFarmer => 'ਕਿਸਾਨ ਨੂੰ ਜਮ੍ਹਾਂ';
+
+  @override
+  String get lotPostsBuyer => 'ਖ਼ਰੀਦਦਾਰ \'ਤੇ ਉਧਾਰ';
+
+  @override
+  String get lotCancel => 'ਲਾਟ ਰੱਦ ਕਰੋ';
+
+  @override
+  String lotCancelTitle(String lotNo) {
+    return 'ਲਾਟ $lotNo ਰੱਦ ਕਰੀਏ?';
+  }
+
+  @override
+  String get lotCancelBody =>
+      'ਜਦੋਂ ਫ਼ਸਲ ਆਈ ਹੀ ਨਹੀਂ ਜਾਂ ਗ਼ਲਤੀ ਨਾਲ ਦਰਜ ਹੋਈ ਹੋਵੇ। ਖਾਤੇ ਵਿੱਚ ਕੁਝ ਦਰਜ ਨਹੀਂ ਸੀ ਹੋਇਆ। ਇਹ ਵਾਪਸ ਨਹੀਂ ਹੋਵੇਗਾ।';
+
+  @override
+  String lotCancelledToast(String lotNo) {
+    return 'ਲਾਟ $lotNo ਰੱਦ';
+  }
+
+  @override
+  String get lotReverse => 'ਲਾਟ ਉਲਟਾਓ';
+
+  @override
+  String lotReverseTitle(String lotNo) {
+    return 'ਲਾਟ $lotNo ਉਲਟਾਈਏ?';
+  }
+
+  @override
+  String get lotReverseBody =>
+      'ਇਸ ਦੀਆਂ ਖਾਤਾ ਐਂਟਰੀਆਂ (ਕਿਸਾਨ ਦਾ ਜਮ੍ਹਾਂ, ਖ਼ਰੀਦਦਾਰ ਦਾ ਉਧਾਰ) ਉਸੇ ਤਾਰੀਖ਼ \'ਤੇ ਉਲਟਾਈਆਂ ਜਾਣਗੀਆਂ। ਲਾਟ ਰਿਕਾਰਡ ਵਿੱਚ \'ਉਲਟਾਇਆ\' ਰਹੇਗਾ। ਫਿਰ ਤੁਸੀਂ ਇਸ ਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਦੁਬਾਰਾ ਦਰਜ ਕਰ ਸਕਦੇ ਹੋ।';
+
+  @override
+  String lotReversedToast(String lotNo) {
+    return 'ਲਾਟ $lotNo ਉਲਟਾਇਆ';
+  }
+
+  @override
+  String get lotReenter => 'ਦੁਬਾਰਾ ਦਰਜ ਕਰੋ';
+
+  @override
+  String get lotEdit => 'ਬਦਲੋ';
+
+  @override
+  String get lotAddWeightRate => 'ਵਜ਼ਨ ਤੇ ਭਾਅ ਪਾਓ';
+
+  @override
+  String get lotDetailsTitle => 'ਲਾਟ';
+
+  @override
+  String get lotCalculationTitle => 'ਆੜ੍ਹਤ ਤੇ ਖ਼ਰਚੇ';
+
+  @override
+  String get lotNotPostedYet =>
+      'ਲਾਟ ਖਾਤੇ ਵਿੱਚ ਦਰਜ ਹੋਣ \'ਤੇ ਦਿਸੇਗਾ (ਉਸ ਦਿਨ ਦੇ ਰੇਟਾਂ ਨਾਲ)।';
+
+  @override
+  String get lotEntriesTitle => 'ਖਾਤਾ ਐਂਟਰੀਆਂ';
+
+  @override
+  String get lotEntryArrival => 'ਫ਼ਸਲ ਵਿਕਰੀ';
+
+  @override
+  String get lotEntryReversal => 'ਉਲਟ ਐਂਟਰੀ';
+
+  @override
+  String get lotsTotalCount => 'ਲਾਟ';
+
+  @override
+  String get wizardStepFarmer => 'ਕਿਸਾਨ';
+
+  @override
+  String get wizardStepCrop => 'ਫ਼ਸਲ ਤੇ ਬੋਰੀਆਂ';
+
+  @override
+  String get wizardStepConfirm => 'ਪੁਸ਼ਟੀ';
+
+  @override
+  String wizardStepOf(int step, int total, String title) {
+    return 'ਕਦਮ $step/$total: $title';
+  }
+
+  @override
+  String get wizardBack => 'ਪਿੱਛੇ';
+
+  @override
+  String get wizardNext => 'ਅੱਗੇ';
+
+  @override
+  String get wizardRateLater => 'ਵਜ਼ਨ ਤੇ ਭਾਅ ਕਾਊਂਟਰ \'ਤੇ ਪਾਏ ਜਾਣਗੇ।';
+
+  @override
+  String partyPickerHint(int count) {
+    return 'ਲੱਭਣ ਲਈ $count ਅੱਖਰ ਲਿਖੋ';
+  }
+
+  @override
+  String get partyPickerChange => 'ਬਦਲੋ';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:khata_core/khata_core.dart' show LedgerDate;
 import 'package:logging/logging.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
@@ -93,5 +94,13 @@ abstract final class AppFormat {
     return (DateFormat.yMMMd(
       locale,
     )..useNativeDigits = false).format(t.toLocal());
+  }
+
+  /// A business date (`entry_date`); no time zone shift.
+  static String ledgerDate(BuildContext context, LedgerDate d) {
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    return (DateFormat.yMMMd(
+      locale,
+    )..useNativeDigits = false).format(DateTime(d.year, d.month, d.day));
   }
 }

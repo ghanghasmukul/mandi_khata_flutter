@@ -24,6 +24,7 @@ part 'app_database.g.dart';
     NumberSeries,
     LedgerEntries,
     Crops,
+    Lots,
     SyncErrors,
   ],
 )

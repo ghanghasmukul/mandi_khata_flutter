@@ -8,6 +8,7 @@ import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/sign_out_flow.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
@@ -59,6 +60,12 @@ class HomeScreen extends ConsumerWidget {
                     label: l10n.partiesTitle,
                     icon: Icons.groups_outlined,
                     onPressed: () => context.go(PartyRoutes.list),
+                  ),
+                  const SizedBox(height: MkSpacing.sm),
+                  MkButton(
+                    label: l10n.arrivalsTitle,
+                    icon: Icons.agriculture_outlined,
+                    onPressed: () => context.go(ArrivalRoutes.list),
                   ),
                   const SizedBox(height: MkSpacing.sm),
                   MkButton(
