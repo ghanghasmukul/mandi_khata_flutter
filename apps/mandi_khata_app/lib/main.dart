@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
+import 'package:mandi_khata_app/app/command_palette.dart';
 import 'package:mandi_khata_app/app/env.dart';
 import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
@@ -90,6 +91,10 @@ class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
       // Null follows the device, falling back to English.
       locale: language == null ? null : Locale(language),
       routerConfig: router,
+      builder: (context, child) => CommandPaletteShortcut(
+        navigatorKey: ref.read(rootNavigatorKeyProvider),
+        child: child ?? const SizedBox.shrink(),
+      ),
     );
   }
 }

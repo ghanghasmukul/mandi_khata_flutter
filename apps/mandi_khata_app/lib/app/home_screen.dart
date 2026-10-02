@@ -12,6 +12,7 @@ import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.d
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/sign_out_flow.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
+import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mandi_khata_app/shared/language_switcher.dart';
@@ -66,6 +67,12 @@ class HomeScreen extends ConsumerWidget {
                     label: l10n.arrivalsTitle,
                     icon: Icons.agriculture_outlined,
                     onPressed: () => context.go(ArrivalRoutes.list),
+                  ),
+                  const SizedBox(height: MkSpacing.sm),
+                  MkButton(
+                    label: l10n.khataDayBookTitle,
+                    icon: Icons.menu_book_outlined,
+                    onPressed: () => context.go(KhataRoutes.dayBook),
                   ),
                   const SizedBox(height: MkSpacing.sm),
                   MkButton(

@@ -39,9 +39,13 @@ final class LedgerPosted extends LedgerPostResult {
 }
 
 final class LedgerNotPermitted extends LedgerPostResult {
-  const LedgerNotPermitted(this.permission);
+  const LedgerNotPermitted(this.permission, {this.backdateDays});
 
   final Permission permission;
+
+  /// Set when the entry's date is outside the back-date window
+  /// (`business.backdate_days`); the window in days.
+  final int? backdateDays;
 }
 
 /// The party or entry does not exist in this business (or is deleted).

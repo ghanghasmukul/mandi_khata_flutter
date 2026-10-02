@@ -36,6 +36,7 @@ extension SettingLabels on AppLocalizations {
     'shop.gst_enabled' => settingShopGstEnabled,
     'shop.post_credit_sale_to_khata' => settingShopPostCreditSaleToKhata,
     'business.fy_start_month' => settingBusinessFyStartMonth,
+    'business.backdate_days' => settingBusinessBackdateDays,
     'business.number_series' => settingBusinessNumberSeries,
     'app.modules' => settingAppModules,
     'app.languages' => settingAppLanguages,

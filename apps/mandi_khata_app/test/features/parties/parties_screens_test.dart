@@ -10,6 +10,7 @@ import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/core/tenant/membership_repository.dart';
+import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
 import 'package:mandi_khata_app/features/parties/data/parties_repository.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_providers.dart';
@@ -18,6 +19,8 @@ import 'package:mandi_khata_app/features/parties/presentation/party_detail_scree
 import 'package:mandi_khata_app/features/parties/presentation/party_form_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
+
+import '../khata/fake_ledger_repository.dart';
 
 const ctx = WriteContext(
   tenantId: 't1',
@@ -131,6 +134,7 @@ class _FixedTenant extends ActiveTenant {
 
 void main() {
   late FakePartiesRepository repo;
+  final ledger = FakeLedgerRepository();
 
   setUp(() {
     repo = FakePartiesRepository()
@@ -184,6 +188,7 @@ void main() {
       ProviderScope(
         overrides: [
           partiesRepositoryProvider.overrideWith((ref) async => repo),
+          ledgerRepositoryProvider.overrideWith((ref) async => ledger),
           activeTenantProvider.overrideWith(_FixedTenant.new),
           writeContextProvider.overrideWithValue(ctx),
           activeMembershipProvider.overrideWithValue(

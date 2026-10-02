@@ -353,7 +353,53 @@ void main() {
     test('lots need arrivals.manage', () async {
       final r = await repo.save(ctx, wheatLot(), can: nobody);
       expect(r, isA<LotNotPermitted>());
-      expect(await repo.save(ctx, wheatLot(), can: munshi), isA<LotSaved>());
+      expect(
+        await repo.save(ctx, wheatLot(), can: munshi, now: now),
+        isA<LotSaved>(),
+      );
+    });
+
+    test('a munshi cannot post a lot dated outside the back-date window '
+        '(business.backdate_days, default 3)', () async {
+      final later = now.add(const Duration(days: 4));
+      final r = await repo.save(ctx, wheatLot(), can: munshi, now: later);
+      expect(
+        r,
+        isA<LotNotPermitted>()
+            .having(
+              (n) => n.permission,
+              'permission',
+              Permission.entriesReverse,
+            )
+            .having((n) => n.backdateDays, 'backdateDays', 3),
+      );
+      expect(await entries(), isEmpty);
+      expect(await db.getAll('SELECT * FROM lots'), isEmpty);
+
+      // Held (not posted) it can still be saved; three days back posts.
+      expect(
+        await repo.save(ctx, wheatLot(), can: munshi, now: later, post: false),
+        isA<LotSaved>(),
+      );
+      expect(
+        await repo.save(
+          ctx,
+          wheatLot(),
+          can: munshi,
+          now: now.add(const Duration(days: 3)),
+        ),
+        isA<LotSaved>(),
+      );
+      // The owner may back-date; a wider business window lets the munshi.
+      expect(
+        await repo.save(ctx, wheatLot(), can: owner, now: later),
+        isA<LotSaved>(),
+      );
+      await setting('tenant', null, 'business.backdate_days', 7);
+      expect(
+        await repo.save(ctx, wheatLot(), can: munshi, now: later),
+        isA<LotSaved>(),
+      );
     });
 
     test('another business sees none of these lots', () async {

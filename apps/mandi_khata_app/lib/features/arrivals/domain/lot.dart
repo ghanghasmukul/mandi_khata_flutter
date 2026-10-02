@@ -313,9 +313,13 @@ final class LotSaved extends LotSaveResult {
 }
 
 final class LotNotPermitted extends LotSaveResult {
-  const LotNotPermitted(this.permission);
+  const LotNotPermitted(this.permission, {this.backdateDays});
 
   final Permission permission;
+
+  /// Set when the lot's date is outside the back-date window
+  /// (`business.backdate_days`); the window in days.
+  final int? backdateDays;
 }
 
 /// The lot, its farmer, buyer or crop does not exist in this business.

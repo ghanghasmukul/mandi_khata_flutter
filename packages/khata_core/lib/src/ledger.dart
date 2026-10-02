@@ -45,6 +45,15 @@ final class LedgerDate implements Comparable<LedgerDate> {
 
   int get _key => year * 10000 + month * 100 + day;
 
+  DateTime get _utc => DateTime.utc(year, month, day);
+
+  /// The day [days] later (earlier when negative).
+  LedgerDate addDays(int days) =>
+      LedgerDate.fromDateTime(_utc.add(Duration(days: days)));
+
+  /// Whole days from this date to [other] (negative if [other] is earlier).
+  int daysUntil(LedgerDate other) => other._utc.difference(_utc).inDays;
+
   @override
   int compareTo(LedgerDate other) => _key.compareTo(other._key);
 
@@ -388,5 +397,38 @@ abstract final class LedgerPosting {
       RefType.purchase ||
       RefType.expense => null,
     };
+  }
+
+  /// True when an entry dated [entryDate], recorded on [recordedOn] (the
+  /// device's calendar day), is back-dated more than [backdateDays] days or
+  /// dated in the future. Such an entry needs `entries.reverse`, whatever
+  /// its type (setting `business.backdate_days`).
+  static bool dateNeedsOverride({
+    required LedgerDate entryDate,
+    required LedgerDate recordedOn,
+    required int backdateDays,
+  }) => entryDate > recordedOn || entryDate < recordedOn.addDays(-backdateDays);
+
+  /// Every permission needed to post an entry of [refType] dated
+  /// [entryDate]: the type's own ([requiredPermission]) and, when the date
+  /// is outside the back-date window, `entries.reverse`. Empty = any
+  /// active member.
+  static List<Permission> requiredPermissions(
+    RefType refType, {
+    required LedgerDate entryDate,
+    required LedgerDate recordedOn,
+    required int backdateDays,
+    bool isCorrection = false,
+  }) {
+    final own = requiredPermission(refType, isCorrection: isCorrection);
+    final dated = dateNeedsOverride(
+      entryDate: entryDate,
+      recordedOn: recordedOn,
+      backdateDays: backdateDays,
+    );
+    return [
+      ?own,
+      if (dated && own != Permission.entriesReverse) Permission.entriesReverse,
+    ];
   }
 }

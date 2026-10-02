@@ -1,8 +1,11 @@
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
+import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/features/khata/domain/day_book.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:powersync/powersync.dart';
-import 'package:sqlite_async/sqlite_async.dart' show SqliteWriteContext;
+import 'package:sqlite_async/sqlite_async.dart'
+    show SqliteReadContext, SqliteWriteContext;
 import 'package:uuid/uuid.dart';
 
 /// Every party's khata in the local database (offline-first).
@@ -11,9 +14,12 @@ import 'package:uuid/uuid.dart';
 /// replacement, written in ONE local transaction, which the connector
 /// uploads all-or-nothing. All maths comes from khata_core.
 class LedgerRepository {
-  LedgerRepository(this._db);
+  LedgerRepository(this._db, {this.planDefaults = const {}});
 
   final PowerSyncDatabase _db;
+
+  /// Values from the subscription plan (settings cascade, step 5.1).
+  final Map<String, Object?> planDefaults;
 
   static const _columns =
       'id, tenant_id, party_id, entry_date, side, amount_paise, ref_type, '
@@ -49,14 +55,72 @@ class LedgerRepository {
     }
     final needed = LedgerPosting.requiredPermission(draft.refType);
     if (needed != null && !can(needed)) return LedgerNotPermitted(needed);
+    final when = now ?? DateTime.now();
 
     return await _db.writeTransaction((tx) async {
+      final refused = await checkDate(
+        tx,
+        ctx,
+        draft.refType,
+        draft.entryDate ?? LedgerDate.fromDateTime(when),
+        can: can,
+        now: when,
+        planDefaults: planDefaults,
+      );
+      if (refused != null) return refused;
       if (!await _partyExists(tx, ctx.tenantId, draft.partyId)) {
         return const LedgerNotFound();
       }
-      final entry = await post(tx, ctx, draft, now: now);
+      final entry = await post(tx, ctx, draft, now: when);
       return LedgerPosted([entry]);
     });
+  }
+
+  static const _backdateKey = 'business.backdate_days';
+
+  /// The business's back-date window in days (`business.backdate_days`).
+  static Future<int> backdateDays(
+    SqliteReadContext tx,
+    String tenantId, {
+    Map<String, Object?> planDefaults = const {},
+  }) async {
+    final rows = await SettingsRepository.rowsIn(tx, tenantId, businessTarget);
+    return SettingsResolver(
+          rows,
+          planDefaults: planDefaults,
+        ).resolve(_backdateKey).value!
+        as int;
+  }
+
+  /// Null when an entry of [refType] dated [entryDate] may be posted now,
+  /// else why not: an entry dated more than `business.backdate_days` before
+  /// today, or in the future, needs `entries.reverse` (khata_core
+  /// `LedgerPosting.requiredPermissions`; the server checks the same).
+  /// Documents call this before posting in their own transaction.
+  static Future<LedgerNotPermitted?> checkDate(
+    SqliteReadContext tx,
+    WriteContext ctx,
+    RefType refType,
+    LedgerDate entryDate, {
+    required bool Function(Permission) can,
+    required DateTime now,
+    Map<String, Object?> planDefaults = const {},
+  }) async {
+    if (can(Permission.entriesReverse)) return null;
+    final days = await backdateDays(
+      tx,
+      ctx.tenantId,
+      planDefaults: planDefaults,
+    );
+    final needed = LedgerPosting.requiredPermissions(
+      refType,
+      entryDate: entryDate,
+      recordedOn: LedgerDate.fromDateTime(now),
+      backdateDays: days,
+    );
+    return needed.contains(Permission.entriesReverse)
+        ? LedgerNotPermitted(Permission.entriesReverse, backdateDays: days)
+        : null;
   }
 
   /// Posts [draft] inside [tx], the caller's transaction: documents
@@ -240,7 +304,93 @@ class LedgerRepository {
             LedgerCalculator.statement(rows.map(fromRow), from: from, to: to),
       );
 
-  /// Balance of every party with entries in [tenantId] (party id →
+  static const _dayBookWhere =
+      'WHERE e.tenant_id = ? '
+      'AND (? IS NULL OR e.entry_date >= ?) '
+      'AND (? IS NULL OR e.entry_date <= ?) '
+      'AND (? IS NULL OR e.party_id = ?) '
+      'AND (? IS NULL OR e.ref_type = ?) ';
+
+  static List<Object?> _dayBookParams(String tenantId, LedgerFilter f) => [
+    tenantId,
+    f.from?.toString(),
+    f.from?.toString(),
+    f.to?.toString(),
+    f.to?.toString(),
+    f.partyId,
+    f.partyId,
+    f.refType?.dbName,
+    f.refType?.dbName,
+  ];
+
+  /// How many entries match [filter] and their udhaar / jama totals. Live.
+  Stream<DayBookSummary> watchDayBookSummary(
+    String tenantId,
+    LedgerFilter filter,
+  ) => _db
+      .watch(
+        'SELECT COUNT(*) AS n, '
+        "COALESCE(SUM(CASE e.side WHEN 'udhaar' THEN e.amount_paise END), 0) "
+        'AS udhaar, '
+        "COALESCE(SUM(CASE e.side WHEN 'jama' THEN e.amount_paise END), 0) "
+        'AS jama FROM ledger_entries e $_dayBookWhere',
+        parameters: _dayBookParams(tenantId, filter),
+        triggerOnTables: const {'ledger_entries'},
+      )
+      .map((rows) {
+        final r = rows.first;
+        return (
+          count: r['n']! as int,
+          udhaar: Money(r['udhaar']! as int),
+          jama: Money(r['jama']! as int),
+        );
+      });
+
+  /// Entries [offset]..[offset] + [limit] of the day book for [filter],
+  /// newest first, each with its party's running baki. Live.
+  ///
+  /// Paged so 100k entries never load at once: the page is picked first
+  /// (index on tenant + date), then the baki is summed only for the page's
+  /// rows over their party's entries up to them — the same order and rule as
+  /// `LedgerCalculator.statement` (checked by test).
+  Stream<List<DayBookRow>> watchDayBookPage(
+    String tenantId,
+    LedgerFilter filter, {
+    required int offset,
+    required int limit,
+  }) => _db
+      .watch(
+        'SELECT p.*, pa.name AS party_name, pa.code AS party_code, '
+        "(SELECT SUM(CASE x.side WHEN 'jama' THEN x.amount_paise "
+        'ELSE -x.amount_paise END) FROM ledger_entries x '
+        'WHERE x.tenant_id = p.tenant_id AND x.party_id = p.party_id '
+        'AND (x.entry_date < p.entry_date OR (x.entry_date = p.entry_date '
+        'AND (x.created_at < p.created_at OR (x.created_at = p.created_at '
+        'AND x.id <= p.id))))) AS balance, '
+        '(SELECT r.id FROM ledger_entries r WHERE r.tenant_id = p.tenant_id '
+        'AND r.reverses_id = p.id LIMIT 1) AS reversed_by_id '
+        'FROM (SELECT e.* FROM ledger_entries e $_dayBookWhere'
+        'ORDER BY e.entry_date DESC, e.created_at DESC, e.id DESC '
+        'LIMIT ? OFFSET ?) p '
+        'LEFT JOIN parties pa ON pa.id = p.party_id '
+        'AND pa.tenant_id = p.tenant_id '
+        'ORDER BY p.entry_date DESC, p.created_at DESC, p.id DESC',
+        parameters: [..._dayBookParams(tenantId, filter), limit, offset],
+        triggerOnTables: const {'ledger_entries', 'parties'},
+      )
+      .map(
+        (rows) => [
+          for (final r in rows)
+            DayBookRow(
+              entry: fromRow(r),
+              partyName: r['party_name'] as String? ?? '',
+              partyCode: r['party_code'] as String? ?? '',
+              balance: Money(r['balance']! as int),
+              reversedById: r['reversed_by_id'] as String?,
+            ),
+        ],
+      );
+
   /// Σ jama − Σ udhaar). Live.
   ///
   /// Summed in SQL per side (a list of thousands of parties must not load

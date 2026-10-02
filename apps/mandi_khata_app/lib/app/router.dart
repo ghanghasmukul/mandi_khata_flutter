@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart' show GlobalKey, NavigatorState;
 import 'package:go_router/go_router.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/app/home_screen.dart';
@@ -15,6 +16,7 @@ import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen.dart';
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
 import 'package:mandi_khata_app/features/diagnostics/presentation/diagnostics_screen.dart';
+import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/party_detail_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/party_form_screen.dart';
@@ -41,6 +43,12 @@ abstract final class AppRoutes {
   static const sync = '/dev/sync';
 }
 
+/// The root navigator's key: lets app-wide shortcuts (the command palette)
+/// open dialogs on top of whatever screen is showing.
+@Riverpod(keepAlive: true)
+GlobalKey<NavigatorState> rootNavigatorKey(Ref ref) =>
+    GlobalKey<NavigatorState>(debugLabel: 'root');
+
 /// The app's router. Guards follow [gateStepProvider]: signed out → login,
 /// locked → PIN, no business → picker.
 @Riverpod(keepAlive: true)
@@ -49,6 +57,7 @@ GoRouter router(Ref ref) {
   ref.listen(gateStepProvider, (_, step) => refresh.value = step);
 
   final router = GoRouter(
+    navigatorKey: ref.watch(rootNavigatorKeyProvider),
     refreshListenable: refresh,
     redirect: (context, state) =>
         redirectFor(refresh.value, state.matchedLocation),
@@ -123,6 +132,10 @@ GoRouter router(Ref ref) {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: KhataRoutes.dayBook,
+        builder: (context, state) => const DayBookScreen(),
       ),
       GoRoute(
         path: CropRoutes.list,

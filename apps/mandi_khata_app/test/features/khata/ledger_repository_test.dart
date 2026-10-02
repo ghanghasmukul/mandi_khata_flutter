@@ -6,6 +6,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/powersync_schema.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
+import 'package:mandi_khata_app/features/khata/domain/day_book.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:powersync/powersync.dart';
 
@@ -26,6 +27,7 @@ const otherTenant = WriteContext(
 
 bool owner(Permission _) => true;
 bool munshi(Permission p) => MemberRole.munshi.allows(p);
+bool accountant(Permission p) => MemberRole.accountant.allows(p);
 
 Money rs(int rupees) => Money.rupees(rupees);
 
@@ -211,6 +213,54 @@ void main() {
         ),
       );
       expect(await post(RefType.loanDisbursal), isA<LedgerNotPermitted>());
+    });
+
+    test('back-dated or future entries need entries.reverse '
+        '(business.backdate_days, mirrors the server)', () async {
+      final today = DateTime(2026, 10, 1, 11);
+      Future<LedgerPostResult> post(
+        String date, {
+        bool Function(Permission) can = munshi,
+      }) => repo.append(
+        ctx,
+        LedgerDraft(
+          partyId: 'p1',
+          side: Side.udhaar,
+          amount: rs(1),
+          refType: RefType.payment,
+          entryDate: LedgerDate.parse(date),
+        ),
+        can: can,
+        now: today,
+      );
+      final refused = isA<LedgerNotPermitted>()
+          .having((r) => r.permission, 'permission', Permission.entriesReverse)
+          .having((r) => r.backdateDays, 'backdateDays', 3);
+
+      expect(await post('2026-10-01'), isA<LedgerPosted>());
+      expect(await post('2026-09-28'), isA<LedgerPosted>());
+      expect(await post('2026-09-27'), refused);
+      expect(await post('2026-10-02'), refused);
+      expect(await post('2026-09-01', can: owner), isA<LedgerPosted>());
+      expect(await post('2026-09-27', can: accountant), isA<LedgerPosted>());
+
+      await db.execute(
+        'INSERT INTO settings (id, tenant_id, scope, key, value) '
+        "VALUES (uuid(), ?, 'tenant', 'business.backdate_days', '0')",
+        [t1],
+      );
+      expect(await post('2026-10-01'), isA<LedgerPosted>());
+      expect(
+        await post('2026-09-30'),
+        isA<LedgerNotPermitted>().having((r) => r.backdateDays, 'days', 0),
+      );
+      // Another business's setting does not apply here.
+      await db.execute(
+        'INSERT INTO settings (id, tenant_id, scope, key, value) '
+        "VALUES (uuid(), ?, 'tenant', 'business.backdate_days', '30')",
+        [t2],
+      );
+      expect(await post('2026-09-30'), isA<LedgerNotPermitted>());
     });
   });
 
@@ -498,5 +548,122 @@ void main() {
     expect(await db.getAll('SELECT * FROM ledger_entries'), isEmpty);
     expect(await db.getAll('SELECT * FROM audit_log'), isEmpty);
     expect(await crud(), isEmpty);
+  });
+
+  group('day book', () {
+    setUp(() async {
+      await db.execute(
+        'INSERT INTO parties (id, tenant_id, code, name) VALUES (?, ?, ?, ?)',
+        ['p3', t1, 'B-3', 'Buyer Three'],
+      );
+    });
+
+    Future<List<DayBookRow>> page(
+      LedgerFilter f, {
+      int offset = 0,
+      int limit = 50,
+    }) => repo.watchDayBookPage(t1, f, offset: offset, limit: limit).first;
+
+    test("newest first, each row with its party's running baki over the "
+        'whole khata (equals the khata_core statement)', () async {
+      await add('2026-04-01', Side.udhaar, 2000, refType: RefType.journal);
+      await add('2026-04-05', Side.jama, 15558, refType: RefType.arrival);
+      await add('2026-04-05', Side.udhaar, 20952, party: 'p3');
+      final wrong = await add('2026-04-09', Side.jama, 999);
+      await repo.reverse(ctx, wrong.id, can: owner);
+      await add('2026-04-12', Side.udhaar, 1250);
+      await add('2026-04-12', Side.jama, 7, party: 'px', c: otherTenant);
+
+      final rows = await page(const LedgerFilter());
+      expect(rows, hasLength(6), reason: 'only this business');
+      expect(rows.first.entry.entryDate, LedgerDate(2026, 4, 12));
+      expect(rows.last.entry.entryDate, LedgerDate(2026, 4, 1));
+
+      final statement = LedgerCalculator.statement([
+        for (final r in await db.getAll(
+          "SELECT * FROM ledger_entries WHERE party_id = 'p1'",
+        ))
+          LedgerRepository.fromRow(r),
+      ]);
+      final fromCore = {for (final r in statement.rows) r.entry.id: r.balance};
+      for (final r in rows.where((r) => r.entry.partyId == 'p1')) {
+        expect(r.balance, fromCore[r.entry.id], reason: r.entry.id);
+      }
+      expect(
+        rows.firstWhere((r) => r.entry.partyId == 'p3').balance,
+        rs(-20952),
+      );
+      expect(rows.first.partyName, 'Party p1');
+      expect(rows.where((r) => r.isStruck), hasLength(2));
+      expect(
+        rows.firstWhere((r) => r.entry.id == wrong.id).reversedById,
+        isNotNull,
+      );
+    });
+
+    test(
+      'filters by date range, party and type; balances stay whole-khata',
+      () async {
+        await add('2026-04-01', Side.udhaar, 2000, refType: RefType.journal);
+        await add('2026-04-05', Side.jama, 15558, refType: RefType.arrival);
+        await add('2026-04-05', Side.udhaar, 300, party: 'p3');
+        await add('2026-04-12', Side.udhaar, 1250);
+
+        final april5 = await page(
+          LedgerFilter(
+            from: LedgerDate(2026, 4, 5),
+            to: LedgerDate(2026, 4, 5),
+          ),
+        );
+        expect(april5, hasLength(2));
+        final p1 = await page(
+          LedgerFilter(from: LedgerDate(2026, 4, 5), partyId: 'p1'),
+        );
+        expect(p1.map((r) => r.balance), [rs(12308), rs(13558)]);
+        final arrivals = await page(
+          const LedgerFilter(refType: RefType.arrival),
+        );
+        expect(arrivals.single.entry.amount, rs(15558));
+
+        final summary = await repo
+            .watchDayBookSummary(t1, const LedgerFilter(partyId: 'p1'))
+            .first;
+        expect(summary.count, 3);
+        expect(summary.udhaar, rs(3250));
+        expect(summary.jama, rs(15558));
+        expect(
+          (await repo.watchDayBookSummary(t2, const LedgerFilter()).first)
+              .count,
+          0,
+        );
+      },
+    );
+
+    test('pages by offset and limit', () async {
+      for (var d = 1; d <= 9; d++) {
+        await add('2026-04-0$d', Side.udhaar, d);
+      }
+      final first = await page(const LedgerFilter(), limit: 4);
+      final second = await page(const LedgerFilter(), offset: 4, limit: 4);
+      final last = await page(const LedgerFilter(), offset: 8, limit: 4);
+      expect(first.map((r) => r.entry.amount.rupees), [9, 8, 7, 6]);
+      expect(second.map((r) => r.entry.amount.rupees), [5, 4, 3, 2]);
+      expect(last.map((r) => r.entry.amount.rupees), [1]);
+      expect(last.single.balance, rs(-1));
+      expect(first.first.balance, rs(-45));
+    });
+
+    test('updates live', () async {
+      final seen = <int>[];
+      final sub = repo
+          .watchDayBookSummary(t1, const LedgerFilter())
+          .listen((s) => seen.add(s.count));
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await add('2026-04-05', Side.jama, 10);
+      await Future<void>.delayed(const Duration(milliseconds: 200));
+      await sub.cancel();
+      expect(seen.first, 0);
+      expect(seen.last, 1);
+    });
   });
 }

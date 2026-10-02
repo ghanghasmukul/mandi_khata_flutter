@@ -424,6 +424,15 @@ abstract final class SettingsSchema {
       max: 12,
       businessOnly: true,
     ),
+    // Entries dated more than this many days before the day they are
+    // recorded (or in the future) need `entries.reverse`.
+    SettingDef.integer(
+      'business.backdate_days',
+      fallback: 3,
+      min: 0,
+      max: 3650,
+      businessOnly: true,
+    ),
     SettingDef.structured(
       'business.number_series',
       fallback: {'prefix': 'X-', 'next': 1},

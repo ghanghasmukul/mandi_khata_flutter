@@ -79,6 +79,7 @@ A `null` at a level means "inherit". The resolved value AND the level it came fr
 | Key | Type | Default |
 |---|---|---|
 | `business.fy_start_month` | int | 4 |
+| `business.backdate_days` | int | 3 — a khata entry dated more than N days before the day it is recorded, or in the future, needs `entries.reverse` (see ledger-and-mandi.md) |
 | `business.number_series.<doc>` | `{prefix, next}` | R-, L-, SI-, PI-, KZ-, V- |
 | `app.modules.<module>` | bool | per plan |
 | `app.languages` | list | `[en, hi, pa]` |

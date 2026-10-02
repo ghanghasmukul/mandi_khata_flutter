@@ -1349,4 +1349,223 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get partyPickerChange => 'ਬਦਲੋ';
+
+  @override
+  String get khataRefArrival => 'ਫਸਲ ਵਿਕਰੀ';
+
+  @override
+  String get khataRefPayment => 'ਭੁਗਤਾਨ';
+
+  @override
+  String get khataRefReceipt => 'ਰਸੀਦ';
+
+  @override
+  String get khataRefShopSale => 'ਦੁਕਾਨ ਵਿਕਰੀ';
+
+  @override
+  String get khataRefShopReturn => 'ਦੁਕਾਨ ਵਾਪਸੀ';
+
+  @override
+  String get khataRefPurchase => 'ਖਰੀਦ';
+
+  @override
+  String get khataRefLoanDisbursal => 'ਕਰਜ਼ਾ ਦਿੱਤਾ';
+
+  @override
+  String get khataRefLoanRepayment => 'ਕਰਜ਼ਾ ਵਾਪਸੀ';
+
+  @override
+  String get khataRefInterest => 'ਵਿਆਜ';
+
+  @override
+  String get khataRefExpense => 'ਖਰਚਾ';
+
+  @override
+  String get khataRefJournal => 'ਖਾਤਾ ਐਂਟਰੀ';
+
+  @override
+  String get khataRefOpeningBalance => 'ਸ਼ੁਰੂਆਤੀ ਬਾਕੀ';
+
+  @override
+  String get khataRefReversal => 'ਉਲਟ ਐਂਟਰੀ';
+
+  @override
+  String get khataTagReversal => 'ਉਲਟ';
+
+  @override
+  String get khataTagEdited => 'ਸੁਧਾਰੀ ਗਈ';
+
+  @override
+  String get khataTagReversed => 'ਉਲਟਾ ਦਿੱਤੀ ਗਈ';
+
+  @override
+  String khataErrorBackdated(int days) {
+    return '$days ਦਿਨ ਤੋਂ ਪੁਰਾਣੀ ਜਾਂ ਅਗਲੀ ਤਰੀਕ ਦੀ ਐਂਟਰੀ ਲਈ ਮੁਨੀਮ ਜਾਂ ਮਾਲਕ ਚਾਹੀਦਾ ਹੈ';
+  }
+
+  @override
+  String get khataErrorNotPermitted => 'ਤੁਹਾਨੂੰ ਇਸ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ';
+
+  @override
+  String get khataErrorNotFound => 'ਇਹ ਪਾਰਟੀ ਜਾਂ ਐਂਟਰੀ ਹੁਣ ਮੌਜੂਦ ਨਹੀਂ';
+
+  @override
+  String get khataErrorAmount => 'ਸਿਫ਼ਰ ਤੋਂ ਵੱਧ ਰਕਮ ਲਿਖੋ';
+
+  @override
+  String get khataErrorNothingChanged => 'ਕੁਝ ਵੀ ਨਹੀਂ ਬਦਲਿਆ';
+
+  @override
+  String get khataErrorAlreadyReversed => 'ਇਹ ਐਂਟਰੀ ਪਹਿਲਾਂ ਹੀ ਉਲਟਾ ਦਿੱਤੀ ਗਈ ਹੈ';
+
+  @override
+  String get khataErrorIsReversal =>
+      'ਉਲਟ ਐਂਟਰੀ ਬਦਲੀ ਨਹੀਂ ਜਾ ਸਕਦੀ; ਨਵੀਂ ਐਂਟਰੀ ਪਾਓ';
+
+  @override
+  String get khataColDate => 'ਤਰੀਕ';
+
+  @override
+  String get khataColDetails => 'ਵੇਰਵਾ';
+
+  @override
+  String get khataColPartyDetails => 'ਪਾਰਟੀ · ਵੇਰਵਾ';
+
+  @override
+  String get khataColUdhaar => 'ਉਧਾਰ';
+
+  @override
+  String get khataColJama => 'ਜਮ੍ਹਾ';
+
+  @override
+  String get khataColBaki => 'ਬਾਕੀ';
+
+  @override
+  String get khataBalanceJama => 'ਜਮ੍ਹਾ · ਸਾਨੂੰ ਦੇਣਾ ਹੈ';
+
+  @override
+  String get khataBalanceUdhaarFarmer => 'ਉਧਾਰ · ਕਿਸਾਨ ਨੇ ਦੇਣਾ ਹੈ';
+
+  @override
+  String get khataBalanceUdhaarParty => 'ਉਧਾਰ · ਪਾਰਟੀ ਨੇ ਦੇਣਾ ਹੈ';
+
+  @override
+  String get khataBalanceSettled => 'ਹਿਸਾਬ ਬਰਾਬਰ';
+
+  @override
+  String get khataEntryTitle => 'ਖਾਤਾ ਐਂਟਰੀ';
+
+  @override
+  String get khataEditTitle => 'ਖਾਤਾ ਐਂਟਰੀ ਸੁਧਾਰੋ';
+
+  @override
+  String get khataEditOriginal => 'ਅਸਲ ਐਂਟਰੀ (ਉਲਟਾ ਦਿੱਤੀ ਜਾਵੇਗੀ)';
+
+  @override
+  String get khataEditExplain =>
+      'ਅਸਲ ਐਂਟਰੀ ਕੱਟੀ ਹੋਈ ਖਾਤੇ ਵਿੱਚ ਰਹੇਗੀ ਅਤੇ ਸਹੀ ਐਂਟਰੀ ਜੁੜੇਗੀ।';
+
+  @override
+  String get khataFieldParty => 'ਪਾਰਟੀ';
+
+  @override
+  String get khataFieldPartyHint => 'ਨਾਂ, ਪਿੰਡ ਜਾਂ ਕੋਡ ਲਿਖੋ';
+
+  @override
+  String get khataSideUdhaar => 'ਉਧਾਰ (ਪਾਰਟੀ ਦਾ ਦੇਣਾ ਵਧਿਆ)';
+
+  @override
+  String get khataSideJama => 'ਜਮ੍ਹਾ (ਸਾਡਾ ਦੇਣਾ ਵਧਿਆ)';
+
+  @override
+  String get khataFieldAmount => 'ਰਕਮ';
+
+  @override
+  String get khataFieldDate => 'ਤਰੀਕ';
+
+  @override
+  String get khataFieldNarration => 'ਵੇਰਵਾ';
+
+  @override
+  String get khataEntrySave => 'ਐਂਟਰੀ ਪਾਓ';
+
+  @override
+  String get khataEditSave => 'ਉਲਟਾ ਕੇ ਮੁੜ ਪਾਓ';
+
+  @override
+  String get khataDayBookTitle => 'ਸਾਰੀਆਂ ਐਂਟਰੀਆਂ';
+
+  @override
+  String get khataDayBookEmpty => 'ਇਸ ਫ਼ਿਲਟਰ ਵਿੱਚ ਕੋਈ ਐਂਟਰੀ ਨਹੀਂ';
+
+  @override
+  String get khataFilterParty => 'ਪਾਰਟੀ ਨਾਲ ਛਾਂਟੋ';
+
+  @override
+  String get khataFilterAllTypes => 'ਸਾਰੀਆਂ ਕਿਸਮਾਂ';
+
+  @override
+  String khataEntriesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ਐਂਟਰੀਆਂ',
+      one: '1 ਐਂਟਰੀ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get khataReverseTitle => 'ਇਹ ਐਂਟਰੀ ਉਲਟਾਓ?';
+
+  @override
+  String get khataReverseBody =>
+      'ਉਲਟ ਐਂਟਰੀ ਜੁੜੇਗੀ ਅਤੇ ਦੋਵੇਂ ਖਾਤੇ ਵਿੱਚ ਰਹਿਣਗੀਆਂ। ਇਸਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।';
+
+  @override
+  String get khataReverse => 'ਉਲਟਾਓ';
+
+  @override
+  String get khataReversed => 'ਐਂਟਰੀ ਉਲਟਾ ਦਿੱਤੀ ਗਈ';
+
+  @override
+  String get khataEntryActions => 'ਐਂਟਰੀ ਵਿਕਲਪ';
+
+  @override
+  String get khataEdit => 'ਸੁਧਾਰੋ (ਉਲਟਾ ਕੇ ਮੁੜ)';
+
+  @override
+  String get khataStatementEmpty => 'ਇਸ ਮਿਆਦ ਵਿੱਚ ਕੋਈ ਐਂਟਰੀ ਨਹੀਂ';
+
+  @override
+  String get statementTitle => 'ਖਾਤਾ ਵੇਰਵਾ';
+
+  @override
+  String get statementOpening => 'ਸ਼ੁਰੂਆਤੀ ਬਾਕੀ';
+
+  @override
+  String get statementClosing => 'ਅੰਤਿਮ ਬਾਕੀ';
+
+  @override
+  String get statementTotals => 'ਕੁੱਲ';
+
+  @override
+  String statementPage(int page, int pages) {
+    return 'ਸਫ਼ਾ $page / $pages';
+  }
+
+  @override
+  String get statementPrint => 'ਪ੍ਰਿੰਟ / PDF';
+
+  @override
+  String get statementShare => 'ਭੇਜੋ';
+
+  @override
+  String get paletteHint => 'ਕਮਾਂਡ ਲਿਖੋ…';
+
+  @override
+  String get paletteNoMatch => 'ਕੋਈ ਕਮਾਂਡ ਨਹੀਂ ਮਿਲੀ';
+
+  @override
+  String get settingBusinessBackdateDays => 'ਪਿਛਲੀ ਤਰੀਕ ਦੀ ਛੋਟ (ਦਿਨ)';
 }

@@ -1790,5 +1790,295 @@
   "partyPickerChange": "Change",
   "@partyPickerChange": {
     "description": "Clear the picked party."
+  },
+  "khataRefArrival": "Crop sale",
+  "@khataRefArrival": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefPayment": "Payment",
+  "@khataRefPayment": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefReceipt": "Receipt",
+  "@khataRefReceipt": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefShopSale": "Shop sale",
+  "@khataRefShopSale": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefShopReturn": "Shop return",
+  "@khataRefShopReturn": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefPurchase": "Purchase",
+  "@khataRefPurchase": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefLoanDisbursal": "Loan given",
+  "@khataRefLoanDisbursal": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefLoanRepayment": "Loan repayment",
+  "@khataRefLoanRepayment": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefInterest": "Interest",
+  "@khataRefInterest": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefExpense": "Expense",
+  "@khataRefExpense": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefJournal": "Khata entry",
+  "@khataRefJournal": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefOpeningBalance": "Opening balance",
+  "@khataRefOpeningBalance": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataRefReversal": "Reversal",
+  "@khataRefReversal": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataTagReversal": "reversal",
+  "@khataTagReversal": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataTagEdited": "edited",
+  "@khataTagEdited": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataTagReversed": "reversed",
+  "@khataTagReversed": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataErrorBackdated": "Entries older than {days, plural, =1{1 day} other{{days} days}}, or dated in the future, need an Accountant or Owner",
+  "@khataErrorBackdated": {
+    "description": "Khata screens (step 1.4).",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "khataErrorNotPermitted": "You are not allowed to do this",
+  "@khataErrorNotPermitted": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataErrorNotFound": "This party or entry no longer exists",
+  "@khataErrorNotFound": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataErrorAmount": "Enter an amount above zero",
+  "@khataErrorAmount": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataErrorNothingChanged": "Nothing was changed",
+  "@khataErrorNothingChanged": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataErrorAlreadyReversed": "This entry was already reversed",
+  "@khataErrorAlreadyReversed": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataErrorIsReversal": "A reversal cannot be changed; post a new entry",
+  "@khataErrorIsReversal": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataColDate": "Date",
+  "@khataColDate": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataColDetails": "Details",
+  "@khataColDetails": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataColPartyDetails": "Party · details",
+  "@khataColPartyDetails": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataColUdhaar": "Udhaar",
+  "@khataColUdhaar": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataColJama": "Jama",
+  "@khataColJama": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataColBaki": "Baki",
+  "@khataColBaki": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataBalanceJama": "Jama · we owe",
+  "@khataBalanceJama": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataBalanceUdhaarFarmer": "Udhaar · farmer owes",
+  "@khataBalanceUdhaarFarmer": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataBalanceUdhaarParty": "Udhaar · party owes",
+  "@khataBalanceUdhaarParty": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataBalanceSettled": "Settled",
+  "@khataBalanceSettled": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEntryTitle": "Khata entry",
+  "@khataEntryTitle": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEditTitle": "Edit khata entry",
+  "@khataEditTitle": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEditOriginal": "Original entry (will be reversed)",
+  "@khataEditOriginal": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEditExplain": "The original stays in the khata, struck through, and the corrected entry is added.",
+  "@khataEditExplain": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataFieldParty": "Party",
+  "@khataFieldParty": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataFieldPartyHint": "Type a name, village or code",
+  "@khataFieldPartyHint": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataSideUdhaar": "Udhaar (party owes more)",
+  "@khataSideUdhaar": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataSideJama": "Jama (we owe more)",
+  "@khataSideJama": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataFieldAmount": "Amount",
+  "@khataFieldAmount": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataFieldDate": "Date",
+  "@khataFieldDate": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataFieldNarration": "Narration",
+  "@khataFieldNarration": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEntrySave": "Post entry",
+  "@khataEntrySave": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEditSave": "Reverse and re-enter",
+  "@khataEditSave": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataDayBookTitle": "All entries",
+  "@khataDayBookTitle": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataDayBookEmpty": "No entries for this filter",
+  "@khataDayBookEmpty": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataFilterParty": "Filter by party",
+  "@khataFilterParty": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataFilterAllTypes": "All types",
+  "@khataFilterAllTypes": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEntriesCount": "{count, plural, =1{1 entry} other{{count} entries}}",
+  "@khataEntriesCount": {
+    "description": "Khata screens (step 1.4).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "khataReverseTitle": "Reverse this entry?",
+  "@khataReverseTitle": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataReverseBody": "A mirror entry is added and both stay in the khata. This cannot be undone.",
+  "@khataReverseBody": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataReverse": "Reverse",
+  "@khataReverse": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataReversed": "Entry reversed",
+  "@khataReversed": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEntryActions": "Entry actions",
+  "@khataEntryActions": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataEdit": "Edit (reverse and re-enter)",
+  "@khataEdit": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "khataStatementEmpty": "No entries in this period",
+  "@khataStatementEmpty": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "statementTitle": "Khata statement",
+  "@statementTitle": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "statementOpening": "Opening balance",
+  "@statementOpening": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "statementClosing": "Closing balance",
+  "@statementClosing": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "statementTotals": "Total",
+  "@statementTotals": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "statementPage": "Page {page} of {pages}",
+  "@statementPage": {
+    "description": "Khata screens (step 1.4).",
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "statementPrint": "Print / PDF",
+  "@statementPrint": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "statementShare": "Share",
+  "@statementShare": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "paletteHint": "Type a command…",
+  "@paletteHint": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "paletteNoMatch": "No matching command",
+  "@paletteNoMatch": {
+    "description": "Khata screens (step 1.4)."
+  },
+  "settingBusinessBackdateDays": "Back-dating allowed (days)",
+  "@settingBusinessBackdateDays": {
+    "description": "Label of setting business.backdate_days."
   }
 }

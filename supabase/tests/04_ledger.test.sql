@@ -294,10 +294,11 @@ select set_config('request.jwt.claims',
 
 select lives_ok(
   $$insert into public.ledger_entries
-    (id, tenant_id, party_id, entry_date, side, amount_paise, ref_type, device_id) values
+    (id, tenant_id, party_id, entry_date, side, amount_paise, ref_type, device_id,
+     created_at) values
     (gen_random_uuid(), '11111111-1111-4111-8111-111111111111',
      'cccccccc-0000-4000-8000-000000000001', '2026-04-08', 'udhaar', 100000, 'payment',
-     'dddddddd-0000-4000-8000-000000000004')$$,
+     'dddddddd-0000-4000-8000-000000000004', '2026-04-08T06:00:00Z')$$,
   'a munshi records a payment');
 select throws_ok(
   $$insert into public.ledger_entries

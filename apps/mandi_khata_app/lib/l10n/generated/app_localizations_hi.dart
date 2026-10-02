@@ -1348,4 +1348,223 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get partyPickerChange => 'बदलें';
+
+  @override
+  String get khataRefArrival => 'फसल बिक्री';
+
+  @override
+  String get khataRefPayment => 'भुगतान';
+
+  @override
+  String get khataRefReceipt => 'रसीद';
+
+  @override
+  String get khataRefShopSale => 'दुकान बिक्री';
+
+  @override
+  String get khataRefShopReturn => 'दुकान वापसी';
+
+  @override
+  String get khataRefPurchase => 'खरीद';
+
+  @override
+  String get khataRefLoanDisbursal => 'कर्ज़ दिया';
+
+  @override
+  String get khataRefLoanRepayment => 'कर्ज़ वापसी';
+
+  @override
+  String get khataRefInterest => 'ब्याज';
+
+  @override
+  String get khataRefExpense => 'खर्च';
+
+  @override
+  String get khataRefJournal => 'खाता एंट्री';
+
+  @override
+  String get khataRefOpeningBalance => 'शुरुआती बाकी';
+
+  @override
+  String get khataRefReversal => 'उलट एंट्री';
+
+  @override
+  String get khataTagReversal => 'उलट';
+
+  @override
+  String get khataTagEdited => 'सुधारी गई';
+
+  @override
+  String get khataTagReversed => 'उलट दी गई';
+
+  @override
+  String khataErrorBackdated(int days) {
+    return '$days दिन से पुरानी या आगे की तारीख की एंट्री के लिए मुनीम या मालिक चाहिए';
+  }
+
+  @override
+  String get khataErrorNotPermitted => 'आपको इसकी अनुमति नहीं है';
+
+  @override
+  String get khataErrorNotFound => 'यह पार्टी या एंट्री अब मौजूद नहीं है';
+
+  @override
+  String get khataErrorAmount => 'शून्य से ज़्यादा रकम लिखें';
+
+  @override
+  String get khataErrorNothingChanged => 'कुछ भी नहीं बदला';
+
+  @override
+  String get khataErrorAlreadyReversed => 'यह एंट्री पहले ही उलट दी गई है';
+
+  @override
+  String get khataErrorIsReversal =>
+      'उलट एंट्री बदली नहीं जा सकती; नई एंट्री डालें';
+
+  @override
+  String get khataColDate => 'तारीख';
+
+  @override
+  String get khataColDetails => 'विवरण';
+
+  @override
+  String get khataColPartyDetails => 'पार्टी · विवरण';
+
+  @override
+  String get khataColUdhaar => 'उधार';
+
+  @override
+  String get khataColJama => 'जमा';
+
+  @override
+  String get khataColBaki => 'बाकी';
+
+  @override
+  String get khataBalanceJama => 'जमा · हमें देना है';
+
+  @override
+  String get khataBalanceUdhaarFarmer => 'उधार · किसान को देना है';
+
+  @override
+  String get khataBalanceUdhaarParty => 'उधार · पार्टी को देना है';
+
+  @override
+  String get khataBalanceSettled => 'हिसाब बराबर';
+
+  @override
+  String get khataEntryTitle => 'खाता एंट्री';
+
+  @override
+  String get khataEditTitle => 'खाता एंट्री सुधारें';
+
+  @override
+  String get khataEditOriginal => 'मूल एंट्री (उलट दी जाएगी)';
+
+  @override
+  String get khataEditExplain =>
+      'मूल एंट्री कटी हुई खाते में रहेगी और सही एंट्री जुड़ेगी।';
+
+  @override
+  String get khataFieldParty => 'पार्टी';
+
+  @override
+  String get khataFieldPartyHint => 'नाम, गाँव या कोड लिखें';
+
+  @override
+  String get khataSideUdhaar => 'उधार (पार्टी का देना बढ़ा)';
+
+  @override
+  String get khataSideJama => 'जमा (हमारा देना बढ़ा)';
+
+  @override
+  String get khataFieldAmount => 'रकम';
+
+  @override
+  String get khataFieldDate => 'तारीख';
+
+  @override
+  String get khataFieldNarration => 'विवरण';
+
+  @override
+  String get khataEntrySave => 'एंट्री डालें';
+
+  @override
+  String get khataEditSave => 'उलटकर दोबारा डालें';
+
+  @override
+  String get khataDayBookTitle => 'सभी एंट्री';
+
+  @override
+  String get khataDayBookEmpty => 'इस फ़िल्टर में कोई एंट्री नहीं';
+
+  @override
+  String get khataFilterParty => 'पार्टी से छाँटें';
+
+  @override
+  String get khataFilterAllTypes => 'सभी प्रकार';
+
+  @override
+  String khataEntriesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count एंट्री',
+      one: '1 एंट्री',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get khataReverseTitle => 'यह एंट्री उलटें?';
+
+  @override
+  String get khataReverseBody =>
+      'उलट एंट्री जुड़ेगी और दोनों खाते में रहेंगी। इसे वापस नहीं किया जा सकता।';
+
+  @override
+  String get khataReverse => 'उलटें';
+
+  @override
+  String get khataReversed => 'एंट्री उलट दी गई';
+
+  @override
+  String get khataEntryActions => 'एंट्री विकल्प';
+
+  @override
+  String get khataEdit => 'सुधारें (उलटकर दोबारा)';
+
+  @override
+  String get khataStatementEmpty => 'इस अवधि में कोई एंट्री नहीं';
+
+  @override
+  String get statementTitle => 'खाता विवरण';
+
+  @override
+  String get statementOpening => 'शुरुआती बाकी';
+
+  @override
+  String get statementClosing => 'अंतिम बाकी';
+
+  @override
+  String get statementTotals => 'कुल';
+
+  @override
+  String statementPage(int page, int pages) {
+    return 'पृष्ठ $page / $pages';
+  }
+
+  @override
+  String get statementPrint => 'प्रिंट / PDF';
+
+  @override
+  String get statementShare => 'भेजें';
+
+  @override
+  String get paletteHint => 'कमांड लिखें…';
+
+  @override
+  String get paletteNoMatch => 'कोई कमांड नहीं मिली';
+
+  @override
+  String get settingBusinessBackdateDays => 'पिछली तारीख की छूट (दिन)';
 }

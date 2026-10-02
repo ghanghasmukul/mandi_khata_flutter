@@ -18,6 +18,8 @@
   - payment, receipt, loan repayment → `payments.create`
   - loan disbursal, interest → `loans.manage`
   - shop sale / return, purchase, expense → any active member (until phases 3–4 add their permissions)
+  - **Back-dating** (any ref type): an entry whose `entry_date` is more than `business.backdate_days` (default 3) days before the day it was recorded, or after it, also needs `entries.reverse`. "Recorded" is the device's day (`created_at` in Asia/Kolkata), so an entry made today offline and synced next week is not back-dated. The server also rejects a `created_at` more than a day ahead of its own clock. (khata_core `LedgerPosting.requiredPermissions`, SQL `private.ledger_date_restricted`.)
+  - A **manual khata entry** (Ctrl/⌘ K → "Khata entry") is a `journal` entry, so it needs `entries.reverse` (Accountant / Owner). Editing it = reversal + replacement; entries posted by a document (lot, payment…) are corrected through that document, not edited in the khata.
 - **Uploads are all-or-nothing per local transaction** (`apply_crud_transaction`): a document and its ledger entries, or a reversal and its replacement, reach the server together or not at all.
 - **Opening balance** per party when onboarding a tenant (`ref_type=opening_balance`, dated FY start or go-live date).
 - **Every business document posts to the khata in the same local transaction** as the document itself. Never "post later".

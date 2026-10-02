@@ -57,6 +57,15 @@ void main() {
       );
     });
 
+    test('adds days across months and years; counts days between', () {
+      expect(LedgerDate(2026, 3, 30).addDays(3), LedgerDate(2026, 4, 2));
+      expect(LedgerDate(2026, 1, 2).addDays(-3), LedgerDate(2025, 12, 30));
+      expect(LedgerDate(2028, 2, 28).addDays(1), LedgerDate(2028, 2, 29));
+      expect(LedgerDate(2026, 3, 29).daysUntil(LedgerDate(2026, 4, 1)), 3);
+      expect(LedgerDate(2026, 4, 1).daysUntil(LedgerDate(2026, 3, 29)), -3);
+      expect(LedgerDate(2025, 4, 1).daysUntil(LedgerDate(2026, 4, 1)), 365);
+    });
+
     test('rejects impossible dates and bad text', () {
       expect(() => LedgerDate(2026, 2, 30), throwsArgumentError);
       expect(() => LedgerDate.parse('30-09-2026'), throwsFormatException);
@@ -447,4 +456,81 @@ void main() {
       expect(munshi(RefType.loanDisbursal), isFalse);
     });
   });
+
+  group(
+    'LedgerPosting back-dating (mirrors private.ledger_date_restricted)',
+    () {
+      final today = LedgerDate(2026, 10, 1);
+      bool restricted(LedgerDate d, {int days = 3}) =>
+          LedgerPosting.dateNeedsOverride(
+            entryDate: d,
+            recordedOn: today,
+            backdateDays: days,
+          );
+
+      test('today and up to N days back are open', () {
+        expect(restricted(today), isFalse);
+        expect(restricted(LedgerDate(2026, 9, 30)), isFalse);
+        expect(restricted(LedgerDate(2026, 9, 28)), isFalse);
+      });
+
+      test('older than N days, or in the future, needs entries.reverse', () {
+        expect(restricted(LedgerDate(2026, 9, 27)), isTrue);
+        expect(restricted(LedgerDate(2025, 4, 1)), isTrue);
+        expect(restricted(LedgerDate(2026, 10, 2)), isTrue);
+      });
+
+      test('N = 0 allows only the day it is recorded', () {
+        expect(restricted(today, days: 0), isFalse);
+        expect(restricted(LedgerDate(2026, 9, 30), days: 0), isTrue);
+      });
+
+      test('permission for a dated entry adds the back-date rule', () {
+        Permission? need(RefType t, LedgerDate d) =>
+            LedgerPosting.requiredPermissions(
+              t,
+              entryDate: d,
+              recordedOn: today,
+              backdateDays: 3,
+            ).lastOrNull;
+        expect(need(RefType.arrival, today), Permission.arrivalsManage);
+        expect(
+          LedgerPosting.requiredPermissions(
+            RefType.arrival,
+            entryDate: LedgerDate(2026, 9, 1),
+            recordedOn: today,
+            backdateDays: 3,
+          ),
+          [Permission.arrivalsManage, Permission.entriesReverse],
+        );
+        expect(
+          LedgerPosting.requiredPermissions(
+            RefType.expense,
+            entryDate: LedgerDate(2026, 9, 1),
+            recordedOn: today,
+            backdateDays: 3,
+          ),
+          [Permission.entriesReverse],
+        );
+        expect(
+          LedgerPosting.requiredPermissions(
+            RefType.expense,
+            entryDate: today,
+            recordedOn: today,
+            backdateDays: 3,
+          ),
+          isEmpty,
+        );
+        expect(
+          LedgerPosting.requiredPermissions(
+            RefType.journal,
+            entryDate: LedgerDate(2026, 9, 1),
+            recordedOn: today,
+            backdateDays: 3,
+          ),
+          [Permission.entriesReverse],
+        );
+      });
+    },
+  );
 }

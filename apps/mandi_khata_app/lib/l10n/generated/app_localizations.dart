@@ -2535,6 +2535,414 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change'**
   String get partyPickerChange;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Crop sale'**
+  String get khataRefArrival;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get khataRefPayment;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt'**
+  String get khataRefReceipt;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Shop sale'**
+  String get khataRefShopSale;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Shop return'**
+  String get khataRefShopReturn;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase'**
+  String get khataRefPurchase;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Loan given'**
+  String get khataRefLoanDisbursal;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Loan repayment'**
+  String get khataRefLoanRepayment;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Interest'**
+  String get khataRefInterest;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Expense'**
+  String get khataRefExpense;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Khata entry'**
+  String get khataRefJournal;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening balance'**
+  String get khataRefOpeningBalance;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Reversal'**
+  String get khataRefReversal;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'reversal'**
+  String get khataTagReversal;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'edited'**
+  String get khataTagEdited;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'reversed'**
+  String get khataTagReversed;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Entries older than {days, plural, =1{1 day} other{{days} days}}, or dated in the future, need an Accountant or Owner'**
+  String khataErrorBackdated(int days);
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'You are not allowed to do this'**
+  String get khataErrorNotPermitted;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'This party or entry no longer exists'**
+  String get khataErrorNotFound;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount above zero'**
+  String get khataErrorAmount;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing was changed'**
+  String get khataErrorNothingChanged;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'This entry was already reversed'**
+  String get khataErrorAlreadyReversed;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'A reversal cannot be changed; post a new entry'**
+  String get khataErrorIsReversal;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get khataColDate;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get khataColDetails;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Party · details'**
+  String get khataColPartyDetails;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar'**
+  String get khataColUdhaar;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Jama'**
+  String get khataColJama;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Baki'**
+  String get khataColBaki;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Jama · we owe'**
+  String get khataBalanceJama;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar · farmer owes'**
+  String get khataBalanceUdhaarFarmer;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar · party owes'**
+  String get khataBalanceUdhaarParty;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get khataBalanceSettled;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Khata entry'**
+  String get khataEntryTitle;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Edit khata entry'**
+  String get khataEditTitle;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Original entry (will be reversed)'**
+  String get khataEditOriginal;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'The original stays in the khata, struck through, and the corrected entry is added.'**
+  String get khataEditExplain;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Party'**
+  String get khataFieldParty;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Type a name, village or code'**
+  String get khataFieldPartyHint;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar (party owes more)'**
+  String get khataSideUdhaar;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Jama (we owe more)'**
+  String get khataSideJama;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get khataFieldAmount;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get khataFieldDate;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Narration'**
+  String get khataFieldNarration;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Post entry'**
+  String get khataEntrySave;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse and re-enter'**
+  String get khataEditSave;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'All entries'**
+  String get khataDayBookTitle;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'No entries for this filter'**
+  String get khataDayBookEmpty;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by party'**
+  String get khataFilterParty;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'All types'**
+  String get khataFilterAllTypes;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 entry} other{{count} entries}}'**
+  String khataEntriesCount(int count);
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse this entry?'**
+  String get khataReverseTitle;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'A mirror entry is added and both stay in the khata. This cannot be undone.'**
+  String get khataReverseBody;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse'**
+  String get khataReverse;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Entry reversed'**
+  String get khataReversed;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Entry actions'**
+  String get khataEntryActions;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Edit (reverse and re-enter)'**
+  String get khataEdit;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'No entries in this period'**
+  String get khataStatementEmpty;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Khata statement'**
+  String get statementTitle;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening balance'**
+  String get statementOpening;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Closing balance'**
+  String get statementClosing;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get statementTotals;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Page {page} of {pages}'**
+  String statementPage(int page, int pages);
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Print / PDF'**
+  String get statementPrint;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get statementShare;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Type a command…'**
+  String get paletteHint;
+
+  /// Khata screens (step 1.4).
+  ///
+  /// In en, this message translates to:
+  /// **'No matching command'**
+  String get paletteNoMatch;
+
+  /// Label of setting business.backdate_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Back-dating allowed (days)'**
+  String get settingBusinessBackdateDays;
 }
 
 class _AppLocalizationsDelegate

@@ -6,6 +6,8 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
+import 'package:mandi_khata_app/features/khata/presentation/khata_line.dart';
+import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_providers.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
@@ -188,13 +190,17 @@ class _RoleChips extends StatelessWidget {
 }
 
 /// One row of the party list.
-class PartyTile extends StatelessWidget {
+class PartyTile extends ConsumerWidget {
   const PartyTile({required this.party, super.key});
 
   final Party party;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Only the ledger knows a party's balance (live, this business).
+    final balance = ref.watch(
+      partyBalancesProvider.select((b) => b.value?[party.id]),
+    );
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final details = [
@@ -218,14 +224,24 @@ class PartyTile extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: theme.textTheme.bodySmall,
       ),
-      trailing: party.roles.isEmpty
-          ? null
-          : MkRoleChip(
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          if (balance != null)
+            KhataBalanceChip(
+              balance: balance,
+              isFarmer: party.roles.contains(PartyRole.farmer),
+            ),
+          if (party.roles.isNotEmpty)
+            MkRoleChip(
               label: [
                 for (final r in PartyRole.values)
                   if (party.roles.contains(r)) l10n.partyRole(r),
               ].join(' · '),
             ),
+        ],
+      ),
     );
   }
 }

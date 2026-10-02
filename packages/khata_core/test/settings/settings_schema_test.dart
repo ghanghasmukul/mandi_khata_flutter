@@ -66,6 +66,7 @@ void main() {
         'shop.gst_enabled',
         'shop.post_credit_sale_to_khata',
         'business.fy_start_month',
+        'business.backdate_days',
         'app.languages',
         'app.default_language',
         'print.receipt_size',
@@ -128,6 +129,7 @@ void main() {
       expect(d('shop.default_tier_for_role.customer'), 'retail');
       expect(d('shop.expiry_warn_days'), 180);
       expect(d('business.fy_start_month'), 4);
+      expect(d('business.backdate_days'), 3);
       expect(d('business.number_series.receipt'), {'prefix': 'R-', 'next': 1});
       expect(d('business.number_series.lot'), {'prefix': 'L-', 'next': 1});
       expect(d('app.modules.shop'), true);
@@ -183,6 +185,9 @@ void main() {
       expect(v('interest.day_basis', 364), SettingError.notAllowed);
       expect(v('business.fy_start_month', 0), SettingError.tooSmall);
       expect(v('business.fy_start_month', 13), SettingError.tooLarge);
+      expect(v('business.backdate_days', 0), isNull);
+      expect(v('business.backdate_days', -1), SettingError.tooSmall);
+      expect(v('business.backdate_days', 3651), SettingError.tooLarge);
       expect(v('interest.grace_days', 1.5), SettingError.wrongType);
     });
 
@@ -241,6 +246,7 @@ void main() {
       for (final key in [
         'shop.gst_enabled',
         'business.fy_start_month',
+        'business.backdate_days',
         'app.default_language',
         'print.receipt_size',
         'notify.whatsapp_receipts',

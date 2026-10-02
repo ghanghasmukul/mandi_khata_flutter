@@ -7,8 +7,9 @@ import 'package:mandi_khata_app/features/parties/presentation/parties_providers.
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
-/// Picks a party with [role] by typing: results appear after
-/// [minChars] characters (name, father's name, village, code or mobile).
+/// Picks a party (with [role], or any party when null) by typing: results
+/// appear after [minChars] characters (name, father's name, village, code
+/// or mobile).
 /// ↑ / ↓ move, Enter picks, Esc clears the search. Once picked, the party is
 /// shown with a button to change it.
 class PartyPicker extends ConsumerStatefulWidget {
@@ -27,7 +28,7 @@ class PartyPicker extends ConsumerStatefulWidget {
     this.maxResults = 6,
   });
 
-  final PartyRole role;
+  final PartyRole? role;
   final Party? selected;
 
   /// Null when the choice is cleared.

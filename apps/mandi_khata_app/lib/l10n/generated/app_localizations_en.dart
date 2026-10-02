@@ -1361,4 +1361,229 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get partyPickerChange => 'Change';
+
+  @override
+  String get khataRefArrival => 'Crop sale';
+
+  @override
+  String get khataRefPayment => 'Payment';
+
+  @override
+  String get khataRefReceipt => 'Receipt';
+
+  @override
+  String get khataRefShopSale => 'Shop sale';
+
+  @override
+  String get khataRefShopReturn => 'Shop return';
+
+  @override
+  String get khataRefPurchase => 'Purchase';
+
+  @override
+  String get khataRefLoanDisbursal => 'Loan given';
+
+  @override
+  String get khataRefLoanRepayment => 'Loan repayment';
+
+  @override
+  String get khataRefInterest => 'Interest';
+
+  @override
+  String get khataRefExpense => 'Expense';
+
+  @override
+  String get khataRefJournal => 'Khata entry';
+
+  @override
+  String get khataRefOpeningBalance => 'Opening balance';
+
+  @override
+  String get khataRefReversal => 'Reversal';
+
+  @override
+  String get khataTagReversal => 'reversal';
+
+  @override
+  String get khataTagEdited => 'edited';
+
+  @override
+  String get khataTagReversed => 'reversed';
+
+  @override
+  String khataErrorBackdated(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days',
+      one: '1 day',
+    );
+    return 'Entries older than $_temp0, or dated in the future, need an Accountant or Owner';
+  }
+
+  @override
+  String get khataErrorNotPermitted => 'You are not allowed to do this';
+
+  @override
+  String get khataErrorNotFound => 'This party or entry no longer exists';
+
+  @override
+  String get khataErrorAmount => 'Enter an amount above zero';
+
+  @override
+  String get khataErrorNothingChanged => 'Nothing was changed';
+
+  @override
+  String get khataErrorAlreadyReversed => 'This entry was already reversed';
+
+  @override
+  String get khataErrorIsReversal =>
+      'A reversal cannot be changed; post a new entry';
+
+  @override
+  String get khataColDate => 'Date';
+
+  @override
+  String get khataColDetails => 'Details';
+
+  @override
+  String get khataColPartyDetails => 'Party · details';
+
+  @override
+  String get khataColUdhaar => 'Udhaar';
+
+  @override
+  String get khataColJama => 'Jama';
+
+  @override
+  String get khataColBaki => 'Baki';
+
+  @override
+  String get khataBalanceJama => 'Jama · we owe';
+
+  @override
+  String get khataBalanceUdhaarFarmer => 'Udhaar · farmer owes';
+
+  @override
+  String get khataBalanceUdhaarParty => 'Udhaar · party owes';
+
+  @override
+  String get khataBalanceSettled => 'Settled';
+
+  @override
+  String get khataEntryTitle => 'Khata entry';
+
+  @override
+  String get khataEditTitle => 'Edit khata entry';
+
+  @override
+  String get khataEditOriginal => 'Original entry (will be reversed)';
+
+  @override
+  String get khataEditExplain =>
+      'The original stays in the khata, struck through, and the corrected entry is added.';
+
+  @override
+  String get khataFieldParty => 'Party';
+
+  @override
+  String get khataFieldPartyHint => 'Type a name, village or code';
+
+  @override
+  String get khataSideUdhaar => 'Udhaar (party owes more)';
+
+  @override
+  String get khataSideJama => 'Jama (we owe more)';
+
+  @override
+  String get khataFieldAmount => 'Amount';
+
+  @override
+  String get khataFieldDate => 'Date';
+
+  @override
+  String get khataFieldNarration => 'Narration';
+
+  @override
+  String get khataEntrySave => 'Post entry';
+
+  @override
+  String get khataEditSave => 'Reverse and re-enter';
+
+  @override
+  String get khataDayBookTitle => 'All entries';
+
+  @override
+  String get khataDayBookEmpty => 'No entries for this filter';
+
+  @override
+  String get khataFilterParty => 'Filter by party';
+
+  @override
+  String get khataFilterAllTypes => 'All types';
+
+  @override
+  String khataEntriesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count entries',
+      one: '1 entry',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get khataReverseTitle => 'Reverse this entry?';
+
+  @override
+  String get khataReverseBody =>
+      'A mirror entry is added and both stay in the khata. This cannot be undone.';
+
+  @override
+  String get khataReverse => 'Reverse';
+
+  @override
+  String get khataReversed => 'Entry reversed';
+
+  @override
+  String get khataEntryActions => 'Entry actions';
+
+  @override
+  String get khataEdit => 'Edit (reverse and re-enter)';
+
+  @override
+  String get khataStatementEmpty => 'No entries in this period';
+
+  @override
+  String get statementTitle => 'Khata statement';
+
+  @override
+  String get statementOpening => 'Opening balance';
+
+  @override
+  String get statementClosing => 'Closing balance';
+
+  @override
+  String get statementTotals => 'Total';
+
+  @override
+  String statementPage(int page, int pages) {
+    return 'Page $page of $pages';
+  }
+
+  @override
+  String get statementPrint => 'Print / PDF';
+
+  @override
+  String get statementShare => 'Share';
+
+  @override
+  String get paletteHint => 'Type a command…';
+
+  @override
+  String get paletteNoMatch => 'No matching command';
+
+  @override
+  String get settingBusinessBackdateDays => 'Back-dating allowed (days)';
 }

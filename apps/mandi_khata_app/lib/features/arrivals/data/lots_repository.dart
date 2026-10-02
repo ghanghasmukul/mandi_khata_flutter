@@ -182,6 +182,22 @@ class LotsRepository {
       final toPost = post && draft.qtlMilli != null && draft.rate != null;
       LotPostingPlan? plan;
       if (toPost) {
+        // Posting writes khata entries: the back-date window applies.
+        final refused = await LedgerRepository.checkDate(
+          tx,
+          ctx,
+          RefType.arrival,
+          draft.entryDate,
+          can: can,
+          now: when,
+          planDefaults: planDefaults,
+        );
+        if (refused != null) {
+          return LotNotPermitted(
+            refused.permission,
+            backdateDays: refused.backdateDays,
+          );
+        }
         final config = await resolveConfig(
           tx,
           ctx.tenantId,

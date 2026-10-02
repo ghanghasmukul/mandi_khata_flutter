@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
+import 'package:mandi_khata_app/features/khata/presentation/party_khata_tab.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_providers.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
@@ -196,7 +197,8 @@ class _Body extends StatelessWidget {
         Expanded(
           child: TabBarView(
             children: [
-              for (var i = 0; i < 5; i++)
+              PartyKhataTab(party: p),
+              for (var i = 0; i < 4; i++)
                 MkEmptyState(
                   icon: Icons.construction_outlined,
                   title: l10n.partyTabComingSoon,
