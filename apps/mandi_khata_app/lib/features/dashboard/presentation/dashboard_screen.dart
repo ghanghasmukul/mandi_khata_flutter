@@ -2,9 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/router.dart';
+import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
+import 'package:mandi_khata_app/features/audit/presentation/audit_screen.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_charts.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_hero.dart';
@@ -14,6 +17,7 @@ import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
 import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
+import 'package:mandi_khata_app/features/team/presentation/team_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -79,11 +83,13 @@ class DashboardView extends StatelessWidget {
 }
 
 /// Links to the other screens until the app shell has a navigation menu.
-class _Browse extends StatelessWidget {
+class _Browse extends ConsumerWidget {
   const _Browse();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final canAdmin = ref.watch(canProvider(Permission.adminManage));
+    final canAudit = ref.watch(canProvider(Permission.auditView));
     final l10n = AppLocalizations.of(context);
     Widget link(String label, IconData icon, String route) => MkButton(
       label: label,
@@ -110,6 +116,10 @@ class _Browse extends StatelessWidget {
         link(l10n.reportsTitle, Icons.assessment_outlined, ReportRoutes.list),
         link(l10n.cropsTitle, Icons.grass_outlined, CropRoutes.list),
         link(l10n.settingsTitle, Icons.tune, AppRoutes.settings),
+        // Shown by permission; the screens check it again.
+        if (canAdmin)
+          link(l10n.teamTitle, Icons.manage_accounts_outlined, TeamRoutes.list),
+        if (canAudit) link(l10n.auditTitle, Icons.history, AuditRoutes.list),
         // Developer-only; the routes do not exist in release builds.
         if (!kReleaseMode) ...[
           link('Design gallery', Icons.palette_outlined, AppRoutes.gallery),

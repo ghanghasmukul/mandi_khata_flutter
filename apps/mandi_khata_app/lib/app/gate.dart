@@ -1,6 +1,7 @@
 import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/core/tenant/device_status.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'gate.g.dart';
@@ -12,6 +13,9 @@ enum GateStep {
   signedOut,
   locked,
   chooseTenant,
+
+  /// The owner revoked this install: nothing else is reachable.
+  deviceRevoked,
 
   /// First run on a lockable device: offer to set a PIN.
   setupPin,
@@ -32,6 +36,9 @@ GateStep gateStep(Ref ref) {
   final lock = ref.watch(appLockProvider);
   if (lock.locked) return GateStep.locked;
   if (ref.watch(activeTenantProvider) == null) return GateStep.chooseTenant;
+  if (ref.watch(deviceRevokedProvider).value ?? false) {
+    return GateStep.deviceRevoked;
+  }
   if (lock.setupPromptPending) return GateStep.setupPin;
   return GateStep.ready;
 }
@@ -43,6 +50,7 @@ abstract final class GateRoutes {
   static const lock = '/lock';
   static const selectTenant = '/select-tenant';
   static const setPin = '/set-pin';
+  static const deviceRevoked = '/device-revoked';
 
   /// Developer pages that exist only in debug builds and work signed out.
   static const debugOnly = {'/dev/gallery', '/dev/sync'};
@@ -60,6 +68,7 @@ String? redirectFor(GateStep step, String location) {
     GateStep.signedOut => GateRoutes.login,
     GateStep.locked => GateRoutes.lock,
     GateStep.chooseTenant => GateRoutes.selectTenant,
+    GateStep.deviceRevoked => GateRoutes.deviceRevoked,
     GateStep.setupPin => GateRoutes.setPin,
     GateStep.ready => null,
   };
@@ -70,6 +79,7 @@ String? redirectFor(GateStep step, String location) {
     GateRoutes.login,
     GateRoutes.lock,
     GateRoutes.selectTenant,
+    GateRoutes.deviceRevoked,
   };
   return gatePages.contains(location) ? GateRoutes.home : null;
 }

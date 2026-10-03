@@ -4101,6 +4101,810 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Statements PDF'**
   String get reportStatementsPdf;
+
+  /// Title of the users screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Users & permissions'**
+  String get teamTitle;
+
+  /// Tab with the team members.
+  ///
+  /// In en, this message translates to:
+  /// **'People'**
+  String get teamTabPeople;
+
+  /// Tab with the installs of the app.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices'**
+  String get teamTabDevices;
+
+  /// Button to invite a user by phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite someone'**
+  String get teamInvite;
+
+  /// Shown to members without admin.manage.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can manage users.'**
+  String get teamNoAccess;
+
+  /// Marks the signed-in member in the list.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get teamYou;
+
+  /// Chip on a deactivated member.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivated'**
+  String get teamInactive;
+
+  /// How many devices a member has.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No devices} =1{1 device} other{{count} devices}}'**
+  String teamDevicesCount(int count);
+
+  /// Heading above pending invites.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting to join'**
+  String get teamPendingInvites;
+
+  /// When an invite stops working.
+  ///
+  /// In en, this message translates to:
+  /// **'Expires {date}'**
+  String teamInviteExpires(String date);
+
+  /// Invite past its date.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get teamInviteExpired;
+
+  /// Cancels a pending invite.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel invite'**
+  String get teamInviteCancel;
+
+  /// Toast after cancelling.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite cancelled'**
+  String get teamInviteCancelled;
+
+  /// Empty team list.
+  ///
+  /// In en, this message translates to:
+  /// **'No one here yet.'**
+  String get teamEmptyPeople;
+
+  /// Empty device list.
+  ///
+  /// In en, this message translates to:
+  /// **'No devices yet.'**
+  String get teamEmptyDevices;
+
+  /// Label of the role selector.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get teamRole;
+
+  /// Heading of the permission grid.
+  ///
+  /// In en, this message translates to:
+  /// **'What they can do'**
+  String get teamPermissions;
+
+  /// Explains the permission grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch a permission on or off for this person. A dot marks a change from the role\'s default.'**
+  String get teamPermissionsHelp;
+
+  /// Tooltip on the override dot.
+  ///
+  /// In en, this message translates to:
+  /// **'Different from the role default'**
+  String get teamPermissionChanged;
+
+  /// Tooltip on sensitive permissions.
+  ///
+  /// In en, this message translates to:
+  /// **'Powerful: grant with care'**
+  String get teamPermissionSensitive;
+
+  /// Shown instead of the grid for owners.
+  ///
+  /// In en, this message translates to:
+  /// **'Owners can do everything. This cannot be changed.'**
+  String get teamOwnerAll;
+
+  /// Per-member limit of installs.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices allowed'**
+  String get teamDeviceLimit;
+
+  /// Saves a member.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get teamSave;
+
+  /// Toast after saving a member.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get teamSaved;
+
+  /// Switches a member off.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate'**
+  String get teamDeactivate;
+
+  /// Switches a member back on.
+  ///
+  /// In en, this message translates to:
+  /// **'Reactivate'**
+  String get teamReactivate;
+
+  /// Confirmation title.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivate {name}?'**
+  String teamDeactivateTitle(String name);
+
+  /// Confirmation text.
+  ///
+  /// In en, this message translates to:
+  /// **'They can no longer open this business and its data leaves their devices. Their past entries stay in the books.'**
+  String get teamDeactivateBody;
+
+  /// Toast after deactivating.
+  ///
+  /// In en, this message translates to:
+  /// **'Deactivated'**
+  String get teamDeactivated;
+
+  /// Toast after reactivating.
+  ///
+  /// In en, this message translates to:
+  /// **'Reactivated'**
+  String get teamReactivated;
+
+  /// Last owner rule.
+  ///
+  /// In en, this message translates to:
+  /// **'A business must keep at least one active owner.'**
+  String get teamErrLastOwner;
+
+  /// Owner protection rule.
+  ///
+  /// In en, this message translates to:
+  /// **'Only an owner can change an owner, and you cannot change your own access.'**
+  String get teamErrProtected;
+
+  /// Member row is gone.
+  ///
+  /// In en, this message translates to:
+  /// **'This person was not found.'**
+  String get teamErrNotFound;
+
+  /// Marks the current install.
+  ///
+  /// In en, this message translates to:
+  /// **'This device'**
+  String get teamDeviceThis;
+
+  /// When the device last connected.
+  ///
+  /// In en, this message translates to:
+  /// **'Last seen {when}'**
+  String teamDeviceLastSeen(String when);
+
+  /// Device never connected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not seen yet'**
+  String get teamDeviceNeverSeen;
+
+  /// Revokes a device.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get teamDeviceRevoke;
+
+  /// Chip on a revoked device.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked'**
+  String get teamDeviceRevoked;
+
+  /// Confirmation title.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke device {code}?'**
+  String teamRevokeTitle(String code);
+
+  /// Confirmation text.
+  ///
+  /// In en, this message translates to:
+  /// **'It stops syncing and the app on it is blocked. Changes it made while offline are rejected. This cannot be undone; the person can set up a new device.'**
+  String get teamRevokeBody;
+
+  /// Toast after revoking.
+  ///
+  /// In en, this message translates to:
+  /// **'Device revoked'**
+  String get teamRevokeDone;
+
+  /// Cannot revoke self.
+  ///
+  /// In en, this message translates to:
+  /// **'You cannot revoke the device you are using.'**
+  String get teamErrThisDevice;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'View and add parties'**
+  String get permission_partiesManage;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrivals and lots'**
+  String get permission_arrivalsManage;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Record payments'**
+  String get permission_paymentsCreate;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit or reverse past entries'**
+  String get permission_entriesReverse;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue loans, change interest'**
+  String get permission_loansManage;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank details, profit, report export'**
+  String get permission_financeView;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Users, modules, subscription'**
+  String get permission_adminManage;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete parties and other master data'**
+  String get permission_masterDelete;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'Business-wide settings'**
+  String get permission_settingsManage;
+
+  /// Permission name in the grid.
+  ///
+  /// In en, this message translates to:
+  /// **'View the audit log'**
+  String get permission_auditView;
+
+  /// Invite dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite someone'**
+  String get inviteTitle;
+
+  /// Invitee phone field.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number'**
+  String get invitePhone;
+
+  /// Invitee name field.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (optional)'**
+  String get inviteName;
+
+  /// Send channel selector.
+  ///
+  /// In en, this message translates to:
+  /// **'Send by'**
+  String get inviteChannel;
+
+  /// WhatsApp channel.
+  ///
+  /// In en, this message translates to:
+  /// **'WhatsApp'**
+  String get inviteChannelWhatsapp;
+
+  /// SMS channel.
+  ///
+  /// In en, this message translates to:
+  /// **'SMS'**
+  String get inviteChannelSms;
+
+  /// Sends the invite.
+  ///
+  /// In en, this message translates to:
+  /// **'Send invite'**
+  String get inviteSend;
+
+  /// Bad phone number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid 10-digit mobile number.'**
+  String get inviteErrPhone;
+
+  /// Owner cannot be invited.
+  ///
+  /// In en, this message translates to:
+  /// **'This role cannot be invited. Owners are not added by invite.'**
+  String get inviteErrRole;
+
+  /// Already a member.
+  ///
+  /// In en, this message translates to:
+  /// **'This person is already on your team.'**
+  String get inviteErrAlreadyMember;
+
+  /// Pending invite exists.
+  ///
+  /// In en, this message translates to:
+  /// **'This number already has a pending invite.'**
+  String get inviteErrAlreadyInvited;
+
+  /// No permission.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can invite people.'**
+  String get inviteErrNotAllowed;
+
+  /// Offline.
+  ///
+  /// In en, this message translates to:
+  /// **'Inviting needs internet. Connect and try again.'**
+  String get inviteErrOffline;
+
+  /// Unknown failure.
+  ///
+  /// In en, this message translates to:
+  /// **'The invite couldn\'t be created. Try again.'**
+  String get inviteErrFailed;
+
+  /// Invite delivered by WhatsApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite sent on WhatsApp to {phone}.'**
+  String inviteSentWhatsapp(String phone);
+
+  /// Invite delivered by SMS.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite sent by SMS to {phone}.'**
+  String inviteSentSms(String phone);
+
+  /// Title when no message service is set up.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite saved: send it yourself'**
+  String get inviteNotSentTitle;
+
+  /// Explains manual sharing.
+  ///
+  /// In en, this message translates to:
+  /// **'No message service is set up, so nothing was sent. Copy this message and send it to {phone}. They join when they sign in with that number.'**
+  String inviteNotSentBody(String phone);
+
+  /// Copies the invite text.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy message'**
+  String get inviteCopy;
+
+  /// Toast after copying.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get inviteCopied;
+
+  /// Gate screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'This device was removed'**
+  String get deviceRevokedTitle;
+
+  /// Gate screen text.
+  ///
+  /// In en, this message translates to:
+  /// **'The owner revoked this device. Nothing more can be saved from here. Changes made offline were not accepted.'**
+  String get deviceRevokedBody;
+
+  /// Registers a new device (needs internet and a free slot).
+  ///
+  /// In en, this message translates to:
+  /// **'Set up this device again'**
+  String get deviceRevokedSetupAgain;
+
+  /// Button on the empty business picker.
+  ///
+  /// In en, this message translates to:
+  /// **'Check for invitations'**
+  String get tenantPickerCheckInvites;
+
+  /// After checking invitations finds none.
+  ///
+  /// In en, this message translates to:
+  /// **'No invitation found for your number yet.'**
+  String get tenantPickerNoInvites;
+
+  /// Offline while checking invitations.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to the internet to check for invitations.'**
+  String get tenantPickerInvitesOffline;
+
+  /// Device limit reached.
+  ///
+  /// In en, this message translates to:
+  /// **'This account already uses all its devices in {business}. Ask the owner to revoke an old one.'**
+  String deviceSetupLimit(String business);
+
+  /// Registration refused: revoked.
+  ///
+  /// In en, this message translates to:
+  /// **'This device was removed by the owner of {business}.'**
+  String deviceSetupRevoked(String business);
+
+  /// Title of the audit screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Audit log'**
+  String get auditTitle;
+
+  /// No audit.view.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can see the audit log.'**
+  String get auditNoAccess;
+
+  /// User filter label.
+  ///
+  /// In en, this message translates to:
+  /// **'Person'**
+  String get auditFilterUser;
+
+  /// Table filter label.
+  ///
+  /// In en, this message translates to:
+  /// **'Record type'**
+  String get auditFilterTable;
+
+  /// User filter: all.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone'**
+  String get auditAllUsers;
+
+  /// Table filter: all.
+  ///
+  /// In en, this message translates to:
+  /// **'All records'**
+  String get auditAllTables;
+
+  /// Highlight filter.
+  ///
+  /// In en, this message translates to:
+  /// **'Money edits and reversals only'**
+  String get auditOnlyMoney;
+
+  /// Empty audit list.
+  ///
+  /// In en, this message translates to:
+  /// **'No entries match.'**
+  String get auditEmpty;
+
+  /// Loads the next page.
+  ///
+  /// In en, this message translates to:
+  /// **'Show more'**
+  String get auditShowMore;
+
+  /// Highlight badge.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount changed'**
+  String get auditBadgeMoneyEdit;
+
+  /// Highlight badge.
+  ///
+  /// In en, this message translates to:
+  /// **'Reversal'**
+  String get auditBadgeReversal;
+
+  /// Who made the change.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {role}'**
+  String auditByUser(String name, String role);
+
+  /// Which device.
+  ///
+  /// In en, this message translates to:
+  /// **'device {code}'**
+  String auditOnDevice(String code);
+
+  /// Writer unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get auditSystem;
+
+  /// More changed fields.
+  ///
+  /// In en, this message translates to:
+  /// **'+{count} more'**
+  String auditMoreFields(int count);
+
+  /// Empty value.
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get auditEmptyValue;
+
+  /// Boolean true.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get auditYes;
+
+  /// Boolean false.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get auditNo;
+
+  /// Audit action.
+  ///
+  /// In en, this message translates to:
+  /// **'Added'**
+  String get auditAction_insert;
+
+  /// Audit action.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed'**
+  String get auditAction_update;
+
+  /// Audit action.
+  ///
+  /// In en, this message translates to:
+  /// **'Reversed'**
+  String get auditAction_reverse;
+
+  /// Audit action.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get auditAction_soft_delete;
+
+  /// Audit action.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored'**
+  String get auditAction_restore;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Khata entry'**
+  String get auditTable_ledger_entries;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get auditTable_payments;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash / bank line'**
+  String get auditTable_cash_bank_entries;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot'**
+  String get auditTable_lots;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Party'**
+  String get auditTable_parties;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Party role'**
+  String get auditTable_party_roles;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop'**
+  String get auditTable_crops;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank account'**
+  String get auditTable_bank_accounts;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get auditTable_settings;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Team member'**
+  String get auditTable_tenant_members;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation'**
+  String get auditTable_member_invites;
+
+  /// Audit record type.
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
+  String get auditTable_devices;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get auditField_amount_paise;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Gross value'**
+  String get auditField_gross;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Commission'**
+  String get auditField_commission;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Net to farmer'**
+  String get auditField_net_to_farmer;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer total'**
+  String get auditField_buyer_total;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate per quintal'**
+  String get auditField_rate_paise_per_qtl;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Quintals'**
+  String get auditField_qtl_milli;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get auditField_status;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get auditField_role;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get auditField_is_active;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices allowed'**
+  String get auditField_device_limit;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission changes'**
+  String get auditField_custom_permissions;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked at'**
+  String get auditField_revoked_at;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile'**
+  String get auditField_phone;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get auditField_name;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque'**
+  String get auditField_cheque_status;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get auditField_entry_date;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Side'**
+  String get auditField_side;
+
+  /// Audit field name.
+  ///
+  /// In en, this message translates to:
+  /// **'Direction'**
+  String get auditField_direction;
 }
 
 class _AppLocalizationsDelegate

@@ -92,7 +92,8 @@ void main() {
   });
 }
 
-/// table → column → SQL type, from `create table public.x (...)` blocks.
+/// table → column → SQL type, from `create table public.x (...)` blocks
+/// plus later `alter table … add column`.
 Map<String, Map<String, String>> _parseCreateTables(String sql) {
   final tables = <String, Map<String, String>>{};
   final block = RegExp(
@@ -106,6 +107,16 @@ Map<String, Map<String, String>> _parseCreateTables(String sql) {
       for (final c in column.allMatches(m.group(2)!))
         if (!notColumns.contains(c.group(1))) c.group(1)!: c.group(2)!,
     };
+  }
+  // Columns added later: `alter table public.x add column y type, ...;`
+  final alter = RegExp(r'alter table public\.([a-z_]+)\s+(add column [^;]+);');
+  final added = RegExp('add column ([a-z_][a-z0-9_]*) ([a-z]+)');
+  for (final m in alter.allMatches(sql)) {
+    final columns = tables[m.group(1)!];
+    if (columns == null) continue;
+    for (final c in added.allMatches(m.group(2)!)) {
+      columns[c.group(1)!] = c.group(2)!;
+    }
   }
   return tables;
 }

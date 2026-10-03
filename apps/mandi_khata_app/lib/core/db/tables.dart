@@ -63,6 +63,27 @@ class Devices extends Table {
   TextColumn get platform => text()();
   TextColumn get name => text().nullable()();
   TextColumn get lastSeenAt => text().nullable()();
+  TextColumn get revokedAt => text().nullable()();
+  TextColumn get revokedBy => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class MemberInvites extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get phone => text()();
+  TextColumn get fullName => text().nullable()();
+  TextColumn get role => text()();
+  TextColumn get customPermissions => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get expiresAt => text().nullable()();
+  TextColumn get acceptedBy => text().nullable()();
+  TextColumn get acceptedAt => text().nullable()();
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
   TextColumn get updatedAt => text().nullable()();

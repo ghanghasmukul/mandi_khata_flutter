@@ -50,7 +50,10 @@ class SignOutService {
   }
 }
 
-@riverpod
+// keepAlive: the sign-out flow awaits the queue stream, which outlives the
+// last listener (an auto-disposed provider failed with "Ref used after
+// dispose" and sign-out did nothing).
+@Riverpod(keepAlive: true)
 SignOutService signOutService(Ref ref) => SignOutService(
   queueCount: () async* {
     yield* watchUploadQueue(await ref.read(powerSyncDatabaseProvider.future));

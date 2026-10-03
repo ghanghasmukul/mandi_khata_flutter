@@ -6,6 +6,8 @@ import 'package:mandi_khata_app/app/home_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/lot_detail_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/lot_form_screen.dart';
+import 'package:mandi_khata_app/features/audit/presentation/audit_screen.dart';
+import 'package:mandi_khata_app/features/auth/presentation/device_revoked_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/lock_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/login_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/select_tenant_screen.dart';
@@ -26,6 +28,7 @@ import 'package:mandi_khata_app/features/payments/presentation/payments_screen.d
 import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
 import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
 import 'package:mandi_khata_app/features/settings/presentation/settings_screen.dart';
+import 'package:mandi_khata_app/features/team/presentation/team_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
@@ -86,6 +89,10 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: AppRoutes.lock,
         builder: (context, state) => const LockScreen(),
+      ),
+      GoRoute(
+        path: GateRoutes.deviceRevoked,
+        builder: (context, state) => const DeviceRevokedScreen(),
       ),
       GoRoute(
         path: AppRoutes.setPin,
@@ -179,6 +186,14 @@ GoRouter router(Ref ref) {
                 CropDetailScreen(cropId: state.pathParameters['id']!),
           ),
         ],
+      ),
+      GoRoute(
+        path: TeamRoutes.list,
+        builder: (context, state) => const TeamScreen(),
+      ),
+      GoRoute(
+        path: AuditRoutes.list,
+        builder: (context, state) => const AuditScreen(),
       ),
       GoRoute(
         path: AppRoutes.settings,

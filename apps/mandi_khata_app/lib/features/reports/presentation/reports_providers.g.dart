@@ -115,7 +115,7 @@ final class OutstandingReportProvider
   }
 }
 
-String _$outstandingReportHash() => r'491da81797baab146fe12024eb85a205162c9e95';
+String _$outstandingReportHash() => r'972a90d8ca295b9600696cfb4f3224c98067a49d';
 
 /// Each report is read once per filter (a report is a snapshot; the screen's
 /// refresh re-reads it). Empty without an active business.
@@ -200,7 +200,7 @@ final class ArrivalsReportProvider
   }
 }
 
-String _$arrivalsReportHash() => r'3324479f01a85adf0dd542679ad64035155cf165';
+String _$arrivalsReportHash() => r'4e1b3ee4884feebd6b314bc981a1898df28b1013';
 
 final class ArrivalsReportFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<ArrivalRow>>, ReportFilter> {
@@ -277,7 +277,7 @@ final class CommissionReportProvider
   }
 }
 
-String _$commissionReportHash() => r'5996bd1d7cdd695009c368b02bee7628102a4167';
+String _$commissionReportHash() => r'3ea622e2ecfd8126caaba618e00d997d7b483d2c';
 
 final class CommissionReportFamily extends $Family
     with
@@ -353,7 +353,7 @@ final class PaymentsReportProvider
   }
 }
 
-String _$paymentsReportHash() => r'9193dd883b9a6ef1071d6cfc17cd4038e4eef518';
+String _$paymentsReportHash() => r'34d5092807175848774d9169f604f45b36693c57';
 
 final class PaymentsReportFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<PaymentRow>>, ReportFilter> {
@@ -430,7 +430,7 @@ final class StatementsReportProvider
   }
 }
 
-String _$statementsReportHash() => r'892acb2d340dd85fe01929a5ab3317a28c84d4c1';
+String _$statementsReportHash() => r'790e8d21c069e9792fbd77d426aa53e6a712c13c';
 
 final class StatementsReportFamily extends $Family
     with
@@ -491,4 +491,4 @@ final class FarmerVillagesProvider
   }
 }
 
-String _$farmerVillagesHash() => r'cf357c1a9ae25f5f1ce77d879b0f90ea81d80dfa';
+String _$farmerVillagesHash() => r'311a031816d0995bff70c2e9e8646d4cfdd160f7';

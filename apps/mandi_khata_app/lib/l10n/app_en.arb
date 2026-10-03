@@ -2641,135 +2641,901 @@
     "description": "Dashboard (step 1.6)."
   },
   "reportsTitle": "Reports",
-  "@reportsTitle": {"description": "Reports (step 1.7)."},
+  "@reportsTitle": {
+    "description": "Reports (step 1.7)."
+  },
   "reportOutstanding": "Outstanding (baki)",
-  "@reportOutstanding": {"description": "Reports (step 1.7)."},
+  "@reportOutstanding": {
+    "description": "Reports (step 1.7)."
+  },
   "reportArrivals": "Arrival register",
-  "@reportArrivals": {"description": "Reports (step 1.7)."},
+  "@reportArrivals": {
+    "description": "Reports (step 1.7)."
+  },
   "reportCommission": "Commission earned",
-  "@reportCommission": {"description": "Reports (step 1.7)."},
+  "@reportCommission": {
+    "description": "Reports (step 1.7)."
+  },
   "reportPayments": "Payment register",
-  "@reportPayments": {"description": "Reports (step 1.7)."},
+  "@reportPayments": {
+    "description": "Reports (step 1.7)."
+  },
   "reportStatements": "Party statements",
-  "@reportStatements": {"description": "Reports (step 1.7)."},
+  "@reportStatements": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColCode": "Code",
-  "@reportColCode": {"description": "Reports (step 1.7)."},
+  "@reportColCode": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColParty": "Party",
-  "@reportColParty": {"description": "Reports (step 1.7)."},
+  "@reportColParty": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColVillage": "Village",
-  "@reportColVillage": {"description": "Reports (step 1.7)."},
+  "@reportColVillage": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColWeOwe": "We owe",
-  "@reportColWeOwe": {"description": "Reports (step 1.7)."},
+  "@reportColWeOwe": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColTheyOwe": "They owe us",
-  "@reportColTheyOwe": {"description": "Reports (step 1.7)."},
+  "@reportColTheyOwe": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColLastEntry": "Last entry",
-  "@reportColLastEntry": {"description": "Reports (step 1.7)."},
+  "@reportColLastEntry": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColDays": "Days",
-  "@reportColDays": {"description": "Reports (step 1.7)."},
+  "@reportColDays": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColAgeing": "Age band",
-  "@reportColAgeing": {"description": "Reports (step 1.7)."},
+  "@reportColAgeing": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColLot": "Lot",
-  "@reportColLot": {"description": "Reports (step 1.7)."},
+  "@reportColLot": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColDate": "Date",
-  "@reportColDate": {"description": "Reports (step 1.7)."},
+  "@reportColDate": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColFarmer": "Farmer",
-  "@reportColFarmer": {"description": "Reports (step 1.7)."},
+  "@reportColFarmer": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColCrop": "Crop",
-  "@reportColCrop": {"description": "Reports (step 1.7)."},
+  "@reportColCrop": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColBags": "Bags",
-  "@reportColBags": {"description": "Reports (step 1.7)."},
+  "@reportColBags": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColQtl": "Qtl",
-  "@reportColQtl": {"description": "Reports (step 1.7)."},
+  "@reportColQtl": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColRate": "Rate / qtl",
-  "@reportColRate": {"description": "Reports (step 1.7)."},
+  "@reportColRate": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColGross": "Gross",
-  "@reportColGross": {"description": "Reports (step 1.7)."},
+  "@reportColGross": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColCharges": "Charges",
-  "@reportColCharges": {"description": "Reports (step 1.7)."},
+  "@reportColCharges": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColNet": "Net to farmer",
-  "@reportColNet": {"description": "Reports (step 1.7)."},
+  "@reportColNet": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColBuyer": "Buyer",
-  "@reportColBuyer": {"description": "Reports (step 1.7)."},
+  "@reportColBuyer": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColStatus": "Status",
-  "@reportColStatus": {"description": "Reports (step 1.7)."},
+  "@reportColStatus": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColLots": "Lots",
-  "@reportColLots": {"description": "Reports (step 1.7)."},
+  "@reportColLots": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColSaleValue": "Sale value",
-  "@reportColSaleValue": {"description": "Reports (step 1.7)."},
+  "@reportColSaleValue": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColArhat": "Arhat",
-  "@reportColArhat": {"description": "Reports (step 1.7)."},
+  "@reportColArhat": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColReceipt": "Receipt no.",
-  "@reportColReceipt": {"description": "Reports (step 1.7)."},
+  "@reportColReceipt": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColMode": "Mode",
-  "@reportColMode": {"description": "Reports (step 1.7)."},
+  "@reportColMode": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColReceived": "Received",
-  "@reportColReceived": {"description": "Reports (step 1.7)."},
+  "@reportColReceived": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColPaid": "Paid",
-  "@reportColPaid": {"description": "Reports (step 1.7)."},
+  "@reportColPaid": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColReference": "Reference",
-  "@reportColReference": {"description": "Reports (step 1.7)."},
+  "@reportColReference": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColOpening": "Opening",
-  "@reportColOpening": {"description": "Reports (step 1.7)."},
+  "@reportColOpening": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColUdhaar": "Udhaar",
-  "@reportColUdhaar": {"description": "Reports (step 1.7)."},
+  "@reportColUdhaar": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColJama": "Jama",
-  "@reportColJama": {"description": "Reports (step 1.7)."},
+  "@reportColJama": {
+    "description": "Reports (step 1.7)."
+  },
   "reportColClosing": "Closing baki",
-  "@reportColClosing": {"description": "Reports (step 1.7)."},
+  "@reportColClosing": {
+    "description": "Reports (step 1.7)."
+  },
   "reportTotal": "Total",
-  "@reportTotal": {"description": "Reports (step 1.7)."},
+  "@reportTotal": {
+    "description": "Reports (step 1.7)."
+  },
   "reportAgeUpTo30": "0–30 days",
-  "@reportAgeUpTo30": {"description": "Reports (step 1.7)."},
+  "@reportAgeUpTo30": {
+    "description": "Reports (step 1.7)."
+  },
   "reportAgeUpTo90": "31–90 days",
-  "@reportAgeUpTo90": {"description": "Reports (step 1.7)."},
+  "@reportAgeUpTo90": {
+    "description": "Reports (step 1.7)."
+  },
   "reportAgeUpTo180": "91–180 days",
-  "@reportAgeUpTo180": {"description": "Reports (step 1.7)."},
+  "@reportAgeUpTo180": {
+    "description": "Reports (step 1.7)."
+  },
   "reportAgeOver180": "Over 180 days",
-  "@reportAgeOver180": {"description": "Reports (step 1.7)."},
+  "@reportAgeOver180": {
+    "description": "Reports (step 1.7)."
+  },
   "reportAgeingTitle": "Ageing",
-  "@reportAgeingTitle": {"description": "Reports (step 1.7)."},
+  "@reportAgeingTitle": {
+    "description": "Reports (step 1.7)."
+  },
   "reportAsOf": "As of {date}",
-  "@reportAsOf": {"description": "Reports (step 1.7).", "placeholders": {"date": {"type": "String"}}},
+  "@reportAsOf": {
+    "description": "Reports (step 1.7).",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "reportPeriod": "Period: {range}",
-  "@reportPeriod": {"description": "Reports (step 1.7).", "placeholders": {"range": {"type": "String"}}},
+  "@reportPeriod": {
+    "description": "Reports (step 1.7).",
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
   "reportSideAll": "All",
-  "@reportSideAll": {"description": "Reports (step 1.7)."},
+  "@reportSideAll": {
+    "description": "Reports (step 1.7)."
+  },
   "reportSidePayable": "We owe",
-  "@reportSidePayable": {"description": "Reports (step 1.7)."},
+  "@reportSidePayable": {
+    "description": "Reports (step 1.7)."
+  },
   "reportSideReceivable": "They owe us",
-  "@reportSideReceivable": {"description": "Reports (step 1.7)."},
+  "@reportSideReceivable": {
+    "description": "Reports (step 1.7)."
+  },
   "reportFilterAllCrops": "All crops",
-  "@reportFilterAllCrops": {"description": "Reports (step 1.7)."},
+  "@reportFilterAllCrops": {
+    "description": "Reports (step 1.7)."
+  },
   "reportFilterAllModes": "All modes",
-  "@reportFilterAllModes": {"description": "Reports (step 1.7)."},
+  "@reportFilterAllModes": {
+    "description": "Reports (step 1.7)."
+  },
   "reportFilterAllVillages": "All villages",
-  "@reportFilterAllVillages": {"description": "Reports (step 1.7)."},
+  "@reportFilterAllVillages": {
+    "description": "Reports (step 1.7)."
+  },
   "reportFilterAsOf": "As of date",
-  "@reportFilterAsOf": {"description": "Reports (step 1.7)."},
+  "@reportFilterAsOf": {
+    "description": "Reports (step 1.7)."
+  },
   "reportExportPdf": "PDF",
-  "@reportExportPdf": {"description": "Reports (step 1.7)."},
+  "@reportExportPdf": {
+    "description": "Reports (step 1.7)."
+  },
   "reportExportExcel": "Excel",
-  "@reportExportExcel": {"description": "Reports (step 1.7)."},
+  "@reportExportExcel": {
+    "description": "Reports (step 1.7)."
+  },
   "reportExportCsv": "CSV",
-  "@reportExportCsv": {"description": "Reports (step 1.7)."},
+  "@reportExportCsv": {
+    "description": "Reports (step 1.7)."
+  },
   "reportPrint": "Print",
-  "@reportPrint": {"description": "Reports (step 1.7)."},
+  "@reportPrint": {
+    "description": "Reports (step 1.7)."
+  },
   "reportExportLocked": "Exporting needs finance access",
-  "@reportExportLocked": {"description": "Reports (step 1.7)."},
+  "@reportExportLocked": {
+    "description": "Reports (step 1.7)."
+  },
   "reportRestricted": "This report needs finance access",
-  "@reportRestricted": {"description": "Reports (step 1.7)."},
+  "@reportRestricted": {
+    "description": "Reports (step 1.7)."
+  },
   "reportRows": "{count, plural, =1{1 row} other{{count} rows}}",
-  "@reportRows": {"description": "Reports (step 1.7).", "placeholders": {"count": {"type": "int"}}},
+  "@reportRows": {
+    "description": "Reports (step 1.7).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "reportEmpty": "Nothing to show for these filters",
-  "@reportEmpty": {"description": "Reports (step 1.7)."},
+  "@reportEmpty": {
+    "description": "Reports (step 1.7)."
+  },
   "reportExportSaved": "Saved {name}",
-  "@reportExportSaved": {"description": "Reports (step 1.7).", "placeholders": {"name": {"type": "String"}}},
+  "@reportExportSaved": {
+    "description": "Reports (step 1.7).",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "reportExportFailed": "Could not export: {error}",
-  "@reportExportFailed": {"description": "Reports (step 1.7).", "placeholders": {"error": {"type": "String"}}},
+  "@reportExportFailed": {
+    "description": "Reports (step 1.7).",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   "reportStatementsHelp": "One PDF with a statement for every farmer of the village, each starting on a new page.",
-  "@reportStatementsHelp": {"description": "Reports (step 1.7)."},
+  "@reportStatementsHelp": {
+    "description": "Reports (step 1.7)."
+  },
   "reportStatementsCount": "{count, plural, =1{1 farmer} other{{count} farmers}}",
-  "@reportStatementsCount": {"description": "Reports (step 1.7).", "placeholders": {"count": {"type": "int"}}},
+  "@reportStatementsCount": {
+    "description": "Reports (step 1.7).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "reportStatementsPdf": "Statements PDF",
-  "@reportStatementsPdf": {"description": "Reports (step 1.7)."}
+  "@reportStatementsPdf": {
+    "description": "Reports (step 1.7)."
+  },
+  "teamTitle": "Users & permissions",
+  "@teamTitle": {
+    "description": "Title of the users screen."
+  },
+  "teamTabPeople": "People",
+  "@teamTabPeople": {
+    "description": "Tab with the team members."
+  },
+  "teamTabDevices": "Devices",
+  "@teamTabDevices": {
+    "description": "Tab with the installs of the app."
+  },
+  "teamInvite": "Invite someone",
+  "@teamInvite": {
+    "description": "Button to invite a user by phone."
+  },
+  "teamNoAccess": "Only the owner can manage users.",
+  "@teamNoAccess": {
+    "description": "Shown to members without admin.manage."
+  },
+  "teamYou": "You",
+  "@teamYou": {
+    "description": "Marks the signed-in member in the list."
+  },
+  "teamInactive": "Deactivated",
+  "@teamInactive": {
+    "description": "Chip on a deactivated member."
+  },
+  "teamDevicesCount": "{count, plural, =0{No devices} =1{1 device} other{{count} devices}}",
+  "@teamDevicesCount": {
+    "description": "How many devices a member has.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "teamPendingInvites": "Waiting to join",
+  "@teamPendingInvites": {
+    "description": "Heading above pending invites."
+  },
+  "teamInviteExpires": "Expires {date}",
+  "@teamInviteExpires": {
+    "description": "When an invite stops working.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "teamInviteExpired": "Expired",
+  "@teamInviteExpired": {
+    "description": "Invite past its date."
+  },
+  "teamInviteCancel": "Cancel invite",
+  "@teamInviteCancel": {
+    "description": "Cancels a pending invite."
+  },
+  "teamInviteCancelled": "Invite cancelled",
+  "@teamInviteCancelled": {
+    "description": "Toast after cancelling."
+  },
+  "teamEmptyPeople": "No one here yet.",
+  "@teamEmptyPeople": {
+    "description": "Empty team list."
+  },
+  "teamEmptyDevices": "No devices yet.",
+  "@teamEmptyDevices": {
+    "description": "Empty device list."
+  },
+  "teamRole": "Role",
+  "@teamRole": {
+    "description": "Label of the role selector."
+  },
+  "teamPermissions": "What they can do",
+  "@teamPermissions": {
+    "description": "Heading of the permission grid."
+  },
+  "teamPermissionsHelp": "Switch a permission on or off for this person. A dot marks a change from the role's default.",
+  "@teamPermissionsHelp": {
+    "description": "Explains the permission grid."
+  },
+  "teamPermissionChanged": "Different from the role default",
+  "@teamPermissionChanged": {
+    "description": "Tooltip on the override dot."
+  },
+  "teamPermissionSensitive": "Powerful: grant with care",
+  "@teamPermissionSensitive": {
+    "description": "Tooltip on sensitive permissions."
+  },
+  "teamOwnerAll": "Owners can do everything. This cannot be changed.",
+  "@teamOwnerAll": {
+    "description": "Shown instead of the grid for owners."
+  },
+  "teamDeviceLimit": "Devices allowed",
+  "@teamDeviceLimit": {
+    "description": "Per-member limit of installs."
+  },
+  "teamSave": "Save changes",
+  "@teamSave": {
+    "description": "Saves a member."
+  },
+  "teamSaved": "Saved",
+  "@teamSaved": {
+    "description": "Toast after saving a member."
+  },
+  "teamDeactivate": "Deactivate",
+  "@teamDeactivate": {
+    "description": "Switches a member off."
+  },
+  "teamReactivate": "Reactivate",
+  "@teamReactivate": {
+    "description": "Switches a member back on."
+  },
+  "teamDeactivateTitle": "Deactivate {name}?",
+  "@teamDeactivateTitle": {
+    "description": "Confirmation title.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "teamDeactivateBody": "They can no longer open this business and its data leaves their devices. Their past entries stay in the books.",
+  "@teamDeactivateBody": {
+    "description": "Confirmation text."
+  },
+  "teamDeactivated": "Deactivated",
+  "@teamDeactivated": {
+    "description": "Toast after deactivating."
+  },
+  "teamReactivated": "Reactivated",
+  "@teamReactivated": {
+    "description": "Toast after reactivating."
+  },
+  "teamErrLastOwner": "A business must keep at least one active owner.",
+  "@teamErrLastOwner": {
+    "description": "Last owner rule."
+  },
+  "teamErrProtected": "Only an owner can change an owner, and you cannot change your own access.",
+  "@teamErrProtected": {
+    "description": "Owner protection rule."
+  },
+  "teamErrNotFound": "This person was not found.",
+  "@teamErrNotFound": {
+    "description": "Member row is gone."
+  },
+  "teamDeviceThis": "This device",
+  "@teamDeviceThis": {
+    "description": "Marks the current install."
+  },
+  "teamDeviceLastSeen": "Last seen {when}",
+  "@teamDeviceLastSeen": {
+    "description": "When the device last connected.",
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "teamDeviceNeverSeen": "Not seen yet",
+  "@teamDeviceNeverSeen": {
+    "description": "Device never connected."
+  },
+  "teamDeviceRevoke": "Revoke",
+  "@teamDeviceRevoke": {
+    "description": "Revokes a device."
+  },
+  "teamDeviceRevoked": "Revoked",
+  "@teamDeviceRevoked": {
+    "description": "Chip on a revoked device."
+  },
+  "teamRevokeTitle": "Revoke device {code}?",
+  "@teamRevokeTitle": {
+    "description": "Confirmation title.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "teamRevokeBody": "It stops syncing and the app on it is blocked. Changes it made while offline are rejected. This cannot be undone; the person can set up a new device.",
+  "@teamRevokeBody": {
+    "description": "Confirmation text."
+  },
+  "teamRevokeDone": "Device revoked",
+  "@teamRevokeDone": {
+    "description": "Toast after revoking."
+  },
+  "teamErrThisDevice": "You cannot revoke the device you are using.",
+  "@teamErrThisDevice": {
+    "description": "Cannot revoke self."
+  },
+  "permission_partiesManage": "View and add parties",
+  "@permission_partiesManage": {
+    "description": "Permission name in the grid."
+  },
+  "permission_arrivalsManage": "Arrivals and lots",
+  "@permission_arrivalsManage": {
+    "description": "Permission name in the grid."
+  },
+  "permission_paymentsCreate": "Record payments",
+  "@permission_paymentsCreate": {
+    "description": "Permission name in the grid."
+  },
+  "permission_entriesReverse": "Edit or reverse past entries",
+  "@permission_entriesReverse": {
+    "description": "Permission name in the grid."
+  },
+  "permission_loansManage": "Issue loans, change interest",
+  "@permission_loansManage": {
+    "description": "Permission name in the grid."
+  },
+  "permission_financeView": "Bank details, profit, report export",
+  "@permission_financeView": {
+    "description": "Permission name in the grid."
+  },
+  "permission_adminManage": "Users, modules, subscription",
+  "@permission_adminManage": {
+    "description": "Permission name in the grid."
+  },
+  "permission_masterDelete": "Delete parties and other master data",
+  "@permission_masterDelete": {
+    "description": "Permission name in the grid."
+  },
+  "permission_settingsManage": "Business-wide settings",
+  "@permission_settingsManage": {
+    "description": "Permission name in the grid."
+  },
+  "permission_auditView": "View the audit log",
+  "@permission_auditView": {
+    "description": "Permission name in the grid."
+  },
+  "inviteTitle": "Invite someone",
+  "@inviteTitle": {
+    "description": "Invite dialog title."
+  },
+  "invitePhone": "Mobile number",
+  "@invitePhone": {
+    "description": "Invitee phone field."
+  },
+  "inviteName": "Name (optional)",
+  "@inviteName": {
+    "description": "Invitee name field."
+  },
+  "inviteChannel": "Send by",
+  "@inviteChannel": {
+    "description": "Send channel selector."
+  },
+  "inviteChannelWhatsapp": "WhatsApp",
+  "@inviteChannelWhatsapp": {
+    "description": "WhatsApp channel."
+  },
+  "inviteChannelSms": "SMS",
+  "@inviteChannelSms": {
+    "description": "SMS channel."
+  },
+  "inviteSend": "Send invite",
+  "@inviteSend": {
+    "description": "Sends the invite."
+  },
+  "inviteErrPhone": "Enter a valid 10-digit mobile number.",
+  "@inviteErrPhone": {
+    "description": "Bad phone number."
+  },
+  "inviteErrRole": "This role cannot be invited. Owners are not added by invite.",
+  "@inviteErrRole": {
+    "description": "Owner cannot be invited."
+  },
+  "inviteErrAlreadyMember": "This person is already on your team.",
+  "@inviteErrAlreadyMember": {
+    "description": "Already a member."
+  },
+  "inviteErrAlreadyInvited": "This number already has a pending invite.",
+  "@inviteErrAlreadyInvited": {
+    "description": "Pending invite exists."
+  },
+  "inviteErrNotAllowed": "Only the owner can invite people.",
+  "@inviteErrNotAllowed": {
+    "description": "No permission."
+  },
+  "inviteErrOffline": "Inviting needs internet. Connect and try again.",
+  "@inviteErrOffline": {
+    "description": "Offline."
+  },
+  "inviteErrFailed": "The invite couldn't be created. Try again.",
+  "@inviteErrFailed": {
+    "description": "Unknown failure."
+  },
+  "inviteSentWhatsapp": "Invite sent on WhatsApp to {phone}.",
+  "@inviteSentWhatsapp": {
+    "description": "Invite delivered by WhatsApp.",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteSentSms": "Invite sent by SMS to {phone}.",
+  "@inviteSentSms": {
+    "description": "Invite delivered by SMS.",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteNotSentTitle": "Invite saved: send it yourself",
+  "@inviteNotSentTitle": {
+    "description": "Title when no message service is set up."
+  },
+  "inviteNotSentBody": "No message service is set up, so nothing was sent. Copy this message and send it to {phone}. They join when they sign in with that number.",
+  "@inviteNotSentBody": {
+    "description": "Explains manual sharing.",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "inviteCopy": "Copy message",
+  "@inviteCopy": {
+    "description": "Copies the invite text."
+  },
+  "inviteCopied": "Copied",
+  "@inviteCopied": {
+    "description": "Toast after copying."
+  },
+  "deviceRevokedTitle": "This device was removed",
+  "@deviceRevokedTitle": {
+    "description": "Gate screen title."
+  },
+  "deviceRevokedBody": "The owner revoked this device. Nothing more can be saved from here. Changes made offline were not accepted.",
+  "@deviceRevokedBody": {
+    "description": "Gate screen text."
+  },
+  "deviceRevokedSetupAgain": "Set up this device again",
+  "@deviceRevokedSetupAgain": {
+    "description": "Registers a new device (needs internet and a free slot)."
+  },
+  "tenantPickerCheckInvites": "Check for invitations",
+  "@tenantPickerCheckInvites": {
+    "description": "Button on the empty business picker."
+  },
+  "tenantPickerNoInvites": "No invitation found for your number yet.",
+  "@tenantPickerNoInvites": {
+    "description": "After checking invitations finds none."
+  },
+  "tenantPickerInvitesOffline": "Connect to the internet to check for invitations.",
+  "@tenantPickerInvitesOffline": {
+    "description": "Offline while checking invitations."
+  },
+  "deviceSetupLimit": "This account already uses all its devices in {business}. Ask the owner to revoke an old one.",
+  "@deviceSetupLimit": {
+    "description": "Device limit reached.",
+    "placeholders": {
+      "business": {
+        "type": "String"
+      }
+    }
+  },
+  "deviceSetupRevoked": "This device was removed by the owner of {business}.",
+  "@deviceSetupRevoked": {
+    "description": "Registration refused: revoked.",
+    "placeholders": {
+      "business": {
+        "type": "String"
+      }
+    }
+  },
+  "auditTitle": "Audit log",
+  "@auditTitle": {
+    "description": "Title of the audit screen."
+  },
+  "auditNoAccess": "Only the owner can see the audit log.",
+  "@auditNoAccess": {
+    "description": "No audit.view."
+  },
+  "auditFilterUser": "Person",
+  "@auditFilterUser": {
+    "description": "User filter label."
+  },
+  "auditFilterTable": "Record type",
+  "@auditFilterTable": {
+    "description": "Table filter label."
+  },
+  "auditAllUsers": "Everyone",
+  "@auditAllUsers": {
+    "description": "User filter: all."
+  },
+  "auditAllTables": "All records",
+  "@auditAllTables": {
+    "description": "Table filter: all."
+  },
+  "auditOnlyMoney": "Money edits and reversals only",
+  "@auditOnlyMoney": {
+    "description": "Highlight filter."
+  },
+  "auditEmpty": "No entries match.",
+  "@auditEmpty": {
+    "description": "Empty audit list."
+  },
+  "auditShowMore": "Show more",
+  "@auditShowMore": {
+    "description": "Loads the next page."
+  },
+  "auditBadgeMoneyEdit": "Amount changed",
+  "@auditBadgeMoneyEdit": {
+    "description": "Highlight badge."
+  },
+  "auditBadgeReversal": "Reversal",
+  "@auditBadgeReversal": {
+    "description": "Highlight badge."
+  },
+  "auditByUser": "{name} · {role}",
+  "@auditByUser": {
+    "description": "Who made the change.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "auditOnDevice": "device {code}",
+  "@auditOnDevice": {
+    "description": "Which device.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "auditSystem": "System",
+  "@auditSystem": {
+    "description": "Writer unknown."
+  },
+  "auditMoreFields": "+{count} more",
+  "@auditMoreFields": {
+    "description": "More changed fields.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "auditEmptyValue": "—",
+  "@auditEmptyValue": {
+    "description": "Empty value."
+  },
+  "auditYes": "Yes",
+  "@auditYes": {
+    "description": "Boolean true."
+  },
+  "auditNo": "No",
+  "@auditNo": {
+    "description": "Boolean false."
+  },
+  "auditAction_insert": "Added",
+  "@auditAction_insert": {
+    "description": "Audit action."
+  },
+  "auditAction_update": "Changed",
+  "@auditAction_update": {
+    "description": "Audit action."
+  },
+  "auditAction_reverse": "Reversed",
+  "@auditAction_reverse": {
+    "description": "Audit action."
+  },
+  "auditAction_soft_delete": "Deleted",
+  "@auditAction_soft_delete": {
+    "description": "Audit action."
+  },
+  "auditAction_restore": "Restored",
+  "@auditAction_restore": {
+    "description": "Audit action."
+  },
+  "auditTable_ledger_entries": "Khata entry",
+  "@auditTable_ledger_entries": {
+    "description": "Audit record type."
+  },
+  "auditTable_payments": "Payment",
+  "@auditTable_payments": {
+    "description": "Audit record type."
+  },
+  "auditTable_cash_bank_entries": "Cash / bank line",
+  "@auditTable_cash_bank_entries": {
+    "description": "Audit record type."
+  },
+  "auditTable_lots": "Lot",
+  "@auditTable_lots": {
+    "description": "Audit record type."
+  },
+  "auditTable_parties": "Party",
+  "@auditTable_parties": {
+    "description": "Audit record type."
+  },
+  "auditTable_party_roles": "Party role",
+  "@auditTable_party_roles": {
+    "description": "Audit record type."
+  },
+  "auditTable_crops": "Crop",
+  "@auditTable_crops": {
+    "description": "Audit record type."
+  },
+  "auditTable_bank_accounts": "Bank account",
+  "@auditTable_bank_accounts": {
+    "description": "Audit record type."
+  },
+  "auditTable_settings": "Setting",
+  "@auditTable_settings": {
+    "description": "Audit record type."
+  },
+  "auditTable_tenant_members": "Team member",
+  "@auditTable_tenant_members": {
+    "description": "Audit record type."
+  },
+  "auditTable_member_invites": "Invitation",
+  "@auditTable_member_invites": {
+    "description": "Audit record type."
+  },
+  "auditTable_devices": "Device",
+  "@auditTable_devices": {
+    "description": "Audit record type."
+  },
+  "auditField_amount_paise": "Amount",
+  "@auditField_amount_paise": {
+    "description": "Audit field name."
+  },
+  "auditField_gross": "Gross value",
+  "@auditField_gross": {
+    "description": "Audit field name."
+  },
+  "auditField_commission": "Commission",
+  "@auditField_commission": {
+    "description": "Audit field name."
+  },
+  "auditField_net_to_farmer": "Net to farmer",
+  "@auditField_net_to_farmer": {
+    "description": "Audit field name."
+  },
+  "auditField_buyer_total": "Buyer total",
+  "@auditField_buyer_total": {
+    "description": "Audit field name."
+  },
+  "auditField_rate_paise_per_qtl": "Rate per quintal",
+  "@auditField_rate_paise_per_qtl": {
+    "description": "Audit field name."
+  },
+  "auditField_qtl_milli": "Quintals",
+  "@auditField_qtl_milli": {
+    "description": "Audit field name."
+  },
+  "auditField_status": "Status",
+  "@auditField_status": {
+    "description": "Audit field name."
+  },
+  "auditField_role": "Role",
+  "@auditField_role": {
+    "description": "Audit field name."
+  },
+  "auditField_is_active": "Active",
+  "@auditField_is_active": {
+    "description": "Audit field name."
+  },
+  "auditField_device_limit": "Devices allowed",
+  "@auditField_device_limit": {
+    "description": "Audit field name."
+  },
+  "auditField_custom_permissions": "Permission changes",
+  "@auditField_custom_permissions": {
+    "description": "Audit field name."
+  },
+  "auditField_revoked_at": "Revoked at",
+  "@auditField_revoked_at": {
+    "description": "Audit field name."
+  },
+  "auditField_phone": "Mobile",
+  "@auditField_phone": {
+    "description": "Audit field name."
+  },
+  "auditField_name": "Name",
+  "@auditField_name": {
+    "description": "Audit field name."
+  },
+  "auditField_cheque_status": "Cheque",
+  "@auditField_cheque_status": {
+    "description": "Audit field name."
+  },
+  "auditField_entry_date": "Date",
+  "@auditField_entry_date": {
+    "description": "Audit field name."
+  },
+  "auditField_side": "Side",
+  "@auditField_side": {
+    "description": "Audit field name."
+  },
+  "auditField_direction": "Direction",
+  "@auditField_direction": {
+    "description": "Audit field name."
+  }
 }

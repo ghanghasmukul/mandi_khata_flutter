@@ -56,7 +56,7 @@ final class ActiveTenantProvider
   }
 }
 
-String _$activeTenantHash() => r'60c2dbe5ae517ca7ec3521e7c23651e118e09a32';
+String _$activeTenantHash() => r'954325a103f0ae9debe5123667000e30cf4b77fa';
 
 /// The business the app is working in (its id), or null until one is
 /// picked. Every business query filters by this (CLAUDE.md rule 1).

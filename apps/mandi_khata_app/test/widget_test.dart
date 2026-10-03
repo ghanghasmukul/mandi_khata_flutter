@@ -13,6 +13,7 @@ import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/storage/app_prefs.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/device_registrar.dart';
+import 'package:mandi_khata_app/core/tenant/device_status.dart';
 import 'package:mandi_khata_app/core/tenant/membership_repository.dart';
 import 'package:mandi_khata_app/main.dart';
 
@@ -60,6 +61,7 @@ void main() {
             (ref) => Stream.value(memberships),
           ),
           hasSyncedProvider.overrideWithValue(true),
+          deviceRevokedProvider.overrideWith((ref) => Stream.value(false)),
           profileLanguageProvider.overrideWith((ref) => Stream.value(null)),
           appLockSupportedProvider.overrideWithValue(true),
           signOutServiceProvider.overrideWith(

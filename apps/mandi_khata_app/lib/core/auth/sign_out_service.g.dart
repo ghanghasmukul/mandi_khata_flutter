@@ -21,7 +21,7 @@ final class SignOutServiceProvider
         argument: null,
         retry: null,
         name: r'signOutServiceProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -48,4 +48,4 @@ final class SignOutServiceProvider
   }
 }
 
-String _$signOutServiceHash() => r'9e3ba20623096376120617e1373ea99be272c2f1';
+String _$signOutServiceHash() => r'524f134b8c20149f332e78f159bde0d9686efef2';

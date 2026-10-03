@@ -17,6 +17,7 @@ part 'app_database.g.dart';
     AppUsers,
     TenantMembers,
     Devices,
+    MemberInvites,
     Settings,
     AuditLog,
     Parties,

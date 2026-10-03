@@ -65,6 +65,14 @@ class ActiveTenant extends _$ActiveTenant {
     state = tenantId;
   }
 
+  /// Drops this install's (revoked) registration in the active business and
+  /// goes back to the picker, which registers a new device.
+  Future<void> forgetDevice() async {
+    final id = state;
+    if (id != null) await _prefs.clearDevice(id);
+    await clear();
+  }
+
   /// Back to the business picker ("switch business").
   Future<void> clear() async {
     await _prefs.setLastTenantId(null);

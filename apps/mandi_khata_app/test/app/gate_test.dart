@@ -26,6 +26,14 @@ void main() {
       expect(redirectFor(GateStep.chooseTenant, '/select-tenant'), isNull);
     });
 
+    test('device revoked by the owner: only the blocked page', () {
+      expect(redirectFor(GateStep.deviceRevoked, '/'), '/device-revoked');
+      expect(redirectFor(GateStep.deviceRevoked, '/team'), '/device-revoked');
+      expect(redirectFor(GateStep.deviceRevoked, '/device-revoked'), isNull);
+      // Once the device is set up again, the blocked page sends home.
+      expect(redirectFor(GateStep.ready, '/device-revoked'), '/');
+    });
+
     test('first run on a lockable device: PIN prompt', () {
       expect(redirectFor(GateStep.setupPin, '/'), '/set-pin');
       expect(redirectFor(GateStep.setupPin, '/set-pin'), isNull);

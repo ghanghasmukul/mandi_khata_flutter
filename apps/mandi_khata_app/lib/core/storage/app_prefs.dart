@@ -58,6 +58,11 @@ class AppPrefs {
         jsonEncode({'id': device.id, 'code': device.code}),
       );
 
+  /// Forgets this install's registration in a business (after the owner
+  /// revoked it), so picking the business registers a fresh device.
+  Future<void> clearDevice(String tenantId) =>
+      _prefs.remove('$_devicePrefix$tenantId');
+
   PinRecord? get pin {
     final raw = _prefs.getString(_pin);
     if (raw == null) return null;

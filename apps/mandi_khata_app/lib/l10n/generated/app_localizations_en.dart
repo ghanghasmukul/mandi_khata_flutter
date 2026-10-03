@@ -2247,4 +2247,451 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reportStatementsPdf => 'Statements PDF';
+
+  @override
+  String get teamTitle => 'Users & permissions';
+
+  @override
+  String get teamTabPeople => 'People';
+
+  @override
+  String get teamTabDevices => 'Devices';
+
+  @override
+  String get teamInvite => 'Invite someone';
+
+  @override
+  String get teamNoAccess => 'Only the owner can manage users.';
+
+  @override
+  String get teamYou => 'You';
+
+  @override
+  String get teamInactive => 'Deactivated';
+
+  @override
+  String teamDevicesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count devices',
+      one: '1 device',
+      zero: 'No devices',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teamPendingInvites => 'Waiting to join';
+
+  @override
+  String teamInviteExpires(String date) {
+    return 'Expires $date';
+  }
+
+  @override
+  String get teamInviteExpired => 'Expired';
+
+  @override
+  String get teamInviteCancel => 'Cancel invite';
+
+  @override
+  String get teamInviteCancelled => 'Invite cancelled';
+
+  @override
+  String get teamEmptyPeople => 'No one here yet.';
+
+  @override
+  String get teamEmptyDevices => 'No devices yet.';
+
+  @override
+  String get teamRole => 'Role';
+
+  @override
+  String get teamPermissions => 'What they can do';
+
+  @override
+  String get teamPermissionsHelp =>
+      'Switch a permission on or off for this person. A dot marks a change from the role\'s default.';
+
+  @override
+  String get teamPermissionChanged => 'Different from the role default';
+
+  @override
+  String get teamPermissionSensitive => 'Powerful: grant with care';
+
+  @override
+  String get teamOwnerAll =>
+      'Owners can do everything. This cannot be changed.';
+
+  @override
+  String get teamDeviceLimit => 'Devices allowed';
+
+  @override
+  String get teamSave => 'Save changes';
+
+  @override
+  String get teamSaved => 'Saved';
+
+  @override
+  String get teamDeactivate => 'Deactivate';
+
+  @override
+  String get teamReactivate => 'Reactivate';
+
+  @override
+  String teamDeactivateTitle(String name) {
+    return 'Deactivate $name?';
+  }
+
+  @override
+  String get teamDeactivateBody =>
+      'They can no longer open this business and its data leaves their devices. Their past entries stay in the books.';
+
+  @override
+  String get teamDeactivated => 'Deactivated';
+
+  @override
+  String get teamReactivated => 'Reactivated';
+
+  @override
+  String get teamErrLastOwner =>
+      'A business must keep at least one active owner.';
+
+  @override
+  String get teamErrProtected =>
+      'Only an owner can change an owner, and you cannot change your own access.';
+
+  @override
+  String get teamErrNotFound => 'This person was not found.';
+
+  @override
+  String get teamDeviceThis => 'This device';
+
+  @override
+  String teamDeviceLastSeen(String when) {
+    return 'Last seen $when';
+  }
+
+  @override
+  String get teamDeviceNeverSeen => 'Not seen yet';
+
+  @override
+  String get teamDeviceRevoke => 'Revoke';
+
+  @override
+  String get teamDeviceRevoked => 'Revoked';
+
+  @override
+  String teamRevokeTitle(String code) {
+    return 'Revoke device $code?';
+  }
+
+  @override
+  String get teamRevokeBody =>
+      'It stops syncing and the app on it is blocked. Changes it made while offline are rejected. This cannot be undone; the person can set up a new device.';
+
+  @override
+  String get teamRevokeDone => 'Device revoked';
+
+  @override
+  String get teamErrThisDevice => 'You cannot revoke the device you are using.';
+
+  @override
+  String get permission_partiesManage => 'View and add parties';
+
+  @override
+  String get permission_arrivalsManage => 'Arrivals and lots';
+
+  @override
+  String get permission_paymentsCreate => 'Record payments';
+
+  @override
+  String get permission_entriesReverse => 'Edit or reverse past entries';
+
+  @override
+  String get permission_loansManage => 'Issue loans, change interest';
+
+  @override
+  String get permission_financeView => 'Bank details, profit, report export';
+
+  @override
+  String get permission_adminManage => 'Users, modules, subscription';
+
+  @override
+  String get permission_masterDelete => 'Delete parties and other master data';
+
+  @override
+  String get permission_settingsManage => 'Business-wide settings';
+
+  @override
+  String get permission_auditView => 'View the audit log';
+
+  @override
+  String get inviteTitle => 'Invite someone';
+
+  @override
+  String get invitePhone => 'Mobile number';
+
+  @override
+  String get inviteName => 'Name (optional)';
+
+  @override
+  String get inviteChannel => 'Send by';
+
+  @override
+  String get inviteChannelWhatsapp => 'WhatsApp';
+
+  @override
+  String get inviteChannelSms => 'SMS';
+
+  @override
+  String get inviteSend => 'Send invite';
+
+  @override
+  String get inviteErrPhone => 'Enter a valid 10-digit mobile number.';
+
+  @override
+  String get inviteErrRole =>
+      'This role cannot be invited. Owners are not added by invite.';
+
+  @override
+  String get inviteErrAlreadyMember => 'This person is already on your team.';
+
+  @override
+  String get inviteErrAlreadyInvited =>
+      'This number already has a pending invite.';
+
+  @override
+  String get inviteErrNotAllowed => 'Only the owner can invite people.';
+
+  @override
+  String get inviteErrOffline =>
+      'Inviting needs internet. Connect and try again.';
+
+  @override
+  String get inviteErrFailed => 'The invite couldn\'t be created. Try again.';
+
+  @override
+  String inviteSentWhatsapp(String phone) {
+    return 'Invite sent on WhatsApp to $phone.';
+  }
+
+  @override
+  String inviteSentSms(String phone) {
+    return 'Invite sent by SMS to $phone.';
+  }
+
+  @override
+  String get inviteNotSentTitle => 'Invite saved: send it yourself';
+
+  @override
+  String inviteNotSentBody(String phone) {
+    return 'No message service is set up, so nothing was sent. Copy this message and send it to $phone. They join when they sign in with that number.';
+  }
+
+  @override
+  String get inviteCopy => 'Copy message';
+
+  @override
+  String get inviteCopied => 'Copied';
+
+  @override
+  String get deviceRevokedTitle => 'This device was removed';
+
+  @override
+  String get deviceRevokedBody =>
+      'The owner revoked this device. Nothing more can be saved from here. Changes made offline were not accepted.';
+
+  @override
+  String get deviceRevokedSetupAgain => 'Set up this device again';
+
+  @override
+  String get tenantPickerCheckInvites => 'Check for invitations';
+
+  @override
+  String get tenantPickerNoInvites =>
+      'No invitation found for your number yet.';
+
+  @override
+  String get tenantPickerInvitesOffline =>
+      'Connect to the internet to check for invitations.';
+
+  @override
+  String deviceSetupLimit(String business) {
+    return 'This account already uses all its devices in $business. Ask the owner to revoke an old one.';
+  }
+
+  @override
+  String deviceSetupRevoked(String business) {
+    return 'This device was removed by the owner of $business.';
+  }
+
+  @override
+  String get auditTitle => 'Audit log';
+
+  @override
+  String get auditNoAccess => 'Only the owner can see the audit log.';
+
+  @override
+  String get auditFilterUser => 'Person';
+
+  @override
+  String get auditFilterTable => 'Record type';
+
+  @override
+  String get auditAllUsers => 'Everyone';
+
+  @override
+  String get auditAllTables => 'All records';
+
+  @override
+  String get auditOnlyMoney => 'Money edits and reversals only';
+
+  @override
+  String get auditEmpty => 'No entries match.';
+
+  @override
+  String get auditShowMore => 'Show more';
+
+  @override
+  String get auditBadgeMoneyEdit => 'Amount changed';
+
+  @override
+  String get auditBadgeReversal => 'Reversal';
+
+  @override
+  String auditByUser(String name, String role) {
+    return '$name · $role';
+  }
+
+  @override
+  String auditOnDevice(String code) {
+    return 'device $code';
+  }
+
+  @override
+  String get auditSystem => 'System';
+
+  @override
+  String auditMoreFields(int count) {
+    return '+$count more';
+  }
+
+  @override
+  String get auditEmptyValue => '—';
+
+  @override
+  String get auditYes => 'Yes';
+
+  @override
+  String get auditNo => 'No';
+
+  @override
+  String get auditAction_insert => 'Added';
+
+  @override
+  String get auditAction_update => 'Changed';
+
+  @override
+  String get auditAction_reverse => 'Reversed';
+
+  @override
+  String get auditAction_soft_delete => 'Deleted';
+
+  @override
+  String get auditAction_restore => 'Restored';
+
+  @override
+  String get auditTable_ledger_entries => 'Khata entry';
+
+  @override
+  String get auditTable_payments => 'Payment';
+
+  @override
+  String get auditTable_cash_bank_entries => 'Cash / bank line';
+
+  @override
+  String get auditTable_lots => 'Lot';
+
+  @override
+  String get auditTable_parties => 'Party';
+
+  @override
+  String get auditTable_party_roles => 'Party role';
+
+  @override
+  String get auditTable_crops => 'Crop';
+
+  @override
+  String get auditTable_bank_accounts => 'Bank account';
+
+  @override
+  String get auditTable_settings => 'Setting';
+
+  @override
+  String get auditTable_tenant_members => 'Team member';
+
+  @override
+  String get auditTable_member_invites => 'Invitation';
+
+  @override
+  String get auditTable_devices => 'Device';
+
+  @override
+  String get auditField_amount_paise => 'Amount';
+
+  @override
+  String get auditField_gross => 'Gross value';
+
+  @override
+  String get auditField_commission => 'Commission';
+
+  @override
+  String get auditField_net_to_farmer => 'Net to farmer';
+
+  @override
+  String get auditField_buyer_total => 'Buyer total';
+
+  @override
+  String get auditField_rate_paise_per_qtl => 'Rate per quintal';
+
+  @override
+  String get auditField_qtl_milli => 'Quintals';
+
+  @override
+  String get auditField_status => 'Status';
+
+  @override
+  String get auditField_role => 'Role';
+
+  @override
+  String get auditField_is_active => 'Active';
+
+  @override
+  String get auditField_device_limit => 'Devices allowed';
+
+  @override
+  String get auditField_custom_permissions => 'Permission changes';
+
+  @override
+  String get auditField_revoked_at => 'Revoked at';
+
+  @override
+  String get auditField_phone => 'Mobile';
+
+  @override
+  String get auditField_name => 'Name';
+
+  @override
+  String get auditField_cheque_status => 'Cheque';
+
+  @override
+  String get auditField_entry_date => 'Date';
+
+  @override
+  String get auditField_side => 'Side';
+
+  @override
+  String get auditField_direction => 'Direction';
 }

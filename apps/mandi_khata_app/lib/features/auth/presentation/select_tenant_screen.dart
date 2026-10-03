@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/core/tenant/device_registrar.dart';
+import 'package:mandi_khata_app/core/tenant/invite_acceptor.dart';
 import 'package:mandi_khata_app/core/tenant/membership_repository.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/sign_out_flow.dart';
@@ -23,6 +24,28 @@ class _SelectTenantScreenState extends ConsumerState<SelectTenantScreen> {
   String? _busyTenant;
   String? _error;
   bool _autoPicked = false;
+  bool _checking = false;
+  String? _inviteNote;
+
+  /// Asks the server to turn invitations for this phone number into
+  /// memberships; they then arrive through sync.
+  Future<void> _checkInvites() async {
+    final l10n = AppLocalizations.of(context);
+    setState(() {
+      _checking = true;
+      _inviteNote = null;
+    });
+    final joined = await ref.read(inviteSyncProvider.notifier).check();
+    if (!mounted) return;
+    setState(() {
+      _checking = false;
+      _inviteNote = switch (joined) {
+        null => l10n.tenantPickerInvitesOffline,
+        final j when j.isEmpty => l10n.tenantPickerNoInvites,
+        _ => null,
+      };
+    });
+  }
 
   Future<void> _select(Membership m) async {
     final l10n = AppLocalizations.of(context);
@@ -37,7 +60,13 @@ class _SelectTenantScreenState extends ConsumerState<SelectTenantScreen> {
         setState(
           () => _error = e.offline
               ? l10n.deviceSetupOffline(m.tenantName)
-              : l10n.deviceSetupFailed(m.tenantName),
+              : switch (e.detail) {
+                  final d? when d.contains('device_limit_reached') =>
+                    l10n.deviceSetupLimit(m.tenantName),
+                  final d? when d.contains('device_revoked') =>
+                    l10n.deviceSetupRevoked(m.tenantName),
+                  _ => l10n.deviceSetupFailed(m.tenantName),
+                },
         );
       }
     } finally {
@@ -67,10 +96,28 @@ class _SelectTenantScreenState extends ConsumerState<SelectTenantScreen> {
             )
           : _Message(text: l10n.tenantPickerNoSync);
     } else if (memberships.isEmpty) {
-      body = MkEmptyState(
-        icon: Icons.storefront_outlined,
-        title: l10n.tenantPickerEmptyTitle,
-        message: l10n.tenantPickerEmptyBody,
+      body = Column(
+        children: [
+          MkEmptyState(
+            icon: Icons.storefront_outlined,
+            title: l10n.tenantPickerEmptyTitle,
+            message: l10n.tenantPickerEmptyBody,
+          ),
+          const SizedBox(height: MkSpacing.md),
+          MkButton(
+            key: const ValueKey('check-invites'),
+            label: l10n.tenantPickerCheckInvites,
+            icon: Icons.mark_email_unread_outlined,
+            variant: MkButtonVariant.secondary,
+            busy: _checking,
+            onPressed: _checking ? null : _checkInvites,
+          ),
+          if (_inviteNote != null)
+            Padding(
+              padding: const EdgeInsets.only(top: MkSpacing.sm),
+              child: Text(_inviteNote!, textAlign: TextAlign.center),
+            ),
+        ],
       );
     } else {
       body = Column(

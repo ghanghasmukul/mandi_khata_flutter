@@ -1937,6 +1937,28 @@ class $DevicesTable extends Devices with TableInfo<$DevicesTable, Device> {
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _revokedAtMeta = const VerificationMeta(
+    'revokedAt',
+  );
+  @override
+  late final GeneratedColumn<String> revokedAt = GeneratedColumn<String>(
+    'revoked_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revokedByMeta = const VerificationMeta(
+    'revokedBy',
+  );
+  @override
+  late final GeneratedColumn<String> revokedBy = GeneratedColumn<String>(
+    'revoked_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _createdByMeta = const VerificationMeta(
     'createdBy',
   );
@@ -1979,6 +2001,8 @@ class $DevicesTable extends Devices with TableInfo<$DevicesTable, Device> {
     platform,
     name,
     lastSeenAt,
+    revokedAt,
+    revokedBy,
     createdBy,
     createdAt,
     updatedAt,
@@ -2047,6 +2071,18 @@ class $DevicesTable extends Devices with TableInfo<$DevicesTable, Device> {
         ),
       );
     }
+    if (data.containsKey('revoked_at')) {
+      context.handle(
+        _revokedAtMeta,
+        revokedAt.isAcceptableOrUnknown(data['revoked_at']!, _revokedAtMeta),
+      );
+    }
+    if (data.containsKey('revoked_by')) {
+      context.handle(
+        _revokedByMeta,
+        revokedBy.isAcceptableOrUnknown(data['revoked_by']!, _revokedByMeta),
+      );
+    }
     if (data.containsKey('created_by')) {
       context.handle(
         _createdByMeta,
@@ -2102,6 +2138,14 @@ class $DevicesTable extends Devices with TableInfo<$DevicesTable, Device> {
         DriftSqlType.string,
         data['${effectivePrefix}last_seen_at'],
       ),
+      revokedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}revoked_at'],
+      ),
+      revokedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}revoked_by'],
+      ),
       createdBy: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}created_by'],
@@ -2131,6 +2175,8 @@ class Device extends DataClass implements Insertable<Device> {
   final String platform;
   final String? name;
   final String? lastSeenAt;
+  final String? revokedAt;
+  final String? revokedBy;
   final String? createdBy;
   final String? createdAt;
   final String? updatedAt;
@@ -2142,6 +2188,8 @@ class Device extends DataClass implements Insertable<Device> {
     required this.platform,
     this.name,
     this.lastSeenAt,
+    this.revokedAt,
+    this.revokedBy,
     this.createdBy,
     this.createdAt,
     this.updatedAt,
@@ -2159,6 +2207,12 @@ class Device extends DataClass implements Insertable<Device> {
     }
     if (!nullToAbsent || lastSeenAt != null) {
       map['last_seen_at'] = Variable<String>(lastSeenAt);
+    }
+    if (!nullToAbsent || revokedAt != null) {
+      map['revoked_at'] = Variable<String>(revokedAt);
+    }
+    if (!nullToAbsent || revokedBy != null) {
+      map['revoked_by'] = Variable<String>(revokedBy);
     }
     if (!nullToAbsent || createdBy != null) {
       map['created_by'] = Variable<String>(createdBy);
@@ -2183,6 +2237,12 @@ class Device extends DataClass implements Insertable<Device> {
       lastSeenAt: lastSeenAt == null && nullToAbsent
           ? const Value.absent()
           : Value(lastSeenAt),
+      revokedAt: revokedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(revokedAt),
+      revokedBy: revokedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(revokedBy),
       createdBy: createdBy == null && nullToAbsent
           ? const Value.absent()
           : Value(createdBy),
@@ -2208,6 +2268,8 @@ class Device extends DataClass implements Insertable<Device> {
       platform: serializer.fromJson<String>(json['platform']),
       name: serializer.fromJson<String?>(json['name']),
       lastSeenAt: serializer.fromJson<String?>(json['lastSeenAt']),
+      revokedAt: serializer.fromJson<String?>(json['revokedAt']),
+      revokedBy: serializer.fromJson<String?>(json['revokedBy']),
       createdBy: serializer.fromJson<String?>(json['createdBy']),
       createdAt: serializer.fromJson<String?>(json['createdAt']),
       updatedAt: serializer.fromJson<String?>(json['updatedAt']),
@@ -2224,6 +2286,8 @@ class Device extends DataClass implements Insertable<Device> {
       'platform': serializer.toJson<String>(platform),
       'name': serializer.toJson<String?>(name),
       'lastSeenAt': serializer.toJson<String?>(lastSeenAt),
+      'revokedAt': serializer.toJson<String?>(revokedAt),
+      'revokedBy': serializer.toJson<String?>(revokedBy),
       'createdBy': serializer.toJson<String?>(createdBy),
       'createdAt': serializer.toJson<String?>(createdAt),
       'updatedAt': serializer.toJson<String?>(updatedAt),
@@ -2238,6 +2302,8 @@ class Device extends DataClass implements Insertable<Device> {
     String? platform,
     Value<String?> name = const Value.absent(),
     Value<String?> lastSeenAt = const Value.absent(),
+    Value<String?> revokedAt = const Value.absent(),
+    Value<String?> revokedBy = const Value.absent(),
     Value<String?> createdBy = const Value.absent(),
     Value<String?> createdAt = const Value.absent(),
     Value<String?> updatedAt = const Value.absent(),
@@ -2249,6 +2315,8 @@ class Device extends DataClass implements Insertable<Device> {
     platform: platform ?? this.platform,
     name: name.present ? name.value : this.name,
     lastSeenAt: lastSeenAt.present ? lastSeenAt.value : this.lastSeenAt,
+    revokedAt: revokedAt.present ? revokedAt.value : this.revokedAt,
+    revokedBy: revokedBy.present ? revokedBy.value : this.revokedBy,
     createdBy: createdBy.present ? createdBy.value : this.createdBy,
     createdAt: createdAt.present ? createdAt.value : this.createdAt,
     updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
@@ -2266,6 +2334,8 @@ class Device extends DataClass implements Insertable<Device> {
       lastSeenAt: data.lastSeenAt.present
           ? data.lastSeenAt.value
           : this.lastSeenAt,
+      revokedAt: data.revokedAt.present ? data.revokedAt.value : this.revokedAt,
+      revokedBy: data.revokedBy.present ? data.revokedBy.value : this.revokedBy,
       createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
@@ -2282,6 +2352,8 @@ class Device extends DataClass implements Insertable<Device> {
           ..write('platform: $platform, ')
           ..write('name: $name, ')
           ..write('lastSeenAt: $lastSeenAt, ')
+          ..write('revokedAt: $revokedAt, ')
+          ..write('revokedBy: $revokedBy, ')
           ..write('createdBy: $createdBy, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
@@ -2298,6 +2370,8 @@ class Device extends DataClass implements Insertable<Device> {
     platform,
     name,
     lastSeenAt,
+    revokedAt,
+    revokedBy,
     createdBy,
     createdAt,
     updatedAt,
@@ -2313,6 +2387,8 @@ class Device extends DataClass implements Insertable<Device> {
           other.platform == this.platform &&
           other.name == this.name &&
           other.lastSeenAt == this.lastSeenAt &&
+          other.revokedAt == this.revokedAt &&
+          other.revokedBy == this.revokedBy &&
           other.createdBy == this.createdBy &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
@@ -2326,6 +2402,8 @@ class DevicesCompanion extends UpdateCompanion<Device> {
   final Value<String> platform;
   final Value<String?> name;
   final Value<String?> lastSeenAt;
+  final Value<String?> revokedAt;
+  final Value<String?> revokedBy;
   final Value<String?> createdBy;
   final Value<String?> createdAt;
   final Value<String?> updatedAt;
@@ -2338,6 +2416,8 @@ class DevicesCompanion extends UpdateCompanion<Device> {
     this.platform = const Value.absent(),
     this.name = const Value.absent(),
     this.lastSeenAt = const Value.absent(),
+    this.revokedAt = const Value.absent(),
+    this.revokedBy = const Value.absent(),
     this.createdBy = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
@@ -2351,6 +2431,8 @@ class DevicesCompanion extends UpdateCompanion<Device> {
     required String platform,
     this.name = const Value.absent(),
     this.lastSeenAt = const Value.absent(),
+    this.revokedAt = const Value.absent(),
+    this.revokedBy = const Value.absent(),
     this.createdBy = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
@@ -2368,6 +2450,8 @@ class DevicesCompanion extends UpdateCompanion<Device> {
     Expression<String>? platform,
     Expression<String>? name,
     Expression<String>? lastSeenAt,
+    Expression<String>? revokedAt,
+    Expression<String>? revokedBy,
     Expression<String>? createdBy,
     Expression<String>? createdAt,
     Expression<String>? updatedAt,
@@ -2381,6 +2465,8 @@ class DevicesCompanion extends UpdateCompanion<Device> {
       if (platform != null) 'platform': platform,
       if (name != null) 'name': name,
       if (lastSeenAt != null) 'last_seen_at': lastSeenAt,
+      if (revokedAt != null) 'revoked_at': revokedAt,
+      if (revokedBy != null) 'revoked_by': revokedBy,
       if (createdBy != null) 'created_by': createdBy,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
@@ -2396,6 +2482,8 @@ class DevicesCompanion extends UpdateCompanion<Device> {
     Value<String>? platform,
     Value<String?>? name,
     Value<String?>? lastSeenAt,
+    Value<String?>? revokedAt,
+    Value<String?>? revokedBy,
     Value<String?>? createdBy,
     Value<String?>? createdAt,
     Value<String?>? updatedAt,
@@ -2409,6 +2497,8 @@ class DevicesCompanion extends UpdateCompanion<Device> {
       platform: platform ?? this.platform,
       name: name ?? this.name,
       lastSeenAt: lastSeenAt ?? this.lastSeenAt,
+      revokedAt: revokedAt ?? this.revokedAt,
+      revokedBy: revokedBy ?? this.revokedBy,
       createdBy: createdBy ?? this.createdBy,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
@@ -2440,6 +2530,12 @@ class DevicesCompanion extends UpdateCompanion<Device> {
     if (lastSeenAt.present) {
       map['last_seen_at'] = Variable<String>(lastSeenAt.value);
     }
+    if (revokedAt.present) {
+      map['revoked_at'] = Variable<String>(revokedAt.value);
+    }
+    if (revokedBy.present) {
+      map['revoked_by'] = Variable<String>(revokedBy.value);
+    }
     if (createdBy.present) {
       map['created_by'] = Variable<String>(createdBy.value);
     }
@@ -2465,6 +2561,776 @@ class DevicesCompanion extends UpdateCompanion<Device> {
           ..write('platform: $platform, ')
           ..write('name: $name, ')
           ..write('lastSeenAt: $lastSeenAt, ')
+          ..write('revokedAt: $revokedAt, ')
+          ..write('revokedBy: $revokedBy, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $MemberInvitesTable extends MemberInvites
+    with TableInfo<$MemberInvitesTable, MemberInvite> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $MemberInvitesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _phoneMeta = const VerificationMeta('phone');
+  @override
+  late final GeneratedColumn<String> phone = GeneratedColumn<String>(
+    'phone',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fullNameMeta = const VerificationMeta(
+    'fullName',
+  );
+  @override
+  late final GeneratedColumn<String> fullName = GeneratedColumn<String>(
+    'full_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _roleMeta = const VerificationMeta('role');
+  @override
+  late final GeneratedColumn<String> role = GeneratedColumn<String>(
+    'role',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _customPermissionsMeta = const VerificationMeta(
+    'customPermissions',
+  );
+  @override
+  late final GeneratedColumn<String> customPermissions =
+      GeneratedColumn<String>(
+        'custom_permissions',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _expiresAtMeta = const VerificationMeta(
+    'expiresAt',
+  );
+  @override
+  late final GeneratedColumn<String> expiresAt = GeneratedColumn<String>(
+    'expires_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _acceptedByMeta = const VerificationMeta(
+    'acceptedBy',
+  );
+  @override
+  late final GeneratedColumn<String> acceptedBy = GeneratedColumn<String>(
+    'accepted_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _acceptedAtMeta = const VerificationMeta(
+    'acceptedAt',
+  );
+  @override
+  late final GeneratedColumn<String> acceptedAt = GeneratedColumn<String>(
+    'accepted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    phone,
+    fullName,
+    role,
+    customPermissions,
+    status,
+    expiresAt,
+    acceptedBy,
+    acceptedAt,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'member_invites';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<MemberInvite> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('phone')) {
+      context.handle(
+        _phoneMeta,
+        phone.isAcceptableOrUnknown(data['phone']!, _phoneMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_phoneMeta);
+    }
+    if (data.containsKey('full_name')) {
+      context.handle(
+        _fullNameMeta,
+        fullName.isAcceptableOrUnknown(data['full_name']!, _fullNameMeta),
+      );
+    }
+    if (data.containsKey('role')) {
+      context.handle(
+        _roleMeta,
+        role.isAcceptableOrUnknown(data['role']!, _roleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_roleMeta);
+    }
+    if (data.containsKey('custom_permissions')) {
+      context.handle(
+        _customPermissionsMeta,
+        customPermissions.isAcceptableOrUnknown(
+          data['custom_permissions']!,
+          _customPermissionsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('expires_at')) {
+      context.handle(
+        _expiresAtMeta,
+        expiresAt.isAcceptableOrUnknown(data['expires_at']!, _expiresAtMeta),
+      );
+    }
+    if (data.containsKey('accepted_by')) {
+      context.handle(
+        _acceptedByMeta,
+        acceptedBy.isAcceptableOrUnknown(data['accepted_by']!, _acceptedByMeta),
+      );
+    }
+    if (data.containsKey('accepted_at')) {
+      context.handle(
+        _acceptedAtMeta,
+        acceptedAt.isAcceptableOrUnknown(data['accepted_at']!, _acceptedAtMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  MemberInvite map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return MemberInvite(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      phone: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone'],
+      )!,
+      fullName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}full_name'],
+      ),
+      role: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}role'],
+      )!,
+      customPermissions: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}custom_permissions'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      expiresAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}expires_at'],
+      ),
+      acceptedBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}accepted_by'],
+      ),
+      acceptedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}accepted_at'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $MemberInvitesTable createAlias(String alias) {
+    return $MemberInvitesTable(attachedDatabase, alias);
+  }
+}
+
+class MemberInvite extends DataClass implements Insertable<MemberInvite> {
+  final String id;
+  final String tenantId;
+  final String phone;
+  final String? fullName;
+  final String role;
+  final String? customPermissions;
+  final String status;
+  final String? expiresAt;
+  final String? acceptedBy;
+  final String? acceptedAt;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const MemberInvite({
+    required this.id,
+    required this.tenantId,
+    required this.phone,
+    this.fullName,
+    required this.role,
+    this.customPermissions,
+    required this.status,
+    this.expiresAt,
+    this.acceptedBy,
+    this.acceptedAt,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['phone'] = Variable<String>(phone);
+    if (!nullToAbsent || fullName != null) {
+      map['full_name'] = Variable<String>(fullName);
+    }
+    map['role'] = Variable<String>(role);
+    if (!nullToAbsent || customPermissions != null) {
+      map['custom_permissions'] = Variable<String>(customPermissions);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || expiresAt != null) {
+      map['expires_at'] = Variable<String>(expiresAt);
+    }
+    if (!nullToAbsent || acceptedBy != null) {
+      map['accepted_by'] = Variable<String>(acceptedBy);
+    }
+    if (!nullToAbsent || acceptedAt != null) {
+      map['accepted_at'] = Variable<String>(acceptedAt);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  MemberInvitesCompanion toCompanion(bool nullToAbsent) {
+    return MemberInvitesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      phone: Value(phone),
+      fullName: fullName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(fullName),
+      role: Value(role),
+      customPermissions: customPermissions == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customPermissions),
+      status: Value(status),
+      expiresAt: expiresAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(expiresAt),
+      acceptedBy: acceptedBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(acceptedBy),
+      acceptedAt: acceptedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(acceptedAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory MemberInvite.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return MemberInvite(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      phone: serializer.fromJson<String>(json['phone']),
+      fullName: serializer.fromJson<String?>(json['fullName']),
+      role: serializer.fromJson<String>(json['role']),
+      customPermissions: serializer.fromJson<String?>(
+        json['customPermissions'],
+      ),
+      status: serializer.fromJson<String>(json['status']),
+      expiresAt: serializer.fromJson<String?>(json['expiresAt']),
+      acceptedBy: serializer.fromJson<String?>(json['acceptedBy']),
+      acceptedAt: serializer.fromJson<String?>(json['acceptedAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'phone': serializer.toJson<String>(phone),
+      'fullName': serializer.toJson<String?>(fullName),
+      'role': serializer.toJson<String>(role),
+      'customPermissions': serializer.toJson<String?>(customPermissions),
+      'status': serializer.toJson<String>(status),
+      'expiresAt': serializer.toJson<String?>(expiresAt),
+      'acceptedBy': serializer.toJson<String?>(acceptedBy),
+      'acceptedAt': serializer.toJson<String?>(acceptedAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  MemberInvite copyWith({
+    String? id,
+    String? tenantId,
+    String? phone,
+    Value<String?> fullName = const Value.absent(),
+    String? role,
+    Value<String?> customPermissions = const Value.absent(),
+    String? status,
+    Value<String?> expiresAt = const Value.absent(),
+    Value<String?> acceptedBy = const Value.absent(),
+    Value<String?> acceptedAt = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => MemberInvite(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    phone: phone ?? this.phone,
+    fullName: fullName.present ? fullName.value : this.fullName,
+    role: role ?? this.role,
+    customPermissions: customPermissions.present
+        ? customPermissions.value
+        : this.customPermissions,
+    status: status ?? this.status,
+    expiresAt: expiresAt.present ? expiresAt.value : this.expiresAt,
+    acceptedBy: acceptedBy.present ? acceptedBy.value : this.acceptedBy,
+    acceptedAt: acceptedAt.present ? acceptedAt.value : this.acceptedAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  MemberInvite copyWithCompanion(MemberInvitesCompanion data) {
+    return MemberInvite(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      phone: data.phone.present ? data.phone.value : this.phone,
+      fullName: data.fullName.present ? data.fullName.value : this.fullName,
+      role: data.role.present ? data.role.value : this.role,
+      customPermissions: data.customPermissions.present
+          ? data.customPermissions.value
+          : this.customPermissions,
+      status: data.status.present ? data.status.value : this.status,
+      expiresAt: data.expiresAt.present ? data.expiresAt.value : this.expiresAt,
+      acceptedBy: data.acceptedBy.present
+          ? data.acceptedBy.value
+          : this.acceptedBy,
+      acceptedAt: data.acceptedAt.present
+          ? data.acceptedAt.value
+          : this.acceptedAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MemberInvite(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('phone: $phone, ')
+          ..write('fullName: $fullName, ')
+          ..write('role: $role, ')
+          ..write('customPermissions: $customPermissions, ')
+          ..write('status: $status, ')
+          ..write('expiresAt: $expiresAt, ')
+          ..write('acceptedBy: $acceptedBy, ')
+          ..write('acceptedAt: $acceptedAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    phone,
+    fullName,
+    role,
+    customPermissions,
+    status,
+    expiresAt,
+    acceptedBy,
+    acceptedAt,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is MemberInvite &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.phone == this.phone &&
+          other.fullName == this.fullName &&
+          other.role == this.role &&
+          other.customPermissions == this.customPermissions &&
+          other.status == this.status &&
+          other.expiresAt == this.expiresAt &&
+          other.acceptedBy == this.acceptedBy &&
+          other.acceptedAt == this.acceptedAt &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class MemberInvitesCompanion extends UpdateCompanion<MemberInvite> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> phone;
+  final Value<String?> fullName;
+  final Value<String> role;
+  final Value<String?> customPermissions;
+  final Value<String> status;
+  final Value<String?> expiresAt;
+  final Value<String?> acceptedBy;
+  final Value<String?> acceptedAt;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const MemberInvitesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.fullName = const Value.absent(),
+    this.role = const Value.absent(),
+    this.customPermissions = const Value.absent(),
+    this.status = const Value.absent(),
+    this.expiresAt = const Value.absent(),
+    this.acceptedBy = const Value.absent(),
+    this.acceptedAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  MemberInvitesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String phone,
+    this.fullName = const Value.absent(),
+    required String role,
+    this.customPermissions = const Value.absent(),
+    required String status,
+    this.expiresAt = const Value.absent(),
+    this.acceptedBy = const Value.absent(),
+    this.acceptedAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       phone = Value(phone),
+       role = Value(role),
+       status = Value(status);
+  static Insertable<MemberInvite> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? phone,
+    Expression<String>? fullName,
+    Expression<String>? role,
+    Expression<String>? customPermissions,
+    Expression<String>? status,
+    Expression<String>? expiresAt,
+    Expression<String>? acceptedBy,
+    Expression<String>? acceptedAt,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (phone != null) 'phone': phone,
+      if (fullName != null) 'full_name': fullName,
+      if (role != null) 'role': role,
+      if (customPermissions != null) 'custom_permissions': customPermissions,
+      if (status != null) 'status': status,
+      if (expiresAt != null) 'expires_at': expiresAt,
+      if (acceptedBy != null) 'accepted_by': acceptedBy,
+      if (acceptedAt != null) 'accepted_at': acceptedAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  MemberInvitesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? phone,
+    Value<String?>? fullName,
+    Value<String>? role,
+    Value<String?>? customPermissions,
+    Value<String>? status,
+    Value<String?>? expiresAt,
+    Value<String?>? acceptedBy,
+    Value<String?>? acceptedAt,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return MemberInvitesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      phone: phone ?? this.phone,
+      fullName: fullName ?? this.fullName,
+      role: role ?? this.role,
+      customPermissions: customPermissions ?? this.customPermissions,
+      status: status ?? this.status,
+      expiresAt: expiresAt ?? this.expiresAt,
+      acceptedBy: acceptedBy ?? this.acceptedBy,
+      acceptedAt: acceptedAt ?? this.acceptedAt,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (phone.present) {
+      map['phone'] = Variable<String>(phone.value);
+    }
+    if (fullName.present) {
+      map['full_name'] = Variable<String>(fullName.value);
+    }
+    if (role.present) {
+      map['role'] = Variable<String>(role.value);
+    }
+    if (customPermissions.present) {
+      map['custom_permissions'] = Variable<String>(customPermissions.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (expiresAt.present) {
+      map['expires_at'] = Variable<String>(expiresAt.value);
+    }
+    if (acceptedBy.present) {
+      map['accepted_by'] = Variable<String>(acceptedBy.value);
+    }
+    if (acceptedAt.present) {
+      map['accepted_at'] = Variable<String>(acceptedAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MemberInvitesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('phone: $phone, ')
+          ..write('fullName: $fullName, ')
+          ..write('role: $role, ')
+          ..write('customPermissions: $customPermissions, ')
+          ..write('status: $status, ')
+          ..write('expiresAt: $expiresAt, ')
+          ..write('acceptedBy: $acceptedBy, ')
+          ..write('acceptedAt: $acceptedAt, ')
           ..write('createdBy: $createdBy, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt, ')
@@ -12169,6 +13035,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $AppUsersTable appUsers = $AppUsersTable(this);
   late final $TenantMembersTable tenantMembers = $TenantMembersTable(this);
   late final $DevicesTable devices = $DevicesTable(this);
+  late final $MemberInvitesTable memberInvites = $MemberInvitesTable(this);
   late final $SettingsTable settings = $SettingsTable(this);
   late final $AuditLogTable auditLog = $AuditLogTable(this);
   late final $PartiesTable parties = $PartiesTable(this);
@@ -12192,6 +13059,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     appUsers,
     tenantMembers,
     devices,
+    memberInvites,
     settings,
     auditLog,
     parties,
@@ -13124,6 +13992,8 @@ typedef $$DevicesTableCreateCompanionBuilder =
       required String platform,
       Value<String?> name,
       Value<String?> lastSeenAt,
+      Value<String?> revokedAt,
+      Value<String?> revokedBy,
       Value<String?> createdBy,
       Value<String?> createdAt,
       Value<String?> updatedAt,
@@ -13138,6 +14008,8 @@ typedef $$DevicesTableUpdateCompanionBuilder =
       Value<String> platform,
       Value<String?> name,
       Value<String?> lastSeenAt,
+      Value<String?> revokedAt,
+      Value<String?> revokedBy,
       Value<String?> createdBy,
       Value<String?> createdAt,
       Value<String?> updatedAt,
@@ -13185,6 +14057,16 @@ class $$DevicesTableFilterComposer
 
   ColumnFilters<String> get lastSeenAt => $composableBuilder(
     column: $table.lastSeenAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get revokedAt => $composableBuilder(
+    column: $table.revokedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get revokedBy => $composableBuilder(
+    column: $table.revokedBy,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -13248,6 +14130,16 @@ class $$DevicesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get revokedAt => $composableBuilder(
+    column: $table.revokedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get revokedBy => $composableBuilder(
+    column: $table.revokedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get createdBy => $composableBuilder(
     column: $table.createdBy,
     builder: (column) => ColumnOrderings(column),
@@ -13298,6 +14190,12 @@ class $$DevicesTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<String> get revokedAt =>
+      $composableBuilder(column: $table.revokedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get revokedBy =>
+      $composableBuilder(column: $table.revokedBy, builder: (column) => column);
+
   GeneratedColumn<String> get createdBy =>
       $composableBuilder(column: $table.createdBy, builder: (column) => column);
 
@@ -13343,6 +14241,8 @@ class $$DevicesTableTableManager
                 Value<String> platform = const Value.absent(),
                 Value<String?> name = const Value.absent(),
                 Value<String?> lastSeenAt = const Value.absent(),
+                Value<String?> revokedAt = const Value.absent(),
+                Value<String?> revokedBy = const Value.absent(),
                 Value<String?> createdBy = const Value.absent(),
                 Value<String?> createdAt = const Value.absent(),
                 Value<String?> updatedAt = const Value.absent(),
@@ -13355,6 +14255,8 @@ class $$DevicesTableTableManager
                 platform: platform,
                 name: name,
                 lastSeenAt: lastSeenAt,
+                revokedAt: revokedAt,
+                revokedBy: revokedBy,
                 createdBy: createdBy,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
@@ -13369,6 +14271,8 @@ class $$DevicesTableTableManager
                 required String platform,
                 Value<String?> name = const Value.absent(),
                 Value<String?> lastSeenAt = const Value.absent(),
+                Value<String?> revokedAt = const Value.absent(),
+                Value<String?> revokedBy = const Value.absent(),
                 Value<String?> createdBy = const Value.absent(),
                 Value<String?> createdAt = const Value.absent(),
                 Value<String?> updatedAt = const Value.absent(),
@@ -13381,6 +14285,8 @@ class $$DevicesTableTableManager
                 platform: platform,
                 name: name,
                 lastSeenAt: lastSeenAt,
+                revokedAt: revokedAt,
+                revokedBy: revokedBy,
                 createdBy: createdBy,
                 createdAt: createdAt,
                 updatedAt: updatedAt,
@@ -13415,6 +14321,373 @@ typedef $$DevicesTableProcessedTableManager =
       $$DevicesTableUpdateCompanionBuilder,
       (Device, BaseReferences<_$AppDatabase, $DevicesTable, Device>),
       Device,
+      PrefetchHooks Function()
+    >;
+typedef $$MemberInvitesTableCreateCompanionBuilder =
+    MemberInvitesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String phone,
+      Value<String?> fullName,
+      required String role,
+      Value<String?> customPermissions,
+      required String status,
+      Value<String?> expiresAt,
+      Value<String?> acceptedBy,
+      Value<String?> acceptedAt,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$MemberInvitesTableUpdateCompanionBuilder =
+    MemberInvitesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> phone,
+      Value<String?> fullName,
+      Value<String> role,
+      Value<String?> customPermissions,
+      Value<String> status,
+      Value<String?> expiresAt,
+      Value<String?> acceptedBy,
+      Value<String?> acceptedAt,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$MemberInvitesTableFilterComposer
+    extends Composer<_$AppDatabase, $MemberInvitesTable> {
+  $$MemberInvitesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fullName => $composableBuilder(
+    column: $table.fullName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get role => $composableBuilder(
+    column: $table.role,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get customPermissions => $composableBuilder(
+    column: $table.customPermissions,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get expiresAt => $composableBuilder(
+    column: $table.expiresAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get acceptedBy => $composableBuilder(
+    column: $table.acceptedBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get acceptedAt => $composableBuilder(
+    column: $table.acceptedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$MemberInvitesTableOrderingComposer
+    extends Composer<_$AppDatabase, $MemberInvitesTable> {
+  $$MemberInvitesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fullName => $composableBuilder(
+    column: $table.fullName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get role => $composableBuilder(
+    column: $table.role,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customPermissions => $composableBuilder(
+    column: $table.customPermissions,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get expiresAt => $composableBuilder(
+    column: $table.expiresAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get acceptedBy => $composableBuilder(
+    column: $table.acceptedBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get acceptedAt => $composableBuilder(
+    column: $table.acceptedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$MemberInvitesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $MemberInvitesTable> {
+  $$MemberInvitesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get phone =>
+      $composableBuilder(column: $table.phone, builder: (column) => column);
+
+  GeneratedColumn<String> get fullName =>
+      $composableBuilder(column: $table.fullName, builder: (column) => column);
+
+  GeneratedColumn<String> get role =>
+      $composableBuilder(column: $table.role, builder: (column) => column);
+
+  GeneratedColumn<String> get customPermissions => $composableBuilder(
+    column: $table.customPermissions,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get expiresAt =>
+      $composableBuilder(column: $table.expiresAt, builder: (column) => column);
+
+  GeneratedColumn<String> get acceptedBy => $composableBuilder(
+    column: $table.acceptedBy,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get acceptedAt => $composableBuilder(
+    column: $table.acceptedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$MemberInvitesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $MemberInvitesTable,
+          MemberInvite,
+          $$MemberInvitesTableFilterComposer,
+          $$MemberInvitesTableOrderingComposer,
+          $$MemberInvitesTableAnnotationComposer,
+          $$MemberInvitesTableCreateCompanionBuilder,
+          $$MemberInvitesTableUpdateCompanionBuilder,
+          (
+            MemberInvite,
+            BaseReferences<_$AppDatabase, $MemberInvitesTable, MemberInvite>,
+          ),
+          MemberInvite,
+          PrefetchHooks Function()
+        > {
+  $$MemberInvitesTableTableManager(_$AppDatabase db, $MemberInvitesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$MemberInvitesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$MemberInvitesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$MemberInvitesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> phone = const Value.absent(),
+                Value<String?> fullName = const Value.absent(),
+                Value<String> role = const Value.absent(),
+                Value<String?> customPermissions = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> expiresAt = const Value.absent(),
+                Value<String?> acceptedBy = const Value.absent(),
+                Value<String?> acceptedAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => MemberInvitesCompanion(
+                id: id,
+                tenantId: tenantId,
+                phone: phone,
+                fullName: fullName,
+                role: role,
+                customPermissions: customPermissions,
+                status: status,
+                expiresAt: expiresAt,
+                acceptedBy: acceptedBy,
+                acceptedAt: acceptedAt,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String phone,
+                Value<String?> fullName = const Value.absent(),
+                required String role,
+                Value<String?> customPermissions = const Value.absent(),
+                required String status,
+                Value<String?> expiresAt = const Value.absent(),
+                Value<String?> acceptedBy = const Value.absent(),
+                Value<String?> acceptedAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => MemberInvitesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                phone: phone,
+                fullName: fullName,
+                role: role,
+                customPermissions: customPermissions,
+                status: status,
+                expiresAt: expiresAt,
+                acceptedBy: acceptedBy,
+                acceptedAt: acceptedAt,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$MemberInvitesTable, MemberInvite>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $MemberInvitesTable,
+                    MemberInvite
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$MemberInvitesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $MemberInvitesTable,
+      MemberInvite,
+      $$MemberInvitesTableFilterComposer,
+      $$MemberInvitesTableOrderingComposer,
+      $$MemberInvitesTableAnnotationComposer,
+      $$MemberInvitesTableCreateCompanionBuilder,
+      $$MemberInvitesTableUpdateCompanionBuilder,
+      (
+        MemberInvite,
+        BaseReferences<_$AppDatabase, $MemberInvitesTable, MemberInvite>,
+      ),
+      MemberInvite,
       PrefetchHooks Function()
     >;
 typedef $$SettingsTableCreateCompanionBuilder =
@@ -17982,6 +19255,8 @@ class $AppDatabaseManager {
       $$TenantMembersTableTableManager(_db, _db.tenantMembers);
   $$DevicesTableTableManager get devices =>
       $$DevicesTableTableManager(_db, _db.devices);
+  $$MemberInvitesTableTableManager get memberInvites =>
+      $$MemberInvitesTableTableManager(_db, _db.memberInvites);
   $$SettingsTableTableManager get settings =>
       $$SettingsTableTableManager(_db, _db.settings);
   $$AuditLogTableTableManager get auditLog =>

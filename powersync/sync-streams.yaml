@@ -73,3 +73,13 @@ streams:
         SELECT tenant_id FROM tenant_members
         WHERE user_id = auth.user_id() AND role = 'owner' AND is_active = true
     query: SELECT * FROM audit_log WHERE tenant_id IN owned_tenants
+
+  # Pending invitations: owners only (RLS: admin.manage). Same default-role
+  # limit as the other owner streams.
+  owner_invites:
+    auto_subscribe: true
+    with:
+      owned_tenants_inv: >-
+        SELECT tenant_id FROM tenant_members
+        WHERE user_id = auth.user_id() AND role = 'owner' AND is_active = true
+    query: SELECT * FROM member_invites WHERE tenant_id IN owned_tenants_inv

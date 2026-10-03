@@ -2220,4 +2220,448 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get reportStatementsPdf => 'विवरण PDF';
+
+  @override
+  String get teamTitle => 'यूज़र और अनुमतियाँ';
+
+  @override
+  String get teamTabPeople => 'लोग';
+
+  @override
+  String get teamTabDevices => 'डिवाइस';
+
+  @override
+  String get teamInvite => 'किसी को जोड़ें';
+
+  @override
+  String get teamNoAccess => 'यूज़र सिर्फ़ मालिक संभाल सकता है।';
+
+  @override
+  String get teamYou => 'आप';
+
+  @override
+  String get teamInactive => 'बंद किया गया';
+
+  @override
+  String teamDevicesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count डिवाइस',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get teamPendingInvites => 'जुड़ने का इंतज़ार';
+
+  @override
+  String teamInviteExpires(String date) {
+    return '$date को खत्म';
+  }
+
+  @override
+  String get teamInviteExpired => 'खत्म हो गया';
+
+  @override
+  String get teamInviteCancel => 'न्योता रद्द करें';
+
+  @override
+  String get teamInviteCancelled => 'न्योता रद्द हुआ';
+
+  @override
+  String get teamEmptyPeople => 'अभी यहाँ कोई नहीं।';
+
+  @override
+  String get teamEmptyDevices => 'अभी कोई डिवाइस नहीं।';
+
+  @override
+  String get teamRole => 'भूमिका';
+
+  @override
+  String get teamPermissions => 'वे क्या कर सकते हैं';
+
+  @override
+  String get teamPermissionsHelp =>
+      'इस व्यक्ति के लिए अनुमति चालू या बंद करें। बिंदु का मतलब भूमिका के डिफ़ॉल्ट से बदलाव है।';
+
+  @override
+  String get teamPermissionChanged => 'भूमिका के डिफ़ॉल्ट से अलग';
+
+  @override
+  String get teamPermissionSensitive => 'ताक़तवर: सोच-समझकर दें';
+
+  @override
+  String get teamOwnerAll => 'मालिक सब कुछ कर सकता है। इसे बदला नहीं जा सकता।';
+
+  @override
+  String get teamDeviceLimit => 'अनुमत डिवाइस';
+
+  @override
+  String get teamSave => 'बदलाव सेव करें';
+
+  @override
+  String get teamSaved => 'सेव हुआ';
+
+  @override
+  String get teamDeactivate => 'बंद करें';
+
+  @override
+  String get teamReactivate => 'फिर चालू करें';
+
+  @override
+  String teamDeactivateTitle(String name) {
+    return '$name को बंद करें?';
+  }
+
+  @override
+  String get teamDeactivateBody =>
+      'वे इस कारोबार को नहीं खोल पाएँगे और उनके डिवाइस से डेटा हट जाएगा। उनकी पुरानी एंट्री बही में रहेगी।';
+
+  @override
+  String get teamDeactivated => 'बंद किया गया';
+
+  @override
+  String get teamReactivated => 'फिर चालू हुआ';
+
+  @override
+  String get teamErrLastOwner =>
+      'कारोबार में कम से कम एक चालू मालिक रहना ज़रूरी है।';
+
+  @override
+  String get teamErrProtected =>
+      'मालिक को सिर्फ़ मालिक बदल सकता है, और आप अपनी पहुँच खुद नहीं बदल सकते।';
+
+  @override
+  String get teamErrNotFound => 'यह व्यक्ति नहीं मिला।';
+
+  @override
+  String get teamDeviceThis => 'यह डिवाइस';
+
+  @override
+  String teamDeviceLastSeen(String when) {
+    return 'आखिरी बार $when';
+  }
+
+  @override
+  String get teamDeviceNeverSeen => 'अभी तक नहीं दिखा';
+
+  @override
+  String get teamDeviceRevoke => 'हटाएँ';
+
+  @override
+  String get teamDeviceRevoked => 'हटाया गया';
+
+  @override
+  String teamRevokeTitle(String code) {
+    return 'डिवाइस $code हटाएँ?';
+  }
+
+  @override
+  String get teamRevokeBody =>
+      'यह सिंक करना बंद कर देगा और इसका ऐप बंद हो जाएगा। ऑफ़लाइन किए बदलाव अस्वीकार होंगे। इसे वापस नहीं किया जा सकता; व्यक्ति नया डिवाइस जोड़ सकता है।';
+
+  @override
+  String get teamRevokeDone => 'डिवाइस हटाया गया';
+
+  @override
+  String get teamErrThisDevice => 'जिस डिवाइस पर आप हैं उसे नहीं हटा सकते।';
+
+  @override
+  String get permission_partiesManage => 'पार्टी देखें और जोड़ें';
+
+  @override
+  String get permission_arrivalsManage => 'आवक और लॉट';
+
+  @override
+  String get permission_paymentsCreate => 'भुगतान दर्ज करें';
+
+  @override
+  String get permission_entriesReverse => 'पुरानी एंट्री बदलें या उलटें';
+
+  @override
+  String get permission_loansManage => 'कर्ज़ दें, ब्याज बदलें';
+
+  @override
+  String get permission_financeView => 'बैंक विवरण, मुनाफ़ा, रिपोर्ट एक्सपोर्ट';
+
+  @override
+  String get permission_adminManage => 'यूज़र, मॉड्यूल, सब्सक्रिप्शन';
+
+  @override
+  String get permission_masterDelete => 'पार्टी व अन्य मास्टर डेटा हटाएँ';
+
+  @override
+  String get permission_settingsManage => 'पूरे कारोबार की सेटिंग';
+
+  @override
+  String get permission_auditView => 'ऑडिट लॉग देखें';
+
+  @override
+  String get inviteTitle => 'किसी को जोड़ें';
+
+  @override
+  String get invitePhone => 'मोबाइल नंबर';
+
+  @override
+  String get inviteName => 'नाम (वैकल्पिक)';
+
+  @override
+  String get inviteChannel => 'भेजें';
+
+  @override
+  String get inviteChannelWhatsapp => 'व्हाट्सऐप';
+
+  @override
+  String get inviteChannelSms => 'SMS';
+
+  @override
+  String get inviteSend => 'न्योता भेजें';
+
+  @override
+  String get inviteErrPhone => 'सही 10 अंकों का मोबाइल नंबर डालें।';
+
+  @override
+  String get inviteErrRole =>
+      'इस भूमिका को न्योता नहीं दिया जा सकता। मालिक न्योते से नहीं जुड़ते।';
+
+  @override
+  String get inviteErrAlreadyMember => 'यह व्यक्ति पहले से आपकी टीम में है।';
+
+  @override
+  String get inviteErrAlreadyInvited =>
+      'इस नंबर को पहले से न्योता भेजा जा चुका है।';
+
+  @override
+  String get inviteErrNotAllowed => 'लोगों को सिर्फ़ मालिक जोड़ सकता है।';
+
+  @override
+  String get inviteErrOffline =>
+      'न्योता भेजने के लिए इंटरनेट चाहिए। जुड़कर फिर कोशिश करें।';
+
+  @override
+  String get inviteErrFailed => 'न्योता नहीं बन सका। फिर कोशिश करें।';
+
+  @override
+  String inviteSentWhatsapp(String phone) {
+    return '$phone को व्हाट्सऐप पर न्योता भेजा गया।';
+  }
+
+  @override
+  String inviteSentSms(String phone) {
+    return '$phone को SMS से न्योता भेजा गया।';
+  }
+
+  @override
+  String get inviteNotSentTitle => 'न्योता सेव हुआ: खुद भेजें';
+
+  @override
+  String inviteNotSentBody(String phone) {
+    return 'कोई मैसेज सेवा चालू नहीं है, इसलिए कुछ नहीं भेजा गया। यह संदेश कॉपी करके $phone को भेजें। उस नंबर से साइन इन करते ही वे जुड़ जाएँगे।';
+  }
+
+  @override
+  String get inviteCopy => 'संदेश कॉपी करें';
+
+  @override
+  String get inviteCopied => 'कॉपी हुआ';
+
+  @override
+  String get deviceRevokedTitle => 'यह डिवाइस हटा दिया गया';
+
+  @override
+  String get deviceRevokedBody =>
+      'मालिक ने इस डिवाइस को हटा दिया है। यहाँ से अब कुछ सेव नहीं हो सकता। ऑफ़लाइन किए बदलाव स्वीकार नहीं हुए।';
+
+  @override
+  String get deviceRevokedSetupAgain => 'इस डिवाइस को फिर से जोड़ें';
+
+  @override
+  String get tenantPickerCheckInvites => 'न्योते देखें';
+
+  @override
+  String get tenantPickerNoInvites =>
+      'आपके नंबर के लिए अभी कोई न्योता नहीं मिला।';
+
+  @override
+  String get tenantPickerInvitesOffline =>
+      'न्योते देखने के लिए इंटरनेट से जुड़ें।';
+
+  @override
+  String deviceSetupLimit(String business) {
+    return 'इस अकाउंट के $business में सारे डिवाइस इस्तेमाल हो चुके हैं। मालिक से कहें कि कोई पुराना हटा दे।';
+  }
+
+  @override
+  String deviceSetupRevoked(String business) {
+    return 'इस डिवाइस को $business के मालिक ने हटा दिया है।';
+  }
+
+  @override
+  String get auditTitle => 'ऑडिट लॉग';
+
+  @override
+  String get auditNoAccess => 'ऑडिट लॉग सिर्फ़ मालिक देख सकता है।';
+
+  @override
+  String get auditFilterUser => 'व्यक्ति';
+
+  @override
+  String get auditFilterTable => 'रिकॉर्ड का प्रकार';
+
+  @override
+  String get auditAllUsers => 'सब';
+
+  @override
+  String get auditAllTables => 'सब रिकॉर्ड';
+
+  @override
+  String get auditOnlyMoney => 'सिर्फ़ रकम के बदलाव और उलटाव';
+
+  @override
+  String get auditEmpty => 'कोई एंट्री नहीं मिली।';
+
+  @override
+  String get auditShowMore => 'और दिखाएँ';
+
+  @override
+  String get auditBadgeMoneyEdit => 'रकम बदली';
+
+  @override
+  String get auditBadgeReversal => 'उलटाव';
+
+  @override
+  String auditByUser(String name, String role) {
+    return '$name · $role';
+  }
+
+  @override
+  String auditOnDevice(String code) {
+    return 'डिवाइस $code';
+  }
+
+  @override
+  String get auditSystem => 'सिस्टम';
+
+  @override
+  String auditMoreFields(int count) {
+    return '+$count और';
+  }
+
+  @override
+  String get auditEmptyValue => '—';
+
+  @override
+  String get auditYes => 'हाँ';
+
+  @override
+  String get auditNo => 'नहीं';
+
+  @override
+  String get auditAction_insert => 'जोड़ा';
+
+  @override
+  String get auditAction_update => 'बदला';
+
+  @override
+  String get auditAction_reverse => 'उलटा';
+
+  @override
+  String get auditAction_soft_delete => 'हटाया';
+
+  @override
+  String get auditAction_restore => 'वापस लाया';
+
+  @override
+  String get auditTable_ledger_entries => 'खाता एंट्री';
+
+  @override
+  String get auditTable_payments => 'भुगतान';
+
+  @override
+  String get auditTable_cash_bank_entries => 'नकद / बैंक लाइन';
+
+  @override
+  String get auditTable_lots => 'लॉट';
+
+  @override
+  String get auditTable_parties => 'पार्टी';
+
+  @override
+  String get auditTable_party_roles => 'पार्टी की भूमिका';
+
+  @override
+  String get auditTable_crops => 'फसल';
+
+  @override
+  String get auditTable_bank_accounts => 'बैंक खाता';
+
+  @override
+  String get auditTable_settings => 'सेटिंग';
+
+  @override
+  String get auditTable_tenant_members => 'टीम सदस्य';
+
+  @override
+  String get auditTable_member_invites => 'न्योता';
+
+  @override
+  String get auditTable_devices => 'डिवाइस';
+
+  @override
+  String get auditField_amount_paise => 'रकम';
+
+  @override
+  String get auditField_gross => 'कुल मूल्य';
+
+  @override
+  String get auditField_commission => 'कमीशन';
+
+  @override
+  String get auditField_net_to_farmer => 'किसान को शुद्ध';
+
+  @override
+  String get auditField_buyer_total => 'खरीदार का कुल';
+
+  @override
+  String get auditField_rate_paise_per_qtl => 'भाव प्रति क्विंटल';
+
+  @override
+  String get auditField_qtl_milli => 'क्विंटल';
+
+  @override
+  String get auditField_status => 'स्थिति';
+
+  @override
+  String get auditField_role => 'भूमिका';
+
+  @override
+  String get auditField_is_active => 'चालू';
+
+  @override
+  String get auditField_device_limit => 'अनुमत डिवाइस';
+
+  @override
+  String get auditField_custom_permissions => 'अनुमति में बदलाव';
+
+  @override
+  String get auditField_revoked_at => 'हटाने का समय';
+
+  @override
+  String get auditField_phone => 'मोबाइल';
+
+  @override
+  String get auditField_name => 'नाम';
+
+  @override
+  String get auditField_cheque_status => 'चेक';
+
+  @override
+  String get auditField_entry_date => 'तारीख';
+
+  @override
+  String get auditField_side => 'पक्ष';
+
+  @override
+  String get auditField_direction => 'दिशा';
 }
