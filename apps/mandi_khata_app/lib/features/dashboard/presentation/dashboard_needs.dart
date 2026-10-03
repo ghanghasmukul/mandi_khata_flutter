@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:khata_core/khata_core.dart';
+import 'package:mandi_khata_app/app/router.dart';
+import 'package:mandi_khata_app/core/permissions/permissions.dart';
+import 'package:mandi_khata_app/core/sync/sync_providers.dart';
+import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/dashboard/domain/dashboard.dart';
+import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
+import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
+import 'package:mk_ui/mk_ui.dart';
+
+/// "Needs you today": rejected sync changes, cheques due and what munshis
+/// changed lately. Each row only for members who can act on it.
+class NeedsYouCard extends ConsumerWidget {
+  const NeedsYouCard({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final tokens = MkTokens.of(context);
+    final counts =
+        ref.watch(attentionCountsProvider).value ?? AttentionCounts.none;
+    final rejected = ref.watch(syncErrorsProvider).value?.length ?? 0;
+    final canCheques = ref.watch(canProvider(Permission.paymentsCreate));
+    final canStaff = ref.watch(canProvider(Permission.entriesReverse));
+    final isOwner =
+        ref.watch(activeMembershipProvider)?.role == MemberRole.owner;
+
+    final rows = [
+      if (rejected > 0)
+        _NeedRow(
+          icon: Icons.sync_problem_outlined,
+          text: l10n.dashNeedsSyncErrors(rejected),
+          onTap: isOwner ? () => context.go(AppRoutes.diagnostics) : null,
+        ),
+      if (canCheques && counts.chequesDue > 0)
+        _NeedRow(
+          icon: Icons.receipt_long_outlined,
+          text: l10n.dashNeedsCheques(
+            counts.chequesDue,
+            counts.chequesDueAmount.short(),
+          ),
+          onTap: () => context.go(PaymentRoutes.list),
+        ),
+      if (canStaff && counts.staffChanges > 0)
+        _NeedRow(
+          icon: Icons.manage_history_outlined,
+          text: l10n.dashNeedsStaff(counts.staffChanges),
+        ),
+    ];
+    return MkCard(
+      title: l10n.dashNeedsTitle,
+      child: rows.isEmpty
+          ? Text(
+              l10n.dashNeedsNothing,
+              style: TextStyle(color: tokens.textMuted),
+            )
+          : Column(children: rows),
+    );
+  }
+}
+
+class _NeedRow extends StatelessWidget {
+  const _NeedRow({required this.icon, required this.text, this.onTap});
+
+  final IconData icon;
+  final String text;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      minTileHeight: 48,
+      leading: Icon(icon, color: MkColors.goldText),
+      title: Text(text),
+      trailing: onTap == null ? null : const Icon(Icons.chevron_right),
+      onTap: onTap,
+    );
+  }
+}

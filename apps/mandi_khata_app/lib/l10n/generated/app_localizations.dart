@@ -3543,6 +3543,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Payment limit without an Accountant (₹, 0 = none)'**
   String get settingBusinessMunshiPaymentLimit;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 lot in today} other{{count} lots in today}} · {amount} arhat earned'**
+  String dashHeroLots(int count, String amount);
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'No lots in yet today'**
+  String get dashHeroNoLots;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'We owe farmers'**
+  String get dashWeOweFarmers;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Others owe us'**
+  String get dashOthersOweUs;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Add farmer'**
+  String get dashActionAddFarmer;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Lots in today'**
+  String get dashStatLots;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{qtl} qtl'**
+  String dashStatQtl(String qtl);
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Arhat earned today'**
+  String get dashStatEarned;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid out today'**
+  String get dashStatPaid;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Receipts today'**
+  String get dashStatReceipts;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Arhat earned · last 10 days'**
+  String get dashChartTitle;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'No arhat earned in these days yet'**
+  String get dashChartEmpty;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Crop mix by sale value · {year}'**
+  String dashCropMixTitle(String year);
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'No posted sales this season yet'**
+  String get dashCropMixEmpty;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 lot} other{{count} lots}}'**
+  String dashCropMixLots(int count);
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Where the money is'**
+  String get dashMoneyTitle;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer khata · we owe'**
+  String get dashFarmersPayable;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer khata · farmers owe us'**
+  String get dashFarmersReceivable;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Other parties owe us'**
+  String get dashOthersReceivable;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Needs you today'**
+  String get dashNeedsTitle;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing needs you right now'**
+  String get dashNeedsNothing;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 change was rejected by the server} other{{count} changes were rejected by the server}}'**
+  String dashNeedsSyncErrors(int count);
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 cheque due} other{{count} cheques due}} · {amount}'**
+  String dashNeedsCheques(int count, String amount);
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 change by a munshi in the last 7 days} other{{count} changes by munshis in the last 7 days}}'**
+  String dashNeedsStaff(int count);
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'from posted lots'**
+  String get dashStatEarnedSub;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'to parties'**
+  String get dashStatPaidSub;
+
+  /// Dashboard (step 1.6).
+  ///
+  /// In en, this message translates to:
+  /// **'from parties'**
+  String get dashStatReceiptsSub;
 }
 
 class _AppLocalizationsDelegate

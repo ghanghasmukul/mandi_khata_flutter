@@ -2490,5 +2490,154 @@
   "settingBusinessMunshiPaymentLimit": "Payment limit without an Accountant (₹, 0 = none)",
   "@settingBusinessMunshiPaymentLimit": {
     "description": "Payments & receipts (step 1.5)."
+  },
+  "dashHeroLots": "{count, plural, =1{1 lot in today} other{{count} lots in today}} · {amount} arhat earned",
+  "@dashHeroLots": {
+    "description": "Dashboard (step 1.6).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dashHeroNoLots": "No lots in yet today",
+  "@dashHeroNoLots": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashWeOweFarmers": "We owe farmers",
+  "@dashWeOweFarmers": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashOthersOweUs": "Others owe us",
+  "@dashOthersOweUs": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashActionAddFarmer": "Add farmer",
+  "@dashActionAddFarmer": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashStatLots": "Lots in today",
+  "@dashStatLots": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashStatQtl": "{qtl} qtl",
+  "@dashStatQtl": {
+    "description": "Dashboard (step 1.6).",
+    "placeholders": {
+      "qtl": {
+        "type": "String"
+      }
+    }
+  },
+  "dashStatEarned": "Arhat earned today",
+  "@dashStatEarned": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashStatPaid": "Paid out today",
+  "@dashStatPaid": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashStatReceipts": "Receipts today",
+  "@dashStatReceipts": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashChartTitle": "Arhat earned · last 10 days",
+  "@dashChartTitle": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashChartEmpty": "No arhat earned in these days yet",
+  "@dashChartEmpty": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashCropMixTitle": "Crop mix by sale value · {year}",
+  "@dashCropMixTitle": {
+    "description": "Dashboard (step 1.6).",
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "dashCropMixEmpty": "No posted sales this season yet",
+  "@dashCropMixEmpty": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashCropMixLots": "{count, plural, =1{1 lot} other{{count} lots}}",
+  "@dashCropMixLots": {
+    "description": "Dashboard (step 1.6).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashMoneyTitle": "Where the money is",
+  "@dashMoneyTitle": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashFarmersPayable": "Farmer khata · we owe",
+  "@dashFarmersPayable": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashFarmersReceivable": "Farmer khata · farmers owe us",
+  "@dashFarmersReceivable": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashOthersReceivable": "Other parties owe us",
+  "@dashOthersReceivable": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashNeedsTitle": "Needs you today",
+  "@dashNeedsTitle": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashNeedsNothing": "Nothing needs you right now",
+  "@dashNeedsNothing": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashNeedsSyncErrors": "{count, plural, =1{1 change was rejected by the server} other{{count} changes were rejected by the server}}",
+  "@dashNeedsSyncErrors": {
+    "description": "Dashboard (step 1.6).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashNeedsCheques": "{count, plural, =1{1 cheque due} other{{count} cheques due}} · {amount}",
+  "@dashNeedsCheques": {
+    "description": "Dashboard (step 1.6).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "dashNeedsStaff": "{count, plural, =1{1 change by a munshi in the last 7 days} other{{count} changes by munshis in the last 7 days}}",
+  "@dashNeedsStaff": {
+    "description": "Dashboard (step 1.6).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashStatEarnedSub": "from posted lots",
+  "@dashStatEarnedSub": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashStatPaidSub": "to parties",
+  "@dashStatPaidSub": {
+    "description": "Dashboard (step 1.6)."
+  },
+  "dashStatReceiptsSub": "from parties",
+  "@dashStatReceiptsSub": {
+    "description": "Dashboard (step 1.6)."
   }
 }

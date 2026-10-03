@@ -1879,4 +1879,124 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get settingBusinessMunshiPaymentLimit =>
       'मुनीम के लिए भुगतान सीमा (₹, 0 = कोई नहीं)';
+
+  @override
+  String dashHeroLots(int count, String amount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'आज $count लॉट आए',
+    );
+    return '$_temp0 · $amount आढ़त कमाई';
+  }
+
+  @override
+  String get dashHeroNoLots => 'आज अभी तक कोई लॉट नहीं आया';
+
+  @override
+  String get dashWeOweFarmers => 'हमें किसानों को देना है';
+
+  @override
+  String get dashOthersOweUs => 'दूसरों से हमें लेना है';
+
+  @override
+  String get dashActionAddFarmer => 'किसान जोड़ें';
+
+  @override
+  String get dashStatLots => 'आज के लॉट';
+
+  @override
+  String dashStatQtl(String qtl) {
+    return '$qtl क्विंटल';
+  }
+
+  @override
+  String get dashStatEarned => 'आज की आढ़त कमाई';
+
+  @override
+  String get dashStatPaid => 'आज दिया गया';
+
+  @override
+  String get dashStatReceipts => 'आज की प्राप्ति';
+
+  @override
+  String get dashChartTitle => 'आढ़त कमाई · पिछले 10 दिन';
+
+  @override
+  String get dashChartEmpty => 'इन दिनों में अभी कोई आढ़त कमाई नहीं';
+
+  @override
+  String dashCropMixTitle(String year) {
+    return 'बिक्री मूल्य के अनुसार फ़सल · $year';
+  }
+
+  @override
+  String get dashCropMixEmpty => 'इस सीज़न में अभी कोई बिक्री पोस्ट नहीं हुई';
+
+  @override
+  String dashCropMixLots(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count लॉट',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dashMoneyTitle => 'पैसा कहाँ है';
+
+  @override
+  String get dashFarmersPayable => 'किसान खाता · हमें देना है';
+
+  @override
+  String get dashFarmersReceivable => 'किसान खाता · किसानों से लेना है';
+
+  @override
+  String get dashOthersReceivable => 'अन्य पार्टियों से लेना है';
+
+  @override
+  String get dashNeedsTitle => 'आज आपकी ज़रूरत है';
+
+  @override
+  String get dashNeedsNothing => 'अभी कुछ भी ज़रूरी नहीं';
+
+  @override
+  String dashNeedsSyncErrors(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बदलाव सर्वर ने अस्वीकार किए',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String dashNeedsCheques(int count, String amount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count चेक की तारीख आ गई',
+    );
+    return '$_temp0 · $amount';
+  }
+
+  @override
+  String dashNeedsStaff(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'पिछले 7 दिनों में मुंशी के $count बदलाव',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dashStatEarnedSub => 'पोस्ट किए लॉट से';
+
+  @override
+  String get dashStatPaidSub => 'पार्टियों को';
+
+  @override
+  String get dashStatReceiptsSub => 'पार्टियों से';
 }

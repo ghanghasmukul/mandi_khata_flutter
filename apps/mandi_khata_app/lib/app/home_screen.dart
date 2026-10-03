@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -8,19 +7,14 @@ import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
-import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/sign_out_flow.dart';
-import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
-import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
-import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
-import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mandi_khata_app/shared/language_switcher.dart';
 import 'package:mk_ui/mk_ui.dart';
 
-/// Placeholder start screen until the dashboard (step 1.6) exists: shows the
-/// active business, this device's code and the account menu.
+/// The start screen: top bar with the account menu above the dashboard.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -28,8 +22,6 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final membership = ref.watch(activeMembershipProvider);
-    final device = ref.watch(activeDeviceProvider);
-    final theme = Theme.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -44,79 +36,7 @@ class HomeScreen extends ConsumerWidget {
             onLanguage: (c) => ref.read(appLanguageProvider.notifier).set(c),
             actions: const [SyncStatusChip(), _AccountMenu()],
           ),
-          Expanded(
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(l10n.homePlaceholder, style: theme.textTheme.bodyLarge),
-                  if (device != null) ...[
-                    const SizedBox(height: MkSpacing.sm),
-                    Text(
-                      l10n.homeDeviceCode(device.code),
-                      style: theme.textTheme.bodySmall,
-                    ),
-                  ],
-                  const SizedBox(height: MkSpacing.xl),
-                  MkButton(
-                    label: l10n.partiesTitle,
-                    icon: Icons.groups_outlined,
-                    onPressed: () => context.go(PartyRoutes.list),
-                  ),
-                  const SizedBox(height: MkSpacing.sm),
-                  MkButton(
-                    label: l10n.arrivalsTitle,
-                    icon: Icons.agriculture_outlined,
-                    onPressed: () => context.go(ArrivalRoutes.list),
-                  ),
-                  const SizedBox(height: MkSpacing.sm),
-                  MkButton(
-                    label: l10n.paymentsTitle,
-                    icon: Icons.payments_outlined,
-                    onPressed: () => context.go(PaymentRoutes.list),
-                  ),
-                  const SizedBox(height: MkSpacing.sm),
-                  MkButton(
-                    label: l10n.khataDayBookTitle,
-                    icon: Icons.menu_book_outlined,
-                    onPressed: () => context.go(KhataRoutes.dayBook),
-                  ),
-                  const SizedBox(height: MkSpacing.sm),
-                  MkButton(
-                    label: l10n.cropsTitle,
-                    variant: MkButtonVariant.secondary,
-                    icon: Icons.grass_outlined,
-                    onPressed: () => context.go(CropRoutes.list),
-                  ),
-                  const SizedBox(height: MkSpacing.sm),
-                  MkButton(
-                    label: l10n.settingsTitle,
-                    variant: MkButtonVariant.secondary,
-                    icon: Icons.tune,
-                    onPressed: () => context.go(AppRoutes.settings),
-                  ),
-                  // Developer-only entry points; the routes do not exist in
-                  // release builds.
-                  if (!kReleaseMode) ...[
-                    const SizedBox(height: MkSpacing.xxl),
-                    MkButton(
-                      label: 'Design gallery',
-                      variant: MkButtonVariant.secondary,
-                      icon: Icons.palette_outlined,
-                      onPressed: () => context.go(AppRoutes.gallery),
-                    ),
-                    const SizedBox(height: MkSpacing.sm),
-                    MkButton(
-                      label: 'Sync lab',
-                      variant: MkButtonVariant.secondary,
-                      icon: Icons.sync,
-                      onPressed: () => context.go(AppRoutes.sync),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ),
+          const Expanded(child: DashboardView()),
         ],
       ),
     );
