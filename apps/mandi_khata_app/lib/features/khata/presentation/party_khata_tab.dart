@@ -11,6 +11,7 @@ import 'package:mandi_khata_app/features/khata/presentation/entry_actions.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_entry_dialog.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_line.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
+import 'package:mandi_khata_app/features/khata/presentation/statement_labels.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
 import 'package:mandi_khata_app/features/payments/presentation/record_payment_dialog.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
@@ -53,25 +54,9 @@ class _PartyKhataTabState extends ConsumerState<PartyKhataTab> {
         partyPlace: p.village,
         mobile: p.mobile,
       ),
-      labels: StatementLabels(
-        title: l10n.statementTitle,
+      labels: statementLabels(
+        l10n,
         period: period,
-        opening: l10n.statementOpening,
-        closing: l10n.statementClosing,
-        date: l10n.khataColDate,
-        details: l10n.khataColDetails,
-        udhaar: l10n.khataColUdhaar,
-        jama: l10n.khataColJama,
-        baki: l10n.khataColBaki,
-        totals: l10n.statementTotals,
-        balanceSide: (m) => m.isPositive
-            ? l10n.khataBalanceJama
-            : m.isNegative
-            ? l10n.khataBalanceUdhaarParty
-            : l10n.khataBalanceSettled,
-        page: l10n.statementPage,
-        reversedTag: l10n.khataTagReversed,
-        describe: l10n.entryDescription,
         formatDate: (d) => AppFormat.ledgerDate(context, d),
       ),
     );

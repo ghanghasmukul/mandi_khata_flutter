@@ -3705,6 +3705,402 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'from parties'**
   String get dashStatReceiptsSub;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Reports'**
+  String get reportsTitle;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Outstanding (baki)'**
+  String get reportOutstanding;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival register'**
+  String get reportArrivals;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Commission earned'**
+  String get reportCommission;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Payment register'**
+  String get reportPayments;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Party statements'**
+  String get reportStatements;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get reportColCode;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Party'**
+  String get reportColParty;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Village'**
+  String get reportColVillage;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'We owe'**
+  String get reportColWeOwe;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'They owe us'**
+  String get reportColTheyOwe;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Last entry'**
+  String get reportColLastEntry;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Days'**
+  String get reportColDays;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Age band'**
+  String get reportColAgeing;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Lot'**
+  String get reportColLot;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get reportColDate;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer'**
+  String get reportColFarmer;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Crop'**
+  String get reportColCrop;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Bags'**
+  String get reportColBags;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Qtl'**
+  String get reportColQtl;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Rate / qtl'**
+  String get reportColRate;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Gross'**
+  String get reportColGross;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Charges'**
+  String get reportColCharges;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Net to farmer'**
+  String get reportColNet;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Buyer'**
+  String get reportColBuyer;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get reportColStatus;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Lots'**
+  String get reportColLots;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Sale value'**
+  String get reportColSaleValue;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Arhat'**
+  String get reportColArhat;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt no.'**
+  String get reportColReceipt;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Mode'**
+  String get reportColMode;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Received'**
+  String get reportColReceived;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get reportColPaid;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
+  String get reportColReference;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening'**
+  String get reportColOpening;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar'**
+  String get reportColUdhaar;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Jama'**
+  String get reportColJama;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Closing baki'**
+  String get reportColClosing;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get reportTotal;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'0–30 days'**
+  String get reportAgeUpTo30;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'31–90 days'**
+  String get reportAgeUpTo90;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'91–180 days'**
+  String get reportAgeUpTo180;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Over 180 days'**
+  String get reportAgeOver180;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Ageing'**
+  String get reportAgeingTitle;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'As of {date}'**
+  String reportAsOf(String date);
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Period: {range}'**
+  String reportPeriod(String range);
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get reportSideAll;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'We owe'**
+  String get reportSidePayable;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'They owe us'**
+  String get reportSideReceivable;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'All crops'**
+  String get reportFilterAllCrops;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'All modes'**
+  String get reportFilterAllModes;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'All villages'**
+  String get reportFilterAllVillages;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'As of date'**
+  String get reportFilterAsOf;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'PDF'**
+  String get reportExportPdf;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Excel'**
+  String get reportExportExcel;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'CSV'**
+  String get reportExportCsv;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Print'**
+  String get reportPrint;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Exporting needs finance access'**
+  String get reportExportLocked;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'This report needs finance access'**
+  String get reportRestricted;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 row} other{{count} rows}}'**
+  String reportRows(int count);
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to show for these filters'**
+  String get reportEmpty;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Saved {name}'**
+  String reportExportSaved(String name);
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Could not export: {error}'**
+  String reportExportFailed(String error);
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'One PDF with a statement for every farmer of the village, each starting on a new page.'**
+  String get reportStatementsHelp;
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 farmer} other{{count} farmers}}'**
+  String reportStatementsCount(int count);
+
+  /// Reports (step 1.7).
+  ///
+  /// In en, this message translates to:
+  /// **'Statements PDF'**
+  String get reportStatementsPdf;
 }
 
 class _AppLocalizationsDelegate

@@ -16,6 +16,7 @@ export 'src/money.dart';
 export 'src/party_rules.dart';
 export 'src/payment_rules.dart';
 export 'src/permissions.dart';
+export 'src/report_table.dart';
 export 'src/settings/interest_rate.dart';
 export 'src/settings/setting_scope.dart';
 export 'src/settings/settings_resolver.dart';

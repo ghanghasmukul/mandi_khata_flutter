@@ -2024,4 +2024,227 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dashStatReceiptsSub => 'from parties';
+
+  @override
+  String get reportsTitle => 'Reports';
+
+  @override
+  String get reportOutstanding => 'Outstanding (baki)';
+
+  @override
+  String get reportArrivals => 'Arrival register';
+
+  @override
+  String get reportCommission => 'Commission earned';
+
+  @override
+  String get reportPayments => 'Payment register';
+
+  @override
+  String get reportStatements => 'Party statements';
+
+  @override
+  String get reportColCode => 'Code';
+
+  @override
+  String get reportColParty => 'Party';
+
+  @override
+  String get reportColVillage => 'Village';
+
+  @override
+  String get reportColWeOwe => 'We owe';
+
+  @override
+  String get reportColTheyOwe => 'They owe us';
+
+  @override
+  String get reportColLastEntry => 'Last entry';
+
+  @override
+  String get reportColDays => 'Days';
+
+  @override
+  String get reportColAgeing => 'Age band';
+
+  @override
+  String get reportColLot => 'Lot';
+
+  @override
+  String get reportColDate => 'Date';
+
+  @override
+  String get reportColFarmer => 'Farmer';
+
+  @override
+  String get reportColCrop => 'Crop';
+
+  @override
+  String get reportColBags => 'Bags';
+
+  @override
+  String get reportColQtl => 'Qtl';
+
+  @override
+  String get reportColRate => 'Rate / qtl';
+
+  @override
+  String get reportColGross => 'Gross';
+
+  @override
+  String get reportColCharges => 'Charges';
+
+  @override
+  String get reportColNet => 'Net to farmer';
+
+  @override
+  String get reportColBuyer => 'Buyer';
+
+  @override
+  String get reportColStatus => 'Status';
+
+  @override
+  String get reportColLots => 'Lots';
+
+  @override
+  String get reportColSaleValue => 'Sale value';
+
+  @override
+  String get reportColArhat => 'Arhat';
+
+  @override
+  String get reportColReceipt => 'Receipt no.';
+
+  @override
+  String get reportColMode => 'Mode';
+
+  @override
+  String get reportColReceived => 'Received';
+
+  @override
+  String get reportColPaid => 'Paid';
+
+  @override
+  String get reportColReference => 'Reference';
+
+  @override
+  String get reportColOpening => 'Opening';
+
+  @override
+  String get reportColUdhaar => 'Udhaar';
+
+  @override
+  String get reportColJama => 'Jama';
+
+  @override
+  String get reportColClosing => 'Closing baki';
+
+  @override
+  String get reportTotal => 'Total';
+
+  @override
+  String get reportAgeUpTo30 => '0–30 days';
+
+  @override
+  String get reportAgeUpTo90 => '31–90 days';
+
+  @override
+  String get reportAgeUpTo180 => '91–180 days';
+
+  @override
+  String get reportAgeOver180 => 'Over 180 days';
+
+  @override
+  String get reportAgeingTitle => 'Ageing';
+
+  @override
+  String reportAsOf(String date) {
+    return 'As of $date';
+  }
+
+  @override
+  String reportPeriod(String range) {
+    return 'Period: $range';
+  }
+
+  @override
+  String get reportSideAll => 'All';
+
+  @override
+  String get reportSidePayable => 'We owe';
+
+  @override
+  String get reportSideReceivable => 'They owe us';
+
+  @override
+  String get reportFilterAllCrops => 'All crops';
+
+  @override
+  String get reportFilterAllModes => 'All modes';
+
+  @override
+  String get reportFilterAllVillages => 'All villages';
+
+  @override
+  String get reportFilterAsOf => 'As of date';
+
+  @override
+  String get reportExportPdf => 'PDF';
+
+  @override
+  String get reportExportExcel => 'Excel';
+
+  @override
+  String get reportExportCsv => 'CSV';
+
+  @override
+  String get reportPrint => 'Print';
+
+  @override
+  String get reportExportLocked => 'Exporting needs finance access';
+
+  @override
+  String get reportRestricted => 'This report needs finance access';
+
+  @override
+  String reportRows(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count rows',
+      one: '1 row',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reportEmpty => 'Nothing to show for these filters';
+
+  @override
+  String reportExportSaved(String name) {
+    return 'Saved $name';
+  }
+
+  @override
+  String reportExportFailed(String error) {
+    return 'Could not export: $error';
+  }
+
+  @override
+  String get reportStatementsHelp =>
+      'One PDF with a statement for every farmer of the village, each starting on a new page.';
+
+  @override
+  String reportStatementsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count farmers',
+      one: '1 farmer',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reportStatementsPdf => 'Statements PDF';
 }

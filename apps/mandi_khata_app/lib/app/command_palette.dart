@@ -13,6 +13,7 @@ import 'package:mandi_khata_app/features/khata/presentation/khata_entry_dialog.d
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/record_payment_dialog.dart';
+import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -63,6 +64,12 @@ List<PaletteCommand> paletteCommands(
     label: l10n.khataDayBookTitle,
     icon: Icons.menu_book_outlined,
     run: (c) => c.go(KhataRoutes.dayBook),
+  ),
+  PaletteCommand(
+    id: 'reports',
+    label: l10n.reportsTitle,
+    icon: Icons.assessment_outlined,
+    run: (c) => c.go(ReportRoutes.list),
   ),
   PaletteCommand(
     id: 'parties',

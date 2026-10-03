@@ -13,6 +13,7 @@ import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_stats.
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -106,6 +107,7 @@ class _Browse extends StatelessWidget {
           Icons.menu_book_outlined,
           KhataRoutes.dayBook,
         ),
+        link(l10n.reportsTitle, Icons.assessment_outlined, ReportRoutes.list),
         link(l10n.cropsTitle, Icons.grass_outlined, CropRoutes.list),
         link(l10n.settingsTitle, Icons.tune, AppRoutes.settings),
         // Developer-only; the routes do not exist in release builds.

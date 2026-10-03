@@ -100,15 +100,41 @@ abstract final class StatementPdf {
     required StatementHeader header,
     required StatementLabels labels,
     required StatementFonts fonts,
+  }) => buildMany(
+    statements: [(statement: statement, header: header)],
+    labels: labels,
+    fonts: fonts,
+    title: '${labels.title} – ${header.partyName}',
+  );
+
+  /// One document with each party's statement starting on a new page (the
+  /// bulk print of a village). Page numbers count the whole document.
+  static Future<Uint8List> buildMany({
+    required List<({Statement statement, StatementHeader header})> statements,
+    required StatementLabels labels,
+    required StatementFonts fonts,
+    required String title,
   }) async {
     final doc = pw.Document(
-      title: '${labels.title} – ${header.partyName}',
+      title: title,
       theme: pw.ThemeData.withFont(
         base: fonts.regular,
         bold: fonts.bold,
         fontFallback: fonts.fallback,
       ),
     );
+    for (final s in statements) {
+      _addParty(doc, s.statement, s.header, labels);
+    }
+    return await doc.save();
+  }
+
+  static void _addParty(
+    pw.Document doc,
+    Statement statement,
+    StatementHeader header,
+    StatementLabels labels,
+  ) {
     const grey = PdfColors.grey700;
     const red = PdfColor.fromInt(0xFFB3261E);
     const green = PdfColor.fromInt(0xFF1B6B3A);
@@ -289,6 +315,5 @@ abstract final class StatementPdf {
         ],
       ),
     );
-    return await doc.save();
   }
 }

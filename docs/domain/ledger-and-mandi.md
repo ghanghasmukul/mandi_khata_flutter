@@ -86,6 +86,15 @@ net_to_farmer     = gross − farmer_deductions
 - **Reversing a payment** (entered by mistake) needs `entries.reverse`: same two reversals, dated like the payment; the payment row stays, marked `reversed` (never deleted, never edited otherwise). A posted payment is frozen: only `status`, `cheque_status` and `reversed_at` ever change (server trigger `private.guard_payment`).
 - Receipt / voucher PDF: A5 or 80 mm / 58 mm thermal (`print.receipt_size`), in the business language (`app.default_language`), with the business name; shared on Android, printed on Windows and macOS. A receipt printed right after recording also shows the party's baki.
 
+## Reports (v1)
+
+- All from the local database; each filters by tenant and sums in SQL. Export (print, PDF, Excel, CSV) needs `finance.view`; **Commission earned** is closed to members without it.
+- **Outstanding**: Σ jama − Σ udhaar per party up to the as-of day, non-zero only, split "we owe" / "they owe us". Ageing days = as-of day − the party's last entry date (either side): 0–30, 31–90, 91–180, over 180 (khata_core `Ageing`).
+- **Arrival register**: lots in the period except reversed / cancelled; charges = gross − net to farmer (commission and the charges the farmer bears).
+- **Commission**: posted lots per crop: lots, quintals, sale value, arhat earned.
+- **Payment register**: posted payments and receipts by mode (cash, bank, UPI, cheque), received and paid in separate columns.
+- **Party statements**: every farmer of a village (or all) as one PDF, one statement per page, same maths as the party khata.
+
 ## Karza (loans)
 
 - A loan is a document with its own interest config snapshot, due date, purpose, guarantor (optional).

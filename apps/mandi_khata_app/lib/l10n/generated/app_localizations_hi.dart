@@ -1999,4 +1999,225 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get dashStatReceiptsSub => 'पार्टियों से';
+
+  @override
+  String get reportsTitle => 'रिपोर्ट';
+
+  @override
+  String get reportOutstanding => 'बकाया (बाकी)';
+
+  @override
+  String get reportArrivals => 'आवक रजिस्टर';
+
+  @override
+  String get reportCommission => 'आढ़त कमाई';
+
+  @override
+  String get reportPayments => 'भुगतान रजिस्टर';
+
+  @override
+  String get reportStatements => 'पार्टी विवरण';
+
+  @override
+  String get reportColCode => 'कोड';
+
+  @override
+  String get reportColParty => 'पार्टी';
+
+  @override
+  String get reportColVillage => 'गाँव';
+
+  @override
+  String get reportColWeOwe => 'हमें देना है';
+
+  @override
+  String get reportColTheyOwe => 'हमें लेना है';
+
+  @override
+  String get reportColLastEntry => 'आखिरी एंट्री';
+
+  @override
+  String get reportColDays => 'दिन';
+
+  @override
+  String get reportColAgeing => 'अवधि';
+
+  @override
+  String get reportColLot => 'लॉट';
+
+  @override
+  String get reportColDate => 'तारीख';
+
+  @override
+  String get reportColFarmer => 'किसान';
+
+  @override
+  String get reportColCrop => 'फ़सल';
+
+  @override
+  String get reportColBags => 'बोरी';
+
+  @override
+  String get reportColQtl => 'क्विंटल';
+
+  @override
+  String get reportColRate => 'भाव / क्विंटल';
+
+  @override
+  String get reportColGross => 'कुल बिक्री';
+
+  @override
+  String get reportColCharges => 'कटौती';
+
+  @override
+  String get reportColNet => 'किसान को शुद्ध';
+
+  @override
+  String get reportColBuyer => 'खरीदार';
+
+  @override
+  String get reportColStatus => 'स्थिति';
+
+  @override
+  String get reportColLots => 'लॉट';
+
+  @override
+  String get reportColSaleValue => 'बिक्री मूल्य';
+
+  @override
+  String get reportColArhat => 'आढ़त';
+
+  @override
+  String get reportColReceipt => 'रसीद नं.';
+
+  @override
+  String get reportColMode => 'तरीका';
+
+  @override
+  String get reportColReceived => 'प्राप्त';
+
+  @override
+  String get reportColPaid => 'दिया';
+
+  @override
+  String get reportColReference => 'संदर्भ';
+
+  @override
+  String get reportColOpening => 'शुरुआती';
+
+  @override
+  String get reportColUdhaar => 'उधार';
+
+  @override
+  String get reportColJama => 'जमा';
+
+  @override
+  String get reportColClosing => 'अंतिम बाकी';
+
+  @override
+  String get reportTotal => 'कुल';
+
+  @override
+  String get reportAgeUpTo30 => '0–30 दिन';
+
+  @override
+  String get reportAgeUpTo90 => '31–90 दिन';
+
+  @override
+  String get reportAgeUpTo180 => '91–180 दिन';
+
+  @override
+  String get reportAgeOver180 => '180 दिन से ज़्यादा';
+
+  @override
+  String get reportAgeingTitle => 'पुराना बकाया';
+
+  @override
+  String reportAsOf(String date) {
+    return '$date तक';
+  }
+
+  @override
+  String reportPeriod(String range) {
+    return 'अवधि: $range';
+  }
+
+  @override
+  String get reportSideAll => 'सभी';
+
+  @override
+  String get reportSidePayable => 'हमें देना है';
+
+  @override
+  String get reportSideReceivable => 'हमें लेना है';
+
+  @override
+  String get reportFilterAllCrops => 'सभी फ़सलें';
+
+  @override
+  String get reportFilterAllModes => 'सभी तरीके';
+
+  @override
+  String get reportFilterAllVillages => 'सभी गाँव';
+
+  @override
+  String get reportFilterAsOf => 'इस तारीख तक';
+
+  @override
+  String get reportExportPdf => 'PDF';
+
+  @override
+  String get reportExportExcel => 'Excel';
+
+  @override
+  String get reportExportCsv => 'CSV';
+
+  @override
+  String get reportPrint => 'प्रिंट';
+
+  @override
+  String get reportExportLocked => 'एक्सपोर्ट के लिए वित्त अनुमति चाहिए';
+
+  @override
+  String get reportRestricted => 'इस रिपोर्ट के लिए वित्त अनुमति चाहिए';
+
+  @override
+  String reportRows(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count पंक्तियाँ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reportEmpty => 'इन फ़िल्टर के लिए कुछ नहीं है';
+
+  @override
+  String reportExportSaved(String name) {
+    return '$name सेव हुई';
+  }
+
+  @override
+  String reportExportFailed(String error) {
+    return 'एक्सपोर्ट नहीं हुआ: $error';
+  }
+
+  @override
+  String get reportStatementsHelp =>
+      'गाँव के हर किसान का विवरण एक PDF में, हर एक नए पन्ने से शुरू।';
+
+  @override
+  String reportStatementsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count किसान',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reportStatementsPdf => 'विवरण PDF';
 }

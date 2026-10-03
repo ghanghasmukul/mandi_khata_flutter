@@ -23,6 +23,8 @@ import 'package:mandi_khata_app/features/parties/presentation/party_form_screen.
 import 'package:mandi_khata_app/features/payments/presentation/bank_accounts_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payment_detail_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
+import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
 import 'package:mandi_khata_app/features/settings/presentation/settings_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -155,6 +157,17 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: KhataRoutes.dayBook,
         builder: (context, state) => const DayBookScreen(),
+      ),
+      GoRoute(
+        path: ReportRoutes.list,
+        builder: (context, state) {
+          final kind = ReportKind.values
+              .asNameMap()[state.uri.queryParameters['r']];
+          return ReportsScreen(
+            key: ValueKey(kind),
+            initial: kind ?? ReportKind.outstanding,
+          );
+        },
       ),
       GoRoute(
         path: CropRoutes.list,
