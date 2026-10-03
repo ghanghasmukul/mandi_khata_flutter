@@ -146,6 +146,9 @@ void main() {
           roles: {PartyRole.farmer},
           village: 'Rampura',
           mobile: '9814022110',
+          bankName: 'State Bank of India',
+          bankAccountMasked: 'XXXXXX4321',
+          ifsc: 'SBIN0001234',
         ),
         Party(
           id: 'p2',
@@ -272,6 +275,27 @@ void main() {
     await pump(tester, MemberRole.munshi, start: '/parties/p1');
     expect(find.byTooltip('Edit'), findsOneWidget);
     expect(find.byTooltip('Delete'), findsNothing);
+  });
+
+  testWidgets('bank details need finance.view: a munshi does not see them', (
+    tester,
+  ) async {
+    await pump(tester, MemberRole.munshi, start: '/parties/p1');
+    expect(find.text('9814022110'), findsOneWidget);
+    expect(find.text('State Bank of India'), findsNothing);
+    expect(find.text('XXXXXX4321'), findsNothing);
+    expect(find.text('SBIN0001234'), findsNothing);
+  });
+
+  testWidgets('bank details are shown to the owner and the accountant', (
+    tester,
+  ) async {
+    for (final role in [MemberRole.owner, MemberRole.accountant]) {
+      await pump(tester, role, start: '/parties/p1');
+      expect(find.text('State Bank of India'), findsOneWidget, reason: '$role');
+      expect(find.text('XXXXXX4321'), findsOneWidget);
+      expect(find.text('SBIN0001234'), findsOneWidget);
+    }
   });
 
   testWidgets('owner deletes after confirming', (tester) async {

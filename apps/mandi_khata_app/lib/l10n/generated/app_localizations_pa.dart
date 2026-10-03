@@ -3048,4 +3048,24 @@ class AppLocalizationsPa extends AppLocalizations {
   @override
   String get onboardingCropsEmpty =>
       'ਇਸ ਡਿਵਾਈਸ ਤੇ ਹਾਲੇ ਕੋਈ ਫ਼ਸਲ ਨਹੀਂ ਆਈ। ਉਹ ਸਰਵਰ ਤੋਂ ਸਿੰਕ ਹੁੰਦੀਆਂ ਹਨ; ਬਾਅਦ ਵਿੱਚ ਫ਼ਸਲਾਂ ਵਿੱਚ ਚੁਣ ਸਕਦੇ ਹੋ।';
+
+  @override
+  String get onboardingInterestRatePerMonthLabel =>
+      'ਵਿਆਜ ਦਰ (₹ ਪ੍ਰਤੀ 100 ਪ੍ਰਤੀ ਮਹੀਨਾ)';
+
+  @override
+  String updateAvailableTitle(String version) {
+    return 'ਮੰਡੀ ਖਾਤਾ $version ਉਪਲਬਧ ਹੈ';
+  }
+
+  @override
+  String updateRequiredTitle(String version) {
+    return 'ਕਿਰਪਾ ਕਰਕੇ ਮੰਡੀ ਖਾਤਾ $version ਵਿੱਚ ਅੱਪਡੇਟ ਕਰੋ। ਇਹ ਸੰਸਕਰਣ ਹੁਣ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ।';
+  }
+
+  @override
+  String get updateDownload => 'ਡਾਊਨਲੋਡ';
+
+  @override
+  String get updateLater => 'ਬਾਅਦ ਵਿੱਚ';
 }

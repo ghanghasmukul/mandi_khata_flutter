@@ -23,6 +23,7 @@ dependencies:
   flutter_riverpod: ^3.4.3
   freezed_annotation: ^3.1.0
   go_router: ^18.0.2
+  http: ^1.6.0
   intl: ^0.20.2
   json_annotation: ^4.12.0
   khata_core:
@@ -31,6 +32,7 @@ dependencies:
   logging: ^1.3.0
   mk_ui:
     path: ../../packages/mk_ui
+  package_info_plus: ^10.2.1
   path: ^1.9.1
   path_provider: ^2.1.6
   pdf: ^3.13.1
@@ -45,6 +47,7 @@ dependencies:
   sqlite3_web: 0.9.4
   sqlite_async: ^0.14.5
   supabase_flutter: ^2.17.2
+  url_launcher: ^6.3.2
   uuid: ^4.6.0
 
 dev_dependencies:
@@ -53,7 +56,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^4.0.1
-  http: ^1.6.0
   integration_test:
     sdk: flutter
   json_serializable: ^6.14.1

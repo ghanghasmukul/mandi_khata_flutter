@@ -120,13 +120,16 @@ class PartyDetailScreen extends ConsumerWidget {
   }
 }
 
-class _Body extends StatelessWidget {
+class _Body extends ConsumerWidget {
   const _Body({required this.party});
 
   final Party party;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Bank details are finance details (docs/domain/ledger-and-mandi.md):
+    // a munshi sees the party, not where the money goes.
+    final canFinance = ref.watch(canProvider(Permission.financeView));
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final p = party;
@@ -172,9 +175,11 @@ class _Body extends StatelessWidget {
                     fact(l10n.partyFieldMobile, p.mobile),
                     fact(l10n.partyFieldAltMobile, p.altMobile),
                     fact(l10n.partyFieldVillage, place.isEmpty ? null : place),
-                    fact(l10n.partyFieldBankName, p.bankName),
-                    fact(l10n.partyFieldBankAccount, p.bankAccountMasked),
-                    fact(l10n.partyFieldIfsc, p.ifsc),
+                    if (canFinance) ...[
+                      fact(l10n.partyFieldBankName, p.bankName),
+                      fact(l10n.partyFieldBankAccount, p.bankAccountMasked),
+                      fact(l10n.partyFieldIfsc, p.ifsc),
+                    ],
                     fact(l10n.partyFieldGstin, p.gstin),
                   ],
                 ),

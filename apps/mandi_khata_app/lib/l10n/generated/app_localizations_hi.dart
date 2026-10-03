@@ -3045,4 +3045,24 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get onboardingCropsEmpty =>
       'इस डिवाइस पर अभी कोई फसल नहीं आई। वे सर्वर से सिंक होती हैं; बाद में फसलें में चुन सकते हैं।';
+
+  @override
+  String get onboardingInterestRatePerMonthLabel =>
+      'ब्याज दर (₹ प्रति 100 प्रति माह)';
+
+  @override
+  String updateAvailableTitle(String version) {
+    return 'मंडी खाता $version उपलब्ध है';
+  }
+
+  @override
+  String updateRequiredTitle(String version) {
+    return 'कृपया मंडी खाता $version में अपडेट करें। यह संस्करण अब समर्थित नहीं है।';
+  }
+
+  @override
+  String get updateDownload => 'डाउनलोड';
+
+  @override
+  String get updateLater => 'बाद में';
 }

@@ -3080,4 +3080,24 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get onboardingCropsEmpty =>
       'No crops have arrived on this device yet. They sync from the server; you can pick them later under Crops.';
+
+  @override
+  String get onboardingInterestRatePerMonthLabel =>
+      'Interest rate (₹ per 100 per month)';
+
+  @override
+  String updateAvailableTitle(String version) {
+    return 'Mandi Khata $version is available';
+  }
+
+  @override
+  String updateRequiredTitle(String version) {
+    return 'Please update Mandi Khata to $version. This version is no longer supported.';
+  }
+
+  @override
+  String get updateDownload => 'Download';
+
+  @override
+  String get updateLater => 'Later';
 }

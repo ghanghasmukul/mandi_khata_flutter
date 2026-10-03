@@ -909,5 +909,10 @@
   "obDoneTitle": "शुरुआती बाकी इम्पोर्ट हो गया",
   "obDoneBody": "{entries} बाकी दर्ज हुए, {parties} पार्टियाँ जुड़ीं। उधार {udhaar}, जमा {jama}।",
   "obDoneParties": "पार्टियाँ देखें",
-  "onboardingCropsEmpty": "इस डिवाइस पर अभी कोई फसल नहीं आई। वे सर्वर से सिंक होती हैं; बाद में फसलें में चुन सकते हैं।"
+  "onboardingCropsEmpty": "इस डिवाइस पर अभी कोई फसल नहीं आई। वे सर्वर से सिंक होती हैं; बाद में फसलें में चुन सकते हैं।",
+  "onboardingInterestRatePerMonthLabel": "ब्याज दर (₹ प्रति 100 प्रति माह)",
+  "updateAvailableTitle": "मंडी खाता {version} उपलब्ध है",
+  "updateRequiredTitle": "कृपया मंडी खाता {version} में अपडेट करें। यह संस्करण अब समर्थित नहीं है।",
+  "updateDownload": "डाउनलोड",
+  "updateLater": "बाद में"
 }

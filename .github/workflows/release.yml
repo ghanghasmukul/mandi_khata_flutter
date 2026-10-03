@@ -10,6 +10,8 @@
 # Production values are NOT in the repo. They come from GitHub:
 #   variables  PROD_SUPABASE_URL, PROD_SUPABASE_ANON_KEY, PROD_POWERSYNC_URL
 #   secret     PROD_SENTRY_DSN (optional)
+#   variables  PROD_UPDATE_MANIFEST_URL, PROD_DOWNLOAD_BASE_URL, APP_MIN_SUPPORTED,
+#              PROD_ANDROID_STORE_URL (all optional; see docs/ops.md, in-app updates)
 # They are public client values (anon key, never the service-role key).
 #
 # SIGNING IS OPTIONAL and UNTESTED until you add real certificates:
@@ -119,6 +121,7 @@ jobs:
       PROD_SUPABASE_ANON_KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
       PROD_POWERSYNC_URL: ${{ vars.PROD_POWERSYNC_URL }}
       PROD_SENTRY_DSN: ${{ secrets.PROD_SENTRY_DSN }}
+      PROD_UPDATE_MANIFEST_URL: ${{ vars.PROD_UPDATE_MANIFEST_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -157,6 +160,7 @@ jobs:
             echo "SUPABASE_ANON_KEY=$PROD_SUPABASE_ANON_KEY"
             echo "POWERSYNC_URL=$PROD_POWERSYNC_URL"
             echo "SENTRY_DSN=$PROD_SENTRY_DSN"
+            echo "UPDATE_MANIFEST_URL=$PROD_UPDATE_MANIFEST_URL"
           } > "$RUNNER_TEMP/env.prod"
       - name: Build
         working-directory: apps/mandi_khata_app
@@ -184,6 +188,7 @@ jobs:
       PROD_SUPABASE_ANON_KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
       PROD_POWERSYNC_URL: ${{ vars.PROD_POWERSYNC_URL }}
       PROD_SENTRY_DSN: ${{ secrets.PROD_SENTRY_DSN }}
+      PROD_UPDATE_MANIFEST_URL: ${{ vars.PROD_UPDATE_MANIFEST_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -200,6 +205,7 @@ jobs:
             echo "SUPABASE_ANON_KEY=$PROD_SUPABASE_ANON_KEY"
             echo "POWERSYNC_URL=$PROD_POWERSYNC_URL"
             echo "SENTRY_DSN=$PROD_SENTRY_DSN"
+            echo "UPDATE_MANIFEST_URL=$PROD_UPDATE_MANIFEST_URL"
           } > "$RUNNER_TEMP/env.prod"
       - name: Build
         working-directory: apps/mandi_khata_app
@@ -244,6 +250,7 @@ jobs:
       PROD_SUPABASE_ANON_KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
       PROD_POWERSYNC_URL: ${{ vars.PROD_POWERSYNC_URL }}
       PROD_SENTRY_DSN: ${{ secrets.PROD_SENTRY_DSN }}
+      PROD_UPDATE_MANIFEST_URL: ${{ vars.PROD_UPDATE_MANIFEST_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -260,6 +267,7 @@ jobs:
             echo "SUPABASE_ANON_KEY=$PROD_SUPABASE_ANON_KEY"
             echo "POWERSYNC_URL=$PROD_POWERSYNC_URL"
             echo "SENTRY_DSN=$PROD_SENTRY_DSN"
+            echo "UPDATE_MANIFEST_URL=$PROD_UPDATE_MANIFEST_URL"
           } > "$RUNNER_TEMP/env.prod"
       - name: Build
         working-directory: apps/mandi_khata_app
@@ -321,6 +329,17 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
+      - name: Write latest.json (the in-app update manifest)
+        env:
+          VERSION: ${{ needs.preflight.outputs.version }}
+          BASE: ${{ vars.PROD_DOWNLOAD_BASE_URL || format('https://github.com/{0}/releases/download/{1}', github.repository, github.ref_name) }}
+          MIN_SUPPORTED: ${{ vars.APP_MIN_SUPPORTED || '1.0.0' }}
+          ANDROID_URL: ${{ vars.PROD_ANDROID_STORE_URL }}
+        run: |
+          jq -n --arg v "$VERSION" --arg min "$MIN_SUPPORTED" --arg base "$BASE" --arg android "$ANDROID_URL" \
+            '{version: $v, min_supported: $min, downloads: ({windows: ($base + "/MandiKhata-Setup-" + $v + ".exe"), macos: ($base + "/MandiKhata-" + $v + ".dmg")} + (if $android == "" then {} else {android: $android} end))}' \
+            > artifacts/latest.json
+          cat artifacts/latest.json
       - name: Create draft release
         env:
           GH_TOKEN: ${{ github.token }}

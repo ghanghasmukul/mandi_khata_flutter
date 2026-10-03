@@ -326,7 +326,11 @@ class _InterestStepState extends ConsumerState<InterestStep> {
         MkTextField(
           key: const ValueKey('interest-rate'),
           controller: _rate,
-          label: l10n.settingLabel('interest.rate_pa'),
+          // The label follows the unit: "(% per year)" above a per-month
+          // field misled owners (step 1.9 gap).
+          label: _perMonth
+              ? l10n.onboardingInterestRatePerMonthLabel
+              : l10n.settingLabel('interest.rate_pa'),
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
           prefix: Padding(
             padding: const EdgeInsets.only(left: 12, right: 6),

@@ -108,10 +108,12 @@ class DashboardRepository {
         "SUM(CASE side WHEN 'jama' THEN amount_paise ELSE -amount_paise END) "
         'AS b FROM ledger_entries '
         'WHERE tenant_id = ?1 GROUP BY party_id), '
-        'tagged AS (SELECT b, EXISTS (SELECT 1 FROM party_roles r '
-        'WHERE r.tenant_id = ?1 AND r.party_id = bal.party_id '
-        "AND r.role = 'farmer' AND r.deleted_at IS NULL) AS farmer "
-        'FROM bal) '
+        // `IN (subquery)`: a correlated EXISTS per party picked the
+        // (tenant, role) index and scanned every farmer for every party
+        // (8.5 s with 5,000 parties; a joined CTE was still 0.5 s).
+        'tagged AS (SELECT b, party_id IN (SELECT party_id FROM party_roles '
+        "WHERE tenant_id = ?1 AND role = 'farmer' AND deleted_at IS NULL) "
+        'AS farmer FROM bal) '
         'SELECT '
         'COALESCE(SUM(CASE WHEN farmer AND b > 0 THEN b END), 0) AS payable, '
         'COALESCE(SUM(CASE WHEN farmer AND b < 0 THEN -b END), 0) AS f_recv, '

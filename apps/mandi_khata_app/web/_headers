@@ -1,0 +1,32 @@
+# Cloudflare Pages response headers (copied into build/web by `flutter build web`).
+# Firebase Hosting users: the same rules are in docs/ops.md as firebase.json.
+#
+# PowerSync / sqlite3 WASM runs in a worker and uses SharedArrayBuffer, which the
+# browser only allows on a cross-origin-isolated page: COOP + COEP below.
+# `credentialless` (not `require-corp`) so nothing cross-origin has to send a
+# CORP header; the app loads no third-party scripts, fonts or images.
+/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Entry files must never be stale, or a new release is not picked up.
+/index.html
+  Cache-Control: no-cache
+/flutter_bootstrap.js
+  Cache-Control: no-cache
+/flutter_service_worker.js
+  Cache-Control: no-cache
+/latest.json
+  Cache-Control: no-cache
+/manifest.json
+  Cache-Control: no-cache
+
+# Engine and database workers: big, change only with a release.
+/canvaskit/*
+  Cache-Control: public, max-age=86400
+/sqlite3.wasm
+  Cache-Control: public, max-age=86400
+/powersync_db.worker.js
+  Cache-Control: public, max-age=86400

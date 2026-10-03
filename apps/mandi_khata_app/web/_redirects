@@ -1,0 +1,4 @@
+# Cloudflare Pages: single-page app fallback. Real files (main.dart.js, wasm,
+# assets) are served as they are; every other path (e.g. a refresh on
+# /parties/123) gets index.html so go_router can take over.
+/*  /index.html  200

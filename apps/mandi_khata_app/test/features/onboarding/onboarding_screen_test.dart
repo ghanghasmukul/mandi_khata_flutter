@@ -264,10 +264,18 @@ void main() {
       ),
       findsOneWidget,
     );
+    expect(find.text('Interest rate (% per year)'), findsOneWidget);
     await t.tap(find.byKey(const ValueKey('interest-unit-month')));
     await t.pump();
-    // 18% a year reads as 1.5 per 100 per month.
+    // 18% a year reads as 1.5 per 100 per month, and the label says so.
     expect(find.text('1.5'), findsOneWidget);
+    expect(find.text('Interest rate (₹ per 100 per month)'), findsOneWidget);
+    expect(find.text('Interest rate (% per year)'), findsNothing);
+    await t.tap(find.byKey(const ValueKey('interest-unit-pa')));
+    await t.pump();
+    expect(find.text('Interest rate (% per year)'), findsOneWidget);
+    await t.tap(find.byKey(const ValueKey('interest-unit-month')));
+    await t.pump();
     await next(t);
     expect(actions.settings['interest.rate_pa'], '18');
     expect(actions.settings['interest.rate_unit_display'], 'per100_per_month');

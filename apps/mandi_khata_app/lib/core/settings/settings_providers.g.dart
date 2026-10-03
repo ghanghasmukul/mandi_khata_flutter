@@ -166,7 +166,7 @@ final class SettingRowsProvider
   }
 }
 
-String _$settingRowsHash() => r'155058ed346fe2da55d522fc431be9de0957720a';
+String _$settingRowsHash() => r'09a8fa9d88694d79715a92cc40ab722e7985fe6f';
 
 /// Setting rows of the active business that can apply to [target]. Live.
 

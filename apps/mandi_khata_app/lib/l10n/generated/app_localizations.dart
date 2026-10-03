@@ -5565,6 +5565,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No crops have arrived on this device yet. They sync from the server; you can pick them later under Crops.'**
   String get onboardingCropsEmpty;
+
+  /// Onboarding interest step: label of the rate field when the unit is rupees per 100 per month.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest rate (₹ per 100 per month)'**
+  String get onboardingInterestRatePerMonthLabel;
+
+  /// Update banner: a newer version exists.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi Khata {version} is available'**
+  String updateAvailableTitle(String version);
+
+  /// Update banner: this version is below the minimum supported.
+  ///
+  /// In en, this message translates to:
+  /// **'Please update Mandi Khata to {version}. This version is no longer supported.'**
+  String updateRequiredTitle(String version);
+
+  /// Update banner button: open the download page.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get updateDownload;
+
+  /// Update banner button: hide the banner for now.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get updateLater;
 }
 
 class _AppLocalizationsDelegate

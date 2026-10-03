@@ -4060,5 +4060,35 @@
   "onboardingCropsEmpty": "No crops have arrived on this device yet. They sync from the server; you can pick them later under Crops.",
   "@onboardingCropsEmpty": {
     "description": "Onboarding crops step, no crops synced."
+  },
+  "onboardingInterestRatePerMonthLabel": "Interest rate (₹ per 100 per month)",
+  "@onboardingInterestRatePerMonthLabel": {
+    "description": "Onboarding interest step: label of the rate field when the unit is rupees per 100 per month."
+  },
+  "updateAvailableTitle": "Mandi Khata {version} is available",
+  "@updateAvailableTitle": {
+    "description": "Update banner: a newer version exists.",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "updateRequiredTitle": "Please update Mandi Khata to {version}. This version is no longer supported.",
+  "@updateRequiredTitle": {
+    "description": "Update banner: this version is below the minimum supported.",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "updateDownload": "Download",
+  "@updateDownload": {
+    "description": "Update banner button: open the download page."
+  },
+  "updateLater": "Later",
+  "@updateLater": {
+    "description": "Update banner button: hide the banner for now."
   }
 }

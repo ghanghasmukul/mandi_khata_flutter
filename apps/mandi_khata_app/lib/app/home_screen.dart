@@ -7,6 +7,7 @@ import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/core/update/update_banner.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/sign_out_flow.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_screen.dart';
@@ -36,6 +37,7 @@ class HomeScreen extends ConsumerWidget {
             onLanguage: (c) => ref.read(appLanguageProvider.notifier).set(c),
             actions: const [SyncStatusChip(), _AccountMenu()],
           ),
+          const UpdateBanner(),
           const Expanded(child: DashboardView()),
         ],
       ),

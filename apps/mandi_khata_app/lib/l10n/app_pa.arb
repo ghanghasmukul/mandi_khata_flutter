@@ -909,5 +909,10 @@
   "obDoneTitle": "ਸ਼ੁਰੂਆਤੀ ਬਾਕੀ ਇੰਪੋਰਟ ਹੋ ਗਿਆ",
   "obDoneBody": "{entries} ਬਾਕੀ ਦਰਜ ਹੋਏ, {parties} ਪਾਰਟੀਆਂ ਜੁੜੀਆਂ। ਉਧਾਰ {udhaar}, ਜਮ੍ਹਾ {jama}।",
   "obDoneParties": "ਪਾਰਟੀਆਂ ਵੇਖੋ",
-  "onboardingCropsEmpty": "ਇਸ ਡਿਵਾਈਸ ਤੇ ਹਾਲੇ ਕੋਈ ਫ਼ਸਲ ਨਹੀਂ ਆਈ। ਉਹ ਸਰਵਰ ਤੋਂ ਸਿੰਕ ਹੁੰਦੀਆਂ ਹਨ; ਬਾਅਦ ਵਿੱਚ ਫ਼ਸਲਾਂ ਵਿੱਚ ਚੁਣ ਸਕਦੇ ਹੋ।"
+  "onboardingCropsEmpty": "ਇਸ ਡਿਵਾਈਸ ਤੇ ਹਾਲੇ ਕੋਈ ਫ਼ਸਲ ਨਹੀਂ ਆਈ। ਉਹ ਸਰਵਰ ਤੋਂ ਸਿੰਕ ਹੁੰਦੀਆਂ ਹਨ; ਬਾਅਦ ਵਿੱਚ ਫ਼ਸਲਾਂ ਵਿੱਚ ਚੁਣ ਸਕਦੇ ਹੋ।",
+  "onboardingInterestRatePerMonthLabel": "ਵਿਆਜ ਦਰ (₹ ਪ੍ਰਤੀ 100 ਪ੍ਰਤੀ ਮਹੀਨਾ)",
+  "updateAvailableTitle": "ਮੰਡੀ ਖਾਤਾ {version} ਉਪਲਬਧ ਹੈ",
+  "updateRequiredTitle": "ਕਿਰਪਾ ਕਰਕੇ ਮੰਡੀ ਖਾਤਾ {version} ਵਿੱਚ ਅੱਪਡੇਟ ਕਰੋ। ਇਹ ਸੰਸਕਰਣ ਹੁਣ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ।",
+  "updateDownload": "ਡਾਊਨਲੋਡ",
+  "updateLater": "ਬਾਅਦ ਵਿੱਚ"
 }

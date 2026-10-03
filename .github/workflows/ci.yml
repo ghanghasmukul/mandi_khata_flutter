@@ -59,6 +59,10 @@ jobs:
         run: flutter test
       - name: App tests
         working-directory: apps/mandi_khata_app
+        # Shared runners are slower than a laptop: the performance test
+        # (lists < 100 ms, reports < 2 s) allows 3x here.
+        env:
+          MK_PERF_SLACK: '3'
         run: flutter test
 
   database:
@@ -78,6 +82,27 @@ jobs:
         run: supabase test db
       - name: Lint
         run: supabase db lint --fail-on error
+
+  sync-e2e:
+    name: Two-device sync test (local Supabase stack)
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Start the local stack (database, auth, API)
+        run: supabase start -x studio,imgproxy,edge-runtime,logflare,vector,realtime,storage-api,mailpit
+      - name: Two devices create lots offline, then sync
+        run: scripts/hardening/two_device_sync.sh
 
   build-web:
     name: Build web

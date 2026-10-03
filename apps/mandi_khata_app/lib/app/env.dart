@@ -9,6 +9,12 @@ abstract final class Env {
   static const powersyncUrl = String.fromEnvironment('POWERSYNC_URL');
   static const sentryDsn = String.fromEnvironment('SENTRY_DSN');
 
+  /// Where `latest.json` lives (see docs/ops.md). Empty turns the in-app
+  /// update check off, which is the default for dev and CI builds.
+  static const updateManifestUrl = String.fromEnvironment(
+    'UPDATE_MANIFEST_URL',
+  );
+
   /// Which backend this build targets: `dev` or `prod` (empty when built with
   /// no env file, e.g. in CI). Comes from `APP_ENV` in the env file.
   static const appEnv = String.fromEnvironment('APP_ENV');

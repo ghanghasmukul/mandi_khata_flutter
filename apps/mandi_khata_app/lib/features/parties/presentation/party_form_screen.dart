@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
+import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_providers.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
@@ -239,19 +240,24 @@ class _PartyFormScreenState extends ConsumerState<PartyFormScreen> {
           PartyFormSection(
             title: l10n.partySectionBank,
             children: [
-              _field(_c.bankName, l10n.partyFieldBankName),
-              _field(
-                _c.bankAccount,
-                l10n.partyFieldBankAccount,
-                hint: l10n.partyBankAccountHint,
-                keyboard: TextInputType.number,
-              ),
-              _field(
-                _c.ifsc,
-                l10n.partyFieldIfsc,
-                field: PartyField.ifsc,
-                formatters: PartyInputFormatters.upperCode,
-              ),
+              // Bank details need finance.view. The hidden controllers keep
+              // their values, so saving does not blank what a munshi cannot
+              // see.
+              if (ref.watch(canProvider(Permission.financeView))) ...[
+                _field(_c.bankName, l10n.partyFieldBankName),
+                _field(
+                  _c.bankAccount,
+                  l10n.partyFieldBankAccount,
+                  hint: l10n.partyBankAccountHint,
+                  keyboard: TextInputType.number,
+                ),
+                _field(
+                  _c.ifsc,
+                  l10n.partyFieldIfsc,
+                  field: PartyField.ifsc,
+                  formatters: PartyInputFormatters.upperCode,
+                ),
+              ],
               _field(
                 _c.gstin,
                 l10n.partyFieldGstin,

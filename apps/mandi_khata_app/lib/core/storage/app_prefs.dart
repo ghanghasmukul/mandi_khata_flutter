@@ -33,6 +33,7 @@ class AppPrefs {
   /// Device-level UI choices survive sign-out, so they use another prefix
   /// that [clearAll] leaves alone.
   static const _uiLanguage = 'ui.language';
+  static const _dismissedUpdate = 'ui.dismissedUpdate';
 
   /// The user whose data is in the local database. A different user signing
   /// in on this install starts from an empty database.
@@ -106,6 +107,12 @@ class AppPrefs {
   String? get uiLanguage => _prefs.getString(_uiLanguage);
   Future<void> setUiLanguage(String code) =>
       _prefs.setString(_uiLanguage, code);
+
+  /// The update banner was hidden for this version ("Later"); a newer one
+  /// shows it again. Device-level, so it survives sign-out.
+  String? get dismissedUpdate => _prefs.getString(_dismissedUpdate);
+  Future<void> setDismissedUpdate(String version) =>
+      _prefs.setString(_dismissedUpdate, version);
 
   /// Forgets everything above except the UI language (sign-out, or another
   /// user signing in).

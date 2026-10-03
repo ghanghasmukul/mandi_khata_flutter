@@ -90,7 +90,7 @@ final class TenantHasDataProvider
   }
 }
 
-String _$tenantHasDataHash() => r'6f6e633faa67f477abf394fa32b8e9f01da381c9';
+String _$tenantHasDataHash() => r'27f0e8203a02d4b87b643d41cd427f922b5e9624';
 
 /// The business's own row (name, state, mandi…). Live.
 
@@ -136,7 +136,7 @@ final class TenantRowProvider
   }
 }
 
-String _$tenantRowHash() => r'8df17d292d817d96f35d1f29a0b93b16460975ad';
+String _$tenantRowHash() => r'9837181e405df3dc468999397fb19fda7bb4fd4a';
 
 /// `onboarding.status` of the active business; null while settings load.
 

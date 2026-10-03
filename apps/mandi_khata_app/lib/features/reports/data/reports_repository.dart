@@ -193,9 +193,9 @@ class ReportsRepository {
     final parties = await _db.getAll(
       'SELECT p.id, p.code, p.name, p.village, p.mobile FROM parties p '
       'WHERE p.tenant_id = ?1 AND p.deleted_at IS NULL AND (?2 IS NULL '
-      'OR p.village = ?2) AND EXISTS (SELECT 1 FROM party_roles r '
-      'WHERE r.party_id = p.id AND r.tenant_id = p.tenant_id '
-      "AND r.role = 'farmer' AND r.deleted_at IS NULL) "
+      'OR p.village = ?2) AND p.id IN (SELECT r.party_id FROM party_roles r '
+      "WHERE r.tenant_id = ?1 AND r.role = 'farmer' "
+      'AND r.deleted_at IS NULL) '
       'ORDER BY p.name COLLATE NOCASE, p.code',
       [tenantId, village],
     );
