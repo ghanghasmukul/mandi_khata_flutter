@@ -33,7 +33,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [ ] 1.8 Users, roles, audit log screen
 - [ ] 1.9 Onboarding & opening balances import
 - [ ] 1.10 Hardening & pilot build
-- [ ] 1.11 Production environment & release pipeline (🧑 approve prod migration)
+- [x] 1.11 Production environment & release pipeline (2026-10-03): `APP_ENV` + DEV ribbon (widget test), `.env.example`, README environments section, `deploy-db.yml` (fresh-stack reset + pgTAP + lint, dev drift check, approval-gated prod `db push` + functions), `release.yml` (Windows Inno installer, macOS dmg, Android AAB, web zip, draft release; signing optional), Android env-based signing, `docs/ops.md` (PowerSync prod, PITR, forward-fix rollback, incidents). Workflow YAML parses; actionlint not available and the workflows have not run. 🧑 still to do: create prod Supabase + PowerSync, the `production` environment with a required reviewer, the GitHub secrets / variables in docs/ops.md, then approve the first prod migration (`db-v*` tag)
 - [ ] Phase 1 review + 🧑 pilot with 2–3 arhtiyas; feedback recorded in docs/decisions.md
 
 ## Phase 2: Karza & Byaj

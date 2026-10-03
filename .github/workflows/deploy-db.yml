@@ -1,0 +1,124 @@
+# Deploys database migrations (and Edge Functions, once they exist) to PRODUCTION.
+#
+# Trigger: push a tag `db-v*` (e.g. db-v1.2.0) or run it by hand from the
+# Actions tab. The `deploy` job uses the GitHub environment "production", which
+# must have a REQUIRED REVIEWER: nothing touches production until a human
+# approves the run in the GitHub UI.
+#
+# Claude / developers never hold production credentials. They exist only as
+# GitHub secrets (see docs/ops.md for the full list and where to add them).
+#
+#   verify-migrations  fresh local stack: db reset + pgTAP + lint (must pass)
+#   dev-drift          dev project has no schema changes missing from migrations
+#   deploy             (approval) link prod, dry-run, db push, deploy functions
+
+name: Deploy database
+
+on:
+  push:
+    tags: ['db-v*']
+  workflow_dispatch:
+
+# Never two deployments at once, and never cancel one half way.
+concurrency:
+  group: deploy-db
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify-migrations:
+    name: Migrations + pgTAP on a fresh stack
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Release commit must be on main
+        run: |
+          git fetch origin main
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "::error::$GITHUB_SHA is not on main. Merge to main first, then tag."
+            exit 1
+          fi
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Start local stack
+        run: supabase db start
+      - name: Apply every migration + seed from scratch
+        run: supabase db reset
+      - name: pgTAP tests
+        run: supabase test db
+      - name: Lint
+        run: supabase db lint --fail-on error
+
+  dev-drift:
+    name: Dev has no changes missing from migrations
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DEV_DB_PASSWORD }}
+      SUPABASE_DEV_PROJECT_REF: ${{ vars.SUPABASE_DEV_PROJECT_REF }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Check required secrets
+        run: |
+          if [ -z "$SUPABASE_DEV_PROJECT_REF" ] || [ -z "$SUPABASE_ACCESS_TOKEN" ] || [ -z "$SUPABASE_DB_PASSWORD" ]; then
+            echo "::error::Add SUPABASE_DEV_PROJECT_REF (repository variable), SUPABASE_ACCESS_TOKEN and SUPABASE_DEV_DB_PASSWORD (repository secrets). The drift check fails closed."
+            exit 1
+          fi
+      - name: Link the DEV project (read-only diff)
+        run: supabase link --project-ref "$SUPABASE_DEV_PROJECT_REF"
+      - name: Diff dev against migration files
+        run: |
+          supabase db diff --linked > "$RUNNER_TEMP/drift.sql"
+          if grep -qE '[^[:space:]]' "$RUNNER_TEMP/drift.sql"; then
+            echo "::error::Dev has schema changes that are not in supabase/migrations. Capture them in a migration (supabase db diff -f name) before deploying."
+            cat "$RUNNER_TEMP/drift.sql"
+            exit 1
+          fi
+          echo "No drift."
+
+  deploy:
+    name: Deploy to production
+    needs: [verify-migrations, dev-drift]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # REQUIRED REVIEWER lives on this environment (Settings > Environments).
+    environment:
+      name: production
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_PROD_DB_PASSWORD }}
+      SUPABASE_PROD_PROJECT_REF: ${{ vars.SUPABASE_PROD_PROJECT_REF }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Check required secrets
+        run: |
+          if [ -z "$SUPABASE_PROD_PROJECT_REF" ] || [ -z "$SUPABASE_ACCESS_TOKEN" ] || [ -z "$SUPABASE_DB_PASSWORD" ]; then
+            echo "::error::Add SUPABASE_PROD_PROJECT_REF (variable on the production environment) and SUPABASE_ACCESS_TOKEN, SUPABASE_PROD_DB_PASSWORD (secrets)."
+            exit 1
+          fi
+      - name: Link production
+        run: supabase link --project-ref "$SUPABASE_PROD_PROJECT_REF"
+      - name: Show pending migrations (dry run)
+        run: supabase db push --dry-run
+      - name: Push migrations
+        run: supabase db push
+      - name: Deploy Edge Functions
+        run: |
+          if [ -d supabase/functions ] && [ -n "$(ls -A supabase/functions 2>/dev/null)" ]; then
+            supabase functions deploy --project-ref "$SUPABASE_PROD_PROJECT_REF"
+          else
+            echo "No Edge Functions in the repo yet; nothing to deploy."
+          fi
