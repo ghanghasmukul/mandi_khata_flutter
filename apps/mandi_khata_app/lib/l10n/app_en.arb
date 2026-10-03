@@ -2080,5 +2080,415 @@
   "settingBusinessBackdateDays": "Back-dating allowed (days)",
   "@settingBusinessBackdateDays": {
     "description": "Label of setting business.backdate_days."
+  },
+  "paymentsTitle": "Payments",
+  "@paymentsTitle": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentRecordTitle": "Record payment",
+  "@paymentRecordTitle": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentPay": "Pay",
+  "@paymentPay": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentReceive": "Receive",
+  "@paymentReceive": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentDirectionTo": "Paid to party",
+  "@paymentDirectionTo": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentDirectionFrom": "Received from party",
+  "@paymentDirectionFrom": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsEmpty": "No payments in this period",
+  "@paymentsEmpty": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsSearchHint": "Search party, receipt or cheque no.",
+  "@paymentsSearchHint": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsAllModes": "All modes",
+  "@paymentsAllModes": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsAllDirections": "Paid and received",
+  "@paymentsAllDirections": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsPendingCheques": "Pending cheques",
+  "@paymentsPendingCheques": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsTotalCount": "Payments",
+  "@paymentsTotalCount": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsTotalPaid": "Paid",
+  "@paymentsTotalPaid": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsTotalReceived": "Received",
+  "@paymentsTotalReceived": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsColNo": "No.",
+  "@paymentsColNo": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsColDate": "Date",
+  "@paymentsColDate": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsColParty": "Party",
+  "@paymentsColParty": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsColType": "Type",
+  "@paymentsColType": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsColMode": "Mode",
+  "@paymentsColMode": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsColAmount": "Amount",
+  "@paymentsColAmount": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentsColStatus": "Status",
+  "@paymentsColStatus": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldAmount": "Amount",
+  "@paymentFieldAmount": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldDate": "Date",
+  "@paymentFieldDate": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldMode": "Mode",
+  "@paymentFieldMode": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldAccount": "Bank account",
+  "@paymentFieldAccount": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldReference": "UTR / reference",
+  "@paymentFieldReference": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldChequeNo": "Cheque number",
+  "@paymentFieldChequeNo": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldChequeDate": "Cheque date",
+  "@paymentFieldChequeDate": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFieldNarration": "Note",
+  "@paymentFieldNarration": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentModeCash": "Cash",
+  "@paymentModeCash": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentModeBank": "Bank transfer",
+  "@paymentModeBank": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentModeUpi": "UPI",
+  "@paymentModeUpi": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentModeCheque": "Cheque",
+  "@paymentModeCheque": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentChequePending": "Pending",
+  "@paymentChequePending": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentChequeCleared": "Cleared",
+  "@paymentChequeCleared": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentChequeBounced": "Bounced",
+  "@paymentChequeBounced": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentStatusReversed": "Reversed",
+  "@paymentStatusReversed": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentBakiNow": "Baki now",
+  "@paymentBakiNow": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentBakiAfter": "After this payment",
+  "@paymentBakiAfter": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentFullBaki": "Full baki",
+  "@paymentFullBaki": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentSave": "Save payment",
+  "@paymentSave": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentSavedAs": "Saved as {receiptNo}",
+  "@paymentSavedAs": {
+    "description": "Payments & receipts (step 1.5).",
+    "placeholders": {
+      "receiptNo": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentReceiptTitle": "Receipt",
+  "@paymentReceiptTitle": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentVoucherTitle": "Payment voucher",
+  "@paymentVoucherTitle": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentPrintReceipt": "Print receipt",
+  "@paymentPrintReceipt": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentShareReceipt": "Share receipt",
+  "@paymentShareReceipt": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentDone": "Done",
+  "@paymentDone": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentMarkCleared": "Mark cleared",
+  "@paymentMarkCleared": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentMarkBounced": "Mark bounced",
+  "@paymentMarkBounced": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentBounceTitle": "Cheque bounced?",
+  "@paymentBounceTitle": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentBounceBody": "This reverses the khata entry and the cash book line, dated the bounce date.",
+  "@paymentBounceBody": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentBounceDate": "Bounce date",
+  "@paymentBounceDate": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentReverse": "Reverse payment",
+  "@paymentReverse": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentReverseTitle": "Reverse this payment?",
+  "@paymentReverseTitle": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentReverseBody": "The khata entry and the cash book line are reversed. The payment stays on record as reversed.",
+  "@paymentReverseBody": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentReversedToast": "Payment reversed",
+  "@paymentReversedToast": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentClearedToast": "Cheque marked cleared",
+  "@paymentClearedToast": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentBouncedToast": "Cheque bounced; entry reversed",
+  "@paymentBouncedToast": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentNotFound": "This payment no longer exists",
+  "@paymentNotFound": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorNotPermitted": "You are not allowed to record this payment",
+  "@paymentErrorNotPermitted": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorLimit": "Payments above {limit} need an Accountant or Owner",
+  "@paymentErrorLimit": {
+    "description": "Payments & receipts (step 1.5).",
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentErrorFinance": "Bank, UPI and cheque payments need finance access",
+  "@paymentErrorFinance": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorNotFound": "The party or bank account no longer exists",
+  "@paymentErrorNotFound": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorLocked": "This payment or cheque can no longer change",
+  "@paymentErrorLocked": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorAmount": "Enter an amount above zero",
+  "@paymentErrorAmount": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorBank": "Choose a bank account",
+  "@paymentErrorBank": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorChequeNo": "Enter the cheque number",
+  "@paymentErrorChequeNo": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorChequeDate": "Enter the cheque date",
+  "@paymentErrorChequeDate": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentErrorChequeDetails": "Cheque details only go with a cheque",
+  "@paymentErrorChequeDetails": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "paymentNoBankAccounts": "No bank accounts yet. Add one under Bank accounts.",
+  "@paymentNoBankAccounts": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountsTitle": "Bank accounts",
+  "@accountsTitle": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountsAdd": "Add bank account",
+  "@accountsAdd": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountsEdit": "Edit bank account",
+  "@accountsEdit": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountsEmpty": "No bank accounts yet",
+  "@accountsEmpty": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountCash": "Cash",
+  "@accountCash": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountFieldName": "Account name",
+  "@accountFieldName": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountFieldBank": "Bank name",
+  "@accountFieldBank": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountFieldLast4": "Last 4 digits of account number",
+  "@accountFieldLast4": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountFieldIfsc": "IFSC",
+  "@accountFieldIfsc": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountBookBalance": "Book balance",
+  "@accountBookBalance": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountSwitchOff": "Switch off",
+  "@accountSwitchOff": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountSwitchOn": "Switch on",
+  "@accountSwitchOn": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountInactive": "Off",
+  "@accountInactive": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountErrorName": "Enter an account name",
+  "@accountErrorName": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountErrorLast4": "Exactly 4 digits",
+  "@accountErrorLast4": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountErrorIfsc": "Not a valid IFSC (e.g. SBIN0001234)",
+  "@accountErrorIfsc": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "accountErrorNotPermitted": "Bank accounts need finance access",
+  "@accountErrorNotPermitted": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptReceivedFrom": "Received from",
+  "@receiptReceivedFrom": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptPaidTo": "Paid to",
+  "@receiptPaidTo": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptNo": "No.",
+  "@receiptNo": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptDate": "Date",
+  "@receiptDate": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptAmount": "Amount",
+  "@receiptAmount": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptMode": "Mode",
+  "@receiptMode": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptReference": "Reference",
+  "@receiptReference": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptChequeNo": "Cheque no.",
+  "@receiptChequeNo": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptChequeDate": "Cheque date",
+  "@receiptChequeDate": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptBalanceAfter": "Balance after this",
+  "@receiptBalanceAfter": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptSignature": "Signature",
+  "@receiptSignature": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "receiptReversed": "REVERSED",
+  "@receiptReversed": {
+    "description": "Payments & receipts (step 1.5)."
+  },
+  "settingBusinessMunshiPaymentLimit": "Payment limit without an Accountant (₹, 0 = none)",
+  "@settingBusinessMunshiPaymentLimit": {
+    "description": "Payments & receipts (step 1.5)."
   }
 }

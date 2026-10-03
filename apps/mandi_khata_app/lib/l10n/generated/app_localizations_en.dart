@@ -1586,4 +1586,317 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingBusinessBackdateDays => 'Back-dating allowed (days)';
+
+  @override
+  String get paymentsTitle => 'Payments';
+
+  @override
+  String get paymentRecordTitle => 'Record payment';
+
+  @override
+  String get paymentPay => 'Pay';
+
+  @override
+  String get paymentReceive => 'Receive';
+
+  @override
+  String get paymentDirectionTo => 'Paid to party';
+
+  @override
+  String get paymentDirectionFrom => 'Received from party';
+
+  @override
+  String get paymentsEmpty => 'No payments in this period';
+
+  @override
+  String get paymentsSearchHint => 'Search party, receipt or cheque no.';
+
+  @override
+  String get paymentsAllModes => 'All modes';
+
+  @override
+  String get paymentsAllDirections => 'Paid and received';
+
+  @override
+  String get paymentsPendingCheques => 'Pending cheques';
+
+  @override
+  String get paymentsTotalCount => 'Payments';
+
+  @override
+  String get paymentsTotalPaid => 'Paid';
+
+  @override
+  String get paymentsTotalReceived => 'Received';
+
+  @override
+  String get paymentsColNo => 'No.';
+
+  @override
+  String get paymentsColDate => 'Date';
+
+  @override
+  String get paymentsColParty => 'Party';
+
+  @override
+  String get paymentsColType => 'Type';
+
+  @override
+  String get paymentsColMode => 'Mode';
+
+  @override
+  String get paymentsColAmount => 'Amount';
+
+  @override
+  String get paymentsColStatus => 'Status';
+
+  @override
+  String get paymentFieldAmount => 'Amount';
+
+  @override
+  String get paymentFieldDate => 'Date';
+
+  @override
+  String get paymentFieldMode => 'Mode';
+
+  @override
+  String get paymentFieldAccount => 'Bank account';
+
+  @override
+  String get paymentFieldReference => 'UTR / reference';
+
+  @override
+  String get paymentFieldChequeNo => 'Cheque number';
+
+  @override
+  String get paymentFieldChequeDate => 'Cheque date';
+
+  @override
+  String get paymentFieldNarration => 'Note';
+
+  @override
+  String get paymentModeCash => 'Cash';
+
+  @override
+  String get paymentModeBank => 'Bank transfer';
+
+  @override
+  String get paymentModeUpi => 'UPI';
+
+  @override
+  String get paymentModeCheque => 'Cheque';
+
+  @override
+  String get paymentChequePending => 'Pending';
+
+  @override
+  String get paymentChequeCleared => 'Cleared';
+
+  @override
+  String get paymentChequeBounced => 'Bounced';
+
+  @override
+  String get paymentStatusReversed => 'Reversed';
+
+  @override
+  String get paymentBakiNow => 'Baki now';
+
+  @override
+  String get paymentBakiAfter => 'After this payment';
+
+  @override
+  String get paymentFullBaki => 'Full baki';
+
+  @override
+  String get paymentSave => 'Save payment';
+
+  @override
+  String paymentSavedAs(String receiptNo) {
+    return 'Saved as $receiptNo';
+  }
+
+  @override
+  String get paymentReceiptTitle => 'Receipt';
+
+  @override
+  String get paymentVoucherTitle => 'Payment voucher';
+
+  @override
+  String get paymentPrintReceipt => 'Print receipt';
+
+  @override
+  String get paymentShareReceipt => 'Share receipt';
+
+  @override
+  String get paymentDone => 'Done';
+
+  @override
+  String get paymentMarkCleared => 'Mark cleared';
+
+  @override
+  String get paymentMarkBounced => 'Mark bounced';
+
+  @override
+  String get paymentBounceTitle => 'Cheque bounced?';
+
+  @override
+  String get paymentBounceBody =>
+      'This reverses the khata entry and the cash book line, dated the bounce date.';
+
+  @override
+  String get paymentBounceDate => 'Bounce date';
+
+  @override
+  String get paymentReverse => 'Reverse payment';
+
+  @override
+  String get paymentReverseTitle => 'Reverse this payment?';
+
+  @override
+  String get paymentReverseBody =>
+      'The khata entry and the cash book line are reversed. The payment stays on record as reversed.';
+
+  @override
+  String get paymentReversedToast => 'Payment reversed';
+
+  @override
+  String get paymentClearedToast => 'Cheque marked cleared';
+
+  @override
+  String get paymentBouncedToast => 'Cheque bounced; entry reversed';
+
+  @override
+  String get paymentNotFound => 'This payment no longer exists';
+
+  @override
+  String get paymentErrorNotPermitted =>
+      'You are not allowed to record this payment';
+
+  @override
+  String paymentErrorLimit(String limit) {
+    return 'Payments above $limit need an Accountant or Owner';
+  }
+
+  @override
+  String get paymentErrorFinance =>
+      'Bank, UPI and cheque payments need finance access';
+
+  @override
+  String get paymentErrorNotFound =>
+      'The party or bank account no longer exists';
+
+  @override
+  String get paymentErrorLocked =>
+      'This payment or cheque can no longer change';
+
+  @override
+  String get paymentErrorAmount => 'Enter an amount above zero';
+
+  @override
+  String get paymentErrorBank => 'Choose a bank account';
+
+  @override
+  String get paymentErrorChequeNo => 'Enter the cheque number';
+
+  @override
+  String get paymentErrorChequeDate => 'Enter the cheque date';
+
+  @override
+  String get paymentErrorChequeDetails =>
+      'Cheque details only go with a cheque';
+
+  @override
+  String get paymentNoBankAccounts =>
+      'No bank accounts yet. Add one under Bank accounts.';
+
+  @override
+  String get accountsTitle => 'Bank accounts';
+
+  @override
+  String get accountsAdd => 'Add bank account';
+
+  @override
+  String get accountsEdit => 'Edit bank account';
+
+  @override
+  String get accountsEmpty => 'No bank accounts yet';
+
+  @override
+  String get accountCash => 'Cash';
+
+  @override
+  String get accountFieldName => 'Account name';
+
+  @override
+  String get accountFieldBank => 'Bank name';
+
+  @override
+  String get accountFieldLast4 => 'Last 4 digits of account number';
+
+  @override
+  String get accountFieldIfsc => 'IFSC';
+
+  @override
+  String get accountBookBalance => 'Book balance';
+
+  @override
+  String get accountSwitchOff => 'Switch off';
+
+  @override
+  String get accountSwitchOn => 'Switch on';
+
+  @override
+  String get accountInactive => 'Off';
+
+  @override
+  String get accountErrorName => 'Enter an account name';
+
+  @override
+  String get accountErrorLast4 => 'Exactly 4 digits';
+
+  @override
+  String get accountErrorIfsc => 'Not a valid IFSC (e.g. SBIN0001234)';
+
+  @override
+  String get accountErrorNotPermitted => 'Bank accounts need finance access';
+
+  @override
+  String get receiptReceivedFrom => 'Received from';
+
+  @override
+  String get receiptPaidTo => 'Paid to';
+
+  @override
+  String get receiptNo => 'No.';
+
+  @override
+  String get receiptDate => 'Date';
+
+  @override
+  String get receiptAmount => 'Amount';
+
+  @override
+  String get receiptMode => 'Mode';
+
+  @override
+  String get receiptReference => 'Reference';
+
+  @override
+  String get receiptChequeNo => 'Cheque no.';
+
+  @override
+  String get receiptChequeDate => 'Cheque date';
+
+  @override
+  String get receiptBalanceAfter => 'Balance after this';
+
+  @override
+  String get receiptSignature => 'Signature';
+
+  @override
+  String get receiptReversed => 'REVERSED';
+
+  @override
+  String get settingBusinessMunshiPaymentLimit =>
+      'Payment limit without an Accountant (₹, 0 = none)';
 }

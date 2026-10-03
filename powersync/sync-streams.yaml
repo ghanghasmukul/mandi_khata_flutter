@@ -30,6 +30,25 @@ streams:
       - SELECT * FROM ledger_entries WHERE tenant_id IN my_tenants
       - SELECT * FROM crops WHERE tenant_id IN my_tenants
       - SELECT * FROM lots WHERE tenant_id IN my_tenants
+      - SELECT * FROM payments WHERE tenant_id IN my_tenants
+      # Everyone gets the Cash account and its book lines; bank accounts and
+      # their lines go only to finance members (stream below).
+      - SELECT * FROM bank_accounts WHERE tenant_id IN my_tenants AND kind = 'cash'
+      - SELECT * FROM cash_bank_entries WHERE tenant_id IN my_tenants AND account_kind = 'cash'
+
+  # Bank accounts and the bank book: finance details (RLS: finance.view).
+  # Sync streams cannot evaluate custom permission overrides, so this follows
+  # the default roles (owner, accountant) — see docs/decisions.md.
+  finance_data:
+    auto_subscribe: true
+    with:
+      finance_tenants: >-
+        SELECT tenant_id FROM tenant_members
+        WHERE user_id = auth.user_id() AND is_active = true
+        AND role IN ('owner', 'accountant')
+    queries:
+      - SELECT * FROM bank_accounts WHERE tenant_id IN finance_tenants AND kind = 'bank'
+      - SELECT * FROM cash_bank_entries WHERE tenant_id IN finance_tenants AND account_kind = 'bank'
 
   # Names of the people you work with (users screen, audit log, receipts).
   team_profiles:

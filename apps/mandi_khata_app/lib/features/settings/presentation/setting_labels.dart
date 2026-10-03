@@ -37,6 +37,7 @@ extension SettingLabels on AppLocalizations {
     'shop.post_credit_sale_to_khata' => settingShopPostCreditSaleToKhata,
     'business.fy_start_month' => settingBusinessFyStartMonth,
     'business.backdate_days' => settingBusinessBackdateDays,
+    'business.munshi_payment_limit' => settingBusinessMunshiPaymentLimit,
     'business.number_series' => settingBusinessNumberSeries,
     'app.modules' => settingAppModules,
     'app.languages' => settingAppLanguages,

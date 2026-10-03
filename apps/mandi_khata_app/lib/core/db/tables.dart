@@ -240,6 +240,72 @@ class Lots extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+/// Own cash and bank accounts.
+class BankAccounts extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get kind => text()();
+  TextColumn get name => text()();
+  TextColumn get bankName => text().nullable()();
+  TextColumn get accountLast4 => text().nullable()();
+  TextColumn get ifsc => text().nullable()();
+  IntColumn get sortOrder => integer()();
+  BoolColumn get isActive => boolean()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Money paid to or received from a party.
+class Payments extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get receiptNo => text()();
+  TextColumn get entryDate => text()();
+  TextColumn get partyId => text()();
+  TextColumn get direction => text()();
+  TextColumn get mode => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get bankAccountId => text()();
+  TextColumn get reference => text().nullable()();
+  TextColumn get chequeNo => text().nullable()();
+  TextColumn get chequeDate => text().nullable()();
+  TextColumn get chequeStatus => text().nullable()();
+  TextColumn get narration => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get reversedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// The simple cash / bank book. Append-only.
+class CashBankEntries extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get accountId => text()();
+  TextColumn get accountKind => text()();
+  TextColumn get entryDate => text()();
+  TextColumn get direction => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get paymentId => text()();
+  TextColumn get narration => text().nullable()();
+  TextColumn get reversesId => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 /// Local-only: uploads the server rejected permanently.
 class SyncErrors extends Table {
   TextColumn get id => text()();

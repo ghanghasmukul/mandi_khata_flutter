@@ -76,10 +76,15 @@ net_to_farmer     = gross − farmer_deductions
 ## Payments
 
 - Modes: cash, bank (NEFT/RTGS/IMPS), UPI, cheque (with cheque no, date, status: pending/cleared/bounced).
-- Payment TO party (bhugtaan) → `udhaar` on party + credit cash/bank book.
-- Receipt FROM party → `jama` on party + debit cash/bank book.
-- Bounced cheque → reversal entry automatically.
-- Receipt PDF + optional WhatsApp share.
+- Payment TO party (bhugtaan, `direction=to_party`) → `udhaar` on the party (`ref_type=payment`) + a money-out line in the cash / bank book. Numbered `V-<device>-<n>` (voucher series).
+- Receipt FROM party (`direction=from_party`) → `jama` on the party (`ref_type=receipt`) + a money-in line. Numbered `R-<device>-<n>` (receipt series).
+- One local transaction writes the `payments` row, the khata entry, the book line (`cash_bank_entries`) and the audit rows; they upload together.
+- **Accounts** (`bank_accounts`): every business has one `Cash` account (seeded, fixed id, never switched off) and any number of bank accounts (name, bank, last 4 digits of the number, IFSC). Cash payments use the Cash account; bank, UPI and cheque use a bank account. Only members with `finance.view` see or add bank accounts, post to them, or record non-cash payments; a munshi pays and receives in **cash only**. Bank accounts and their book lines sync only to owners and accountants.
+- **Cash / bank book** (`cash_bank_entries`): append-only, one line per payment (`in` for receipts, `out` for payments) and one mirrored line per reversal (`reverses_id`, reversed once). Account book balance = Σ in − Σ out. Phase 3 replaces this with the full cash / bank book.
+- **Payment limit** (`business.munshi_payment_limit`, paise, default 0 = none): a payment TO a party above it needs `entries.reverse` (accountant / owner), in the app and in RLS (on the payment row and on the khata entry). Receipts are never limited. Back-dating follows `business.backdate_days` like every entry.
+- **Cheques**: a pending cheque posts at once (khata entry and book line). `pending → cleared` needs `payments.create` and changes no money. `pending → bounced` needs `entries.reverse`: the khata entry and the book line are reversed together, **dated the bounce date**, and the payment is marked reversed. Cleared and bounced are final.
+- **Reversing a payment** (entered by mistake) needs `entries.reverse`: same two reversals, dated like the payment; the payment row stays, marked `reversed` (never deleted, never edited otherwise). A posted payment is frozen: only `status`, `cheque_status` and `reversed_at` ever change (server trigger `private.guard_payment`).
+- Receipt / voucher PDF: A5 or 80 mm / 58 mm thermal (`print.receipt_size`), in the business language (`app.default_language`), with the business name; shared on Android, printed on Windows and macOS. A receipt printed right after recording also shows the party's baki.
 
 ## Karza (loans)
 

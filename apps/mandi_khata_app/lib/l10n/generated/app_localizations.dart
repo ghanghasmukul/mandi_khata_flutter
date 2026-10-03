@@ -2943,6 +2943,606 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back-dating allowed (days)'**
   String get settingBusinessBackdateDays;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Payments'**
+  String get paymentsTitle;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Record payment'**
+  String get paymentRecordTitle;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Pay'**
+  String get paymentPay;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Receive'**
+  String get paymentReceive;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid to party'**
+  String get paymentDirectionTo;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Received from party'**
+  String get paymentDirectionFrom;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No payments in this period'**
+  String get paymentsEmpty;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Search party, receipt or cheque no.'**
+  String get paymentsSearchHint;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'All modes'**
+  String get paymentsAllModes;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid and received'**
+  String get paymentsAllDirections;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Pending cheques'**
+  String get paymentsPendingCheques;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Payments'**
+  String get paymentsTotalCount;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get paymentsTotalPaid;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Received'**
+  String get paymentsTotalReceived;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No.'**
+  String get paymentsColNo;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get paymentsColDate;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Party'**
+  String get paymentsColParty;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get paymentsColType;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Mode'**
+  String get paymentsColMode;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get paymentsColAmount;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get paymentsColStatus;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get paymentFieldAmount;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get paymentFieldDate;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Mode'**
+  String get paymentFieldMode;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank account'**
+  String get paymentFieldAccount;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'UTR / reference'**
+  String get paymentFieldReference;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque number'**
+  String get paymentFieldChequeNo;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque date'**
+  String get paymentFieldChequeDate;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get paymentFieldNarration;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get paymentModeCash;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank transfer'**
+  String get paymentModeBank;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'UPI'**
+  String get paymentModeUpi;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque'**
+  String get paymentModeCheque;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get paymentChequePending;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cleared'**
+  String get paymentChequeCleared;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bounced'**
+  String get paymentChequeBounced;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reversed'**
+  String get paymentStatusReversed;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Baki now'**
+  String get paymentBakiNow;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'After this payment'**
+  String get paymentBakiAfter;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Full baki'**
+  String get paymentFullBaki;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Save payment'**
+  String get paymentSave;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Saved as {receiptNo}'**
+  String paymentSavedAs(String receiptNo);
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt'**
+  String get paymentReceiptTitle;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Payment voucher'**
+  String get paymentVoucherTitle;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Print receipt'**
+  String get paymentPrintReceipt;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Share receipt'**
+  String get paymentShareReceipt;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get paymentDone;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Mark cleared'**
+  String get paymentMarkCleared;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Mark bounced'**
+  String get paymentMarkBounced;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque bounced?'**
+  String get paymentBounceTitle;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'This reverses the khata entry and the cash book line, dated the bounce date.'**
+  String get paymentBounceBody;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bounce date'**
+  String get paymentBounceDate;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse payment'**
+  String get paymentReverse;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse this payment?'**
+  String get paymentReverseTitle;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'The khata entry and the cash book line are reversed. The payment stays on record as reversed.'**
+  String get paymentReverseBody;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Payment reversed'**
+  String get paymentReversedToast;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque marked cleared'**
+  String get paymentClearedToast;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque bounced; entry reversed'**
+  String get paymentBouncedToast;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'This payment no longer exists'**
+  String get paymentNotFound;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'You are not allowed to record this payment'**
+  String get paymentErrorNotPermitted;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Payments above {limit} need an Accountant or Owner'**
+  String paymentErrorLimit(String limit);
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank, UPI and cheque payments need finance access'**
+  String get paymentErrorFinance;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'The party or bank account no longer exists'**
+  String get paymentErrorNotFound;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'This payment or cheque can no longer change'**
+  String get paymentErrorLocked;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount above zero'**
+  String get paymentErrorAmount;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a bank account'**
+  String get paymentErrorBank;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the cheque number'**
+  String get paymentErrorChequeNo;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the cheque date'**
+  String get paymentErrorChequeDate;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque details only go with a cheque'**
+  String get paymentErrorChequeDetails;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No bank accounts yet. Add one under Bank accounts.'**
+  String get paymentNoBankAccounts;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank accounts'**
+  String get accountsTitle;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Add bank account'**
+  String get accountsAdd;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Edit bank account'**
+  String get accountsEdit;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No bank accounts yet'**
+  String get accountsEmpty;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get accountCash;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Account name'**
+  String get accountFieldName;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank name'**
+  String get accountFieldBank;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Last 4 digits of account number'**
+  String get accountFieldLast4;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'IFSC'**
+  String get accountFieldIfsc;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Book balance'**
+  String get accountBookBalance;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Switch off'**
+  String get accountSwitchOff;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Switch on'**
+  String get accountSwitchOn;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get accountInactive;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an account name'**
+  String get accountErrorName;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Exactly 4 digits'**
+  String get accountErrorLast4;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Not a valid IFSC (e.g. SBIN0001234)'**
+  String get accountErrorIfsc;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank accounts need finance access'**
+  String get accountErrorNotPermitted;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Received from'**
+  String get receiptReceivedFrom;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid to'**
+  String get receiptPaidTo;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No.'**
+  String get receiptNo;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get receiptDate;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get receiptAmount;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Mode'**
+  String get receiptMode;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
+  String get receiptReference;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque no.'**
+  String get receiptChequeNo;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque date'**
+  String get receiptChequeDate;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Balance after this'**
+  String get receiptBalanceAfter;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Signature'**
+  String get receiptSignature;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'REVERSED'**
+  String get receiptReversed;
+
+  /// Payments & receipts (step 1.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Payment limit without an Accountant (₹, 0 = none)'**
+  String get settingBusinessMunshiPaymentLimit;
 }
 
 class _AppLocalizationsDelegate

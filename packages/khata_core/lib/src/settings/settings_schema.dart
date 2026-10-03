@@ -115,6 +115,7 @@ class SettingDef {
     required int fallback,
     int max = 1000000,
     String? suffixName,
+    bool businessOnly = false,
   }) : this._(
          key: key,
          type: SettingType.paise,
@@ -122,6 +123,7 @@ class SettingDef {
          min: 0,
          max: max,
          suffixName: suffixName,
+         businessOnly: businessOnly,
        );
 
   const SettingDef.choice(
@@ -431,6 +433,14 @@ abstract final class SettingsSchema {
       fallback: 3,
       min: 0,
       max: 3650,
+      businessOnly: true,
+    ),
+    // A payment to a party above this amount (paise) needs
+    // `entries.reverse`. 0 = no limit.
+    SettingDef.paise(
+      'business.munshi_payment_limit',
+      fallback: 0,
+      max: 100000000000,
       businessOnly: true,
     ),
     SettingDef.structured(

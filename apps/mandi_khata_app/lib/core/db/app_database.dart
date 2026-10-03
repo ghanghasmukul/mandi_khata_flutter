@@ -25,6 +25,9 @@ part 'app_database.g.dart';
     LedgerEntries,
     Crops,
     Lots,
+    BankAccounts,
+    Payments,
+    CashBankEntries,
     SyncErrors,
   ],
 )

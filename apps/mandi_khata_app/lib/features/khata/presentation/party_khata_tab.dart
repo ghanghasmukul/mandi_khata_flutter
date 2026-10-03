@@ -12,6 +12,7 @@ import 'package:mandi_khata_app/features/khata/presentation/khata_entry_dialog.d
 import 'package:mandi_khata_app/features/khata/presentation/khata_line.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
+import 'package:mandi_khata_app/features/payments/presentation/record_payment_dialog.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mandi_khata_app/shared/date_range_chips.dart';
 import 'package:mk_ui/mk_ui.dart';
@@ -80,6 +81,7 @@ class _PartyKhataTabState extends ConsumerState<PartyKhataTab> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final canAdd = ref.watch(canProvider(Permission.entriesReverse));
+    final canPay = ref.watch(canProvider(Permission.paymentsCreate));
     final async = ref.watch(
       partyStatementProvider(widget.party.id, from: _from, to: _to),
     );
@@ -107,6 +109,27 @@ class _PartyKhataTabState extends ConsumerState<PartyKhataTab> {
                   }),
                 ),
               ),
+              if (canPay) ...[
+                MkButton(
+                  key: const ValueKey('statement-pay'),
+                  label: l10n.paymentPay,
+                  icon: Icons.north_east,
+                  variant: MkButtonVariant.secondary,
+                  onPressed: () =>
+                      showRecordPaymentDialog(context, party: widget.party),
+                ),
+                MkButton(
+                  key: const ValueKey('statement-receive'),
+                  label: l10n.paymentReceive,
+                  icon: Icons.south_west,
+                  variant: MkButtonVariant.secondary,
+                  onPressed: () => showRecordPaymentDialog(
+                    context,
+                    party: widget.party,
+                    direction: PaymentDirection.fromParty,
+                  ),
+                ),
+              ],
               if (canAdd)
                 MkButton(
                   key: const ValueKey('statement-add'),

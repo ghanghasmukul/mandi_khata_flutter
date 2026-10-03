@@ -1568,4 +1568,315 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get settingBusinessBackdateDays => 'ਪਿਛਲੀ ਤਰੀਕ ਦੀ ਛੋਟ (ਦਿਨ)';
+
+  @override
+  String get paymentsTitle => 'ਭੁਗਤਾਨ';
+
+  @override
+  String get paymentRecordTitle => 'ਭੁਗਤਾਨ ਦਰਜ ਕਰੋ';
+
+  @override
+  String get paymentPay => 'ਭੁਗਤਾਨ ਦਿਓ';
+
+  @override
+  String get paymentReceive => 'ਰਕਮ ਲਵੋ';
+
+  @override
+  String get paymentDirectionTo => 'ਪਾਰਟੀ ਨੂੰ ਦਿੱਤਾ';
+
+  @override
+  String get paymentDirectionFrom => 'ਪਾਰਟੀ ਤੋਂ ਮਿਲਿਆ';
+
+  @override
+  String get paymentsEmpty => 'ਇਸ ਮਿਆਦ ਵਿੱਚ ਕੋਈ ਭੁਗਤਾਨ ਨਹੀਂ';
+
+  @override
+  String get paymentsSearchHint => 'ਪਾਰਟੀ, ਰਸੀਦ ਜਾਂ ਚੈੱਕ ਨੰਬਰ ਲੱਭੋ';
+
+  @override
+  String get paymentsAllModes => 'ਸਾਰੇ ਤਰੀਕੇ';
+
+  @override
+  String get paymentsAllDirections => 'ਦਿੱਤਾ ਅਤੇ ਮਿਲਿਆ';
+
+  @override
+  String get paymentsPendingCheques => 'ਬਕਾਇਆ ਚੈੱਕ';
+
+  @override
+  String get paymentsTotalCount => 'ਭੁਗਤਾਨ';
+
+  @override
+  String get paymentsTotalPaid => 'ਦਿੱਤਾ';
+
+  @override
+  String get paymentsTotalReceived => 'ਮਿਲਿਆ';
+
+  @override
+  String get paymentsColNo => 'ਨੰਬਰ';
+
+  @override
+  String get paymentsColDate => 'ਤਰੀਕ';
+
+  @override
+  String get paymentsColParty => 'ਪਾਰਟੀ';
+
+  @override
+  String get paymentsColType => 'ਕਿਸਮ';
+
+  @override
+  String get paymentsColMode => 'ਤਰੀਕਾ';
+
+  @override
+  String get paymentsColAmount => 'ਰਕਮ';
+
+  @override
+  String get paymentsColStatus => 'ਸਥਿਤੀ';
+
+  @override
+  String get paymentFieldAmount => 'ਰਕਮ';
+
+  @override
+  String get paymentFieldDate => 'ਤਰੀਕ';
+
+  @override
+  String get paymentFieldMode => 'ਤਰੀਕਾ';
+
+  @override
+  String get paymentFieldAccount => 'ਬੈਂਕ ਖਾਤਾ';
+
+  @override
+  String get paymentFieldReference => 'UTR / ਹਵਾਲਾ';
+
+  @override
+  String get paymentFieldChequeNo => 'ਚੈੱਕ ਨੰਬਰ';
+
+  @override
+  String get paymentFieldChequeDate => 'ਚੈੱਕ ਦੀ ਤਰੀਕ';
+
+  @override
+  String get paymentFieldNarration => 'ਟਿੱਪਣੀ';
+
+  @override
+  String get paymentModeCash => 'ਨਕਦ';
+
+  @override
+  String get paymentModeBank => 'ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ';
+
+  @override
+  String get paymentModeUpi => 'UPI';
+
+  @override
+  String get paymentModeCheque => 'ਚੈੱਕ';
+
+  @override
+  String get paymentChequePending => 'ਬਕਾਇਆ';
+
+  @override
+  String get paymentChequeCleared => 'ਕਲੀਅਰ';
+
+  @override
+  String get paymentChequeBounced => 'ਬਾਊਂਸ';
+
+  @override
+  String get paymentStatusReversed => 'ਉਲਟਾਇਆ';
+
+  @override
+  String get paymentBakiNow => 'ਹੁਣ ਬਾਕੀ';
+
+  @override
+  String get paymentBakiAfter => 'ਇਸ ਭੁਗਤਾਨ ਤੋਂ ਬਾਅਦ';
+
+  @override
+  String get paymentFullBaki => 'ਪੂਰਾ ਬਾਕੀ';
+
+  @override
+  String get paymentSave => 'ਭੁਗਤਾਨ ਸੰਭਾਲੋ';
+
+  @override
+  String paymentSavedAs(String receiptNo) {
+    return '$receiptNo ਵਜੋਂ ਸੰਭਾਲਿਆ';
+  }
+
+  @override
+  String get paymentReceiptTitle => 'ਰਸੀਦ';
+
+  @override
+  String get paymentVoucherTitle => 'ਭੁਗਤਾਨ ਵਾਊਚਰ';
+
+  @override
+  String get paymentPrintReceipt => 'ਰਸੀਦ ਪ੍ਰਿੰਟ ਕਰੋ';
+
+  @override
+  String get paymentShareReceipt => 'ਰਸੀਦ ਭੇਜੋ';
+
+  @override
+  String get paymentDone => 'ਹੋ ਗਿਆ';
+
+  @override
+  String get paymentMarkCleared => 'ਕਲੀਅਰ ਕਰੋ';
+
+  @override
+  String get paymentMarkBounced => 'ਬਾਊਂਸ ਕਰੋ';
+
+  @override
+  String get paymentBounceTitle => 'ਚੈੱਕ ਬਾਊਂਸ ਹੋਇਆ?';
+
+  @override
+  String get paymentBounceBody =>
+      'ਇਸ ਨਾਲ ਖਾਤਾ ਐਂਟਰੀ ਅਤੇ ਕੈਸ਼ ਬੁੱਕ ਦੀ ਲਾਈਨ ਉਲਟ ਜਾਵੇਗੀ, ਬਾਊਂਸ ਦੀ ਤਰੀਕ ਨਾਲ।';
+
+  @override
+  String get paymentBounceDate => 'ਬਾਊਂਸ ਦੀ ਤਰੀਕ';
+
+  @override
+  String get paymentReverse => 'ਭੁਗਤਾਨ ਉਲਟਾਓ';
+
+  @override
+  String get paymentReverseTitle => 'ਇਹ ਭੁਗਤਾਨ ਉਲਟਾਈਏ?';
+
+  @override
+  String get paymentReverseBody =>
+      'ਖਾਤਾ ਐਂਟਰੀ ਅਤੇ ਕੈਸ਼ ਬੁੱਕ ਦੀ ਲਾਈਨ ਉਲਟਾ ਦਿੱਤੀ ਜਾਵੇਗੀ। ਭੁਗਤਾਨ \"ਉਲਟਾਇਆ\" ਵਜੋਂ ਰਿਕਾਰਡ ਵਿੱਚ ਰਹੇਗਾ।';
+
+  @override
+  String get paymentReversedToast => 'ਭੁਗਤਾਨ ਉਲਟਾਇਆ ਗਿਆ';
+
+  @override
+  String get paymentClearedToast => 'ਚੈੱਕ ਕਲੀਅਰ ਕੀਤਾ ਗਿਆ';
+
+  @override
+  String get paymentBouncedToast => 'ਚੈੱਕ ਬਾਊਂਸ; ਐਂਟਰੀ ਉਲਟਾਈ ਗਈ';
+
+  @override
+  String get paymentNotFound => 'ਇਹ ਭੁਗਤਾਨ ਹੁਣ ਮੌਜੂਦ ਨਹੀਂ';
+
+  @override
+  String get paymentErrorNotPermitted =>
+      'ਤੁਹਾਨੂੰ ਇਹ ਭੁਗਤਾਨ ਦਰਜ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ';
+
+  @override
+  String paymentErrorLimit(String limit) {
+    return '$limit ਤੋਂ ਵੱਧ ਦੇ ਭੁਗਤਾਨ ਲਈ ਮੁਨੀਮ ਜਾਂ ਮਾਲਕ ਚਾਹੀਦਾ ਹੈ';
+  }
+
+  @override
+  String get paymentErrorFinance =>
+      'ਬੈਂਕ, UPI ਅਤੇ ਚੈੱਕ ਭੁਗਤਾਨ ਲਈ ਫਾਇਨੈਂਸ ਇਜਾਜ਼ਤ ਚਾਹੀਦੀ ਹੈ';
+
+  @override
+  String get paymentErrorNotFound => 'ਪਾਰਟੀ ਜਾਂ ਬੈਂਕ ਖਾਤਾ ਹੁਣ ਮੌਜੂਦ ਨਹੀਂ';
+
+  @override
+  String get paymentErrorLocked => 'ਇਹ ਭੁਗਤਾਨ ਜਾਂ ਚੈੱਕ ਹੁਣ ਨਹੀਂ ਬਦਲ ਸਕਦਾ';
+
+  @override
+  String get paymentErrorAmount => 'ਸਿਫ਼ਰ ਤੋਂ ਵੱਧ ਰਕਮ ਲਿਖੋ';
+
+  @override
+  String get paymentErrorBank => 'ਬੈਂਕ ਖਾਤਾ ਚੁਣੋ';
+
+  @override
+  String get paymentErrorChequeNo => 'ਚੈੱਕ ਨੰਬਰ ਲਿਖੋ';
+
+  @override
+  String get paymentErrorChequeDate => 'ਚੈੱਕ ਦੀ ਤਰੀਕ ਲਿਖੋ';
+
+  @override
+  String get paymentErrorChequeDetails => 'ਚੈੱਕ ਦੀ ਜਾਣਕਾਰੀ ਸਿਰਫ਼ ਚੈੱਕ ਨਾਲ ਦਿਓ';
+
+  @override
+  String get paymentNoBankAccounts =>
+      'ਅਜੇ ਕੋਈ ਬੈਂਕ ਖਾਤਾ ਨਹੀਂ। \"ਬੈਂਕ ਖਾਤੇ\" ਵਿੱਚ ਜੋੜੋ।';
+
+  @override
+  String get accountsTitle => 'ਬੈਂਕ ਖਾਤੇ';
+
+  @override
+  String get accountsAdd => 'ਬੈਂਕ ਖਾਤਾ ਜੋੜੋ';
+
+  @override
+  String get accountsEdit => 'ਬੈਂਕ ਖਾਤਾ ਬਦਲੋ';
+
+  @override
+  String get accountsEmpty => 'ਅਜੇ ਕੋਈ ਬੈਂਕ ਖਾਤਾ ਨਹੀਂ';
+
+  @override
+  String get accountCash => 'ਨਕਦ';
+
+  @override
+  String get accountFieldName => 'ਖਾਤੇ ਦਾ ਨਾਂ';
+
+  @override
+  String get accountFieldBank => 'ਬੈਂਕ ਦਾ ਨਾਂ';
+
+  @override
+  String get accountFieldLast4 => 'ਖਾਤਾ ਨੰਬਰ ਦੇ ਆਖਰੀ 4 ਅੰਕ';
+
+  @override
+  String get accountFieldIfsc => 'IFSC';
+
+  @override
+  String get accountBookBalance => 'ਬਹੀ ਬਕਾਇਆ';
+
+  @override
+  String get accountSwitchOff => 'ਬੰਦ ਕਰੋ';
+
+  @override
+  String get accountSwitchOn => 'ਚਾਲੂ ਕਰੋ';
+
+  @override
+  String get accountInactive => 'ਬੰਦ';
+
+  @override
+  String get accountErrorName => 'ਖਾਤੇ ਦਾ ਨਾਂ ਲਿਖੋ';
+
+  @override
+  String get accountErrorLast4 => 'ਠੀਕ 4 ਅੰਕ';
+
+  @override
+  String get accountErrorIfsc => 'ਸਹੀ IFSC ਨਹੀਂ (ਜਿਵੇਂ SBIN0001234)';
+
+  @override
+  String get accountErrorNotPermitted =>
+      'ਬੈਂਕ ਖਾਤਿਆਂ ਲਈ ਫਾਇਨੈਂਸ ਇਜਾਜ਼ਤ ਚਾਹੀਦੀ ਹੈ';
+
+  @override
+  String get receiptReceivedFrom => 'ਪ੍ਰਾਪਤ ਕੀਤਾ';
+
+  @override
+  String get receiptPaidTo => 'ਭੁਗਤਾਨ ਕੀਤਾ';
+
+  @override
+  String get receiptNo => 'ਨੰਬਰ';
+
+  @override
+  String get receiptDate => 'ਤਰੀਕ';
+
+  @override
+  String get receiptAmount => 'ਰਕਮ';
+
+  @override
+  String get receiptMode => 'ਤਰੀਕਾ';
+
+  @override
+  String get receiptReference => 'ਹਵਾਲਾ';
+
+  @override
+  String get receiptChequeNo => 'ਚੈੱਕ ਨੰ.';
+
+  @override
+  String get receiptChequeDate => 'ਚੈੱਕ ਦੀ ਤਰੀਕ';
+
+  @override
+  String get receiptBalanceAfter => 'ਇਸ ਤੋਂ ਬਾਅਦ ਬਾਕੀ';
+
+  @override
+  String get receiptSignature => 'ਦਸਤਖ਼ਤ';
+
+  @override
+  String get receiptReversed => 'ਉਲਟਾਇਆ';
+
+  @override
+  String get settingBusinessMunshiPaymentLimit =>
+      'ਮੁਨੀਮ ਲਈ ਭੁਗਤਾਨ ਸੀਮਾ (₹, 0 = ਕੋਈ ਨਹੀਂ)';
 }

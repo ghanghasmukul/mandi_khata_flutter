@@ -11,6 +11,8 @@ import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_entry_dialog.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
+import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/features/payments/presentation/record_payment_dialog.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -43,6 +45,19 @@ List<PaletteCommand> paletteCommands(
       icon: Icons.edit_note,
       run: showKhataEntryDialog,
     ),
+  if (can(Permission.paymentsCreate))
+    PaletteCommand(
+      id: 'payment-new',
+      label: l10n.paymentRecordTitle,
+      icon: Icons.add_card_outlined,
+      run: showRecordPaymentDialog,
+    ),
+  PaletteCommand(
+    id: 'payments',
+    label: l10n.paymentsTitle,
+    icon: Icons.payments_outlined,
+    run: (c) => c.go(PaymentRoutes.list),
+  ),
   PaletteCommand(
     id: 'day-book',
     label: l10n.khataDayBookTitle,

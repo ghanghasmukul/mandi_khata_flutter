@@ -1567,4 +1567,316 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get settingBusinessBackdateDays => 'पिछली तारीख की छूट (दिन)';
+
+  @override
+  String get paymentsTitle => 'भुगतान';
+
+  @override
+  String get paymentRecordTitle => 'भुगतान दर्ज करें';
+
+  @override
+  String get paymentPay => 'भुगतान दें';
+
+  @override
+  String get paymentReceive => 'रकम लें';
+
+  @override
+  String get paymentDirectionTo => 'पार्टी को दिया';
+
+  @override
+  String get paymentDirectionFrom => 'पार्टी से मिला';
+
+  @override
+  String get paymentsEmpty => 'इस अवधि में कोई भुगतान नहीं';
+
+  @override
+  String get paymentsSearchHint => 'पार्टी, रसीद या चेक नंबर खोजें';
+
+  @override
+  String get paymentsAllModes => 'सभी तरीके';
+
+  @override
+  String get paymentsAllDirections => 'दिया और मिला';
+
+  @override
+  String get paymentsPendingCheques => 'लंबित चेक';
+
+  @override
+  String get paymentsTotalCount => 'भुगतान';
+
+  @override
+  String get paymentsTotalPaid => 'दिया';
+
+  @override
+  String get paymentsTotalReceived => 'मिला';
+
+  @override
+  String get paymentsColNo => 'नंबर';
+
+  @override
+  String get paymentsColDate => 'तारीख';
+
+  @override
+  String get paymentsColParty => 'पार्टी';
+
+  @override
+  String get paymentsColType => 'प्रकार';
+
+  @override
+  String get paymentsColMode => 'तरीका';
+
+  @override
+  String get paymentsColAmount => 'रकम';
+
+  @override
+  String get paymentsColStatus => 'स्थिति';
+
+  @override
+  String get paymentFieldAmount => 'रकम';
+
+  @override
+  String get paymentFieldDate => 'तारीख';
+
+  @override
+  String get paymentFieldMode => 'तरीका';
+
+  @override
+  String get paymentFieldAccount => 'बैंक खाता';
+
+  @override
+  String get paymentFieldReference => 'UTR / संदर्भ';
+
+  @override
+  String get paymentFieldChequeNo => 'चेक नंबर';
+
+  @override
+  String get paymentFieldChequeDate => 'चेक की तारीख';
+
+  @override
+  String get paymentFieldNarration => 'टिप्पणी';
+
+  @override
+  String get paymentModeCash => 'नकद';
+
+  @override
+  String get paymentModeBank => 'बैंक ट्रांसफर';
+
+  @override
+  String get paymentModeUpi => 'UPI';
+
+  @override
+  String get paymentModeCheque => 'चेक';
+
+  @override
+  String get paymentChequePending => 'लंबित';
+
+  @override
+  String get paymentChequeCleared => 'क्लियर';
+
+  @override
+  String get paymentChequeBounced => 'बाउंस';
+
+  @override
+  String get paymentStatusReversed => 'उलटा किया';
+
+  @override
+  String get paymentBakiNow => 'अभी बाकी';
+
+  @override
+  String get paymentBakiAfter => 'इस भुगतान के बाद';
+
+  @override
+  String get paymentFullBaki => 'पूरा बाकी';
+
+  @override
+  String get paymentSave => 'भुगतान सहेजें';
+
+  @override
+  String paymentSavedAs(String receiptNo) {
+    return '$receiptNo के रूप में सहेजा';
+  }
+
+  @override
+  String get paymentReceiptTitle => 'रसीद';
+
+  @override
+  String get paymentVoucherTitle => 'भुगतान वाउचर';
+
+  @override
+  String get paymentPrintReceipt => 'रसीद प्रिंट करें';
+
+  @override
+  String get paymentShareReceipt => 'रसीद भेजें';
+
+  @override
+  String get paymentDone => 'हो गया';
+
+  @override
+  String get paymentMarkCleared => 'क्लियर करें';
+
+  @override
+  String get paymentMarkBounced => 'बाउंस करें';
+
+  @override
+  String get paymentBounceTitle => 'चेक बाउंस हुआ?';
+
+  @override
+  String get paymentBounceBody =>
+      'इससे खाता एंट्री और कैश बुक की लाइन उलट जाएगी, बाउंस की तारीख के साथ।';
+
+  @override
+  String get paymentBounceDate => 'बाउंस की तारीख';
+
+  @override
+  String get paymentReverse => 'भुगतान उलटें';
+
+  @override
+  String get paymentReverseTitle => 'यह भुगतान उलटें?';
+
+  @override
+  String get paymentReverseBody =>
+      'खाता एंट्री और कैश बुक की लाइन उलट दी जाएगी। भुगतान \"उलटा किया\" के रूप में रिकॉर्ड में रहेगा।';
+
+  @override
+  String get paymentReversedToast => 'भुगतान उलटा गया';
+
+  @override
+  String get paymentClearedToast => 'चेक क्लियर किया गया';
+
+  @override
+  String get paymentBouncedToast => 'चेक बाउंस; एंट्री उलटी गई';
+
+  @override
+  String get paymentNotFound => 'यह भुगतान अब मौजूद नहीं';
+
+  @override
+  String get paymentErrorNotPermitted =>
+      'आपको यह भुगतान दर्ज करने की अनुमति नहीं';
+
+  @override
+  String paymentErrorLimit(String limit) {
+    return '$limit से ज़्यादा के भुगतान के लिए मुनीम या मालिक चाहिए';
+  }
+
+  @override
+  String get paymentErrorFinance =>
+      'बैंक, UPI और चेक भुगतान के लिए फाइनेंस अनुमति चाहिए';
+
+  @override
+  String get paymentErrorNotFound => 'पार्टी या बैंक खाता अब मौजूद नहीं';
+
+  @override
+  String get paymentErrorLocked => 'यह भुगतान या चेक अब नहीं बदल सकता';
+
+  @override
+  String get paymentErrorAmount => 'शून्य से ज़्यादा रकम लिखें';
+
+  @override
+  String get paymentErrorBank => 'बैंक खाता चुनें';
+
+  @override
+  String get paymentErrorChequeNo => 'चेक नंबर लिखें';
+
+  @override
+  String get paymentErrorChequeDate => 'चेक की तारीख लिखें';
+
+  @override
+  String get paymentErrorChequeDetails =>
+      'चेक की जानकारी सिर्फ़ चेक के साथ दें';
+
+  @override
+  String get paymentNoBankAccounts =>
+      'अभी कोई बैंक खाता नहीं। \"बैंक खाते\" में जोड़ें।';
+
+  @override
+  String get accountsTitle => 'बैंक खाते';
+
+  @override
+  String get accountsAdd => 'बैंक खाता जोड़ें';
+
+  @override
+  String get accountsEdit => 'बैंक खाता बदलें';
+
+  @override
+  String get accountsEmpty => 'अभी कोई बैंक खाता नहीं';
+
+  @override
+  String get accountCash => 'नकद';
+
+  @override
+  String get accountFieldName => 'खाते का नाम';
+
+  @override
+  String get accountFieldBank => 'बैंक का नाम';
+
+  @override
+  String get accountFieldLast4 => 'खाता नंबर के आखिरी 4 अंक';
+
+  @override
+  String get accountFieldIfsc => 'IFSC';
+
+  @override
+  String get accountBookBalance => 'बही शेष';
+
+  @override
+  String get accountSwitchOff => 'बंद करें';
+
+  @override
+  String get accountSwitchOn => 'चालू करें';
+
+  @override
+  String get accountInactive => 'बंद';
+
+  @override
+  String get accountErrorName => 'खाते का नाम लिखें';
+
+  @override
+  String get accountErrorLast4 => 'ठीक 4 अंक';
+
+  @override
+  String get accountErrorIfsc => 'सही IFSC नहीं (जैसे SBIN0001234)';
+
+  @override
+  String get accountErrorNotPermitted =>
+      'बैंक खातों के लिए फाइनेंस अनुमति चाहिए';
+
+  @override
+  String get receiptReceivedFrom => 'प्राप्त किया';
+
+  @override
+  String get receiptPaidTo => 'भुगतान किया';
+
+  @override
+  String get receiptNo => 'नंबर';
+
+  @override
+  String get receiptDate => 'तारीख';
+
+  @override
+  String get receiptAmount => 'रकम';
+
+  @override
+  String get receiptMode => 'तरीका';
+
+  @override
+  String get receiptReference => 'संदर्भ';
+
+  @override
+  String get receiptChequeNo => 'चेक नं.';
+
+  @override
+  String get receiptChequeDate => 'चेक की तारीख';
+
+  @override
+  String get receiptBalanceAfter => 'इसके बाद बाकी';
+
+  @override
+  String get receiptSignature => 'हस्ताक्षर';
+
+  @override
+  String get receiptReversed => 'उलटा किया';
+
+  @override
+  String get settingBusinessMunshiPaymentLimit =>
+      'मुनीम के लिए भुगतान सीमा (₹, 0 = कोई नहीं)';
 }

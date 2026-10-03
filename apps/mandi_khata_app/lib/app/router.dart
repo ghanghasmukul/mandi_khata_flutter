@@ -20,6 +20,9 @@ import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/party_detail_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/party_form_screen.dart';
+import 'package:mandi_khata_app/features/payments/presentation/bank_accounts_screen.dart';
+import 'package:mandi_khata_app/features/payments/presentation/payment_detail_screen.dart';
+import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
 import 'package:mandi_khata_app/features/settings/presentation/settings_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -130,6 +133,22 @@ GoRouter router(Ref ref) {
                     LotFormScreen(lotId: state.pathParameters['id']),
               ),
             ],
+          ),
+        ],
+      ),
+      GoRoute(
+        path: PaymentRoutes.list,
+        builder: (context, state) => const PaymentsScreen(),
+        routes: [
+          // Before ':id' so "accounts" is never read as an id.
+          GoRoute(
+            path: 'accounts',
+            builder: (context, state) => const BankAccountsScreen(),
+          ),
+          GoRoute(
+            path: ':id',
+            builder: (context, state) =>
+                PaymentDetailScreen(paymentId: state.pathParameters['id']!),
           ),
         ],
       ),

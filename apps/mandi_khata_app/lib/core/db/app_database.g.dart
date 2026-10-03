@@ -8963,6 +8963,2597 @@ class LotsCompanion extends UpdateCompanion<Lot> {
   }
 }
 
+class $BankAccountsTable extends BankAccounts
+    with TableInfo<$BankAccountsTable, BankAccount> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $BankAccountsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bankNameMeta = const VerificationMeta(
+    'bankName',
+  );
+  @override
+  late final GeneratedColumn<String> bankName = GeneratedColumn<String>(
+    'bank_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _accountLast4Meta = const VerificationMeta(
+    'accountLast4',
+  );
+  @override
+  late final GeneratedColumn<String> accountLast4 = GeneratedColumn<String>(
+    'account_last4',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _ifscMeta = const VerificationMeta('ifsc');
+  @override
+  late final GeneratedColumn<String> ifsc = GeneratedColumn<String>(
+    'ifsc',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _isActiveMeta = const VerificationMeta(
+    'isActive',
+  );
+  @override
+  late final GeneratedColumn<bool> isActive = GeneratedColumn<bool>(
+    'is_active',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_active" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    kind,
+    name,
+    bankName,
+    accountLast4,
+    ifsc,
+    sortOrder,
+    isActive,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'bank_accounts';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<BankAccount> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('bank_name')) {
+      context.handle(
+        _bankNameMeta,
+        bankName.isAcceptableOrUnknown(data['bank_name']!, _bankNameMeta),
+      );
+    }
+    if (data.containsKey('account_last4')) {
+      context.handle(
+        _accountLast4Meta,
+        accountLast4.isAcceptableOrUnknown(
+          data['account_last4']!,
+          _accountLast4Meta,
+        ),
+      );
+    }
+    if (data.containsKey('ifsc')) {
+      context.handle(
+        _ifscMeta,
+        ifsc.isAcceptableOrUnknown(data['ifsc']!, _ifscMeta),
+      );
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sortOrderMeta);
+    }
+    if (data.containsKey('is_active')) {
+      context.handle(
+        _isActiveMeta,
+        isActive.isAcceptableOrUnknown(data['is_active']!, _isActiveMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isActiveMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  BankAccount map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return BankAccount(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      bankName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bank_name'],
+      ),
+      accountLast4: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}account_last4'],
+      ),
+      ifsc: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ifsc'],
+      ),
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+      isActive: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_active'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $BankAccountsTable createAlias(String alias) {
+    return $BankAccountsTable(attachedDatabase, alias);
+  }
+}
+
+class BankAccount extends DataClass implements Insertable<BankAccount> {
+  final String id;
+  final String tenantId;
+  final String kind;
+  final String name;
+  final String? bankName;
+  final String? accountLast4;
+  final String? ifsc;
+  final int sortOrder;
+  final bool isActive;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const BankAccount({
+    required this.id,
+    required this.tenantId,
+    required this.kind,
+    required this.name,
+    this.bankName,
+    this.accountLast4,
+    this.ifsc,
+    required this.sortOrder,
+    required this.isActive,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['kind'] = Variable<String>(kind);
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || bankName != null) {
+      map['bank_name'] = Variable<String>(bankName);
+    }
+    if (!nullToAbsent || accountLast4 != null) {
+      map['account_last4'] = Variable<String>(accountLast4);
+    }
+    if (!nullToAbsent || ifsc != null) {
+      map['ifsc'] = Variable<String>(ifsc);
+    }
+    map['sort_order'] = Variable<int>(sortOrder);
+    map['is_active'] = Variable<bool>(isActive);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  BankAccountsCompanion toCompanion(bool nullToAbsent) {
+    return BankAccountsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      kind: Value(kind),
+      name: Value(name),
+      bankName: bankName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bankName),
+      accountLast4: accountLast4 == null && nullToAbsent
+          ? const Value.absent()
+          : Value(accountLast4),
+      ifsc: ifsc == null && nullToAbsent ? const Value.absent() : Value(ifsc),
+      sortOrder: Value(sortOrder),
+      isActive: Value(isActive),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory BankAccount.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return BankAccount(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      kind: serializer.fromJson<String>(json['kind']),
+      name: serializer.fromJson<String>(json['name']),
+      bankName: serializer.fromJson<String?>(json['bankName']),
+      accountLast4: serializer.fromJson<String?>(json['accountLast4']),
+      ifsc: serializer.fromJson<String?>(json['ifsc']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      isActive: serializer.fromJson<bool>(json['isActive']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'kind': serializer.toJson<String>(kind),
+      'name': serializer.toJson<String>(name),
+      'bankName': serializer.toJson<String?>(bankName),
+      'accountLast4': serializer.toJson<String?>(accountLast4),
+      'ifsc': serializer.toJson<String?>(ifsc),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+      'isActive': serializer.toJson<bool>(isActive),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  BankAccount copyWith({
+    String? id,
+    String? tenantId,
+    String? kind,
+    String? name,
+    Value<String?> bankName = const Value.absent(),
+    Value<String?> accountLast4 = const Value.absent(),
+    Value<String?> ifsc = const Value.absent(),
+    int? sortOrder,
+    bool? isActive,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => BankAccount(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    kind: kind ?? this.kind,
+    name: name ?? this.name,
+    bankName: bankName.present ? bankName.value : this.bankName,
+    accountLast4: accountLast4.present ? accountLast4.value : this.accountLast4,
+    ifsc: ifsc.present ? ifsc.value : this.ifsc,
+    sortOrder: sortOrder ?? this.sortOrder,
+    isActive: isActive ?? this.isActive,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  BankAccount copyWithCompanion(BankAccountsCompanion data) {
+    return BankAccount(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      name: data.name.present ? data.name.value : this.name,
+      bankName: data.bankName.present ? data.bankName.value : this.bankName,
+      accountLast4: data.accountLast4.present
+          ? data.accountLast4.value
+          : this.accountLast4,
+      ifsc: data.ifsc.present ? data.ifsc.value : this.ifsc,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      isActive: data.isActive.present ? data.isActive.value : this.isActive,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BankAccount(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('kind: $kind, ')
+          ..write('name: $name, ')
+          ..write('bankName: $bankName, ')
+          ..write('accountLast4: $accountLast4, ')
+          ..write('ifsc: $ifsc, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('isActive: $isActive, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    kind,
+    name,
+    bankName,
+    accountLast4,
+    ifsc,
+    sortOrder,
+    isActive,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is BankAccount &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.kind == this.kind &&
+          other.name == this.name &&
+          other.bankName == this.bankName &&
+          other.accountLast4 == this.accountLast4 &&
+          other.ifsc == this.ifsc &&
+          other.sortOrder == this.sortOrder &&
+          other.isActive == this.isActive &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class BankAccountsCompanion extends UpdateCompanion<BankAccount> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> kind;
+  final Value<String> name;
+  final Value<String?> bankName;
+  final Value<String?> accountLast4;
+  final Value<String?> ifsc;
+  final Value<int> sortOrder;
+  final Value<bool> isActive;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const BankAccountsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.name = const Value.absent(),
+    this.bankName = const Value.absent(),
+    this.accountLast4 = const Value.absent(),
+    this.ifsc = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.isActive = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  BankAccountsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String kind,
+    required String name,
+    this.bankName = const Value.absent(),
+    this.accountLast4 = const Value.absent(),
+    this.ifsc = const Value.absent(),
+    required int sortOrder,
+    required bool isActive,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       kind = Value(kind),
+       name = Value(name),
+       sortOrder = Value(sortOrder),
+       isActive = Value(isActive);
+  static Insertable<BankAccount> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? kind,
+    Expression<String>? name,
+    Expression<String>? bankName,
+    Expression<String>? accountLast4,
+    Expression<String>? ifsc,
+    Expression<int>? sortOrder,
+    Expression<bool>? isActive,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (kind != null) 'kind': kind,
+      if (name != null) 'name': name,
+      if (bankName != null) 'bank_name': bankName,
+      if (accountLast4 != null) 'account_last4': accountLast4,
+      if (ifsc != null) 'ifsc': ifsc,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (isActive != null) 'is_active': isActive,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  BankAccountsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? kind,
+    Value<String>? name,
+    Value<String?>? bankName,
+    Value<String?>? accountLast4,
+    Value<String?>? ifsc,
+    Value<int>? sortOrder,
+    Value<bool>? isActive,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return BankAccountsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      kind: kind ?? this.kind,
+      name: name ?? this.name,
+      bankName: bankName ?? this.bankName,
+      accountLast4: accountLast4 ?? this.accountLast4,
+      ifsc: ifsc ?? this.ifsc,
+      sortOrder: sortOrder ?? this.sortOrder,
+      isActive: isActive ?? this.isActive,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (bankName.present) {
+      map['bank_name'] = Variable<String>(bankName.value);
+    }
+    if (accountLast4.present) {
+      map['account_last4'] = Variable<String>(accountLast4.value);
+    }
+    if (ifsc.present) {
+      map['ifsc'] = Variable<String>(ifsc.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (isActive.present) {
+      map['is_active'] = Variable<bool>(isActive.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BankAccountsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('kind: $kind, ')
+          ..write('name: $name, ')
+          ..write('bankName: $bankName, ')
+          ..write('accountLast4: $accountLast4, ')
+          ..write('ifsc: $ifsc, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('isActive: $isActive, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PaymentsTable extends Payments with TableInfo<$PaymentsTable, Payment> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PaymentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _receiptNoMeta = const VerificationMeta(
+    'receiptNo',
+  );
+  @override
+  late final GeneratedColumn<String> receiptNo = GeneratedColumn<String>(
+    'receipt_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _directionMeta = const VerificationMeta(
+    'direction',
+  );
+  @override
+  late final GeneratedColumn<String> direction = GeneratedColumn<String>(
+    'direction',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _modeMeta = const VerificationMeta('mode');
+  @override
+  late final GeneratedColumn<String> mode = GeneratedColumn<String>(
+    'mode',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountPaiseMeta = const VerificationMeta(
+    'amountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> amountPaise = GeneratedColumn<int>(
+    'amount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bankAccountIdMeta = const VerificationMeta(
+    'bankAccountId',
+  );
+  @override
+  late final GeneratedColumn<String> bankAccountId = GeneratedColumn<String>(
+    'bank_account_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _referenceMeta = const VerificationMeta(
+    'reference',
+  );
+  @override
+  late final GeneratedColumn<String> reference = GeneratedColumn<String>(
+    'reference',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _chequeNoMeta = const VerificationMeta(
+    'chequeNo',
+  );
+  @override
+  late final GeneratedColumn<String> chequeNo = GeneratedColumn<String>(
+    'cheque_no',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _chequeDateMeta = const VerificationMeta(
+    'chequeDate',
+  );
+  @override
+  late final GeneratedColumn<String> chequeDate = GeneratedColumn<String>(
+    'cheque_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _chequeStatusMeta = const VerificationMeta(
+    'chequeStatus',
+  );
+  @override
+  late final GeneratedColumn<String> chequeStatus = GeneratedColumn<String>(
+    'cheque_status',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _narrationMeta = const VerificationMeta(
+    'narration',
+  );
+  @override
+  late final GeneratedColumn<String> narration = GeneratedColumn<String>(
+    'narration',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reversedAtMeta = const VerificationMeta(
+    'reversedAt',
+  );
+  @override
+  late final GeneratedColumn<String> reversedAt = GeneratedColumn<String>(
+    'reversed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    receiptNo,
+    entryDate,
+    partyId,
+    direction,
+    mode,
+    amountPaise,
+    bankAccountId,
+    reference,
+    chequeNo,
+    chequeDate,
+    chequeStatus,
+    narration,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'payments';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Payment> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('receipt_no')) {
+      context.handle(
+        _receiptNoMeta,
+        receiptNo.isAcceptableOrUnknown(data['receipt_no']!, _receiptNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_receiptNoMeta);
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyIdMeta);
+    }
+    if (data.containsKey('direction')) {
+      context.handle(
+        _directionMeta,
+        direction.isAcceptableOrUnknown(data['direction']!, _directionMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_directionMeta);
+    }
+    if (data.containsKey('mode')) {
+      context.handle(
+        _modeMeta,
+        mode.isAcceptableOrUnknown(data['mode']!, _modeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_modeMeta);
+    }
+    if (data.containsKey('amount_paise')) {
+      context.handle(
+        _amountPaiseMeta,
+        amountPaise.isAcceptableOrUnknown(
+          data['amount_paise']!,
+          _amountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountPaiseMeta);
+    }
+    if (data.containsKey('bank_account_id')) {
+      context.handle(
+        _bankAccountIdMeta,
+        bankAccountId.isAcceptableOrUnknown(
+          data['bank_account_id']!,
+          _bankAccountIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_bankAccountIdMeta);
+    }
+    if (data.containsKey('reference')) {
+      context.handle(
+        _referenceMeta,
+        reference.isAcceptableOrUnknown(data['reference']!, _referenceMeta),
+      );
+    }
+    if (data.containsKey('cheque_no')) {
+      context.handle(
+        _chequeNoMeta,
+        chequeNo.isAcceptableOrUnknown(data['cheque_no']!, _chequeNoMeta),
+      );
+    }
+    if (data.containsKey('cheque_date')) {
+      context.handle(
+        _chequeDateMeta,
+        chequeDate.isAcceptableOrUnknown(data['cheque_date']!, _chequeDateMeta),
+      );
+    }
+    if (data.containsKey('cheque_status')) {
+      context.handle(
+        _chequeStatusMeta,
+        chequeStatus.isAcceptableOrUnknown(
+          data['cheque_status']!,
+          _chequeStatusMeta,
+        ),
+      );
+    }
+    if (data.containsKey('narration')) {
+      context.handle(
+        _narrationMeta,
+        narration.isAcceptableOrUnknown(data['narration']!, _narrationMeta),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('reversed_at')) {
+      context.handle(
+        _reversedAtMeta,
+        reversedAt.isAcceptableOrUnknown(data['reversed_at']!, _reversedAtMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Payment map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Payment(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      receiptNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}receipt_no'],
+      )!,
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      direction: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}direction'],
+      )!,
+      mode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mode'],
+      )!,
+      amountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_paise'],
+      )!,
+      bankAccountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bank_account_id'],
+      )!,
+      reference: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reference'],
+      ),
+      chequeNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}cheque_no'],
+      ),
+      chequeDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}cheque_date'],
+      ),
+      chequeStatus: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}cheque_status'],
+      ),
+      narration: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}narration'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      reversedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reversed_at'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $PaymentsTable createAlias(String alias) {
+    return $PaymentsTable(attachedDatabase, alias);
+  }
+}
+
+class Payment extends DataClass implements Insertable<Payment> {
+  final String id;
+  final String tenantId;
+  final String receiptNo;
+  final String entryDate;
+  final String partyId;
+  final String direction;
+  final String mode;
+  final int amountPaise;
+  final String bankAccountId;
+  final String? reference;
+  final String? chequeNo;
+  final String? chequeDate;
+  final String? chequeStatus;
+  final String? narration;
+  final String status;
+  final String? reversedAt;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const Payment({
+    required this.id,
+    required this.tenantId,
+    required this.receiptNo,
+    required this.entryDate,
+    required this.partyId,
+    required this.direction,
+    required this.mode,
+    required this.amountPaise,
+    required this.bankAccountId,
+    this.reference,
+    this.chequeNo,
+    this.chequeDate,
+    this.chequeStatus,
+    this.narration,
+    required this.status,
+    this.reversedAt,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['receipt_no'] = Variable<String>(receiptNo);
+    map['entry_date'] = Variable<String>(entryDate);
+    map['party_id'] = Variable<String>(partyId);
+    map['direction'] = Variable<String>(direction);
+    map['mode'] = Variable<String>(mode);
+    map['amount_paise'] = Variable<int>(amountPaise);
+    map['bank_account_id'] = Variable<String>(bankAccountId);
+    if (!nullToAbsent || reference != null) {
+      map['reference'] = Variable<String>(reference);
+    }
+    if (!nullToAbsent || chequeNo != null) {
+      map['cheque_no'] = Variable<String>(chequeNo);
+    }
+    if (!nullToAbsent || chequeDate != null) {
+      map['cheque_date'] = Variable<String>(chequeDate);
+    }
+    if (!nullToAbsent || chequeStatus != null) {
+      map['cheque_status'] = Variable<String>(chequeStatus);
+    }
+    if (!nullToAbsent || narration != null) {
+      map['narration'] = Variable<String>(narration);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || reversedAt != null) {
+      map['reversed_at'] = Variable<String>(reversedAt);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  PaymentsCompanion toCompanion(bool nullToAbsent) {
+    return PaymentsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      receiptNo: Value(receiptNo),
+      entryDate: Value(entryDate),
+      partyId: Value(partyId),
+      direction: Value(direction),
+      mode: Value(mode),
+      amountPaise: Value(amountPaise),
+      bankAccountId: Value(bankAccountId),
+      reference: reference == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reference),
+      chequeNo: chequeNo == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chequeNo),
+      chequeDate: chequeDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chequeDate),
+      chequeStatus: chequeStatus == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chequeStatus),
+      narration: narration == null && nullToAbsent
+          ? const Value.absent()
+          : Value(narration),
+      status: Value(status),
+      reversedAt: reversedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversedAt),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory Payment.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Payment(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      receiptNo: serializer.fromJson<String>(json['receiptNo']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      direction: serializer.fromJson<String>(json['direction']),
+      mode: serializer.fromJson<String>(json['mode']),
+      amountPaise: serializer.fromJson<int>(json['amountPaise']),
+      bankAccountId: serializer.fromJson<String>(json['bankAccountId']),
+      reference: serializer.fromJson<String?>(json['reference']),
+      chequeNo: serializer.fromJson<String?>(json['chequeNo']),
+      chequeDate: serializer.fromJson<String?>(json['chequeDate']),
+      chequeStatus: serializer.fromJson<String?>(json['chequeStatus']),
+      narration: serializer.fromJson<String?>(json['narration']),
+      status: serializer.fromJson<String>(json['status']),
+      reversedAt: serializer.fromJson<String?>(json['reversedAt']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'receiptNo': serializer.toJson<String>(receiptNo),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'partyId': serializer.toJson<String>(partyId),
+      'direction': serializer.toJson<String>(direction),
+      'mode': serializer.toJson<String>(mode),
+      'amountPaise': serializer.toJson<int>(amountPaise),
+      'bankAccountId': serializer.toJson<String>(bankAccountId),
+      'reference': serializer.toJson<String?>(reference),
+      'chequeNo': serializer.toJson<String?>(chequeNo),
+      'chequeDate': serializer.toJson<String?>(chequeDate),
+      'chequeStatus': serializer.toJson<String?>(chequeStatus),
+      'narration': serializer.toJson<String?>(narration),
+      'status': serializer.toJson<String>(status),
+      'reversedAt': serializer.toJson<String?>(reversedAt),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  Payment copyWith({
+    String? id,
+    String? tenantId,
+    String? receiptNo,
+    String? entryDate,
+    String? partyId,
+    String? direction,
+    String? mode,
+    int? amountPaise,
+    String? bankAccountId,
+    Value<String?> reference = const Value.absent(),
+    Value<String?> chequeNo = const Value.absent(),
+    Value<String?> chequeDate = const Value.absent(),
+    Value<String?> chequeStatus = const Value.absent(),
+    Value<String?> narration = const Value.absent(),
+    String? status,
+    Value<String?> reversedAt = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => Payment(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    receiptNo: receiptNo ?? this.receiptNo,
+    entryDate: entryDate ?? this.entryDate,
+    partyId: partyId ?? this.partyId,
+    direction: direction ?? this.direction,
+    mode: mode ?? this.mode,
+    amountPaise: amountPaise ?? this.amountPaise,
+    bankAccountId: bankAccountId ?? this.bankAccountId,
+    reference: reference.present ? reference.value : this.reference,
+    chequeNo: chequeNo.present ? chequeNo.value : this.chequeNo,
+    chequeDate: chequeDate.present ? chequeDate.value : this.chequeDate,
+    chequeStatus: chequeStatus.present ? chequeStatus.value : this.chequeStatus,
+    narration: narration.present ? narration.value : this.narration,
+    status: status ?? this.status,
+    reversedAt: reversedAt.present ? reversedAt.value : this.reversedAt,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  Payment copyWithCompanion(PaymentsCompanion data) {
+    return Payment(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      receiptNo: data.receiptNo.present ? data.receiptNo.value : this.receiptNo,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      direction: data.direction.present ? data.direction.value : this.direction,
+      mode: data.mode.present ? data.mode.value : this.mode,
+      amountPaise: data.amountPaise.present
+          ? data.amountPaise.value
+          : this.amountPaise,
+      bankAccountId: data.bankAccountId.present
+          ? data.bankAccountId.value
+          : this.bankAccountId,
+      reference: data.reference.present ? data.reference.value : this.reference,
+      chequeNo: data.chequeNo.present ? data.chequeNo.value : this.chequeNo,
+      chequeDate: data.chequeDate.present
+          ? data.chequeDate.value
+          : this.chequeDate,
+      chequeStatus: data.chequeStatus.present
+          ? data.chequeStatus.value
+          : this.chequeStatus,
+      narration: data.narration.present ? data.narration.value : this.narration,
+      status: data.status.present ? data.status.value : this.status,
+      reversedAt: data.reversedAt.present
+          ? data.reversedAt.value
+          : this.reversedAt,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Payment(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('receiptNo: $receiptNo, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('partyId: $partyId, ')
+          ..write('direction: $direction, ')
+          ..write('mode: $mode, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('reference: $reference, ')
+          ..write('chequeNo: $chequeNo, ')
+          ..write('chequeDate: $chequeDate, ')
+          ..write('chequeStatus: $chequeStatus, ')
+          ..write('narration: $narration, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    receiptNo,
+    entryDate,
+    partyId,
+    direction,
+    mode,
+    amountPaise,
+    bankAccountId,
+    reference,
+    chequeNo,
+    chequeDate,
+    chequeStatus,
+    narration,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Payment &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.receiptNo == this.receiptNo &&
+          other.entryDate == this.entryDate &&
+          other.partyId == this.partyId &&
+          other.direction == this.direction &&
+          other.mode == this.mode &&
+          other.amountPaise == this.amountPaise &&
+          other.bankAccountId == this.bankAccountId &&
+          other.reference == this.reference &&
+          other.chequeNo == this.chequeNo &&
+          other.chequeDate == this.chequeDate &&
+          other.chequeStatus == this.chequeStatus &&
+          other.narration == this.narration &&
+          other.status == this.status &&
+          other.reversedAt == this.reversedAt &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class PaymentsCompanion extends UpdateCompanion<Payment> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> receiptNo;
+  final Value<String> entryDate;
+  final Value<String> partyId;
+  final Value<String> direction;
+  final Value<String> mode;
+  final Value<int> amountPaise;
+  final Value<String> bankAccountId;
+  final Value<String?> reference;
+  final Value<String?> chequeNo;
+  final Value<String?> chequeDate;
+  final Value<String?> chequeStatus;
+  final Value<String?> narration;
+  final Value<String> status;
+  final Value<String?> reversedAt;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const PaymentsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.receiptNo = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.direction = const Value.absent(),
+    this.mode = const Value.absent(),
+    this.amountPaise = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    this.reference = const Value.absent(),
+    this.chequeNo = const Value.absent(),
+    this.chequeDate = const Value.absent(),
+    this.chequeStatus = const Value.absent(),
+    this.narration = const Value.absent(),
+    this.status = const Value.absent(),
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PaymentsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String receiptNo,
+    required String entryDate,
+    required String partyId,
+    required String direction,
+    required String mode,
+    required int amountPaise,
+    required String bankAccountId,
+    this.reference = const Value.absent(),
+    this.chequeNo = const Value.absent(),
+    this.chequeDate = const Value.absent(),
+    this.chequeStatus = const Value.absent(),
+    this.narration = const Value.absent(),
+    required String status,
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       receiptNo = Value(receiptNo),
+       entryDate = Value(entryDate),
+       partyId = Value(partyId),
+       direction = Value(direction),
+       mode = Value(mode),
+       amountPaise = Value(amountPaise),
+       bankAccountId = Value(bankAccountId),
+       status = Value(status);
+  static Insertable<Payment> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? receiptNo,
+    Expression<String>? entryDate,
+    Expression<String>? partyId,
+    Expression<String>? direction,
+    Expression<String>? mode,
+    Expression<int>? amountPaise,
+    Expression<String>? bankAccountId,
+    Expression<String>? reference,
+    Expression<String>? chequeNo,
+    Expression<String>? chequeDate,
+    Expression<String>? chequeStatus,
+    Expression<String>? narration,
+    Expression<String>? status,
+    Expression<String>? reversedAt,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (receiptNo != null) 'receipt_no': receiptNo,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (partyId != null) 'party_id': partyId,
+      if (direction != null) 'direction': direction,
+      if (mode != null) 'mode': mode,
+      if (amountPaise != null) 'amount_paise': amountPaise,
+      if (bankAccountId != null) 'bank_account_id': bankAccountId,
+      if (reference != null) 'reference': reference,
+      if (chequeNo != null) 'cheque_no': chequeNo,
+      if (chequeDate != null) 'cheque_date': chequeDate,
+      if (chequeStatus != null) 'cheque_status': chequeStatus,
+      if (narration != null) 'narration': narration,
+      if (status != null) 'status': status,
+      if (reversedAt != null) 'reversed_at': reversedAt,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PaymentsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? receiptNo,
+    Value<String>? entryDate,
+    Value<String>? partyId,
+    Value<String>? direction,
+    Value<String>? mode,
+    Value<int>? amountPaise,
+    Value<String>? bankAccountId,
+    Value<String?>? reference,
+    Value<String?>? chequeNo,
+    Value<String?>? chequeDate,
+    Value<String?>? chequeStatus,
+    Value<String?>? narration,
+    Value<String>? status,
+    Value<String?>? reversedAt,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return PaymentsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      receiptNo: receiptNo ?? this.receiptNo,
+      entryDate: entryDate ?? this.entryDate,
+      partyId: partyId ?? this.partyId,
+      direction: direction ?? this.direction,
+      mode: mode ?? this.mode,
+      amountPaise: amountPaise ?? this.amountPaise,
+      bankAccountId: bankAccountId ?? this.bankAccountId,
+      reference: reference ?? this.reference,
+      chequeNo: chequeNo ?? this.chequeNo,
+      chequeDate: chequeDate ?? this.chequeDate,
+      chequeStatus: chequeStatus ?? this.chequeStatus,
+      narration: narration ?? this.narration,
+      status: status ?? this.status,
+      reversedAt: reversedAt ?? this.reversedAt,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (receiptNo.present) {
+      map['receipt_no'] = Variable<String>(receiptNo.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (direction.present) {
+      map['direction'] = Variable<String>(direction.value);
+    }
+    if (mode.present) {
+      map['mode'] = Variable<String>(mode.value);
+    }
+    if (amountPaise.present) {
+      map['amount_paise'] = Variable<int>(amountPaise.value);
+    }
+    if (bankAccountId.present) {
+      map['bank_account_id'] = Variable<String>(bankAccountId.value);
+    }
+    if (reference.present) {
+      map['reference'] = Variable<String>(reference.value);
+    }
+    if (chequeNo.present) {
+      map['cheque_no'] = Variable<String>(chequeNo.value);
+    }
+    if (chequeDate.present) {
+      map['cheque_date'] = Variable<String>(chequeDate.value);
+    }
+    if (chequeStatus.present) {
+      map['cheque_status'] = Variable<String>(chequeStatus.value);
+    }
+    if (narration.present) {
+      map['narration'] = Variable<String>(narration.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (reversedAt.present) {
+      map['reversed_at'] = Variable<String>(reversedAt.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PaymentsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('receiptNo: $receiptNo, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('partyId: $partyId, ')
+          ..write('direction: $direction, ')
+          ..write('mode: $mode, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('reference: $reference, ')
+          ..write('chequeNo: $chequeNo, ')
+          ..write('chequeDate: $chequeDate, ')
+          ..write('chequeStatus: $chequeStatus, ')
+          ..write('narration: $narration, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CashBankEntriesTable extends CashBankEntries
+    with TableInfo<$CashBankEntriesTable, CashBankEntry> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CashBankEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _accountIdMeta = const VerificationMeta(
+    'accountId',
+  );
+  @override
+  late final GeneratedColumn<String> accountId = GeneratedColumn<String>(
+    'account_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _accountKindMeta = const VerificationMeta(
+    'accountKind',
+  );
+  @override
+  late final GeneratedColumn<String> accountKind = GeneratedColumn<String>(
+    'account_kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _directionMeta = const VerificationMeta(
+    'direction',
+  );
+  @override
+  late final GeneratedColumn<String> direction = GeneratedColumn<String>(
+    'direction',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountPaiseMeta = const VerificationMeta(
+    'amountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> amountPaise = GeneratedColumn<int>(
+    'amount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paymentIdMeta = const VerificationMeta(
+    'paymentId',
+  );
+  @override
+  late final GeneratedColumn<String> paymentId = GeneratedColumn<String>(
+    'payment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _narrationMeta = const VerificationMeta(
+    'narration',
+  );
+  @override
+  late final GeneratedColumn<String> narration = GeneratedColumn<String>(
+    'narration',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reversesIdMeta = const VerificationMeta(
+    'reversesId',
+  );
+  @override
+  late final GeneratedColumn<String> reversesId = GeneratedColumn<String>(
+    'reverses_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    accountId,
+    accountKind,
+    entryDate,
+    direction,
+    amountPaise,
+    paymentId,
+    narration,
+    reversesId,
+    deviceId,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'cash_bank_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<CashBankEntry> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('account_id')) {
+      context.handle(
+        _accountIdMeta,
+        accountId.isAcceptableOrUnknown(data['account_id']!, _accountIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_accountIdMeta);
+    }
+    if (data.containsKey('account_kind')) {
+      context.handle(
+        _accountKindMeta,
+        accountKind.isAcceptableOrUnknown(
+          data['account_kind']!,
+          _accountKindMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_accountKindMeta);
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('direction')) {
+      context.handle(
+        _directionMeta,
+        direction.isAcceptableOrUnknown(data['direction']!, _directionMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_directionMeta);
+    }
+    if (data.containsKey('amount_paise')) {
+      context.handle(
+        _amountPaiseMeta,
+        amountPaise.isAcceptableOrUnknown(
+          data['amount_paise']!,
+          _amountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountPaiseMeta);
+    }
+    if (data.containsKey('payment_id')) {
+      context.handle(
+        _paymentIdMeta,
+        paymentId.isAcceptableOrUnknown(data['payment_id']!, _paymentIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_paymentIdMeta);
+    }
+    if (data.containsKey('narration')) {
+      context.handle(
+        _narrationMeta,
+        narration.isAcceptableOrUnknown(data['narration']!, _narrationMeta),
+      );
+    }
+    if (data.containsKey('reverses_id')) {
+      context.handle(
+        _reversesIdMeta,
+        reversesId.isAcceptableOrUnknown(data['reverses_id']!, _reversesIdMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  CashBankEntry map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CashBankEntry(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      accountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}account_id'],
+      )!,
+      accountKind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}account_kind'],
+      )!,
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      direction: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}direction'],
+      )!,
+      amountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_paise'],
+      )!,
+      paymentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_id'],
+      )!,
+      narration: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}narration'],
+      ),
+      reversesId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reverses_id'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $CashBankEntriesTable createAlias(String alias) {
+    return $CashBankEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
+  final String id;
+  final String tenantId;
+  final String accountId;
+  final String accountKind;
+  final String entryDate;
+  final String direction;
+  final int amountPaise;
+  final String paymentId;
+  final String? narration;
+  final String? reversesId;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  const CashBankEntry({
+    required this.id,
+    required this.tenantId,
+    required this.accountId,
+    required this.accountKind,
+    required this.entryDate,
+    required this.direction,
+    required this.amountPaise,
+    required this.paymentId,
+    this.narration,
+    this.reversesId,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['account_id'] = Variable<String>(accountId);
+    map['account_kind'] = Variable<String>(accountKind);
+    map['entry_date'] = Variable<String>(entryDate);
+    map['direction'] = Variable<String>(direction);
+    map['amount_paise'] = Variable<int>(amountPaise);
+    map['payment_id'] = Variable<String>(paymentId);
+    if (!nullToAbsent || narration != null) {
+      map['narration'] = Variable<String>(narration);
+    }
+    if (!nullToAbsent || reversesId != null) {
+      map['reverses_id'] = Variable<String>(reversesId);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  CashBankEntriesCompanion toCompanion(bool nullToAbsent) {
+    return CashBankEntriesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      accountId: Value(accountId),
+      accountKind: Value(accountKind),
+      entryDate: Value(entryDate),
+      direction: Value(direction),
+      amountPaise: Value(amountPaise),
+      paymentId: Value(paymentId),
+      narration: narration == null && nullToAbsent
+          ? const Value.absent()
+          : Value(narration),
+      reversesId: reversesId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversesId),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory CashBankEntry.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CashBankEntry(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      accountId: serializer.fromJson<String>(json['accountId']),
+      accountKind: serializer.fromJson<String>(json['accountKind']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      direction: serializer.fromJson<String>(json['direction']),
+      amountPaise: serializer.fromJson<int>(json['amountPaise']),
+      paymentId: serializer.fromJson<String>(json['paymentId']),
+      narration: serializer.fromJson<String?>(json['narration']),
+      reversesId: serializer.fromJson<String?>(json['reversesId']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'accountId': serializer.toJson<String>(accountId),
+      'accountKind': serializer.toJson<String>(accountKind),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'direction': serializer.toJson<String>(direction),
+      'amountPaise': serializer.toJson<int>(amountPaise),
+      'paymentId': serializer.toJson<String>(paymentId),
+      'narration': serializer.toJson<String?>(narration),
+      'reversesId': serializer.toJson<String?>(reversesId),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  CashBankEntry copyWith({
+    String? id,
+    String? tenantId,
+    String? accountId,
+    String? accountKind,
+    String? entryDate,
+    String? direction,
+    int? amountPaise,
+    String? paymentId,
+    Value<String?> narration = const Value.absent(),
+    Value<String?> reversesId = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => CashBankEntry(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    accountId: accountId ?? this.accountId,
+    accountKind: accountKind ?? this.accountKind,
+    entryDate: entryDate ?? this.entryDate,
+    direction: direction ?? this.direction,
+    amountPaise: amountPaise ?? this.amountPaise,
+    paymentId: paymentId ?? this.paymentId,
+    narration: narration.present ? narration.value : this.narration,
+    reversesId: reversesId.present ? reversesId.value : this.reversesId,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  CashBankEntry copyWithCompanion(CashBankEntriesCompanion data) {
+    return CashBankEntry(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      accountId: data.accountId.present ? data.accountId.value : this.accountId,
+      accountKind: data.accountKind.present
+          ? data.accountKind.value
+          : this.accountKind,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      direction: data.direction.present ? data.direction.value : this.direction,
+      amountPaise: data.amountPaise.present
+          ? data.amountPaise.value
+          : this.amountPaise,
+      paymentId: data.paymentId.present ? data.paymentId.value : this.paymentId,
+      narration: data.narration.present ? data.narration.value : this.narration,
+      reversesId: data.reversesId.present
+          ? data.reversesId.value
+          : this.reversesId,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CashBankEntry(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('accountId: $accountId, ')
+          ..write('accountKind: $accountKind, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('direction: $direction, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('paymentId: $paymentId, ')
+          ..write('narration: $narration, ')
+          ..write('reversesId: $reversesId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    accountId,
+    accountKind,
+    entryDate,
+    direction,
+    amountPaise,
+    paymentId,
+    narration,
+    reversesId,
+    deviceId,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CashBankEntry &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.accountId == this.accountId &&
+          other.accountKind == this.accountKind &&
+          other.entryDate == this.entryDate &&
+          other.direction == this.direction &&
+          other.amountPaise == this.amountPaise &&
+          other.paymentId == this.paymentId &&
+          other.narration == this.narration &&
+          other.reversesId == this.reversesId &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> accountId;
+  final Value<String> accountKind;
+  final Value<String> entryDate;
+  final Value<String> direction;
+  final Value<int> amountPaise;
+  final Value<String> paymentId;
+  final Value<String?> narration;
+  final Value<String?> reversesId;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const CashBankEntriesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.accountId = const Value.absent(),
+    this.accountKind = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.direction = const Value.absent(),
+    this.amountPaise = const Value.absent(),
+    this.paymentId = const Value.absent(),
+    this.narration = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CashBankEntriesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String accountId,
+    required String accountKind,
+    required String entryDate,
+    required String direction,
+    required int amountPaise,
+    required String paymentId,
+    this.narration = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       accountId = Value(accountId),
+       accountKind = Value(accountKind),
+       entryDate = Value(entryDate),
+       direction = Value(direction),
+       amountPaise = Value(amountPaise),
+       paymentId = Value(paymentId);
+  static Insertable<CashBankEntry> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? accountId,
+    Expression<String>? accountKind,
+    Expression<String>? entryDate,
+    Expression<String>? direction,
+    Expression<int>? amountPaise,
+    Expression<String>? paymentId,
+    Expression<String>? narration,
+    Expression<String>? reversesId,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (accountId != null) 'account_id': accountId,
+      if (accountKind != null) 'account_kind': accountKind,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (direction != null) 'direction': direction,
+      if (amountPaise != null) 'amount_paise': amountPaise,
+      if (paymentId != null) 'payment_id': paymentId,
+      if (narration != null) 'narration': narration,
+      if (reversesId != null) 'reverses_id': reversesId,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CashBankEntriesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? accountId,
+    Value<String>? accountKind,
+    Value<String>? entryDate,
+    Value<String>? direction,
+    Value<int>? amountPaise,
+    Value<String>? paymentId,
+    Value<String?>? narration,
+    Value<String?>? reversesId,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return CashBankEntriesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      accountId: accountId ?? this.accountId,
+      accountKind: accountKind ?? this.accountKind,
+      entryDate: entryDate ?? this.entryDate,
+      direction: direction ?? this.direction,
+      amountPaise: amountPaise ?? this.amountPaise,
+      paymentId: paymentId ?? this.paymentId,
+      narration: narration ?? this.narration,
+      reversesId: reversesId ?? this.reversesId,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (accountId.present) {
+      map['account_id'] = Variable<String>(accountId.value);
+    }
+    if (accountKind.present) {
+      map['account_kind'] = Variable<String>(accountKind.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (direction.present) {
+      map['direction'] = Variable<String>(direction.value);
+    }
+    if (amountPaise.present) {
+      map['amount_paise'] = Variable<int>(amountPaise.value);
+    }
+    if (paymentId.present) {
+      map['payment_id'] = Variable<String>(paymentId.value);
+    }
+    if (narration.present) {
+      map['narration'] = Variable<String>(narration.value);
+    }
+    if (reversesId.present) {
+      map['reverses_id'] = Variable<String>(reversesId.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CashBankEntriesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('accountId: $accountId, ')
+          ..write('accountKind: $accountKind, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('direction: $direction, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('paymentId: $paymentId, ')
+          ..write('narration: $narration, ')
+          ..write('reversesId: $reversesId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -9586,6 +12177,11 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $LedgerEntriesTable ledgerEntries = $LedgerEntriesTable(this);
   late final $CropsTable crops = $CropsTable(this);
   late final $LotsTable lots = $LotsTable(this);
+  late final $BankAccountsTable bankAccounts = $BankAccountsTable(this);
+  late final $PaymentsTable payments = $PaymentsTable(this);
+  late final $CashBankEntriesTable cashBankEntries = $CashBankEntriesTable(
+    this,
+  );
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -9604,6 +12200,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     ledgerEntries,
     crops,
     lots,
+    bankAccounts,
+    payments,
+    cashBankEntries,
     syncErrors,
   ];
 }
@@ -13857,6 +16456,1217 @@ typedef $$LotsTableProcessedTableManager =
       Lot,
       PrefetchHooks Function()
     >;
+typedef $$BankAccountsTableCreateCompanionBuilder =
+    BankAccountsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String kind,
+      required String name,
+      Value<String?> bankName,
+      Value<String?> accountLast4,
+      Value<String?> ifsc,
+      required int sortOrder,
+      required bool isActive,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$BankAccountsTableUpdateCompanionBuilder =
+    BankAccountsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> kind,
+      Value<String> name,
+      Value<String?> bankName,
+      Value<String?> accountLast4,
+      Value<String?> ifsc,
+      Value<int> sortOrder,
+      Value<bool> isActive,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$BankAccountsTableFilterComposer
+    extends Composer<_$AppDatabase, $BankAccountsTable> {
+  $$BankAccountsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bankName => $composableBuilder(
+    column: $table.bankName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get accountLast4 => $composableBuilder(
+    column: $table.accountLast4,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ifsc => $composableBuilder(
+    column: $table.ifsc,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$BankAccountsTableOrderingComposer
+    extends Composer<_$AppDatabase, $BankAccountsTable> {
+  $$BankAccountsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bankName => $composableBuilder(
+    column: $table.bankName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get accountLast4 => $composableBuilder(
+    column: $table.accountLast4,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ifsc => $composableBuilder(
+    column: $table.ifsc,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$BankAccountsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $BankAccountsTable> {
+  $$BankAccountsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get bankName =>
+      $composableBuilder(column: $table.bankName, builder: (column) => column);
+
+  GeneratedColumn<String> get accountLast4 => $composableBuilder(
+    column: $table.accountLast4,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get ifsc =>
+      $composableBuilder(column: $table.ifsc, builder: (column) => column);
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<bool> get isActive =>
+      $composableBuilder(column: $table.isActive, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$BankAccountsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $BankAccountsTable,
+          BankAccount,
+          $$BankAccountsTableFilterComposer,
+          $$BankAccountsTableOrderingComposer,
+          $$BankAccountsTableAnnotationComposer,
+          $$BankAccountsTableCreateCompanionBuilder,
+          $$BankAccountsTableUpdateCompanionBuilder,
+          (
+            BankAccount,
+            BaseReferences<_$AppDatabase, $BankAccountsTable, BankAccount>,
+          ),
+          BankAccount,
+          PrefetchHooks Function()
+        > {
+  $$BankAccountsTableTableManager(_$AppDatabase db, $BankAccountsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$BankAccountsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$BankAccountsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$BankAccountsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String?> bankName = const Value.absent(),
+                Value<String?> accountLast4 = const Value.absent(),
+                Value<String?> ifsc = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<bool> isActive = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BankAccountsCompanion(
+                id: id,
+                tenantId: tenantId,
+                kind: kind,
+                name: name,
+                bankName: bankName,
+                accountLast4: accountLast4,
+                ifsc: ifsc,
+                sortOrder: sortOrder,
+                isActive: isActive,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String kind,
+                required String name,
+                Value<String?> bankName = const Value.absent(),
+                Value<String?> accountLast4 = const Value.absent(),
+                Value<String?> ifsc = const Value.absent(),
+                required int sortOrder,
+                required bool isActive,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BankAccountsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                kind: kind,
+                name: name,
+                bankName: bankName,
+                accountLast4: accountLast4,
+                ifsc: ifsc,
+                sortOrder: sortOrder,
+                isActive: isActive,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$BankAccountsTable, BankAccount>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $BankAccountsTable,
+                    BankAccount
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$BankAccountsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $BankAccountsTable,
+      BankAccount,
+      $$BankAccountsTableFilterComposer,
+      $$BankAccountsTableOrderingComposer,
+      $$BankAccountsTableAnnotationComposer,
+      $$BankAccountsTableCreateCompanionBuilder,
+      $$BankAccountsTableUpdateCompanionBuilder,
+      (
+        BankAccount,
+        BaseReferences<_$AppDatabase, $BankAccountsTable, BankAccount>,
+      ),
+      BankAccount,
+      PrefetchHooks Function()
+    >;
+typedef $$PaymentsTableCreateCompanionBuilder =
+    PaymentsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String receiptNo,
+      required String entryDate,
+      required String partyId,
+      required String direction,
+      required String mode,
+      required int amountPaise,
+      required String bankAccountId,
+      Value<String?> reference,
+      Value<String?> chequeNo,
+      Value<String?> chequeDate,
+      Value<String?> chequeStatus,
+      Value<String?> narration,
+      required String status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$PaymentsTableUpdateCompanionBuilder =
+    PaymentsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> receiptNo,
+      Value<String> entryDate,
+      Value<String> partyId,
+      Value<String> direction,
+      Value<String> mode,
+      Value<int> amountPaise,
+      Value<String> bankAccountId,
+      Value<String?> reference,
+      Value<String?> chequeNo,
+      Value<String?> chequeDate,
+      Value<String?> chequeStatus,
+      Value<String?> narration,
+      Value<String> status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$PaymentsTableFilterComposer
+    extends Composer<_$AppDatabase, $PaymentsTable> {
+  $$PaymentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get receiptNo => $composableBuilder(
+    column: $table.receiptNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get direction => $composableBuilder(
+    column: $table.direction,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mode => $composableBuilder(
+    column: $table.mode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reference => $composableBuilder(
+    column: $table.reference,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get chequeNo => $composableBuilder(
+    column: $table.chequeNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get chequeDate => $composableBuilder(
+    column: $table.chequeDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get chequeStatus => $composableBuilder(
+    column: $table.chequeStatus,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PaymentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PaymentsTable> {
+  $$PaymentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get receiptNo => $composableBuilder(
+    column: $table.receiptNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get direction => $composableBuilder(
+    column: $table.direction,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mode => $composableBuilder(
+    column: $table.mode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reference => $composableBuilder(
+    column: $table.reference,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get chequeNo => $composableBuilder(
+    column: $table.chequeNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get chequeDate => $composableBuilder(
+    column: $table.chequeDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get chequeStatus => $composableBuilder(
+    column: $table.chequeStatus,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PaymentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PaymentsTable> {
+  $$PaymentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get receiptNo =>
+      $composableBuilder(column: $table.receiptNo, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get direction =>
+      $composableBuilder(column: $table.direction, builder: (column) => column);
+
+  GeneratedColumn<String> get mode =>
+      $composableBuilder(column: $table.mode, builder: (column) => column);
+
+  GeneratedColumn<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get reference =>
+      $composableBuilder(column: $table.reference, builder: (column) => column);
+
+  GeneratedColumn<String> get chequeNo =>
+      $composableBuilder(column: $table.chequeNo, builder: (column) => column);
+
+  GeneratedColumn<String> get chequeDate => $composableBuilder(
+    column: $table.chequeDate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get chequeStatus => $composableBuilder(
+    column: $table.chequeStatus,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get narration =>
+      $composableBuilder(column: $table.narration, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$PaymentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PaymentsTable,
+          Payment,
+          $$PaymentsTableFilterComposer,
+          $$PaymentsTableOrderingComposer,
+          $$PaymentsTableAnnotationComposer,
+          $$PaymentsTableCreateCompanionBuilder,
+          $$PaymentsTableUpdateCompanionBuilder,
+          (Payment, BaseReferences<_$AppDatabase, $PaymentsTable, Payment>),
+          Payment,
+          PrefetchHooks Function()
+        > {
+  $$PaymentsTableTableManager(_$AppDatabase db, $PaymentsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PaymentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PaymentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PaymentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> receiptNo = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String> direction = const Value.absent(),
+                Value<String> mode = const Value.absent(),
+                Value<int> amountPaise = const Value.absent(),
+                Value<String> bankAccountId = const Value.absent(),
+                Value<String?> reference = const Value.absent(),
+                Value<String?> chequeNo = const Value.absent(),
+                Value<String?> chequeDate = const Value.absent(),
+                Value<String?> chequeStatus = const Value.absent(),
+                Value<String?> narration = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PaymentsCompanion(
+                id: id,
+                tenantId: tenantId,
+                receiptNo: receiptNo,
+                entryDate: entryDate,
+                partyId: partyId,
+                direction: direction,
+                mode: mode,
+                amountPaise: amountPaise,
+                bankAccountId: bankAccountId,
+                reference: reference,
+                chequeNo: chequeNo,
+                chequeDate: chequeDate,
+                chequeStatus: chequeStatus,
+                narration: narration,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String receiptNo,
+                required String entryDate,
+                required String partyId,
+                required String direction,
+                required String mode,
+                required int amountPaise,
+                required String bankAccountId,
+                Value<String?> reference = const Value.absent(),
+                Value<String?> chequeNo = const Value.absent(),
+                Value<String?> chequeDate = const Value.absent(),
+                Value<String?> chequeStatus = const Value.absent(),
+                Value<String?> narration = const Value.absent(),
+                required String status,
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PaymentsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                receiptNo: receiptNo,
+                entryDate: entryDate,
+                partyId: partyId,
+                direction: direction,
+                mode: mode,
+                amountPaise: amountPaise,
+                bankAccountId: bankAccountId,
+                reference: reference,
+                chequeNo: chequeNo,
+                chequeDate: chequeDate,
+                chequeStatus: chequeStatus,
+                narration: narration,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PaymentsTable, Payment>(table),
+                  BaseReferences<_$AppDatabase, $PaymentsTable, Payment>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PaymentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PaymentsTable,
+      Payment,
+      $$PaymentsTableFilterComposer,
+      $$PaymentsTableOrderingComposer,
+      $$PaymentsTableAnnotationComposer,
+      $$PaymentsTableCreateCompanionBuilder,
+      $$PaymentsTableUpdateCompanionBuilder,
+      (Payment, BaseReferences<_$AppDatabase, $PaymentsTable, Payment>),
+      Payment,
+      PrefetchHooks Function()
+    >;
+typedef $$CashBankEntriesTableCreateCompanionBuilder =
+    CashBankEntriesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String accountId,
+      required String accountKind,
+      required String entryDate,
+      required String direction,
+      required int amountPaise,
+      required String paymentId,
+      Value<String?> narration,
+      Value<String?> reversesId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$CashBankEntriesTableUpdateCompanionBuilder =
+    CashBankEntriesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> accountId,
+      Value<String> accountKind,
+      Value<String> entryDate,
+      Value<String> direction,
+      Value<int> amountPaise,
+      Value<String> paymentId,
+      Value<String?> narration,
+      Value<String?> reversesId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$CashBankEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $CashBankEntriesTable> {
+  $$CashBankEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get accountId => $composableBuilder(
+    column: $table.accountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get accountKind => $composableBuilder(
+    column: $table.accountKind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get direction => $composableBuilder(
+    column: $table.direction,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paymentId => $composableBuilder(
+    column: $table.paymentId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$CashBankEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $CashBankEntriesTable> {
+  $$CashBankEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get accountId => $composableBuilder(
+    column: $table.accountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get accountKind => $composableBuilder(
+    column: $table.accountKind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get direction => $composableBuilder(
+    column: $table.direction,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paymentId => $composableBuilder(
+    column: $table.paymentId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$CashBankEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CashBankEntriesTable> {
+  $$CashBankEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get accountId =>
+      $composableBuilder(column: $table.accountId, builder: (column) => column);
+
+  GeneratedColumn<String> get accountKind => $composableBuilder(
+    column: $table.accountKind,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<String> get direction =>
+      $composableBuilder(column: $table.direction, builder: (column) => column);
+
+  GeneratedColumn<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get paymentId =>
+      $composableBuilder(column: $table.paymentId, builder: (column) => column);
+
+  GeneratedColumn<String> get narration =>
+      $composableBuilder(column: $table.narration, builder: (column) => column);
+
+  GeneratedColumn<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$CashBankEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $CashBankEntriesTable,
+          CashBankEntry,
+          $$CashBankEntriesTableFilterComposer,
+          $$CashBankEntriesTableOrderingComposer,
+          $$CashBankEntriesTableAnnotationComposer,
+          $$CashBankEntriesTableCreateCompanionBuilder,
+          $$CashBankEntriesTableUpdateCompanionBuilder,
+          (
+            CashBankEntry,
+            BaseReferences<_$AppDatabase, $CashBankEntriesTable, CashBankEntry>,
+          ),
+          CashBankEntry,
+          PrefetchHooks Function()
+        > {
+  $$CashBankEntriesTableTableManager(
+    _$AppDatabase db,
+    $CashBankEntriesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CashBankEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CashBankEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CashBankEntriesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> accountId = const Value.absent(),
+                Value<String> accountKind = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<String> direction = const Value.absent(),
+                Value<int> amountPaise = const Value.absent(),
+                Value<String> paymentId = const Value.absent(),
+                Value<String?> narration = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CashBankEntriesCompanion(
+                id: id,
+                tenantId: tenantId,
+                accountId: accountId,
+                accountKind: accountKind,
+                entryDate: entryDate,
+                direction: direction,
+                amountPaise: amountPaise,
+                paymentId: paymentId,
+                narration: narration,
+                reversesId: reversesId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String accountId,
+                required String accountKind,
+                required String entryDate,
+                required String direction,
+                required int amountPaise,
+                required String paymentId,
+                Value<String?> narration = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CashBankEntriesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                accountId: accountId,
+                accountKind: accountKind,
+                entryDate: entryDate,
+                direction: direction,
+                amountPaise: amountPaise,
+                paymentId: paymentId,
+                narration: narration,
+                reversesId: reversesId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$CashBankEntriesTable, CashBankEntry>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $CashBankEntriesTable,
+                    CashBankEntry
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$CashBankEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $CashBankEntriesTable,
+      CashBankEntry,
+      $$CashBankEntriesTableFilterComposer,
+      $$CashBankEntriesTableOrderingComposer,
+      $$CashBankEntriesTableAnnotationComposer,
+      $$CashBankEntriesTableCreateCompanionBuilder,
+      $$CashBankEntriesTableUpdateCompanionBuilder,
+      (
+        CashBankEntry,
+        BaseReferences<_$AppDatabase, $CashBankEntriesTable, CashBankEntry>,
+      ),
+      CashBankEntry,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -14187,6 +17997,12 @@ class $AppDatabaseManager {
   $$CropsTableTableManager get crops =>
       $$CropsTableTableManager(_db, _db.crops);
   $$LotsTableTableManager get lots => $$LotsTableTableManager(_db, _db.lots);
+  $$BankAccountsTableTableManager get bankAccounts =>
+      $$BankAccountsTableTableManager(_db, _db.bankAccounts);
+  $$PaymentsTableTableManager get payments =>
+      $$PaymentsTableTableManager(_db, _db.payments);
+  $$CashBankEntriesTableTableManager get cashBankEntries =>
+      $$CashBankEntriesTableTableManager(_db, _db.cashBankEntries);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }
