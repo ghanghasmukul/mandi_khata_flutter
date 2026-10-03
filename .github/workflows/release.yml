@@ -1,0 +1,331 @@
+# Builds the shippable apps with the PRODUCTION config when a tag `v*` is pushed
+# (e.g. v1.0.0) and attaches them to a DRAFT GitHub Release for a human to review
+# and publish.
+#
+#   Windows  MandiKhata-Setup-<ver>.exe   (Inno Setup installer)
+#   macOS    MandiKhata-<ver>.dmg
+#   Android  app-release.aab
+#   Web      mandi-khata-web-<ver>.zip
+#
+# Production values are NOT in the repo. They come from GitHub:
+#   variables  PROD_SUPABASE_URL, PROD_SUPABASE_ANON_KEY, PROD_POWERSYNC_URL
+#   secret     PROD_SENTRY_DSN (optional)
+# They are public client values (anon key, never the service-role key).
+#
+# SIGNING IS OPTIONAL and UNTESTED until you add real certificates:
+#   - No signing secrets -> the build still succeeds but is unsigned:
+#     Windows SmartScreen / macOS Gatekeeper warn, and the AAB is signed with the
+#     DEBUG key so Google Play will reject it.
+#   - Each signing step runs only when its secrets exist (see docs/ops.md).
+# Windows is built only here (windows-latest), never on the macOS dev machine.
+
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+env:
+  # Keep in step with ci.yml and docs/decisions.md.
+  FLUTTER_VERSION: '3.47.5'
+
+jobs:
+  preflight:
+    name: Verify config and tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+      - name: Production config is present
+        env:
+          URL: ${{ vars.PROD_SUPABASE_URL }}
+          KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
+          PS: ${{ vars.PROD_POWERSYNC_URL }}
+        run: |
+          if [ -z "$URL" ] || [ -z "$KEY" ] || [ -z "$PS" ]; then
+            echo "::error::Add repository variables PROD_SUPABASE_URL, PROD_SUPABASE_ANON_KEY, PROD_POWERSYNC_URL (Settings > Secrets and variables > Actions > Variables)."
+            exit 1
+          fi
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter analyze
+      - working-directory: packages/khata_core
+        run: dart test
+      - working-directory: apps/mandi_khata_app
+        run: flutter test
+
+  web:
+    name: Web bundle
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PROD_SUPABASE_URL: ${{ vars.PROD_SUPABASE_URL }}
+      PROD_SUPABASE_ANON_KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
+      PROD_POWERSYNC_URL: ${{ vars.PROD_POWERSYNC_URL }}
+      PROD_SENTRY_DSN: ${{ secrets.PROD_SENTRY_DSN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Write production env file (runner temp, never committed)
+        run: |
+          {
+            echo "APP_ENV=prod"
+            echo "SUPABASE_URL=$PROD_SUPABASE_URL"
+            echo "SUPABASE_ANON_KEY=$PROD_SUPABASE_ANON_KEY"
+            echo "POWERSYNC_URL=$PROD_POWERSYNC_URL"
+            echo "SENTRY_DSN=$PROD_SENTRY_DSN"
+          } > "$RUNNER_TEMP/env.prod"
+      - name: Build
+        working-directory: apps/mandi_khata_app
+        run: >
+          flutter build web --release
+          --dart-define-from-file="$RUNNER_TEMP/env.prod"
+          --build-name=${{ needs.preflight.outputs.version }}
+          --build-number=${{ github.run_number }}
+      - name: Zip
+        run: |
+          cd apps/mandi_khata_app/build/web
+          zip -r "$GITHUB_WORKSPACE/mandi-khata-web-${{ needs.preflight.outputs.version }}.zip" .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: mandi-khata-web-*.zip
+
+  android:
+    name: Android AAB
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      HAS_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+      PROD_SUPABASE_URL: ${{ vars.PROD_SUPABASE_URL }}
+      PROD_SUPABASE_ANON_KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
+      PROD_POWERSYNC_URL: ${{ vars.PROD_POWERSYNC_URL }}
+      PROD_SENTRY_DSN: ${{ secrets.PROD_SENTRY_DSN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Restore upload keystore (optional)
+        if: env.HAS_KEYSTORE == 'true'
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          echo "$KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/upload.jks"
+          {
+            echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks"
+            echo "ANDROID_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD"
+            echo "ANDROID_KEY_ALIAS=$KEY_ALIAS"
+            echo "ANDROID_KEY_PASSWORD=$KEY_PASSWORD"
+          } >> "$GITHUB_ENV"
+      - name: Warn when unsigned
+        if: env.HAS_KEYSTORE != 'true'
+        run: echo "::warning::No ANDROID_KEYSTORE_BASE64 secret. The AAB is signed with the DEBUG key and cannot be uploaded to Google Play."
+      - name: Write production env file
+        run: |
+          {
+            echo "APP_ENV=prod"
+            echo "SUPABASE_URL=$PROD_SUPABASE_URL"
+            echo "SUPABASE_ANON_KEY=$PROD_SUPABASE_ANON_KEY"
+            echo "POWERSYNC_URL=$PROD_POWERSYNC_URL"
+            echo "SENTRY_DSN=$PROD_SENTRY_DSN"
+          } > "$RUNNER_TEMP/env.prod"
+      - name: Build
+        working-directory: apps/mandi_khata_app
+        run: >
+          flutter build appbundle --release
+          --dart-define-from-file="$RUNNER_TEMP/env.prod"
+          --build-name=${{ needs.preflight.outputs.version }}
+          --build-number=${{ github.run_number }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: apps/mandi_khata_app/build/app/outputs/bundle/release/app-release.aab
+
+  windows:
+    name: Windows installer
+    needs: preflight
+    runs-on: windows-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    env:
+      HAS_WIN_CERT: ${{ secrets.WINDOWS_CERT_PFX_BASE64 != '' }}
+      PROD_SUPABASE_URL: ${{ vars.PROD_SUPABASE_URL }}
+      PROD_SUPABASE_ANON_KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
+      PROD_POWERSYNC_URL: ${{ vars.PROD_POWERSYNC_URL }}
+      PROD_SENTRY_DSN: ${{ secrets.PROD_SENTRY_DSN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Write production env file
+        run: |
+          {
+            echo "APP_ENV=prod"
+            echo "SUPABASE_URL=$PROD_SUPABASE_URL"
+            echo "SUPABASE_ANON_KEY=$PROD_SUPABASE_ANON_KEY"
+            echo "POWERSYNC_URL=$PROD_POWERSYNC_URL"
+            echo "SENTRY_DSN=$PROD_SENTRY_DSN"
+          } > "$RUNNER_TEMP/env.prod"
+      - name: Build
+        working-directory: apps/mandi_khata_app
+        run: >
+          flutter build windows --release
+          --dart-define-from-file="$(cygpath -w "$RUNNER_TEMP/env.prod")"
+          --build-name=${{ needs.preflight.outputs.version }}
+          --build-number=${{ github.run_number }}
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+      - name: Build installer
+        working-directory: apps/mandi_khata_app/windows/installer
+        run: |
+          "/c/Program Files (x86)/Inno Setup 6/ISCC.exe" "//DAppVersion=${{ needs.preflight.outputs.version }}" mandi_khata.iss
+      - name: Sign installer (optional)
+        if: env.HAS_WIN_CERT == 'true'
+        env:
+          PFX_B64: ${{ secrets.WINDOWS_CERT_PFX_BASE64 }}
+          PFX_PASSWORD: ${{ secrets.WINDOWS_CERT_PASSWORD }}
+        run: |
+          echo "$PFX_B64" | base64 --decode > "$RUNNER_TEMP/cert.pfx"
+          SIGNTOOL=$(find "/c/Program Files (x86)/Windows Kits/10/bin" -name signtool.exe -path "*x64*" | sort | tail -1)
+          "$SIGNTOOL" sign //f "$(cygpath -w "$RUNNER_TEMP/cert.pfx")" //p "$PFX_PASSWORD" \
+            //fd SHA256 //tr http://timestamp.digicert.com //td SHA256 dist/MandiKhata-Setup-*.exe
+      - name: Warn when unsigned
+        if: env.HAS_WIN_CERT != 'true'
+        run: echo "::warning::No WINDOWS_CERT_PFX_BASE64 secret. The installer is unsigned and Windows SmartScreen will warn."
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: dist/MandiKhata-Setup-*.exe
+
+  macos:
+    name: macOS dmg
+    needs: preflight
+    runs-on: macos-latest
+    timeout-minutes: 60
+    env:
+      HAS_MAC_CERT: ${{ secrets.MACOS_CERT_P12_BASE64 != '' }}
+      HAS_NOTARY: ${{ secrets.APPLE_ID != '' && secrets.APPLE_APP_PASSWORD != '' && secrets.APPLE_TEAM_ID != '' }}
+      PROD_SUPABASE_URL: ${{ vars.PROD_SUPABASE_URL }}
+      PROD_SUPABASE_ANON_KEY: ${{ vars.PROD_SUPABASE_ANON_KEY }}
+      PROD_POWERSYNC_URL: ${{ vars.PROD_POWERSYNC_URL }}
+      PROD_SENTRY_DSN: ${{ secrets.PROD_SENTRY_DSN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Write production env file
+        run: |
+          {
+            echo "APP_ENV=prod"
+            echo "SUPABASE_URL=$PROD_SUPABASE_URL"
+            echo "SUPABASE_ANON_KEY=$PROD_SUPABASE_ANON_KEY"
+            echo "POWERSYNC_URL=$PROD_POWERSYNC_URL"
+            echo "SENTRY_DSN=$PROD_SENTRY_DSN"
+          } > "$RUNNER_TEMP/env.prod"
+      - name: Build
+        working-directory: apps/mandi_khata_app
+        run: >
+          flutter build macos --release
+          --dart-define-from-file="$RUNNER_TEMP/env.prod"
+          --build-name=${{ needs.preflight.outputs.version }}
+          --build-number=${{ github.run_number }}
+      - name: Sign app (optional)
+        if: env.HAS_MAC_CERT == 'true'
+        env:
+          CERT_B64: ${{ secrets.MACOS_CERT_P12_BASE64 }}
+          CERT_PASSWORD: ${{ secrets.MACOS_CERT_PASSWORD }}
+          IDENTITY: ${{ secrets.MACOS_SIGNING_IDENTITY }}
+        run: |
+          KEYCHAIN="$RUNNER_TEMP/build.keychain-db"
+          echo "$CERT_B64" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "tmp-pass" "$KEYCHAIN"
+          security set-keychain-settings -lut 3600 "$KEYCHAIN"
+          security unlock-keychain -p "tmp-pass" "$KEYCHAIN"
+          security import "$RUNNER_TEMP/cert.p12" -k "$KEYCHAIN" -P "$CERT_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "tmp-pass" "$KEYCHAIN"
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
+          codesign --force --deep --options runtime --timestamp --sign "$IDENTITY" \
+            apps/mandi_khata_app/build/macos/Build/Products/Release/mandi_khata_app.app
+      - name: Create dmg
+        run: |
+          mkdir -p dist stage
+          cp -R apps/mandi_khata_app/build/macos/Build/Products/Release/mandi_khata_app.app "stage/Mandi Khata.app"
+          ln -s /Applications stage/Applications
+          hdiutil create -volname "Mandi Khata" -srcfolder stage -ov -format UDZO \
+            "dist/MandiKhata-${{ needs.preflight.outputs.version }}.dmg"
+      - name: Notarize (optional, needs a signed app)
+        if: env.HAS_MAC_CERT == 'true' && env.HAS_NOTARY == 'true'
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          DMG="dist/MandiKhata-${{ needs.preflight.outputs.version }}.dmg"
+          xcrun notarytool submit "$DMG" --apple-id "$APPLE_ID" --password "$APPLE_APP_PASSWORD" --team-id "$APPLE_TEAM_ID" --wait
+          xcrun stapler staple "$DMG"
+      - name: Warn when not fully signed
+        if: env.HAS_MAC_CERT != 'true' || env.HAS_NOTARY != 'true'
+        run: echo "::warning::macOS build is not fully signed and notarized (needs MACOS_CERT_* and APPLE_* secrets). Gatekeeper will warn on first open."
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos
+          path: dist/MandiKhata-*.dmg
+
+  release:
+    name: Draft GitHub Release
+    needs: [web, android, windows, macos]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Create draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -R artifacts
+          gh release create "$GITHUB_REF_NAME" artifacts/* \
+            --repo "$GITHUB_REPOSITORY" --draft --generate-notes \
+            --title "Mandi Khata $GITHUB_REF_NAME"

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:mandi_khata_app/app/command_palette.dart';
 import 'package:mandi_khata_app/app/env.dart';
+import 'package:mandi_khata_app/app/env_ribbon.dart';
 import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/errors/error_reporting.dart';
@@ -96,7 +97,10 @@ class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
       routerConfig: router,
       builder: (context, child) => CommandPaletteShortcut(
         navigatorKey: ref.read(rootNavigatorKeyProvider),
-        child: child ?? const SizedBox.shrink(),
+        child: EnvRibbon(
+          show: Env.isDev,
+          child: child ?? const SizedBox.shrink(),
+        ),
       ),
     );
   }

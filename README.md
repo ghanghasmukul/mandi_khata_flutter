@@ -52,6 +52,20 @@ so `flutter run` there fails with `Target file "lib/main.dart" not found`. In
 Android Studio use the shared **main.dart** run configuration: it points at
 `apps/mandi_khata_app/lib/main.dart` and passes `.env.dev`.
 
+## Environments
+
+| | Dev | Production |
+|---|---|---|
+| Config | `.env.dev` (copy `.env.example`, git-ignored) | no `.env.prod` file exists; `release.yml` writes one from GitHub variables / secrets at build time |
+| `APP_ENV` | `dev`: the app shows an orange **DEV** ribbon | `prod`: no ribbon |
+| Backend | dev Supabase + PowerSync | prod Supabase + PowerSync |
+| Database changes | `supabase db push` to dev | `deploy-db.yml` (tag `db-v*`, approval in the `production` environment) |
+| App builds | `flutter run` on your Mac | `release.yml` (tag `v*`): Windows installer, macOS dmg, Android AAB, web zip, in a draft GitHub Release |
+
+`.env.*` is git-ignored except `.env.example`. Never put production values on a
+dev machine or in the repo. Secrets, variables and the release / rollback
+procedures are in [`docs/ops.md`](docs/ops.md).
+
 Windows is **not** built on the Mac — Flutter cannot cross-compile it. CI builds
 it on a `windows-latest` runner and it is tested on a real Windows PC before the
 pilot.
