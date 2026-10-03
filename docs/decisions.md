@@ -161,3 +161,8 @@
 ## 2026-10-03: Phase 1 review
 - The three SECURITY DEFINER RPCs callable by authenticated (register_device, create_member_invite, accept_member_invites) are intended; each checks auth.uid / permission inside. Advisor 0029 accepted.
 - Phase 1 review H1 fixed: app_users.phone is read-only for API roles (invite hijack). Medium findings M1-M8 are open, see docs/reviews/phase-1.md.
+
+## 2026-10-03: Step 2.1 interest engine
+- Full list of engine decisions (dates as `LedgerDate`, rounding only on the final total, repayment interest split in paise, min-days "period", compounding dates and 1 April for FY close, grace tranches, `apply_on`, `pay_on_jama` reported separately, posted-interest entries ignored) is in docs/domain/interest-engine.md, "Implementation decisions (step 2.1)". Each is pinned by a test in `packages/khata_core/test/interest/`.
+- Worked example 3 as written ("matches `P(1+r/12)^3 - P` within Rs 1") cannot hold with day counting: 1 Jan to 1 Apr 2027 at 12% monthly is 31/28/31 days, giving Rs 1,02,988.15 (hand-checked), against Rs 1,03,030.10 from the formula, Rs 42 apart. The test instead checks the engine against the day-count product `P x prod(1 + r x days/365)` within Rs 1 and pins the exact paise figure. The engine was not bent to the spec's formula.
+- Property test (d) "adding a jama never increases interest" is stated on total interest ever charged (still accrued + capitalised + recovered), because with compounding a plain `accrued + recovered` moves interest into principal. Rounding noise is allowed (a few paise).

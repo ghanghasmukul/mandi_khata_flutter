@@ -37,7 +37,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [ ] Phase 1 review done 2026-10-03 (docs/reviews/phase-1.md; 1 high fixed, exit criteria 1/3/4 await manual checks; criterion 2 proven) + 🧑 pilot with 2–3 arhtiyas; feedback recorded in docs/decisions.md
 
 ## Phase 2: Karza & Byaj
-- [ ] 2.1 Interest engine (tests first)
+- [x] 2.1 Interest engine (2026-10-03): khata_core `calculate()` (running net balance, FIFO grace tranches, rate changes, min days, 365/360, paise / rupee / 10-rupee rounding, interest-first / principal-first, compounding monthly...yearly + on_fy_close, surplus credit carried, pay_on_jama, supplier-only default none, `InterestConfig.fromSettings`); 8 spec worked examples + 4 property tests written first; lib/src/interest 100% line coverage (239 lines). Decisions pinned in docs/domain/interest-engine.md and docs/decisions.md. The spec's monthly-compounding example `P(1+r/12)^3` is ~Rs 42 off the real day-count result (see decisions).
 - [ ] 2.2 Loans data & screens
 - [ ] 2.3 Khata-level interest
 - [ ] 2.4 Posting interest & settlement

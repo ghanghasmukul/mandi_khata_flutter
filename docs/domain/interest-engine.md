@@ -65,3 +65,19 @@ class InterestResult {
 6. Supplier-only party with default config → zero interest.
 7. `on_fy_close` compounding across 31 Mar.
 8. Same-day debit and credit.
+
+## Implementation decisions (step 2.1)
+
+Where the rules above leave room, the engine does this. Each point is pinned by a test in `packages/khata_core/test/interest/`.
+
+- **Dates.** `asOf`, event dates and rate-change dates are `LedgerDate` (calendar days, no time zone), not `DateTime`. Events dated on `asOf` ARE applied (a payment dated today counts as paid); the `asOf` day itself earns no interest (rule 13). Events after `asOf` are ignored.
+- **Order on one day.** Compounding first, then the rate change, then events in (date, createdAt, id) order.
+- **Rounding.** Slab interest and the running accrued amount stay unrounded (20-digit decimals). Rounding by `interest.rounding` (half-up to paise / rupee / 10 rupees) is applied only to the final `accruedUnpaidPaise`. A repayment's interest part is always split in whole **paise** (accrued rounded half-up to paise), whatever `interest.rounding` says, because the split is a fact about a real payment (worked example 1 pays ₹1,109.59). The sub-paise difference stays in the running accrued figure, so no money is created or lost.
+- **Interest-first with compounding.** A repayment pays the interest accrued so far since the last compounding step first, then principal. Compounding dates are anchored on the account's first debit and are not reset by repayments.
+- **Compounding dates.** `monthly/quarterly/halfyearly/yearly`: first-debit date + 1/3/6/12 months (day clamped to month end, always counted from the anchor so it never drifts). `on_fy_close`: the close of 31 March, i.e. the boundary is 1 April, so 31 March earns interest in the year it closes. At each date the accrued unpaid interest (rounded half-up to paise) becomes a new principal tranche without grace days.
+- **Min days.** A "period" is the stretch between two balance-changing events (or the last event and `asOf`). A period shorter than `min_days` earns nothing, even if a rate change or compounding date splits it into several slabs.
+- **Grace.** Each debit is a tranche with its own interest-free window; repayments consume the oldest tranche first. Capitalised interest has no grace. A debit that is set off against a credit balance creates no tranche for the set-off part.
+- **`apply_on`.** `net_udhaar` and `loans_only` run the same maths (the caller decides which events to pass: whole khata or one loan's events). `none`, or `interest.enabled = false`, gives zero interest but still tracks principal, recoveries and credit balance. The supplier / agency default (`none`) is applied by `InterestConfig.fromSettings` only when the value came from the system, plan or tenant level and the party's roles are all supplier / agency; an explicit party, group or document value wins.
+- **`pay_on_jama`.** While a credit balance exists, interest accrues in the party's favour at `pay_rate_pa` (no grace, simple, never compounded, not netted against what the party owes). It is reported separately as `interestPayableToPartyPaise`; `totalPayablePaise` is unchanged.
+- **Posted interest** (`LedgerEvent.isPostedInterest`): ignored by the engine (rule 8). Reconciling accrued interest against already-posted interest is step 2.4's job.
+- **Rate changes** only change `rate_pa`; the pay-on-jama rate is fixed. A change dated on or before the first event applies from the start without a schedule row.
