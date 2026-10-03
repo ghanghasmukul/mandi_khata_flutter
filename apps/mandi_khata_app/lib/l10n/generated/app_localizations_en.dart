@@ -2694,4 +2694,390 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get auditField_direction => 'Direction';
+
+  @override
+  String get onboardingTitle => 'Set up your business';
+
+  @override
+  String get onboardingBack => 'Back';
+
+  @override
+  String get onboardingNext => 'Save and continue';
+
+  @override
+  String get onboardingFinish => 'Finish setup';
+
+  @override
+  String get onboardingSkip => 'Skip setup for now';
+
+  @override
+  String onboardingStepOf(int current, int total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String get onboardingErrNotPermitted =>
+      'You do not have permission to save this.';
+
+  @override
+  String get onboardingErrInvalid =>
+      'These details could not be saved. Please check them.';
+
+  @override
+  String get onboardingOwnerOnly =>
+      'Only the business owner can run the setup.';
+
+  @override
+  String get onboardingBusinessTitle => 'Business details';
+
+  @override
+  String get onboardingBusinessHint =>
+      'These print on receipts and statements.';
+
+  @override
+  String get onboardingBusinessName => 'Business name';
+
+  @override
+  String get onboardingLegalName => 'Legal name (optional)';
+
+  @override
+  String get onboardingGstin => 'GSTIN (optional)';
+
+  @override
+  String get onboardingPhone => 'Phone (optional)';
+
+  @override
+  String get onboardingAddress => 'Address (optional)';
+
+  @override
+  String get onboardingGstinInvalid => 'This GSTIN is not valid.';
+
+  @override
+  String get onboardingPhoneInvalid => 'Enter a 10-digit mobile number.';
+
+  @override
+  String get onboardingMandiTitle => 'Mandi and state';
+
+  @override
+  String get onboardingMandiHint => 'Where your shop is.';
+
+  @override
+  String get onboardingState => 'State';
+
+  @override
+  String get onboardingStateOther => 'Other / not listed';
+
+  @override
+  String get onboardingMandiName => 'Mandi (market yard)';
+
+  @override
+  String get onboardingMandiNameHint => 'e.g. Khanna, Nabha';
+
+  @override
+  String get onboardingCropsTitle => 'Crops you deal in';
+
+  @override
+  String get onboardingCropsHint =>
+      'Switched-off crops stay hidden in forms. You can change this later.';
+
+  @override
+  String get onboardingCropsNone => 'Choose at least one crop.';
+
+  @override
+  String get onboardingSelectAll => 'Select all';
+
+  @override
+  String get onboardingSelectNone => 'Clear all';
+
+  @override
+  String get onboardingChargesTitle => 'Default commission and charges';
+
+  @override
+  String get onboardingChargesHint =>
+      'Used on every lot unless a crop or farmer has its own rate.';
+
+  @override
+  String get onboardingChargesCascade =>
+      'Each crop and each party can override these later.';
+
+  @override
+  String get onboardingNumberInvalid => 'Enter a valid number.';
+
+  @override
+  String get onboardingInterestTitle => 'Interest defaults';
+
+  @override
+  String get onboardingInterestHint => 'Your usual rate and method for byaj.';
+
+  @override
+  String get onboardingInterestStoredOnly =>
+      'Saved only for now. Interest is calculated in a later update.';
+
+  @override
+  String get onboardingLanguageTitle => 'Language';
+
+  @override
+  String get onboardingLanguageHint =>
+      'The app switches now. This is also the default for your business.';
+
+  @override
+  String get onboardingInviteTitle => 'Invite your munshi';
+
+  @override
+  String get onboardingInviteHint =>
+      'Optional. They enter arrivals and payments at the gate.';
+
+  @override
+  String get onboardingInviteButton => 'Invite someone';
+
+  @override
+  String get onboardingInviteLater =>
+      'Needs internet. You can also invite people later from Team.';
+
+  @override
+  String get onboardingDoneTitle => 'Your business is ready';
+
+  @override
+  String get onboardingDoneBody =>
+      'Next, bring in your parties with their opening baki, or add them one by one.';
+
+  @override
+  String get onboardingDoneImport => 'Import opening balances';
+
+  @override
+  String get onboardingDoneAddParty => 'Add a party';
+
+  @override
+  String get onboardingDoneHome => 'Go to dashboard';
+
+  @override
+  String get auditTable_opening_balance_imports => 'Opening balance import';
+
+  @override
+  String get auditTable_tenants => 'Business details';
+
+  @override
+  String get obTitle => 'Import opening balances';
+
+  @override
+  String get obNoAccess =>
+      'Only the owner or accountant can import opening balances.';
+
+  @override
+  String get obSourceTitle => 'Your file';
+
+  @override
+  String get obFormatHelp =>
+      'One row per party. Columns: Name, Village, Mobile, Amount and Dr/Cr (or separate Udhaar and Jama columns). Code and Father are optional. CSV or Excel (.xlsx).';
+
+  @override
+  String get obChooseFile => 'Choose CSV or Excel file';
+
+  @override
+  String get obPasteLabel => 'Or paste from Excel';
+
+  @override
+  String get obPasteHint => 'Name, Village, Amount, Dr/Cr';
+
+  @override
+  String get obReadPasted => 'Read pasted table';
+
+  @override
+  String get obReadOldExcel =>
+      'Old .xls files cannot be read. Save it as .xlsx or CSV and try again.';
+
+  @override
+  String get obReadUnreadable => 'This file could not be read.';
+
+  @override
+  String get obProblemEmpty => 'The file is empty.';
+
+  @override
+  String get obProblemNoName =>
+      'The first row must be a header with a Name column.';
+
+  @override
+  String get obProblemNoAmount =>
+      'No amount column found. Add Amount (with Dr/Cr), or Udhaar and Jama columns.';
+
+  @override
+  String obProblemTooMany(int max) {
+    return 'Too many rows. Import at most $max parties at a time.';
+  }
+
+  @override
+  String get obOptionsTitle => 'How to read it';
+
+  @override
+  String get obAsOn => 'Balances as on';
+
+  @override
+  String get obDefaultSide =>
+      'If a row does not say Dr/Cr, treat the amount as';
+
+  @override
+  String get obSideNone => 'Not chosen';
+
+  @override
+  String get obSideUdhaar => 'Udhaar (party owes us)';
+
+  @override
+  String get obSideJama => 'Jama (we owe the party)';
+
+  @override
+  String get obDefaultRole => 'New parties are added as';
+
+  @override
+  String get obSumRows => 'Rows';
+
+  @override
+  String get obSumNewParties => 'New parties';
+
+  @override
+  String get obSumMatched => 'Existing parties';
+
+  @override
+  String get obSumProblems => 'Problem rows';
+
+  @override
+  String get obSumNet => 'Net';
+
+  @override
+  String get obNetWeOwe => 'we owe overall';
+
+  @override
+  String get obNetTheyOwe => 'they owe overall';
+
+  @override
+  String obMatchedWith(String name) {
+    return 'Existing party: $name';
+  }
+
+  @override
+  String obNewParty(String role) {
+    return 'New party ($role)';
+  }
+
+  @override
+  String get obErrNameMissing => 'Name is missing.';
+
+  @override
+  String get obErrAmountInvalid =>
+      'Amount is not a valid number (up to 2 decimals).';
+
+  @override
+  String get obErrAmountNegative =>
+      'Amount is negative. Use Dr/Cr instead of a minus sign.';
+
+  @override
+  String get obErrSideMissing =>
+      'Not clear if this is udhaar or jama. Add Dr/Cr or choose above.';
+
+  @override
+  String get obErrSideUnknown => 'Dr/Cr value not understood.';
+
+  @override
+  String get obErrSideConflict => 'Both Udhaar and Jama have an amount.';
+
+  @override
+  String get obErrMobileInvalid => 'Mobile number is not valid.';
+
+  @override
+  String get obErrRoleUnknown => 'Party type not understood.';
+
+  @override
+  String obErrDuplicateInFile(String row) {
+    return 'Same party as row $row.';
+  }
+
+  @override
+  String obErrPossibleDuplicate(String code) {
+    return 'A party with this name exists (code $code). Add its code, village or mobile to the row.';
+  }
+
+  @override
+  String obErrCodeTaken(String code) {
+    return 'Code $code belongs to a different party.';
+  }
+
+  @override
+  String get obErrAlreadyHasOpening =>
+      'This party already has an opening balance.';
+
+  @override
+  String get obWarnNoAmount =>
+      'No amount: the party is added without an opening balance.';
+
+  @override
+  String get obWarnNameDiffers =>
+      'Matched by code, but the name differs from the saved party.';
+
+  @override
+  String get obWarnMobileOfOther =>
+      'This mobile number is already used by another party.';
+
+  @override
+  String get obProblemsOnly => 'Problems only';
+
+  @override
+  String obImportButton(int count) {
+    return 'Import $count balances';
+  }
+
+  @override
+  String obImportValidButton(int count, int skipped) {
+    return 'Import $count balances, skip $skipped problem rows';
+  }
+
+  @override
+  String get obConfirmTitle => 'Import opening balances?';
+
+  @override
+  String obConfirmBody(
+    int entries,
+    int parties,
+    String udhaar,
+    String jama,
+    String date,
+  ) {
+    return '$entries balances and $parties new parties as on $date. Udhaar $udhaar, Jama $jama. Entries cannot be edited later, only reversed.';
+  }
+
+  @override
+  String get obImportNow => 'Import';
+
+  @override
+  String get obResAlready =>
+      'This exact file was already imported for this date.';
+
+  @override
+  String get obResNothing =>
+      'Nothing to import: everything is already in the books.';
+
+  @override
+  String get obResNotPermitted =>
+      'You do not have permission to import opening balances.';
+
+  @override
+  String get obResBadDate => 'The date cannot be in the future.';
+
+  @override
+  String obResStale(int row) {
+    return 'Row $row changed since the preview (another device?). Nothing was imported; the preview was refreshed.';
+  }
+
+  @override
+  String get obDoneTitle => 'Opening balances imported';
+
+  @override
+  String obDoneBody(int entries, int parties, String udhaar, String jama) {
+    return '$entries balances posted, $parties parties added. Udhaar $udhaar, Jama $jama.';
+  }
+
+  @override
+  String get obDoneParties => 'View parties';
+
+  @override
+  String get onboardingCropsEmpty =>
+      'No crops have arrived on this device yet. They sync from the server; you can pick them later under Crops.';
 }

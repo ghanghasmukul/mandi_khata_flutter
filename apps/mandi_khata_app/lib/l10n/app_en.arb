@@ -3537,5 +3537,528 @@
   "auditField_direction": "Direction",
   "@auditField_direction": {
     "description": "Audit field name."
+  },
+  "onboardingTitle": "Set up your business",
+  "@onboardingTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingBack": "Back",
+  "@onboardingBack": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingNext": "Save and continue",
+  "@onboardingNext": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingFinish": "Finish setup",
+  "@onboardingFinish": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingSkip": "Skip setup for now",
+  "@onboardingSkip": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingStepOf": "Step {current} of {total}",
+  "@onboardingStepOf": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingErrNotPermitted": "You do not have permission to save this.",
+  "@onboardingErrNotPermitted": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingErrInvalid": "These details could not be saved. Please check them.",
+  "@onboardingErrInvalid": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingOwnerOnly": "Only the business owner can run the setup.",
+  "@onboardingOwnerOnly": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingBusinessTitle": "Business details",
+  "@onboardingBusinessTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingBusinessHint": "These print on receipts and statements.",
+  "@onboardingBusinessHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingBusinessName": "Business name",
+  "@onboardingBusinessName": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingLegalName": "Legal name (optional)",
+  "@onboardingLegalName": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingGstin": "GSTIN (optional)",
+  "@onboardingGstin": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingPhone": "Phone (optional)",
+  "@onboardingPhone": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingAddress": "Address (optional)",
+  "@onboardingAddress": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingGstinInvalid": "This GSTIN is not valid.",
+  "@onboardingGstinInvalid": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingPhoneInvalid": "Enter a 10-digit mobile number.",
+  "@onboardingPhoneInvalid": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingMandiTitle": "Mandi and state",
+  "@onboardingMandiTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingMandiHint": "Where your shop is.",
+  "@onboardingMandiHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingState": "State",
+  "@onboardingState": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingStateOther": "Other / not listed",
+  "@onboardingStateOther": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingMandiName": "Mandi (market yard)",
+  "@onboardingMandiName": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingMandiNameHint": "e.g. Khanna, Nabha",
+  "@onboardingMandiNameHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingCropsTitle": "Crops you deal in",
+  "@onboardingCropsTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingCropsHint": "Switched-off crops stay hidden in forms. You can change this later.",
+  "@onboardingCropsHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingCropsNone": "Choose at least one crop.",
+  "@onboardingCropsNone": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingSelectAll": "Select all",
+  "@onboardingSelectAll": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingSelectNone": "Clear all",
+  "@onboardingSelectNone": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingChargesTitle": "Default commission and charges",
+  "@onboardingChargesTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingChargesHint": "Used on every lot unless a crop or farmer has its own rate.",
+  "@onboardingChargesHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingChargesCascade": "Each crop and each party can override these later.",
+  "@onboardingChargesCascade": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingNumberInvalid": "Enter a valid number.",
+  "@onboardingNumberInvalid": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingInterestTitle": "Interest defaults",
+  "@onboardingInterestTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingInterestHint": "Your usual rate and method for byaj.",
+  "@onboardingInterestHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingInterestStoredOnly": "Saved only for now. Interest is calculated in a later update.",
+  "@onboardingInterestStoredOnly": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingLanguageTitle": "Language",
+  "@onboardingLanguageTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingLanguageHint": "The app switches now. This is also the default for your business.",
+  "@onboardingLanguageHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingInviteTitle": "Invite your munshi",
+  "@onboardingInviteTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingInviteHint": "Optional. They enter arrivals and payments at the gate.",
+  "@onboardingInviteHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingInviteButton": "Invite someone",
+  "@onboardingInviteButton": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingInviteLater": "Needs internet. You can also invite people later from Team.",
+  "@onboardingInviteLater": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingDoneTitle": "Your business is ready",
+  "@onboardingDoneTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingDoneBody": "Next, bring in your parties with their opening baki, or add them one by one.",
+  "@onboardingDoneBody": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingDoneImport": "Import opening balances",
+  "@onboardingDoneImport": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingDoneAddParty": "Add a party",
+  "@onboardingDoneAddParty": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingDoneHome": "Go to dashboard",
+  "@onboardingDoneHome": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "auditTable_opening_balance_imports": "Opening balance import",
+  "@auditTable_opening_balance_imports": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "auditTable_tenants": "Business details",
+  "@auditTable_tenants": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obTitle": "Import opening balances",
+  "@obTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obNoAccess": "Only the owner or accountant can import opening balances.",
+  "@obNoAccess": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSourceTitle": "Your file",
+  "@obSourceTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obFormatHelp": "One row per party. Columns: Name, Village, Mobile, Amount and Dr/Cr (or separate Udhaar and Jama columns). Code and Father are optional. CSV or Excel (.xlsx).",
+  "@obFormatHelp": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obChooseFile": "Choose CSV or Excel file",
+  "@obChooseFile": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obPasteLabel": "Or paste from Excel",
+  "@obPasteLabel": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obPasteHint": "Name, Village, Amount, Dr/Cr",
+  "@obPasteHint": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obReadPasted": "Read pasted table",
+  "@obReadPasted": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obReadOldExcel": "Old .xls files cannot be read. Save it as .xlsx or CSV and try again.",
+  "@obReadOldExcel": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obReadUnreadable": "This file could not be read.",
+  "@obReadUnreadable": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obProblemEmpty": "The file is empty.",
+  "@obProblemEmpty": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obProblemNoName": "The first row must be a header with a Name column.",
+  "@obProblemNoName": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obProblemNoAmount": "No amount column found. Add Amount (with Dr/Cr), or Udhaar and Jama columns.",
+  "@obProblemNoAmount": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obProblemTooMany": "Too many rows. Import at most {max} parties at a time.",
+  "@obProblemTooMany": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "obOptionsTitle": "How to read it",
+  "@obOptionsTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obAsOn": "Balances as on",
+  "@obAsOn": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obDefaultSide": "If a row does not say Dr/Cr, treat the amount as",
+  "@obDefaultSide": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSideNone": "Not chosen",
+  "@obSideNone": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSideUdhaar": "Udhaar (party owes us)",
+  "@obSideUdhaar": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSideJama": "Jama (we owe the party)",
+  "@obSideJama": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obDefaultRole": "New parties are added as",
+  "@obDefaultRole": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSumRows": "Rows",
+  "@obSumRows": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSumNewParties": "New parties",
+  "@obSumNewParties": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSumMatched": "Existing parties",
+  "@obSumMatched": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSumProblems": "Problem rows",
+  "@obSumProblems": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obSumNet": "Net",
+  "@obSumNet": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obNetWeOwe": "we owe overall",
+  "@obNetWeOwe": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obNetTheyOwe": "they owe overall",
+  "@obNetTheyOwe": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obMatchedWith": "Existing party: {name}",
+  "@obMatchedWith": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "obNewParty": "New party ({role})",
+  "@obNewParty": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "obErrNameMissing": "Name is missing.",
+  "@obErrNameMissing": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrAmountInvalid": "Amount is not a valid number (up to 2 decimals).",
+  "@obErrAmountInvalid": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrAmountNegative": "Amount is negative. Use Dr/Cr instead of a minus sign.",
+  "@obErrAmountNegative": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrSideMissing": "Not clear if this is udhaar or jama. Add Dr/Cr or choose above.",
+  "@obErrSideMissing": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrSideUnknown": "Dr/Cr value not understood.",
+  "@obErrSideUnknown": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrSideConflict": "Both Udhaar and Jama have an amount.",
+  "@obErrSideConflict": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrMobileInvalid": "Mobile number is not valid.",
+  "@obErrMobileInvalid": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrRoleUnknown": "Party type not understood.",
+  "@obErrRoleUnknown": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obErrDuplicateInFile": "Same party as row {row}.",
+  "@obErrDuplicateInFile": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "row": {
+        "type": "String"
+      }
+    }
+  },
+  "obErrPossibleDuplicate": "A party with this name exists (code {code}). Add its code, village or mobile to the row.",
+  "@obErrPossibleDuplicate": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "obErrCodeTaken": "Code {code} belongs to a different party.",
+  "@obErrCodeTaken": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "obErrAlreadyHasOpening": "This party already has an opening balance.",
+  "@obErrAlreadyHasOpening": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obWarnNoAmount": "No amount: the party is added without an opening balance.",
+  "@obWarnNoAmount": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obWarnNameDiffers": "Matched by code, but the name differs from the saved party.",
+  "@obWarnNameDiffers": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obWarnMobileOfOther": "This mobile number is already used by another party.",
+  "@obWarnMobileOfOther": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obProblemsOnly": "Problems only",
+  "@obProblemsOnly": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obImportButton": "Import {count} balances",
+  "@obImportButton": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "obImportValidButton": "Import {count} balances, skip {skipped} problem rows",
+  "@obImportValidButton": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+  "obConfirmTitle": "Import opening balances?",
+  "@obConfirmTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obConfirmBody": "{entries} balances and {parties} new parties as on {date}. Udhaar {udhaar}, Jama {jama}. Entries cannot be edited later, only reversed.",
+  "@obConfirmBody": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "entries": {
+        "type": "int"
+      },
+      "parties": {
+        "type": "int"
+      },
+      "udhaar": {
+        "type": "String"
+      },
+      "jama": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "obImportNow": "Import",
+  "@obImportNow": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obResAlready": "This exact file was already imported for this date.",
+  "@obResAlready": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obResNothing": "Nothing to import: everything is already in the books.",
+  "@obResNothing": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obResNotPermitted": "You do not have permission to import opening balances.",
+  "@obResNotPermitted": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obResBadDate": "The date cannot be in the future.",
+  "@obResBadDate": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obResStale": "Row {row} changed since the preview (another device?). Nothing was imported; the preview was refreshed.",
+  "@obResStale": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "row": {
+        "type": "int"
+      }
+    }
+  },
+  "obDoneTitle": "Opening balances imported",
+  "@obDoneTitle": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "obDoneBody": "{entries} balances posted, {parties} parties added. Udhaar {udhaar}, Jama {jama}.",
+  "@obDoneBody": {
+    "description": "Onboarding / opening balances import (step 1.9).",
+    "placeholders": {
+      "entries": {
+        "type": "int"
+      },
+      "parties": {
+        "type": "int"
+      },
+      "udhaar": {
+        "type": "String"
+      },
+      "jama": {
+        "type": "String"
+      }
+    }
+  },
+  "obDoneParties": "View parties",
+  "@obDoneParties": {
+    "description": "Onboarding / opening balances import (step 1.9)."
+  },
+  "onboardingCropsEmpty": "No crops have arrived on this device yet. They sync from the server; you can pick them later under Crops.",
+  "@onboardingCropsEmpty": {
+    "description": "Onboarding crops step, no crops synced."
   }
 }

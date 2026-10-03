@@ -46,6 +46,7 @@ class SettingDef {
     this.suffixValues,
     this.suffixDefaults = const {},
     this.businessOnly = false,
+    this.hidden = false,
     this._validator,
   }) : _default = systemDefault;
 
@@ -71,6 +72,7 @@ class SettingDef {
     int? max,
     List<int>? allowed,
     bool businessOnly = false,
+    bool hidden = false,
   }) : this._(
          key: key,
          type: SettingType.integer,
@@ -79,6 +81,7 @@ class SettingDef {
          max: max,
          allowedInts: allowed,
          businessOnly: businessOnly,
+         hidden: hidden,
        );
 
   const SettingDef.percent(
@@ -131,6 +134,7 @@ class SettingDef {
     required String fallback,
     required List<String> options,
     bool businessOnly = false,
+    bool hidden = false,
     String? suffixName,
     List<String>? suffixValues,
     Map<String, Object?> suffixDefaults = const {},
@@ -140,6 +144,7 @@ class SettingDef {
          systemDefault: fallback,
          options: options,
          businessOnly: businessOnly,
+         hidden: hidden,
          suffixName: suffixName,
          suffixValues: suffixValues,
          suffixDefaults: suffixDefaults,
@@ -191,6 +196,10 @@ class SettingDef {
 
   /// Only the business (tenant scope) may set it.
   final bool businessOnly;
+
+  /// App bookkeeping (onboarding progress): stored like any setting, but not
+  /// shown in the settings editor.
+  final bool hidden;
 
   final bool Function(Object)? _validator;
 
@@ -498,6 +507,39 @@ abstract final class SettingsSchema {
       fallback: false,
       businessOnly: true,
     ),
+
+    // Onboarding wizard progress (hidden from the settings editor): the
+    // wizard resumes on any device from these two rows.
+    SettingDef.choice(
+      'onboarding.status',
+      fallback: 'not_started',
+      options: onboardingStatuses,
+      businessOnly: true,
+      hidden: true,
+    ),
+    SettingDef.integer(
+      'onboarding.step',
+      fallback: 0,
+      min: 0,
+      max: 20,
+      businessOnly: true,
+      hidden: true,
+    ),
+  ];
+
+  /// `onboarding.status`: `not_started` until the owner begins, then
+  /// `in_progress`, then `completed` (or `skipped`).
+  static const onboardingStatuses = [
+    'not_started',
+    'in_progress',
+    'completed',
+    'skipped',
+  ];
+
+  /// Keys the settings editor shows.
+  static List<SettingDef> get visible => [
+    for (final d in all)
+      if (!d.hidden) d,
   ];
 
   static final Map<String, SettingDef> _byKey = {for (final d in all) d.key: d};

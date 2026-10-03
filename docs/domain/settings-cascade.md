@@ -86,3 +86,5 @@ A `null` at a level means "inherit". The resolved value AND the level it came fr
 | `app.default_language` | enum | `en` |
 | `print.receipt_size` | enum | `a5` \| `thermal_80` \| `thermal_58` |
 | `notify.whatsapp_receipts` | bool | false |
+| `onboarding.status` | enum | `not_started` — `not_started` \| `in_progress` \| `completed` \| `skipped`. Hidden app bookkeeping: the first-run wizard's state, business level only |
+| `onboarding.step` | int | 0 — steps finished (0–7); the wizard resumes there, on any device |

@@ -14,13 +14,13 @@ void main() {
       final l10n = lookupAppLocalizations(Locale(lang));
 
       test('every key has a label', () {
-        for (final def in SettingsSchema.all) {
+        for (final def in SettingsSchema.visible) {
           expect(l10n.settingLabel(def.key), isNot(def.key), reason: def.key);
         }
       });
 
       test('every choice has a label', () {
-        for (final def in SettingsSchema.all) {
+        for (final def in SettingsSchema.visible) {
           for (final o in def.options ?? const <String>[]) {
             expect(
               l10n.settingOption(def.key, o),
@@ -32,7 +32,7 @@ void main() {
       });
 
       test('every fixed suffix has a label', () {
-        for (final def in SettingsSchema.all) {
+        for (final def in SettingsSchema.visible) {
           for (final s in def.suffixValues ?? const <String>[]) {
             expect(
               l10n.settingSuffix(def.suffixName!, s),

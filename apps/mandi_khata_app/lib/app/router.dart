@@ -19,6 +19,8 @@ import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
 import 'package:mandi_khata_app/features/diagnostics/presentation/diagnostics_screen.dart';
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
+import 'package:mandi_khata_app/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:mandi_khata_app/features/opening_balances/presentation/opening_balances_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/party_detail_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/party_form_screen.dart';
@@ -108,6 +110,10 @@ GoRouter router(Ref ref) {
             builder: (context, state) => const PartyFormScreen(),
           ),
           GoRoute(
+            path: 'import',
+            builder: (context, state) => const OpeningBalancesScreen(),
+          ),
+          GoRoute(
             path: ':id',
             builder: (context, state) =>
                 PartyDetailScreen(partyId: state.pathParameters['id']!),
@@ -120,6 +126,10 @@ GoRouter router(Ref ref) {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: OnboardingRoutes.wizard,
+        builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
         path: ArrivalRoutes.list,

@@ -19,12 +19,15 @@ Map<String, Object?> planDefaults(Ref ref) => const {};
 /// Setting rows of the active business that can apply to [target]. Live.
 @riverpod
 Stream<List<SettingRow>> settingRows(Ref ref, SettingsTarget target) async* {
+  // The gate watches this; it may be dropped before the first listen.
+  if (!ref.mounted) return;
   final tenantId = ref.watch(activeTenantProvider);
   if (tenantId == null) {
     yield const [];
     return;
   }
   final repo = await ref.watch(settingsRepositoryProvider.future);
+  if (!ref.mounted) return;
   yield* repo.watch(tenantId, target);
 }
 

@@ -52,6 +52,8 @@ class _PartiesScreenState extends ConsumerState<PartiesScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final canAdd = ref.watch(canProvider(Permission.partiesManage));
+    final canImport =
+        canAdd && ref.watch(canProvider(Permission.entriesReverse));
     final parties = ref.watch(partyListProvider(_query, _role)).value ?? _last;
     _last = parties;
 
@@ -76,6 +78,13 @@ class _PartiesScreenState extends ConsumerState<PartiesScreen> {
                 title: l10n.partiesTitle,
                 actions: [
                   const SyncStatusChip(),
+                  if (canImport)
+                    IconButton(
+                      key: const ValueKey('parties-import'),
+                      tooltip: l10n.obTitle,
+                      onPressed: () => context.go('${PartyRoutes.list}/import'),
+                      icon: const Icon(Icons.upload_file_outlined),
+                    ),
                   IconButton(
                     tooltip: MaterialLocalizations.of(
                       context,

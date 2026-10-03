@@ -2,6 +2,7 @@ import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/core/tenant/device_status.dart';
+import 'package:mandi_khata_app/features/onboarding/presentation/onboarding_providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'gate.g.dart';
@@ -19,6 +20,9 @@ enum GateStep {
 
   /// First run on a lockable device: offer to set a PIN.
   setupPin,
+
+  /// A new business: the owner goes through the setup wizard first.
+  onboarding,
   ready,
 }
 
@@ -40,6 +44,7 @@ GateStep gateStep(Ref ref) {
     return GateStep.deviceRevoked;
   }
   if (lock.setupPromptPending) return GateStep.setupPin;
+  if (ref.watch(onboardingNeededProvider)) return GateStep.onboarding;
   return GateStep.ready;
 }
 
@@ -51,6 +56,7 @@ abstract final class GateRoutes {
   static const selectTenant = '/select-tenant';
   static const setPin = '/set-pin';
   static const deviceRevoked = '/device-revoked';
+  static const onboarding = '/onboarding';
 
   /// Developer pages that exist only in debug builds and work signed out.
   static const debugOnly = {'/dev/gallery', '/dev/sync'};
@@ -70,6 +76,7 @@ String? redirectFor(GateStep step, String location) {
     GateStep.chooseTenant => GateRoutes.selectTenant,
     GateStep.deviceRevoked => GateRoutes.deviceRevoked,
     GateStep.setupPin => GateRoutes.setPin,
+    GateStep.onboarding => GateRoutes.onboarding,
     GateStep.ready => null,
   };
   if (required != null) return location == required ? null : required;

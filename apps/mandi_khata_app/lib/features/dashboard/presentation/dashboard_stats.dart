@@ -42,7 +42,11 @@ class DashboardStats extends ConsumerWidget {
       builder: (context, box) {
         final columns = box.maxWidth >= 900 ? 4 : 2;
         const gap = MkSpacing.md;
-        final width = (box.maxWidth - gap * (columns - 1)) / columns;
+        // A first frame can be 0 wide; never ask for a negative width.
+        final width = ((box.maxWidth - gap * (columns - 1)) / columns).clamp(
+          0.0,
+          double.infinity,
+        );
         return Wrap(
           spacing: gap,
           runSpacing: gap,

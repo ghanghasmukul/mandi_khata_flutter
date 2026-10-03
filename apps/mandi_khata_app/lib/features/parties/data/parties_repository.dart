@@ -105,7 +105,6 @@ class PartiesRepository {
     if (errors.isNotEmpty) return PartyInvalid(errors);
 
     final when = now ?? DateTime.now();
-    final at = when.toUtc().toIso8601String();
     try {
       return await _db.writeTransaction((tx) async {
         final PartyInput n;
@@ -134,31 +133,54 @@ class PartiesRepository {
           }
         }
         final id = const Uuid().v4();
-        final columns = partyColumns(n);
-        await tx.execute(
-          'INSERT INTO parties (id, tenant_id, ${columns.keys.join(', ')}, '
-          'created_by, created_at, updated_at) '
-          'VALUES (${List.filled(columns.length + 5, '?').join(', ')})',
-          [id, ctx.tenantId, ...columns.values, ctx.userId, at, at],
-        );
-        await AuditWriter.record(
-          tx,
-          ctx,
-          table: 'parties',
-          rowId: id,
-          action: AuditAction.insert,
-          after: columns,
-          at: when,
-        );
-        for (final role in n.roles) {
-          await _addRole(tx, ctx, id, role, when);
-        }
+        await insertIn(tx, ctx, n, id: id, when: when);
         return PartySaved(id, n.code);
       });
     } on _CodeTaken {
       return const PartyCodeTaken();
     }
   }
+
+  /// Inserts the (already validated and normalised) party [n] with its
+  /// roles and audit rows inside the caller's transaction. [id] lets a
+  /// caller (the opening-balance import) use a deterministic id so the same
+  /// import on two devices lands on one party.
+  static Future<void> insertIn(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    PartyInput n, {
+    required String id,
+    required DateTime when,
+  }) async {
+    final at = when.toUtc().toIso8601String();
+    final columns = partyColumns(n);
+    await tx.execute(
+      'INSERT INTO parties (id, tenant_id, ${columns.keys.join(', ')}, '
+      'created_by, created_at, updated_at) '
+      'VALUES (${List.filled(columns.length + 5, '?').join(', ')})',
+      [id, ctx.tenantId, ...columns.values, ctx.userId, at, at],
+    );
+    await AuditWriter.record(
+      tx,
+      ctx,
+      table: 'parties',
+      rowId: id,
+      action: AuditAction.insert,
+      after: columns,
+      at: when,
+    );
+    for (final role in n.roles) {
+      await _addRole(tx, ctx, id, role, when);
+    }
+  }
+
+  /// Whether [code] is already used by a party of the business (deleted
+  /// ones included: the database unique constraint covers them too).
+  static Future<bool> codeTaken(
+    SqliteWriteContext tx,
+    String tenantId,
+    String code,
+  ) => _codeTaken(tx, tenantId, code);
 
   /// Saves an edit. Only changed columns are written, so two devices that
   /// edit different fields offline both keep their change (last write wins

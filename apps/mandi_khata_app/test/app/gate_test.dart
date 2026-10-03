@@ -39,6 +39,14 @@ void main() {
       expect(redirectFor(GateStep.setupPin, '/set-pin'), isNull);
     });
 
+    test('new business, owner: the setup wizard, then the app', () {
+      expect(redirectFor(GateStep.onboarding, '/'), '/onboarding');
+      expect(redirectFor(GateStep.onboarding, '/parties'), '/onboarding');
+      expect(redirectFor(GateStep.onboarding, '/onboarding'), isNull);
+      // Re-running the wizard later is an ordinary page.
+      expect(redirectFor(GateStep.ready, '/onboarding'), isNull);
+    });
+
     test('ready: gate pages send home, app pages stay', () {
       for (final page in ['/login', '/splash', '/lock', '/select-tenant']) {
         expect(redirectFor(GateStep.ready, page), '/', reason: page);

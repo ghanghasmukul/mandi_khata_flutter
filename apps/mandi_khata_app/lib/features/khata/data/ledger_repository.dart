@@ -126,15 +126,18 @@ class LedgerRepository {
   /// Posts [draft] inside [tx], the caller's transaction: documents
   /// (arrivals, payments…) post to the khata in the same local transaction
   /// as the document itself. The caller checks permission and the party.
+  /// [id] is for callers that need the same entry id on every device (the
+  /// opening-balance import); otherwise a fresh v4.
   static Future<LedgerEntry> post(
     SqliteWriteContext tx,
     WriteContext ctx,
     LedgerDraft draft, {
     DateTime? now,
+    String? id,
   }) async {
     final when = now ?? DateTime.now();
     final entry = LedgerEntry(
-      id: const Uuid().v4(),
+      id: id ?? const Uuid().v4(),
       partyId: draft.partyId,
       entryDate: draft.entryDate ?? LedgerDate.fromDateTime(when),
       side: draft.side,

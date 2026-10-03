@@ -4905,6 +4905,666 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Direction'**
   String get auditField_direction;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Set up your business'**
+  String get onboardingTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get onboardingBack;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Save and continue'**
+  String get onboardingNext;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Finish setup'**
+  String get onboardingFinish;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Skip setup for now'**
+  String get onboardingSkip;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String onboardingStepOf(int current, int total);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission to save this.'**
+  String get onboardingErrNotPermitted;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'These details could not be saved. Please check them.'**
+  String get onboardingErrInvalid;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Only the business owner can run the setup.'**
+  String get onboardingOwnerOnly;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Business details'**
+  String get onboardingBusinessTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'These print on receipts and statements.'**
+  String get onboardingBusinessHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Business name'**
+  String get onboardingBusinessName;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Legal name (optional)'**
+  String get onboardingLegalName;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'GSTIN (optional)'**
+  String get onboardingGstin;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Phone (optional)'**
+  String get onboardingPhone;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Address (optional)'**
+  String get onboardingAddress;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'This GSTIN is not valid.'**
+  String get onboardingGstinInvalid;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a 10-digit mobile number.'**
+  String get onboardingPhoneInvalid;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi and state'**
+  String get onboardingMandiTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Where your shop is.'**
+  String get onboardingMandiHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'State'**
+  String get onboardingState;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Other / not listed'**
+  String get onboardingStateOther;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi (market yard)'**
+  String get onboardingMandiName;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Khanna, Nabha'**
+  String get onboardingMandiNameHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Crops you deal in'**
+  String get onboardingCropsTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Switched-off crops stay hidden in forms. You can change this later.'**
+  String get onboardingCropsHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one crop.'**
+  String get onboardingCropsNone;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Select all'**
+  String get onboardingSelectAll;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get onboardingSelectNone;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Default commission and charges'**
+  String get onboardingChargesTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Used on every lot unless a crop or farmer has its own rate.'**
+  String get onboardingChargesHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Each crop and each party can override these later.'**
+  String get onboardingChargesCascade;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number.'**
+  String get onboardingNumberInvalid;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Interest defaults'**
+  String get onboardingInterestTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Your usual rate and method for byaj.'**
+  String get onboardingInterestHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Saved only for now. Interest is calculated in a later update.'**
+  String get onboardingInterestStoredOnly;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get onboardingLanguageTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'The app switches now. This is also the default for your business.'**
+  String get onboardingLanguageHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Invite your munshi'**
+  String get onboardingInviteTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. They enter arrivals and payments at the gate.'**
+  String get onboardingInviteHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Invite someone'**
+  String get onboardingInviteButton;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Needs internet. You can also invite people later from Team.'**
+  String get onboardingInviteLater;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Your business is ready'**
+  String get onboardingDoneTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Next, bring in your parties with their opening baki, or add them one by one.'**
+  String get onboardingDoneBody;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Import opening balances'**
+  String get onboardingDoneImport;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Add a party'**
+  String get onboardingDoneAddParty;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Go to dashboard'**
+  String get onboardingDoneHome;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening balance import'**
+  String get auditTable_opening_balance_imports;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Business details'**
+  String get auditTable_tenants;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Import opening balances'**
+  String get obTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner or accountant can import opening balances.'**
+  String get obNoAccess;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Your file'**
+  String get obSourceTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'One row per party. Columns: Name, Village, Mobile, Amount and Dr/Cr (or separate Udhaar and Jama columns). Code and Father are optional. CSV or Excel (.xlsx).'**
+  String get obFormatHelp;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Choose CSV or Excel file'**
+  String get obChooseFile;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Or paste from Excel'**
+  String get obPasteLabel;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Name, Village, Amount, Dr/Cr'**
+  String get obPasteHint;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Read pasted table'**
+  String get obReadPasted;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Old .xls files cannot be read. Save it as .xlsx or CSV and try again.'**
+  String get obReadOldExcel;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'This file could not be read.'**
+  String get obReadUnreadable;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'The file is empty.'**
+  String get obProblemEmpty;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'The first row must be a header with a Name column.'**
+  String get obProblemNoName;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'No amount column found. Add Amount (with Dr/Cr), or Udhaar and Jama columns.'**
+  String get obProblemNoAmount;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Too many rows. Import at most {max} parties at a time.'**
+  String obProblemTooMany(int max);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'How to read it'**
+  String get obOptionsTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Balances as on'**
+  String get obAsOn;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'If a row does not say Dr/Cr, treat the amount as'**
+  String get obDefaultSide;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Not chosen'**
+  String get obSideNone;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar (party owes us)'**
+  String get obSideUdhaar;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Jama (we owe the party)'**
+  String get obSideJama;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'New parties are added as'**
+  String get obDefaultRole;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Rows'**
+  String get obSumRows;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'New parties'**
+  String get obSumNewParties;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Existing parties'**
+  String get obSumMatched;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Problem rows'**
+  String get obSumProblems;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Net'**
+  String get obSumNet;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'we owe overall'**
+  String get obNetWeOwe;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'they owe overall'**
+  String get obNetTheyOwe;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Existing party: {name}'**
+  String obMatchedWith(String name);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'New party ({role})'**
+  String obNewParty(String role);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Name is missing.'**
+  String get obErrNameMissing;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount is not a valid number (up to 2 decimals).'**
+  String get obErrAmountInvalid;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount is negative. Use Dr/Cr instead of a minus sign.'**
+  String get obErrAmountNegative;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Not clear if this is udhaar or jama. Add Dr/Cr or choose above.'**
+  String get obErrSideMissing;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Dr/Cr value not understood.'**
+  String get obErrSideUnknown;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Both Udhaar and Jama have an amount.'**
+  String get obErrSideConflict;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number is not valid.'**
+  String get obErrMobileInvalid;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Party type not understood.'**
+  String get obErrRoleUnknown;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Same party as row {row}.'**
+  String obErrDuplicateInFile(String row);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'A party with this name exists (code {code}). Add its code, village or mobile to the row.'**
+  String obErrPossibleDuplicate(String code);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Code {code} belongs to a different party.'**
+  String obErrCodeTaken(String code);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'This party already has an opening balance.'**
+  String get obErrAlreadyHasOpening;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'No amount: the party is added without an opening balance.'**
+  String get obWarnNoAmount;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Matched by code, but the name differs from the saved party.'**
+  String get obWarnNameDiffers;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'This mobile number is already used by another party.'**
+  String get obWarnMobileOfOther;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Problems only'**
+  String get obProblemsOnly;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Import {count} balances'**
+  String obImportButton(int count);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Import {count} balances, skip {skipped} problem rows'**
+  String obImportValidButton(int count, int skipped);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Import opening balances?'**
+  String get obConfirmTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'{entries} balances and {parties} new parties as on {date}. Udhaar {udhaar}, Jama {jama}. Entries cannot be edited later, only reversed.'**
+  String obConfirmBody(
+    int entries,
+    int parties,
+    String udhaar,
+    String jama,
+    String date,
+  );
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get obImportNow;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'This exact file was already imported for this date.'**
+  String get obResAlready;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to import: everything is already in the books.'**
+  String get obResNothing;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission to import opening balances.'**
+  String get obResNotPermitted;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'The date cannot be in the future.'**
+  String get obResBadDate;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row} changed since the preview (another device?). Nothing was imported; the preview was refreshed.'**
+  String obResStale(int row);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening balances imported'**
+  String get obDoneTitle;
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'{entries} balances posted, {parties} parties added. Udhaar {udhaar}, Jama {jama}.'**
+  String obDoneBody(int entries, int parties, String udhaar, String jama);
+
+  /// Onboarding / opening balances import (step 1.9).
+  ///
+  /// In en, this message translates to:
+  /// **'View parties'**
+  String get obDoneParties;
+
+  /// Onboarding crops step, no crops synced.
+  ///
+  /// In en, this message translates to:
+  /// **'No crops have arrived on this device yet. They sync from the server; you can pick them later under Crops.'**
+  String get onboardingCropsEmpty;
 }
 
 class _AppLocalizationsDelegate

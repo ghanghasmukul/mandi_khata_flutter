@@ -20,7 +20,7 @@ import 'package:mk_ui/mk_ui.dart';
 /// per-crop overrides are edited on the crop screen.
 Map<String, List<SettingEntry>> settingEntriesFor(SettingScope scope) {
   final groups = <String, List<SettingEntry>>{};
-  for (final def in SettingsSchema.all) {
+  for (final def in SettingsSchema.visible) {
     if (!def.allowedAt(scope)) continue;
     final group = def.key == 'app.modules'
         ? 'modules'
@@ -86,6 +86,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             partyId: _partyId,
             onChanged: (id) => setState(() => _partyId = id),
           ),
+          if (_partyId == null && member.can(Permission.adminManage))
+            Padding(
+              padding: const EdgeInsets.only(top: MkSpacing.lg),
+              child: MkCard(
+                padding: EdgeInsets.zero,
+                onTap: () => context.go('/onboarding'),
+                child: ListTile(
+                  key: const ValueKey('settings-wizard'),
+                  leading: const Icon(Icons.checklist_outlined),
+                  title: Text(l10n.onboardingTitle),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => context.go('/onboarding'),
+                ),
+              ),
+            ),
           if (_partyId == null)
             Padding(
               padding: const EdgeInsets.only(top: MkSpacing.lg),

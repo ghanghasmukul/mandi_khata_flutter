@@ -2664,4 +2664,385 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get auditField_direction => 'दिशा';
+
+  @override
+  String get onboardingTitle => 'अपना कारोबार सेट करें';
+
+  @override
+  String get onboardingBack => 'पीछे';
+
+  @override
+  String get onboardingNext => 'सहेजें और आगे बढ़ें';
+
+  @override
+  String get onboardingFinish => 'सेटअप पूरा करें';
+
+  @override
+  String get onboardingSkip => 'अभी सेटअप छोड़ें';
+
+  @override
+  String onboardingStepOf(int current, int total) {
+    return 'चरण $current / $total';
+  }
+
+  @override
+  String get onboardingErrNotPermitted => 'आपको इसे सहेजने की अनुमति नहीं है।';
+
+  @override
+  String get onboardingErrInvalid =>
+      'ये जानकारी सहेजी नहीं जा सकी। कृपया जाँचें।';
+
+  @override
+  String get onboardingOwnerOnly =>
+      'सेटअप सिर्फ़ कारोबार का मालिक चला सकता है।';
+
+  @override
+  String get onboardingBusinessTitle => 'कारोबार की जानकारी';
+
+  @override
+  String get onboardingBusinessHint => 'ये रसीद और स्टेटमेंट पर छपेंगे।';
+
+  @override
+  String get onboardingBusinessName => 'कारोबार का नाम';
+
+  @override
+  String get onboardingLegalName => 'कानूनी नाम (वैकल्पिक)';
+
+  @override
+  String get onboardingGstin => 'GSTIN (वैकल्पिक)';
+
+  @override
+  String get onboardingPhone => 'फ़ोन (वैकल्पिक)';
+
+  @override
+  String get onboardingAddress => 'पता (वैकल्पिक)';
+
+  @override
+  String get onboardingGstinInvalid => 'यह GSTIN सही नहीं है।';
+
+  @override
+  String get onboardingPhoneInvalid => '10 अंकों का मोबाइल नंबर डालें।';
+
+  @override
+  String get onboardingMandiTitle => 'मंडी और राज्य';
+
+  @override
+  String get onboardingMandiHint => 'आपकी दुकान कहाँ है।';
+
+  @override
+  String get onboardingState => 'राज्य';
+
+  @override
+  String get onboardingStateOther => 'अन्य / सूची में नहीं';
+
+  @override
+  String get onboardingMandiName => 'मंडी';
+
+  @override
+  String get onboardingMandiNameHint => 'जैसे खन्ना, नाभा';
+
+  @override
+  String get onboardingCropsTitle => 'आप जिन फसलों का काम करते हैं';
+
+  @override
+  String get onboardingCropsHint =>
+      'बंद की गई फसलें फ़ॉर्म में नहीं दिखेंगी। बाद में बदल सकते हैं।';
+
+  @override
+  String get onboardingCropsNone => 'कम से कम एक फसल चुनें।';
+
+  @override
+  String get onboardingSelectAll => 'सभी चुनें';
+
+  @override
+  String get onboardingSelectNone => 'सभी हटाएँ';
+
+  @override
+  String get onboardingChargesTitle => 'डिफ़ॉल्ट कमीशन और खर्चे';
+
+  @override
+  String get onboardingChargesHint =>
+      'हर लॉट पर लगेंगे, जब तक किसी फसल या किसान का अपना रेट न हो।';
+
+  @override
+  String get onboardingChargesCascade =>
+      'हर फसल और हर पार्टी के लिए बाद में अलग रेट रखा जा सकता है।';
+
+  @override
+  String get onboardingNumberInvalid => 'सही संख्या डालें।';
+
+  @override
+  String get onboardingInterestTitle => 'ब्याज के डिफ़ॉल्ट';
+
+  @override
+  String get onboardingInterestHint => 'ब्याज का आपका आम रेट और तरीका।';
+
+  @override
+  String get onboardingInterestStoredOnly =>
+      'अभी सिर्फ़ सहेजा जाता है। ब्याज की गणना बाद के अपडेट में आएगी।';
+
+  @override
+  String get onboardingLanguageTitle => 'भाषा';
+
+  @override
+  String get onboardingLanguageHint =>
+      'ऐप अभी बदल जाएगा। यही आपके कारोबार की डिफ़ॉल्ट भाषा होगी।';
+
+  @override
+  String get onboardingInviteTitle => 'अपने मुंशी को बुलाएँ';
+
+  @override
+  String get onboardingInviteHint =>
+      'वैकल्पिक। वे गेट पर आवक और भुगतान दर्ज करेंगे।';
+
+  @override
+  String get onboardingInviteButton => 'किसी को बुलाएँ';
+
+  @override
+  String get onboardingInviteLater =>
+      'इंटरनेट चाहिए। बाद में टीम से भी बुला सकते हैं।';
+
+  @override
+  String get onboardingDoneTitle => 'आपका कारोबार तैयार है';
+
+  @override
+  String get onboardingDoneBody =>
+      'अब अपनी पार्टियाँ उनके शुरुआती बाकी के साथ लाएँ, या एक-एक करके जोड़ें।';
+
+  @override
+  String get onboardingDoneImport => 'शुरुआती बाकी इम्पोर्ट करें';
+
+  @override
+  String get onboardingDoneAddParty => 'पार्टी जोड़ें';
+
+  @override
+  String get onboardingDoneHome => 'डैशबोर्ड पर जाएँ';
+
+  @override
+  String get auditTable_opening_balance_imports => 'शुरुआती बाकी इम्पोर्ट';
+
+  @override
+  String get auditTable_tenants => 'कारोबार की जानकारी';
+
+  @override
+  String get obTitle => 'शुरुआती बाकी इम्पोर्ट करें';
+
+  @override
+  String get obNoAccess =>
+      'शुरुआती बाकी सिर्फ़ मालिक या मुनीम इम्पोर्ट कर सकते हैं।';
+
+  @override
+  String get obSourceTitle => 'आपकी फ़ाइल';
+
+  @override
+  String get obFormatHelp =>
+      'हर पार्टी की एक पंक्ति। कॉलम: नाम, गाँव, मोबाइल, रकम और Dr/Cr (या अलग उधार और जमा कॉलम)। कोड और पिता का नाम वैकल्पिक। CSV या Excel (.xlsx)।';
+
+  @override
+  String get obChooseFile => 'CSV या Excel फ़ाइल चुनें';
+
+  @override
+  String get obPasteLabel => 'या Excel से पेस्ट करें';
+
+  @override
+  String get obPasteHint => 'नाम, गाँव, रकम, Dr/Cr';
+
+  @override
+  String get obReadPasted => 'पेस्ट की गई तालिका पढ़ें';
+
+  @override
+  String get obReadOldExcel =>
+      'पुरानी .xls फ़ाइल नहीं पढ़ी जा सकती। उसे .xlsx या CSV में सहेजकर फिर कोशिश करें।';
+
+  @override
+  String get obReadUnreadable => 'यह फ़ाइल पढ़ी नहीं जा सकी।';
+
+  @override
+  String get obProblemEmpty => 'फ़ाइल खाली है।';
+
+  @override
+  String get obProblemNoName =>
+      'पहली पंक्ति शीर्षक होनी चाहिए जिसमें नाम का कॉलम हो।';
+
+  @override
+  String get obProblemNoAmount =>
+      'रकम का कॉलम नहीं मिला। रकम (Dr/Cr के साथ), या उधार और जमा कॉलम जोड़ें।';
+
+  @override
+  String obProblemTooMany(int max) {
+    return 'बहुत ज़्यादा पंक्तियाँ। एक बार में अधिकतम $max पार्टियाँ इम्पोर्ट करें।';
+  }
+
+  @override
+  String get obOptionsTitle => 'कैसे पढ़ें';
+
+  @override
+  String get obAsOn => 'बाकी इस तारीख तक';
+
+  @override
+  String get obDefaultSide => 'अगर किसी पंक्ति में Dr/Cr न हो, तो रकम को मानें';
+
+  @override
+  String get obSideNone => 'चुना नहीं';
+
+  @override
+  String get obSideUdhaar => 'उधार (पार्टी हमें देगी)';
+
+  @override
+  String get obSideJama => 'जमा (हमें पार्टी को देना है)';
+
+  @override
+  String get obDefaultRole => 'नई पार्टियाँ इस रूप में जुड़ेंगी';
+
+  @override
+  String get obSumRows => 'पंक्तियाँ';
+
+  @override
+  String get obSumNewParties => 'नई पार्टियाँ';
+
+  @override
+  String get obSumMatched => 'मौजूदा पार्टियाँ';
+
+  @override
+  String get obSumProblems => 'समस्या वाली पंक्तियाँ';
+
+  @override
+  String get obSumNet => 'कुल';
+
+  @override
+  String get obNetWeOwe => 'कुल मिलाकर हमें देना है';
+
+  @override
+  String get obNetTheyOwe => 'कुल मिलाकर हमें मिलना है';
+
+  @override
+  String obMatchedWith(String name) {
+    return 'मौजूदा पार्टी: $name';
+  }
+
+  @override
+  String obNewParty(String role) {
+    return 'नई पार्टी ($role)';
+  }
+
+  @override
+  String get obErrNameMissing => 'नाम नहीं है।';
+
+  @override
+  String get obErrAmountInvalid =>
+      'रकम सही संख्या नहीं है (दशमलव के 2 अंक तक)।';
+
+  @override
+  String get obErrAmountNegative => 'रकम ऋणात्मक है। माइनस की जगह Dr/Cr लिखें।';
+
+  @override
+  String get obErrSideMissing =>
+      'साफ़ नहीं कि उधार है या जमा। Dr/Cr लिखें या ऊपर चुनें।';
+
+  @override
+  String get obErrSideUnknown => 'Dr/Cr का मान समझ नहीं आया।';
+
+  @override
+  String get obErrSideConflict => 'उधार और जमा दोनों में रकम है।';
+
+  @override
+  String get obErrMobileInvalid => 'मोबाइल नंबर सही नहीं है।';
+
+  @override
+  String get obErrRoleUnknown => 'पार्टी का प्रकार समझ नहीं आया।';
+
+  @override
+  String obErrDuplicateInFile(String row) {
+    return 'पंक्ति $row वाली ही पार्टी।';
+  }
+
+  @override
+  String obErrPossibleDuplicate(String code) {
+    return 'इस नाम की पार्टी पहले से है (कोड $code)। पंक्ति में उसका कोड, गाँव या मोबाइल जोड़ें।';
+  }
+
+  @override
+  String obErrCodeTaken(String code) {
+    return 'कोड $code किसी और पार्टी का है।';
+  }
+
+  @override
+  String get obErrAlreadyHasOpening =>
+      'इस पार्टी का शुरुआती बाकी पहले से दर्ज है।';
+
+  @override
+  String get obWarnNoAmount => 'रकम नहीं: पार्टी बिना शुरुआती बाकी के जुड़ेगी।';
+
+  @override
+  String get obWarnNameDiffers =>
+      'कोड से मिली, पर नाम सहेजी गई पार्टी से अलग है।';
+
+  @override
+  String get obWarnMobileOfOther =>
+      'यह मोबाइल नंबर किसी और पार्टी के पास पहले से है।';
+
+  @override
+  String get obProblemsOnly => 'सिर्फ़ समस्याएँ';
+
+  @override
+  String obImportButton(int count) {
+    return '$count बाकी इम्पोर्ट करें';
+  }
+
+  @override
+  String obImportValidButton(int count, int skipped) {
+    return '$count बाकी इम्पोर्ट करें, $skipped समस्या वाली पंक्तियाँ छोड़ें';
+  }
+
+  @override
+  String get obConfirmTitle => 'शुरुआती बाकी इम्पोर्ट करें?';
+
+  @override
+  String obConfirmBody(
+    int entries,
+    int parties,
+    String udhaar,
+    String jama,
+    String date,
+  ) {
+    return '$date तक $entries बाकी और $parties नई पार्टियाँ। उधार $udhaar, जमा $jama। एंट्री बाद में बदली नहीं जा सकती, सिर्फ़ उलटी जा सकती है।';
+  }
+
+  @override
+  String get obImportNow => 'इम्पोर्ट करें';
+
+  @override
+  String get obResAlready =>
+      'यही फ़ाइल इस तारीख के लिए पहले ही इम्पोर्ट हो चुकी है।';
+
+  @override
+  String get obResNothing =>
+      'इम्पोर्ट करने को कुछ नहीं: सब कुछ पहले से बही में है।';
+
+  @override
+  String get obResNotPermitted =>
+      'आपको शुरुआती बाकी इम्पोर्ट करने की अनुमति नहीं है।';
+
+  @override
+  String get obResBadDate => 'तारीख आगे की नहीं हो सकती।';
+
+  @override
+  String obResStale(int row) {
+    return 'पंक्ति $row प्रीव्यू के बाद बदल गई (दूसरा डिवाइस?)। कुछ इम्पोर्ट नहीं हुआ; प्रीव्यू नया कर दिया गया।';
+  }
+
+  @override
+  String get obDoneTitle => 'शुरुआती बाकी इम्पोर्ट हो गया';
+
+  @override
+  String obDoneBody(int entries, int parties, String udhaar, String jama) {
+    return '$entries बाकी दर्ज हुए, $parties पार्टियाँ जुड़ीं। उधार $udhaar, जमा $jama।';
+  }
+
+  @override
+  String get obDoneParties => 'पार्टियाँ देखें';
+
+  @override
+  String get onboardingCropsEmpty =>
+      'इस डिवाइस पर अभी कोई फसल नहीं आई। वे सर्वर से सिंक होती हैं; बाद में फसलें में चुन सकते हैं।';
 }

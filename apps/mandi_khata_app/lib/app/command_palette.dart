@@ -84,6 +84,13 @@ List<PaletteCommand> paletteCommands(
       icon: Icons.person_add_alt_1,
       run: (c) => c.go(PartyRoutes.create),
     ),
+  if (can(Permission.partiesManage) && can(Permission.entriesReverse))
+    PaletteCommand(
+      id: 'opening-balances',
+      label: l10n.obTitle,
+      icon: Icons.upload_file_outlined,
+      run: (c) => c.go('${PartyRoutes.list}/import'),
+    ),
   PaletteCommand(
     id: 'arrivals',
     label: l10n.arrivalsTitle,
