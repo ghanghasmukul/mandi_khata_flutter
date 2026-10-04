@@ -19,6 +19,8 @@ import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
 import 'package:mandi_khata_app/features/diagnostics/presentation/diagnostics_screen.dart';
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loan_detail_screen.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:mandi_khata_app/features/opening_balances/presentation/opening_balances_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
@@ -168,6 +170,17 @@ GoRouter router(Ref ref) {
             path: ':id',
             builder: (context, state) =>
                 PaymentDetailScreen(paymentId: state.pathParameters['id']!),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: LoanRoutes.list,
+        builder: (context, state) => const LoansScreen(),
+        routes: [
+          GoRoute(
+            path: ':id',
+            builder: (context, state) =>
+                LoanDetailScreen(loanId: state.pathParameters['id']!),
           ),
         ],
       ),

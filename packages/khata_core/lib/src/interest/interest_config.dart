@@ -154,6 +154,73 @@ class InterestConfig {
     );
   }
 
+  /// Rebuilds a snapshot written by [toJson]. A missing key takes the
+  /// system default; a missing or malformed rate, or an unknown choice, is a
+  /// [FormatException] (never guessed: the snapshot is the loan's contract).
+  factory InterestConfig.fromJson(Map<String, Object?> json) {
+    final rate = json['rate_pa'];
+    final Decimal ratePa;
+    if (rate is! String || Decimal.tryParse(rate) == null) {
+      throw FormatException('rate_pa must be a decimal string', rate);
+    }
+    ratePa = Decimal.parse(rate);
+
+    T choice<T>(
+      String key,
+      List<T> options,
+      String Function(T) nameOf,
+      T fallback,
+    ) {
+      final v = json[key];
+      if (v == null) return fallback;
+      for (final o in options) {
+        if (v is String && nameOf(o) == v) return o;
+      }
+      throw FormatException('Unknown $key', v);
+    }
+
+    final pay = json['pay_rate_pa'];
+    return InterestConfig(
+      ratePa: ratePa,
+      enabled: (json['enabled'] as bool?) ?? true,
+      method: choice(
+        'method',
+        InterestMethod.values,
+        (e) => e.name,
+        InterestMethod.simple,
+      ),
+      compounding: choice(
+        'compounding',
+        CompoundingPeriod.values,
+        (e) => e.dbName,
+        CompoundingPeriod.quarterly,
+      ),
+      dayBasis: (json['day_basis'] as int?) ?? 365,
+      graceDays: (json['grace_days'] as int?) ?? 0,
+      appropriation: choice(
+        'appropriation',
+        Appropriation.values,
+        (e) => e.dbName,
+        Appropriation.interestFirst,
+      ),
+      applyOn: choice(
+        'apply_on',
+        ApplyOn.values,
+        (e) => e.dbName,
+        ApplyOn.netUdhaar,
+      ),
+      minDays: (json['min_days'] as int?) ?? 0,
+      rounding: choice(
+        'rounding',
+        InterestRounding.values,
+        (e) => e.dbName,
+        InterestRounding.rupee,
+      ),
+      payOnJama: (json['pay_on_jama'] as bool?) ?? false,
+      payRatePa: pay is String ? Decimal.parse(pay) : null,
+    );
+  }
+
   final bool enabled;
 
   /// Percent per annum (18 = 18%).
@@ -175,4 +242,49 @@ class InterestConfig {
   bool get applicable => enabled && applyOn != ApplyOn.none;
 
   bool get compounds => method == InterestMethod.compound;
+
+  /// The snapshot stored on a loan (`loans.interest_config_snapshot`).
+  /// Decimals are strings so no rate is ever rounded through a double.
+  Map<String, Object?> toJson() => {
+    'enabled': enabled,
+    'rate_pa': ratePa.toString(),
+    'method': method.name,
+    'compounding': compounding.dbName,
+    'day_basis': dayBasis,
+    'grace_days': graceDays,
+    'appropriation': appropriation.dbName,
+    'apply_on': applyOn.dbName,
+    'min_days': minDays,
+    'rounding': rounding.dbName,
+    'pay_on_jama': payOnJama,
+    'pay_rate_pa': payRatePa.toString(),
+  };
+
+  InterestConfig copyWith({
+    bool? enabled,
+    Decimal? ratePa,
+    InterestMethod? method,
+    CompoundingPeriod? compounding,
+    int? dayBasis,
+    int? graceDays,
+    Appropriation? appropriation,
+    ApplyOn? applyOn,
+    int? minDays,
+    InterestRounding? rounding,
+    bool? payOnJama,
+    Decimal? payRatePa,
+  }) => InterestConfig(
+    enabled: enabled ?? this.enabled,
+    ratePa: ratePa ?? this.ratePa,
+    method: method ?? this.method,
+    compounding: compounding ?? this.compounding,
+    dayBasis: dayBasis ?? this.dayBasis,
+    graceDays: graceDays ?? this.graceDays,
+    appropriation: appropriation ?? this.appropriation,
+    applyOn: applyOn ?? this.applyOn,
+    minDays: minDays ?? this.minDays,
+    rounding: rounding ?? this.rounding,
+    payOnJama: payOnJama ?? this.payOnJama,
+    payRatePa: payRatePa ?? this.payRatePa,
+  );
 }

@@ -3100,4 +3100,472 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get updateLater => 'Later';
+
+  @override
+  String get loansTitle => 'Loans (karza)';
+
+  @override
+  String get loansIssue => 'Issue loan';
+
+  @override
+  String get loansEmpty => 'No loans here yet';
+
+  @override
+  String get loansSearchHint => 'Search borrower or loan number';
+
+  @override
+  String get loansFilterOpen => 'Open';
+
+  @override
+  String get loansFilterClosed => 'Closed';
+
+  @override
+  String get loansFilterAll => 'All';
+
+  @override
+  String get loansTotalCount => 'Open loans';
+
+  @override
+  String get loansTotalPrincipal => 'Principal out';
+
+  @override
+  String get loansTotalInterest => 'Byaj due';
+
+  @override
+  String get loansTotalOverdue => 'Overdue';
+
+  @override
+  String loanCardIssued(String amount) {
+    return 'Issued $amount';
+  }
+
+  @override
+  String get loanCardOutstanding => 'Principal';
+
+  @override
+  String get loanCardByaj => 'Byaj';
+
+  @override
+  String get loanCardPayable => 'Payable';
+
+  @override
+  String loanCardRecovered(String percent) {
+    return '$percent% recovered';
+  }
+
+  @override
+  String loanCardDaysLeft(String count) {
+    return '$count days left';
+  }
+
+  @override
+  String get loanCardDueToday => 'Due today';
+
+  @override
+  String loanCardOverdue(String count) {
+    return '$count days overdue';
+  }
+
+  @override
+  String get loanCardNoDue => 'No due date';
+
+  @override
+  String loanCardDue(String date) {
+    return 'Due $date';
+  }
+
+  @override
+  String get loanHealthOnTrack => 'On track';
+
+  @override
+  String get loanHealthDueSoon => 'Due soon';
+
+  @override
+  String get loanHealthOverdue => 'Overdue';
+
+  @override
+  String get loanHealthSettled => 'Paid up';
+
+  @override
+  String get loanStatusClosed => 'Closed';
+
+  @override
+  String get loanStatusWrittenOff => 'Written off';
+
+  @override
+  String get loanIssueTitle => 'Issue loan';
+
+  @override
+  String get loanFieldBorrower => 'Borrower';
+
+  @override
+  String get loanFieldAmount => 'Loan amount';
+
+  @override
+  String get loanFieldIssueDate => 'Issue date';
+
+  @override
+  String get loanFieldDueDate => 'Due date (optional)';
+
+  @override
+  String get loanFieldPurpose => 'Purpose';
+
+  @override
+  String get loanFieldGuarantor => 'Guarantor (optional)';
+
+  @override
+  String get loanFieldNotes => 'Notes';
+
+  @override
+  String get loanClearDate => 'Clear date';
+
+  @override
+  String get loanTermsTitle => 'Interest terms';
+
+  @override
+  String loanTermsFrom(String source) {
+    return '$source. Changes here apply to this loan only.';
+  }
+
+  @override
+  String get loanFieldRate => 'Interest rate';
+
+  @override
+  String get loanTermsMore => 'More terms';
+
+  @override
+  String get loanPayOutTitle => 'How is the money given?';
+
+  @override
+  String loanNextNo(String no) {
+    return 'Loan no. $no';
+  }
+
+  @override
+  String get loanNoticeNetUdhaar =>
+      'Your business charges interest on the whole khata. This loan keeps its own interest account, so do not charge the same money again on the khata.';
+
+  @override
+  String get loanSaveIssue => 'Issue loan';
+
+  @override
+  String loanIssuedAs(String no) {
+    return 'Loan $no issued';
+  }
+
+  @override
+  String get loanDetailAsOf => 'As of date';
+
+  @override
+  String get loanDetailToday => 'Today';
+
+  @override
+  String loanPayableOn(String date) {
+    return 'Payable on $date';
+  }
+
+  @override
+  String get loanPrincipalOutstanding => 'Principal outstanding';
+
+  @override
+  String get loanInterestAccrued => 'Byaj accrued';
+
+  @override
+  String get loanInterestRecovered => 'Byaj recovered';
+
+  @override
+  String get loanPrincipalRecovered => 'Principal recovered';
+
+  @override
+  String get loanCurrentRate => 'Rate';
+
+  @override
+  String loanRatePa(String rate) {
+    return '$rate% a year';
+  }
+
+  @override
+  String loanRatePerMonth(String rate) {
+    return '₹$rate per 100 per month';
+  }
+
+  @override
+  String get loanTermsSummary => 'Terms';
+
+  @override
+  String get loanInterestFree => 'No interest';
+
+  @override
+  String loanGraceDays(String count) {
+    return '$count days grace';
+  }
+
+  @override
+  String get loanActionRepay => 'Record repayment';
+
+  @override
+  String get loanActionRate => 'Change rate';
+
+  @override
+  String get loanActionClose => 'Close loan';
+
+  @override
+  String get loanActionWriteOff => 'Write off';
+
+  @override
+  String get loanBorrowerLink => 'Open khata';
+
+  @override
+  String get loanNotFound => 'Loan not found';
+
+  @override
+  String loanClosedOn(String status, String date) {
+    return '$status on $date';
+  }
+
+  @override
+  String get loanStmtTitle => 'Interest statement';
+
+  @override
+  String get loanStmtEmpty => 'No entries yet';
+
+  @override
+  String get loanColFrom => 'From';
+
+  @override
+  String get loanColTo => 'To';
+
+  @override
+  String get loanColEvent => 'Event';
+
+  @override
+  String get loanColDebit => 'Given';
+
+  @override
+  String get loanColCredit => 'Received';
+
+  @override
+  String get loanColDays => 'Days';
+
+  @override
+  String get loanColPrincipal => 'Principal';
+
+  @override
+  String get loanColRate => 'Rate %';
+
+  @override
+  String get loanColInterest => 'Byaj';
+
+  @override
+  String get loanRowAccrue => 'Interest for the days';
+
+  @override
+  String get loanRowDebit => 'Loan given';
+
+  @override
+  String get loanRowCredit => 'Repayment';
+
+  @override
+  String get loanRowCompound => 'Byaj added to principal';
+
+  @override
+  String loanRowRate(String rate) {
+    return 'Rate changed to $rate%';
+  }
+
+  @override
+  String loanRowSplit(String interest, String principal) {
+    return 'Byaj $interest · Principal $principal';
+  }
+
+  @override
+  String loanRowSurplus(String amount) {
+    return 'Extra $amount kept as credit';
+  }
+
+  @override
+  String get loanRateChangesTitle => 'Rate changes';
+
+  @override
+  String get loanRateAtIssue => 'At issue';
+
+  @override
+  String get loanRepayTitle => 'Record repayment';
+
+  @override
+  String get loanRepayAmount => 'Amount received';
+
+  @override
+  String get loanRepayDate => 'Date';
+
+  @override
+  String get loanRepaySourcePay => 'Money received';
+
+  @override
+  String get loanRepaySourceCrop => 'From crop proceeds';
+
+  @override
+  String loanRepayCropAvailable(String amount) {
+    return 'Crop proceeds in the khata: $amount';
+  }
+
+  @override
+  String get loanRepayCropNone =>
+      'This party has no crop proceeds in the khata to set off.';
+
+  @override
+  String get loanRepayFullPayable => 'Full payable';
+
+  @override
+  String get loanPreviewTitle => 'This repayment';
+
+  @override
+  String get loanPreviewInterest => 'Pays byaj';
+
+  @override
+  String get loanPreviewPrincipal => 'Pays principal';
+
+  @override
+  String get loanPreviewBefore => 'Payable before';
+
+  @override
+  String get loanPreviewAfter => 'Payable after';
+
+  @override
+  String get loanPreviewCropNote =>
+      'The party\'s net khata balance does not change; the loan is paid off against their crop proceeds.';
+
+  @override
+  String get loanRepaySave => 'Record repayment';
+
+  @override
+  String get loanRepaid => 'Repayment recorded';
+
+  @override
+  String get loanRateTitle => 'Change interest rate';
+
+  @override
+  String loanRateCurrent(String rate) {
+    return 'Current rate: $rate';
+  }
+
+  @override
+  String get loanRateNew => 'New rate';
+
+  @override
+  String get loanRateEffective => 'Effective from';
+
+  @override
+  String get loanRateReason => 'Reason (optional)';
+
+  @override
+  String get loanRateSave => 'Change rate';
+
+  @override
+  String get loanRateChanged => 'Rate changed';
+
+  @override
+  String get loanCloseTitle => 'Close loan';
+
+  @override
+  String get loanWriteOffTitle => 'Write off loan';
+
+  @override
+  String get loanCloseDate => 'Closing date';
+
+  @override
+  String get loanCloseReason => 'Reason';
+
+  @override
+  String get loanCloseReasonOptional => 'Note (optional)';
+
+  @override
+  String loanCloseStillDue(String amount) {
+    return '$amount is still due. Record the repayment first, or write the loan off.';
+  }
+
+  @override
+  String get loanCloseAllPaid =>
+      'Nothing is due. Closing records that the loan is fully paid.';
+
+  @override
+  String loanWriteOffBody(String amount) {
+    return '$amount will be written off and the interest stops. The party\'s khata still shows what they owe until you waive it. This cannot be undone.';
+  }
+
+  @override
+  String get loanCloseConfirm => 'Close loan';
+
+  @override
+  String get loanWriteOffConfirm => 'Write off';
+
+  @override
+  String get loanClosedDone => 'Loan closed';
+
+  @override
+  String get loanWrittenOffDone => 'Loan written off';
+
+  @override
+  String get loanErrorAmount => 'Enter the amount';
+
+  @override
+  String get loanErrorDue => 'The due date cannot be before the issue date';
+
+  @override
+  String get loanErrorGuarantor => 'The borrower cannot be their own guarantor';
+
+  @override
+  String get loanErrorRate => 'Enter a rate from 0 to 100 (up to 4 decimals)';
+
+  @override
+  String get loanErrorEffective =>
+      'A rate cannot start before the loan was issued';
+
+  @override
+  String get loanErrorNotActive => 'This loan is already closed';
+
+  @override
+  String get loanErrorStillDue => 'Something is still due on this loan';
+
+  @override
+  String get loanErrorNothingToWriteOff =>
+      'Nothing is left to write off; close the loan instead';
+
+  @override
+  String get loanErrorReason => 'Give a reason';
+
+  @override
+  String get loanErrorClosedBefore =>
+      'The date cannot be before the last entry of this loan';
+
+  @override
+  String get loanErrorNotPermitted => 'Only the owner can do this';
+
+  @override
+  String get loanErrorNotPermittedRepay =>
+      'You need permission to record payments (and an Accountant or Owner to adjust crop proceeds)';
+
+  @override
+  String get loanErrorNotFound =>
+      'The party, loan or bank account was not found in this business';
+
+  @override
+  String loanErrorExceeds(String payable) {
+    return 'More than the $payable due on this day. Record only what is due.';
+  }
+
+  @override
+  String loanErrorExceedsCrop(String available) {
+    return 'More than the crop proceeds in the khata ($available)';
+  }
+
+  @override
+  String get paymentLoanNote =>
+      'This payment belongs to a loan. A repayment can be reversed here while the loan is open; the money given out for a loan cannot be reversed.';
+
+  @override
+  String get paymentLoanLink => 'Open loan';
+
+  @override
+  String get loanOpenFromParty => 'Loans';
 }

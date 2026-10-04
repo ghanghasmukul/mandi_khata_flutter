@@ -34,6 +34,14 @@ insert into public.parties (id, tenant_id, code, name) values
   ('cccccccc-0000-4000-8000-000000000001', '11111111-1111-4111-8111-111111111111', 'F-1', 'Party One'),
   ('cccccccc-0000-4000-8000-000000000002', '22222222-2222-4222-8222-222222222222', 'F-1', 'Party Two');
 
+-- A loan of 100 paise for the "a munshi cannot disburse a loan" check below
+-- (a disbursal entry must match a real loan, so the permission is what fails).
+insert into public.loans (id, tenant_id, loan_no, party_id, issue_date,
+  principal_paise, interest_config_snapshot) values
+  ('10000000-0000-4000-8000-000000000099', '11111111-1111-4111-8111-111111111111',
+   'KZ-T-0001', 'cccccccc-0000-4000-8000-000000000001', '2026-04-08', 100,
+   '{"rate_pa":"18"}'::jsonb);
+
 insert into public.ledger_entries
   (id, tenant_id, party_id, entry_date, side, amount_paise, ref_type) values
   ('eeeeeeee-0000-4000-8000-000000000001', '11111111-1111-4111-8111-111111111111',
@@ -317,10 +325,10 @@ select throws_ok(
   '42501', null, 'a munshi cannot post a journal entry');
 select throws_ok(
   $$insert into public.ledger_entries
-    (id, tenant_id, party_id, entry_date, side, amount_paise, ref_type, device_id) values
+    (id, tenant_id, party_id, entry_date, side, amount_paise, ref_type, ref_id, device_id) values
     (gen_random_uuid(), '11111111-1111-4111-8111-111111111111',
      'cccccccc-0000-4000-8000-000000000001', '2026-04-08', 'udhaar', 100, 'loan_disbursal',
-     'dddddddd-0000-4000-8000-000000000004')$$,
+     '10000000-0000-4000-8000-000000000099', 'dddddddd-0000-4000-8000-000000000004')$$,
   '42501', null, 'a munshi cannot disburse a loan');
 
 select is(

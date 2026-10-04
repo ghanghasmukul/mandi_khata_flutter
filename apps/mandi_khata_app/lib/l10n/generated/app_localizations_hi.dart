@@ -3065,4 +3065,472 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get updateLater => 'बाद में';
+
+  @override
+  String get loansTitle => 'कर्ज़ (ऋण)';
+
+  @override
+  String get loansIssue => 'कर्ज़ दें';
+
+  @override
+  String get loansEmpty => 'अभी कोई कर्ज़ नहीं';
+
+  @override
+  String get loansSearchHint => 'कर्ज़दार या कर्ज़ नंबर खोजें';
+
+  @override
+  String get loansFilterOpen => 'चालू';
+
+  @override
+  String get loansFilterClosed => 'बंद';
+
+  @override
+  String get loansFilterAll => 'सभी';
+
+  @override
+  String get loansTotalCount => 'चालू कर्ज़';
+
+  @override
+  String get loansTotalPrincipal => 'बकाया मूलधन';
+
+  @override
+  String get loansTotalInterest => 'बकाया ब्याज';
+
+  @override
+  String get loansTotalOverdue => 'अवधि पार';
+
+  @override
+  String loanCardIssued(String amount) {
+    return '$amount दिया';
+  }
+
+  @override
+  String get loanCardOutstanding => 'मूलधन';
+
+  @override
+  String get loanCardByaj => 'ब्याज';
+
+  @override
+  String get loanCardPayable => 'कुल देय';
+
+  @override
+  String loanCardRecovered(String percent) {
+    return '$percent% वसूल';
+  }
+
+  @override
+  String loanCardDaysLeft(String count) {
+    return '$count दिन बाकी';
+  }
+
+  @override
+  String get loanCardDueToday => 'आज देय';
+
+  @override
+  String loanCardOverdue(String count) {
+    return '$count दिन देर';
+  }
+
+  @override
+  String get loanCardNoDue => 'कोई देय तिथि नहीं';
+
+  @override
+  String loanCardDue(String date) {
+    return 'देय $date';
+  }
+
+  @override
+  String get loanHealthOnTrack => 'ठीक चल रहा';
+
+  @override
+  String get loanHealthDueSoon => 'जल्द देय';
+
+  @override
+  String get loanHealthOverdue => 'अवधि पार';
+
+  @override
+  String get loanHealthSettled => 'चुकता';
+
+  @override
+  String get loanStatusClosed => 'बंद';
+
+  @override
+  String get loanStatusWrittenOff => 'बट्टे खाते';
+
+  @override
+  String get loanIssueTitle => 'कर्ज़ दें';
+
+  @override
+  String get loanFieldBorrower => 'कर्ज़दार';
+
+  @override
+  String get loanFieldAmount => 'कर्ज़ की रकम';
+
+  @override
+  String get loanFieldIssueDate => 'देने की तिथि';
+
+  @override
+  String get loanFieldDueDate => 'देय तिथि (वैकल्पिक)';
+
+  @override
+  String get loanFieldPurpose => 'उद्देश्य';
+
+  @override
+  String get loanFieldGuarantor => 'गारंटर (वैकल्पिक)';
+
+  @override
+  String get loanFieldNotes => 'टिप्पणी';
+
+  @override
+  String get loanClearDate => 'तिथि हटाएँ';
+
+  @override
+  String get loanTermsTitle => 'ब्याज की शर्तें';
+
+  @override
+  String loanTermsFrom(String source) {
+    return '$source। यहाँ के बदलाव सिर्फ़ इसी कर्ज़ पर लागू होंगे।';
+  }
+
+  @override
+  String get loanFieldRate => 'ब्याज दर';
+
+  @override
+  String get loanTermsMore => 'और शर्तें';
+
+  @override
+  String get loanPayOutTitle => 'पैसे कैसे दिए जा रहे हैं?';
+
+  @override
+  String loanNextNo(String no) {
+    return 'कर्ज़ नंबर $no';
+  }
+
+  @override
+  String get loanNoticeNetUdhaar =>
+      'आपका कारोबार पूरे खाते पर ब्याज लगाता है। यह कर्ज़ अपना अलग ब्याज खाता रखता है, इसलिए इसी रकम पर खाते में दोबारा ब्याज न लगाएँ।';
+
+  @override
+  String get loanSaveIssue => 'कर्ज़ दें';
+
+  @override
+  String loanIssuedAs(String no) {
+    return 'कर्ज़ $no दिया गया';
+  }
+
+  @override
+  String get loanDetailAsOf => 'इस तिथि तक';
+
+  @override
+  String get loanDetailToday => 'आज';
+
+  @override
+  String loanPayableOn(String date) {
+    return '$date को देय';
+  }
+
+  @override
+  String get loanPrincipalOutstanding => 'बकाया मूलधन';
+
+  @override
+  String get loanInterestAccrued => 'जमा ब्याज';
+
+  @override
+  String get loanInterestRecovered => 'वसूल ब्याज';
+
+  @override
+  String get loanPrincipalRecovered => 'वसूल मूलधन';
+
+  @override
+  String get loanCurrentRate => 'दर';
+
+  @override
+  String loanRatePa(String rate) {
+    return '$rate% सालाना';
+  }
+
+  @override
+  String loanRatePerMonth(String rate) {
+    return '₹$rate प्रति 100 प्रति माह';
+  }
+
+  @override
+  String get loanTermsSummary => 'शर्तें';
+
+  @override
+  String get loanInterestFree => 'ब्याज नहीं';
+
+  @override
+  String loanGraceDays(String count) {
+    return '$count दिन की छूट';
+  }
+
+  @override
+  String get loanActionRepay => 'वापसी दर्ज करें';
+
+  @override
+  String get loanActionRate => 'दर बदलें';
+
+  @override
+  String get loanActionClose => 'कर्ज़ बंद करें';
+
+  @override
+  String get loanActionWriteOff => 'बट्टे खाते डालें';
+
+  @override
+  String get loanBorrowerLink => 'खाता खोलें';
+
+  @override
+  String get loanNotFound => 'कर्ज़ नहीं मिला';
+
+  @override
+  String loanClosedOn(String status, String date) {
+    return '$date को $status';
+  }
+
+  @override
+  String get loanStmtTitle => 'ब्याज का हिसाब';
+
+  @override
+  String get loanStmtEmpty => 'अभी कोई प्रविष्टि नहीं';
+
+  @override
+  String get loanColFrom => 'से';
+
+  @override
+  String get loanColTo => 'तक';
+
+  @override
+  String get loanColEvent => 'विवरण';
+
+  @override
+  String get loanColDebit => 'दिया';
+
+  @override
+  String get loanColCredit => 'मिला';
+
+  @override
+  String get loanColDays => 'दिन';
+
+  @override
+  String get loanColPrincipal => 'मूलधन';
+
+  @override
+  String get loanColRate => 'दर %';
+
+  @override
+  String get loanColInterest => 'ब्याज';
+
+  @override
+  String get loanRowAccrue => 'इन दिनों का ब्याज';
+
+  @override
+  String get loanRowDebit => 'कर्ज़ दिया';
+
+  @override
+  String get loanRowCredit => 'वापसी';
+
+  @override
+  String get loanRowCompound => 'ब्याज मूलधन में जोड़ा';
+
+  @override
+  String loanRowRate(String rate) {
+    return 'दर बदलकर $rate% हुई';
+  }
+
+  @override
+  String loanRowSplit(String interest, String principal) {
+    return 'ब्याज $interest · मूलधन $principal';
+  }
+
+  @override
+  String loanRowSurplus(String amount) {
+    return 'अतिरिक्त $amount जमा रखा';
+  }
+
+  @override
+  String get loanRateChangesTitle => 'दर में बदलाव';
+
+  @override
+  String get loanRateAtIssue => 'देते समय';
+
+  @override
+  String get loanRepayTitle => 'वापसी दर्ज करें';
+
+  @override
+  String get loanRepayAmount => 'मिली रकम';
+
+  @override
+  String get loanRepayDate => 'तिथि';
+
+  @override
+  String get loanRepaySourcePay => 'पैसे मिले';
+
+  @override
+  String get loanRepaySourceCrop => 'फ़सल की रकम से';
+
+  @override
+  String loanRepayCropAvailable(String amount) {
+    return 'खाते में फ़सल की रकम: $amount';
+  }
+
+  @override
+  String get loanRepayCropNone =>
+      'इस पार्टी के खाते में समायोजन के लिए फ़सल की कोई रकम नहीं है।';
+
+  @override
+  String get loanRepayFullPayable => 'पूरा देय';
+
+  @override
+  String get loanPreviewTitle => 'यह वापसी';
+
+  @override
+  String get loanPreviewInterest => 'ब्याज चुकाएगी';
+
+  @override
+  String get loanPreviewPrincipal => 'मूलधन चुकाएगी';
+
+  @override
+  String get loanPreviewBefore => 'पहले देय';
+
+  @override
+  String get loanPreviewAfter => 'बाद में देय';
+
+  @override
+  String get loanPreviewCropNote =>
+      'पार्टी का खाते का शुद्ध बकाया नहीं बदलेगा; कर्ज़ उनकी फ़सल की रकम से चुकता होगा।';
+
+  @override
+  String get loanRepaySave => 'वापसी दर्ज करें';
+
+  @override
+  String get loanRepaid => 'वापसी दर्ज हुई';
+
+  @override
+  String get loanRateTitle => 'ब्याज दर बदलें';
+
+  @override
+  String loanRateCurrent(String rate) {
+    return 'मौजूदा दर: $rate';
+  }
+
+  @override
+  String get loanRateNew => 'नई दर';
+
+  @override
+  String get loanRateEffective => 'इस तिथि से लागू';
+
+  @override
+  String get loanRateReason => 'कारण (वैकल्पिक)';
+
+  @override
+  String get loanRateSave => 'दर बदलें';
+
+  @override
+  String get loanRateChanged => 'दर बदली गई';
+
+  @override
+  String get loanCloseTitle => 'कर्ज़ बंद करें';
+
+  @override
+  String get loanWriteOffTitle => 'कर्ज़ बट्टे खाते डालें';
+
+  @override
+  String get loanCloseDate => 'बंद करने की तिथि';
+
+  @override
+  String get loanCloseReason => 'कारण';
+
+  @override
+  String get loanCloseReasonOptional => 'टिप्पणी (वैकल्पिक)';
+
+  @override
+  String loanCloseStillDue(String amount) {
+    return '$amount अभी देय है। पहले वापसी दर्ज करें, या कर्ज़ बट्टे खाते डालें।';
+  }
+
+  @override
+  String get loanCloseAllPaid =>
+      'कुछ देय नहीं है। बंद करने से दर्ज होगा कि कर्ज़ पूरा चुकता है।';
+
+  @override
+  String loanWriteOffBody(String amount) {
+    return '$amount बट्टे खाते जाएगा और ब्याज रुक जाएगा। जब तक आप माफ़ नहीं करते, पार्टी के खाते में बकाया दिखता रहेगा। इसे वापस नहीं किया जा सकता।';
+  }
+
+  @override
+  String get loanCloseConfirm => 'कर्ज़ बंद करें';
+
+  @override
+  String get loanWriteOffConfirm => 'बट्टे खाते डालें';
+
+  @override
+  String get loanClosedDone => 'कर्ज़ बंद हुआ';
+
+  @override
+  String get loanWrittenOffDone => 'कर्ज़ बट्टे खाते डाला गया';
+
+  @override
+  String get loanErrorAmount => 'रकम भरें';
+
+  @override
+  String get loanErrorDue => 'देय तिथि देने की तिथि से पहले नहीं हो सकती';
+
+  @override
+  String get loanErrorGuarantor => 'कर्ज़दार खुद का गारंटर नहीं हो सकता';
+
+  @override
+  String get loanErrorRate => '0 से 100 के बीच दर भरें (4 दशमलव तक)';
+
+  @override
+  String get loanErrorEffective =>
+      'दर कर्ज़ देने से पहले की तिथि से शुरू नहीं हो सकती';
+
+  @override
+  String get loanErrorNotActive => 'यह कर्ज़ पहले ही बंद है';
+
+  @override
+  String get loanErrorStillDue => 'इस कर्ज़ पर अभी कुछ देय है';
+
+  @override
+  String get loanErrorNothingToWriteOff =>
+      'बट्टे खाते डालने को कुछ नहीं बचा; कर्ज़ बंद करें';
+
+  @override
+  String get loanErrorReason => 'कारण बताएँ';
+
+  @override
+  String get loanErrorClosedBefore =>
+      'तिथि इस कर्ज़ की आख़िरी प्रविष्टि से पहले की नहीं हो सकती';
+
+  @override
+  String get loanErrorNotPermitted => 'यह सिर्फ़ मालिक कर सकता है';
+
+  @override
+  String get loanErrorNotPermittedRepay =>
+      'भुगतान दर्ज करने की अनुमति चाहिए (फ़सल की रकम समायोजित करने के लिए मुनीम या मालिक)';
+
+  @override
+  String get loanErrorNotFound =>
+      'पार्टी, कर्ज़ या बैंक खाता इस कारोबार में नहीं मिला';
+
+  @override
+  String loanErrorExceeds(String payable) {
+    return 'इस दिन देय $payable से ज़्यादा। सिर्फ़ देय रकम दर्ज करें।';
+  }
+
+  @override
+  String loanErrorExceedsCrop(String available) {
+    return 'खाते में फ़सल की रकम ($available) से ज़्यादा';
+  }
+
+  @override
+  String get paymentLoanNote =>
+      'यह भुगतान एक कर्ज़ से जुड़ा है। कर्ज़ चालू रहने तक वापसी यहाँ से उलटी जा सकती है; कर्ज़ में दिया गया पैसा उलटा नहीं जा सकता।';
+
+  @override
+  String get paymentLoanLink => 'कर्ज़ खोलें';
+
+  @override
+  String get loanOpenFromParty => 'कर्ज़';
 }

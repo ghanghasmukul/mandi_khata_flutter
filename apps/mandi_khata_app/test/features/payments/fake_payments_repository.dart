@@ -5,6 +5,7 @@ import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/features/payments/data/bank_accounts_repository.dart';
 import 'package:mandi_khata_app/features/payments/data/payments_repository.dart';
 import 'package:mandi_khata_app/features/payments/domain/payment.dart';
+import 'package:sqlite_async/sqlite_async.dart' show SqliteWriteContext;
 
 /// In-memory payments for screen tests. Writes are recorded and, like the
 /// real repository, change what the streams show.
@@ -60,6 +61,16 @@ class FakePaymentsRepository implements PaymentsRepository {
   @override
   Future<String> previewNextNo(WriteContext ctx, PaymentDirection d) async =>
       d == PaymentDirection.toParty ? 'V-W1-0007' : 'R-W1-0007';
+
+  @override
+  Future<PaymentSaveResult> saveIn(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    PaymentDraft draft, {
+    required bool Function(Permission) can,
+    required DateTime when,
+    LoanPaymentLink? loan,
+  }) => throw UnimplementedError('only loans use a transaction');
 
   @override
   Future<PaymentSaveResult> save(

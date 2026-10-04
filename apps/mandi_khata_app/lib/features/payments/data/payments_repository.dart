@@ -136,141 +136,164 @@ class PaymentsRepository {
     final problems = draft.validate();
     if (problems.isNotEmpty) return PaymentInvalid(problems);
     final when = now ?? DateTime.now();
+    return await _db.writeTransaction(
+      (tx) => saveIn(tx, ctx, draft, can: can, when: when),
+    );
+  }
+
+  /// [save] inside [tx], the caller's transaction: a loan is issued, or
+  /// repaid, together with its payment. [loan] ties the payment to a loan
+  /// (see [LoanPaymentLink]); the loan row must already be written. The
+  /// caller validates [draft] and checks any loan permission.
+  Future<PaymentSaveResult> saveIn(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    PaymentDraft draft, {
+    required bool Function(Permission) can,
+    required DateTime when,
+    LoanPaymentLink? loan,
+  }) async {
+    final problems = draft.validate();
+    if (problems.isNotEmpty) return PaymentInvalid(problems);
     final at = when.toUtc().toIso8601String();
-
-    return await _db.writeTransaction((tx) async {
-      final limit = await paymentLimit(
-        tx,
-        ctx.tenantId,
-        planDefaults: planDefaults,
-      );
-      for (final needed in PaymentRules.requiredPermissions(
-        direction: draft.direction,
-        mode: draft.mode,
-        amount: draft.amount,
-        limit: limit,
-      )) {
-        if (!can(needed)) {
-          return PaymentNotPermitted(
-            needed,
-            limit:
-                needed == Permission.entriesReverse &&
-                    PaymentRules.exceedsLimit(
-                      draft.direction,
-                      draft.amount,
-                      limit,
-                    )
-                ? limit
-                : null,
-          );
-        }
-      }
-      final refused = await LedgerRepository.checkDate(
-        tx,
-        ctx,
-        draft.direction.refType,
-        draft.entryDate,
-        can: can,
-        now: when,
-        planDefaults: planDefaults,
-      );
-      if (refused != null) {
+    final limit = await paymentLimit(
+      tx,
+      ctx.tenantId,
+      planDefaults: planDefaults,
+    );
+    for (final needed in PaymentRules.requiredPermissions(
+      direction: draft.direction,
+      mode: draft.mode,
+      amount: draft.amount,
+      limit: limit,
+    )) {
+      if (!can(needed)) {
         return PaymentNotPermitted(
-          refused.permission,
-          backdateDays: refused.backdateDays,
+          needed,
+          limit:
+              needed == Permission.entriesReverse &&
+                  PaymentRules.exceedsLimit(
+                    draft.direction,
+                    draft.amount,
+                    limit,
+                  )
+              ? limit
+              : null,
         );
       }
+    }
+    final entryRefType = loan?.refType ?? draft.direction.refType;
+    final refused = await LedgerRepository.checkDate(
+      tx,
+      ctx,
+      entryRefType,
+      draft.entryDate,
+      can: can,
+      now: when,
+      planDefaults: planDefaults,
+    );
+    if (refused != null) {
+      return PaymentNotPermitted(
+        refused.permission,
+        backdateDays: refused.backdateDays,
+      );
+    }
 
-      final party = await tx.getOptional(
-        'SELECT 1 FROM parties '
-        'WHERE tenant_id = ? AND id = ? AND deleted_at IS NULL',
-        [ctx.tenantId, draft.partyId],
-      );
-      if (party == null) return const PaymentNotFound();
+    final party = await tx.getOptional(
+      'SELECT 1 FROM parties '
+      'WHERE tenant_id = ? AND id = ? AND deleted_at IS NULL',
+      [ctx.tenantId, draft.partyId],
+    );
+    if (party == null) return const PaymentNotFound();
 
-      final String accountId;
-      if (draft.mode.usesCashAccount) {
-        // Seeded by the server for every business and the same id everywhere.
-        accountId = BankAccountsRepository.cashIdFor(ctx.tenantId);
-      } else {
-        final account = await tx.getOptional(
-          'SELECT id FROM bank_accounts WHERE tenant_id = ? AND id = ? '
-          "AND kind = 'bank' AND is_active = 1",
-          [ctx.tenantId, draft.bankAccountId],
-        );
-        if (account == null) return const PaymentNotFound();
-        accountId = account['id']! as String;
-      }
+    final String accountId;
+    if (draft.mode.usesCashAccount) {
+      // Seeded by the server for every business and the same id everywhere.
+      accountId = BankAccountsRepository.cashIdFor(ctx.tenantId);
+    } else {
+      final account = await tx.getOptional(
+        'SELECT id FROM bank_accounts WHERE tenant_id = ? AND id = ? '
+        "AND kind = 'bank' AND is_active = 1",
+        [ctx.tenantId, draft.bankAccountId],
+      );
+      if (account == null) return const PaymentNotFound();
+      accountId = account['id']! as String;
+    }
 
-      final id = const Uuid().v4();
-      final receiptNo = await NumberSeriesService.next(
-        tx,
-        ctx,
-        _series(draft.direction),
-        now: when,
-      );
-      final isCheque = draft.mode == PaymentMode.cheque;
-      final columns = <String, Object?>{
-        'receipt_no': receiptNo,
-        'entry_date': draft.entryDate.toString(),
-        'party_id': draft.partyId,
-        'direction': draft.direction.dbName,
-        'mode': draft.mode.name,
-        'amount_paise': draft.amount.paise,
-        'bank_account_id': accountId,
-        'reference': _clean(draft.reference),
-        'cheque_no': isCheque ? _clean(draft.chequeNo) : null,
-        'cheque_date': isCheque ? draft.chequeDate?.toString() : null,
-        'cheque_status': isCheque ? ChequeStatus.pending.name : null,
-        'narration': _clean(draft.narration),
-        'status': PaymentStatus.posted.name,
-      };
-      await tx.execute(
-        'INSERT INTO payments (id, tenant_id, ${columns.keys.join(', ')}, '
-        'device_id, created_by, created_at, updated_at) '
-        'VALUES (${List.filled(columns.length + 6, '?').join(', ')})',
-        [id, ctx.tenantId, ...columns.values, ctx.deviceId, ctx.userId, at, at],
-      );
-      await AuditWriter.record(
-        tx,
-        ctx,
-        table: 'payments',
-        rowId: id,
-        action: AuditAction.insert,
-        after: {
-          for (final MapEntry(:key, :value) in columns.entries) key: ?value,
-        },
-        at: when,
-      );
+    final id = const Uuid().v4();
+    final receiptNo = await NumberSeriesService.next(
+      tx,
+      ctx,
+      _series(draft.direction),
+      now: when,
+    );
+    final isCheque = draft.mode == PaymentMode.cheque;
+    final columns = <String, Object?>{
+      'receipt_no': receiptNo,
+      'entry_date': draft.entryDate.toString(),
+      'party_id': draft.partyId,
+      'direction': draft.direction.dbName,
+      'mode': draft.mode.name,
+      'amount_paise': draft.amount.paise,
+      'bank_account_id': accountId,
+      'reference': _clean(draft.reference),
+      'cheque_no': isCheque ? _clean(draft.chequeNo) : null,
+      'cheque_date': isCheque ? draft.chequeDate?.toString() : null,
+      'cheque_status': isCheque ? ChequeStatus.pending.name : null,
+      'narration': _clean(draft.narration),
+      'status': PaymentStatus.posted.name,
+      'loan_id': loan?.loanId,
+    };
+    await tx.execute(
+      'INSERT INTO payments (id, tenant_id, ${columns.keys.join(', ')}, '
+      'device_id, created_by, created_at, updated_at) '
+      'VALUES (${List.filled(columns.length + 6, '?').join(', ')})',
+      [id, ctx.tenantId, ...columns.values, ctx.deviceId, ctx.userId, at, at],
+    );
+    await AuditWriter.record(
+      tx,
+      ctx,
+      table: 'payments',
+      rowId: id,
+      action: AuditAction.insert,
+      after: {
+        for (final MapEntry(:key, :value) in columns.entries) key: ?value,
+      },
+      at: when,
+    );
 
-      await LedgerRepository.post(
-        tx,
-        ctx,
-        LedgerDraft(
-          partyId: draft.partyId,
-          side: draft.direction.side,
-          amount: draft.amount,
-          refType: draft.direction.refType,
-          refId: id,
-          entryDate: draft.entryDate,
-          narration: receiptNo,
-        ),
-        now: when,
-      );
-      await _insertBookLine(
-        tx,
-        ctx,
-        accountId: accountId,
-        accountKind: draft.mode.usesCashAccount ? 'cash' : 'bank',
-        entryDate: draft.entryDate,
-        direction: draft.direction.book,
+    final narration = loan == null
+        ? receiptNo
+        : '${loan.loanNo} \u00b7 $receiptNo';
+    await LedgerRepository.post(
+      tx,
+      ctx,
+      LedgerDraft(
+        partyId: draft.partyId,
+        side: draft.direction.side,
         amount: draft.amount,
-        paymentId: id,
-        narration: receiptNo,
-        when: when,
-      );
-      return PaymentSaved(id, receiptNo);
-    });
+        refType: entryRefType,
+        // A loan's disbursal points at the loan; everything else at the
+        // payment (so reversing the payment finds its entry).
+        refId: loan != null && loan.isDisbursal ? loan.loanId : id,
+        entryDate: draft.entryDate,
+        narration: narration,
+      ),
+      now: when,
+    );
+    await _insertBookLine(
+      tx,
+      ctx,
+      accountId: accountId,
+      accountKind: draft.mode.usesCashAccount ? 'cash' : 'bank',
+      entryDate: draft.entryDate,
+      direction: draft.direction.book,
+      amount: draft.amount,
+      paymentId: id,
+      narration: narration,
+      when: when,
+    );
+    return PaymentSaved(id, receiptNo);
   }
 
   /// Reverses a payment (needs `entries.reverse`): the khata entry and the
@@ -355,6 +378,21 @@ class PaymentsRepository {
     if (bounced && row['cheque_status'] != 'pending') {
       return const PaymentLocked();
     }
+    // A loan's own payment is undone from the loan: a disbursal never, a
+    // repayment only while the loan is still active.
+    final loanId = row['loan_id'] as String?;
+    if (loanId != null) {
+      if (row['direction'] == PaymentDirection.toParty.dbName) {
+        return const PaymentLocked();
+      }
+      final loan = await tx.getOptional(
+        'SELECT status FROM loans WHERE tenant_id = ? AND id = ?',
+        [ctx.tenantId, loanId],
+      );
+      if (loan == null || loan['status'] != 'active') {
+        return const PaymentLocked();
+      }
+    }
     final receiptNo = row['receipt_no']! as String;
     final reversalDate = bounced
         ? bounceDate ?? LedgerDate.fromDateTime(when)
@@ -362,10 +400,16 @@ class PaymentsRepository {
 
     final entries = await tx.getAll(
       'SELECT e.id FROM ledger_entries e WHERE e.tenant_id = ? '
-      'AND e.ref_id = ? AND e.ref_type IN (?, ?) AND NOT EXISTS ( '
+      'AND e.ref_id = ? AND e.ref_type IN (?, ?, ?) AND NOT EXISTS ( '
       'SELECT 1 FROM ledger_entries r WHERE r.tenant_id = e.tenant_id '
       'AND r.reverses_id = e.id) ORDER BY e.created_at, e.id',
-      [ctx.tenantId, id, RefType.payment.dbName, RefType.receipt.dbName],
+      [
+        ctx.tenantId,
+        id,
+        RefType.payment.dbName,
+        RefType.receipt.dbName,
+        RefType.loanRepayment.dbName,
+      ],
     );
     for (final e in entries) {
       await LedgerRepository.reverseIn(

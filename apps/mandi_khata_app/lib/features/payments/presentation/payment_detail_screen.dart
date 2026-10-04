@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/domain/payment.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payment_mode_fields.dart';
@@ -162,7 +163,7 @@ class PaymentDetailScreen extends ConsumerWidget {
                               variant: MkButtonVariant.danger,
                               onPressed: () => _bounce(context, ref),
                             ),
-                          if (!p.isReversed && canReverse)
+                          if (!p.isReversed && canReverse && !p.isLoanDisbursal)
                             MkButton(
                               key: const ValueKey('payment-reverse'),
                               label: l10n.paymentReverse,
@@ -172,6 +173,19 @@ class PaymentDetailScreen extends ConsumerWidget {
                             ),
                         ],
                       ),
+                      if (p.loanId != null) ...[
+                        const SizedBox(height: MkSpacing.md),
+                        Text(
+                          l10n.paymentLoanNote,
+                          key: const ValueKey('payment-loan-note'),
+                        ),
+                        TextButton(
+                          key: const ValueKey('payment-loan-link'),
+                          onPressed: () =>
+                              context.go(LoanRoutes.detail(p.loanId!)),
+                          child: Text(l10n.paymentLoanLink),
+                        ),
+                      ],
                       const SizedBox(height: MkSpacing.md),
                       _Details(payment: p),
                     ],

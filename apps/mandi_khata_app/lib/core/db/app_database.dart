@@ -29,6 +29,8 @@ part 'app_database.g.dart';
     BankAccounts,
     Payments,
     CashBankEntries,
+    Loans,
+    LoanRateChanges,
     SyncErrors,
   ],
 )

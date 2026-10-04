@@ -5595,6 +5595,834 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Later'**
   String get updateLater;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loans (karza)'**
+  String get loansTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue loan'**
+  String get loansIssue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'No loans here yet'**
+  String get loansEmpty;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Search borrower or loan number'**
+  String get loansSearchHint;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get loansFilterOpen;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get loansFilterClosed;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get loansFilterAll;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Open loans'**
+  String get loansTotalCount;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal out'**
+  String get loansTotalPrincipal;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj due'**
+  String get loansTotalInterest;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue'**
+  String get loansTotalOverdue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued {amount}'**
+  String loanCardIssued(String amount);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal'**
+  String get loanCardOutstanding;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj'**
+  String get loanCardByaj;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Payable'**
+  String get loanCardPayable;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% recovered'**
+  String loanCardRecovered(String percent);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days left'**
+  String loanCardDaysLeft(String count);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Due today'**
+  String get loanCardDueToday;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days overdue'**
+  String loanCardOverdue(String count);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'No due date'**
+  String get loanCardNoDue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String loanCardDue(String date);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'On track'**
+  String get loanHealthOnTrack;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Due soon'**
+  String get loanHealthDueSoon;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue'**
+  String get loanHealthOverdue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid up'**
+  String get loanHealthSettled;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get loanStatusClosed;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Written off'**
+  String get loanStatusWrittenOff;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue loan'**
+  String get loanIssueTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Borrower'**
+  String get loanFieldBorrower;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan amount'**
+  String get loanFieldAmount;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue date'**
+  String get loanFieldIssueDate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Due date (optional)'**
+  String get loanFieldDueDate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Purpose'**
+  String get loanFieldPurpose;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Guarantor (optional)'**
+  String get loanFieldGuarantor;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get loanFieldNotes;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear date'**
+  String get loanClearDate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest terms'**
+  String get loanTermsTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{source}. Changes here apply to this loan only.'**
+  String loanTermsFrom(String source);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest rate'**
+  String get loanFieldRate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'More terms'**
+  String get loanTermsMore;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'How is the money given?'**
+  String get loanPayOutTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan no. {no}'**
+  String loanNextNo(String no);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Your business charges interest on the whole khata. This loan keeps its own interest account, so do not charge the same money again on the khata.'**
+  String get loanNoticeNetUdhaar;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue loan'**
+  String get loanSaveIssue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan {no} issued'**
+  String loanIssuedAs(String no);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'As of date'**
+  String get loanDetailAsOf;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get loanDetailToday;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Payable on {date}'**
+  String loanPayableOn(String date);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal outstanding'**
+  String get loanPrincipalOutstanding;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj accrued'**
+  String get loanInterestAccrued;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj recovered'**
+  String get loanInterestRecovered;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal recovered'**
+  String get loanPrincipalRecovered;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate'**
+  String get loanCurrentRate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{rate}% a year'**
+  String loanRatePa(String rate);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'₹{rate} per 100 per month'**
+  String loanRatePerMonth(String rate);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms'**
+  String get loanTermsSummary;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'No interest'**
+  String get loanInterestFree;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days grace'**
+  String loanGraceDays(String count);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Record repayment'**
+  String get loanActionRepay;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Change rate'**
+  String get loanActionRate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Close loan'**
+  String get loanActionClose;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Write off'**
+  String get loanActionWriteOff;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Open khata'**
+  String get loanBorrowerLink;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan not found'**
+  String get loanNotFound;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{status} on {date}'**
+  String loanClosedOn(String status, String date);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest statement'**
+  String get loanStmtTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'No entries yet'**
+  String get loanStmtEmpty;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get loanColFrom;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get loanColTo;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Event'**
+  String get loanColEvent;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Given'**
+  String get loanColDebit;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Received'**
+  String get loanColCredit;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Days'**
+  String get loanColDays;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal'**
+  String get loanColPrincipal;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate %'**
+  String get loanColRate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj'**
+  String get loanColInterest;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest for the days'**
+  String get loanRowAccrue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan given'**
+  String get loanRowDebit;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Repayment'**
+  String get loanRowCredit;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj added to principal'**
+  String get loanRowCompound;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate changed to {rate}%'**
+  String loanRowRate(String rate);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj {interest} · Principal {principal}'**
+  String loanRowSplit(String interest, String principal);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra {amount} kept as credit'**
+  String loanRowSurplus(String amount);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate changes'**
+  String get loanRateChangesTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'At issue'**
+  String get loanRateAtIssue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Record repayment'**
+  String get loanRepayTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount received'**
+  String get loanRepayAmount;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get loanRepayDate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Money received'**
+  String get loanRepaySourcePay;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'From crop proceeds'**
+  String get loanRepaySourceCrop;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop proceeds in the khata: {amount}'**
+  String loanRepayCropAvailable(String amount);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'This party has no crop proceeds in the khata to set off.'**
+  String get loanRepayCropNone;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Full payable'**
+  String get loanRepayFullPayable;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'This repayment'**
+  String get loanPreviewTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Pays byaj'**
+  String get loanPreviewInterest;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Pays principal'**
+  String get loanPreviewPrincipal;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Payable before'**
+  String get loanPreviewBefore;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Payable after'**
+  String get loanPreviewAfter;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'The party\'s net khata balance does not change; the loan is paid off against their crop proceeds.'**
+  String get loanPreviewCropNote;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Record repayment'**
+  String get loanRepaySave;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Repayment recorded'**
+  String get loanRepaid;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Change interest rate'**
+  String get loanRateTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Current rate: {rate}'**
+  String loanRateCurrent(String rate);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'New rate'**
+  String get loanRateNew;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Effective from'**
+  String get loanRateEffective;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason (optional)'**
+  String get loanRateReason;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Change rate'**
+  String get loanRateSave;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate changed'**
+  String get loanRateChanged;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Close loan'**
+  String get loanCloseTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Write off loan'**
+  String get loanWriteOffTitle;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Closing date'**
+  String get loanCloseDate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get loanCloseReason;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get loanCloseReasonOptional;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} is still due. Record the repayment first, or write the loan off.'**
+  String loanCloseStillDue(String amount);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is due. Closing records that the loan is fully paid.'**
+  String get loanCloseAllPaid;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} will be written off and the interest stops. The party\'s khata still shows what they owe until you waive it. This cannot be undone.'**
+  String loanWriteOffBody(String amount);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Close loan'**
+  String get loanCloseConfirm;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Write off'**
+  String get loanWriteOffConfirm;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan closed'**
+  String get loanClosedDone;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan written off'**
+  String get loanWrittenOffDone;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the amount'**
+  String get loanErrorAmount;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'The due date cannot be before the issue date'**
+  String get loanErrorDue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'The borrower cannot be their own guarantor'**
+  String get loanErrorGuarantor;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a rate from 0 to 100 (up to 4 decimals)'**
+  String get loanErrorRate;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'A rate cannot start before the loan was issued'**
+  String get loanErrorEffective;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'This loan is already closed'**
+  String get loanErrorNotActive;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Something is still due on this loan'**
+  String get loanErrorStillDue;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is left to write off; close the loan instead'**
+  String get loanErrorNothingToWriteOff;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Give a reason'**
+  String get loanErrorReason;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'The date cannot be before the last entry of this loan'**
+  String get loanErrorClosedBefore;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can do this'**
+  String get loanErrorNotPermitted;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'You need permission to record payments (and an Accountant or Owner to adjust crop proceeds)'**
+  String get loanErrorNotPermittedRepay;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'The party, loan or bank account was not found in this business'**
+  String get loanErrorNotFound;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'More than the {payable} due on this day. Record only what is due.'**
+  String loanErrorExceeds(String payable);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'More than the crop proceeds in the khata ({available})'**
+  String loanErrorExceedsCrop(String available);
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'This payment belongs to a loan. A repayment can be reversed here while the loan is open; the money given out for a loan cannot be reversed.'**
+  String get paymentLoanNote;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Open loan'**
+  String get paymentLoanLink;
+
+  /// Loans (karza), step 2.2.
+  ///
+  /// In en, this message translates to:
+  /// **'Loans'**
+  String get loanOpenFromParty;
 }
 
 class _AppLocalizationsDelegate

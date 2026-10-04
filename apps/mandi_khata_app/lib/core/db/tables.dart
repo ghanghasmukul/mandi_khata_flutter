@@ -298,6 +298,7 @@ class Payments extends Table {
   TextColumn get narration => text().nullable()();
   TextColumn get status => text()();
   TextColumn get reversedAt => text().nullable()();
+  TextColumn get loanId => text().nullable()();
   TextColumn get deviceId => text().nullable()();
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
@@ -319,6 +320,47 @@ class CashBankEntries extends Table {
   TextColumn get paymentId => text()();
   TextColumn get narration => text().nullable()();
   TextColumn get reversesId => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Karza: a loan to a party with its interest terms snapshotted.
+class Loans extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get loanNo => text()();
+  TextColumn get partyId => text()();
+  TextColumn get issueDate => text()();
+  IntColumn get principalPaise => integer()();
+  TextColumn get purpose => text().nullable()();
+  TextColumn get dueDate => text().nullable()();
+  TextColumn get guarantorPartyId => text().nullable()();
+  TextColumn get interestConfigSnapshot => text()();
+  TextColumn get status => text()();
+  TextColumn get closedOn => text().nullable()();
+  TextColumn get closeReason => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Effective-dated rate changes of a loan. Append-only.
+class LoanRateChanges extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get loanId => text()();
+  TextColumn get effectiveDate => text()();
+  TextColumn get ratePa => text()();
+  TextColumn get reason => text().nullable()();
   TextColumn get deviceId => text().nullable()();
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();

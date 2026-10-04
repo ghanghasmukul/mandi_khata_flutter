@@ -10,6 +10,7 @@ import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.d
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_entry_dialog.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/record_payment_dialog.dart';
@@ -58,6 +59,12 @@ List<PaletteCommand> paletteCommands(
     label: l10n.paymentsTitle,
     icon: Icons.payments_outlined,
     run: (c) => c.go(PaymentRoutes.list),
+  ),
+  PaletteCommand(
+    id: 'loans',
+    label: l10n.loansTitle,
+    icon: Icons.request_quote_outlined,
+    run: (c) => c.go(LoanRoutes.list),
   ),
   PaletteCommand(
     id: 'day-book',

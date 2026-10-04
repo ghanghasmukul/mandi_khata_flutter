@@ -114,6 +114,27 @@ final class BankAccountNotFound extends BankAccountResult {
   const BankAccountNotFound();
 }
 
+/// Ties a payment to a loan (karza): the money out that disburses it, or the
+/// money in that repays it.
+@immutable
+class LoanPaymentLink {
+  const LoanPaymentLink.disbursal({required this.loanId, required this.loanNo})
+    : isDisbursal = true;
+
+  const LoanPaymentLink.repayment({required this.loanId, required this.loanNo})
+    : isDisbursal = false;
+
+  final String loanId;
+
+  /// `KZ-W1-0001`, written into the khata narration.
+  final String loanNo;
+  final bool isDisbursal;
+
+  /// The ledger `ref_type` of the payment's khata entry.
+  RefType get refType =>
+      isDisbursal ? RefType.loanDisbursal : RefType.loanRepayment;
+}
+
 /// A payment or receipt as stored locally, with the names the screens show.
 @immutable
 class Payment {
@@ -137,6 +158,7 @@ class Payment {
     this.chequeStatus,
     this.narration,
     this.reversedAt,
+    this.loanId,
   });
 
   /// From a `payments` row joined with the party and account (see
@@ -172,6 +194,7 @@ class Payment {
       _ => null,
     },
     createdAt: DateTime.parse(r['created_at']! as String),
+    loanId: r['loan_id'] as String?,
   );
 
   final String id;
@@ -199,7 +222,14 @@ class Payment {
   final DateTime? reversedAt;
   final DateTime createdAt;
 
+  /// The loan this payment disburses or repays; null for an ordinary one.
+  final String? loanId;
+
   bool get isReversed => status == PaymentStatus.reversed;
+
+  /// The money out of a loan: undone only from the loan, never here.
+  bool get isLoanDisbursal =>
+      loanId != null && direction == PaymentDirection.toParty;
 
   /// A cheque still waiting to clear or bounce.
   bool get isPendingCheque =>

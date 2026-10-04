@@ -96,7 +96,7 @@ final class UpdateStatusProvider
   }
 }
 
-String _$updateStatusHash() => r'b2d7862acc94514aadbfc9a96ab5b5bf0d2f2987';
+String _$updateStatusHash() => r'0deb808af155f1c266f443cddee62d4cf88a8220';
 
 /// Hides the (optional) banner for the version the user said "later" to.
 

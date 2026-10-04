@@ -101,6 +101,13 @@ net_to_farmer     = gross − farmer_deductions
 - A loan is a document with its own interest config snapshot, due date, purpose, guarantor (optional).
 - Disbursal posts `udhaar` to party khata (`ref_type=loan_disbursal`, `ref_id=loan.id`).
 - Repayments post `jama` with `ref_type=loan_repayment`. Crop proceeds can be adjusted against a loan (a jama that is marked as loan repayment).
+- **Step 2.2 rules** (khata_core `LoanRules`, SQL `guard_loan`, `guard_payment_loan`, `guard_ledger_entry`):
+  - Tables `loans` (frozen once issued, except notes and closing; closed / written-off never change) and `loan_rate_changes` (append-only, effective-dated, rate as exact text). Issue, rate change, close and write-off need `loans.manage` (owner); a repayment needs `payments.create`.
+  - **Issue** = one upload: loan row, `payments` row (to_party, `loan_id`), udhaar `loan_disbursal` entry (`ref_id` = loan), cash / bank book line, audit rows. The loan snapshots its interest terms (`InterestConfig.toJson`, prefilled from the cascade, always `apply_on = loans_only`: the loan is its own interest account).
+  - **Repayment** (never more than the payable that day): cash / bank = `payments` row (from_party, `loan_id`) + jama `loan_repayment` (`ref_id` = the payment) + book line. **From crop proceeds** = jama `loan_repayment` (`ref_id` = loan) plus a balancing udhaar `journal` (`ref_id` = loan), limited to the party's khata credit, needs `payments.create` + `entries.reverse`; the net khata balance does not change.
+  - The server refuses a disbursal / repayment entry that does not point at a real (active) loan of that party.
+  - **Close** needs nothing left to pay; **write-off** needs a reason and changes only the loan's status (interest stops on the closing date; the khata still shows the udhaar until waived, step 2.4).
+  - Recovery % = principal recovered / principal issued (rounded down). Due soon = 7 days or less.
 - Two modes (tenant setting `interest.apply_on`): interest on **whole net khata** (common in mandis) OR **per loan only**. Never both on the same money.
 
 ## Input shop

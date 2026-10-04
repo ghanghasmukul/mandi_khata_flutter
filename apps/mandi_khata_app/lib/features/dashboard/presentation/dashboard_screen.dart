@@ -14,6 +14,7 @@ import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_hero.d
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_needs.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_stats.dart';
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
 import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
@@ -108,6 +109,7 @@ class _Browse extends ConsumerWidget {
           ArrivalRoutes.list,
         ),
         link(l10n.paymentsTitle, Icons.payments_outlined, PaymentRoutes.list),
+        link(l10n.loansTitle, Icons.request_quote_outlined, LoanRoutes.list),
         link(
           l10n.khataDayBookTitle,
           Icons.menu_book_outlined,

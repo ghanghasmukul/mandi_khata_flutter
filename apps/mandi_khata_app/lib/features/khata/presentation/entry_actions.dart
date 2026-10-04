@@ -29,8 +29,11 @@ class EntryActionsMenu extends ConsumerWidget {
   final Party? party;
 
   /// Manual entries (`journal`) may be edited here; document entries not.
+  /// A journal line that points at a document (a loan adjusted against crop
+  /// proceeds) belongs to it and is not edited here.
   static bool canEdit(LedgerEntry e) =>
-      e.refType == RefType.journal || e.refType == RefType.openingBalance;
+      (e.refType == RefType.journal && e.refId == null) ||
+      e.refType == RefType.openingBalance;
 
   Future<void> _reverse(BuildContext context, WidgetRef ref) async {
     final l10n = AppLocalizations.of(context);

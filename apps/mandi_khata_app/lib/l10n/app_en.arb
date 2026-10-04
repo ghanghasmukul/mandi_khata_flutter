@@ -4090,5 +4090,673 @@
   "updateLater": "Later",
   "@updateLater": {
     "description": "Update banner button: hide the banner for now."
+  },
+  "loansTitle": "Loans (karza)",
+  "@loansTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansIssue": "Issue loan",
+  "@loansIssue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansEmpty": "No loans here yet",
+  "@loansEmpty": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansSearchHint": "Search borrower or loan number",
+  "@loansSearchHint": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansFilterOpen": "Open",
+  "@loansFilterOpen": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansFilterClosed": "Closed",
+  "@loansFilterClosed": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansFilterAll": "All",
+  "@loansFilterAll": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansTotalCount": "Open loans",
+  "@loansTotalCount": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansTotalPrincipal": "Principal out",
+  "@loansTotalPrincipal": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansTotalInterest": "Byaj due",
+  "@loansTotalInterest": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loansTotalOverdue": "Overdue",
+  "@loansTotalOverdue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCardIssued": "Issued {amount}",
+  "@loanCardIssued": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "loanCardOutstanding": "Principal",
+  "@loanCardOutstanding": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCardByaj": "Byaj",
+  "@loanCardByaj": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCardPayable": "Payable",
+  "@loanCardPayable": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCardRecovered": "{percent}% recovered",
+  "@loanCardRecovered": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "loanCardDaysLeft": "{count} days left",
+  "@loanCardDaysLeft": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "loanCardDueToday": "Due today",
+  "@loanCardDueToday": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCardOverdue": "{count} days overdue",
+  "@loanCardOverdue": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "loanCardNoDue": "No due date",
+  "@loanCardNoDue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCardDue": "Due {date}",
+  "@loanCardDue": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "loanHealthOnTrack": "On track",
+  "@loanHealthOnTrack": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanHealthDueSoon": "Due soon",
+  "@loanHealthDueSoon": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanHealthOverdue": "Overdue",
+  "@loanHealthOverdue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanHealthSettled": "Paid up",
+  "@loanHealthSettled": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanStatusClosed": "Closed",
+  "@loanStatusClosed": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanStatusWrittenOff": "Written off",
+  "@loanStatusWrittenOff": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanIssueTitle": "Issue loan",
+  "@loanIssueTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanFieldBorrower": "Borrower",
+  "@loanFieldBorrower": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanFieldAmount": "Loan amount",
+  "@loanFieldAmount": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanFieldIssueDate": "Issue date",
+  "@loanFieldIssueDate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanFieldDueDate": "Due date (optional)",
+  "@loanFieldDueDate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanFieldPurpose": "Purpose",
+  "@loanFieldPurpose": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanFieldGuarantor": "Guarantor (optional)",
+  "@loanFieldGuarantor": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanFieldNotes": "Notes",
+  "@loanFieldNotes": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanClearDate": "Clear date",
+  "@loanClearDate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanTermsTitle": "Interest terms",
+  "@loanTermsTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanTermsFrom": "{source}. Changes here apply to this loan only.",
+  "@loanTermsFrom": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "loanFieldRate": "Interest rate",
+  "@loanFieldRate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanTermsMore": "More terms",
+  "@loanTermsMore": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPayOutTitle": "How is the money given?",
+  "@loanPayOutTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanNextNo": "Loan no. {no}",
+  "@loanNextNo": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
+  "loanNoticeNetUdhaar": "Your business charges interest on the whole khata. This loan keeps its own interest account, so do not charge the same money again on the khata.",
+  "@loanNoticeNetUdhaar": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanSaveIssue": "Issue loan",
+  "@loanSaveIssue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanIssuedAs": "Loan {no} issued",
+  "@loanIssuedAs": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
+  "loanDetailAsOf": "As of date",
+  "@loanDetailAsOf": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanDetailToday": "Today",
+  "@loanDetailToday": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPayableOn": "Payable on {date}",
+  "@loanPayableOn": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "loanPrincipalOutstanding": "Principal outstanding",
+  "@loanPrincipalOutstanding": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanInterestAccrued": "Byaj accrued",
+  "@loanInterestAccrued": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanInterestRecovered": "Byaj recovered",
+  "@loanInterestRecovered": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPrincipalRecovered": "Principal recovered",
+  "@loanPrincipalRecovered": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCurrentRate": "Rate",
+  "@loanCurrentRate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRatePa": "{rate}% a year",
+  "@loanRatePa": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "loanRatePerMonth": "₹{rate} per 100 per month",
+  "@loanRatePerMonth": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "loanTermsSummary": "Terms",
+  "@loanTermsSummary": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanInterestFree": "No interest",
+  "@loanInterestFree": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanGraceDays": "{count} days grace",
+  "@loanGraceDays": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "loanActionRepay": "Record repayment",
+  "@loanActionRepay": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanActionRate": "Change rate",
+  "@loanActionRate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanActionClose": "Close loan",
+  "@loanActionClose": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanActionWriteOff": "Write off",
+  "@loanActionWriteOff": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanBorrowerLink": "Open khata",
+  "@loanBorrowerLink": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanNotFound": "Loan not found",
+  "@loanNotFound": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanClosedOn": "{status} on {date}",
+  "@loanClosedOn": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "loanStmtTitle": "Interest statement",
+  "@loanStmtTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanStmtEmpty": "No entries yet",
+  "@loanStmtEmpty": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColFrom": "From",
+  "@loanColFrom": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColTo": "To",
+  "@loanColTo": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColEvent": "Event",
+  "@loanColEvent": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColDebit": "Given",
+  "@loanColDebit": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColCredit": "Received",
+  "@loanColCredit": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColDays": "Days",
+  "@loanColDays": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColPrincipal": "Principal",
+  "@loanColPrincipal": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColRate": "Rate %",
+  "@loanColRate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanColInterest": "Byaj",
+  "@loanColInterest": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRowAccrue": "Interest for the days",
+  "@loanRowAccrue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRowDebit": "Loan given",
+  "@loanRowDebit": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRowCredit": "Repayment",
+  "@loanRowCredit": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRowCompound": "Byaj added to principal",
+  "@loanRowCompound": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRowRate": "Rate changed to {rate}%",
+  "@loanRowRate": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "loanRowSplit": "Byaj {interest} · Principal {principal}",
+  "@loanRowSplit": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "interest": {
+        "type": "String"
+      },
+      "principal": {
+        "type": "String"
+      }
+    }
+  },
+  "loanRowSurplus": "Extra {amount} kept as credit",
+  "@loanRowSurplus": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "loanRateChangesTitle": "Rate changes",
+  "@loanRateChangesTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRateAtIssue": "At issue",
+  "@loanRateAtIssue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepayTitle": "Record repayment",
+  "@loanRepayTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepayAmount": "Amount received",
+  "@loanRepayAmount": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepayDate": "Date",
+  "@loanRepayDate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepaySourcePay": "Money received",
+  "@loanRepaySourcePay": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepaySourceCrop": "From crop proceeds",
+  "@loanRepaySourceCrop": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepayCropAvailable": "Crop proceeds in the khata: {amount}",
+  "@loanRepayCropAvailable": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "loanRepayCropNone": "This party has no crop proceeds in the khata to set off.",
+  "@loanRepayCropNone": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepayFullPayable": "Full payable",
+  "@loanRepayFullPayable": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPreviewTitle": "This repayment",
+  "@loanPreviewTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPreviewInterest": "Pays byaj",
+  "@loanPreviewInterest": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPreviewPrincipal": "Pays principal",
+  "@loanPreviewPrincipal": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPreviewBefore": "Payable before",
+  "@loanPreviewBefore": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPreviewAfter": "Payable after",
+  "@loanPreviewAfter": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanPreviewCropNote": "The party's net khata balance does not change; the loan is paid off against their crop proceeds.",
+  "@loanPreviewCropNote": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepaySave": "Record repayment",
+  "@loanRepaySave": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRepaid": "Repayment recorded",
+  "@loanRepaid": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRateTitle": "Change interest rate",
+  "@loanRateTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRateCurrent": "Current rate: {rate}",
+  "@loanRateCurrent": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "loanRateNew": "New rate",
+  "@loanRateNew": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRateEffective": "Effective from",
+  "@loanRateEffective": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRateReason": "Reason (optional)",
+  "@loanRateReason": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRateSave": "Change rate",
+  "@loanRateSave": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanRateChanged": "Rate changed",
+  "@loanRateChanged": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCloseTitle": "Close loan",
+  "@loanCloseTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanWriteOffTitle": "Write off loan",
+  "@loanWriteOffTitle": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCloseDate": "Closing date",
+  "@loanCloseDate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCloseReason": "Reason",
+  "@loanCloseReason": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCloseReasonOptional": "Note (optional)",
+  "@loanCloseReasonOptional": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanCloseStillDue": "{amount} is still due. Record the repayment first, or write the loan off.",
+  "@loanCloseStillDue": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "loanCloseAllPaid": "Nothing is due. Closing records that the loan is fully paid.",
+  "@loanCloseAllPaid": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanWriteOffBody": "{amount} will be written off and the interest stops. The party's khata still shows what they owe until you waive it. This cannot be undone.",
+  "@loanWriteOffBody": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "loanCloseConfirm": "Close loan",
+  "@loanCloseConfirm": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanWriteOffConfirm": "Write off",
+  "@loanWriteOffConfirm": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanClosedDone": "Loan closed",
+  "@loanClosedDone": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanWrittenOffDone": "Loan written off",
+  "@loanWrittenOffDone": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorAmount": "Enter the amount",
+  "@loanErrorAmount": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorDue": "The due date cannot be before the issue date",
+  "@loanErrorDue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorGuarantor": "The borrower cannot be their own guarantor",
+  "@loanErrorGuarantor": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorRate": "Enter a rate from 0 to 100 (up to 4 decimals)",
+  "@loanErrorRate": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorEffective": "A rate cannot start before the loan was issued",
+  "@loanErrorEffective": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorNotActive": "This loan is already closed",
+  "@loanErrorNotActive": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorStillDue": "Something is still due on this loan",
+  "@loanErrorStillDue": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorNothingToWriteOff": "Nothing is left to write off; close the loan instead",
+  "@loanErrorNothingToWriteOff": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorReason": "Give a reason",
+  "@loanErrorReason": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorClosedBefore": "The date cannot be before the last entry of this loan",
+  "@loanErrorClosedBefore": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorNotPermitted": "Only the owner can do this",
+  "@loanErrorNotPermitted": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorNotPermittedRepay": "You need permission to record payments (and an Accountant or Owner to adjust crop proceeds)",
+  "@loanErrorNotPermittedRepay": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorNotFound": "The party, loan or bank account was not found in this business",
+  "@loanErrorNotFound": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanErrorExceeds": "More than the {payable} due on this day. Record only what is due.",
+  "@loanErrorExceeds": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "payable": {
+        "type": "String"
+      }
+    }
+  },
+  "loanErrorExceedsCrop": "More than the crop proceeds in the khata ({available})",
+  "@loanErrorExceedsCrop": {
+    "description": "Loans (karza), step 2.2.",
+    "placeholders": {
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentLoanNote": "This payment belongs to a loan. A repayment can be reversed here while the loan is open; the money given out for a loan cannot be reversed.",
+  "@paymentLoanNote": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "paymentLoanLink": "Open loan",
+  "@paymentLoanLink": {
+    "description": "Loans (karza), step 2.2."
+  },
+  "loanOpenFromParty": "Loans",
+  "@loanOpenFromParty": {
+    "description": "Loans (karza), step 2.2."
   }
 }
