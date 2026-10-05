@@ -223,3 +223,4 @@
 - Hindi / Punjabi text of `loanErrorInterestNotPosted` unreviewed.
 - A deferred constraint trigger needs every posting and its entry in ONE transaction; `apply_crud_transaction` does that. A client that uploads a posting alone would be rejected.
 - Both Phase 2 migrations pushed to dev 2026-10-05. Advisors after the push: nothing new except 4 unused-index infos on the empty `interest_postings` table (accepted, re-check after the pilot).
+- Finding 4 needed no code change: since option A the khata and each loan are separate accounts with their own posted totals, so switching `interest.apply_on` moves no money between them. Test added.

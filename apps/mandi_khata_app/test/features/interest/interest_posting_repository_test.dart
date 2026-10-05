@@ -510,6 +510,41 @@ void main() {
       expect(khata.plan.amountPaise, 246575);
     });
 
+    test('switching the interest mode after postings never charges a period '
+        'again (phase 2 review finding 4)', () async {
+      await issueLoan();
+      await debit(50000);
+      final both = await candidates(day100);
+      expect(both, hasLength(2));
+      final r = await repo.post(
+        ctx,
+        [for (final c in both) c.plan],
+        can: owner,
+        now: at100,
+      );
+      expect((r as InterestPosted).posted, hasLength(2));
+      expect(await candidates(day100), isEmpty);
+
+      Future<void> apply(String value) => settings.write(
+        ctx,
+        scope: SettingScope.tenant,
+        key: 'interest.apply_on',
+        value: value,
+        can: owner,
+        now: at100,
+      );
+      // loans_only: the khata stops, the loan is already posted.
+      await apply('loans_only');
+      expect(await candidates(day100), isEmpty);
+      // Back to net_udhaar: the khata resumes after its last posting.
+      await apply('net_udhaar');
+      expect(await candidates(day100), isEmpty);
+      // Off: nothing is proposed for the khata or the loan's posted period.
+      await apply('none');
+      expect(await candidates(day100), isEmpty);
+      expect(await rows('interest_postings'), hasLength(2));
+    });
+
     test('with loans_only each loan is posted on its own', () async {
       final loanId = await issueLoan();
       await settings.write(
