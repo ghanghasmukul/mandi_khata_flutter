@@ -176,6 +176,30 @@ void main() {
       expect(await rows('interest_postings'), isEmpty);
     });
 
+    test(
+      'a preview that went stale is not posted: the figures changed',
+      () async {
+        await debit(100000);
+        final plan = await onlyPlan(day100);
+        // An entry arrives (synced from another device) after the preview.
+        await debit(50000);
+        final r =
+            await repo.post(ctx, [plan], can: owner, now: at100)
+                as InterestPosted;
+        expect(r.posted, isEmpty);
+        expect(r.skipped.single.reason, PostingSkip.changed);
+        expect(await rows('interest_postings'), isEmpty);
+        // The fresh preview posts, and then equals what was written.
+        final fresh = await onlyPlan(day100);
+        expect(fresh.amountPaise, isNot(plan.amountPaise));
+        await repo.post(ctx, [fresh], can: owner, now: at100);
+        expect(
+          (await rows('interest_postings')).single['amount_paise'],
+          fresh.amountPaise,
+        );
+      },
+    );
+
     test('posting writes the posting, the udhaar entry and the audit in ONE '
         'upload', () async {
       await debit(100000);
@@ -448,12 +472,42 @@ void main() {
   });
 
   group('loans', () {
-    test('a party whose interest runs on the khata is posted on the khata '
-        'only, never also per loan', () async {
+    test('a loan is its own account even when the party is on net_udhaar: '
+        'posted once, on the loan, never also on the khata', () async {
+      final loanId = await issueLoan();
+      final plan = await onlyPlan(day100);
+      expect(plan.scope, PostingScope.loan);
+      expect(plan.loanId, loanId);
+      expect(plan.amountPaise, 493151);
+    });
+
+    test('changing the business default rate does not change what a loan '
+        'is posted at (snapshot rule, phase 2 exit criterion)', () async {
       await issueLoan();
+      final before = (await onlyPlan(day100)).amountPaise;
+      await settings.write(
+        ctx,
+        scope: SettingScope.tenant,
+        key: 'interest.rate_pa',
+        value: '30',
+        can: owner,
+        now: startAt,
+      );
+      expect((await onlyPlan(day100)).amountPaise, before);
+    });
+
+    test('khata and loan are both posted, on separate money', () async {
+      final loanId = await issueLoan();
+      await debit(50000);
       final found = await candidates(day100);
-      expect(found, hasLength(1));
-      expect(found.single.plan.scope, PostingScope.khata);
+      expect(found, hasLength(2));
+      final khata = found.firstWhere((c) => c.plan.scope == PostingScope.khata);
+      final loan = found.firstWhere((c) => c.plan.scope == PostingScope.loan);
+      expect(loan.plan.loanId, loanId);
+      expect(loan.plan.amountPaise, 493151);
+      // Rs 50,000 at the 18% default for 100 days, loan principal excluded.
+      expect(khata.principal, const Money.rupees(50000));
+      expect(khata.plan.amountPaise, 246575);
     });
 
     test('with loans_only each loan is posted on its own', () async {

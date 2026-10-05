@@ -207,3 +207,19 @@
 - The interest-earned report shows posted and waived for the chosen period but "accrued, not yet posted" as of today, not as of the period end: past interest not yet posted is not reconstructed for old dates. Said so on the report.
 - Not done: a per-party "over the credit limit" marker on the party screen and a block on new udhaar (the spec asks for an alert only).
 - Hindi / Punjabi strings for the new reports and alerts were written without a native review.
+
+## 2026-10-05: Phase 2 review, loans are always their own interest account
+- Decision (owner, option A): a loan's interest always runs on its own snapshot terms and rate changes, whatever the party's `interest.apply_on` is. Previously a `net_udhaar` party's loans were swallowed into the khata engine at the live rate, so changing the business default moved the interest of existing loans (phase 2 exit criterion 2 failed).
+- The khata engine (`KhataInterest.events`) now leaves out `loan_disbursal`, `loan_repayment` and loan-waiver journals. The crop-proceeds journal udhaar stays in the khata and cancels the party's crop credit, so crop proceeds applied to a loan net to nothing there. Cost: a loan's udhaar no longer offsets the party's crop credit for byaj. `includesLoans` is removed; posting runs the khata (for `net_udhaar`) AND every active loan. Documented in docs/domain/interest-engine.md.
+- Tests: khata_core `khata_interest_test`; app `interest_posting_repository_test` ("changing the business default rate does not change what a loan is posted at", "khata and loan are both posted, on separate money").
+- Existing data: interest already posted on the khata of a `net_udhaar` party that included a loan's money (dev / pilot only so far) is not corrected, and loan interest not yet posted is now proposed on the loan. Check the first run after upgrading for a party that has both.
+- Hindi / Punjabi text of `byajLoanCoveredNote` was rewritten without a native review.
+- Still open from the phase 2 review: findings 2-11 in docs/reviews/phase-2.md.
+
+## 2026-10-05: Phase 2 review fixes (findings 2, 3, 5, 6)
+- 2: closing a loan needs its interest posted (`LoanProblem.interestNotPosted`, reported once nothing is payable). Write-off deliberately unchanged: its unposted interest is not charged; post first if it should be.
+- 3 and 6: migration `20261005163432_interest_postings_integrity` (pgTAP 14 = 15 tests, 323 total; NOT yet on dev, needs `supabase db push` approval). Overlapping interest postings get SQLSTATE 23P01; the earlier "same day twice" test now sees 23P01 instead of 23505 because the overlap guard runs first. Interest entries are dated `period_to - 1` (the app already did this).
+- 5: `post()` recomputes inside the transaction, new skip reason `changed` (en / hi / pa string `postSkipChanged`, Hindi / Punjabi unreviewed). To keep this cheap in the bulk run the loan entry queries can now be limited to one party.
+- Hindi / Punjabi text of `loanErrorInterestNotPosted` unreviewed.
+- A deferred constraint trigger needs every posting and its entry in ONE transaction; `apply_crud_transaction` does that. A client that uploads a posting alone would be rejected.
+- Both Phase 2 migrations pushed to dev 2026-10-05. Advisors after the push: nothing new except 4 unused-index infos on the empty `interest_postings` table (accepted, re-check after the pilot).

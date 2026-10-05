@@ -22,10 +22,10 @@ import 'package:uuid/uuid.dart';
 /// all-or-nothing. The row's `period_key` and the deterministic ids make a
 /// re-run, or the same run on two devices, post an account up to a day once.
 ///
-/// A party whose interest runs on the whole khata (`net_udhaar`) is posted
-/// on the khata and its loans are left alone; every other party is posted
-/// loan by loan (khata_core `KhataInterest.includesLoans`): the same money is
-/// never charged twice.
+/// A loan is always posted on its own snapshot terms. A party whose interest
+/// runs on the whole khata (`net_udhaar`) is also posted on the khata, which
+/// leaves the loan entries out (khata_core `KhataInterest.events`): the same
+/// money is never charged twice.
 class InterestPostingRepository {
   InterestPostingRepository(this._db, {this.planDefaults = const {}});
 
@@ -172,30 +172,36 @@ class InterestPostingRepository {
         );
       }
 
-      if (KhataInterest.includesLoans(config)) {
+      if (KhataInterest.mode(config) == KhataInterestMode.khata) {
         final posted = PostedSummary.of(mine);
         final all = entries[party.id] ?? const <LedgerEntry>[];
+        final loanWaivers = PostedSummary.loanWaiverIds(mine);
         final events = KhataInterest.events(
           all,
           waiverIds: posted.waiverIds,
+          loanWaiverIds: loanWaivers,
         ).where((e) => !e.isPostedInterest);
-        if (events.isEmpty) continue;
-        final first = events.map((e) => e.date).reduce((a, b) => a < b ? a : b);
-        final result = KhataInterest.calculate(
-          entries: all,
-          config: config,
-          asOf: asOf,
-          waiverIds: posted.waiverIds,
-        );
-        final c = candidate(
-          result: result,
-          config: config,
-          first: first,
-          posted: posted,
-        );
-        if (c != null) out.add(c);
-        continue;
+        if (events.isNotEmpty) {
+          final first = events
+              .map((e) => e.date)
+              .reduce((a, b) => a < b ? a : b);
+          final result = KhataInterest.calculate(
+            entries: all,
+            config: config,
+            asOf: asOf,
+            waiverIds: posted.waiverIds,
+            loanWaiverIds: loanWaivers,
+          );
+          final c = candidate(
+            result: result,
+            config: config,
+            first: first,
+            posted: posted,
+          );
+          if (c != null) out.add(c);
+        }
       }
+      // A loan is always its own account, on its own snapshot terms.
       for (final d in loansByParty[party.id] ?? const <LoanDetail>[]) {
         final result = calculate(
           events: d.events,
@@ -240,7 +246,30 @@ class InterestPostingRepository {
     for (var i = 0; i < plans.length; i += batchSize) {
       final batch = plans.skip(i).take(batchSize);
       await _db.writeTransaction((tx) async {
+        // What the engine charges NOW, per account (party and day): the
+        // preview may be stale (an entry synced or was added meanwhile).
+        final fresh = <String, List<PostingCandidate>>{};
         for (final plan in batch) {
+          final accounts = fresh[_freshKey(plan)] ??= await _candidatesIn(
+            tx,
+            ctx.tenantId,
+            plan.to,
+            partyId: plan.partyId,
+          );
+          final current = accounts.where(
+            (c) => c.plan.periodKey == plan.periodKey,
+          );
+          if (current.isEmpty ||
+              current.first.plan.amountPaise != plan.amountPaise ||
+              current.first.plan.from != plan.from) {
+            skipped.add(
+              SkippedPosting(
+                plan,
+                await _precheck(tx, ctx.tenantId, plan) ?? PostingSkip.changed,
+              ),
+            );
+            continue;
+          }
           final skip = await _postIn(
             tx,
             ctx,
@@ -259,6 +288,9 @@ class InterestPostingRepository {
     }
     return InterestPosted(posted: posted, skipped: skipped);
   }
+
+  static String _freshKey(InterestPostingPlan plan) =>
+      '${plan.partyId}|${plan.to}';
 
   /// Hisaab karo for one party: posts the interest charged up to [asOf]
   /// on every account of the party and, per account, the waiver in
@@ -325,16 +357,13 @@ class InterestPostingRepository {
     }
   }
 
-  /// Writes one posting; null when posted, else why it was skipped.
-  Future<PostingSkip?> _postIn(
-    SqliteWriteContext tx,
-    WriteContext ctx,
-    InterestPostingPlan plan, {
-    required bool Function(Permission) can,
-    required DateTime now,
-    String? batchId,
-  }) async {
-    final tenantId = ctx.tenantId;
+  /// Why [plan] cannot be posted at all (account gone, or posted up to this
+  /// day or later already); null when it can.
+  Future<PostingSkip?> _precheck(
+    SqliteReadContext tx,
+    String tenantId,
+    InterestPostingPlan plan,
+  ) async {
     if (!await _accountExists(tx, tenantId, plan)) return PostingSkip.notFound;
     final taken = await tx.getOptional(
       'SELECT 1 FROM interest_postings ip WHERE ip.tenant_id = ? '
@@ -346,7 +375,21 @@ class InterestPostingRepository {
       'AND r.reverses_id = e.id))',
       [tenantId, plan.partyId, plan.loanId, plan.to.toString()],
     );
-    if (taken != null) return PostingSkip.alreadyPosted;
+    return taken == null ? null : PostingSkip.alreadyPosted;
+  }
+
+  /// Writes one posting; null when posted, else why it was skipped.
+  Future<PostingSkip?> _postIn(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    InterestPostingPlan plan, {
+    required bool Function(Permission) can,
+    required DateTime now,
+    String? batchId,
+  }) async {
+    final tenantId = ctx.tenantId;
+    final blocked = await _precheck(tx, tenantId, plan);
+    if (blocked != null) return blocked;
     final refused = await LedgerRepository.checkDate(
       tx,
       ctx,
@@ -484,7 +527,7 @@ class InterestPostingRepository {
   /// The party (and loan) of [plan] exist in this business; a loan must be
   /// the party's.
   static Future<bool> _accountExists(
-    SqliteWriteContext tx,
+    SqliteReadContext tx,
     String tenantId,
     InterestPostingPlan plan,
   ) async {

@@ -143,11 +143,13 @@ class LoansRepository {
     SqliteReadContext tx,
     String tenantId, {
     String? loanId,
+    String? partyId,
   }) async {
     final payments = await tx.getAll(
       'SELECT id, loan_id FROM payments WHERE tenant_id = ? '
-      'AND loan_id IS NOT NULL ${loanId == null ? '' : 'AND loan_id = ?'}',
-      [tenantId, ?loanId],
+      'AND loan_id IS NOT NULL ${loanId == null ? '' : 'AND loan_id = ? '}'
+      '${partyId == null ? '' : 'AND party_id = ?'}',
+      [tenantId, ?loanId, ?partyId],
     );
     final loanOfPayment = {
       for (final p in payments) p['id']! as String: p['loan_id']! as String,
@@ -157,14 +159,16 @@ class LoansRepository {
     final waivers = await tx.getAll(
       'SELECT id, loan_id FROM interest_postings WHERE tenant_id = ? '
       "AND kind = 'waiver' AND loan_id IS NOT NULL "
-      '${loanId == null ? '' : 'AND loan_id = ?'}',
-      [tenantId, ?loanId],
+      '${loanId == null ? '' : 'AND loan_id = ? '}'
+      '${partyId == null ? '' : 'AND party_id = ?'}',
+      [tenantId, ?loanId, ?partyId],
     );
     final loanOfWaiver = {
       for (final w in waivers) w['id']! as String: w['loan_id']! as String,
     };
     final rows = await tx.getAll(
       'SELECT e.* FROM ledger_entries e WHERE e.tenant_id = ? '
+      '${partyId == null ? '' : 'AND e.party_id = ? '}'
       'AND (e.ref_type IN (?, ?) OR (e.ref_type = ? '
       'AND e.ref_id IN (SELECT id FROM interest_postings WHERE tenant_id = ? '
       "AND kind = 'waiver'))) AND NOT EXISTS ( "
@@ -173,6 +177,7 @@ class LoansRepository {
       'ORDER BY e.entry_date, e.created_at, e.id',
       [
         tenantId,
+        ?partyId,
         RefType.loanDisbursal.dbName,
         RefType.loanRepayment.dbName,
         RefType.journal.dbName,
@@ -237,7 +242,7 @@ class LoansRepository {
       [tenantId, LoanStatus.active.dbName, ?partyId],
     );
     if (rows.isEmpty) return const [];
-    final entries = await _entriesByLoan(tx, tenantId);
+    final entries = await _entriesByLoan(tx, tenantId, partyId: partyId);
     final changes = await _rateChangesByLoan(tx, tenantId);
     return [
       for (final r in rows)
@@ -597,6 +602,10 @@ class LoansRepository {
               closedOn: closedOn,
               issueDate: loan.issueDate,
               lastEventDate: detail.lastEntryDate,
+              unpostedInterestPaise: InterestPosting.unposted(
+                position.result,
+                postedPaise: await _postedInterest(tx, ctx.tenantId, loanId),
+              ),
             )
           : LoanRules.validateWriteOff(
               position: position,
@@ -635,6 +644,24 @@ class LoansRepository {
       );
       return LoanSaved(loanId, loan.loanNo);
     });
+  }
+
+  /// Interest posted to the khata for [loanId] and not reversed.
+  static Future<int> _postedInterest(
+    SqliteReadContext tx,
+    String tenantId,
+    String loanId,
+  ) async {
+    final r = await tx.get(
+      'SELECT COALESCE(SUM(ip.amount_paise), 0) AS posted '
+      'FROM interest_postings ip WHERE ip.tenant_id = ? AND ip.loan_id = ? '
+      "AND ip.kind = 'interest' AND NOT EXISTS (SELECT 1 FROM ledger_entries e "
+      'WHERE e.tenant_id = ip.tenant_id AND e.ref_id = ip.id '
+      "AND e.ref_type = 'interest' AND EXISTS (SELECT 1 FROM ledger_entries r "
+      'WHERE r.tenant_id = e.tenant_id AND r.reverses_id = e.id))',
+      [tenantId, loanId],
+    );
+    return r['posted']! as int;
   }
 
   static LoanResult _fromPayment(PaymentSaveResult r) => switch (r) {

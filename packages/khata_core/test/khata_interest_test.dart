@@ -48,8 +48,9 @@ void main() {
       expect(events.map((e) => e.isPostedInterest), [false, true]);
     });
 
-    test('loan entries stay in the khata (net_udhaar: one account)', () {
+    test('loan entries are left out: a loan is its own account', () {
       final events = KhataInterest.events([
+        entry('a', '2027-01-01', Side.udhaar, 500),
         entry(
           'l',
           '2027-01-01',
@@ -65,7 +66,56 @@ void main() {
           refType: RefType.loanRepayment,
         ),
       ]);
-      expect(events, hasLength(2));
+      expect(events.map((e) => e.id), ['a']);
+    });
+
+    test('a loan waiver journal is left out, a khata waiver stays', () {
+      final entries = [
+        LedgerEntry(
+          id: 'lw',
+          partyId: 'p1',
+          entryDate: d('2027-01-10'),
+          side: Side.jama,
+          amount: Money(rupees(10)),
+          refType: RefType.journal,
+          refId: 'loan-waiver',
+          createdAt: DateTime.utc(2027),
+        ),
+        LedgerEntry(
+          id: 'kw',
+          partyId: 'p1',
+          entryDate: d('2027-01-10'),
+          side: Side.jama,
+          amount: Money(rupees(20)),
+          refType: RefType.journal,
+          refId: 'khata-waiver',
+          createdAt: DateTime.utc(2027),
+        ),
+      ];
+      final events = KhataInterest.events(
+        entries,
+        waiverIds: {'khata-waiver'},
+        loanWaiverIds: {'loan-waiver'},
+      );
+      expect(events.map((e) => e.id), ['kw']);
+      expect(events.single.interestOnly, isTrue);
+    });
+
+    test('crop proceeds applied to a loan net to nothing in the khata', () {
+      // Crop credit 5000, then the loan takes it: loan_repayment jama
+      // (loan's) + journal udhaar (stays). Khata net before and after: 0.
+      final events = KhataInterest.events([
+        entry('crop', '2027-01-01', Side.jama, 5000, refType: RefType.arrival),
+        entry(
+          'rep',
+          '2027-01-02',
+          Side.jama,
+          5000,
+          refType: RefType.loanRepayment,
+        ),
+        entry('adj', '2027-01-02', Side.udhaar, 5000),
+      ]);
+      expect(events.map((e) => e.id), ['crop', 'adj']);
     });
   });
 
@@ -81,15 +131,6 @@ void main() {
         KhataInterestMode.off,
       );
       expect(KhataInterest.mode(cfg(enabled: false)), KhataInterestMode.off);
-    });
-
-    test('only khata mode swallows loans into the khata', () {
-      expect(KhataInterest.includesLoans(cfg()), isTrue);
-      expect(
-        KhataInterest.includesLoans(cfg(applyOn: ApplyOn.loansOnly)),
-        isFalse,
-      );
-      expect(KhataInterest.includesLoans(cfg(enabled: false)), isFalse);
     });
   });
 

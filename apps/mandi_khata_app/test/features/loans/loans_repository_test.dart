@@ -6,6 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/powersync_schema.dart';
+import 'package:mandi_khata_app/features/interest/data/interest_posting_repository.dart';
+import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
 import 'package:mandi_khata_app/features/loans/data/loans_repository.dart';
 import 'package:mandi_khata_app/features/loans/domain/loan.dart';
 import 'package:mandi_khata_app/features/payments/data/bank_accounts_repository.dart';
@@ -726,6 +728,28 @@ void main() {
         ),
         can: owner,
         now: later,
+      );
+      // Nothing is payable, but the interest is not on the khata yet: a
+      // closed loan is no longer offered for posting, so closing is refused.
+      final unposted = await repo.close(
+        ctx,
+        id,
+        closedOn: LedgerDate(2026, 5, 10),
+        can: owner,
+        now: later,
+      );
+      expect((unposted as LoanInvalid).problems, [
+        LoanProblem.interestNotPosted,
+      ]);
+      final posting = InterestPostingRepository(db);
+      final plans = [
+        for (final c in await posting.candidates(t1, LedgerDate(2026, 5, 10)))
+          c.plan,
+      ];
+      expect(plans, hasLength(1));
+      expect(
+        await posting.post(ctx, plans, can: owner, now: later),
+        isA<InterestPosted>(),
       );
       final ok = await repo.close(
         ctx,

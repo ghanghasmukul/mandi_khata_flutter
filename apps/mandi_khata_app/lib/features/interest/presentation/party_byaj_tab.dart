@@ -93,6 +93,7 @@ class _PartyByajTabState extends ConsumerState<PartyByajTab> {
       config: config,
       asOf: _asOf,
       waiverIds: posted.waiverIds,
+      loanWaiverIds: PostedSummary.loanWaiverIds(postings),
     );
     String source(String key) => settingSourceText(
       l10n,

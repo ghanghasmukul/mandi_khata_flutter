@@ -56,6 +56,9 @@ enum LoanProblem {
   nothingToWriteOff,
   reasonMissing,
   closedBeforeLastEntry,
+
+  /// Interest charged on the loan is not posted to the khata yet.
+  interestNotPosted,
 }
 
 /// What a person does to a loan (for permission checks).
@@ -283,18 +286,25 @@ abstract final class LoanRules {
     if (effectiveDate < issueDate) LoanProblem.effectiveBeforeIssue,
   ];
 
-  /// Closing needs an open loan with nothing left to pay.
+  /// Closing needs an open loan with nothing left to pay and all its
+  /// interest posted to the khata ([unpostedInterestPaise] = 0, reported once
+  /// nothing is payable): a closed
+  /// loan is no longer offered for posting, so interest left unposted would
+  /// never be charged.
   static List<LoanProblem> validateClose({
     required LoanPosition position,
     required LedgerDate closedOn,
     required LedgerDate issueDate,
     required LedgerDate lastEventDate,
+    int unpostedInterestPaise = 0,
   }) =>
       position.health == LoanHealth.closed ||
           position.health == LoanHealth.writtenOff
       ? [LoanProblem.notActive]
       : [
           if (position.payable.isPositive) LoanProblem.amountStillDue,
+          if (!position.payable.isPositive && unpostedInterestPaise > 0)
+            LoanProblem.interestNotPosted,
           if (closedOn < lastEventDate || closedOn < issueDate)
             LoanProblem.closedBeforeLastEntry,
         ];

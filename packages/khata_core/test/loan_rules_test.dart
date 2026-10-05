@@ -374,6 +374,21 @@ void main() {
       );
     });
 
+    test('close needs the interest posted, once nothing is payable', () {
+      List<LoanProblem> close(LoanPosition p, int unposted) =>
+          LoanRules.validateClose(
+            position: p,
+            closedOn: d('2027-01-31'),
+            issueDate: issued,
+            lastEventDate: issued,
+            unpostedInterestPaise: unposted,
+          );
+      expect(close(settled, 1), [LoanProblem.interestNotPosted]);
+      expect(close(settled, 0), isEmpty);
+      // Still payable: only that is said.
+      expect(close(open, 500), [LoanProblem.amountStillDue]);
+    });
+
     test('write-off needs something to write off and a reason', () {
       expect(
         LoanRules.validateWriteOff(

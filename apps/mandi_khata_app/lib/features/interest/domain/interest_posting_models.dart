@@ -80,6 +80,13 @@ class PostedSummary {
     );
   }
 
+  /// Ids of every loan's waiver postings in [rows] (not reversed): their
+  /// journal entries belong to the loan, not to the khata.
+  static Set<String> loanWaiverIds(Iterable<PostingRow> rows) => {
+    for (final r in rows)
+      if (r.isWaiver && r.loanId != null && !r.reversed) r.id,
+  };
+
   /// Interest posted and not reversed.
   final int postedPaise;
 
@@ -137,6 +144,10 @@ enum PostingSkip {
 
   /// The date is outside the back-date window and needs `entries.reverse`.
   backdated,
+
+  /// What the engine charges now is not what was previewed (an entry was
+  /// added, changed or synced meanwhile): look at the new figures first.
+  changed,
 }
 
 @immutable

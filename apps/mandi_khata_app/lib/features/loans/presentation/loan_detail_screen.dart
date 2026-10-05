@@ -119,13 +119,14 @@ class _Body extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     final loan = detail.loan;
     final position = detail.position(asOf);
-    // With byaj on the whole khata this loan is already inside it.
+    // The party's khata byaj runs beside this loan, on separate money.
     final party = ref.watch(partyProvider(loan.partyId)).value;
     final partyTerms = party == null
         ? null
         : ref.watch(partyInterestConfigProvider(party));
     final inKhata =
-        partyTerms != null && KhataInterest.includesLoans(partyTerms);
+        partyTerms != null &&
+        KhataInterest.mode(partyTerms) == KhataInterestMode.khata;
 
     return ListView(
       padding: const EdgeInsets.all(MkSpacing.lg),

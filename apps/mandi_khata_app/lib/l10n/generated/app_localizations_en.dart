@@ -3528,6 +3528,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loanErrorStillDue => 'Something is still due on this loan';
 
   @override
+  String get loanErrorInterestNotPosted =>
+      'Post the interest of this loan to the khata first; a closed loan cannot be charged any more';
+
+  @override
   String get loanErrorNothingToWriteOff =>
       'Nothing is left to write off; close the loan instead';
 
@@ -3585,7 +3589,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get byajLoanCoveredNote =>
-      'This party\'s byaj runs on the whole khata, so this loan is already part of it. These loan figures are for reference only: do not add them to the khata byaj.';
+      'This loan has its own byaj on the terms it was issued with. The party\'s khata byaj does not include it, and changing the default rate does not change it.';
 
   @override
   String get byajTermsTitle => 'Interest terms';
@@ -3730,6 +3734,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get postSkipBackdated =>
       'This date is too old for your role. Ask the owner.';
+
+  @override
+  String get postSkipChanged =>
+      'The figures changed since you looked. Open the account again and check them.';
 
   @override
   String get postNothing => 'Nothing was posted.';

@@ -115,6 +115,7 @@ extension InterestPostingLabels on AppLocalizations {
     PostingSkip.alreadyPosted => postSkipAlready,
     PostingSkip.notFound => postSkipNotFound,
     PostingSkip.backdated => postSkipBackdated,
+    PostingSkip.changed => postSkipChanged,
   };
 
   /// A message for a posting that did not happen, or null when it did.

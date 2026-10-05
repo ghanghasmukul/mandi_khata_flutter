@@ -6358,6 +6358,12 @@ abstract class AppLocalizations {
   /// **'Something is still due on this loan'**
   String get loanErrorStillDue;
 
+  /// Phase 2 review.
+  ///
+  /// In en, this message translates to:
+  /// **'Post the interest of this loan to the khata first; a closed loan cannot be charged any more'**
+  String get loanErrorInterestNotPosted;
+
   /// Loans (karza), step 2.2.
   ///
   /// In en, this message translates to:
@@ -6451,7 +6457,7 @@ abstract class AppLocalizations {
   /// Khata-level interest, step 2.3.
   ///
   /// In en, this message translates to:
-  /// **'This party\'s byaj runs on the whole khata, so this loan is already part of it. These loan figures are for reference only: do not add them to the khata byaj.'**
+  /// **'This loan has its own byaj on the terms it was issued with. The party\'s khata byaj does not include it, and changing the default rate does not change it.'**
   String get byajLoanCoveredNote;
 
   /// Khata-level interest, step 2.3.
@@ -6693,6 +6699,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This date is too old for your role. Ask the owner.'**
   String get postSkipBackdated;
+
+  /// Phase 2 review.
+  ///
+  /// In en, this message translates to:
+  /// **'The figures changed since you looked. Open the account again and check them.'**
+  String get postSkipChanged;
 
   /// Posting interest and settlement, step 2.4.
   ///

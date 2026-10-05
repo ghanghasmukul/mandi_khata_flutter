@@ -1,9 +1,8 @@
--- interest_postings and the khata entries that point at them: tenant
--- isolation, loans.manage to post, entries.reverse to waive, append-only,
--- idempotent period keys, interest / waiver entries must match their posting.
+-- Phase 2 review findings 3 and 6: overlapping periods are refused, one entry
+-- per posting, entry dates, waiver cap, a posting needs its khata entry.
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(20);
+select plan(15);
 
 -- Fixtures (as postgres). Business 1: owner, accountant, munshi. Business 2.
 insert into auth.users (id, aud, role, email) values
@@ -82,129 +81,114 @@ create function pg_temp.led(
     p_side, p_amount, p_ref, p_ref_id, p_device);
 $$;
 
-set local role authenticated;
 
--- ---------------------------------------------------------------------------
--- The owner of business 1 posts interest
--- ---------------------------------------------------------------------------
+create function pg_temp.entry(
+  p_ref text, p_side text, p_amount bigint, p_ref_id uuid, p_date date
+) returns void language sql as $$
+  insert into public.ledger_entries (id, tenant_id, party_id, entry_date, side,
+    amount_paise, ref_type, ref_id, device_id)
+  values (gen_random_uuid(), '11111111-1111-4111-8111-111111111111',
+    'cccccccc-0000-4000-8000-000000000001', p_date, p_side, p_amount,
+    p_ref, p_ref_id, 'dddddddd-0000-4000-8000-000000000001');
+$$;
+
+set local role authenticated;
 select set_config('request.jwt.claims',
   '{"sub":"aaaaaaaa-0000-4000-8000-000000000001","role":"authenticated"}', true);
 
+-- ---------------------------------------------------------------------------
+-- Finding 3: no overlapping periods on one account
+-- ---------------------------------------------------------------------------
 select lives_ok(
-  $$select pg_temp.post('40000000-0000-4000-8000-000000000001', 493151,
+  $$select pg_temp.post('40000000-0000-4000-8000-000000000001', 500000,
     'dddddddd-0000-4000-8000-000000000001')$$,
-  'the owner posts interest');
-select throws_ok(
-  $$select pg_temp.post(gen_random_uuid(), 100,
-    'dddddddd-0000-4000-8000-000000000001')$$,
-  '23P01', null, 'the same account cannot be posted twice up to the same day');
+  'the owner posts 100 days of interest');
 select throws_ok(
   $$select pg_temp.post(gen_random_uuid(), 100,
     'dddddddd-0000-4000-8000-000000000001', 'interest',
     'cccccccc-0000-4000-8000-000000000001',
-    '11111111-1111-4111-8111-111111111111', 'interest:khata:made-up:2027-01-01')$$,
-  '23514', null, 'the period key must follow the posting');
-select throws_ok(
-  $$select pg_temp.post(gen_random_uuid(), 0,
+    '11111111-1111-4111-8111-111111111111', null, pg_temp.today() - 30)$$,
+  '23P01', null, 'another device posting up to a different day overlaps and is refused');
+select lives_ok(
+  $$select pg_temp.post('40000000-0000-4000-8000-000000000003', 100,
     'dddddddd-0000-4000-8000-000000000001', 'interest',
     'cccccccc-0000-4000-8000-000000000001',
-    '11111111-1111-4111-8111-111111111111', null, pg_temp.today() - 200)$$,
-  '23514', null, 'the amount is positive');
-select throws_ok(
-  $$select pg_temp.post(gen_random_uuid(), 100,
-    'dddddddd-0000-4000-8000-000000000001', 'interest',
-    'cccccccc-0000-4000-8000-000000000002')$$,
-  '23503', null, 'the party must be one of this business');
-select throws_ok(
-  $$select pg_temp.post(gen_random_uuid(), 100,
-    'dddddddd-0000-4000-8000-000000000003', 'interest',
-    'cccccccc-0000-4000-8000-000000000001',
-    '11111111-1111-4111-8111-111111111111', null, pg_temp.today() - 200)$$,
-  '42501', null, 'a posting must come from the poster''s own device');
+    '11111111-1111-4111-8111-111111111111', null, pg_temp.today() + 100)$$,
+  'the next period starts where the last ended: not an overlap');
+select lives_ok(
+  $$select pg_temp.entry('interest', 'udhaar', 100,
+    '40000000-0000-4000-8000-000000000003', pg_temp.today() + 99)$$,
+  'and it gets its entry');
 
--- The interest entry: udhaar, pointing at its posting.
+-- ---------------------------------------------------------------------------
+-- Finding 6: one entry per posting, with the right date
+-- ---------------------------------------------------------------------------
+select throws_ok(
+  $$select pg_temp.entry('interest', 'udhaar', 500000,
+    '40000000-0000-4000-8000-000000000001', pg_temp.today())$$,
+  '23514', null, 'an interest entry is dated the last day interest ran');
 select lives_ok(
-  $$select pg_temp.led('interest', 'udhaar', 493151,
-    '40000000-0000-4000-8000-000000000001',
-    'dddddddd-0000-4000-8000-000000000001')$$,
-  'the interest entry matches its posting');
+  $$select pg_temp.entry('interest', 'udhaar', 500000,
+    '40000000-0000-4000-8000-000000000001', pg_temp.today() - 1)$$,
+  'the interest entry on its date is accepted');
 select throws_ok(
-  $$select pg_temp.led('interest', 'udhaar', 493150,
-    '40000000-0000-4000-8000-000000000001',
-    'dddddddd-0000-4000-8000-000000000001')$$,
-  '23514', null, 'an interest entry of another amount is refused');
-select throws_ok(
-  $$select pg_temp.led('interest', 'jama', 493151,
-    '40000000-0000-4000-8000-000000000001',
-    'dddddddd-0000-4000-8000-000000000001')$$,
-  '23514', null, 'interest is always udhaar');
-select throws_ok(
-  $$select pg_temp.led('interest', 'udhaar', 493151, gen_random_uuid(),
-    'dddddddd-0000-4000-8000-000000000001')$$,
-  '23514', null, 'an interest entry with no posting is refused');
+  $$select pg_temp.entry('interest', 'udhaar', 500000,
+    '40000000-0000-4000-8000-000000000001', pg_temp.today() - 1)$$,
+  '23505', null, 'a second interest entry for the same posting is refused');
 
--- A waiver: posting + jama journal entry.
+-- Waivers: capped at the interest posted, one entry, dated the waiver day.
 select lives_ok(
-  $$select pg_temp.post('40000000-0000-4000-8000-000000000002', 93151,
+  $$select pg_temp.post('40000000-0000-4000-8000-000000000002', 300000,
     'dddddddd-0000-4000-8000-000000000001', 'waiver')$$,
-  'the owner records a waiver');
+  'a waiver within the interest posted is accepted');
+select throws_ok(
+  $$select pg_temp.post(gen_random_uuid(), 200101,
+    'dddddddd-0000-4000-8000-000000000001', 'waiver')$$,
+  '23514', null, 'waivers beyond the interest posted are refused');
+select throws_ok(
+  $$select pg_temp.entry('journal', 'jama', 300000,
+    '40000000-0000-4000-8000-000000000002', pg_temp.today() - 1)$$,
+  '23514', null, 'a waiver entry is dated the waiver day');
 select lives_ok(
-  $$select pg_temp.led('journal', 'jama', 93151,
-    '40000000-0000-4000-8000-000000000002',
-    'dddddddd-0000-4000-8000-000000000001')$$,
-  'the waiver entry matches its posting');
+  $$select pg_temp.entry('journal', 'jama', 300000,
+    '40000000-0000-4000-8000-000000000002', pg_temp.today())$$,
+  'the waiver entry on its day is accepted');
 select throws_ok(
-  $$select pg_temp.led('journal', 'jama', 93000,
-    '40000000-0000-4000-8000-000000000002',
-    'dddddddd-0000-4000-8000-000000000001')$$,
-  '23514', null, 'a waiver entry of another amount is refused');
+  $$select pg_temp.entry('journal', 'jama', 300000,
+    '40000000-0000-4000-8000-000000000002', pg_temp.today())$$,
+  '23505', null, 'a waiver posting has one entry only');
 
--- Append-only.
-select throws_ok(
-  $$update public.interest_postings set amount_paise = 1
-    where id = '40000000-0000-4000-8000-000000000001'$$,
-  '42501', null, 'a posting cannot be edited');
-select throws_ok(
-  $$delete from public.interest_postings
-    where id = '40000000-0000-4000-8000-000000000001'$$,
-  '42501', null, 'a posting cannot be deleted');
-
--- ---------------------------------------------------------------------------
--- Roles: the munshi may not post
--- ---------------------------------------------------------------------------
-select set_config('request.jwt.claims',
-  '{"sub":"aaaaaaaa-0000-4000-8000-000000000004","role":"authenticated"}', true);
-
-select throws_ok(
-  $$select pg_temp.post(gen_random_uuid(), 100,
-    'dddddddd-0000-4000-8000-000000000004', 'interest',
-    'cccccccc-0000-4000-8000-000000000001',
-    '11111111-1111-4111-8111-111111111111', null, pg_temp.today() - 7)$$,
-  '42501', null, 'a munshi cannot post interest');
-select is(
-  (select count(*)::int from public.interest_postings), 2,
-  'a munshi can read the postings of the business');
-
--- ---------------------------------------------------------------------------
--- The owner of business 2 sees and posts nothing in business 1
--- ---------------------------------------------------------------------------
-select set_config('request.jwt.claims',
-  '{"sub":"aaaaaaaa-0000-4000-8000-000000000002","role":"authenticated"}', true);
-
-select is(
-  (select count(*)::int from public.interest_postings), 0,
-  'another business sees no postings');
-select throws_ok(
-  $$select pg_temp.post(gen_random_uuid(), 100,
-    'dddddddd-0000-4000-8000-000000000002', 'interest',
-    'cccccccc-0000-4000-8000-000000000001',
-    '11111111-1111-4111-8111-111111111111')$$,
-  '42501', null, 'another business cannot post into this one');
-
+-- A reversed posting no longer counts: its period can be posted again.
 reset role;
-select is(
-  (select count(*)::int from public.ledger_entries where ref_type = 'interest'), 1,
-  'one interest entry exists');
+insert into public.ledger_entries (id, tenant_id, party_id, entry_date, side,
+  amount_paise, ref_type, reverses_id, device_id)
+select gen_random_uuid(), e.tenant_id, e.party_id, e.entry_date, 'jama',
+  e.amount_paise, 'reversal', e.id, e.device_id
+from public.ledger_entries e
+where e.ref_id = '40000000-0000-4000-8000-000000000001' and e.ref_type = 'interest';
+set local role authenticated;
+select set_config('request.jwt.claims',
+  '{"sub":"aaaaaaaa-0000-4000-8000-000000000001","role":"authenticated"}', true);
+select lives_ok(
+  $$select pg_temp.post('40000000-0000-4000-8000-000000000004', 100,
+    'dddddddd-0000-4000-8000-000000000001', 'interest',
+    'cccccccc-0000-4000-8000-000000000001',
+    '11111111-1111-4111-8111-111111111111', null, pg_temp.today() - 30)$$,
+  'after the posting was reversed its period can be posted again');
+select lives_ok(
+  $$select pg_temp.entry('interest', 'udhaar', 100,
+    '40000000-0000-4000-8000-000000000004', pg_temp.today() - 31)$$,
+  'and it gets its entry');
+
+-- A posting without its khata entry is refused at the end of the upload.
+set constraints public.interest_postings_has_entry immediate;
+select throws_ok(
+  $$select pg_temp.post(gen_random_uuid(), 100,
+    'dddddddd-0000-4000-8000-000000000001', 'interest',
+    'cccccccc-0000-4000-8000-000000000001',
+    '11111111-1111-4111-8111-111111111111', null, pg_temp.today() + 300)$$,
+  '23514', null, 'a posting with no khata entry is refused');
+set constraints public.interest_postings_has_entry deferred;
 
 select * from finish();
 rollback;

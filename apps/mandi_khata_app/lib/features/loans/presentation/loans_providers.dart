@@ -163,6 +163,7 @@ extension LoanLabels on AppLocalizations {
     LoanProblem.nothingToWriteOff => loanErrorNothingToWriteOff,
     LoanProblem.reasonMissing => loanErrorReason,
     LoanProblem.closedBeforeLastEntry => loanErrorClosedBefore,
+    LoanProblem.interestNotPosted => loanErrorInterestNotPosted,
   };
 
   /// A message for a failed action, or null when it worked.

@@ -6,7 +6,7 @@ import 'package:khata_core/src/ledger.dart';
 
 /// What interest does on one party's khata.
 enum KhataInterestMode {
-  /// `net_udhaar`: the engine runs over the whole khata.
+  /// `net_udhaar`: the engine runs over the whole khata (loans excluded).
   khata,
 
   /// `loans_only`: interest runs on individual loans; the khata runs none.
@@ -21,19 +21,26 @@ enum KhataInterestMode {
 abstract final class KhataInterest {
   /// The engine's events for [entries]: reversals and the entries they
   /// reverse are left out (they net to nothing); posted interest is kept but
-  /// flagged, so the engine ignores it (rule 8). Loan entries are ordinary
-  /// khata entries here.
+  /// flagged, so the engine ignores it (rule 8). Loan entries are left out:
+  /// a loan is its own interest account (docs/domain/interest-engine.md).
   ///
-  /// [waiverIds] are the posting ids of waivers (`interest_postings`, kind
-  /// waiver): the journal entries pointing at them are interest-only credits.
+  /// [waiverIds] are the posting ids of the khata's waivers
+  /// (`interest_postings`, kind waiver): the journal entries pointing at them
+  /// are interest-only credits. [loanWaiverIds] are those of loans: their
+  /// journal entries belong to the loan and are left out here.
   static List<LedgerEvent> events(
     Iterable<LedgerEntry> entries, {
     Set<String> waiverIds = const {},
+    Set<String> loanWaiverIds = const {},
   }) {
     final reversed = {for (final e in entries) ?e.reversesId};
+    bool isLoanEntry(LedgerEntry e) =>
+        e.refType == RefType.loanDisbursal ||
+        e.refType == RefType.loanRepayment ||
+        (e.refId != null && loanWaiverIds.contains(e.refId));
     return [
       for (final e in entries)
-        if (!e.isReversal && !reversed.contains(e.id))
+        if (!e.isReversal && !reversed.contains(e.id) && !isLoanEntry(e))
           LedgerEvent(
             id: e.id,
             date: e.entryDate,
@@ -54,11 +61,6 @@ abstract final class KhataInterest {
         : KhataInterestMode.khata;
   }
 
-  /// True when the khata engine already charges on loan money, so a loan
-  /// must not also run its own engine on top (the same money twice).
-  static bool includesLoans(InterestConfig config) =>
-      mode(config) == KhataInterestMode.khata;
-
   /// The party's khata interest on [asOf]. In [KhataInterestMode.loansOnly]
   /// no khata engine runs, so the result is empty.
   static InterestResult calculate({
@@ -66,12 +68,17 @@ abstract final class KhataInterest {
     required InterestConfig config,
     required LedgerDate asOf,
     Set<String> waiverIds = const {},
+    Set<String> loanWaiverIds = const {},
   }) {
     if (mode(config) == KhataInterestMode.loansOnly) {
       return InterestResult.empty;
     }
     return engine.calculate(
-      events: events(entries, waiverIds: waiverIds),
+      events: events(
+        entries,
+        waiverIds: waiverIds,
+        loanWaiverIds: loanWaiverIds,
+      ),
       config: config,
       asOf: asOf,
     );

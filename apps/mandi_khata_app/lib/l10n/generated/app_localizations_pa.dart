@@ -3496,6 +3496,10 @@ class AppLocalizationsPa extends AppLocalizations {
   String get loanErrorStillDue => 'ਇਸ ਕਰਜ਼ੇ ਉੱਤੇ ਅਜੇ ਕੁਝ ਦੇਣਯੋਗ ਹੈ';
 
   @override
+  String get loanErrorInterestNotPosted =>
+      'ਪਹਿਲਾਂ ਇਸ ਕਰਜ਼ੇ ਦਾ ਵਿਆਜ ਖਾਤੇ ਵਿੱਚ ਚਾੜ੍ਹੋ; ਬੰਦ ਕਰਜ਼ੇ ਉੱਤੇ ਵਿਆਜ ਨਹੀਂ ਚੜ੍ਹ ਸਕਦਾ';
+
+  @override
   String get loanErrorNothingToWriteOff =>
       'ਵੱਟੇ ਖਾਤੇ ਪਾਉਣ ਲਈ ਕੁਝ ਨਹੀਂ ਬਚਿਆ; ਕਰਜ਼ਾ ਬੰਦ ਕਰੋ';
 
@@ -3553,7 +3557,7 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get byajLoanCoveredNote =>
-      'ਇਸ ਪਾਰਟੀ ਦਾ ਵਿਆਜ ਪੂਰੇ ਖਾਤੇ ਉੱਤੇ ਚੱਲਦਾ ਹੈ, ਇਸ ਲਈ ਇਹ ਕਰਜ਼ਾ ਉਸੇ ਵਿੱਚ ਸ਼ਾਮਲ ਹੈ। ਇਹ ਕਰਜ਼ੇ ਦੇ ਅੰਕੜੇ ਸਿਰਫ਼ ਜਾਣਕਾਰੀ ਲਈ ਹਨ: ਇਨ੍ਹਾਂ ਨੂੰ ਖਾਤੇ ਦੇ ਵਿਆਜ ਵਿੱਚ ਨਾ ਜੋੜੋ।';
+      'ਇਸ ਕਰਜ਼ੇ ਦਾ ਵਿਆਜ ਇਸ ਦੀਆਂ ਆਪਣੀਆਂ ਸ਼ਰਤਾਂ ਉੱਤੇ ਚੱਲਦਾ ਹੈ। ਪਾਰਟੀ ਦੇ ਖਾਤੇ ਦੇ ਵਿਆਜ ਵਿੱਚ ਇਹ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ, ਅਤੇ ਡਿਫਾਲਟ ਦਰ ਬਦਲਣ ਨਾਲ ਇਹ ਨਹੀਂ ਬਦਲਦਾ।';
 
   @override
   String get byajTermsTitle => 'ਵਿਆਜ ਦੀਆਂ ਸ਼ਰਤਾਂ';
@@ -3698,6 +3702,10 @@ class AppLocalizationsPa extends AppLocalizations {
   @override
   String get postSkipBackdated =>
       'ਇਹ ਤਾਰੀਖ਼ ਤੁਹਾਡੀ ਭੂਮਿਕਾ ਲਈ ਬਹੁਤ ਪੁਰਾਣੀ ਹੈ। ਮਾਲਕ ਨੂੰ ਕਹੋ।';
+
+  @override
+  String get postSkipChanged =>
+      'ਤੁਹਾਡੇ ਵੇਖਣ ਤੋਂ ਬਾਅਦ ਅੰਕੜੇ ਬਦਲ ਗਏ ਹਨ। ਖਾਤਾ ਦੁਬਾਰਾ ਖੋਲ੍ਹ ਕੇ ਜਾਂਚੋ।';
 
   @override
   String get postNothing => 'ਕੁਝ ਨਹੀਂ ਚੜ੍ਹਿਆ।';
