@@ -2,9 +2,15 @@ import 'dart:async';
 
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
+import 'package:mandi_khata_app/core/permissions/permissions.dart';
+import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/dashboard/data/alerts_repository.dart';
 import 'package:mandi_khata_app/features/dashboard/data/dashboard_repository.dart';
+import 'package:mandi_khata_app/features/dashboard/domain/alerts.dart';
 import 'package:mandi_khata_app/features/dashboard/domain/dashboard.dart';
+import 'package:mandi_khata_app/features/interest/presentation/interest_posting_providers.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loans_providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dashboard_providers.g.dart';
@@ -95,3 +101,50 @@ Stream<AttentionCounts> attentionCounts(Ref ref) => _forTenant(
   AttentionCounts.none,
   (repo, tenantId, day) => repo.watchAttention(tenantId, day),
 );
+
+@Riverpod(keepAlive: true)
+Future<AlertsRepository> alertsRepository(Ref ref) async => AlertsRepository(
+  await ref.watch(powerSyncDatabaseProvider.future),
+  await ref.watch(loansRepositoryProvider.future),
+  await ref.watch(interestPostingRepositoryProvider.future),
+  planDefaults: ref.watch(planDefaultsProvider),
+);
+
+/// Loans overdue and due within a week. Live.
+@riverpod
+Stream<LoanAlerts> loanAlerts(Ref ref) async* {
+  final tenantId = ref.watch(activeTenantProvider);
+  final day = await ref.watch(todayProvider.future);
+  if (tenantId == null) {
+    yield LoanAlerts.none;
+    return;
+  }
+  final repo = await ref.watch(alertsRepositoryProvider.future);
+  yield* repo.watchLoans(tenantId, day);
+}
+
+/// Parties past their credit limit. Live.
+@riverpod
+Stream<CreditAlerts> creditAlerts(Ref ref) async* {
+  final tenantId = ref.watch(activeTenantProvider);
+  if (tenantId == null) {
+    yield CreditAlerts.none;
+    return;
+  }
+  final repo = await ref.watch(alertsRepositoryProvider.future);
+  yield* repo.watchCredit(tenantId);
+}
+
+/// Last quarter's interest not posted yet; empty for members who cannot
+/// post (the engine is not run for them).
+@riverpod
+Stream<UnpostedInterest?> unpostedInterest(Ref ref) async* {
+  final tenantId = ref.watch(activeTenantProvider);
+  final day = await ref.watch(todayProvider.future);
+  if (tenantId == null || !ref.watch(canProvider(Permission.loansManage))) {
+    yield null;
+    return;
+  }
+  final repo = await ref.watch(alertsRepositoryProvider.future);
+  yield* repo.watchUnposted(tenantId, day);
+}

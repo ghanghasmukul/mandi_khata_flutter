@@ -4,6 +4,37 @@ import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
+/// What an interest statement row says in words: slab, loan given /
+/// repayment (with its byaj / principal split), compounding step, rate
+/// change. With [forKhata] the entries read "Udhaar" / "Jama".
+String interestRowEvent(
+  AppLocalizations l10n,
+  InterestRow r, {
+  required bool forKhata,
+}) {
+  final note = r.note == null || r.note!.isEmpty ? '' : '\n${r.note}';
+  switch (r.kind) {
+    case InterestRowKind.accrue:
+      return l10n.loanRowAccrue;
+    case InterestRowKind.debit:
+      return '${forKhata ? l10n.byajRowDebit : l10n.loanRowDebit}$note';
+    case InterestRowKind.credit:
+      final split = l10n.loanRowSplit(
+        Money(r.payInterestPaise).format(),
+        Money(r.payPrincipalPaise).format(),
+      );
+      final surplus = r.toCreditBalancePaise > 0
+          ? '\n${l10n.loanRowSurplus(Money(r.toCreditBalancePaise).format())}'
+          : '';
+      final label = forKhata ? l10n.byajRowCredit : l10n.loanRowCredit;
+      return '$label$note\n$split$surplus';
+    case InterestRowKind.compound:
+      return l10n.loanRowCompound;
+    case InterestRowKind.rateChange:
+      return l10n.loanRowRate(r.ratePa.toString());
+  }
+}
+
 /// The loan's interest statement as the engine worked it out: every slab of
 /// days, loan given, repayment (with its byaj / principal split), step where
 /// byaj joins the principal and rate change, in order. With [forKhata] it
@@ -18,30 +49,6 @@ class LoanStatementTable extends StatelessWidget {
 
   final List<InterestRow> rows;
   final bool forKhata;
-
-  String _event(AppLocalizations l10n, InterestRow r) {
-    final note = r.note == null || r.note!.isEmpty ? '' : '\n${r.note}';
-    switch (r.kind) {
-      case InterestRowKind.accrue:
-        return l10n.loanRowAccrue;
-      case InterestRowKind.debit:
-        return '${forKhata ? l10n.byajRowDebit : l10n.loanRowDebit}$note';
-      case InterestRowKind.credit:
-        final split = l10n.loanRowSplit(
-          Money(r.payInterestPaise).format(),
-          Money(r.payPrincipalPaise).format(),
-        );
-        final surplus = r.toCreditBalancePaise > 0
-            ? '\n${l10n.loanRowSurplus(Money(r.toCreditBalancePaise).format())}'
-            : '';
-        final label = forKhata ? l10n.byajRowCredit : l10n.loanRowCredit;
-        return '$label$note\n$split$surplus';
-      case InterestRowKind.compound:
-        return l10n.loanRowCompound;
-      case InterestRowKind.rateChange:
-        return l10n.loanRowRate(r.ratePa.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +75,7 @@ class LoanStatementTable extends StatelessWidget {
         MkColumn(
           label: l10n.loanColEvent,
           flex: 6,
-          cell: (r) => Text(_event(l10n, r)),
+          cell: (r) => Text(interestRowEvent(l10n, r, forKhata: forKhata)),
         ),
         MkColumn(
           label: l10n.loanColDebit,

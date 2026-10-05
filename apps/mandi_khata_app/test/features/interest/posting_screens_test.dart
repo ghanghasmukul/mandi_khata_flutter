@@ -138,6 +138,9 @@ void main() {
           ).overrideWith((ref) => Stream.value(const [])),
           postingCandidatesProvider(today).overrideWith((ref) async => bulk),
           postingCandidatesProvider(
+            today.addDays(-30),
+          ).overrideWith((ref) async => bulk),
+          postingCandidatesProvider(
             today,
             partyId: 'p1',
           ).overrideWith((ref) async => party),
@@ -210,6 +213,17 @@ void main() {
       expect(writer.posted, hasLength(1));
       expect(writer.posted.single.map((p) => p.amountPaise), [493151, 100000]);
       expect(find.textContaining('Posted 2 entries'), findsOneWidget);
+    });
+
+    testWidgets('opens on the day an alert asked for', (tester) async {
+      await pump(
+        tester,
+        BulkPostingScreen(initialAsOf: today.addDays(-30)),
+        bulk: rows,
+      );
+      expect(find.text('Gurmeet'), findsOneWidget);
+      // Not the schedule's day: a way back to it is offered.
+      expect(key('bulk-post-today'), findsOneWidget);
     });
 
     testWidgets('says so when there is nothing to post', (tester) async {

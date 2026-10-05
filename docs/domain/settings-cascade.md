@@ -51,6 +51,7 @@ A `null` at a level means "inherit". The resolved value AND the level it came fr
 | `interest.rounding` | enum | `rupee` | `paise` \| `rupee` \| `ten_rupee` |
 | `interest.post_frequency` | enum | `on_demand` | `on_demand` \| `monthly` \| `quarterly` \| `fy_close` — when accrued interest is posted as a khata entry |
 | `interest.pay_on_jama` | bool | false | pay interest TO party when we owe them (some arhtiyas do) |
+| `business.credit_limit` | paise | 0 | the most a party may owe; 0 = no limit. A business default that a party (or group) can override. Only raises the "over the credit limit" alert on the dashboard; nothing is blocked |
 | `interest.pay_rate_pa` | decimal % | 0 | rate used when `pay_on_jama` = true |
 
 ### Mandi (arhat & charges) — can be per crop: `mandi.<key>.<crop_code>` overrides `mandi.<key>`

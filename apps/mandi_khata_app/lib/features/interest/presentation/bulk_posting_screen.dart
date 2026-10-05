@@ -20,7 +20,11 @@ import 'package:mk_ui/mk_ui.dart';
 /// v1 posts only when the owner runs this; the day proposed follows
 /// `interest.post_frequency` (nothing posts by itself).
 class BulkPostingScreen extends ConsumerStatefulWidget {
-  const BulkPostingScreen({super.key});
+  const BulkPostingScreen({super.key, this.initialAsOf});
+
+  /// The day to open on (from an alert); the posting schedule's day when
+  /// null.
+  final LedgerDate? initialAsOf;
 
   @override
   ConsumerState<BulkPostingScreen> createState() => _BulkPostingState();
@@ -28,7 +32,7 @@ class BulkPostingScreen extends ConsumerStatefulWidget {
 
 class _BulkPostingState extends ConsumerState<BulkPostingScreen> {
   final LedgerDate _today = LedgerDate.fromDateTime(DateTime.now());
-  LedgerDate? _asOf;
+  late LedgerDate? _asOf = widget.initialAsOf;
 
   /// Rows the user unticked, by period key. Everything else is selected.
   final Set<String> _excluded = {};

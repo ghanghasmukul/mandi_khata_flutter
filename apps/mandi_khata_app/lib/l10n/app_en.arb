@@ -5226,5 +5226,145 @@
   "slipSignOwner": "Authorised signature",
   "@slipSignOwner": {
     "description": "Posting interest and settlement, step 2.4."
+  },
+  "settingBusinessCreditLimit": "Credit limit per party (₹, 0 = none)",
+  "@settingBusinessCreditLimit": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportKarza": "Karza register",
+  "@reportKarza": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportInterestEarned": "Interest earned",
+  "@reportInterestEarned": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColLoan": "Loan",
+  "@reportColLoan": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColIssued": "Issued",
+  "@reportColIssued": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColDue": "Due",
+  "@reportColDue": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColPrincipal": "Principal",
+  "@reportColPrincipal": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColRepaid": "Repaid",
+  "@reportColRepaid": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColOutstanding": "Outstanding",
+  "@reportColOutstanding": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColInterestAccrued": "Interest accrued",
+  "@reportColInterestAccrued": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColInterestRecovered": "Interest recovered",
+  "@reportColInterestRecovered": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColDaysOverdue": "Days overdue",
+  "@reportColDaysOverdue": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColOverdueAge": "Overdue age",
+  "@reportColOverdueAge": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColPosted": "Posted to khata",
+  "@reportColPosted": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColWaived": "Waived",
+  "@reportColWaived": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColUnposted": "Accrued, not yet posted",
+  "@reportColUnposted": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportColEarned": "Earned (posted + accrued)",
+  "@reportColEarned": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportInterestHelp": "Posted and waived are for the period. Accrued, not yet posted is as of today.",
+  "@reportInterestHelp": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "reportKarzaOverdueCount": "{count} overdue",
+  "@reportKarzaOverdueCount": {
+    "description": "Reports and alerts, step 2.5.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashNeedsLoansOverdue": "{count, plural, =1{1 loan is overdue} other{{count} loans are overdue}}",
+  "@dashNeedsLoansOverdue": {
+    "description": "Reports and alerts, step 2.5.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashNeedsLoansDueSoon": "{count, plural, =1{1 loan is due in 7 days} other{{count} loans are due in 7 days}}",
+  "@dashNeedsLoansDueSoon": {
+    "description": "Reports and alerts, step 2.5.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashNeedsOverLimit": "{count, plural, =1{1 party is over the credit limit} other{{count} parties are over the credit limit}}",
+  "@dashNeedsOverLimit": {
+    "description": "Reports and alerts, step 2.5.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashNeedsInterestUnposted": "Interest for the last quarter is not posted: {count, plural, =1{1 account} other{{count} accounts}}, {amount}",
+  "@dashNeedsInterestUnposted": {
+    "description": "Reports and alerts, step 2.5.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "byajPrintStatement": "Print byaj statement",
+  "@byajPrintStatement": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "byajStatementTitle": "Byaj statement",
+  "@byajStatementTitle": {
+    "description": "Reports and alerts, step 2.5."
+  },
+  "byajStatementTerms": "{rate}% p.a., {method}",
+  "@byajStatementTerms": {
+    "description": "Reports and alerts, step 2.5.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
   }
 }

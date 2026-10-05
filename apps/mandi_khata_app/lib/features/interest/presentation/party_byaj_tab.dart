@@ -5,11 +5,15 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
+import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/interest/data/interest_statement_pdf.dart';
 import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
 import 'package:mandi_khata_app/features/interest/presentation/interest_posting_providers.dart';
 import 'package:mandi_khata_app/features/interest/presentation/interest_providers.dart';
+import 'package:mandi_khata_app/features/interest/presentation/interest_statement_data.dart';
 import 'package:mandi_khata_app/features/interest/presentation/party_interest_dialog.dart';
 import 'package:mandi_khata_app/features/interest/presentation/post_interest_dialog.dart';
+import 'package:mandi_khata_app/features/khata/data/statement_pdf.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_detail_cards.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_statement_table.dart';
@@ -20,6 +24,7 @@ import 'package:mandi_khata_app/features/settings/presentation/setting_labels.da
 import 'package:mandi_khata_app/features/settings/presentation/setting_tile.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
+import 'package:printing/printing.dart';
 
 /// The party's byaj on its whole khata (`interest.apply_on = net_udhaar`):
 /// the terms with where each one comes from, what is payable on a chosen
@@ -37,6 +42,34 @@ class PartyByajTab extends ConsumerStatefulWidget {
 
 class _PartyByajTabState extends ConsumerState<PartyByajTab> {
   LedgerDate _asOf = LedgerDate.fromDateTime(DateTime.now());
+
+  Future<void> _print(
+    InterestConfig config,
+    InterestResult result,
+    PostedSummary posted,
+  ) async {
+    final l10n = AppLocalizations.of(context);
+    final business = ref.read(activeMembershipProvider)?.tenantName ?? '';
+    final fonts = await StatementFonts.load();
+    if (!mounted) return;
+    final bytes = await InterestStatementPdf.build(
+      fonts: fonts,
+      data: interestStatementData(
+        l10n,
+        businessName: business,
+        party: widget.party,
+        config: config,
+        result: result,
+        asOf: _asOf,
+        postedPaise: posted.postedPaise,
+        formatDate: (d) => AppFormat.ledgerDate(context, d),
+      ),
+    );
+    await Printing.layoutPdf(
+      name: '${l10n.byajStatementTitle} ${widget.party.name}',
+      onLayout: (_) async => bytes,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -183,6 +216,14 @@ class _PartyByajTabState extends ConsumerState<PartyByajTab> {
                   icon: Icons.playlist_add_check,
                   onPressed: () =>
                       showPostInterestDialog(context, partyId: party.id),
+                ),
+              if (mode == KhataInterestMode.khata)
+                MkButton(
+                  key: const ValueKey('byaj-print'),
+                  label: l10n.byajPrintStatement,
+                  icon: Icons.print_outlined,
+                  variant: MkButtonVariant.secondary,
+                  onPressed: () => _print(config, result, posted),
                 ),
               MkButton(
                 key: const ValueKey('byaj-hisaab'),

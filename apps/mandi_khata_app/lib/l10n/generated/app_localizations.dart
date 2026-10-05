@@ -6963,6 +6963,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Authorised signature'**
   String get slipSignOwner;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit limit per party (₹, 0 = none)'**
+  String get settingBusinessCreditLimit;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Karza register'**
+  String get reportKarza;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest earned'**
+  String get reportInterestEarned;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan'**
+  String get reportColLoan;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued'**
+  String get reportColIssued;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Due'**
+  String get reportColDue;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal'**
+  String get reportColPrincipal;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Repaid'**
+  String get reportColRepaid;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Outstanding'**
+  String get reportColOutstanding;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest accrued'**
+  String get reportColInterestAccrued;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest recovered'**
+  String get reportColInterestRecovered;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Days overdue'**
+  String get reportColDaysOverdue;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Overdue age'**
+  String get reportColOverdueAge;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Posted to khata'**
+  String get reportColPosted;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Waived'**
+  String get reportColWaived;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Accrued, not yet posted'**
+  String get reportColUnposted;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Earned (posted + accrued)'**
+  String get reportColEarned;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Posted and waived are for the period. Accrued, not yet posted is as of today.'**
+  String get reportInterestHelp;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} overdue'**
+  String reportKarzaOverdueCount(int count);
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 loan is overdue} other{{count} loans are overdue}}'**
+  String dashNeedsLoansOverdue(int count);
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 loan is due in 7 days} other{{count} loans are due in 7 days}}'**
+  String dashNeedsLoansDueSoon(int count);
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 party is over the credit limit} other{{count} parties are over the credit limit}}'**
+  String dashNeedsOverLimit(int count);
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest for the last quarter is not posted: {count, plural, =1{1 account} other{{count} accounts}}, {amount}'**
+  String dashNeedsInterestUnposted(int count, String amount);
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Print byaj statement'**
+  String get byajPrintStatement;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj statement'**
+  String get byajStatementTitle;
+
+  /// Reports and alerts, step 2.5.
+  ///
+  /// In en, this message translates to:
+  /// **'{rate}% p.a., {method}'**
+  String byajStatementTerms(String rate, String method);
 }
 
 class _AppLocalizationsDelegate

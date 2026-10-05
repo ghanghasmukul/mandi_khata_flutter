@@ -492,3 +492,192 @@ final class FarmerVillagesProvider
 }
 
 String _$farmerVillagesHash() => r'311a031816d0995bff70c2e9e8646d4cfdd160f7';
+
+/// Every loan with its figures on the report day (today when null), open
+/// ones first.
+
+@ProviderFor(karzaReport)
+final karzaReportProvider = KarzaReportFamily._();
+
+/// Every loan with its figures on the report day (today when null), open
+/// ones first.
+
+final class KarzaReportProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<KarzaRow>>,
+          List<KarzaRow>,
+          FutureOr<List<KarzaRow>>
+        >
+    with $FutureModifier<List<KarzaRow>>, $FutureProvider<List<KarzaRow>> {
+  /// Every loan with its figures on the report day (today when null), open
+  /// ones first.
+  KarzaReportProvider._({
+    required KarzaReportFamily super.from,
+    required (ReportFilter, LedgerDate) super.argument,
+  }) : super(
+         retry: null,
+         name: r'karzaReportProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$karzaReportHash();
+
+  @override
+  String toString() {
+    return r'karzaReportProvider'
+        ''
+        '$argument';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<List<KarzaRow>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<KarzaRow>> create(Ref ref) {
+    final argument = this.argument as (ReportFilter, LedgerDate);
+    return karzaReport(ref, argument.$1, argument.$2);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is KarzaReportProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$karzaReportHash() => r'0073bacf15b7bdc851f5998fb7b0448faadf7aa4';
+
+/// Every loan with its figures on the report day (today when null), open
+/// ones first.
+
+final class KarzaReportFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<List<KarzaRow>>,
+          (ReportFilter, LedgerDate)
+        > {
+  KarzaReportFamily._()
+    : super(
+        retry: null,
+        name: r'karzaReportProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Every loan with its figures on the report day (today when null), open
+  /// ones first.
+
+  KarzaReportProvider call(ReportFilter filter, LedgerDate today) =>
+      KarzaReportProvider._(argument: (filter, today), from: this);
+
+  @override
+  String toString() => r'karzaReportProvider';
+}
+
+/// Interest posted and waived in the period and accrued, not yet posted
+/// (as of today).
+
+@ProviderFor(interestEarnedReport)
+final interestEarnedReportProvider = InterestEarnedReportFamily._();
+
+/// Interest posted and waived in the period and accrued, not yet posted
+/// (as of today).
+
+final class InterestEarnedReportProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<InterestEarnedRow>>,
+          List<InterestEarnedRow>,
+          FutureOr<List<InterestEarnedRow>>
+        >
+    with
+        $FutureModifier<List<InterestEarnedRow>>,
+        $FutureProvider<List<InterestEarnedRow>> {
+  /// Interest posted and waived in the period and accrued, not yet posted
+  /// (as of today).
+  InterestEarnedReportProvider._({
+    required InterestEarnedReportFamily super.from,
+    required (ReportFilter, LedgerDate) super.argument,
+  }) : super(
+         retry: null,
+         name: r'interestEarnedReportProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$interestEarnedReportHash();
+
+  @override
+  String toString() {
+    return r'interestEarnedReportProvider'
+        ''
+        '$argument';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<List<InterestEarnedRow>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<InterestEarnedRow>> create(Ref ref) {
+    final argument = this.argument as (ReportFilter, LedgerDate);
+    return interestEarnedReport(ref, argument.$1, argument.$2);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is InterestEarnedReportProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$interestEarnedReportHash() =>
+    r'6e7c19f85668e4164725d4f71db4d58f6714e2e2';
+
+/// Interest posted and waived in the period and accrued, not yet posted
+/// (as of today).
+
+final class InterestEarnedReportFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<List<InterestEarnedRow>>,
+          (ReportFilter, LedgerDate)
+        > {
+  InterestEarnedReportFamily._()
+    : super(
+        retry: null,
+        name: r'interestEarnedReportProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Interest posted and waived in the period and accrued, not yet posted
+  /// (as of today).
+
+  InterestEarnedReportProvider call(ReportFilter filter, LedgerDate today) =>
+      InterestEarnedReportProvider._(argument: (filter, today), from: this);
+
+  @override
+  String toString() => r'interestEarnedReportProvider';
+}

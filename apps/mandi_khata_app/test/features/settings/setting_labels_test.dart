@@ -53,10 +53,11 @@ void main() {
     });
   }
 
-  test('party level offers only interest and mandi keys', () {
-    expect(settingEntriesFor(SettingScope.party).keys.toSet(), {
-      'interest',
-      'mandi',
-    });
+  test('party level offers interest, mandi and the credit limit only', () {
+    final groups = settingEntriesFor(SettingScope.party);
+    expect(groups.keys.toSet(), {'interest', 'mandi', 'business'});
+    expect(groups['business']!.map((e) => e.def.key), [
+      'business.credit_limit',
+    ]);
   });
 }

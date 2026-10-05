@@ -6,9 +6,13 @@ import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/dashboard/domain/alerts.dart';
 import 'package:mandi_khata_app/features/dashboard/domain/dashboard.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
+import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -26,6 +30,11 @@ class NeedsYouCard extends ConsumerWidget {
     final rejected = ref.watch(syncErrorsProvider).value?.length ?? 0;
     final canCheques = ref.watch(canProvider(Permission.paymentsCreate));
     final canStaff = ref.watch(canProvider(Permission.entriesReverse));
+    final canLoans = ref.watch(canProvider(Permission.loansManage));
+    final canFinance = ref.watch(canProvider(Permission.financeView));
+    final loans = ref.watch(loanAlertsProvider).value ?? LoanAlerts.none;
+    final credit = ref.watch(creditAlertsProvider).value ?? CreditAlerts.none;
+    final unposted = ref.watch(unpostedInterestProvider).value;
     final isOwner =
         ref.watch(activeMembershipProvider)?.role == MemberRole.owner;
 
@@ -35,6 +44,37 @@ class NeedsYouCard extends ConsumerWidget {
           icon: Icons.sync_problem_outlined,
           text: l10n.dashNeedsSyncErrors(rejected),
           onTap: isOwner ? () => context.go(AppRoutes.diagnostics) : null,
+        ),
+      if (canLoans && loans.overdue > 0)
+        _NeedRow(
+          key: const ValueKey('need-loans-overdue'),
+          icon: Icons.request_quote_outlined,
+          text: l10n.dashNeedsLoansOverdue(loans.overdue),
+          onTap: () => context.go(LoanRoutes.list),
+        ),
+      if (canLoans && loans.dueSoon > 0)
+        _NeedRow(
+          key: const ValueKey('need-loans-soon'),
+          icon: Icons.event_outlined,
+          text: l10n.dashNeedsLoansDueSoon(loans.dueSoon),
+          onTap: () => context.go(LoanRoutes.list),
+        ),
+      if (canFinance && credit.count > 0)
+        _NeedRow(
+          key: const ValueKey('need-over-limit'),
+          icon: Icons.warning_amber_outlined,
+          text: l10n.dashNeedsOverLimit(credit.count),
+          onTap: () => context.go(ReportRoutes.of(ReportKind.outstanding)),
+        ),
+      if (unposted != null && unposted.accounts > 0)
+        _NeedRow(
+          key: const ValueKey('need-interest-unposted'),
+          icon: Icons.playlist_add_check,
+          text: l10n.dashNeedsInterestUnposted(
+            unposted.accounts,
+            unposted.amount.short(),
+          ),
+          onTap: () => context.go(LoanRoutes.postAsOf(unposted.asOf)),
         ),
       if (canCheques && counts.chequesDue > 0)
         _NeedRow(
@@ -64,7 +104,12 @@ class NeedsYouCard extends ConsumerWidget {
 }
 
 class _NeedRow extends StatelessWidget {
-  const _NeedRow({required this.icon, required this.text, this.onTap});
+  const _NeedRow({
+    required this.icon,
+    required this.text,
+    this.onTap,
+    super.key,
+  });
 
   final IconData icon;
   final String text;

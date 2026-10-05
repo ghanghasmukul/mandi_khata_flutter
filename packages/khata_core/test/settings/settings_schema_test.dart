@@ -68,6 +68,7 @@ void main() {
         'business.fy_start_month',
         'business.backdate_days',
         'business.munshi_payment_limit',
+        'business.credit_limit',
         'app.languages',
         'app.default_language',
         'print.receipt_size',
@@ -288,5 +289,13 @@ void main() {
     expect(SettingsSchema.decimalOf(18), Decimal.fromInt(18));
     expect(SettingsSchema.decimalOf('x'), isNull);
     expect(SettingsSchema.decimalOf(null), isNull);
+  });
+
+  test('the credit limit is a business default a party may override', () {
+    final def = SettingsSchema.parse('business.credit_limit')!.def;
+    expect(def.allowedAt(SettingScope.tenant), isTrue);
+    expect(def.allowedAt(SettingScope.party), isTrue);
+    expect(def.validate(-1), isNotNull);
+    expect(def.validate(50000000), isNull);
   });
 }

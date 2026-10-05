@@ -47,6 +47,7 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
     return switch (kind) {
       ReportKind.outstanding => const ReportFilter(),
       ReportKind.payments => ReportFilter(from: _today.addDays(-6), to: _today),
+      ReportKind.karza => const ReportFilter(),
       _ => ReportFilter(from: season.start, to: _today),
     };
   }
@@ -62,6 +63,8 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
     ReportKind.commission => l10n.reportCommission,
     ReportKind.payments => l10n.reportPayments,
     ReportKind.statements => l10n.reportStatements,
+    ReportKind.karza => l10n.reportKarza,
+    ReportKind.interestEarned => l10n.reportInterestEarned,
   };
 
   Future<void> _export(
@@ -98,7 +101,10 @@ class _ReportsScreenState extends ConsumerState<ReportsScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final canFinance = ref.watch(canProvider(Permission.financeView));
-    final restricted = _kind == ReportKind.commission && !canFinance;
+    final restricted =
+        (_kind == ReportKind.commission ||
+            _kind == ReportKind.interestEarned) &&
+        !canFinance;
     final view = restricted
         ? null
         : watchReportView(

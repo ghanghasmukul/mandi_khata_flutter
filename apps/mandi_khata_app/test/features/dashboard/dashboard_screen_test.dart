@@ -5,6 +5,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/core/tenant/membership_repository.dart';
+import 'package:mandi_khata_app/features/dashboard/domain/alerts.dart';
 import 'package:mandi_khata_app/features/dashboard/domain/dashboard.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_screen.dart';
@@ -22,6 +23,9 @@ Future<void> pump(
   MoneyPosition position = MoneyPosition.empty,
   AttentionCounts attention = AttentionCounts.none,
   int rejected = 0,
+  LoanAlerts loans = LoanAlerts.none,
+  CreditAlerts credit = CreditAlerts.none,
+  UnpostedInterest? unposted,
 }) async {
   tester.view.physicalSize = const Size(1400, 2400);
   tester.view.devicePixelRatio = 1;
@@ -35,6 +39,9 @@ Future<void> pump(
         cropMixProvider.overrideWith((ref) => Stream.value(crops)),
         moneyPositionProvider.overrideWith((ref) => Stream.value(position)),
         attentionCountsProvider.overrideWith((ref) => Stream.value(attention)),
+        loanAlertsProvider.overrideWith((ref) => Stream.value(loans)),
+        creditAlertsProvider.overrideWith((ref) => Stream.value(credit)),
+        unpostedInterestProvider.overrideWith((ref) => Stream.value(unposted)),
         syncErrorsProvider.overrideWith(
           (ref) => Stream.value([
             for (var i = 0; i < rejected; i++)
@@ -165,5 +172,58 @@ void main() {
     expect(find.text('New arrival'), findsOneWidget);
     expect(find.text('Record payment'), findsOneWidget);
     expect(find.text('Khata entry'), findsNothing);
+  });
+
+  group('loan, credit and interest alerts', () {
+    final unposted = UnpostedInterest(
+      asOf: LedgerDate(2026, 10, 1),
+      accounts: 3,
+      amount: const Money(1250000),
+    );
+
+    testWidgets('an owner sees every alert and the Loans badge', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        loans: const LoanAlerts(overdue: 2, dueSoon: 1),
+        credit: const CreditAlerts(count: 4, excess: Money(900000)),
+        unposted: unposted,
+      );
+      expect(find.text('2 loans are overdue'), findsOneWidget);
+      expect(find.text('1 loan is due in 7 days'), findsOneWidget);
+      expect(find.text('4 parties are over the credit limit'), findsOneWidget);
+      expect(
+        find.textContaining('Interest for the last quarter is not posted: '),
+        findsOneWidget,
+      );
+      expect(find.textContaining('3 accounts'), findsOneWidget);
+      expect(find.text('Nothing needs you right now'), findsNothing);
+      final badge = tester.widget<Badge>(
+        find.byKey(const ValueKey('loans-badge')),
+      );
+      expect(badge.isLabelVisible, isTrue);
+      expect((badge.label! as Text).data, '2');
+    });
+
+    testWidgets('no overdue loans: no badge', (tester) async {
+      await pump(tester, loans: const LoanAlerts(overdue: 0, dueSoon: 1));
+      final badge = tester.widget<Badge>(
+        find.byKey(const ValueKey('loans-badge')),
+      );
+      expect(badge.isLabelVisible, isFalse);
+    });
+
+    testWidgets('a munshi sees none of them', (tester) async {
+      await pump(
+        tester,
+        role: MemberRole.munshi,
+        loans: const LoanAlerts(overdue: 2, dueSoon: 1),
+        credit: const CreditAlerts(count: 4, excess: Money(900000)),
+      );
+      expect(find.textContaining('overdue'), findsNothing);
+      expect(find.textContaining('credit limit'), findsNothing);
+      expect(find.text('Nothing needs you right now'), findsOneWidget);
+    });
   });
 }

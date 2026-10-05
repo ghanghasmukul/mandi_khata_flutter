@@ -315,3 +315,178 @@ final class AttentionCountsProvider
 }
 
 String _$attentionCountsHash() => r'1377ee4210f2920d20e8c91cf248a09922b08e5f';
+
+@ProviderFor(alertsRepository)
+final alertsRepositoryProvider = AlertsRepositoryProvider._();
+
+final class AlertsRepositoryProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<AlertsRepository>,
+          AlertsRepository,
+          FutureOr<AlertsRepository>
+        >
+    with $FutureModifier<AlertsRepository>, $FutureProvider<AlertsRepository> {
+  AlertsRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'alertsRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$alertsRepositoryHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<AlertsRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<AlertsRepository> create(Ref ref) {
+    return alertsRepository(ref);
+  }
+}
+
+String _$alertsRepositoryHash() => r'88fe2e317f525fd45209c697153c16d8fe7b4ef9';
+
+/// Loans overdue and due within a week. Live.
+
+@ProviderFor(loanAlerts)
+final loanAlertsProvider = LoanAlertsProvider._();
+
+/// Loans overdue and due within a week. Live.
+
+final class LoanAlertsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<LoanAlerts>,
+          LoanAlerts,
+          Stream<LoanAlerts>
+        >
+    with $FutureModifier<LoanAlerts>, $StreamProvider<LoanAlerts> {
+  /// Loans overdue and due within a week. Live.
+  LoanAlertsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'loanAlertsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$loanAlertsHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<LoanAlerts> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<LoanAlerts> create(Ref ref) {
+    return loanAlerts(ref);
+  }
+}
+
+String _$loanAlertsHash() => r'ae9251295916ae62ac3fb264d0ffab1ca70973a5';
+
+/// Parties past their credit limit. Live.
+
+@ProviderFor(creditAlerts)
+final creditAlertsProvider = CreditAlertsProvider._();
+
+/// Parties past their credit limit. Live.
+
+final class CreditAlertsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<CreditAlerts>,
+          CreditAlerts,
+          Stream<CreditAlerts>
+        >
+    with $FutureModifier<CreditAlerts>, $StreamProvider<CreditAlerts> {
+  /// Parties past their credit limit. Live.
+  CreditAlertsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'creditAlertsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$creditAlertsHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<CreditAlerts> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
+
+  @override
+  Stream<CreditAlerts> create(Ref ref) {
+    return creditAlerts(ref);
+  }
+}
+
+String _$creditAlertsHash() => r'9da7874ef33cf855d0630e5eb87c8a310297109a';
+
+/// Last quarter's interest not posted yet; empty for members who cannot
+/// post (the engine is not run for them).
+
+@ProviderFor(unpostedInterest)
+final unpostedInterestProvider = UnpostedInterestProvider._();
+
+/// Last quarter's interest not posted yet; empty for members who cannot
+/// post (the engine is not run for them).
+
+final class UnpostedInterestProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<UnpostedInterest?>,
+          UnpostedInterest?,
+          Stream<UnpostedInterest?>
+        >
+    with
+        $FutureModifier<UnpostedInterest?>,
+        $StreamProvider<UnpostedInterest?> {
+  /// Last quarter's interest not posted yet; empty for members who cannot
+  /// post (the engine is not run for them).
+  UnpostedInterestProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'unpostedInterestProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$unpostedInterestHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<UnpostedInterest?> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
+
+  @override
+  Stream<UnpostedInterest?> create(Ref ref) {
+    return unpostedInterest(ref);
+  }
+}
+
+String _$unpostedInterestHash() => r'8741a345d2a3d725e7e9795b178978dfefde5e29';

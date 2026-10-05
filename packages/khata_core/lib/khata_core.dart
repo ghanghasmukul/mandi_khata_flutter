@@ -6,6 +6,7 @@
 library;
 
 export 'src/audit_rules.dart';
+export 'src/credit_limit.dart';
 export 'src/crop_rules.dart';
 export 'src/document_number.dart';
 export 'src/financial_year.dart';

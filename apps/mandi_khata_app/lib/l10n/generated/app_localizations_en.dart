@@ -3890,4 +3890,120 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get slipSignOwner => 'Authorised signature';
+
+  @override
+  String get settingBusinessCreditLimit =>
+      'Credit limit per party (₹, 0 = none)';
+
+  @override
+  String get reportKarza => 'Karza register';
+
+  @override
+  String get reportInterestEarned => 'Interest earned';
+
+  @override
+  String get reportColLoan => 'Loan';
+
+  @override
+  String get reportColIssued => 'Issued';
+
+  @override
+  String get reportColDue => 'Due';
+
+  @override
+  String get reportColPrincipal => 'Principal';
+
+  @override
+  String get reportColRepaid => 'Repaid';
+
+  @override
+  String get reportColOutstanding => 'Outstanding';
+
+  @override
+  String get reportColInterestAccrued => 'Interest accrued';
+
+  @override
+  String get reportColInterestRecovered => 'Interest recovered';
+
+  @override
+  String get reportColDaysOverdue => 'Days overdue';
+
+  @override
+  String get reportColOverdueAge => 'Overdue age';
+
+  @override
+  String get reportColPosted => 'Posted to khata';
+
+  @override
+  String get reportColWaived => 'Waived';
+
+  @override
+  String get reportColUnposted => 'Accrued, not yet posted';
+
+  @override
+  String get reportColEarned => 'Earned (posted + accrued)';
+
+  @override
+  String get reportInterestHelp =>
+      'Posted and waived are for the period. Accrued, not yet posted is as of today.';
+
+  @override
+  String reportKarzaOverdueCount(int count) {
+    return '$count overdue';
+  }
+
+  @override
+  String dashNeedsLoansOverdue(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count loans are overdue',
+      one: '1 loan is overdue',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String dashNeedsLoansDueSoon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count loans are due in 7 days',
+      one: '1 loan is due in 7 days',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String dashNeedsOverLimit(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count parties are over the credit limit',
+      one: '1 party is over the credit limit',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String dashNeedsInterestUnposted(int count, String amount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count accounts',
+      one: '1 account',
+    );
+    return 'Interest for the last quarter is not posted: $_temp0, $amount';
+  }
+
+  @override
+  String get byajPrintStatement => 'Print byaj statement';
+
+  @override
+  String get byajStatementTitle => 'Byaj statement';
+
+  @override
+  String byajStatementTerms(String rate, String method) {
+    return '$rate% p.a., $method';
+  }
 }

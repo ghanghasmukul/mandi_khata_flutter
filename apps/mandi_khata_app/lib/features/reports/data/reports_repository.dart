@@ -1,4 +1,5 @@
 import 'package:khata_core/khata_core.dart';
+import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
 import 'package:powersync/powersync.dart';
@@ -228,5 +229,61 @@ class ReportsRepository {
             statement: LedgerCalculator.statement(list, from: from, to: to),
           ),
     ];
+  }
+
+  /// Interest per party: posted and waived with an entry dated [from]..[to]
+  /// (reversed entries do not count), plus [unposted] (accounts from the
+  /// posting run, not yet posted). Biggest earner first.
+  Future<List<InterestEarnedRow>> interestEarned(
+    String tenantId, {
+    required List<PostingCandidate> unposted,
+    LedgerDate? from,
+    LedgerDate? to,
+  }) async {
+    final rows = await _db.getAll(
+      'SELECT ip.party_id, ip.kind, SUM(ip.amount_paise) AS amt, '
+      'p.name, p.code FROM interest_postings ip '
+      'JOIN ledger_entries e ON e.tenant_id = ip.tenant_id '
+      "AND e.ref_id = ip.id AND e.ref_type IN ('interest', 'journal') "
+      'JOIN parties p ON p.id = ip.party_id AND p.tenant_id = ip.tenant_id '
+      'WHERE ip.tenant_id = ?1 '
+      'AND (?2 IS NULL OR e.entry_date >= ?2) '
+      'AND (?3 IS NULL OR e.entry_date <= ?3) '
+      'AND NOT EXISTS (SELECT 1 FROM ledger_entries r '
+      'WHERE r.tenant_id = e.tenant_id AND r.reverses_id = e.id) '
+      'GROUP BY ip.party_id, ip.kind',
+      [tenantId, from?.toString(), to?.toString()],
+    );
+    final names = <String, ({String name, String? code})>{};
+    final posted = <String, int>{};
+    final waived = <String, int>{};
+    for (final r in rows) {
+      final id = r['party_id']! as String;
+      names[id] = (name: r['name']! as String, code: r['code'] as String?);
+      final into = r['kind'] == 'waiver' ? waived : posted;
+      into[id] = (into[id] ?? 0) + (r['amt']! as int);
+    }
+    final open = <String, int>{};
+    for (final c in unposted) {
+      if (c.alreadyPosted) continue;
+      names[c.partyId] ??= (name: c.partyName, code: c.partyCode);
+      open[c.partyId] = (open[c.partyId] ?? 0) + c.amount.paise;
+    }
+    final out =
+        [
+          for (final MapEntry(:key, :value) in names.entries)
+            InterestEarnedRow(
+              partyId: key,
+              name: value.name,
+              code: value.code,
+              posted: Money(posted[key] ?? 0),
+              waived: Money(waived[key] ?? 0),
+              unposted: Money(open[key] ?? 0),
+            ),
+        ]..sort((a, b) {
+          final byEarned = b.earned.paise.compareTo(a.earned.paise);
+          return byEarned != 0 ? byEarned : a.name.compareTo(b.name);
+        });
+    return out;
   }
 }

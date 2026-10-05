@@ -42,34 +42,38 @@ class ReportFilters extends ConsumerWidget {
       ),
     );
 
+    Widget asOfButton() => OutlinedButton.icon(
+      key: const ValueKey('report-asof'),
+      icon: const Icon(Icons.event_outlined),
+      label: Text(
+        '${l10n.reportFilterAsOf}: '
+        '${AppFormat.ledgerDate(context, filter.asOf ?? today)}',
+      ),
+      onPressed: () async {
+        final d = filter.asOf ?? today;
+        final picked = await showDatePicker(
+          context: context,
+          initialDate: DateTime(d.year, d.month, d.day),
+          firstDate: DateTime(2000),
+          lastDate: DateTime.now(),
+        );
+        if (picked != null) {
+          onChanged(
+            filter.copyWith(asOf: () => LedgerDate.fromDateTime(picked)),
+          );
+        }
+      },
+    );
+
     final crops =
         ref.watch(cropListProvider(includeInactive: true)).value ?? <Crop>[];
     final villages = ref.watch(farmerVillagesProvider).value ?? <String>[];
 
     final children = switch (kind) {
+      ReportKind.interestEarned => [range()],
+      ReportKind.karza => [asOfButton()],
       ReportKind.outstanding => [
-        OutlinedButton.icon(
-          key: const ValueKey('report-asof'),
-          icon: const Icon(Icons.event_outlined),
-          label: Text(
-            '${l10n.reportFilterAsOf}: '
-            '${AppFormat.ledgerDate(context, filter.asOf ?? today)}',
-          ),
-          onPressed: () async {
-            final d = filter.asOf ?? today;
-            final picked = await showDatePicker(
-              context: context,
-              initialDate: DateTime(d.year, d.month, d.day),
-              firstDate: DateTime(2000),
-              lastDate: DateTime.now(),
-            );
-            if (picked != null) {
-              onChanged(
-                filter.copyWith(asOf: () => LedgerDate.fromDateTime(picked)),
-              );
-            }
-          },
-        ),
+        asOfButton(),
         for (final (s, label) in [
           (OutstandingSide.all, l10n.reportSideAll),
           (OutstandingSide.payable, l10n.reportSidePayable),

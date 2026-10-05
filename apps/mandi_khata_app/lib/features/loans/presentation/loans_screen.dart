@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:khata_core/khata_core.dart' show Permission;
+import 'package:khata_core/khata_core.dart' show LedgerDate, Permission;
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
@@ -18,6 +18,9 @@ abstract final class LoanRoutes {
   static const list = '/loans';
   static String detail(String id) => '/loans/$id';
   static const post = '/loans/post';
+
+  /// The posting run for interest up to [day].
+  static String postAsOf(LedgerDate day) => '/loans/post?asOf=$day';
 }
 
 /// Loans (karza) of the business as cards. Ctrl/⌘+N issues one (owner),

@@ -452,6 +452,9 @@ abstract final class SettingsSchema {
       max: 100000000000,
       businessOnly: true,
     ),
+    // The most a party may owe (paise); 0 = no limit. A business default
+    // that a party (or group) can override. Only an alert: it blocks nothing.
+    SettingDef.paise('business.credit_limit', fallback: 0, max: 100000000000),
     SettingDef.structured(
       'business.number_series',
       fallback: {'prefix': 'X-', 'next': 1},

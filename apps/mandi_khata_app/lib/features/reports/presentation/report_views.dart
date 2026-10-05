@@ -88,6 +88,31 @@ AsyncValue<ReportView> watchReportView(
               filterLines: [periodLine],
             ),
           );
+    case ReportKind.karza:
+      final asOf = filter.asOf ?? today;
+      return ref
+          .watch(karzaReportProvider(filter, today))
+          .whenData(
+            (rows) => ReportView(
+              table: ReportTables.karza(l10n, rows),
+              summary: _Note(
+                l10n.reportKarzaOverdueCount(
+                  rows.where((r) => r.daysOverdue != null).length,
+                ),
+              ),
+              filterLines: [l10n.reportAsOf(date(asOf))],
+            ),
+          );
+    case ReportKind.interestEarned:
+      return ref
+          .watch(interestEarnedReportProvider(filter, today))
+          .whenData(
+            (rows) => ReportView(
+              table: ReportTables.interestEarned(l10n, rows),
+              summary: _Note(l10n.reportInterestHelp),
+              filterLines: [periodLine],
+            ),
+          );
     case ReportKind.statements:
       return ref
           .watch(statementsReportProvider(filter))
@@ -206,6 +231,24 @@ class _ModeCards extends StatelessWidget {
       ],
     );
   }
+}
+
+class _Note extends StatelessWidget {
+  const _Note(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(
+      horizontal: MkSpacing.lg,
+      vertical: MkSpacing.sm,
+    ),
+    child: Text(
+      text,
+      style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
+    ),
+  );
 }
 
 class _StatementsNote extends StatelessWidget {

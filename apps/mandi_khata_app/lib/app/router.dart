@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' show GlobalKey, NavigatorState;
 import 'package:go_router/go_router.dart';
+import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/app/home_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
@@ -192,7 +193,12 @@ GoRouter router(Ref ref) {
           // Before ':id' so "post" is never read as an id.
           GoRoute(
             path: 'post',
-            builder: (context, state) => const BulkPostingScreen(),
+            builder: (context, state) {
+              final asOf = state.uri.queryParameters['asOf'];
+              return BulkPostingScreen(
+                initialAsOf: asOf == null ? null : _tryDate(asOf),
+              );
+            },
           ),
           GoRoute(
             path: ':id',
@@ -260,4 +266,12 @@ GoRouter router(Ref ref) {
     refresh.dispose();
   });
   return router;
+}
+
+LedgerDate? _tryDate(String text) {
+  try {
+    return LedgerDate.parse(text);
+  } on FormatException {
+    return null;
+  }
 }

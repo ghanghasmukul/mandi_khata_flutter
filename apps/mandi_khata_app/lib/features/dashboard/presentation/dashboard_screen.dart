@@ -12,6 +12,7 @@ import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_charts.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_hero.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_needs.dart';
+import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_stats.dart';
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
@@ -92,6 +93,7 @@ class _Browse extends ConsumerWidget {
     final canAdmin = ref.watch(canProvider(Permission.adminManage));
     final canAudit = ref.watch(canProvider(Permission.auditView));
     final l10n = AppLocalizations.of(context);
+    final overdue = ref.watch(loanAlertsProvider).value?.overdue ?? 0;
     Widget link(String label, IconData icon, String route) => MkButton(
       label: label,
       icon: icon,
@@ -109,7 +111,18 @@ class _Browse extends ConsumerWidget {
           ArrivalRoutes.list,
         ),
         link(l10n.paymentsTitle, Icons.payments_outlined, PaymentRoutes.list),
-        link(l10n.loansTitle, Icons.request_quote_outlined, LoanRoutes.list),
+        // The count of overdue loans stands in for the sidebar badge until
+        // the app shell has a navigation menu.
+        Badge(
+          key: const ValueKey('loans-badge'),
+          isLabelVisible: overdue > 0,
+          label: Text('$overdue'),
+          child: link(
+            l10n.loansTitle,
+            Icons.request_quote_outlined,
+            LoanRoutes.list,
+          ),
+        ),
         link(
           l10n.khataDayBookTitle,
           Icons.menu_book_outlined,

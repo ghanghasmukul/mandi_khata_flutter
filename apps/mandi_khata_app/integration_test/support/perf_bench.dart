@@ -1,9 +1,13 @@
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/features/crops/data/crops_repository.dart';
+import 'package:mandi_khata_app/features/dashboard/data/alerts_repository.dart';
 import 'package:mandi_khata_app/features/dashboard/data/dashboard_repository.dart';
+import 'package:mandi_khata_app/features/interest/data/interest_posting_repository.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/khata/domain/day_book.dart';
+import 'package:mandi_khata_app/features/loans/data/loans_repository.dart';
 import 'package:mandi_khata_app/features/parties/data/parties_repository.dart';
+import 'package:mandi_khata_app/features/payments/data/payments_repository.dart';
 import 'package:mandi_khata_app/features/reports/data/reports_repository.dart';
 import 'package:powersync/powersync.dart';
 
@@ -228,6 +232,12 @@ Future<List<Timing>> runBench(PowerSyncDatabase db, String tenant) async {
   final ledger = LedgerRepository(db);
   final reports = ReportsRepository(db);
   final dashboard = DashboardRepository(db);
+  final posting = InterestPostingRepository(db);
+  final alerts = AlertsRepository(
+    db,
+    LoansRepository(db, PaymentsRepository(db)),
+    posting,
+  );
   final today = LedgerDate(2026, 3, 15);
   final fyStart = LedgerDate(2025, 4, 1);
   const none = LedgerFilter();
@@ -328,6 +338,23 @@ Future<List<Timing>> runBench(PowerSyncDatabase db, String tenant) async {
       'Dashboard: needs you today',
       listBudget,
       () => dashboard.watchAttention(tenant, today).first,
+    ),
+    await _time(
+      'Alerts: loans',
+      listBudget,
+      () => alerts.watchLoans(tenant, today).first,
+    ),
+    await _time(
+      'Alerts: credit limit',
+      listBudget,
+      () => alerts.watchCredit(tenant).first,
+    ),
+    // The engine runs for every account: a report-sized budget.
+    await _time(
+      'Alerts: interest not posted',
+      reportBudget,
+      () => alerts.watchUnposted(tenant, today).first,
+      runs: 3,
     ),
     await _time(
       'Report: outstanding + ageing',

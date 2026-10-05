@@ -198,3 +198,12 @@
 - No automatic scheduled posting in v1 (see the domain doc): `interest.post_frequency` proposes the day on the bulk screen.
 - Hindi / Punjabi strings for posting and hisaab were written without a native review.
 - Not run: two-device conflict test for postings against the local stack (the repository test checks deterministic ids; the server keeps the first row on `on conflict (id) do nothing`).
+
+## 2026-10-05: Step 2.5 reports & alerts
+- Rules are in docs/domain/interest-engine.md, "Reports and alerts (step 2.5)". No migration.
+- New setting `business.credit_limit` (paise, 0 = none) under the `business` group but, unlike the other `business.*` keys, allowed per party / group: the spec's "party setting credit_limit". The settings screen's party scope now has a `business` group with this one key. It only raises an alert; the khata and payments never block on it.
+- "Interest not posted for the last quarter" runs the posting engine for every account (about 0.7 s for 5,000 parties / 50,000 entries on the Mac, budget 2 s) and refreshes at most every 2 s; it is only computed for members with `loans.manage`. The alert always looks at the last quarter boundary, whatever `interest.post_frequency` says.
+- "Sidebar badge on Loans" is a badge on the Loans link of the dashboard: the app has no sidebar / navigation menu yet (the dashboard links stand in for it). Move the badge when the shell gets one.
+- The interest-earned report shows posted and waived for the chosen period but "accrued, not yet posted" as of today, not as of the period end: past interest not yet posted is not reconstructed for old dates. Said so on the report.
+- Not done: a per-party "over the credit limit" marker on the party screen and a block on new udhaar (the spec asks for an alert only).
+- Hindi / Punjabi strings for the new reports and alerts were written without a native review.

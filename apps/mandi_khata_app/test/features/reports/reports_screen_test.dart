@@ -17,6 +17,8 @@ Future<void> pump(
   MemberRole role = MemberRole.owner,
   ReportKind kind = ReportKind.outstanding,
   List<OutstandingRow> outstanding = const [],
+  List<KarzaRow> karza = const [],
+  List<InterestEarnedRow> interest = const [],
 }) async {
   tester.view.physicalSize = const Size(1400, 1600);
   tester.view.devicePixelRatio = 1;
@@ -25,6 +27,8 @@ Future<void> pump(
     ProviderScope(
       overrides: [
         outstandingReportProvider.overrideWith((ref, args) => outstanding),
+        karzaReportProvider.overrideWith((ref, args) => karza),
+        interestEarnedReportProvider.overrideWith((ref, args) => interest),
         commissionReportProvider.overrideWith((ref, filter) => const []),
         cropListProvider.overrideWith(
           (ref, includeInactive) => Stream.value(const []),
@@ -124,5 +128,70 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('report-kind-commission')));
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('report-asof')), findsNothing);
+  });
+
+  testWidgets('the karza register lists loans with overdue age', (
+    tester,
+  ) async {
+    await pump(
+      tester,
+      kind: ReportKind.karza,
+      karza: [
+        KarzaRow(
+          loanNo: 'KZ-W1-0001',
+          partyName: 'Gurmeet',
+          issued: LedgerDate(2026, 4, 10),
+          due: LedgerDate(2026, 9, 1),
+          principal: const Money.rupees(100000),
+          repaid: const Money.rupees(40000),
+          outstanding: const Money.rupees(60000),
+          accrued: const Money(123400),
+          interestRecovered: Money.zero,
+          health: LoanHealth.overdue,
+          daysOverdue: 95,
+        ),
+      ],
+    );
+    expect(find.text('KZ-W1-0001'), findsOneWidget);
+    expect(find.text('91–180 days'), findsOneWidget);
+    expect(find.text('1 overdue'), findsOneWidget);
+    expect(find.byKey(const ValueKey('report-asof')), findsOneWidget);
+    expect(
+      tester
+          .widget<MkButton>(find.byKey(const ValueKey('report-pdf')))
+          .onPressed,
+      isNotNull,
+    );
+  });
+
+  testWidgets('interest earned shows posted and accrued; closed to a munshi', (
+    tester,
+  ) async {
+    await pump(
+      tester,
+      kind: ReportKind.interestEarned,
+      interest: const [
+        InterestEarnedRow(
+          partyId: 'a',
+          name: 'Gurmeet',
+          posted: Money(100000),
+          waived: Money.zero,
+          unposted: Money(25000),
+        ),
+      ],
+    );
+    expect(find.text('Gurmeet'), findsOneWidget);
+    expect(find.text('₹1,250'), findsWidgets);
+    expect(
+      find.textContaining('Posted and waived are for the period'),
+      findsOneWidget,
+    );
+
+    await pump(
+      tester,
+      role: MemberRole.munshi,
+      kind: ReportKind.interestEarned,
+    );
+    expect(find.text('This report needs finance access'), findsOneWidget);
   });
 }

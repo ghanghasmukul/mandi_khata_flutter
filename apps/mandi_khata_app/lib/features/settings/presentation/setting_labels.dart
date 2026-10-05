@@ -38,6 +38,7 @@ extension SettingLabels on AppLocalizations {
     'business.fy_start_month' => settingBusinessFyStartMonth,
     'business.backdate_days' => settingBusinessBackdateDays,
     'business.munshi_payment_limit' => settingBusinessMunshiPaymentLimit,
+    'business.credit_limit' => settingBusinessCreditLimit,
     'business.number_series' => settingBusinessNumberSeries,
     'app.modules' => settingAppModules,
     'app.languages' => settingAppLanguages,

@@ -1,5 +1,6 @@
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_providers.dart';
+import 'package:mandi_khata_app/features/loans/presentation/loans_providers.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_providers.dart';
 import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
@@ -270,6 +271,113 @@ abstract final class ReportTables {
           ],
       ],
       totals: [l10n.reportTotal, null, null, opening, udhaar, jama, closing],
+    );
+  }
+
+  static String? _overdueAge(AppLocalizations l10n, int? days) =>
+      days == null ? null : ageingName(l10n, AgeingBucket.forDays(days));
+
+  /// The karza register: one line per loan with what is left to recover.
+  static ReportTable karza(AppLocalizations l10n, List<KarzaRow> rows) {
+    var principal = Money.zero;
+    var repaid = Money.zero;
+    var outstanding = Money.zero;
+    var accrued = Money.zero;
+    var recovered = Money.zero;
+    for (final r in rows) {
+      principal += r.principal;
+      repaid += r.repaid;
+      outstanding += r.outstanding;
+      accrued += r.accrued;
+      recovered += r.interestRecovered;
+    }
+    return ReportTable(
+      columns: [
+        _text(l10n.reportColLoan),
+        _text(l10n.reportColParty),
+        _date(l10n.reportColIssued),
+        _date(l10n.reportColDue),
+        _money(l10n.reportColPrincipal),
+        _money(l10n.reportColRepaid),
+        _money(l10n.reportColOutstanding),
+        _money(l10n.reportColInterestAccrued),
+        _money(l10n.reportColInterestRecovered),
+        _number(l10n.reportColDaysOverdue),
+        _text(l10n.reportColOverdueAge),
+        _text(l10n.reportColStatus),
+      ],
+      rows: [
+        for (final r in rows)
+          [
+            r.loanNo,
+            [
+              r.partyName,
+              if (r.partyCode != null) '(${r.partyCode})',
+            ].join(' '),
+            r.issued,
+            r.due,
+            r.principal,
+            r.repaid,
+            r.outstanding,
+            r.accrued,
+            r.interestRecovered,
+            r.daysOverdue,
+            _overdueAge(l10n, r.daysOverdue),
+            l10n.loanHealthName(r.health),
+          ],
+      ],
+      totals: [
+        l10n.reportTotal,
+        null,
+        null,
+        null,
+        principal,
+        repaid,
+        outstanding,
+        accrued,
+        recovered,
+        null,
+        null,
+        null,
+      ],
+    );
+  }
+
+  /// Interest per party: posted and waived in the period, accrued and not
+  /// yet posted, and what was earned in all.
+  static ReportTable interestEarned(
+    AppLocalizations l10n,
+    List<InterestEarnedRow> rows,
+  ) {
+    var posted = Money.zero;
+    var waived = Money.zero;
+    var unposted = Money.zero;
+    for (final r in rows) {
+      posted += r.posted;
+      waived += r.waived;
+      unposted += r.unposted;
+    }
+    return ReportTable(
+      columns: [
+        _text(l10n.reportColCode),
+        _text(l10n.reportColParty),
+        _money(l10n.reportColPosted),
+        _money(l10n.reportColWaived),
+        _money(l10n.reportColUnposted),
+        _money(l10n.reportColEarned),
+      ],
+      rows: [
+        for (final r in rows)
+          [r.code, r.name, r.posted, r.waived, r.unposted, r.earned],
+      ],
+      totals: [
+        l10n.reportTotal,
+        null,
+        posted,
+        waived,
+        unposted,
+        posted + unposted,
+      ],
     );
   }
 }

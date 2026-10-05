@@ -1,7 +1,15 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:khata_core/khata_core.dart';
 
-enum ReportKind { outstanding, arrivals, commission, payments, statements }
+enum ReportKind {
+  outstanding,
+  arrivals,
+  commission,
+  payments,
+  statements,
+  karza,
+  interestEarned,
+}
 
 /// Which side of the khata the outstanding report lists.
 enum OutstandingSide { all, payable, receivable }
@@ -149,6 +157,68 @@ class PartyStatement {
   final String? village;
   final String? mobile;
   final Statement statement;
+}
+
+/// One loan of the karza register with its figures on the report day.
+@immutable
+class KarzaRow {
+  const KarzaRow({
+    required this.loanNo,
+    required this.partyName,
+    required this.issued,
+    required this.principal,
+    required this.repaid,
+    required this.outstanding,
+    required this.accrued,
+    required this.interestRecovered,
+    required this.health,
+    this.partyCode,
+    this.due,
+    this.daysOverdue,
+  });
+
+  final String loanNo;
+  final String partyName;
+  final String? partyCode;
+  final LedgerDate issued;
+  final LedgerDate? due;
+
+  /// Principal issued, principal repaid and principal still outstanding.
+  final Money principal;
+  final Money repaid;
+  final Money outstanding;
+
+  /// Interest accrued and not yet paid, and interest already recovered.
+  final Money accrued;
+  final Money interestRecovered;
+  final LoanHealth health;
+
+  /// Days past the due date; null unless the loan is open and overdue.
+  final int? daysOverdue;
+}
+
+/// One party's interest in a period: posted and waived in it, and what has
+/// accrued and is still not posted (as of the report day).
+@immutable
+class InterestEarnedRow {
+  const InterestEarnedRow({
+    required this.partyId,
+    required this.name,
+    required this.posted,
+    required this.waived,
+    required this.unposted,
+    this.code,
+  });
+
+  final String partyId;
+  final String name;
+  final String? code;
+  final Money posted;
+  final Money waived;
+  final Money unposted;
+
+  /// Posted plus accrued: what the business earned from this party.
+  Money get earned => posted + unposted;
 }
 
 /// The filters the report screen offers; each report uses the ones that

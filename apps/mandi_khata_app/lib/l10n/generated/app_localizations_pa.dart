@@ -3854,4 +3854,120 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get slipSignOwner => 'ਅਧਿਕਾਰਤ ਦਸਤਖ਼ਤ';
+
+  @override
+  String get settingBusinessCreditLimit =>
+      'ਹਰ ਪਾਰਟੀ ਦੀ ਉਧਾਰ ਹੱਦ (₹, 0 = ਕੋਈ ਨਹੀਂ)';
+
+  @override
+  String get reportKarza => 'ਕਰਜ਼ਾ ਰਜਿਸਟਰ';
+
+  @override
+  String get reportInterestEarned => 'ਕਮਾਇਆ ਵਿਆਜ';
+
+  @override
+  String get reportColLoan => 'ਕਰਜ਼ਾ';
+
+  @override
+  String get reportColIssued => 'ਦਿੱਤਾ';
+
+  @override
+  String get reportColDue => 'ਦੇਣ ਦੀ ਤਾਰੀਖ਼';
+
+  @override
+  String get reportColPrincipal => 'ਮੂਲ';
+
+  @override
+  String get reportColRepaid => 'ਮੋੜਿਆ';
+
+  @override
+  String get reportColOutstanding => 'ਬਾਕੀ';
+
+  @override
+  String get reportColInterestAccrued => 'ਲੱਗਿਆ ਵਿਆਜ';
+
+  @override
+  String get reportColInterestRecovered => 'ਵਸੂਲਿਆ ਵਿਆਜ';
+
+  @override
+  String get reportColDaysOverdue => 'ਦੇਰੀ ਦੇ ਦਿਨ';
+
+  @override
+  String get reportColOverdueAge => 'ਦੇਰੀ ਦੀ ਉਮਰ';
+
+  @override
+  String get reportColPosted => 'ਖਾਤੇ ਵਿੱਚ ਚੜ੍ਹਿਆ';
+
+  @override
+  String get reportColWaived => 'ਛੋਟ ਦਿੱਤੀ';
+
+  @override
+  String get reportColUnposted => 'ਲੱਗਿਆ, ਚੜ੍ਹਿਆ ਨਹੀਂ';
+
+  @override
+  String get reportColEarned => 'ਕਮਾਈ (ਚੜ੍ਹਿਆ + ਲੱਗਿਆ)';
+
+  @override
+  String get reportInterestHelp =>
+      'ਚੜ੍ਹਿਆ ਤੇ ਛੋਟ ਮਿਆਦ ਦੇ ਹਨ। ਲੱਗਿਆ, ਚੜ੍ਹਿਆ ਨਹੀਂ, ਅੱਜ ਤੱਕ ਦਾ ਹੈ।';
+
+  @override
+  String reportKarzaOverdueCount(int count) {
+    return '$count ਦੇਰੀ ਵਿੱਚ';
+  }
+
+  @override
+  String dashNeedsLoansOverdue(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ਕਰਜ਼ਿਆਂ ਦੀ ਤਾਰੀਖ਼ ਲੰਘ ਗਈ',
+      one: '1 ਕਰਜ਼ੇ ਦੀ ਤਾਰੀਖ਼ ਲੰਘ ਗਈ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String dashNeedsLoansDueSoon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ਕਰਜ਼ੇ 7 ਦਿਨਾਂ ਵਿੱਚ ਦੇਣੇ',
+      one: '1 ਕਰਜ਼ਾ 7 ਦਿਨਾਂ ਵਿੱਚ ਦੇਣਾ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String dashNeedsOverLimit(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ਪਾਰਟੀਆਂ ਉਧਾਰ ਹੱਦ ਤੋਂ ਉੱਪਰ',
+      one: '1 ਪਾਰਟੀ ਉਧਾਰ ਹੱਦ ਤੋਂ ਉੱਪਰ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String dashNeedsInterestUnposted(int count, String amount) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ਖਾਤੇ',
+      one: '1 ਖਾਤਾ',
+    );
+    return 'ਪਿਛਲੀ ਤਿਮਾਹੀ ਦਾ ਵਿਆਜ ਚੜ੍ਹਿਆ ਨਹੀਂ: $_temp0, $amount';
+  }
+
+  @override
+  String get byajPrintStatement => 'ਵਿਆਜ ਦਾ ਹਿਸਾਬ ਛਾਪੋ';
+
+  @override
+  String get byajStatementTitle => 'ਵਿਆਜ ਦਾ ਹਿਸਾਬ';
+
+  @override
+  String byajStatementTerms(String rate, String method) {
+    return '$rate% ਸਾਲਾਨਾ, $method';
+  }
 }
