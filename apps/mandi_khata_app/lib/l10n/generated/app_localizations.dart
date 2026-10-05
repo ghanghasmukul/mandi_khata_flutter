@@ -5851,7 +5851,7 @@ abstract class AppLocalizations {
   /// Loans (karza), step 2.2.
   ///
   /// In en, this message translates to:
-  /// **'Your business charges interest on the whole khata. This loan keeps its own interest account, so do not charge the same money again on the khata.'**
+  /// **'Your business charges interest on the whole khata. This loan keeps its own interest on the terms below; the khata byaj leaves the loan out, so the same money is never charged twice.'**
   String get loanNoticeNetUdhaar;
 
   /// Loans (karza), step 2.2.
@@ -6451,7 +6451,7 @@ abstract class AppLocalizations {
   /// Khata-level interest, step 2.3.
   ///
   /// In en, this message translates to:
-  /// **'Byaj runs on the whole khata, loans included. A loan of this party does not charge byaj a second time.'**
+  /// **'Byaj runs on the whole khata except loans. Each loan of this party has its own byaj on its own terms, so the same money is never charged twice.'**
   String get byajKhataNote;
 
   /// Khata-level interest, step 2.3.

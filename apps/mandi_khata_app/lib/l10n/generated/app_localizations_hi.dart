@@ -3208,7 +3208,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get loanNoticeNetUdhaar =>
-      'आपका कारोबार पूरे खाते पर ब्याज लगाता है। यह कर्ज़ अपना अलग ब्याज खाता रखता है, इसलिए इसी रकम पर खाते में दोबारा ब्याज न लगाएँ।';
+      'आपका कारोबार पूरे खाते पर ब्याज लगाता है। यह कर्ज़ नीचे की अपनी शर्तों पर अलग ब्याज रखता है; खाते का ब्याज इस कर्ज़ को छोड़ देता है, इसलिए एक ही रकम पर दो बार ब्याज नहीं लगता।';
 
   @override
   String get loanSaveIssue => 'कर्ज़ दें';
@@ -3550,7 +3550,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get byajKhataNote =>
-      'ब्याज पूरे खाते पर चलता है, कर्ज़ समेत। इस पार्टी का कर्ज़ दूसरी बार ब्याज नहीं लगाता।';
+      'ब्याज कर्ज़ों को छोड़कर पूरे खाते पर चलता है। इस पार्टी के हर कर्ज़ का अपनी शर्तों पर अलग ब्याज है, इसलिए एक ही रकम पर दो बार ब्याज नहीं लगता।';
 
   @override
   String get byajLoanCoveredNote =>

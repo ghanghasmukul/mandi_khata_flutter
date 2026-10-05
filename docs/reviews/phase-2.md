@@ -79,3 +79,13 @@ Options (a money-logic choice, not made by the reviewer or by Claude):
 
 - `supabase db push` to apply `create_interest_postings` to dev, then re-run the advisors.
 - Deploy `powersync/sync-streams.yaml` (`loans`, `loan_rate_changes`, `interest_postings` and the earlier streams) in PowerSync.
+
+## Emulator check (Pixel 10, Android 17, dev project), 2026-10-05
+
+Done offline (airplane mode), then back online:
+- Farmer with Rs 1,00,000 udhaar; loan of Rs 50,000 issued at the business default (18%); business default then raised to 30%: the loan still shows 18% a year, the farmer's khata byaj shows 30% on principal Rs 1,00,000 (the loan's Rs 50,000 is left out; khata total Rs 1.50 L). Criterion 2 confirmed on a device.
+- Byaj tab as of 5 Dec 2026 (61 days): Rs 5,014 against a hand figure of Rs 5,013.70 (rounded to the rupee).
+- Reconnecting uploaded everything through the new server guards (queue emptied, loan with `loans_only` snapshot and its disbursal entry in Postgres, rate restored to 18%).
+- Found and fixed two stale notes ("loans included" on the Byaj tab, "do not charge the khata again" on the issue-loan form).
+- Not done on the device: posting interest (a future as-of date cannot be posted; covered by tests) and the deployed-PowerSync round trip. While the dev PowerSync instance lacks the ledger / loans streams, entries and loans vanish from the screen online; they only stay visible offline.
+- Test data left in the dev "QA Step 1.8 Co." business: farmer P-A4-0002 with two (duplicate) Rs 1,00,000 udhaar entries uploaded plus a third, and loan KZ-A4-0002.

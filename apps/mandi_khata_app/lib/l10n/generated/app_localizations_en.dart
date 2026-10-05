@@ -3243,7 +3243,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loanNoticeNetUdhaar =>
-      'Your business charges interest on the whole khata. This loan keeps its own interest account, so do not charge the same money again on the khata.';
+      'Your business charges interest on the whole khata. This loan keeps its own interest on the terms below; the khata byaj leaves the loan out, so the same money is never charged twice.';
 
   @override
   String get loanSaveIssue => 'Issue loan';
@@ -3585,7 +3585,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get byajKhataNote =>
-      'Byaj runs on the whole khata, loans included. A loan of this party does not charge byaj a second time.';
+      'Byaj runs on the whole khata except loans. Each loan of this party has its own byaj on its own terms, so the same money is never charged twice.';
 
   @override
   String get byajLoanCoveredNote =>
