@@ -87,6 +87,14 @@ abstract final class InterestPosting {
     return rest > 0 ? rest : 0;
   }
 
+  /// Interest posted beyond what the engine charges (never negative): a
+  /// repayment or entry was reversed after the interest was posted. The
+  /// khata then shows too much udhaar until the extra entry is reversed.
+  static int overPosted(InterestResult result, {required int postedPaise}) {
+    final extra = postedPaise - charged(result);
+    return extra > 0 ? extra : 0;
+  }
+
   static String periodKey({
     required PostingScope scope,
     required String accountId,

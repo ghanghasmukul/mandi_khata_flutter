@@ -3574,6 +3574,14 @@ class AppLocalizationsPa extends AppLocalizations {
   String get byajCreditBalance => 'ਪਾਰਟੀ ਦੀ ਜਮ੍ਹਾ ਰਕਮ ਜੋ ਸਾਡੇ ਕੋਲ ਹੈ';
 
   @override
+  String get byajOverPosted =>
+      'ਚਾੜ੍ਹਿਆ ਵਿਆਜ ਲੱਗੇ ਵਿਆਜ ਤੋਂ ਵੱਧ ਹੈ: ਵਾਧੂ ਵਿਆਜ ਦੀ ਐਂਟਰੀ ਉਲਟਾਓ';
+
+  @override
+  String get byajPayableToParty =>
+      'ਪਾਰਟੀ ਦੀ ਜਮ੍ਹਾ ਉੱਤੇ ਸਾਡੇ ਵੱਲ ਦੇਣਯੋਗ ਵਿਆਜ (ਚਾੜ੍ਹਿਆ ਨਹੀਂ ਗਿਆ: ਜਰਨਲ ਐਂਟਰੀ ਨਾਲ ਨਿਪਟਾਓ)';
+
+  @override
   String get byajRowDebit => 'ਉਧਾਰ ਦੀ ਐਂਟਰੀ';
 
   @override

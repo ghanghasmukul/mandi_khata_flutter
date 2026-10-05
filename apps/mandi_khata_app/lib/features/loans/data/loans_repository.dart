@@ -449,7 +449,7 @@ class LoansRepository {
             refType: RefType.loanRepayment,
             refId: loan.id,
             entryDate: draft.date,
-            narration: '${loan.loanNo} · ${note ?? 'crop proceeds'}',
+            narration: note == null ? loan.loanNo : '${loan.loanNo} · $note',
           ),
           now: when,
         );
@@ -463,7 +463,7 @@ class LoansRepository {
             refType: RefType.journal,
             refId: loan.id,
             entryDate: draft.date,
-            narration: '${loan.loanNo} · adjusted against crop proceeds',
+            narration: loan.loanNo,
           ),
           now: when,
         );

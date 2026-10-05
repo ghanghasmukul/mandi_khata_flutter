@@ -434,9 +434,8 @@ class InterestPostingRepository {
         refType: RefType.interest,
         refId: postingId,
         entryDate: plan.entryDate,
-        narration:
-            'Interest ${plan.from} to ${plan.to} '
-            '@ ${plan.ratePa}% p.a.',
+        // Language-neutral: the entry type says it is interest.
+        narration: '${plan.from} – ${plan.to} · ${plan.ratePa}%',
       ),
       now: now,
       id: entryIdFor(tenantId, plan.periodKey),
@@ -497,7 +496,7 @@ class InterestPostingRepository {
         refType: RefType.journal,
         refId: id,
         entryDate: on,
-        narration: 'Interest waived · $reason',
+        narration: reason,
       ),
       now: now,
     );

@@ -378,6 +378,29 @@ class _Figures extends StatelessWidget {
               ),
             ),
           ],
+          if (interestOn &&
+              InterestPosting.overPosted(result, postedPaise: postedPaise) > 0)
+            loanFact(
+              context,
+              l10n.byajOverPosted,
+              MkMoneyText(
+                Money(
+                  InterestPosting.overPosted(result, postedPaise: postedPaise),
+                ),
+                tone: MkMoneyTone.udhaar,
+                key: const ValueKey('byaj-overposted'),
+              ),
+            ),
+          if (result.interestPayableToPartyPaise > 0)
+            loanFact(
+              context,
+              l10n.byajPayableToParty,
+              MkMoneyText(
+                Money(result.interestPayableToPartyPaise),
+                tone: MkMoneyTone.jama,
+                key: const ValueKey('byaj-payable-to-party'),
+              ),
+            ),
           if (result.creditBalancePaise > 0)
             loanFact(
               context,

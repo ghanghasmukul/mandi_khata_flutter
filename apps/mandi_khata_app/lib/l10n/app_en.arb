@@ -4807,6 +4807,14 @@
   "@byajCreditBalance": {
     "description": "Khata-level interest, step 2.3."
   },
+  "byajOverPosted": "Posted more than charged: reverse the extra interest entry",
+  "@byajOverPosted": {
+    "description": "Phase 2 review."
+  },
+  "byajPayableToParty": "Interest we owe the party on their credit (not posted: settle it with a journal entry)",
+  "@byajPayableToParty": {
+    "description": "Phase 2 review."
+  },
   "byajRowDebit": "Udhaar entry",
   "@byajRowDebit": {
     "description": "Khata-level interest, step 2.3."

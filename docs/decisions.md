@@ -224,3 +224,10 @@
 - A deferred constraint trigger needs every posting and its entry in ONE transaction; `apply_crud_transaction` does that. A client that uploads a posting alone would be rejected.
 - Both Phase 2 migrations pushed to dev 2026-10-05. Advisors after the push: nothing new except 4 unused-index infos on the empty `interest_postings` table (accepted, re-check after the pilot).
 - Finding 4 needed no code change: since option A the khata and each loan are separate accounts with their own posted totals, so switching `interest.apply_on` moves no money between them. Test added.
+
+## 2026-10-05: Phase 2 review, findings 7-11
+- 7: the reviewer said the pay_on_jama payable was shown on screen; it was only computed. Now shown on the Byaj tab as "not posted" and left to a manual journal entry (domain doc). Auto-posting it is a later decision.
+- 8: `InterestPosting.overPosted` plus a warning row on the Byaj tab. Not added to the loan screen.
+- 9: narrations of posting, waiver and crop-proceeds lines no longer contain English words (period and rate, the owner's reason, the loan number). Entries already written keep their old text.
+- 10: accepted. Every member receives `interest_postings` (period, rate, amount) because the matching khata entries already sync to everyone and the Byaj tab needs the postings; the interest-earned report stays behind `finance.view` in the app. A hard rule would need a separate finance-only table.
+- 11: pgTAP 15 (munshi with loans.manage: posts inside the back-date window, cannot waive, cannot date an entry outside the window); app tests for the overposted and pay_on_jama rows, narrations, closing with unposted interest, two devices (server overlap, pgTAP 14). Not added: a server rule against posting to a closed loan, because the app never offers it and a posting dated before the close is legitimate. The sync-streams file is already checked by `schema_consistency_test`.

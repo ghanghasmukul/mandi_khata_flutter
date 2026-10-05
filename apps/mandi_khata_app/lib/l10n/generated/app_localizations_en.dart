@@ -3606,6 +3606,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get byajCreditBalance => 'Credit we hold for the party';
 
   @override
+  String get byajOverPosted =>
+      'Posted more than charged: reverse the extra interest entry';
+
+  @override
+  String get byajPayableToParty =>
+      'Interest we owe the party on their credit (not posted: settle it with a journal entry)';
+
+  @override
   String get byajRowDebit => 'Udhaar entry';
 
   @override

@@ -25,6 +25,14 @@ void main() {
       expect(InterestPosting.unposted(r, postedPaise: 493151), 641096 - 493151);
     });
 
+    test('posted beyond what is charged is surfaced, never negative', () {
+      final r = run([debit], '2027-04-11');
+      expect(InterestPosting.overPosted(r, postedPaise: 493151), 0);
+      expect(InterestPosting.overPosted(r, postedPaise: 493151 + 700), 700);
+      // The clamp in unposted hides it; overPosted does not.
+      expect(InterestPosting.unposted(r, postedPaise: 493151 + 700), 0);
+    });
+
     test('a repayment of interest does not make it unposted again', () {
       // 4,931.51 posted on 11 Apr, then the party pays 10,000 (interest
       // first): the charged total is unchanged, so nothing new to post.

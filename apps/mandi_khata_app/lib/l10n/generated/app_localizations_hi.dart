@@ -3571,6 +3571,14 @@ class AppLocalizationsHi extends AppLocalizations {
   String get byajCreditBalance => 'पार्टी की जमा रकम जो हमारे पास है';
 
   @override
+  String get byajOverPosted =>
+      'चढ़ाया गया ब्याज लगे ब्याज से ज़्यादा है: ज़्यादा वाली ब्याज की एंट्री उलटें';
+
+  @override
+  String get byajPayableToParty =>
+      'पार्टी की जमा पर हमारी ओर से देय ब्याज (चढ़ाया नहीं गया: जर्नल एंट्री से निपटाएँ)';
+
+  @override
   String get byajRowDebit => 'उधार की एंट्री';
 
   @override

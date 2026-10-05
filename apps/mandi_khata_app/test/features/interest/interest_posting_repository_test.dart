@@ -396,7 +396,7 @@ void main() {
       )).firstWhere((e) => e['ref_id'] == waiver['id']);
       expect(entry['ref_type'], 'journal');
       expect(entry['side'], 'jama');
-      expect(entry['narration'], 'Interest waived · Diwali');
+      expect(entry['narration'], 'Diwali');
 
       // 1,00,000 + 4,931.51 - 931.51 = 1,04,000.
       expect(await balance(farmer), const Money.rupees(-104000));

@@ -6484,6 +6484,18 @@ abstract class AppLocalizations {
   /// **'Credit we hold for the party'**
   String get byajCreditBalance;
 
+  /// Phase 2 review.
+  ///
+  /// In en, this message translates to:
+  /// **'Posted more than charged: reverse the extra interest entry'**
+  String get byajOverPosted;
+
+  /// Phase 2 review.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest we owe the party on their credit (not posted: settle it with a journal entry)'**
+  String get byajPayableToParty;
+
   /// Khata-level interest, step 2.3.
   ///
   /// In en, this message translates to:

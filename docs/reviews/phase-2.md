@@ -2,9 +2,9 @@
 
 Date: 2026-10-05 · Reviewed range: `967310c..HEAD` (steps 2.1 to 2.6), reviewed by an independent subagent that did not write the code (it read the code and test names, it did not run tests), plus a full `/verify` run by the main session.
 
-**Update 2026-10-05 (later): finding 1 (option A) and findings 2, 3, 5, 6 are fixed; khata_core 511, app 642, pgTAP 323 pass. Finding 4 is resolved by option A (test added). Findings 7-11 are open.**
+**Update 2026-10-05 (later): finding 1 (option A) and findings 2, 3, 5, 6 are fixed; khata_core 511, app 642, pgTAP 323 pass. All findings 1-11 are fixed, resolved or accepted; only the manual checks and the PowerSync deploy remain.**
 
-**Verdict: code-complete, NOT closed.** One HIGH finding is a conflict between exit criterion 2 and the documented design; it needs an owner decision on money logic and was deliberately not "fixed" by guessing (see Open decision). Exit criteria are not ticked.
+**Verdict: code-complete, not closed.** Every finding is fixed, resolved or accepted. Exit criterion 1 (10+ real accounts) is a manual check, so the phase stays open until it is done; criteria 2 to 4 are proven by tests.
 
 ## Exit criteria
 
@@ -52,11 +52,11 @@ Severity as given by the reviewer; the main session re-read the code behind find
 | 4 | MEDIUM (plausible) | `interest_posting_models.dart` `PostedSummary.of` | Posted interest is counted per loan or per khata only; switching `apply_on` after postings exist can charge the same period again | Resolved by option A (khata and loans are separate accounts, so a mode switch moves no money between them); proven by test "switching the interest mode after postings never charges a period again" |
 | 5 | MEDIUM | `interest_posting_repository.dart` `post` | `post()` writes the previewed amount without recomputing inside the transaction (`settle()` does). A synced repayment between preview and Post makes the posted amount differ from the engine figure | Fixed: `post()` recomputes in the transaction; test "a preview that went stale is not posted" |
 | 6 | MEDIUM | `guard_ledger_entry` (interest / waiver) | Server does not check one entry per posting, entry date = `period_to - 1`, a waiver posting having its entry, or waivers capped at interest charged. No pgTAP for these | Fixed in SQL: unique interest entry, entry dates, one waiver entry, waiver cap, posting needs entry; pgTAP 14 |
-| 7 | LOW-MEDIUM | `interest_posting.dart` | With `pay_on_jama` the payable-to-party figure is shown but never posted or included in `Settlement` | Open, needs a decision in decisions.md |
-| 8 | LOW | `interest_posting.dart` `unposted` clamped at 0 | Interest over-posted after a repayment is reversed is never surfaced | Open |
-| 9 | LOW | posting / loan narrations | English narration text stored in ledger entries (i18n rule) | Open |
-| 10 | LOW | `interest_postings` select policy + sync stream | Every member receives all postings; the interest-earned report permission is UI-only (`finance.view`) | Accept and record, or gate |
-| 11 | LOW | tests | Missing: pgTAP for duplicate entry per posting, waiver without `entries.reverse`, backdate window, closed-loan posting; repository tests for two devices posting different `to` dates, a mode switch with prior postings, closing with unposted interest | Open |
+| 7 | LOW-MEDIUM | `interest_posting.dart` | With `pay_on_jama` the payable-to-party figure is shown but never posted or included in `Settlement` | Fixed (shown, labelled not posted; manual journal; domain doc) |
+| 8 | LOW | `interest_posting.dart` `unposted` clamped at 0 | Interest over-posted after a repayment is reversed is never surfaced | Fixed: `overPosted` + Byaj tab row; core and widget tests |
+| 9 | LOW | posting / loan narrations | English narration text stored in ledger entries (i18n rule) | Fixed: language-neutral narrations |
+| 10 | LOW | `interest_postings` select policy + sync stream | Every member receives all postings; the interest-earned report permission is UI-only (`finance.view`) | Accepted and recorded in decisions.md |
+| 11 | LOW | tests | Missing: pgTAP for duplicate entry per posting, waiver without `entries.reverse`, backdate window, closed-loan posting; repository tests for two devices posting different `to` dates, a mode switch with prior postings, closing with unposted interest | Fixed: pgTAP 15, widget and repository tests; closed-loan rule deliberately not added |
 
 ## Decision taken (finding 1): option A chosen by the owner
 

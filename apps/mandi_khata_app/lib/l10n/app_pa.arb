@@ -1063,6 +1063,8 @@
   "byajEditTerms": "ਸ਼ਰਤਾਂ ਬਦਲੋ",
   "byajSourced": "{value} · {source}",
   "byajCreditBalance": "ਪਾਰਟੀ ਦੀ ਜਮ੍ਹਾ ਰਕਮ ਜੋ ਸਾਡੇ ਕੋਲ ਹੈ",
+  "byajOverPosted": "ਚਾੜ੍ਹਿਆ ਵਿਆਜ ਲੱਗੇ ਵਿਆਜ ਤੋਂ ਵੱਧ ਹੈ: ਵਾਧੂ ਵਿਆਜ ਦੀ ਐਂਟਰੀ ਉਲਟਾਓ",
+  "byajPayableToParty": "ਪਾਰਟੀ ਦੀ ਜਮ੍ਹਾ ਉੱਤੇ ਸਾਡੇ ਵੱਲ ਦੇਣਯੋਗ ਵਿਆਜ (ਚਾੜ੍ਹਿਆ ਨਹੀਂ ਗਿਆ: ਜਰਨਲ ਐਂਟਰੀ ਨਾਲ ਨਿਪਟਾਓ)",
   "byajRowDebit": "ਉਧਾਰ ਦੀ ਐਂਟਰੀ",
   "byajRowCredit": "ਜਮ੍ਹਾ ਦੀ ਐਂਟਰੀ",
   "byajNoEntries": "ਖਾਤੇ ਵਿੱਚ ਹਾਲੇ ਕੋਈ ਐਂਟਰੀ ਨਹੀਂ",

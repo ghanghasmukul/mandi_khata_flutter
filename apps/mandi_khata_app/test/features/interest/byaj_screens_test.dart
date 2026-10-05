@@ -196,6 +196,56 @@ void main() {
       expect(key('byaj-hisaab'), findsOneWidget);
     });
 
+    testWidgets('posted more than charged is shown, not hidden by the clamp', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        PartyByajTab(party: partyOf()),
+        rows: [tenantRow('interest.rounding', 'paise')],
+        entries: [udhaar(100000, today.addDays(-30))],
+        postings: [
+          PostingRow(
+            id: 'ip1',
+            partyId: 'p1',
+            isWaiver: false,
+            from: today.addDays(-30),
+            to: today,
+            amount: const Money(147945 + 700), // 700 paise too much
+            createdAt: DateTime.utc(2026),
+          ),
+        ],
+      );
+      expect(money(tester, 'byaj-unposted'), Money.zero);
+      expect(money(tester, 'byaj-overposted'), const Money(700));
+    });
+
+    testWidgets('pay_on_jama: interest we owe the party is shown, labelled '
+        'as not posted', (tester) async {
+      final credit = LedgerEntry(
+        id: 'c1',
+        partyId: 'p1',
+        entryDate: today.addDays(-30),
+        side: Side.jama,
+        amount: const Money.rupees(100000),
+        refType: RefType.journal,
+        createdAt: DateTime.utc(2026, 1, 2),
+      );
+      await pump(
+        tester,
+        PartyByajTab(party: partyOf()),
+        rows: [
+          tenantRow('interest.rounding', 'paise'),
+          tenantRow('interest.pay_on_jama', true),
+          tenantRow('interest.pay_rate_pa', '6'),
+        ],
+        entries: [credit],
+      );
+      expect(key('byaj-payable-to-party'), findsOneWidget);
+      expect(money(tester, 'byaj-payable-to-party').paise, greaterThan(0));
+      expect(find.textContaining('not posted'), findsOneWidget);
+    });
+
     testWidgets('a waiver credit is not treated as a repayment', (
       tester,
     ) async {
