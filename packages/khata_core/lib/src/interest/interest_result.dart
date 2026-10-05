@@ -79,6 +79,7 @@ class InterestResult {
     required this.principalRecoveredPaise,
     required this.creditBalancePaise,
     required this.interestPayableToPartyPaise,
+    this.interestWaivedPaise = 0,
   });
 
   static const empty = InterestResult(
@@ -110,6 +111,9 @@ class InterestResult {
   /// Interest earned by the party on their credit (`pay_on_jama`), rounded by
   /// `interest.rounding`. Not part of [totalPayablePaise].
   final int interestPayableToPartyPaise;
+
+  /// Interest written off by waiver credits (`LedgerEvent.interestOnly`).
+  final int interestWaivedPaise;
 
   /// Principal plus accrued unpaid interest: payable if settled "today".
   int get totalPayablePaise => principalPaise + accruedUnpaidPaise;

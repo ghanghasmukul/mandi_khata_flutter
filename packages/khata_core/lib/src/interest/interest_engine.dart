@@ -60,6 +60,7 @@ class _Run {
   Decimal partyInterest = Decimal.zero;
   int credit = 0;
   int interestRecovered = 0;
+  int interestWaived = 0;
   int principalRecovered = 0;
 
   late final Decimal yearDays = Decimal.fromInt(config.dayBasis * 100);
@@ -117,6 +118,7 @@ class _Run {
       principalPaise: principal,
       accruedUnpaidPaise: roundHalfUp(_nonNegative(accrued), unit),
       interestRecoveredPaise: interestRecovered,
+      interestWaivedPaise: interestWaived,
       principalRecoveredPaise: principalRecovered,
       creditBalancePaise: credit,
       interestPayableToPartyPaise: roundHalfUp(
@@ -291,11 +293,15 @@ class _Run {
     );
   }
 
-  int _payInterest(int available) {
+  int _payInterest(int available, {bool waiver = false}) {
     final owed = roundHalfUpPaise(_nonNegative(accrued));
     final paid = available < owed ? available : owed;
     accrued -= Decimal.fromInt(paid);
-    interestRecovered += paid;
+    if (waiver) {
+      interestWaived += paid;
+    } else {
+      interestRecovered += paid;
+    }
     return paid;
   }
 
@@ -317,8 +323,8 @@ class _Run {
     var left = e.amountPaise;
     int payInterest;
     int payPrincipal;
-    if (config.appropriation == Appropriation.interestFirst) {
-      payInterest = _payInterest(left);
+    if (e.interestOnly || config.appropriation == Appropriation.interestFirst) {
+      payInterest = _payInterest(left, waiver: e.interestOnly);
       payPrincipal = _payPrincipal(left - payInterest);
     } else {
       payPrincipal = _payPrincipal(left);

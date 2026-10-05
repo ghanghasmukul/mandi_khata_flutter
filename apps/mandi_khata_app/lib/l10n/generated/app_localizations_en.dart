@@ -3667,4 +3667,227 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get byajBulkFailed =>
       'Some parties could not be saved. Check your permission and try again.';
+
+  @override
+  String get postInterestTitle => 'Post interest';
+
+  @override
+  String get postInterestIntro =>
+      'This adds the interest charged so far to the khata as one udhaar entry. Nothing is posted until you confirm.';
+
+  @override
+  String get postInterestNone => 'No interest to post for today.';
+
+  @override
+  String postInterestConfirm(String amount) {
+    return 'Post $amount';
+  }
+
+  @override
+  String postInterestDone(String amount) {
+    return 'Interest posted: $amount';
+  }
+
+  @override
+  String get postInterestAmount => 'Interest to post';
+
+  @override
+  String get postColParty => 'Party';
+
+  @override
+  String get postColAccount => 'Account';
+
+  @override
+  String get postColPeriod => 'Period';
+
+  @override
+  String get postColTerms => 'Terms';
+
+  @override
+  String get postAccountKhata => 'Whole khata';
+
+  @override
+  String postAccountLoan(String no) {
+    return 'Loan $no';
+  }
+
+  @override
+  String postPeriod(String from, String to) {
+    return '$from to $to';
+  }
+
+  @override
+  String postTerms(String rate, String method) {
+    return '$rate% p.a., $method';
+  }
+
+  @override
+  String get postSkipAlready => 'Already posted up to this day';
+
+  @override
+  String get postSkipNotFound => 'The party or loan was not found';
+
+  @override
+  String get postSkipBackdated =>
+      'This date is too old for your role. Ask the owner.';
+
+  @override
+  String get postNothing => 'Nothing was posted.';
+
+  @override
+  String get postErrorNotPermitted =>
+      'You are not allowed to post interest. Ask the owner.';
+
+  @override
+  String get postErrorFuture => 'Interest cannot be posted for a future date.';
+
+  @override
+  String get postBulkIntro =>
+      'Interest charged up to the chosen day for every party and loan that has some. Untick what you do not want to post. Running it again never posts the same period twice.';
+
+  @override
+  String get postBulkAsOf => 'Interest up to';
+
+  @override
+  String postBulkSuggested(String date) {
+    return 'Suggested: $date';
+  }
+
+  @override
+  String get postBulkNone => 'No interest to post up to this day.';
+
+  @override
+  String postBulkTotal(int count, String amount) {
+    return '$count selected · $amount';
+  }
+
+  @override
+  String postBulkPost(int count) {
+    return 'Post $count';
+  }
+
+  @override
+  String postBulkDone(int count, String amount) {
+    return 'Posted $count entries, $amount.';
+  }
+
+  @override
+  String postBulkSkipped(int count) {
+    return '$count left out (already posted or not allowed).';
+  }
+
+  @override
+  String get byajPosted => 'Interest posted so far';
+
+  @override
+  String get byajUnposted => 'Charged, not yet posted';
+
+  @override
+  String get settleTitle => 'Hisaab karo';
+
+  @override
+  String get settleIntro =>
+      'Settle this party up to a day: the interest is added to the khata, an optional discount is taken off, and the final amount is what the party pays or you pay.';
+
+  @override
+  String get settleAsOf => 'Settle up to';
+
+  @override
+  String get settleCropProceeds => 'Crop proceeds';
+
+  @override
+  String get settlePayments => 'Payments and receipts';
+
+  @override
+  String get settleLoans => 'Loans (given and repaid)';
+
+  @override
+  String get settleInterestPosted => 'Interest already posted';
+
+  @override
+  String get settleKhataBalance => 'Khata balance now';
+
+  @override
+  String get settleNothing => 'No interest is due on this date.';
+
+  @override
+  String get settleReason => 'Reason for the discount';
+
+  @override
+  String get settleWaiver => 'Discount on interest';
+
+  @override
+  String get settleInterestDue => 'Interest to pay';
+
+  @override
+  String get settleReceivable => 'Party pays you';
+
+  @override
+  String get settlePayable => 'You pay the party';
+
+  @override
+  String get settleSettled => 'Settled';
+
+  @override
+  String settleDone(String interest, String waived) {
+    return 'Settled. Interest $interest posted, $waived waived.';
+  }
+
+  @override
+  String get settleNextHint =>
+      'Now record the payment or receipt from the khata.';
+
+  @override
+  String get settlePrint => 'Print slip';
+
+  @override
+  String get settlePost => 'Post interest and settle';
+
+  @override
+  String get settleOpenKhata => 'Back to khata';
+
+  @override
+  String get settleInterestOnKhata => 'Interest on the khata';
+
+  @override
+  String settleInterestOnLoan(String no) {
+    return 'Interest on loan $no';
+  }
+
+  @override
+  String get settleErrorNegative => 'A discount cannot be negative.';
+
+  @override
+  String get settleErrorExceeds =>
+      'The discount is more than the interest charged.';
+
+  @override
+  String get settleErrorReason => 'Write the reason for the discount.';
+
+  @override
+  String get settleErrorUnknown =>
+      'There is no interest to waive on that account.';
+
+  @override
+  String get settleErrorNeedsReverse =>
+      'A discount needs the accountant or owner.';
+
+  @override
+  String get slipTitle => 'Settlement slip (hisaab)';
+
+  @override
+  String slipAsOf(String date) {
+    return 'Settled up to $date';
+  }
+
+  @override
+  String slipReason(String reason) {
+    return 'Reason for discount: $reason';
+  }
+
+  @override
+  String get slipSignParty => 'Party signature';
+
+  @override
+  String get slipSignOwner => 'Authorised signature';
 }

@@ -17,6 +17,7 @@ import 'package:mk_ui/mk_ui.dart';
 abstract final class LoanRoutes {
   static const list = '/loans';
   static String detail(String id) => '/loans/$id';
+  static const post = '/loans/post';
 }
 
 /// Loans (karza) of the business as cards. Ctrl/⌘+N issues one (owner),
@@ -76,6 +77,13 @@ class _LoansScreenState extends ConsumerState<LoansScreen> {
                 title: l10n.loansTitle,
                 actions: [
                   const SyncStatusChip(),
+                  if (canIssue)
+                    IconButton(
+                      key: const ValueKey('loans-post-interest'),
+                      tooltip: l10n.postInterestTitle,
+                      onPressed: () => context.go(LoanRoutes.post),
+                      icon: const Icon(Icons.playlist_add_check),
+                    ),
                   IconButton(
                     tooltip: MaterialLocalizations.of(
                       context,

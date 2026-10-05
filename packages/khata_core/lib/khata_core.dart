@@ -13,6 +13,7 @@ export 'src/interest/interest_config.dart';
 export 'src/interest/interest_engine.dart';
 export 'src/interest/interest_result.dart';
 export 'src/interest/ledger_event.dart';
+export 'src/interest_posting.dart';
 export 'src/khata_core_base.dart';
 export 'src/khata_interest.dart';
 export 'src/ledger.dart';

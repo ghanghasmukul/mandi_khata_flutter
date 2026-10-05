@@ -13,6 +13,7 @@ class LedgerEvent {
     this.createdAt,
     this.note,
     this.isPostedInterest = false,
+    this.interestOnly = false,
   });
 
   final String id;
@@ -32,6 +33,11 @@ class LedgerEvent {
 
   /// An entry with `ref_type = interest`: ignored by the engine (rule 8).
   final bool isPostedInterest;
+
+  /// A waiver (discount on interest): a credit that always pays accrued
+  /// interest first, whatever `interest.appropriation` says, and is reported
+  /// as waived, not recovered.
+  final bool interestOnly;
 }
 
 /// An effective-dated change of the annual rate (loan_rate_changes).

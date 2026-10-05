@@ -369,6 +369,30 @@ class LoanRateChanges extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+/// Interest posted to a khata (`kind = interest`) or waived (`waiver`); the
+/// khata entry points at it. Append-only; `period_key` is unique per tenant.
+class InterestPostings extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get partyId => text()();
+  TextColumn get loanId => text().nullable()();
+  TextColumn get kind => text()();
+  TextColumn get periodFrom => text()();
+  TextColumn get periodTo => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get ratePa => text().nullable()();
+  TextColumn get method => text().nullable()();
+  TextColumn get reason => text().nullable()();
+  TextColumn get periodKey => text()();
+  TextColumn get batchId => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 /// Local-only: uploads the server rejected permanently.
 class SyncErrors extends Table {
   TextColumn get id => text()();

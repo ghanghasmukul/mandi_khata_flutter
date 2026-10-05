@@ -159,6 +159,7 @@ class _Body extends ConsumerWidget {
             asOf: asOf,
             canManage: canManage,
             canRepay: canRepay,
+            canPost: !inKhata,
           ),
         ],
         const SizedBox(height: MkSpacing.lg),

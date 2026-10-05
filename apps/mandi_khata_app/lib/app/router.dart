@@ -19,6 +19,8 @@ import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
 import 'package:mandi_khata_app/features/diagnostics/presentation/diagnostics_screen.dart';
 import 'package:mandi_khata_app/features/interest/presentation/bulk_interest_screen.dart';
+import 'package:mandi_khata_app/features/interest/presentation/bulk_posting_screen.dart';
+import 'package:mandi_khata_app/features/interest/presentation/settlement_screen.dart';
 import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_detail_screen.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
@@ -130,6 +132,11 @@ GoRouter router(Ref ref) {
                 builder: (context, state) =>
                     PartyFormScreen(partyId: state.pathParameters['id']),
               ),
+              GoRoute(
+                path: 'hisaab',
+                builder: (context, state) =>
+                    SettlementScreen(partyId: state.pathParameters['id']!),
+              ),
             ],
           ),
         ],
@@ -182,6 +189,11 @@ GoRouter router(Ref ref) {
         path: LoanRoutes.list,
         builder: (context, state) => const LoansScreen(),
         routes: [
+          // Before ':id' so "post" is never read as an id.
+          GoRoute(
+            path: 'post',
+            builder: (context, state) => const BulkPostingScreen(),
+          ),
           GoRoute(
             path: ':id',
             builder: (context, state) =>

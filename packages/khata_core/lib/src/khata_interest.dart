@@ -23,7 +23,13 @@ abstract final class KhataInterest {
   /// reverse are left out (they net to nothing); posted interest is kept but
   /// flagged, so the engine ignores it (rule 8). Loan entries are ordinary
   /// khata entries here.
-  static List<LedgerEvent> events(Iterable<LedgerEntry> entries) {
+  ///
+  /// [waiverIds] are the posting ids of waivers (`interest_postings`, kind
+  /// waiver): the journal entries pointing at them are interest-only credits.
+  static List<LedgerEvent> events(
+    Iterable<LedgerEntry> entries, {
+    Set<String> waiverIds = const {},
+  }) {
     final reversed = {for (final e in entries) ?e.reversesId};
     return [
       for (final e in entries)
@@ -36,6 +42,7 @@ abstract final class KhataInterest {
             createdAt: e.createdAt,
             note: e.narration,
             isPostedInterest: e.refType == RefType.interest,
+            interestOnly: e.refId != null && waiverIds.contains(e.refId),
           ),
     ];
   }
@@ -58,12 +65,13 @@ abstract final class KhataInterest {
     required Iterable<LedgerEntry> entries,
     required InterestConfig config,
     required LedgerDate asOf,
+    Set<String> waiverIds = const {},
   }) {
     if (mode(config) == KhataInterestMode.loansOnly) {
       return InterestResult.empty;
     }
     return engine.calculate(
-      events: events(entries),
+      events: events(entries, waiverIds: waiverIds),
       config: config,
       asOf: asOf,
     );

@@ -118,12 +118,15 @@ class LoanRateChange {
 /// A khata entry that belongs to a loan (its disbursal or a repayment).
 @immutable
 class LoanEntry {
-  const LoanEntry({required this.entry, this.paymentId});
+  const LoanEntry({required this.entry, this.paymentId, this.isWaiver = false});
 
   final LedgerEntry entry;
 
   /// The payment (voucher / receipt) behind it, when there is one.
   final String? paymentId;
+
+  /// An interest waiver: a credit that only takes interest off.
+  final bool isWaiver;
 
   bool get isDisbursal => entry.refType == RefType.loanDisbursal;
 
@@ -134,6 +137,7 @@ class LoanEntry {
     amountPaise: entry.amount.paise,
     createdAt: entry.createdAt,
     note: entry.narration,
+    interestOnly: isWaiver,
   );
 }
 

@@ -3635,4 +3635,223 @@ class AppLocalizationsPa extends AppLocalizations {
   @override
   String get byajBulkFailed =>
       'ਕੁਝ ਪਾਰਟੀਆਂ ਸੰਭਾਲੀਆਂ ਨਹੀਂ ਜਾ ਸਕੀਆਂ। ਇਜਾਜ਼ਤ ਜਾਂਚ ਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।';
+
+  @override
+  String get postInterestTitle => 'ਵਿਆਜ ਚੜ੍ਹਾਓ';
+
+  @override
+  String get postInterestIntro =>
+      'ਹੁਣ ਤੱਕ ਦਾ ਵਿਆਜ ਖਾਤੇ ਵਿੱਚ ਇੱਕ ਉਧਾਰ ਐਂਟਰੀ ਵਜੋਂ ਜੁੜੇਗਾ। ਪੱਕਾ ਕਰਨ ਤੱਕ ਕੁਝ ਨਹੀਂ ਚੜ੍ਹਦਾ।';
+
+  @override
+  String get postInterestNone => 'ਅੱਜ ਲਈ ਚੜ੍ਹਾਉਣ ਵਾਲਾ ਵਿਆਜ ਨਹੀਂ ਹੈ।';
+
+  @override
+  String postInterestConfirm(String amount) {
+    return '$amount ਚੜ੍ਹਾਓ';
+  }
+
+  @override
+  String postInterestDone(String amount) {
+    return 'ਵਿਆਜ ਚੜ੍ਹਿਆ: $amount';
+  }
+
+  @override
+  String get postInterestAmount => 'ਚੜ੍ਹਾਉਣ ਵਾਲਾ ਵਿਆਜ';
+
+  @override
+  String get postColParty => 'ਪਾਰਟੀ';
+
+  @override
+  String get postColAccount => 'ਖਾਤਾ';
+
+  @override
+  String get postColPeriod => 'ਮਿਆਦ';
+
+  @override
+  String get postColTerms => 'ਸ਼ਰਤਾਂ';
+
+  @override
+  String get postAccountKhata => 'ਪੂਰਾ ਖਾਤਾ';
+
+  @override
+  String postAccountLoan(String no) {
+    return 'ਕਰਜ਼ਾ $no';
+  }
+
+  @override
+  String postPeriod(String from, String to) {
+    return '$from ਤੋਂ $to ਤੱਕ';
+  }
+
+  @override
+  String postTerms(String rate, String method) {
+    return '$rate% ਸਾਲਾਨਾ, $method';
+  }
+
+  @override
+  String get postSkipAlready => 'ਇਸ ਦਿਨ ਤੱਕ ਪਹਿਲਾਂ ਹੀ ਚੜ੍ਹ ਚੁੱਕਾ ਹੈ';
+
+  @override
+  String get postSkipNotFound => 'ਪਾਰਟੀ ਜਾਂ ਕਰਜ਼ਾ ਨਹੀਂ ਮਿਲਿਆ';
+
+  @override
+  String get postSkipBackdated =>
+      'ਇਹ ਤਾਰੀਖ਼ ਤੁਹਾਡੀ ਭੂਮਿਕਾ ਲਈ ਬਹੁਤ ਪੁਰਾਣੀ ਹੈ। ਮਾਲਕ ਨੂੰ ਕਹੋ।';
+
+  @override
+  String get postNothing => 'ਕੁਝ ਨਹੀਂ ਚੜ੍ਹਿਆ।';
+
+  @override
+  String get postErrorNotPermitted =>
+      'ਤੁਸੀਂ ਵਿਆਜ ਨਹੀਂ ਚੜ੍ਹਾ ਸਕਦੇ। ਮਾਲਕ ਨੂੰ ਕਹੋ।';
+
+  @override
+  String get postErrorFuture => 'ਅਗਲੀ ਤਾਰੀਖ਼ ਤੱਕ ਵਿਆਜ ਨਹੀਂ ਚੜ੍ਹ ਸਕਦਾ।';
+
+  @override
+  String get postBulkIntro =>
+      'ਚੁਣੇ ਦਿਨ ਤੱਕ ਹਰ ਪਾਰਟੀ ਤੇ ਕਰਜ਼ੇ ਦਾ ਵਿਆਜ। ਜੋ ਨਾ ਚੜ੍ਹਾਉਣਾ ਹੋਵੇ ਉਸ ਦਾ ਨਿਸ਼ਾਨ ਹਟਾਓ। ਦੁਬਾਰਾ ਚਲਾਉਣ ਤੇ ਉਹੀ ਮਿਆਦ ਦੋ ਵਾਰ ਨਹੀਂ ਚੜ੍ਹਦੀ।';
+
+  @override
+  String get postBulkAsOf => 'ਵਿਆਜ ਇਸ ਦਿਨ ਤੱਕ';
+
+  @override
+  String postBulkSuggested(String date) {
+    return 'ਸੁਝਾਅ: $date';
+  }
+
+  @override
+  String get postBulkNone => 'ਇਸ ਦਿਨ ਤੱਕ ਚੜ੍ਹਾਉਣ ਵਾਲਾ ਵਿਆਜ ਨਹੀਂ ਹੈ।';
+
+  @override
+  String postBulkTotal(int count, String amount) {
+    return '$count ਚੁਣੇ · $amount';
+  }
+
+  @override
+  String postBulkPost(int count) {
+    return '$count ਚੜ੍ਹਾਓ';
+  }
+
+  @override
+  String postBulkDone(int count, String amount) {
+    return '$count ਐਂਟਰੀਆਂ ਚੜ੍ਹੀਆਂ, $amount।';
+  }
+
+  @override
+  String postBulkSkipped(int count) {
+    return '$count ਛੱਡੀਆਂ ਗਈਆਂ (ਪਹਿਲਾਂ ਚੜ੍ਹ ਚੁੱਕੀਆਂ ਜਾਂ ਇਜਾਜ਼ਤ ਨਹੀਂ)।';
+  }
+
+  @override
+  String get byajPosted => 'ਹੁਣ ਤੱਕ ਚੜ੍ਹਿਆ ਵਿਆਜ';
+
+  @override
+  String get byajUnposted => 'ਲੱਗਿਆ, ਪਰ ਚੜ੍ਹਿਆ ਨਹੀਂ';
+
+  @override
+  String get settleTitle => 'ਹਿਸਾਬ ਕਰੋ';
+
+  @override
+  String get settleIntro =>
+      'ਇਸ ਪਾਰਟੀ ਦਾ ਇੱਕ ਦਿਨ ਤੱਕ ਹਿਸਾਬ: ਵਿਆਜ ਖਾਤੇ ਵਿੱਚ ਜੁੜਦਾ ਹੈ, ਚਾਹੋ ਤਾਂ ਛੋਟ ਘਟਦੀ ਹੈ, ਅਤੇ ਅੰਤ ਵਿੱਚ ਪਾਰਟੀ ਦਿੰਦੀ ਹੈ ਜਾਂ ਤੁਸੀਂ ਦਿੰਦੇ ਹੋ।';
+
+  @override
+  String get settleAsOf => 'ਹਿਸਾਬ ਇਸ ਦਿਨ ਤੱਕ';
+
+  @override
+  String get settleCropProceeds => 'ਫ਼ਸਲ ਦੀ ਰਕਮ';
+
+  @override
+  String get settlePayments => 'ਭੁਗਤਾਨ ਅਤੇ ਰਸੀਦਾਂ';
+
+  @override
+  String get settleLoans => 'ਕਰਜ਼ੇ (ਦਿੱਤੇ ਤੇ ਮੋੜੇ)';
+
+  @override
+  String get settleInterestPosted => 'ਪਹਿਲਾਂ ਚੜ੍ਹਿਆ ਵਿਆਜ';
+
+  @override
+  String get settleKhataBalance => 'ਹੁਣ ਖਾਤੇ ਦਾ ਬਾਕੀ';
+
+  @override
+  String get settleNothing => 'ਇਸ ਤਾਰੀਖ਼ ਤੱਕ ਕੋਈ ਵਿਆਜ ਬਾਕੀ ਨਹੀਂ।';
+
+  @override
+  String get settleReason => 'ਛੋਟ ਦਾ ਕਾਰਨ';
+
+  @override
+  String get settleWaiver => 'ਵਿਆਜ ਵਿੱਚ ਛੋਟ';
+
+  @override
+  String get settleInterestDue => 'ਦੇਣ ਵਾਲਾ ਵਿਆਜ';
+
+  @override
+  String get settleReceivable => 'ਪਾਰਟੀ ਤੁਹਾਨੂੰ ਦੇਵੇਗੀ';
+
+  @override
+  String get settlePayable => 'ਤੁਸੀਂ ਪਾਰਟੀ ਨੂੰ ਦੇਵੋਗੇ';
+
+  @override
+  String get settleSettled => 'ਹਿਸਾਬ ਬਰਾਬਰ';
+
+  @override
+  String settleDone(String interest, String waived) {
+    return 'ਹਿਸਾਬ ਹੋਇਆ। ਵਿਆਜ $interest ਚੜ੍ਹਿਆ, $waived ਦੀ ਛੋਟ।';
+  }
+
+  @override
+  String get settleNextHint => 'ਹੁਣ ਖਾਤੇ ਤੋਂ ਭੁਗਤਾਨ ਜਾਂ ਰਸੀਦ ਦਰਜ ਕਰੋ।';
+
+  @override
+  String get settlePrint => 'ਪਰਚੀ ਛਾਪੋ';
+
+  @override
+  String get settlePost => 'ਵਿਆਜ ਚੜ੍ਹਾਓ ਤੇ ਹਿਸਾਬ ਕਰੋ';
+
+  @override
+  String get settleOpenKhata => 'ਖਾਤੇ ਤੇ ਵਾਪਸ';
+
+  @override
+  String get settleInterestOnKhata => 'ਖਾਤੇ ਤੇ ਵਿਆਜ';
+
+  @override
+  String settleInterestOnLoan(String no) {
+    return 'ਕਰਜ਼ੇ $no ਤੇ ਵਿਆਜ';
+  }
+
+  @override
+  String get settleErrorNegative => 'ਛੋਟ ਰਿਣਾਤਮਕ ਨਹੀਂ ਹੋ ਸਕਦੀ।';
+
+  @override
+  String get settleErrorExceeds => 'ਛੋਟ ਲੱਗੇ ਵਿਆਜ ਤੋਂ ਵੱਧ ਹੈ।';
+
+  @override
+  String get settleErrorReason => 'ਛੋਟ ਦਾ ਕਾਰਨ ਲਿਖੋ।';
+
+  @override
+  String get settleErrorUnknown => 'ਉਸ ਖਾਤੇ ਵਿੱਚ ਛੋਟ ਦੇਣ ਵਾਲਾ ਵਿਆਜ ਨਹੀਂ ਹੈ।';
+
+  @override
+  String get settleErrorNeedsReverse => 'ਛੋਟ ਲਈ ਮੁਨੀਮ ਜਾਂ ਮਾਲਕ ਚਾਹੀਦਾ ਹੈ।';
+
+  @override
+  String get slipTitle => 'ਹਿਸਾਬ ਦੀ ਪਰਚੀ';
+
+  @override
+  String slipAsOf(String date) {
+    return 'ਹਿਸਾਬ $date ਤੱਕ';
+  }
+
+  @override
+  String slipReason(String reason) {
+    return 'ਛੋਟ ਦਾ ਕਾਰਨ: $reason';
+  }
+
+  @override
+  String get slipSignParty => 'ਪਾਰਟੀ ਦੇ ਦਸਤਖ਼ਤ';
+
+  @override
+  String get slipSignOwner => 'ਅਧਿਕਾਰਤ ਦਸਤਖ਼ਤ';
 }

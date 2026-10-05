@@ -187,3 +187,14 @@
 - Bulk apply writes each party's rows one by one (each audited), not in one transaction; a failure part-way leaves the earlier parties done and the screen says so.
 - Loans of a net_udhaar party still show their own engine figures (the snapshot is `loans_only`); they are labelled reference only. Hiding them is not done because a closed or written-off loan's history is still useful.
 - Hindi / Punjabi strings for byaj were written without a native review.
+
+## 2026-10-05: Step 2.4 posting interest & settlement
+- Rules, formulas and the khata-or-loan rule are in docs/domain/interest-engine.md, "Posting interest and settlement (step 2.4)".
+- New table `interest_postings` (migration `create_interest_postings`, pgTAP 13 = 20 tests, 308 total) instead of a `meta` column on the append-only `ledger_entries`: it carries the period, rate, method, loan, waiver reason and bulk batch, and its unique `period_key` is the server-side idempotency guard. `guard_ledger_entry` now also checks that an `interest` entry matches a posting and a journal entry that points at a waiver posting matches it. Local-stack tests pass; NOT yet pushed to dev (needs `supabase db push` approval); advisors to run after the push.
+- Entry date of a posting is the last day charged (`to − 1`), not the posting day: a period closed at 1 April lands on 31 March (financial-year reports). Back-date rules apply to that date.
+- Interest-only waiver event in the engine (`LedgerEvent.interestOnly`, `interestWaivedPaise`): a discount must not eat principal when appropriation is principal-first.
+- Known limitation: reversing an interest entry frees its interest to be posted again, but its `period_key` stays taken, so the owner posts it again with a different day. Not worth a generation counter yet.
+- Known limitation: bulk posting does not post the khata interest of a party that has an `interest.enabled = false` override, by design; their loans still post.
+- No automatic scheduled posting in v1 (see the domain doc): `interest.post_frequency` proposes the day on the bulk screen.
+- Hindi / Punjabi strings for posting and hisaab were written without a native review.
+- Not run: two-device conflict test for postings against the local stack (the repository test checks deterministic ids; the server keeps the first row on `on conflict (id) do nothing`).

@@ -3632,4 +3632,222 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get byajBulkFailed =>
       'कुछ पार्टियाँ सहेजी नहीं जा सकीं। अनुमति जाँचकर फिर कोशिश करें।';
+
+  @override
+  String get postInterestTitle => 'ब्याज चढ़ाएँ';
+
+  @override
+  String get postInterestIntro =>
+      'अब तक का ब्याज खाते में एक उधार एंट्री के रूप में जुड़ेगा। पक्का करने तक कुछ नहीं चढ़ता।';
+
+  @override
+  String get postInterestNone => 'आज के लिए चढ़ाने लायक ब्याज नहीं है।';
+
+  @override
+  String postInterestConfirm(String amount) {
+    return '$amount चढ़ाएँ';
+  }
+
+  @override
+  String postInterestDone(String amount) {
+    return 'ब्याज चढ़ा: $amount';
+  }
+
+  @override
+  String get postInterestAmount => 'चढ़ाने वाला ब्याज';
+
+  @override
+  String get postColParty => 'पार्टी';
+
+  @override
+  String get postColAccount => 'खाता';
+
+  @override
+  String get postColPeriod => 'अवधि';
+
+  @override
+  String get postColTerms => 'शर्तें';
+
+  @override
+  String get postAccountKhata => 'पूरा खाता';
+
+  @override
+  String postAccountLoan(String no) {
+    return 'कर्ज़ $no';
+  }
+
+  @override
+  String postPeriod(String from, String to) {
+    return '$from से $to तक';
+  }
+
+  @override
+  String postTerms(String rate, String method) {
+    return '$rate% सालाना, $method';
+  }
+
+  @override
+  String get postSkipAlready => 'इस दिन तक पहले ही चढ़ चुका है';
+
+  @override
+  String get postSkipNotFound => 'पार्टी या कर्ज़ नहीं मिला';
+
+  @override
+  String get postSkipBackdated =>
+      'यह तारीख़ आपकी भूमिका के लिए बहुत पुरानी है। मालिक से कहें।';
+
+  @override
+  String get postNothing => 'कुछ नहीं चढ़ा।';
+
+  @override
+  String get postErrorNotPermitted => 'आप ब्याज नहीं चढ़ा सकते। मालिक से कहें।';
+
+  @override
+  String get postErrorFuture => 'आगे की तारीख़ तक ब्याज नहीं चढ़ सकता।';
+
+  @override
+  String get postBulkIntro =>
+      'चुने हुए दिन तक हर पार्टी और कर्ज़ का ब्याज। जो न चढ़ाना हो उसका निशान हटाएँ। दोबारा चलाने पर वही अवधि दो बार नहीं चढ़ती।';
+
+  @override
+  String get postBulkAsOf => 'ब्याज इस दिन तक';
+
+  @override
+  String postBulkSuggested(String date) {
+    return 'सुझाव: $date';
+  }
+
+  @override
+  String get postBulkNone => 'इस दिन तक चढ़ाने लायक ब्याज नहीं है।';
+
+  @override
+  String postBulkTotal(int count, String amount) {
+    return '$count चुने · $amount';
+  }
+
+  @override
+  String postBulkPost(int count) {
+    return '$count चढ़ाएँ';
+  }
+
+  @override
+  String postBulkDone(int count, String amount) {
+    return '$count एंट्री चढ़ीं, $amount।';
+  }
+
+  @override
+  String postBulkSkipped(int count) {
+    return '$count छोड़ी गईं (पहले चढ़ चुकीं या अनुमति नहीं)।';
+  }
+
+  @override
+  String get byajPosted => 'अब तक चढ़ा ब्याज';
+
+  @override
+  String get byajUnposted => 'लगा, पर चढ़ा नहीं';
+
+  @override
+  String get settleTitle => 'हिसाब करो';
+
+  @override
+  String get settleIntro =>
+      'इस पार्टी का एक दिन तक हिसाब: ब्याज खाते में जुड़ता है, चाहें तो छूट घटती है, और अंत में पार्टी देती है या आप देते हैं।';
+
+  @override
+  String get settleAsOf => 'हिसाब इस दिन तक';
+
+  @override
+  String get settleCropProceeds => 'फ़सल की रक़म';
+
+  @override
+  String get settlePayments => 'भुगतान और रसीदें';
+
+  @override
+  String get settleLoans => 'कर्ज़ (दिए और लौटाए)';
+
+  @override
+  String get settleInterestPosted => 'पहले चढ़ा ब्याज';
+
+  @override
+  String get settleKhataBalance => 'अभी खाते का बाक़ी';
+
+  @override
+  String get settleNothing => 'इस तारीख़ तक कोई ब्याज बाक़ी नहीं।';
+
+  @override
+  String get settleReason => 'छूट का कारण';
+
+  @override
+  String get settleWaiver => 'ब्याज में छूट';
+
+  @override
+  String get settleInterestDue => 'देने वाला ब्याज';
+
+  @override
+  String get settleReceivable => 'पार्टी आपको देगी';
+
+  @override
+  String get settlePayable => 'आप पार्टी को देंगे';
+
+  @override
+  String get settleSettled => 'हिसाब बराबर';
+
+  @override
+  String settleDone(String interest, String waived) {
+    return 'हिसाब हुआ। ब्याज $interest चढ़ा, $waived की छूट।';
+  }
+
+  @override
+  String get settleNextHint => 'अब खाते से भुगतान या रसीद दर्ज करें।';
+
+  @override
+  String get settlePrint => 'पर्ची छापें';
+
+  @override
+  String get settlePost => 'ब्याज चढ़ाएँ और हिसाब करें';
+
+  @override
+  String get settleOpenKhata => 'खाते पर वापस';
+
+  @override
+  String get settleInterestOnKhata => 'खाते पर ब्याज';
+
+  @override
+  String settleInterestOnLoan(String no) {
+    return 'कर्ज़ $no पर ब्याज';
+  }
+
+  @override
+  String get settleErrorNegative => 'छूट ऋणात्मक नहीं हो सकती।';
+
+  @override
+  String get settleErrorExceeds => 'छूट लगे ब्याज से ज़्यादा है।';
+
+  @override
+  String get settleErrorReason => 'छूट का कारण लिखें।';
+
+  @override
+  String get settleErrorUnknown => 'उस खाते में छूट देने लायक ब्याज नहीं है।';
+
+  @override
+  String get settleErrorNeedsReverse => 'छूट के लिए मुनीम या मालिक चाहिए।';
+
+  @override
+  String get slipTitle => 'हिसाब की पर्ची';
+
+  @override
+  String slipAsOf(String date) {
+    return 'हिसाब $date तक';
+  }
+
+  @override
+  String slipReason(String reason) {
+    return 'छूट का कारण: $reason';
+  }
+
+  @override
+  String get slipSignParty => 'पार्टी के हस्ताक्षर';
+
+  @override
+  String get slipSignOwner => 'अधिकृत हस्ताक्षर';
 }

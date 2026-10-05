@@ -47,6 +47,7 @@ class LoansRepository {
     'ledger_entries',
     'payments',
     'loan_rate_changes',
+    'interest_postings',
   };
 
   static String _escape(String s) =>
@@ -151,19 +152,42 @@ class LoansRepository {
     final loanOfPayment = {
       for (final p in payments) p['id']! as String: p['loan_id']! as String,
     };
+    // Interest waivers of loans: journal entries pointing at a waiver
+    // posting (`ref_id`) that belongs to the loan.
+    final waivers = await tx.getAll(
+      'SELECT id, loan_id FROM interest_postings WHERE tenant_id = ? '
+      "AND kind = 'waiver' AND loan_id IS NOT NULL "
+      '${loanId == null ? '' : 'AND loan_id = ?'}',
+      [tenantId, ?loanId],
+    );
+    final loanOfWaiver = {
+      for (final w in waivers) w['id']! as String: w['loan_id']! as String,
+    };
     final rows = await tx.getAll(
       'SELECT e.* FROM ledger_entries e WHERE e.tenant_id = ? '
-      'AND e.ref_type IN (?, ?) AND NOT EXISTS ( '
+      'AND (e.ref_type IN (?, ?) OR (e.ref_type = ? '
+      'AND e.ref_id IN (SELECT id FROM interest_postings WHERE tenant_id = ? '
+      "AND kind = 'waiver'))) AND NOT EXISTS ( "
       'SELECT 1 FROM ledger_entries r WHERE r.tenant_id = e.tenant_id '
       'AND r.reverses_id = e.id) '
       'ORDER BY e.entry_date, e.created_at, e.id',
-      [tenantId, RefType.loanDisbursal.dbName, RefType.loanRepayment.dbName],
+      [
+        tenantId,
+        RefType.loanDisbursal.dbName,
+        RefType.loanRepayment.dbName,
+        RefType.journal.dbName,
+        tenantId,
+      ],
     );
     final byLoan = <String, List<LoanEntry>>{};
     for (final r in rows) {
       final ref = r['ref_id'] as String?;
       if (ref == null) continue;
-      final owner = loanOfPayment[ref] ?? ref;
+      final waiverLoan = loanOfWaiver[ref];
+      if (r['ref_type'] == RefType.journal.dbName && waiverLoan == null) {
+        continue;
+      }
+      final owner = waiverLoan ?? loanOfPayment[ref] ?? ref;
       if (loanId != null && owner != loanId) continue;
       byLoan
           .putIfAbsent(owner, () => [])
@@ -171,6 +195,7 @@ class LoansRepository {
             LoanEntry(
               entry: LedgerRepository.fromRow(r),
               paymentId: loanOfPayment.containsKey(ref) ? ref : null,
+              isWaiver: waiverLoan != null,
             ),
           );
     }
@@ -195,6 +220,33 @@ class LoansRepository {
           .add(LoanRateChange.fromRow(r));
     }
     return byLoan;
+  }
+
+  /// Every active loan of [tenantId] (of [partyId] only when given) with its
+  /// entries and rate changes, read inside [tx]. Interest posting works on
+  /// these.
+  static Future<List<LoanDetail>> openDetailsIn(
+    SqliteReadContext tx,
+    String tenantId, {
+    String? partyId,
+  }) async {
+    final rows = await tx.getAll(
+      '$_select WHERE l.tenant_id = ? AND l.status = ? '
+      '${partyId == null ? '' : 'AND l.party_id = ? '}'
+      'ORDER BY l.issue_date, l.id',
+      [tenantId, LoanStatus.active.dbName, ?partyId],
+    );
+    if (rows.isEmpty) return const [];
+    final entries = await _entriesByLoan(tx, tenantId);
+    final changes = await _rateChangesByLoan(tx, tenantId);
+    return [
+      for (final r in rows)
+        LoanDetail(
+          loan: Loan.fromRow(r),
+          entries: entries[r['id']! as String] ?? const [],
+          rateChanges: changes[r['id']! as String] ?? const [],
+        ),
+    ];
   }
 
   /// The number the next loan on this device will get.

@@ -31,6 +31,7 @@ part 'app_database.g.dart';
     CashBankEntries,
     Loans,
     LoanRateChanges,
+    InterestPostings,
     SyncErrors,
   ],
 )

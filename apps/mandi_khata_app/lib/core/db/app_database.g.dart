@@ -14056,6 +14056,907 @@ class LoanRateChangesCompanion extends UpdateCompanion<LoanRateChange> {
   }
 }
 
+class $InterestPostingsTable extends InterestPostings
+    with TableInfo<$InterestPostingsTable, InterestPosting> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $InterestPostingsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _loanIdMeta = const VerificationMeta('loanId');
+  @override
+  late final GeneratedColumn<String> loanId = GeneratedColumn<String>(
+    'loan_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _periodFromMeta = const VerificationMeta(
+    'periodFrom',
+  );
+  @override
+  late final GeneratedColumn<String> periodFrom = GeneratedColumn<String>(
+    'period_from',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _periodToMeta = const VerificationMeta(
+    'periodTo',
+  );
+  @override
+  late final GeneratedColumn<String> periodTo = GeneratedColumn<String>(
+    'period_to',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountPaiseMeta = const VerificationMeta(
+    'amountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> amountPaise = GeneratedColumn<int>(
+    'amount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _ratePaMeta = const VerificationMeta('ratePa');
+  @override
+  late final GeneratedColumn<String> ratePa = GeneratedColumn<String>(
+    'rate_pa',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _methodMeta = const VerificationMeta('method');
+  @override
+  late final GeneratedColumn<String> method = GeneratedColumn<String>(
+    'method',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reasonMeta = const VerificationMeta('reason');
+  @override
+  late final GeneratedColumn<String> reason = GeneratedColumn<String>(
+    'reason',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _periodKeyMeta = const VerificationMeta(
+    'periodKey',
+  );
+  @override
+  late final GeneratedColumn<String> periodKey = GeneratedColumn<String>(
+    'period_key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchIdMeta = const VerificationMeta(
+    'batchId',
+  );
+  @override
+  late final GeneratedColumn<String> batchId = GeneratedColumn<String>(
+    'batch_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    partyId,
+    loanId,
+    kind,
+    periodFrom,
+    periodTo,
+    amountPaise,
+    ratePa,
+    method,
+    reason,
+    periodKey,
+    batchId,
+    deviceId,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'interest_postings';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<InterestPosting> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyIdMeta);
+    }
+    if (data.containsKey('loan_id')) {
+      context.handle(
+        _loanIdMeta,
+        loanId.isAcceptableOrUnknown(data['loan_id']!, _loanIdMeta),
+      );
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('period_from')) {
+      context.handle(
+        _periodFromMeta,
+        periodFrom.isAcceptableOrUnknown(data['period_from']!, _periodFromMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_periodFromMeta);
+    }
+    if (data.containsKey('period_to')) {
+      context.handle(
+        _periodToMeta,
+        periodTo.isAcceptableOrUnknown(data['period_to']!, _periodToMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_periodToMeta);
+    }
+    if (data.containsKey('amount_paise')) {
+      context.handle(
+        _amountPaiseMeta,
+        amountPaise.isAcceptableOrUnknown(
+          data['amount_paise']!,
+          _amountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountPaiseMeta);
+    }
+    if (data.containsKey('rate_pa')) {
+      context.handle(
+        _ratePaMeta,
+        ratePa.isAcceptableOrUnknown(data['rate_pa']!, _ratePaMeta),
+      );
+    }
+    if (data.containsKey('method')) {
+      context.handle(
+        _methodMeta,
+        method.isAcceptableOrUnknown(data['method']!, _methodMeta),
+      );
+    }
+    if (data.containsKey('reason')) {
+      context.handle(
+        _reasonMeta,
+        reason.isAcceptableOrUnknown(data['reason']!, _reasonMeta),
+      );
+    }
+    if (data.containsKey('period_key')) {
+      context.handle(
+        _periodKeyMeta,
+        periodKey.isAcceptableOrUnknown(data['period_key']!, _periodKeyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_periodKeyMeta);
+    }
+    if (data.containsKey('batch_id')) {
+      context.handle(
+        _batchIdMeta,
+        batchId.isAcceptableOrUnknown(data['batch_id']!, _batchIdMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  InterestPosting map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return InterestPosting(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      loanId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}loan_id'],
+      ),
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      periodFrom: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}period_from'],
+      )!,
+      periodTo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}period_to'],
+      )!,
+      amountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_paise'],
+      )!,
+      ratePa: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}rate_pa'],
+      ),
+      method: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}method'],
+      ),
+      reason: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reason'],
+      ),
+      periodKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}period_key'],
+      )!,
+      batchId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_id'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $InterestPostingsTable createAlias(String alias) {
+    return $InterestPostingsTable(attachedDatabase, alias);
+  }
+}
+
+class InterestPosting extends DataClass implements Insertable<InterestPosting> {
+  final String id;
+  final String tenantId;
+  final String partyId;
+  final String? loanId;
+  final String kind;
+  final String periodFrom;
+  final String periodTo;
+  final int amountPaise;
+  final String? ratePa;
+  final String? method;
+  final String? reason;
+  final String periodKey;
+  final String? batchId;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  const InterestPosting({
+    required this.id,
+    required this.tenantId,
+    required this.partyId,
+    this.loanId,
+    required this.kind,
+    required this.periodFrom,
+    required this.periodTo,
+    required this.amountPaise,
+    this.ratePa,
+    this.method,
+    this.reason,
+    required this.periodKey,
+    this.batchId,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['party_id'] = Variable<String>(partyId);
+    if (!nullToAbsent || loanId != null) {
+      map['loan_id'] = Variable<String>(loanId);
+    }
+    map['kind'] = Variable<String>(kind);
+    map['period_from'] = Variable<String>(periodFrom);
+    map['period_to'] = Variable<String>(periodTo);
+    map['amount_paise'] = Variable<int>(amountPaise);
+    if (!nullToAbsent || ratePa != null) {
+      map['rate_pa'] = Variable<String>(ratePa);
+    }
+    if (!nullToAbsent || method != null) {
+      map['method'] = Variable<String>(method);
+    }
+    if (!nullToAbsent || reason != null) {
+      map['reason'] = Variable<String>(reason);
+    }
+    map['period_key'] = Variable<String>(periodKey);
+    if (!nullToAbsent || batchId != null) {
+      map['batch_id'] = Variable<String>(batchId);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  InterestPostingsCompanion toCompanion(bool nullToAbsent) {
+    return InterestPostingsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      partyId: Value(partyId),
+      loanId: loanId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(loanId),
+      kind: Value(kind),
+      periodFrom: Value(periodFrom),
+      periodTo: Value(periodTo),
+      amountPaise: Value(amountPaise),
+      ratePa: ratePa == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ratePa),
+      method: method == null && nullToAbsent
+          ? const Value.absent()
+          : Value(method),
+      reason: reason == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reason),
+      periodKey: Value(periodKey),
+      batchId: batchId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(batchId),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory InterestPosting.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return InterestPosting(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      loanId: serializer.fromJson<String?>(json['loanId']),
+      kind: serializer.fromJson<String>(json['kind']),
+      periodFrom: serializer.fromJson<String>(json['periodFrom']),
+      periodTo: serializer.fromJson<String>(json['periodTo']),
+      amountPaise: serializer.fromJson<int>(json['amountPaise']),
+      ratePa: serializer.fromJson<String?>(json['ratePa']),
+      method: serializer.fromJson<String?>(json['method']),
+      reason: serializer.fromJson<String?>(json['reason']),
+      periodKey: serializer.fromJson<String>(json['periodKey']),
+      batchId: serializer.fromJson<String?>(json['batchId']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'partyId': serializer.toJson<String>(partyId),
+      'loanId': serializer.toJson<String?>(loanId),
+      'kind': serializer.toJson<String>(kind),
+      'periodFrom': serializer.toJson<String>(periodFrom),
+      'periodTo': serializer.toJson<String>(periodTo),
+      'amountPaise': serializer.toJson<int>(amountPaise),
+      'ratePa': serializer.toJson<String?>(ratePa),
+      'method': serializer.toJson<String?>(method),
+      'reason': serializer.toJson<String?>(reason),
+      'periodKey': serializer.toJson<String>(periodKey),
+      'batchId': serializer.toJson<String?>(batchId),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  InterestPosting copyWith({
+    String? id,
+    String? tenantId,
+    String? partyId,
+    Value<String?> loanId = const Value.absent(),
+    String? kind,
+    String? periodFrom,
+    String? periodTo,
+    int? amountPaise,
+    Value<String?> ratePa = const Value.absent(),
+    Value<String?> method = const Value.absent(),
+    Value<String?> reason = const Value.absent(),
+    String? periodKey,
+    Value<String?> batchId = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => InterestPosting(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    partyId: partyId ?? this.partyId,
+    loanId: loanId.present ? loanId.value : this.loanId,
+    kind: kind ?? this.kind,
+    periodFrom: periodFrom ?? this.periodFrom,
+    periodTo: periodTo ?? this.periodTo,
+    amountPaise: amountPaise ?? this.amountPaise,
+    ratePa: ratePa.present ? ratePa.value : this.ratePa,
+    method: method.present ? method.value : this.method,
+    reason: reason.present ? reason.value : this.reason,
+    periodKey: periodKey ?? this.periodKey,
+    batchId: batchId.present ? batchId.value : this.batchId,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  InterestPosting copyWithCompanion(InterestPostingsCompanion data) {
+    return InterestPosting(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      loanId: data.loanId.present ? data.loanId.value : this.loanId,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      periodFrom: data.periodFrom.present
+          ? data.periodFrom.value
+          : this.periodFrom,
+      periodTo: data.periodTo.present ? data.periodTo.value : this.periodTo,
+      amountPaise: data.amountPaise.present
+          ? data.amountPaise.value
+          : this.amountPaise,
+      ratePa: data.ratePa.present ? data.ratePa.value : this.ratePa,
+      method: data.method.present ? data.method.value : this.method,
+      reason: data.reason.present ? data.reason.value : this.reason,
+      periodKey: data.periodKey.present ? data.periodKey.value : this.periodKey,
+      batchId: data.batchId.present ? data.batchId.value : this.batchId,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('InterestPosting(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('partyId: $partyId, ')
+          ..write('loanId: $loanId, ')
+          ..write('kind: $kind, ')
+          ..write('periodFrom: $periodFrom, ')
+          ..write('periodTo: $periodTo, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('ratePa: $ratePa, ')
+          ..write('method: $method, ')
+          ..write('reason: $reason, ')
+          ..write('periodKey: $periodKey, ')
+          ..write('batchId: $batchId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    partyId,
+    loanId,
+    kind,
+    periodFrom,
+    periodTo,
+    amountPaise,
+    ratePa,
+    method,
+    reason,
+    periodKey,
+    batchId,
+    deviceId,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is InterestPosting &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.partyId == this.partyId &&
+          other.loanId == this.loanId &&
+          other.kind == this.kind &&
+          other.periodFrom == this.periodFrom &&
+          other.periodTo == this.periodTo &&
+          other.amountPaise == this.amountPaise &&
+          other.ratePa == this.ratePa &&
+          other.method == this.method &&
+          other.reason == this.reason &&
+          other.periodKey == this.periodKey &&
+          other.batchId == this.batchId &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class InterestPostingsCompanion extends UpdateCompanion<InterestPosting> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> partyId;
+  final Value<String?> loanId;
+  final Value<String> kind;
+  final Value<String> periodFrom;
+  final Value<String> periodTo;
+  final Value<int> amountPaise;
+  final Value<String?> ratePa;
+  final Value<String?> method;
+  final Value<String?> reason;
+  final Value<String> periodKey;
+  final Value<String?> batchId;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const InterestPostingsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.loanId = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.periodFrom = const Value.absent(),
+    this.periodTo = const Value.absent(),
+    this.amountPaise = const Value.absent(),
+    this.ratePa = const Value.absent(),
+    this.method = const Value.absent(),
+    this.reason = const Value.absent(),
+    this.periodKey = const Value.absent(),
+    this.batchId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  InterestPostingsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String partyId,
+    this.loanId = const Value.absent(),
+    required String kind,
+    required String periodFrom,
+    required String periodTo,
+    required int amountPaise,
+    this.ratePa = const Value.absent(),
+    this.method = const Value.absent(),
+    this.reason = const Value.absent(),
+    required String periodKey,
+    this.batchId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       partyId = Value(partyId),
+       kind = Value(kind),
+       periodFrom = Value(periodFrom),
+       periodTo = Value(periodTo),
+       amountPaise = Value(amountPaise),
+       periodKey = Value(periodKey);
+  static Insertable<InterestPosting> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? partyId,
+    Expression<String>? loanId,
+    Expression<String>? kind,
+    Expression<String>? periodFrom,
+    Expression<String>? periodTo,
+    Expression<int>? amountPaise,
+    Expression<String>? ratePa,
+    Expression<String>? method,
+    Expression<String>? reason,
+    Expression<String>? periodKey,
+    Expression<String>? batchId,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (partyId != null) 'party_id': partyId,
+      if (loanId != null) 'loan_id': loanId,
+      if (kind != null) 'kind': kind,
+      if (periodFrom != null) 'period_from': periodFrom,
+      if (periodTo != null) 'period_to': periodTo,
+      if (amountPaise != null) 'amount_paise': amountPaise,
+      if (ratePa != null) 'rate_pa': ratePa,
+      if (method != null) 'method': method,
+      if (reason != null) 'reason': reason,
+      if (periodKey != null) 'period_key': periodKey,
+      if (batchId != null) 'batch_id': batchId,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  InterestPostingsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? partyId,
+    Value<String?>? loanId,
+    Value<String>? kind,
+    Value<String>? periodFrom,
+    Value<String>? periodTo,
+    Value<int>? amountPaise,
+    Value<String?>? ratePa,
+    Value<String?>? method,
+    Value<String?>? reason,
+    Value<String>? periodKey,
+    Value<String?>? batchId,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return InterestPostingsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      partyId: partyId ?? this.partyId,
+      loanId: loanId ?? this.loanId,
+      kind: kind ?? this.kind,
+      periodFrom: periodFrom ?? this.periodFrom,
+      periodTo: periodTo ?? this.periodTo,
+      amountPaise: amountPaise ?? this.amountPaise,
+      ratePa: ratePa ?? this.ratePa,
+      method: method ?? this.method,
+      reason: reason ?? this.reason,
+      periodKey: periodKey ?? this.periodKey,
+      batchId: batchId ?? this.batchId,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (loanId.present) {
+      map['loan_id'] = Variable<String>(loanId.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (periodFrom.present) {
+      map['period_from'] = Variable<String>(periodFrom.value);
+    }
+    if (periodTo.present) {
+      map['period_to'] = Variable<String>(periodTo.value);
+    }
+    if (amountPaise.present) {
+      map['amount_paise'] = Variable<int>(amountPaise.value);
+    }
+    if (ratePa.present) {
+      map['rate_pa'] = Variable<String>(ratePa.value);
+    }
+    if (method.present) {
+      map['method'] = Variable<String>(method.value);
+    }
+    if (reason.present) {
+      map['reason'] = Variable<String>(reason.value);
+    }
+    if (periodKey.present) {
+      map['period_key'] = Variable<String>(periodKey.value);
+    }
+    if (batchId.present) {
+      map['batch_id'] = Variable<String>(batchId.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('InterestPostingsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('partyId: $partyId, ')
+          ..write('loanId: $loanId, ')
+          ..write('kind: $kind, ')
+          ..write('periodFrom: $periodFrom, ')
+          ..write('periodTo: $periodTo, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('ratePa: $ratePa, ')
+          ..write('method: $method, ')
+          ..write('reason: $reason, ')
+          ..write('periodKey: $periodKey, ')
+          ..write('batchId: $batchId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -14689,6 +15590,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $LoanRateChangesTable loanRateChanges = $LoanRateChangesTable(
     this,
   );
+  late final $InterestPostingsTable interestPostings = $InterestPostingsTable(
+    this,
+  );
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -14713,6 +15617,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     cashBankEntries,
     loans,
     loanRateChanges,
+    interestPostings,
     syncErrors,
   ];
 }
@@ -21351,6 +22256,434 @@ typedef $$LoanRateChangesTableProcessedTableManager =
       LoanRateChange,
       PrefetchHooks Function()
     >;
+typedef $$InterestPostingsTableCreateCompanionBuilder =
+    InterestPostingsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String partyId,
+      Value<String?> loanId,
+      required String kind,
+      required String periodFrom,
+      required String periodTo,
+      required int amountPaise,
+      Value<String?> ratePa,
+      Value<String?> method,
+      Value<String?> reason,
+      required String periodKey,
+      Value<String?> batchId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$InterestPostingsTableUpdateCompanionBuilder =
+    InterestPostingsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> partyId,
+      Value<String?> loanId,
+      Value<String> kind,
+      Value<String> periodFrom,
+      Value<String> periodTo,
+      Value<int> amountPaise,
+      Value<String?> ratePa,
+      Value<String?> method,
+      Value<String?> reason,
+      Value<String> periodKey,
+      Value<String?> batchId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$InterestPostingsTableFilterComposer
+    extends Composer<_$AppDatabase, $InterestPostingsTable> {
+  $$InterestPostingsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get loanId => $composableBuilder(
+    column: $table.loanId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get periodFrom => $composableBuilder(
+    column: $table.periodFrom,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get periodTo => $composableBuilder(
+    column: $table.periodTo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ratePa => $composableBuilder(
+    column: $table.ratePa,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get method => $composableBuilder(
+    column: $table.method,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reason => $composableBuilder(
+    column: $table.reason,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get periodKey => $composableBuilder(
+    column: $table.periodKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$InterestPostingsTableOrderingComposer
+    extends Composer<_$AppDatabase, $InterestPostingsTable> {
+  $$InterestPostingsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get loanId => $composableBuilder(
+    column: $table.loanId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get periodFrom => $composableBuilder(
+    column: $table.periodFrom,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get periodTo => $composableBuilder(
+    column: $table.periodTo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ratePa => $composableBuilder(
+    column: $table.ratePa,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get method => $composableBuilder(
+    column: $table.method,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reason => $composableBuilder(
+    column: $table.reason,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get periodKey => $composableBuilder(
+    column: $table.periodKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$InterestPostingsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $InterestPostingsTable> {
+  $$InterestPostingsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get loanId =>
+      $composableBuilder(column: $table.loanId, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<String> get periodFrom => $composableBuilder(
+    column: $table.periodFrom,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get periodTo =>
+      $composableBuilder(column: $table.periodTo, builder: (column) => column);
+
+  GeneratedColumn<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get ratePa =>
+      $composableBuilder(column: $table.ratePa, builder: (column) => column);
+
+  GeneratedColumn<String> get method =>
+      $composableBuilder(column: $table.method, builder: (column) => column);
+
+  GeneratedColumn<String> get reason =>
+      $composableBuilder(column: $table.reason, builder: (column) => column);
+
+  GeneratedColumn<String> get periodKey =>
+      $composableBuilder(column: $table.periodKey, builder: (column) => column);
+
+  GeneratedColumn<String> get batchId =>
+      $composableBuilder(column: $table.batchId, builder: (column) => column);
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$InterestPostingsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $InterestPostingsTable,
+          InterestPosting,
+          $$InterestPostingsTableFilterComposer,
+          $$InterestPostingsTableOrderingComposer,
+          $$InterestPostingsTableAnnotationComposer,
+          $$InterestPostingsTableCreateCompanionBuilder,
+          $$InterestPostingsTableUpdateCompanionBuilder,
+          (
+            InterestPosting,
+            BaseReferences<
+              _$AppDatabase,
+              $InterestPostingsTable,
+              InterestPosting
+            >,
+          ),
+          InterestPosting,
+          PrefetchHooks Function()
+        > {
+  $$InterestPostingsTableTableManager(
+    _$AppDatabase db,
+    $InterestPostingsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$InterestPostingsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$InterestPostingsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$InterestPostingsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String?> loanId = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<String> periodFrom = const Value.absent(),
+                Value<String> periodTo = const Value.absent(),
+                Value<int> amountPaise = const Value.absent(),
+                Value<String?> ratePa = const Value.absent(),
+                Value<String?> method = const Value.absent(),
+                Value<String?> reason = const Value.absent(),
+                Value<String> periodKey = const Value.absent(),
+                Value<String?> batchId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => InterestPostingsCompanion(
+                id: id,
+                tenantId: tenantId,
+                partyId: partyId,
+                loanId: loanId,
+                kind: kind,
+                periodFrom: periodFrom,
+                periodTo: periodTo,
+                amountPaise: amountPaise,
+                ratePa: ratePa,
+                method: method,
+                reason: reason,
+                periodKey: periodKey,
+                batchId: batchId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String partyId,
+                Value<String?> loanId = const Value.absent(),
+                required String kind,
+                required String periodFrom,
+                required String periodTo,
+                required int amountPaise,
+                Value<String?> ratePa = const Value.absent(),
+                Value<String?> method = const Value.absent(),
+                Value<String?> reason = const Value.absent(),
+                required String periodKey,
+                Value<String?> batchId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => InterestPostingsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                partyId: partyId,
+                loanId: loanId,
+                kind: kind,
+                periodFrom: periodFrom,
+                periodTo: periodTo,
+                amountPaise: amountPaise,
+                ratePa: ratePa,
+                method: method,
+                reason: reason,
+                periodKey: periodKey,
+                batchId: batchId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$InterestPostingsTable, InterestPosting>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $InterestPostingsTable,
+                    InterestPosting
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$InterestPostingsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $InterestPostingsTable,
+      InterestPosting,
+      $$InterestPostingsTableFilterComposer,
+      $$InterestPostingsTableOrderingComposer,
+      $$InterestPostingsTableAnnotationComposer,
+      $$InterestPostingsTableCreateCompanionBuilder,
+      $$InterestPostingsTableUpdateCompanionBuilder,
+      (
+        InterestPosting,
+        BaseReferences<_$AppDatabase, $InterestPostingsTable, InterestPosting>,
+      ),
+      InterestPosting,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -21693,6 +23026,8 @@ class $AppDatabaseManager {
       $$LoansTableTableManager(_db, _db.loans);
   $$LoanRateChangesTableTableManager get loanRateChanges =>
       $$LoanRateChangesTableTableManager(_db, _db.loanRateChanges);
+  $$InterestPostingsTableTableManager get interestPostings =>
+      $$InterestPostingsTableTableManager(_db, _db.interestPostings);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }

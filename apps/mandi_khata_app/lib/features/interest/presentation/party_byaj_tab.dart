@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
+import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
+import 'package:mandi_khata_app/features/interest/presentation/interest_posting_providers.dart';
 import 'package:mandi_khata_app/features/interest/presentation/interest_providers.dart';
 import 'package:mandi_khata_app/features/interest/presentation/party_interest_dialog.dart';
+import 'package:mandi_khata_app/features/interest/presentation/post_interest_dialog.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_detail_cards.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_statement_table.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
+import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payment_mode_fields.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_labels.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_tile.dart';
@@ -40,15 +45,21 @@ class _PartyByajTabState extends ConsumerState<PartyByajTab> {
     final config = ref.watch(partyInterestConfigProvider(party));
     final resolver = ref.watch(settingsResolverProvider(partyTarget(party)));
     final entries = ref.watch(partyEntriesProvider(party.id)).value;
+    final postings = ref.watch(partyPostingsProvider(party.id)).value;
     final canEdit = ref.watch(canProvider(Permission.loansManage));
-    if (config == null || resolver == null || entries == null) {
+    if (config == null ||
+        resolver == null ||
+        entries == null ||
+        postings == null) {
       return const Center(child: CircularProgressIndicator());
     }
     final mode = KhataInterest.mode(config);
+    final posted = PostedSummary.of(postings);
     final result = KhataInterest.calculate(
       entries: entries,
       config: config,
       asOf: _asOf,
+      waiverIds: posted.waiverIds,
     );
     String source(String key) => settingSourceText(
       l10n,
@@ -159,10 +170,35 @@ class _PartyByajTabState extends ConsumerState<PartyByajTab> {
             ],
           ),
         ),
+        if (canEdit) ...[
+          const SizedBox(height: MkSpacing.md),
+          Wrap(
+            spacing: MkSpacing.sm,
+            runSpacing: MkSpacing.sm,
+            children: [
+              if (mode == KhataInterestMode.khata)
+                MkButton(
+                  key: const ValueKey('byaj-post'),
+                  label: l10n.postInterestTitle,
+                  icon: Icons.playlist_add_check,
+                  onPressed: () =>
+                      showPostInterestDialog(context, partyId: party.id),
+                ),
+              MkButton(
+                key: const ValueKey('byaj-hisaab'),
+                label: l10n.settleTitle,
+                icon: Icons.balance,
+                variant: MkButtonVariant.secondary,
+                onPressed: () => context.go(PartyRoutes.hisaab(party.id)),
+              ),
+            ],
+          ),
+        ],
         if (mode != KhataInterestMode.loansOnly) ...[
           const SizedBox(height: MkSpacing.md),
           _Figures(
             result: result,
+            postedPaise: posted.postedPaise,
             asOf: _asOf,
             interestOn: mode == KhataInterestMode.khata,
             onAsOf: (d) => setState(() => _asOf = d),
@@ -202,12 +238,16 @@ class _Note extends StatelessWidget {
 class _Figures extends StatelessWidget {
   const _Figures({
     required this.result,
+    required this.postedPaise,
     required this.asOf,
     required this.interestOn,
     required this.onAsOf,
   });
 
   final InterestResult result;
+
+  /// Interest posted to the khata so far (not reversed).
+  final int postedPaise;
   final LedgerDate asOf;
   final bool interestOn;
   final ValueChanged<LedgerDate> onAsOf;
@@ -275,6 +315,24 @@ class _Figures extends StatelessWidget {
                 Money(result.interestRecoveredPaise),
                 tone: MkMoneyTone.jama,
                 key: const ValueKey('byaj-recovered'),
+              ),
+            ),
+            loanFact(
+              context,
+              l10n.byajPosted,
+              MkMoneyText(
+                Money(postedPaise),
+                key: const ValueKey('byaj-posted'),
+              ),
+            ),
+            loanFact(
+              context,
+              l10n.byajUnposted,
+              MkMoneyText(
+                Money(
+                  InterestPosting.unposted(result, postedPaise: postedPaise),
+                ),
+                key: const ValueKey('byaj-unposted'),
               ),
             ),
           ],

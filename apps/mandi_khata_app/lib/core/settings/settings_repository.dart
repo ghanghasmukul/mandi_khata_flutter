@@ -104,6 +104,21 @@ class SettingsRepository {
       ?_toRow(r),
   ];
 
+  /// Every `interest.*` row of [tenantId] (business, group and party level),
+  /// so one resolver can answer for many parties (the bulk posting run).
+  static Future<List<SettingRow>> interestRowsIn(
+    SqliteReadContext tx,
+    String tenantId,
+  ) async => [
+    for (final r in await tx.getAll(
+      'SELECT scope, scope_id, key, value FROM settings '
+      "WHERE tenant_id = ? AND key LIKE 'interest.%' "
+      "AND scope IN ('tenant', 'party_group', 'party')",
+      [tenantId],
+    ))
+      ?_toRow(r),
+  ];
+
   static SettingRow? _toRow(Map<String, Object?> r) {
     final scope = SettingScope.parse(r['scope']! as String);
     if (scope == null) return null;

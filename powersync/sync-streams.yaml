@@ -35,6 +35,8 @@ streams:
       # issuing and changing them is loans.manage (RLS).
       - SELECT * FROM loans WHERE tenant_id IN my_tenants
       - SELECT * FROM loan_rate_changes WHERE tenant_id IN my_tenants
+      # Posted interest and waivers (the khata entries behind them sync above).
+      - SELECT * FROM interest_postings WHERE tenant_id IN my_tenants
       # Everyone gets the Cash account and its book lines; bank accounts and
       # their lines go only to finance members (stream below).
       - SELECT * FROM bank_accounts WHERE tenant_id IN my_tenants AND kind = 'cash'

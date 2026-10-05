@@ -4893,5 +4893,338 @@
   "byajBulkFailed": "Some parties could not be saved. Check your permission and try again.",
   "@byajBulkFailed": {
     "description": "Khata-level interest, step 2.3."
+  },
+  "postInterestTitle": "Post interest",
+  "@postInterestTitle": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postInterestIntro": "This adds the interest charged so far to the khata as one udhaar entry. Nothing is posted until you confirm.",
+  "@postInterestIntro": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postInterestNone": "No interest to post for today.",
+  "@postInterestNone": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postInterestConfirm": "Post {amount}",
+  "@postInterestConfirm": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "postInterestDone": "Interest posted: {amount}",
+  "@postInterestDone": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "postInterestAmount": "Interest to post",
+  "@postInterestAmount": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postColParty": "Party",
+  "@postColParty": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postColAccount": "Account",
+  "@postColAccount": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postColPeriod": "Period",
+  "@postColPeriod": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postColTerms": "Terms",
+  "@postColTerms": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postAccountKhata": "Whole khata",
+  "@postAccountKhata": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postAccountLoan": "Loan {no}",
+  "@postAccountLoan": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
+  "postPeriod": "{from} to {to}",
+  "@postPeriod": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "postTerms": "{rate}% p.a., {method}",
+  "@postTerms": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "postSkipAlready": "Already posted up to this day",
+  "@postSkipAlready": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postSkipNotFound": "The party or loan was not found",
+  "@postSkipNotFound": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postSkipBackdated": "This date is too old for your role. Ask the owner.",
+  "@postSkipBackdated": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postNothing": "Nothing was posted.",
+  "@postNothing": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postErrorNotPermitted": "You are not allowed to post interest. Ask the owner.",
+  "@postErrorNotPermitted": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postErrorFuture": "Interest cannot be posted for a future date.",
+  "@postErrorFuture": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postBulkIntro": "Interest charged up to the chosen day for every party and loan that has some. Untick what you do not want to post. Running it again never posts the same period twice.",
+  "@postBulkIntro": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postBulkAsOf": "Interest up to",
+  "@postBulkAsOf": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postBulkSuggested": "Suggested: {date}",
+  "@postBulkSuggested": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "postBulkNone": "No interest to post up to this day.",
+  "@postBulkNone": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "postBulkTotal": "{count} selected · {amount}",
+  "@postBulkTotal": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "postBulkPost": "Post {count}",
+  "@postBulkPost": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "postBulkDone": "Posted {count} entries, {amount}.",
+  "@postBulkDone": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "postBulkSkipped": "{count} left out (already posted or not allowed).",
+  "@postBulkSkipped": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "byajPosted": "Interest posted so far",
+  "@byajPosted": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "byajUnposted": "Charged, not yet posted",
+  "@byajUnposted": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleTitle": "Hisaab karo",
+  "@settleTitle": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleIntro": "Settle this party up to a day: the interest is added to the khata, an optional discount is taken off, and the final amount is what the party pays or you pay.",
+  "@settleIntro": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleAsOf": "Settle up to",
+  "@settleAsOf": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleCropProceeds": "Crop proceeds",
+  "@settleCropProceeds": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settlePayments": "Payments and receipts",
+  "@settlePayments": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleLoans": "Loans (given and repaid)",
+  "@settleLoans": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleInterestPosted": "Interest already posted",
+  "@settleInterestPosted": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleKhataBalance": "Khata balance now",
+  "@settleKhataBalance": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleNothing": "No interest is due on this date.",
+  "@settleNothing": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleReason": "Reason for the discount",
+  "@settleReason": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleWaiver": "Discount on interest",
+  "@settleWaiver": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleInterestDue": "Interest to pay",
+  "@settleInterestDue": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleReceivable": "Party pays you",
+  "@settleReceivable": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settlePayable": "You pay the party",
+  "@settlePayable": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleSettled": "Settled",
+  "@settleSettled": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleDone": "Settled. Interest {interest} posted, {waived} waived.",
+  "@settleDone": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "interest": {
+        "type": "String"
+      },
+      "waived": {
+        "type": "String"
+      }
+    }
+  },
+  "settleNextHint": "Now record the payment or receipt from the khata.",
+  "@settleNextHint": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settlePrint": "Print slip",
+  "@settlePrint": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settlePost": "Post interest and settle",
+  "@settlePost": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleOpenKhata": "Back to khata",
+  "@settleOpenKhata": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleInterestOnKhata": "Interest on the khata",
+  "@settleInterestOnKhata": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleInterestOnLoan": "Interest on loan {no}",
+  "@settleInterestOnLoan": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
+  "settleErrorNegative": "A discount cannot be negative.",
+  "@settleErrorNegative": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleErrorExceeds": "The discount is more than the interest charged.",
+  "@settleErrorExceeds": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleErrorReason": "Write the reason for the discount.",
+  "@settleErrorReason": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleErrorUnknown": "There is no interest to waive on that account.",
+  "@settleErrorUnknown": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "settleErrorNeedsReverse": "A discount needs the accountant or owner.",
+  "@settleErrorNeedsReverse": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "slipTitle": "Settlement slip (hisaab)",
+  "@slipTitle": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "slipAsOf": "Settled up to {date}",
+  "@slipAsOf": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "slipReason": "Reason for discount: {reason}",
+  "@slipReason": {
+    "description": "Posting interest and settlement, step 2.4.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "slipSignParty": "Party signature",
+  "@slipSignParty": {
+    "description": "Posting interest and settlement, step 2.4."
+  },
+  "slipSignOwner": "Authorised signature",
+  "@slipSignOwner": {
+    "description": "Posting interest and settlement, step 2.4."
   }
 }

@@ -6591,6 +6591,378 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Some parties could not be saved. Check your permission and try again.'**
   String get byajBulkFailed;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Post interest'**
+  String get postInterestTitle;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'This adds the interest charged so far to the khata as one udhaar entry. Nothing is posted until you confirm.'**
+  String get postInterestIntro;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'No interest to post for today.'**
+  String get postInterestNone;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Post {amount}'**
+  String postInterestConfirm(String amount);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest posted: {amount}'**
+  String postInterestDone(String amount);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest to post'**
+  String get postInterestAmount;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Party'**
+  String get postColParty;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get postColAccount;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get postColPeriod;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms'**
+  String get postColTerms;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole khata'**
+  String get postAccountKhata;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan {no}'**
+  String postAccountLoan(String no);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'{from} to {to}'**
+  String postPeriod(String from, String to);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'{rate}% p.a., {method}'**
+  String postTerms(String rate, String method);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Already posted up to this day'**
+  String get postSkipAlready;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'The party or loan was not found'**
+  String get postSkipNotFound;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'This date is too old for your role. Ask the owner.'**
+  String get postSkipBackdated;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing was posted.'**
+  String get postNothing;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'You are not allowed to post interest. Ask the owner.'**
+  String get postErrorNotPermitted;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest cannot be posted for a future date.'**
+  String get postErrorFuture;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest charged up to the chosen day for every party and loan that has some. Untick what you do not want to post. Running it again never posts the same period twice.'**
+  String get postBulkIntro;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest up to'**
+  String get postBulkAsOf;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested: {date}'**
+  String postBulkSuggested(String date);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'No interest to post up to this day.'**
+  String get postBulkNone;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} selected · {amount}'**
+  String postBulkTotal(int count, String amount);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Post {count}'**
+  String postBulkPost(int count);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Posted {count} entries, {amount}.'**
+  String postBulkDone(int count, String amount);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} left out (already posted or not allowed).'**
+  String postBulkSkipped(int count);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest posted so far'**
+  String get byajPosted;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Charged, not yet posted'**
+  String get byajUnposted;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Hisaab karo'**
+  String get settleTitle;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Settle this party up to a day: the interest is added to the khata, an optional discount is taken off, and the final amount is what the party pays or you pay.'**
+  String get settleIntro;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Settle up to'**
+  String get settleAsOf;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop proceeds'**
+  String get settleCropProceeds;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Payments and receipts'**
+  String get settlePayments;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Loans (given and repaid)'**
+  String get settleLoans;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest already posted'**
+  String get settleInterestPosted;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Khata balance now'**
+  String get settleKhataBalance;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'No interest is due on this date.'**
+  String get settleNothing;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason for the discount'**
+  String get settleReason;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Discount on interest'**
+  String get settleWaiver;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest to pay'**
+  String get settleInterestDue;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Party pays you'**
+  String get settleReceivable;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'You pay the party'**
+  String get settlePayable;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get settleSettled;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Settled. Interest {interest} posted, {waived} waived.'**
+  String settleDone(String interest, String waived);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Now record the payment or receipt from the khata.'**
+  String get settleNextHint;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Print slip'**
+  String get settlePrint;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Post interest and settle'**
+  String get settlePost;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to khata'**
+  String get settleOpenKhata;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest on the khata'**
+  String get settleInterestOnKhata;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest on loan {no}'**
+  String settleInterestOnLoan(String no);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'A discount cannot be negative.'**
+  String get settleErrorNegative;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'The discount is more than the interest charged.'**
+  String get settleErrorExceeds;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Write the reason for the discount.'**
+  String get settleErrorReason;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no interest to waive on that account.'**
+  String get settleErrorUnknown;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'A discount needs the accountant or owner.'**
+  String get settleErrorNeedsReverse;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Settlement slip (hisaab)'**
+  String get slipTitle;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Settled up to {date}'**
+  String slipAsOf(String date);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason for discount: {reason}'**
+  String slipReason(String reason);
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Party signature'**
+  String get slipSignParty;
+
+  /// Posting interest and settlement, step 2.4.
+  ///
+  /// In en, this message translates to:
+  /// **'Authorised signature'**
+  String get slipSignOwner;
 }
 
 class _AppLocalizationsDelegate

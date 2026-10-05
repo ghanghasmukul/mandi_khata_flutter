@@ -9,7 +9,9 @@ import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
 import 'package:mandi_khata_app/features/interest/presentation/bulk_interest_screen.dart';
+import 'package:mandi_khata_app/features/interest/presentation/interest_posting_providers.dart';
 import 'package:mandi_khata_app/features/interest/presentation/interest_providers.dart';
 import 'package:mandi_khata_app/features/interest/presentation/party_byaj_tab.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
@@ -85,6 +87,7 @@ void main() {
     Party? party,
     List<SettingRow> rows = const [],
     List<LedgerEntry> entries = const [],
+    List<PostingRow> postings = const [],
     bool manage = true,
     List<Party> parties = const [],
     LoanDetail? loan,
@@ -105,6 +108,9 @@ void main() {
           partyEntriesProvider(
             'p1',
           ).overrideWith((ref) => Stream.value(entries)),
+          partyPostingsProvider(
+            'p1',
+          ).overrideWith((ref) => Stream.value(postings)),
           partyInterestWriterProvider.overrideWithValue(writer),
           partyListProvider(
             '',
@@ -161,6 +167,85 @@ void main() {
       expect(money(tester, 'byaj-principal'), const Money.rupees(100000));
       expect(money(tester, 'byaj-payable'), const Money(10000000 + 147945));
       expect(key('loan-statement'), findsOneWidget);
+    });
+
+    testWidgets('shows what is posted and what is still to post', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        PartyByajTab(party: partyOf()),
+        rows: [tenantRow('interest.rounding', 'paise')],
+        entries: [udhaar(100000, today.addDays(-30))],
+        postings: [
+          PostingRow(
+            id: 'ip1',
+            partyId: 'p1',
+            isWaiver: false,
+            from: today.addDays(-30),
+            to: today.addDays(-10),
+            amount: const Money(98630), // 20 days
+            createdAt: DateTime.utc(2026),
+          ),
+        ],
+      );
+      expect(money(tester, 'byaj-posted'), const Money(98630));
+      // 30 days = 1,479.45 charged, 986.30 of it posted.
+      expect(money(tester, 'byaj-unposted'), const Money(147945 - 98630));
+      expect(key('byaj-post'), findsOneWidget);
+      expect(key('byaj-hisaab'), findsOneWidget);
+    });
+
+    testWidgets('a waiver credit is not treated as a repayment', (
+      tester,
+    ) async {
+      final waiver = LedgerEntry(
+        id: 'w1',
+        partyId: 'p1',
+        entryDate: today,
+        side: Side.jama,
+        amount: const Money(50000),
+        refType: RefType.journal,
+        refId: 'wp1',
+        createdAt: DateTime.utc(2026, 1, 3),
+      );
+      await pump(
+        tester,
+        PartyByajTab(party: partyOf()),
+        rows: [
+          tenantRow('interest.rounding', 'paise'),
+          tenantRow('interest.appropriation', 'principal_first'),
+        ],
+        entries: [udhaar(100000, today.addDays(-30)), waiver],
+        postings: [
+          PostingRow(
+            id: 'wp1',
+            partyId: 'p1',
+            isWaiver: true,
+            from: today,
+            to: today,
+            amount: const Money(50000),
+            reason: 'Diwali',
+            createdAt: DateTime.utc(2026),
+          ),
+        ],
+      );
+      // Principal stays 1,00,000 even though repayments go principal first.
+      expect(money(tester, 'byaj-principal'), const Money.rupees(100000));
+      expect(money(tester, 'byaj-accrued'), const Money(147945 - 50000));
+    });
+
+    testWidgets('without loans.manage there are no posting buttons', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        PartyByajTab(party: partyOf()),
+        entries: [udhaar(100000, today.addDays(-30))],
+        manage: false,
+      );
+      expect(key('byaj-post'), findsNothing);
+      expect(key('byaj-hisaab'), findsNothing);
     });
 
     testWidgets('a party override shows the party as the source', (

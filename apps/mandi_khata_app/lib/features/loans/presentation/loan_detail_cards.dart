@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
+import 'package:mandi_khata_app/features/interest/presentation/post_interest_dialog.dart';
 import 'package:mandi_khata_app/features/loans/domain/loan.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_change_dialogs.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loans_providers.dart';
@@ -279,12 +280,17 @@ class LoanActions extends StatelessWidget {
     required this.canRepay,
     required this.asOf,
     super.key,
+    this.canPost = false,
   });
 
   final LoanDetail detail;
   final LedgerDate asOf;
   final bool canManage;
   final bool canRepay;
+
+  /// Interest of this loan can be posted (not when the khata's own byaj
+  /// already covers it).
+  final bool canPost;
 
   @override
   Widget build(BuildContext context) {
@@ -302,6 +308,26 @@ class LoanActions extends StatelessWidget {
                 showRepaymentDialog(context, detail.loan.id, date: asOf),
           ),
         if (canManage) ...[
+          if (canPost)
+            MkButton(
+              key: const ValueKey('loan-post-interest'),
+              label: l10n.postInterestTitle,
+              icon: Icons.playlist_add_check,
+              variant: MkButtonVariant.secondary,
+              onPressed: () => showPostInterestDialog(
+                context,
+                partyId: detail.loan.partyId,
+                loanId: detail.loan.id,
+              ),
+            ),
+          MkButton(
+            key: const ValueKey('loan-hisaab'),
+            label: l10n.settleTitle,
+            icon: Icons.balance,
+            variant: MkButtonVariant.secondary,
+            onPressed: () =>
+                context.go(PartyRoutes.hisaab(detail.loan.partyId)),
+          ),
           MkButton(
             key: const ValueKey('loan-change-rate'),
             label: l10n.loanActionRate,

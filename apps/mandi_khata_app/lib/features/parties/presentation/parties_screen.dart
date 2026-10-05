@@ -19,6 +19,7 @@ abstract final class PartyRoutes {
   static const create = '/parties/new';
   static String detail(String id) => '/parties/$id';
   static String edit(String id) => '/parties/$id/edit';
+  static String hisaab(String id) => '/parties/$id/hisaab';
 }
 
 /// All parties of the business: instant search and role filter, straight
