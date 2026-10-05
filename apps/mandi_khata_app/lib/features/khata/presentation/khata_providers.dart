@@ -40,6 +40,19 @@ Stream<Statement> partyStatement(
   yield* repo.watchStatement(tenantId, partyId, from: from, to: to);
 }
 
+/// Every entry of one party's khata in the active business, oldest first.
+/// Live. Feeds the interest engine.
+@riverpod
+Stream<List<LedgerEntry>> partyEntries(Ref ref, String partyId) async* {
+  final tenantId = ref.watch(activeTenantProvider);
+  if (tenantId == null) {
+    yield const [];
+    return;
+  }
+  final repo = await ref.watch(ledgerRepositoryProvider.future);
+  yield* repo.watchEntries(tenantId, partyId);
+}
+
 /// Balance of every party with entries in the active business.
 @riverpod
 Stream<Map<String, Money>> partyBalances(Ref ref) async* {

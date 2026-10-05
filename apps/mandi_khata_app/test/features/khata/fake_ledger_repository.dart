@@ -63,6 +63,13 @@ class FakeLedgerRepository implements LedgerRepository {
   }
 
   @override
+  Stream<List<LedgerEntry>> watchEntries(String tenantId, String partyId) =>
+      _live(
+        () =>
+            LedgerCalculator.sorted(entries.where((e) => e.partyId == partyId)),
+      );
+
+  @override
   Stream<Statement> watchStatement(
     String tenantId,
     String partyId, {

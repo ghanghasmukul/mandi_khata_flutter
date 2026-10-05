@@ -437,6 +437,22 @@ void main() {
   });
 
   group('reading', () {
+    test('watchEntries: one party, this business only, reversals included, '
+        'and the interest engine sees the net khata', () async {
+      final a = await add('2027-01-01', Side.udhaar, 100000);
+      final wrong = await add('2027-01-05', Side.udhaar, 999);
+      await add('2027-01-02', Side.udhaar, 50, party: 'px', c: otherTenant);
+      await repo.reverse(ctx, wrong.id, can: owner);
+
+      final entries = await repo.watchEntries(t1, 'p1').first;
+      expect(entries, hasLength(3));
+      expect(entries.map((e) => e.partyId).toSet(), {'p1'});
+      expect(await repo.watchEntries(t2, 'p1').first, isEmpty);
+
+      final events = KhataInterest.events(entries);
+      expect(events.map((e) => e.id), [a.id]);
+    });
+
     test('statement: opening, running baki, struck pairs, this business '
         'only', () async {
       await add(

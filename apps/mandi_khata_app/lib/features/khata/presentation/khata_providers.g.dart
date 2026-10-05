@@ -148,6 +148,97 @@ final class PartyStatementFamily extends $Family
   String toString() => r'partyStatementProvider';
 }
 
+/// Every entry of one party's khata in the active business, oldest first.
+/// Live. Feeds the interest engine.
+
+@ProviderFor(partyEntries)
+final partyEntriesProvider = PartyEntriesFamily._();
+
+/// Every entry of one party's khata in the active business, oldest first.
+/// Live. Feeds the interest engine.
+
+final class PartyEntriesProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<LedgerEntry>>,
+          List<LedgerEntry>,
+          Stream<List<LedgerEntry>>
+        >
+    with
+        $FutureModifier<List<LedgerEntry>>,
+        $StreamProvider<List<LedgerEntry>> {
+  /// Every entry of one party's khata in the active business, oldest first.
+  /// Live. Feeds the interest engine.
+  PartyEntriesProvider._({
+    required PartyEntriesFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'partyEntriesProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$partyEntriesHash();
+
+  @override
+  String toString() {
+    return r'partyEntriesProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $StreamProviderElement<List<LedgerEntry>> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
+
+  @override
+  Stream<List<LedgerEntry>> create(Ref ref) {
+    final argument = this.argument as String;
+    return partyEntries(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is PartyEntriesProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$partyEntriesHash() => r'db787c588efbfbfb3c41fdb4cd13b966e7aa64ba';
+
+/// Every entry of one party's khata in the active business, oldest first.
+/// Live. Feeds the interest engine.
+
+final class PartyEntriesFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<List<LedgerEntry>>, String> {
+  PartyEntriesFamily._()
+    : super(
+        retry: null,
+        name: r'partyEntriesProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  /// Every entry of one party's khata in the active business, oldest first.
+  /// Live. Feeds the interest engine.
+
+  PartyEntriesProvider call(String partyId) =>
+      PartyEntriesProvider._(argument: partyId, from: this);
+
+  @override
+  String toString() => r'partyEntriesProvider';
+}
+
 /// Balance of every party with entries in the active business.
 
 @ProviderFor(partyBalances)

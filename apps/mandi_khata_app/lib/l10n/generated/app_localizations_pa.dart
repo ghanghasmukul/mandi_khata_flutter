@@ -3536,4 +3536,103 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get loanOpenFromParty => 'ਕਰਜ਼ੇ';
+
+  @override
+  String get partyTabByaj => 'ਵਿਆਜ';
+
+  @override
+  String get byajNoInterest => 'ਇਸ ਪਾਰਟੀ ਉੱਤੇ ਵਿਆਜ ਨਹੀਂ ਲੱਗਦਾ।';
+
+  @override
+  String get byajLoansOnly =>
+      'ਇਸ ਪਾਰਟੀ ਉੱਤੇ ਵਿਆਜ ਸਿਰਫ਼ ਵੱਖ-ਵੱਖ ਕਰਜ਼ਿਆਂ ਉੱਤੇ ਚੱਲਦਾ ਹੈ। ਕਰਜ਼ਾ ਟੈਬ ਵੇਖੋ।';
+
+  @override
+  String get byajKhataNote =>
+      'ਵਿਆਜ ਪੂਰੇ ਖਾਤੇ ਉੱਤੇ ਚੱਲਦਾ ਹੈ, ਕਰਜ਼ਾ ਸਮੇਤ। ਇਸ ਪਾਰਟੀ ਦਾ ਕਰਜ਼ਾ ਦੂਜੀ ਵਾਰ ਵਿਆਜ ਨਹੀਂ ਲਾਉਂਦਾ।';
+
+  @override
+  String get byajLoanCoveredNote =>
+      'ਇਸ ਪਾਰਟੀ ਦਾ ਵਿਆਜ ਪੂਰੇ ਖਾਤੇ ਉੱਤੇ ਚੱਲਦਾ ਹੈ, ਇਸ ਲਈ ਇਹ ਕਰਜ਼ਾ ਉਸੇ ਵਿੱਚ ਸ਼ਾਮਲ ਹੈ। ਇਹ ਕਰਜ਼ੇ ਦੇ ਅੰਕੜੇ ਸਿਰਫ਼ ਜਾਣਕਾਰੀ ਲਈ ਹਨ: ਇਨ੍ਹਾਂ ਨੂੰ ਖਾਤੇ ਦੇ ਵਿਆਜ ਵਿੱਚ ਨਾ ਜੋੜੋ।';
+
+  @override
+  String get byajTermsTitle => 'ਵਿਆਜ ਦੀਆਂ ਸ਼ਰਤਾਂ';
+
+  @override
+  String get byajEditTerms => 'ਸ਼ਰਤਾਂ ਬਦਲੋ';
+
+  @override
+  String byajSourced(String value, String source) {
+    return '$value · $source';
+  }
+
+  @override
+  String get byajCreditBalance => 'ਪਾਰਟੀ ਦੀ ਜਮ੍ਹਾ ਰਕਮ ਜੋ ਸਾਡੇ ਕੋਲ ਹੈ';
+
+  @override
+  String get byajRowDebit => 'ਉਧਾਰ ਦੀ ਐਂਟਰੀ';
+
+  @override
+  String get byajRowCredit => 'ਜਮ੍ਹਾ ਦੀ ਐਂਟਰੀ';
+
+  @override
+  String get byajNoEntries => 'ਖਾਤੇ ਵਿੱਚ ਹਾਲੇ ਕੋਈ ਐਂਟਰੀ ਨਹੀਂ';
+
+  @override
+  String byajDialogTitle(String name) {
+    return 'ਵਿਆਜ ਦੀਆਂ ਸ਼ਰਤਾਂ · $name';
+  }
+
+  @override
+  String get byajDialogHint =>
+      'ਸਿਰਫ਼ ਤੁਹਾਡੇ ਬਦਲੇ ਹਿੱਸੇ ਇਸ ਪਾਰਟੀ ਲਈ ਰਹਿੰਦੇ ਹਨ। ਬਾਕੀ ਕਾਰੋਬਾਰ ਦੀਆਂ ਤੈਅ ਸ਼ਰਤਾਂ ਅਨੁਸਾਰ ਚੱਲਦਾ ਹੈ।';
+
+  @override
+  String get byajUseDefaults => 'ਕਾਰੋਬਾਰ ਦੀਆਂ ਤੈਅ ਸ਼ਰਤਾਂ ਲਾਓ';
+
+  @override
+  String get byajSave => 'ਸ਼ਰਤਾਂ ਸੰਭਾਲੋ';
+
+  @override
+  String get byajSaved => 'ਵਿਆਜ ਦੀਆਂ ਸ਼ਰਤਾਂ ਸੰਭਾਲ ਲਈਆਂ ਗਈਆਂ';
+
+  @override
+  String get byajNoPermission =>
+      'ਵਿਆਜ ਦੀਆਂ ਸ਼ਰਤਾਂ ਬਦਲਣ ਲਈ ਕਰਜ਼ੇ ਦੀ ਇਜਾਜ਼ਤ (ਮਾਲਕ) ਚਾਹੀਦੀ ਹੈ।';
+
+  @override
+  String get byajBulkOpen => 'ਕਈ ਪਾਰਟੀਆਂ ਦਾ ਵਿਆਜ ਇਕੱਠਾ ਤੈਅ ਕਰੋ';
+
+  @override
+  String get byajBulkTitle => 'ਕਈ ਪਾਰਟੀਆਂ ਦਾ ਵਿਆਜ ਤੈਅ ਕਰੋ';
+
+  @override
+  String get byajBulkIntro =>
+      'ਪਾਰਟੀਆਂ ਚੁਣੋ (ਜਿਵੇਂ ਇੱਕ ਪਿੰਡ), ਸ਼ਰਤਾਂ ਤੈਅ ਕਰੋ ਅਤੇ ਲਾਗੂ ਕਰੋ। ਹਰ ਪਾਰਟੀ ਦੀਆਂ ਆਪਣੀਆਂ ਸ਼ਰਤਾਂ ਬਣਨਗੀਆਂ, ਜੋ ਕਾਰੋਬਾਰ ਦੀਆਂ ਤੈਅ ਸ਼ਰਤਾਂ ਤੋਂ ਉੱਪਰ ਚੱਲਣਗੀਆਂ।';
+
+  @override
+  String get byajBulkVillage => 'ਪਿੰਡ';
+
+  @override
+  String get byajBulkAllVillages => 'ਸਾਰੇ ਪਿੰਡ';
+
+  @override
+  String get byajBulkSelectAll => 'ਵਿਖਾਈਆਂ ਸਾਰੀਆਂ ਚੁਣੋ';
+
+  @override
+  String get byajBulkNone => 'ਕੋਈ ਪਾਰਟੀ ਨਹੀਂ ਮਿਲੀ';
+
+  @override
+  String byajBulkApply(int count) {
+    return '$count ਪਾਰਟੀਆਂ ਉੱਤੇ ਲਾਗੂ ਕਰੋ';
+  }
+
+  @override
+  String byajBulkDone(int count) {
+    return '$count ਪਾਰਟੀਆਂ ਲਈ ਵਿਆਜ ਦੀਆਂ ਸ਼ਰਤਾਂ ਤੈਅ ਹੋਈਆਂ';
+  }
+
+  @override
+  String get byajBulkFailed =>
+      'ਕੁਝ ਪਾਰਟੀਆਂ ਸੰਭਾਲੀਆਂ ਨਹੀਂ ਜਾ ਸਕੀਆਂ। ਇਜਾਜ਼ਤ ਜਾਂਚ ਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।';
 }

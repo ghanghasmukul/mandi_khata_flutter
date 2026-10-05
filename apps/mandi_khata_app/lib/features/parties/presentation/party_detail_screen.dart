@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
+import 'package:mandi_khata_app/features/interest/presentation/party_byaj_tab.dart';
 import 'package:mandi_khata_app/features/khata/presentation/party_khata_tab.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_providers.dart';
@@ -73,7 +74,7 @@ class PartyDetailScreen extends ConsumerWidget {
       child: Focus(
         autofocus: true,
         child: DefaultTabController(
-          length: 6,
+          length: 7,
           child: Scaffold(
             body: Column(
               children: [
@@ -192,6 +193,7 @@ class _Body extends ConsumerWidget {
           tabAlignment: TabAlignment.start,
           tabs: [
             Tab(text: l10n.partyTabKhata),
+            Tab(text: l10n.partyTabByaj),
             Tab(text: l10n.partyTabLots),
             Tab(text: l10n.partyTabLoans),
             Tab(text: l10n.partyTabShop),
@@ -203,6 +205,7 @@ class _Body extends ConsumerWidget {
           child: TabBarView(
             children: [
               PartyKhataTab(party: p),
+              PartyByajTab(party: p),
               for (var i = 0; i < 4; i++)
                 MkEmptyState(
                   icon: Icons.construction_outlined,

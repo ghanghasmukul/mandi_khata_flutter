@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
+import 'package:mandi_khata_app/features/interest/presentation/interest_providers.dart';
 import 'package:mandi_khata_app/features/loans/domain/loan.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_change_dialogs.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_detail_cards.dart';
@@ -12,6 +13,7 @@ import 'package:mandi_khata_app/features/loans/presentation/loan_statement_table
 import 'package:mandi_khata_app/features/loans/presentation/loans_providers.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/loans/presentation/repayment_dialog.dart';
+import 'package:mandi_khata_app/features/parties/presentation/parties_providers.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -97,7 +99,7 @@ class _LoanDetailScreenState extends ConsumerState<LoanDetailScreen> {
   }
 }
 
-class _Body extends StatelessWidget {
+class _Body extends ConsumerWidget {
   const _Body({
     required this.detail,
     required this.asOf,
@@ -113,14 +115,35 @@ class _Body extends StatelessWidget {
   final bool canRepay;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final loan = detail.loan;
     final position = detail.position(asOf);
+    // With byaj on the whole khata this loan is already inside it.
+    final party = ref.watch(partyProvider(loan.partyId)).value;
+    final partyTerms = party == null
+        ? null
+        : ref.watch(partyInterestConfigProvider(party));
+    final inKhata =
+        partyTerms != null && KhataInterest.includesLoans(partyTerms);
 
     return ListView(
       padding: const EdgeInsets.all(MkSpacing.lg),
       children: [
+        if (inKhata) ...[
+          MkCard(
+            key: const ValueKey('loan-in-khata-note'),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(Icons.info_outline, size: 18),
+                const SizedBox(width: MkSpacing.sm),
+                Expanded(child: Text(l10n.byajLoanCoveredNote)),
+              ],
+            ),
+          ),
+          const SizedBox(height: MkSpacing.md),
+        ],
         LoanSummaryCard(detail: detail, position: position),
         const SizedBox(height: MkSpacing.md),
         LoanFiguresCard(

@@ -6423,6 +6423,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Loans'**
   String get loanOpenFromParty;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj'**
+  String get partyTabByaj;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'No interest is charged on this party.'**
+  String get byajNoInterest;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest runs on this party\'s individual loans only. See the Loans tab.'**
+  String get byajLoansOnly;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj runs on the whole khata, loans included. A loan of this party does not charge byaj a second time.'**
+  String get byajKhataNote;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'This party\'s byaj runs on the whole khata, so this loan is already part of it. These loan figures are for reference only: do not add them to the khata byaj.'**
+  String get byajLoanCoveredNote;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest terms'**
+  String get byajTermsTitle;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit terms'**
+  String get byajEditTerms;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'{value} · {source}'**
+  String byajSourced(String value, String source);
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit we hold for the party'**
+  String get byajCreditBalance;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar entry'**
+  String get byajRowDebit;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Jama entry'**
+  String get byajRowCredit;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'No entries in the khata yet'**
+  String get byajNoEntries;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Byaj terms · {name}'**
+  String byajDialogTitle(String name);
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Only what you change is kept for this party. The rest keeps following the business default.'**
+  String get byajDialogHint;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Use business defaults'**
+  String get byajUseDefaults;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Save terms'**
+  String get byajSave;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest terms saved'**
+  String get byajSaved;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Changing interest terms needs the loans permission (owner).'**
+  String get byajNoPermission;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Set interest for many parties'**
+  String get byajBulkOpen;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Set interest for many parties'**
+  String get byajBulkTitle;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the parties (for example one village), set the terms, and apply. Each party gets its own terms, which win over the business default.'**
+  String get byajBulkIntro;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Village'**
+  String get byajBulkVillage;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'All villages'**
+  String get byajBulkAllVillages;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all shown'**
+  String get byajBulkSelectAll;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'No parties match'**
+  String get byajBulkNone;
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply to {count} parties'**
+  String byajBulkApply(int count);
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest terms set for {count} parties'**
+  String byajBulkDone(int count);
+
+  /// Khata-level interest, step 2.3.
+  ///
+  /// In en, this message translates to:
+  /// **'Some parties could not be saved. Check your permission and try again.'**
+  String get byajBulkFailed;
 }
 
 class _AppLocalizationsDelegate

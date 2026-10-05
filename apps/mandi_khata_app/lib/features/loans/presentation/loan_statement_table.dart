@@ -6,11 +6,18 @@ import 'package:mk_ui/mk_ui.dart';
 
 /// The loan's interest statement as the engine worked it out: every slab of
 /// days, loan given, repayment (with its byaj / principal split), step where
-/// byaj joins the principal and rate change, in order.
+/// byaj joins the principal and rate change, in order. With [forKhata] it
+/// is the party khata's statement: entries read "Udhaar" / "Jama" instead of
+/// "Loan given" / "Repayment".
 class LoanStatementTable extends StatelessWidget {
-  const LoanStatementTable({required this.rows, super.key});
+  const LoanStatementTable({
+    required this.rows,
+    super.key,
+    this.forKhata = false,
+  });
 
   final List<InterestRow> rows;
+  final bool forKhata;
 
   String _event(AppLocalizations l10n, InterestRow r) {
     final note = r.note == null || r.note!.isEmpty ? '' : '\n${r.note}';
@@ -18,7 +25,7 @@ class LoanStatementTable extends StatelessWidget {
       case InterestRowKind.accrue:
         return l10n.loanRowAccrue;
       case InterestRowKind.debit:
-        return '${l10n.loanRowDebit}$note';
+        return '${forKhata ? l10n.byajRowDebit : l10n.loanRowDebit}$note';
       case InterestRowKind.credit:
         final split = l10n.loanRowSplit(
           Money(r.payInterestPaise).format(),
@@ -27,7 +34,8 @@ class LoanStatementTable extends StatelessWidget {
         final surplus = r.toCreditBalancePaise > 0
             ? '\n${l10n.loanRowSurplus(Money(r.toCreditBalancePaise).format())}'
             : '';
-        return '${l10n.loanRowCredit}$note\n$split$surplus';
+        final label = forKhata ? l10n.byajRowCredit : l10n.loanRowCredit;
+        return '$label$note\n$split$surplus';
       case InterestRowKind.compound:
         return l10n.loanRowCompound;
       case InterestRowKind.rateChange:
@@ -45,7 +53,7 @@ class LoanStatementTable extends StatelessWidget {
       key: const ValueKey('loan-statement'),
       minWidth: 900,
       rows: rows,
-      empty: Text(l10n.loanStmtEmpty),
+      empty: Text(forKhata ? l10n.byajNoEntries : l10n.loanStmtEmpty),
       columns: [
         MkColumn(
           label: l10n.loanColFrom,

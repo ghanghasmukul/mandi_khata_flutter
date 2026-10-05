@@ -4758,5 +4758,140 @@
   "loanOpenFromParty": "Loans",
   "@loanOpenFromParty": {
     "description": "Loans (karza), step 2.2."
+  },
+  "partyTabByaj": "Byaj",
+  "@partyTabByaj": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajNoInterest": "No interest is charged on this party.",
+  "@byajNoInterest": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajLoansOnly": "Interest runs on this party's individual loans only. See the Loans tab.",
+  "@byajLoansOnly": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajKhataNote": "Byaj runs on the whole khata, loans included. A loan of this party does not charge byaj a second time.",
+  "@byajKhataNote": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajLoanCoveredNote": "This party's byaj runs on the whole khata, so this loan is already part of it. These loan figures are for reference only: do not add them to the khata byaj.",
+  "@byajLoanCoveredNote": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajTermsTitle": "Interest terms",
+  "@byajTermsTitle": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajEditTerms": "Edit terms",
+  "@byajEditTerms": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajSourced": "{value} · {source}",
+  "@byajSourced": {
+    "description": "Khata-level interest, step 2.3.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "byajCreditBalance": "Credit we hold for the party",
+  "@byajCreditBalance": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajRowDebit": "Udhaar entry",
+  "@byajRowDebit": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajRowCredit": "Jama entry",
+  "@byajRowCredit": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajNoEntries": "No entries in the khata yet",
+  "@byajNoEntries": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajDialogTitle": "Byaj terms · {name}",
+  "@byajDialogTitle": {
+    "description": "Khata-level interest, step 2.3.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "byajDialogHint": "Only what you change is kept for this party. The rest keeps following the business default.",
+  "@byajDialogHint": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajUseDefaults": "Use business defaults",
+  "@byajUseDefaults": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajSave": "Save terms",
+  "@byajSave": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajSaved": "Interest terms saved",
+  "@byajSaved": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajNoPermission": "Changing interest terms needs the loans permission (owner).",
+  "@byajNoPermission": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkOpen": "Set interest for many parties",
+  "@byajBulkOpen": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkTitle": "Set interest for many parties",
+  "@byajBulkTitle": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkIntro": "Pick the parties (for example one village), set the terms, and apply. Each party gets its own terms, which win over the business default.",
+  "@byajBulkIntro": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkVillage": "Village",
+  "@byajBulkVillage": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkAllVillages": "All villages",
+  "@byajBulkAllVillages": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkSelectAll": "Select all shown",
+  "@byajBulkSelectAll": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkNone": "No parties match",
+  "@byajBulkNone": {
+    "description": "Khata-level interest, step 2.3."
+  },
+  "byajBulkApply": "Apply to {count} parties",
+  "@byajBulkApply": {
+    "description": "Khata-level interest, step 2.3.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "byajBulkDone": "Interest terms set for {count} parties",
+  "@byajBulkDone": {
+    "description": "Khata-level interest, step 2.3.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "byajBulkFailed": "Some parties could not be saved. Check your permission and try again.",
+  "@byajBulkFailed": {
+    "description": "Khata-level interest, step 2.3."
   }
 }

@@ -307,6 +307,17 @@ class LedgerRepository {
             LedgerCalculator.statement(rows.map(fromRow), from: from, to: to),
       );
 
+  /// Every entry of one party's khata (reversals included), oldest first.
+  /// Live. The interest engine works on these (khata_core `KhataInterest`).
+  Stream<List<LedgerEntry>> watchEntries(String tenantId, String partyId) => _db
+      .watch(
+        'SELECT $_columns FROM ledger_entries '
+        'WHERE tenant_id = ? AND party_id = ?',
+        parameters: [tenantId, partyId],
+        triggerOnTables: const {'ledger_entries'},
+      )
+      .map((rows) => LedgerCalculator.sorted(rows.map(fromRow)));
+
   static const _dayBookWhere =
       'WHERE e.tenant_id = ? '
       'AND (? IS NULL OR e.entry_date >= ?) '

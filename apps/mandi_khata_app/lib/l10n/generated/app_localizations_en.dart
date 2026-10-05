@@ -3568,4 +3568,103 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loanOpenFromParty => 'Loans';
+
+  @override
+  String get partyTabByaj => 'Byaj';
+
+  @override
+  String get byajNoInterest => 'No interest is charged on this party.';
+
+  @override
+  String get byajLoansOnly =>
+      'Interest runs on this party\'s individual loans only. See the Loans tab.';
+
+  @override
+  String get byajKhataNote =>
+      'Byaj runs on the whole khata, loans included. A loan of this party does not charge byaj a second time.';
+
+  @override
+  String get byajLoanCoveredNote =>
+      'This party\'s byaj runs on the whole khata, so this loan is already part of it. These loan figures are for reference only: do not add them to the khata byaj.';
+
+  @override
+  String get byajTermsTitle => 'Interest terms';
+
+  @override
+  String get byajEditTerms => 'Edit terms';
+
+  @override
+  String byajSourced(String value, String source) {
+    return '$value · $source';
+  }
+
+  @override
+  String get byajCreditBalance => 'Credit we hold for the party';
+
+  @override
+  String get byajRowDebit => 'Udhaar entry';
+
+  @override
+  String get byajRowCredit => 'Jama entry';
+
+  @override
+  String get byajNoEntries => 'No entries in the khata yet';
+
+  @override
+  String byajDialogTitle(String name) {
+    return 'Byaj terms · $name';
+  }
+
+  @override
+  String get byajDialogHint =>
+      'Only what you change is kept for this party. The rest keeps following the business default.';
+
+  @override
+  String get byajUseDefaults => 'Use business defaults';
+
+  @override
+  String get byajSave => 'Save terms';
+
+  @override
+  String get byajSaved => 'Interest terms saved';
+
+  @override
+  String get byajNoPermission =>
+      'Changing interest terms needs the loans permission (owner).';
+
+  @override
+  String get byajBulkOpen => 'Set interest for many parties';
+
+  @override
+  String get byajBulkTitle => 'Set interest for many parties';
+
+  @override
+  String get byajBulkIntro =>
+      'Pick the parties (for example one village), set the terms, and apply. Each party gets its own terms, which win over the business default.';
+
+  @override
+  String get byajBulkVillage => 'Village';
+
+  @override
+  String get byajBulkAllVillages => 'All villages';
+
+  @override
+  String get byajBulkSelectAll => 'Select all shown';
+
+  @override
+  String get byajBulkNone => 'No parties match';
+
+  @override
+  String byajBulkApply(int count) {
+    return 'Apply to $count parties';
+  }
+
+  @override
+  String byajBulkDone(int count) {
+    return 'Interest terms set for $count parties';
+  }
+
+  @override
+  String get byajBulkFailed =>
+      'Some parties could not be saved. Check your permission and try again.';
 }

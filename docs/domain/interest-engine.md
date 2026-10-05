@@ -81,3 +81,13 @@ Where the rules above leave room, the engine does this. Each point is pinned by 
 - **`pay_on_jama`.** While a credit balance exists, interest accrues in the party's favour at `pay_rate_pa` (no grace, simple, never compounded, not netted against what the party owes). It is reported separately as `interestPayableToPartyPaise`; `totalPayablePaise` is unchanged.
 - **Posted interest** (`LedgerEvent.isPostedInterest`): ignored by the engine (rule 8). Reconciling accrued interest against already-posted interest is step 2.4's job.
 - **Rate changes** only change `rate_pa`; the pay-on-jama rate is fixed. A change dated on or before the first event applies from the start without a schedule row.
+
+## Khata-level interest (step 2.3)
+
+`khata_core` `KhataInterest` feeds a party's whole khata to the engine when the party's resolved `interest.apply_on` is `net_udhaar`.
+
+- **Events.** Every entry of the party except reversals and the entries they reverse (they net to nothing). Loan disbursals and repayments are ordinary khata entries here. Entries with `ref_type = interest` are passed flagged and ignored (rule 8).
+- **Modes** (`KhataInterest.mode`): `khata` (`net_udhaar`), `loansOnly` (`loans_only`: no khata engine runs, the result is empty), `off` (`none` or `interest.enabled = false`: nothing charged, principal still tracked).
+- **No double charge.** With `net_udhaar` a loan's money is already inside the khata engine, so the loan screen shows a notice that its own figures are reference only and must not be added to the khata byaj. With `loans_only` only loans charge and the khata tab says so. A loan keeps its snapshot (`apply_on = loans_only`) either way; nothing is posted by this step, so the two can only collide at posting time (step 2.4 must post khata byaj OR loan byaj for the same money, never both).
+- **Party overrides** (`PartyInterestOverrides`): the editor writes party-level `interest.*` settings, only for values that differ from what the party would inherit; a value equal to the inherited one is reset to inherit (`null`). "No interest for this party" writes only `interest.enabled = false`. A party that is off by `apply_on = none` (supplier / agency default) shows as off; switching it on writes `interest.enabled = true` and `interest.apply_on = net_udhaar`.
+- **Bulk apply.** `PartyInterestOverrides.explicit` writes every editable value as party-level rows for the parties picked (usually one village). Needs `loans.manage`; each row is an audited setting write.

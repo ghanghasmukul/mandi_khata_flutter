@@ -54,6 +54,7 @@ class _PartiesScreenState extends ConsumerState<PartiesScreen> {
     final canAdd = ref.watch(canProvider(Permission.partiesManage));
     final canImport =
         canAdd && ref.watch(canProvider(Permission.entriesReverse));
+    final canInterest = ref.watch(canProvider(Permission.loansManage));
     final parties = ref.watch(partyListProvider(_query, _role)).value ?? _last;
     _last = parties;
 
@@ -84,6 +85,14 @@ class _PartiesScreenState extends ConsumerState<PartiesScreen> {
                       tooltip: l10n.obTitle,
                       onPressed: () => context.go('${PartyRoutes.list}/import'),
                       icon: const Icon(Icons.upload_file_outlined),
+                    ),
+                  if (canInterest)
+                    IconButton(
+                      key: const ValueKey('parties-bulk-interest'),
+                      tooltip: l10n.byajBulkOpen,
+                      onPressed: () =>
+                          context.go('${PartyRoutes.list}/interest'),
+                      icon: const Icon(Icons.percent),
                     ),
                   IconButton(
                     tooltip: MaterialLocalizations.of(

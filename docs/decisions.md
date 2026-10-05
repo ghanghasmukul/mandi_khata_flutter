@@ -180,3 +180,10 @@
 - Manual test caveat: the dev PowerSync instance has no `loans` / `loan_rate_changes` streams yet, so after sync a device drops the loan rows it uploaded (screens say "Loan not found" / empty list). The upload itself was verified in Postgres (loan, payment, khata entry, book line, snapshot all present). Screens were exercised offline on Chrome and the Android emulator.
 - Hindi / Punjabi strings for loans were written without a native review.
 
+
+## 2026-10-05: Step 2.3 khata-level interest
+- Rules and the double-charge decision are in docs/domain/interest-engine.md, "Khata-level interest (step 2.3)". No migration: party-level `interest.*` rows already exist in `settings` (written with `loans.manage`, audited).
+- Party groups: there is no party-group table yet (only `parties.party_group_id`), so "bulk-apply by group" is implemented as "pick parties (filter by village) and write party-level settings for each". Settings written this way are party rows that win over the business default; a real group record (one row at `party_group` scope) can replace it later without changing the engine.
+- Bulk apply writes each party's rows one by one (each audited), not in one transaction; a failure part-way leaves the earlier parties done and the screen says so.
+- Loans of a net_udhaar party still show their own engine figures (the snapshot is `loans_only`); they are labelled reference only. Hiding them is not done because a closed or written-off loan's history is still useful.
+- Hindi / Punjabi strings for byaj were written without a native review.
