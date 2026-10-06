@@ -5511,5 +5511,1337 @@
               "type": "int"
           }
       }
+  },
+  "khataRefVoucher": "Voucher",
+  "@khataRefVoucher": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "acctHubTitle": "Accounts",
+  "@acctHubTitle": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "acctHubIntro": "Vouchers, books and statements of the business. F4–F9 open a voucher of that type.",
+  "@acctHubIntro": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "acctHubSectionEntry": "Entry",
+  "@acctHubSectionEntry": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "acctHubSectionBooks": "Books",
+  "@acctHubSectionBooks": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "acctHubSectionStatements": "Statements",
+  "@acctHubSectionStatements": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "acctHubSectionYear": "Year end and export",
+  "@acctHubSectionYear": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "acctNeedsPermission": "You need the “{permission}” permission.",
+  "@acctNeedsPermission": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+      "placeholders": {
+          "permission": {
+              "type": "String"
+          }
+      }
+  },
+  "acctNotPermitted": "Only an accountant or the owner can open the accounts.",
+  "@acctNotPermitted": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherTypeContra": "Contra",
+  "@voucherTypeContra": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherTypePayment": "Payment",
+  "@voucherTypePayment": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherTypeReceipt": "Receipt",
+  "@voucherTypeReceipt": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherTypeSales": "Sales",
+  "@voucherTypeSales": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherTypePurchase": "Purchase",
+  "@voucherTypePurchase": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherTypeJournal": "Journal",
+  "@voucherTypeJournal": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherEntryTitle": "Voucher entry",
+  "@voucherEntryTitle": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherNoPreview": "No. {no}",
+  "@voucherNoPreview": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+      "placeholders": {
+          "no": {
+              "type": "String"
+          }
+      }
+  },
+  "voucherDate": "Date",
+  "@voucherDate": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherNarration": "Narration",
+  "@voucherNarration": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherDr": "Dr",
+  "@voucherDr": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherCr": "Cr",
+  "@voucherCr": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherAccount": "Account",
+  "@voucherAccount": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherAmount": "Amount",
+  "@voucherAmount": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherAddLine": "Add line",
+  "@voucherAddLine": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherRemoveLine": "Remove line",
+  "@voucherRemoveLine": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherTotals": "Dr {debit} · Cr {credit}",
+  "@voucherTotals": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+      "placeholders": {
+          "debit": {
+              "type": "String"
+          },
+          "credit": {
+              "type": "String"
+          }
+      }
+  },
+  "voucherDifference": "Difference {amount}",
+  "@voucherDifference": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "voucherBalanced": "Balanced",
+  "@voucherBalanced": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherSave": "Save",
+  "@voucherSave": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherSaved": "Saved {no}",
+  "@voucherSaved": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+      "placeholders": {
+          "no": {
+              "type": "String"
+          }
+      }
+  },
+  "voucherShortcuts": "F4 Contra · F5 Payment · F6 Receipt · F7 Sales · F8 Purchase · F9 Journal · Enter next field · Ctrl+Enter save · Esc cancel",
+  "@voucherShortcuts": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherAccountSearch": "Search account",
+  "@voucherAccountSearch": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherNoAccount": "No account matches",
+  "@voucherNoAccount": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemTooFewLines": "A voucher needs at least two lines.",
+  "@voucherProblemTooFewLines": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemAmount": "Every line needs an account and an amount above zero.",
+  "@voucherProblemAmount": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemUnbalanced": "Debit and credit must be equal.",
+  "@voucherProblemUnbalanced": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemDuplicate": "The same account is twice on one side.",
+  "@voucherProblemDuplicate": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemInactive": "An account on this voucher is switched off.",
+  "@voucherProblemInactive": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemContra": "A contra uses only cash and bank accounts, on both sides.",
+  "@voucherProblemContra": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemPayment": "A payment credits cash or a bank, and debits none.",
+  "@voucherProblemPayment": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemReceipt": "A receipt debits cash or a bank, and credits none.",
+  "@voucherProblemReceipt": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemSales": "A sales voucher credits a Sales account.",
+  "@voucherProblemSales": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemPurchase": "A purchase voucher debits a Purchase account.",
+  "@voucherProblemPurchase": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherProblemJournal": "A journal does not use cash or bank: use a payment, receipt or contra.",
+  "@voucherProblemJournal": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherNotFound": "An account on this voucher is no longer in the books.",
+  "@voucherNotFound": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherLocked": "This voucher is already reversed.",
+  "@voucherLocked": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherReverse": "Reverse voucher",
+  "@voucherReverse": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherReverseBody": "Every khata entry, cash / bank line and journal line of this voucher is reversed, dated like the voucher. Continue?",
+  "@voucherReverseBody": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "voucherReversedTag": "Reversed",
+  "@voucherReversedTag": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "dayBookAccountsTitle": "Day book (accounts)",
+  "@dayBookAccountsTitle": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "dayBookVouchersOnly": "Vouchers only",
+  "@dayBookVouchersOnly": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "dayBookAllTypes": "All",
+  "@dayBookAllTypes": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "dayBookNoEntries": "No journal entries on these dates.",
+  "@dayBookNoEntries": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "dayBookReverseOnDocument": "This entry belongs to a document: reverse it from that screen.",
+  "@dayBookReverseOnDocument": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "sourceLot": "Lot",
+  "@sourceLot": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "sourcePayment": "Payment / receipt",
+  "@sourcePayment": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "sourceInterest": "Interest",
+  "@sourceInterest": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "sourceWaiver": "Interest waived",
+  "@sourceWaiver": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "sourceEntry": "Khata entry",
+  "@sourceEntry": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "sourceReversal": "Reversal",
+  "@sourceReversal": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "journalEntryTitle": "Journal entry",
+  "@journalEntryTitle": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "journalDebit": "Debit",
+  "@journalDebit": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "journalCredit": "Credit",
+  "@journalCredit": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "journalAccountNotSynced": "Account not synced yet",
+  "@journalAccountNotSynced": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartTitle": "Chart of accounts",
+  "@chartTitle": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartSearch": "Search accounts",
+  "@chartSearch": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartAddAccount": "Add account",
+  "@chartAddAccount": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartEditAccount": "Edit account",
+  "@chartEditAccount": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartAccountName": "Account name",
+  "@chartAccountName": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartGroup": "Group",
+  "@chartGroup": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartSwitchOff": "Switch off",
+  "@chartSwitchOff": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartSwitchOn": "Switch on",
+  "@chartSwitchOn": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartOff": "Off",
+  "@chartOff": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartNotSynced": "Waiting for sync",
+  "@chartNotSynced": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartDrBalance": "{amount} Dr",
+  "@chartDrBalance": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "chartCrBalance": "{amount} Cr",
+  "@chartCrBalance": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "chartProblemNameEmpty": "Enter a name.",
+  "@chartProblemNameEmpty": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartProblemNameTaken": "An account with this name already exists.",
+  "@chartProblemNameTaken": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartProblemGroup": "Parties and cash / bank accounts are added on their own screens.",
+  "@chartProblemGroup": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "chartProblemNotOwn": "This account cannot be changed here.",
+  "@chartProblemNotOwn": {
+      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+  },
+  "cashBookTitle": "Cash / bank book",
+  "@cashBookTitle": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookAccount": "Account",
+  "@cashBookAccount": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookOpening": "Opening",
+  "@cashBookOpening": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookReceipts": "Receipts",
+  "@cashBookReceipts": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookPayments": "Payments",
+  "@cashBookPayments": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookClosing": "Closing",
+  "@cashBookClosing": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookColDate": "Date",
+  "@cashBookColDate": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookColText": "Particulars",
+  "@cashBookColText": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookColIn": "In",
+  "@cashBookColIn": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookColOut": "Out",
+  "@cashBookColOut": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookColBalance": "Balance",
+  "@cashBookColBalance": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookDayTotal": "Day total",
+  "@cashBookDayTotal": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashBookEmpty": "No lines on these dates.",
+  "@cashBookEmpty": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountTitle": "Count cash",
+  "@cashCountTitle": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountNotes": "Notes and coins",
+  "@cashCountNotes": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountLoose": "Loose change (₹)",
+  "@cashCountLoose": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountCounted": "Counted {amount}",
+  "@cashCountCounted": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "cashCountBook": "Cash book {amount}",
+  "@cashCountBook": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "cashCountExcess": "Excess {amount}",
+  "@cashCountExcess": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "cashCountShort": "Short {amount}",
+  "@cashCountShort": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "cashCountMatches": "Matches the cash book",
+  "@cashCountMatches": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountPost": "Post the difference to Cash Short / Excess",
+  "@cashCountPost": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountNote": "Note",
+  "@cashCountNote": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountSave": "Save count",
+  "@cashCountSave": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountSaved": "Count saved",
+  "@cashCountSaved": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "cashCountSavedPosted": "Count saved; difference posted as {no}",
+  "@cashCountSavedPosted": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "no": {
+              "type": "String"
+          }
+      }
+  },
+  "cashCountHistory": "Earlier counts",
+  "@cashCountHistory": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconTitle": "Bank reconciliation",
+  "@reconTitle": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconNoBank": "Add a bank account first (Payments → Bank accounts).",
+  "@reconNoBank": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconImport": "Import statement",
+  "@reconImport": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconAutoMatch": "Auto-match",
+  "@reconAutoMatch": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconAutoMatched": "{count} matched",
+  "@reconAutoMatched": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "reconMatch": "Match",
+  "@reconMatch": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconStatementTab": "Statement ({count})",
+  "@reconStatementTab": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "reconBookTab": "Book ({count})",
+  "@reconBookTab": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "reconReconciledTab": "Reconciled ({count})",
+  "@reconReconciledTab": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "reconWithoutStatement": "Reconciled without statement",
+  "@reconWithoutStatement": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconWithReversal": "Reconcile with its reversal",
+  "@reconWithReversal": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconUndo": "Undo",
+  "@reconUndo": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconPickBoth": "Pick one statement line and one book line with the same amount, then Match.",
+  "@reconPickBoth": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconMismatch": "These two lines differ in amount or direction.",
+  "@reconMismatch": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconOn": "Reconciled {date}",
+  "@reconOn": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "date": {
+              "type": "String"
+          }
+      }
+  },
+  "reconImportTitle": "Import bank statement",
+  "@reconImportTitle": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconMappingHelp": "Pick which column is which. It is saved for this bank.",
+  "@reconMappingHelp": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColDate": "Date",
+  "@reconColDate": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColDescription": "Description",
+  "@reconColDescription": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColReference": "Reference (UTR / cheque)",
+  "@reconColReference": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColDebit": "Withdrawal (debit)",
+  "@reconColDebit": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColCredit": "Deposit (credit)",
+  "@reconColCredit": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColAmount": "Amount (one signed column)",
+  "@reconColAmount": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColBalance": "Balance",
+  "@reconColBalance": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconUseAmount": "One amount column",
+  "@reconUseAmount": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconDateFormat": "Date format",
+  "@reconDateFormat": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconHeaderRows": "Rows to skip at the top",
+  "@reconHeaderRows": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconNoColumn": "—",
+  "@reconNoColumn": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "reconColumnN": "Column {n}: {sample}",
+  "@reconColumnN": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "n": {
+              "type": "int"
+          },
+          "sample": {
+              "type": "String"
+          }
+      }
+  },
+  "reconPreview": "{rows} lines read, {errors} skipped",
+  "@reconPreview": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "rows": {
+              "type": "int"
+          },
+          "errors": {
+              "type": "int"
+          }
+      }
+  },
+  "reconImportDone": "{added} added, {duplicates} already there, {errors} skipped",
+  "@reconImportDone": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "added": {
+              "type": "int"
+          },
+          "duplicates": {
+              "type": "int"
+          },
+          "errors": {
+              "type": "int"
+          }
+      }
+  },
+  "reconRowBadDate": "Row {row}: date not readable",
+  "@reconRowBadDate": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "row": {
+              "type": "int"
+          }
+      }
+  },
+  "reconRowBadAmount": "Row {row}: amount not readable",
+  "@reconRowBadAmount": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "row": {
+              "type": "int"
+          }
+      }
+  },
+  "reconRowNoAmount": "Row {row}: no amount, skipped",
+  "@reconRowNoAmount": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "row": {
+              "type": "int"
+          }
+      }
+  },
+  "reconImportButton": "Import",
+  "@reconImportButton": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+  },
+  "dashNeedsUnreconciled": "{count, plural, =1{1 bank line not reconciled for over a week} other{{count} bank lines not reconciled for over a week}}",
+  "@dashNeedsUnreconciled": {
+      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "expensesTitle": "Expenses",
+  "@expensesTitle": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseAdd": "Add expense",
+  "@expenseAdd": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategory": "Category",
+  "@expenseCategory": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseModeCash": "Cash",
+  "@expenseModeCash": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseModeBank": "Bank",
+  "@expenseModeBank": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseBankAccount": "Bank account",
+  "@expenseBankAccount": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expensePaidTo": "Paid to",
+  "@expensePaidTo": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseAttachBill": "Attach bill photo",
+  "@expenseAttachBill": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseBillAttached": "Bill: {name}",
+  "@expenseBillAttached": {
+      "description": "Expenses (step 3.4).",
+      "placeholders": {
+          "name": {
+              "type": "String"
+          }
+      }
+  },
+  "expenseViewBill": "View bill",
+  "@expenseViewBill": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseBillOffline": "The bill is not on this device; it opens when online.",
+  "@expenseBillOffline": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseUploadsPending": "{count, plural, =1{1 bill photo waiting to upload} other{{count} bill photos waiting to upload}}",
+  "@expenseUploadsPending": {
+      "description": "Expenses (step 3.4).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "expenseSaved": "Saved {no}",
+  "@expenseSaved": {
+      "description": "Expenses (step 3.4).",
+      "placeholders": {
+          "no": {
+              "type": "String"
+          }
+      }
+  },
+  "expenseReverse": "Reverse expense",
+  "@expenseReverse": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseReverseBody": "The journal entry and the cash / bank line of this expense are reversed, dated like the expense. Continue?",
+  "@expenseReverseBody": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseProblemAmount": "Enter an amount above zero.",
+  "@expenseProblemAmount": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseProblemCategory": "Pick a category.",
+  "@expenseProblemCategory": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseProblemBank": "Pick a bank account.",
+  "@expenseProblemBank": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseNotFound": "The category or bank account is not available.",
+  "@expenseNotFound": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseLocked": "Already reversed, or this month is already posted.",
+  "@expenseLocked": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expensesEntriesTab": "Entries",
+  "@expensesEntriesTab": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expensesRecurringTab": "Recurring",
+  "@expensesRecurringTab": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expensesReportTab": "Report",
+  "@expensesReportTab": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expensesEmpty": "No expenses on these dates.",
+  "@expensesEmpty": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseDueTitle": "Due now",
+  "@expenseDueTitle": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseDuePost": "Post",
+  "@expenseDuePost": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseDueNone": "Nothing due.",
+  "@expenseDueNone": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseRecurringAdd": "Add recurring expense",
+  "@expenseRecurringAdd": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseRecurringDay": "Day of month",
+  "@expenseRecurringDay": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseRecurringStart": "From",
+  "@expenseRecurringStart": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseRecurringEvery": "Every month on day {day} · {amount}",
+  "@expenseRecurringEvery": {
+      "description": "Expenses (step 3.4).",
+      "placeholders": {
+          "day": {
+              "type": "int"
+          },
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "expenseCategoriesTitle": "Expense categories",
+  "@expenseCategoriesTitle": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryAdd": "Add category",
+  "@expenseCategoryAdd": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryName": "Name",
+  "@expenseCategoryName": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseGroupDirect": "Direct expense",
+  "@expenseGroupDirect": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseGroupIndirect": "Indirect expense",
+  "@expenseGroupIndirect": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseReportTotal": "Total",
+  "@expenseReportTotal": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryPalledari": "Palledari",
+  "@expenseCategoryPalledari": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryTransport": "Transport",
+  "@expenseCategoryTransport": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategorySalary": "Salary",
+  "@expenseCategorySalary": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryBardana": "Bardana",
+  "@expenseCategoryBardana": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryMandiCharges": "Mandi charges",
+  "@expenseCategoryMandiCharges": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryElectricity": "Electricity",
+  "@expenseCategoryElectricity": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryRent": "Rent",
+  "@expenseCategoryRent": {
+      "description": "Expenses (step 3.4)."
+  },
+  "expenseCategoryMisc": "Miscellaneous",
+  "@expenseCategoryMisc": {
+      "description": "Expenses (step 3.4)."
+  },
+  "dashNeedsRecurringDue": "{count, plural, =1{1 recurring expense due} other{{count} recurring expenses due}}",
+  "@dashNeedsRecurringDue": {
+      "description": "Expenses (step 3.4), dashboard.",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "tbTitle": "Trial balance",
+  "@tbTitle": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtAsOf": "As of {date}",
+  "@stmtAsOf": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "date": {
+              "type": "String"
+          }
+      }
+  },
+  "stmtPickDate": "Change date",
+  "@stmtPickDate": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "tbGroupsOnly": "Groups only",
+  "@tbGroupsOnly": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtParticulars": "Particulars",
+  "@stmtParticulars": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtDebit": "Debit",
+  "@stmtDebit": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtCredit": "Credit",
+  "@stmtCredit": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtAmount": "Amount",
+  "@stmtAmount": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtTotal": "Total",
+  "@stmtTotal": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtBalance": "Balance",
+  "@stmtBalance": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtTallies": "Tallies",
+  "@stmtTallies": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtDoesNotTally": "Does not tally: difference {amount}",
+  "@stmtDoesNotTally": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "stmtEmpty": "No entries on these dates.",
+  "@stmtEmpty": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "stmtThisYear": "This year {label}",
+  "@stmtThisYear": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "label": {
+              "type": "String"
+          }
+      }
+  },
+  "stmtLastYear": "Last year {label}",
+  "@stmtLastYear": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "label": {
+              "type": "String"
+          }
+      }
+  },
+  "plTitle": "Profit & loss",
+  "@plTitle": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plSales": "Sales",
+  "@plSales": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plDirectIncome": "Direct income",
+  "@plDirectIncome": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plPurchases": "Purchases",
+  "@plPurchases": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plDirectExpenses": "Direct expenses",
+  "@plDirectExpenses": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plIndirectIncome": "Indirect income",
+  "@plIndirectIncome": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plIndirectExpenses": "Indirect expenses",
+  "@plIndirectExpenses": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plGrossProfit": "Gross profit",
+  "@plGrossProfit": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plNetProfit": "Net profit",
+  "@plNetProfit": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "plNetLoss": "Net loss",
+  "@plNetLoss": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "bsTitle": "Balance sheet",
+  "@bsTitle": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "bsAssets": "Assets",
+  "@bsAssets": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "bsLiabilities": "Liabilities",
+  "@bsLiabilities": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "bsCapital": "Capital",
+  "@bsCapital": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "bsCurrentProfit": "Profit & Loss (current)",
+  "@bsCurrentProfit": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "bsOtherSide": "{name} (other side)",
+  "@bsOtherSide": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "name": {
+              "type": "String"
+          }
+      }
+  },
+  "bsLiabilitiesAndCapital": "Liabilities + capital",
+  "@bsLiabilitiesAndCapital": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "ledgerTitle": "Account ledger",
+  "@ledgerTitle": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "ledgerPickAccount": "Pick an account",
+  "@ledgerPickAccount": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "ledgerOpening": "Opening balance",
+  "@ledgerOpening": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "ledgerClosing": "Closing balance",
+  "@ledgerClosing": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "groupSummaryTitle": "Group summary",
+  "@groupSummaryTitle": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearCloseTitle": "Year close",
+  "@yearCloseTitle": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearCloseIntro": "Closing a year moves its profit to Profit & Loss A/c and locks every date in it. Balances simply carry on: the khata is not touched.",
+  "@yearCloseIntro": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearOpen": "Open",
+  "@yearOpen": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearClosedOn": "Closed {date}",
+  "@yearClosedOn": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "date": {
+              "type": "String"
+          }
+      }
+  },
+  "yearProfit": "Profit {amount}",
+  "@yearProfit": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "yearLoss": "Loss {amount}",
+  "@yearLoss": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "amount": {
+              "type": "String"
+          }
+      }
+  },
+  "yearRunInterest": "Post interest up to 31 March first (optional)",
+  "@yearRunInterest": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearCloseButton": "Close {label}",
+  "@yearCloseButton": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "label": {
+              "type": "String"
+          }
+      }
+  },
+  "yearCloseConfirm": "Closing {label} moves its profit to Profit & Loss A/c and locks every date in it; only the owner can then post there, with a reason. This cannot be undone. Continue?",
+  "@yearCloseConfirm": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "label": {
+              "type": "String"
+          }
+      }
+  },
+  "yearClosedDone": "{label} closed",
+  "@yearClosedDone": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "label": {
+              "type": "String"
+          }
+      }
+  },
+  "yearProblemOwner": "Only the owner can close a year.",
+  "@yearProblemOwner": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearProblemNotEnded": "The year has not ended yet.",
+  "@yearProblemNotEnded": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearProblemEarlier": "Close the earlier year first.",
+  "@yearProblemEarlier": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearProblemBooks": "The books do not tally: fix the books checks first.",
+  "@yearProblemBooks": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearCloseEntry": "Year close",
+  "@yearCloseEntry": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearLockedError": "This date is in a closed financial year. Only the owner can post there, after unlocking it with a reason on the Year close screen.",
+  "@yearLockedError": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearUnlockTitle": "Post into a closed year (this session)",
+  "@yearUnlockTitle": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearUnlockReason": "Reason",
+  "@yearUnlockReason": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearUnlockButton": "Unlock",
+  "@yearUnlockButton": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "yearUnlockOn": "Unlocked for this session: {reason}",
+  "@yearUnlockOn": {
+      "description": "Accounts: statements and year close (step 3.5).",
+      "placeholders": {
+          "reason": {
+              "type": "String"
+          }
+      }
+  },
+  "yearUnlockOff": "Lock again",
+  "@yearUnlockOff": {
+      "description": "Accounts: statements and year close (step 3.5)."
+  },
+  "dashNeedsBooks": "{count, plural, =1{The books do not tally: 1 problem} other{The books do not tally: {count} problems}}",
+  "@dashNeedsBooks": {
+      "description": "Books check after every sync (phase 3 exit criterion).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "tallyTitle": "Export to Tally",
+  "@tallyTitle": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyIntro": "Makes Tally Prime files (ledgers, then vouchers) for a period. Import them in Tally Prime: Import → Masters → 01-masters.xml, then Import → Transactions → 02-vouchers.xml.",
+  "@tallyIntro": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyThisMonth": "This month",
+  "@tallyThisMonth": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyLastMonth": "Last month",
+  "@tallyLastMonth": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyMapping": "Account groups in Tally",
+  "@tallyMapping": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyGroupUnmapped": "Pick a Tally group",
+  "@tallyGroupUnmapped": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyCounts": "{ledgers} ledgers · {vouchers} vouchers",
+  "@tallyCounts": {
+      "description": "Tally export (step 3.6).",
+      "placeholders": {
+          "ledgers": {
+              "type": "int"
+          },
+          "vouchers": {
+              "type": "int"
+          }
+      }
+  },
+  "tallyGroupLedgers": "{count} ledgers",
+  "@tallyGroupLedgers": {
+      "description": "Tally export (step 3.6).",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "tallyExport": "Export (.zip)",
+  "@tallyExport": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyIssuesTitle": "Checks before export",
+  "@tallyIssuesTitle": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyNoIssues": "Nothing to fix: ready for Tally.",
+  "@tallyNoIssues": {
+      "description": "Tally export (step 3.6)."
+  },
+  "tallyIssueUnmapped": "{subject}: no Tally group for {detail}",
+  "@tallyIssueUnmapped": {
+      "description": "Tally export (step 3.6).",
+      "placeholders": {
+          "subject": {
+              "type": "String"
+          },
+          "detail": {
+              "type": "String"
+          }
+      }
+  },
+  "tallyIssueBadName": "{subject}: the name is empty or longer than 99 characters",
+  "@tallyIssueBadName": {
+      "description": "Tally export (step 3.6).",
+      "placeholders": {
+          "subject": {
+              "type": "String"
+          }
+      }
+  },
+  "tallyIssueRenamed": "{subject} is used twice; exported as {detail}",
+  "@tallyIssueRenamed": {
+      "description": "Tally export (step 3.6).",
+      "placeholders": {
+          "subject": {
+              "type": "String"
+          },
+          "detail": {
+              "type": "String"
+          }
+      }
+  },
+  "tallyIssueUnbalanced": "{subject}: debit and credit differ",
+  "@tallyIssueUnbalanced": {
+      "description": "Tally export (step 3.6).",
+      "placeholders": {
+          "subject": {
+              "type": "String"
+          }
+      }
+  },
+  "tallyIssueUnknown": "{subject}: an account has not synced yet",
+  "@tallyIssueUnknown": {
+      "description": "Tally export (step 3.6).",
+      "placeholders": {
+          "subject": {
+              "type": "String"
+          }
+      }
+  },
+  "tallyExportBlocked": "Fix the problems above first.",
+  "@tallyExportBlocked": {
+      "description": "Tally export (step 3.6)."
   }
 }

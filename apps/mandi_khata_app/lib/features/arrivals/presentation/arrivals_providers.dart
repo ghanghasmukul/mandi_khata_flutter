@@ -126,6 +126,7 @@ extension LotLabels on AppLocalizations {
   /// A message for a failed save, or null when it saved.
   String? lotSaveError(LotSaveResult r) => switch (r) {
     LotSaved() => null,
+    LotNotPermitted(lockedYear: true) => yearLockedError,
     LotNotPermitted(:final backdateDays?) => khataErrorBackdated(backdateDays),
     LotNotPermitted() => lotErrorNotPermitted,
     LotNotFound() => lotErrorNotFound,

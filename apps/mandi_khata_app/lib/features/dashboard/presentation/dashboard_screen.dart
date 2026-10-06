@@ -6,7 +6,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
-import 'package:mandi_khata_app/features/accounts/presentation/books_screen.dart';
+import 'package:mandi_khata_app/features/accounts/presentation/accounts_routes.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
 import 'package:mandi_khata_app/features/audit/presentation/audit_screen.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
@@ -92,7 +92,12 @@ class _Browse extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final canAdmin = ref.watch(canProvider(Permission.adminManage));
-    final canBooks = ref.watch(canProvider(Permission.entriesReverse));
+    // The accounts hub: vouchers / books (entries.reverse), statements
+    // (finance.view), the cash book (payments.create). Tiles check again.
+    final canBooks =
+        ref.watch(canProvider(Permission.entriesReverse)) ||
+        ref.watch(canProvider(Permission.financeView)) ||
+        ref.watch(canProvider(Permission.paymentsCreate));
     final canAudit = ref.watch(canProvider(Permission.auditView));
     final l10n = AppLocalizations.of(context);
     final overdue = ref.watch(loanAlertsProvider).value?.overdue ?? 0;
@@ -133,9 +138,9 @@ class _Browse extends ConsumerWidget {
         link(l10n.reportsTitle, Icons.assessment_outlined, ReportRoutes.list),
         if (canBooks)
           link(
-            l10n.booksTitle,
+            l10n.acctHubTitle,
             Icons.account_balance_outlined,
-            AccountRoutes.books,
+            AccountRoutes.hub,
           ),
         link(l10n.cropsTitle, Icons.grass_outlined, CropRoutes.list),
         link(l10n.settingsTitle, Icons.tune, AppRoutes.settings),

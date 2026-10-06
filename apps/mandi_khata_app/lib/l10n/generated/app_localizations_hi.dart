@@ -4062,4 +4062,941 @@ class AppLocalizationsHi extends AppLocalizations {
   String booksCheckBooksBad(int count) {
     return '$count नकद/बैंक खाते कैश-बुक से अलग हैं।';
   }
+
+  @override
+  String get khataRefVoucher => 'वाउचर';
+
+  @override
+  String get acctHubTitle => 'हिसाब-किताब';
+
+  @override
+  String get acctHubIntro =>
+      'कारोबार के वाउचर, बही और लेखे। F4–F9 उस तरह का वाउचर खोलते हैं।';
+
+  @override
+  String get acctHubSectionEntry => 'एंट्री';
+
+  @override
+  String get acctHubSectionBooks => 'बही';
+
+  @override
+  String get acctHubSectionStatements => 'लेखे';
+
+  @override
+  String get acctHubSectionYear => 'साल का अंत और निर्यात';
+
+  @override
+  String acctNeedsPermission(String permission) {
+    return 'इसके लिए “$permission” अनुमति चाहिए।';
+  }
+
+  @override
+  String get acctNotPermitted =>
+      'हिसाब-किताब सिर्फ़ अकाउंटेंट या मालिक खोल सकते हैं।';
+
+  @override
+  String get voucherTypeContra => 'कॉन्ट्रा';
+
+  @override
+  String get voucherTypePayment => 'भुगतान';
+
+  @override
+  String get voucherTypeReceipt => 'प्राप्ति';
+
+  @override
+  String get voucherTypeSales => 'बिक्री';
+
+  @override
+  String get voucherTypePurchase => 'ख़रीद';
+
+  @override
+  String get voucherTypeJournal => 'जर्नल';
+
+  @override
+  String get voucherEntryTitle => 'वाउचर एंट्री';
+
+  @override
+  String voucherNoPreview(String no) {
+    return 'नं. $no';
+  }
+
+  @override
+  String get voucherDate => 'तारीख़';
+
+  @override
+  String get voucherNarration => 'विवरण';
+
+  @override
+  String get voucherDr => 'नाम';
+
+  @override
+  String get voucherCr => 'जमा';
+
+  @override
+  String get voucherAccount => 'खाता';
+
+  @override
+  String get voucherAmount => 'रक़म';
+
+  @override
+  String get voucherAddLine => 'लाइन जोड़ें';
+
+  @override
+  String get voucherRemoveLine => 'लाइन हटाएँ';
+
+  @override
+  String voucherTotals(String debit, String credit) {
+    return 'नाम $debit · जमा $credit';
+  }
+
+  @override
+  String voucherDifference(String amount) {
+    return 'अंतर $amount';
+  }
+
+  @override
+  String get voucherBalanced => 'बराबर';
+
+  @override
+  String get voucherSave => 'सेव करें';
+
+  @override
+  String voucherSaved(String no) {
+    return '$no सेव हुआ';
+  }
+
+  @override
+  String get voucherShortcuts =>
+      'F4 कॉन्ट्रा · F5 भुगतान · F6 प्राप्ति · F7 बिक्री · F8 ख़रीद · F9 जर्नल · Enter अगला · Ctrl+Enter सेव · Esc रद्द';
+
+  @override
+  String get voucherAccountSearch => 'खाता खोजें';
+
+  @override
+  String get voucherNoAccount => 'कोई खाता नहीं मिला';
+
+  @override
+  String get voucherProblemTooFewLines => 'वाउचर में कम से कम दो लाइन चाहिए।';
+
+  @override
+  String get voucherProblemAmount =>
+      'हर लाइन में खाता और शून्य से ज़्यादा रक़म चाहिए।';
+
+  @override
+  String get voucherProblemUnbalanced => 'नाम और जमा बराबर होने चाहिए।';
+
+  @override
+  String get voucherProblemDuplicate => 'एक ही खाता एक तरफ़ दो बार है।';
+
+  @override
+  String get voucherProblemInactive => 'इस वाउचर का एक खाता बंद है।';
+
+  @override
+  String get voucherProblemContra =>
+      'कॉन्ट्रा में दोनों तरफ़ सिर्फ़ नकद और बैंक खाते होते हैं।';
+
+  @override
+  String get voucherProblemPayment =>
+      'भुगतान में नकद या बैंक जमा होता है, नाम नहीं।';
+
+  @override
+  String get voucherProblemReceipt =>
+      'प्राप्ति में नकद या बैंक नाम होता है, जमा नहीं।';
+
+  @override
+  String get voucherProblemSales => 'बिक्री वाउचर में बिक्री खाता जमा होता है।';
+
+  @override
+  String get voucherProblemPurchase =>
+      'ख़रीद वाउचर में ख़रीद खाता नाम होता है।';
+
+  @override
+  String get voucherProblemJournal =>
+      'जर्नल में नकद या बैंक नहीं आता: भुगतान, प्राप्ति या कॉन्ट्रा लें।';
+
+  @override
+  String get voucherNotFound => 'इस वाउचर का एक खाता अब बही में नहीं है।';
+
+  @override
+  String get voucherLocked => 'यह वाउचर पहले ही उलटा जा चुका है।';
+
+  @override
+  String get voucherReverse => 'वाउचर उलटें';
+
+  @override
+  String get voucherReverseBody =>
+      'इस वाउचर की हर खाता एंट्री, नकद/बैंक लाइन और जर्नल लाइन उलटी जाएगी, उसी तारीख़ पर। आगे बढ़ें?';
+
+  @override
+  String get voucherReversedTag => 'उलटा गया';
+
+  @override
+  String get dayBookAccountsTitle => 'रोज़नामचा (हिसाब)';
+
+  @override
+  String get dayBookVouchersOnly => 'सिर्फ़ वाउचर';
+
+  @override
+  String get dayBookAllTypes => 'सब';
+
+  @override
+  String get dayBookNoEntries => 'इन तारीख़ों में कोई जर्नल एंट्री नहीं।';
+
+  @override
+  String get dayBookReverseOnDocument =>
+      'यह एंट्री किसी काग़ज़ की है: उसी स्क्रीन से उलटें।';
+
+  @override
+  String get sourceLot => 'लॉट';
+
+  @override
+  String get sourcePayment => 'भुगतान / प्राप्ति';
+
+  @override
+  String get sourceInterest => 'ब्याज';
+
+  @override
+  String get sourceWaiver => 'ब्याज माफ़';
+
+  @override
+  String get sourceEntry => 'खाता एंट्री';
+
+  @override
+  String get sourceReversal => 'उलटी एंट्री';
+
+  @override
+  String get journalEntryTitle => 'जर्नल एंट्री';
+
+  @override
+  String get journalDebit => 'नाम';
+
+  @override
+  String get journalCredit => 'जमा';
+
+  @override
+  String get journalAccountNotSynced => 'खाता अभी सिंक नहीं हुआ';
+
+  @override
+  String get chartTitle => 'खातों की सूची';
+
+  @override
+  String get chartSearch => 'खाते खोजें';
+
+  @override
+  String get chartAddAccount => 'खाता जोड़ें';
+
+  @override
+  String get chartEditAccount => 'खाता बदलें';
+
+  @override
+  String get chartAccountName => 'खाते का नाम';
+
+  @override
+  String get chartGroup => 'समूह';
+
+  @override
+  String get chartSwitchOff => 'बंद करें';
+
+  @override
+  String get chartSwitchOn => 'चालू करें';
+
+  @override
+  String get chartOff => 'बंद';
+
+  @override
+  String get chartNotSynced => 'सिंक का इंतज़ार';
+
+  @override
+  String chartDrBalance(String amount) {
+    return '$amount नाम';
+  }
+
+  @override
+  String chartCrBalance(String amount) {
+    return '$amount जमा';
+  }
+
+  @override
+  String get chartProblemNameEmpty => 'नाम लिखें।';
+
+  @override
+  String get chartProblemNameTaken => 'इस नाम का खाता पहले से है।';
+
+  @override
+  String get chartProblemGroup =>
+      'पार्टी और नकद/बैंक खाते अपनी स्क्रीन पर जोड़े जाते हैं।';
+
+  @override
+  String get chartProblemNotOwn => 'यह खाता यहाँ नहीं बदल सकता।';
+
+  @override
+  String get cashBookTitle => 'नकद / बैंक बही';
+
+  @override
+  String get cashBookAccount => 'खाता';
+
+  @override
+  String get cashBookOpening => 'शुरू की बाकी';
+
+  @override
+  String get cashBookReceipts => 'आमद';
+
+  @override
+  String get cashBookPayments => 'ख़र्च / भुगतान';
+
+  @override
+  String get cashBookClosing => 'आख़िरी बाकी';
+
+  @override
+  String get cashBookColDate => 'तारीख़';
+
+  @override
+  String get cashBookColText => 'विवरण';
+
+  @override
+  String get cashBookColIn => 'आया';
+
+  @override
+  String get cashBookColOut => 'गया';
+
+  @override
+  String get cashBookColBalance => 'बाकी';
+
+  @override
+  String get cashBookDayTotal => 'दिन का जोड़';
+
+  @override
+  String get cashBookEmpty => 'इन तारीख़ों में कोई लाइन नहीं।';
+
+  @override
+  String get cashCountTitle => 'नकदी गिनें';
+
+  @override
+  String get cashCountNotes => 'नोट और सिक्के';
+
+  @override
+  String get cashCountLoose => 'खुले पैसे (₹)';
+
+  @override
+  String cashCountCounted(String amount) {
+    return 'गिना $amount';
+  }
+
+  @override
+  String cashCountBook(String amount) {
+    return 'नकद बही $amount';
+  }
+
+  @override
+  String cashCountExcess(String amount) {
+    return 'ज़्यादा $amount';
+  }
+
+  @override
+  String cashCountShort(String amount) {
+    return 'कम $amount';
+  }
+
+  @override
+  String get cashCountMatches => 'नकद बही से मिलता है';
+
+  @override
+  String get cashCountPost => 'अंतर को नकद कम/ज़्यादा खाते में डालें';
+
+  @override
+  String get cashCountNote => 'नोट';
+
+  @override
+  String get cashCountSave => 'गिनती सेव करें';
+
+  @override
+  String get cashCountSaved => 'गिनती सेव हुई';
+
+  @override
+  String cashCountSavedPosted(String no) {
+    return 'गिनती सेव हुई; अंतर $no में डाला';
+  }
+
+  @override
+  String get cashCountHistory => 'पिछली गिनतियाँ';
+
+  @override
+  String get reconTitle => 'बैंक मिलान';
+
+  @override
+  String get reconNoBank => 'पहले बैंक खाता जोड़ें (भुगतान → बैंक खाते)।';
+
+  @override
+  String get reconImport => 'स्टेटमेंट लाएँ';
+
+  @override
+  String get reconAutoMatch => 'अपने-आप मिलाएँ';
+
+  @override
+  String reconAutoMatched(int count) {
+    return '$count मिले';
+  }
+
+  @override
+  String get reconMatch => 'मिलाएँ';
+
+  @override
+  String reconStatementTab(int count) {
+    return 'स्टेटमेंट ($count)';
+  }
+
+  @override
+  String reconBookTab(int count) {
+    return 'बही ($count)';
+  }
+
+  @override
+  String reconReconciledTab(int count) {
+    return 'मिलान हुआ ($count)';
+  }
+
+  @override
+  String get reconWithoutStatement => 'बिना स्टेटमेंट के मिलान';
+
+  @override
+  String get reconWithReversal => 'उलटी एंट्री के साथ मिलान';
+
+  @override
+  String get reconUndo => 'वापस लें';
+
+  @override
+  String get reconPickBoth =>
+      'एक स्टेटमेंट लाइन और उतनी ही रक़म की एक बही लाइन चुनें, फिर मिलाएँ।';
+
+  @override
+  String get reconMismatch => 'इन दो लाइनों की रक़म या दिशा अलग है।';
+
+  @override
+  String reconOn(String date) {
+    return 'मिलान $date';
+  }
+
+  @override
+  String get reconImportTitle => 'बैंक स्टेटमेंट लाएँ';
+
+  @override
+  String get reconMappingHelp =>
+      'बताएँ कौन सा कॉलम क्या है। यह इस बैंक के लिए सेव रहेगा।';
+
+  @override
+  String get reconColDate => 'तारीख़';
+
+  @override
+  String get reconColDescription => 'विवरण';
+
+  @override
+  String get reconColReference => 'रेफ़रेंस (UTR / चेक)';
+
+  @override
+  String get reconColDebit => 'निकासी (डेबिट)';
+
+  @override
+  String get reconColCredit => 'जमा (क्रेडिट)';
+
+  @override
+  String get reconColAmount => 'रक़म (एक कॉलम, + / −)';
+
+  @override
+  String get reconColBalance => 'बाकी';
+
+  @override
+  String get reconUseAmount => 'एक रक़म कॉलम';
+
+  @override
+  String get reconDateFormat => 'तारीख़ का ढंग';
+
+  @override
+  String get reconHeaderRows => 'ऊपर की छोड़ी जाने वाली पंक्तियाँ';
+
+  @override
+  String get reconNoColumn => '—';
+
+  @override
+  String reconColumnN(int n, String sample) {
+    return 'कॉलम $n: $sample';
+  }
+
+  @override
+  String reconPreview(int rows, int errors) {
+    return '$rows लाइनें पढ़ीं, $errors छोड़ीं';
+  }
+
+  @override
+  String reconImportDone(int added, int duplicates, int errors) {
+    return '$added जुड़ीं, $duplicates पहले से थीं, $errors छोड़ीं';
+  }
+
+  @override
+  String reconRowBadDate(int row) {
+    return 'पंक्ति $row: तारीख़ नहीं पढ़ी गई';
+  }
+
+  @override
+  String reconRowBadAmount(int row) {
+    return 'पंक्ति $row: रक़म नहीं पढ़ी गई';
+  }
+
+  @override
+  String reconRowNoAmount(int row) {
+    return 'पंक्ति $row: रक़म नहीं, छोड़ी';
+  }
+
+  @override
+  String get reconImportButton => 'लाएँ';
+
+  @override
+  String dashNeedsUnreconciled(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बैंक लाइनें एक हफ़्ते से मिलान बिना',
+      one: '1 बैंक लाइन एक हफ़्ते से मिलान बिना',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get expensesTitle => 'ख़र्चे';
+
+  @override
+  String get expenseAdd => 'ख़र्चा जोड़ें';
+
+  @override
+  String get expenseCategory => 'श्रेणी';
+
+  @override
+  String get expenseModeCash => 'नकद';
+
+  @override
+  String get expenseModeBank => 'बैंक';
+
+  @override
+  String get expenseBankAccount => 'बैंक खाता';
+
+  @override
+  String get expensePaidTo => 'किसे दिया';
+
+  @override
+  String get expenseAttachBill => 'बिल की फ़ोटो लगाएँ';
+
+  @override
+  String expenseBillAttached(String name) {
+    return 'बिल: $name';
+  }
+
+  @override
+  String get expenseViewBill => 'बिल देखें';
+
+  @override
+  String get expenseBillOffline =>
+      'बिल इस डिवाइस पर नहीं है; इंटरनेट पर खुलेगा।';
+
+  @override
+  String expenseUploadsPending(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बिल फ़ोटो अपलोड बाकी',
+      one: '1 बिल फ़ोटो अपलोड बाकी',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String expenseSaved(String no) {
+    return '$no सेव हुआ';
+  }
+
+  @override
+  String get expenseReverse => 'ख़र्चा उलटें';
+
+  @override
+  String get expenseReverseBody =>
+      'इस ख़र्चे की जर्नल एंट्री और नकद/बैंक लाइन उलटी जाएगी, उसी तारीख़ पर। आगे बढ़ें?';
+
+  @override
+  String get expenseProblemAmount => 'शून्य से ज़्यादा रक़म लिखें।';
+
+  @override
+  String get expenseProblemCategory => 'श्रेणी चुनें।';
+
+  @override
+  String get expenseProblemBank => 'बैंक खाता चुनें।';
+
+  @override
+  String get expenseNotFound => 'श्रेणी या बैंक खाता उपलब्ध नहीं।';
+
+  @override
+  String get expenseLocked => 'पहले ही उलटा गया, या यह महीना पहले ही चढ़ा है।';
+
+  @override
+  String get expensesEntriesTab => 'एंट्रियाँ';
+
+  @override
+  String get expensesRecurringTab => 'हर महीने';
+
+  @override
+  String get expensesReportTab => 'रिपोर्ट';
+
+  @override
+  String get expensesEmpty => 'इन तारीख़ों में कोई ख़र्चा नहीं।';
+
+  @override
+  String get expenseDueTitle => 'अब देय';
+
+  @override
+  String get expenseDuePost => 'चढ़ाएँ';
+
+  @override
+  String get expenseDueNone => 'कुछ देय नहीं।';
+
+  @override
+  String get expenseRecurringAdd => 'हर महीने का ख़र्चा जोड़ें';
+
+  @override
+  String get expenseRecurringDay => 'महीने का दिन';
+
+  @override
+  String get expenseRecurringStart => 'से';
+
+  @override
+  String expenseRecurringEvery(int day, String amount) {
+    return 'हर महीने $day तारीख़ · $amount';
+  }
+
+  @override
+  String get expenseCategoriesTitle => 'ख़र्चे की श्रेणियाँ';
+
+  @override
+  String get expenseCategoryAdd => 'श्रेणी जोड़ें';
+
+  @override
+  String get expenseCategoryName => 'नाम';
+
+  @override
+  String get expenseGroupDirect => 'सीधा ख़र्चा';
+
+  @override
+  String get expenseGroupIndirect => 'अप्रत्यक्ष ख़र्चा';
+
+  @override
+  String get expenseReportTotal => 'कुल';
+
+  @override
+  String get expenseCategoryPalledari => 'पल्लेदारी';
+
+  @override
+  String get expenseCategoryTransport => 'ढुलाई';
+
+  @override
+  String get expenseCategorySalary => 'तनख़्वाह';
+
+  @override
+  String get expenseCategoryBardana => 'बारदाना';
+
+  @override
+  String get expenseCategoryMandiCharges => 'मंडी ख़र्चे';
+
+  @override
+  String get expenseCategoryElectricity => 'बिजली';
+
+  @override
+  String get expenseCategoryRent => 'किराया';
+
+  @override
+  String get expenseCategoryMisc => 'फुटकर';
+
+  @override
+  String dashNeedsRecurringDue(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count हर महीने के ख़र्चे देय',
+      one: '1 हर महीने का ख़र्चा देय',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get tbTitle => 'तलपट (ट्रायल बैलेंस)';
+
+  @override
+  String stmtAsOf(String date) {
+    return '$date तक';
+  }
+
+  @override
+  String get stmtPickDate => 'तारीख़ बदलें';
+
+  @override
+  String get tbGroupsOnly => 'सिर्फ़ समूह';
+
+  @override
+  String get stmtParticulars => 'विवरण';
+
+  @override
+  String get stmtDebit => 'नाम';
+
+  @override
+  String get stmtCredit => 'जमा';
+
+  @override
+  String get stmtAmount => 'रक़म';
+
+  @override
+  String get stmtTotal => 'कुल';
+
+  @override
+  String get stmtBalance => 'बाकी';
+
+  @override
+  String get stmtTallies => 'मिलान ठीक';
+
+  @override
+  String stmtDoesNotTally(String amount) {
+    return 'मिलान नहीं: अंतर $amount';
+  }
+
+  @override
+  String get stmtEmpty => 'इन तारीख़ों में कोई एंट्री नहीं।';
+
+  @override
+  String stmtThisYear(String label) {
+    return 'यह साल $label';
+  }
+
+  @override
+  String stmtLastYear(String label) {
+    return 'पिछला साल $label';
+  }
+
+  @override
+  String get plTitle => 'लाभ-हानि';
+
+  @override
+  String get plSales => 'बिक्री';
+
+  @override
+  String get plDirectIncome => 'सीधी आमदनी';
+
+  @override
+  String get plPurchases => 'ख़रीद';
+
+  @override
+  String get plDirectExpenses => 'सीधे ख़र्चे';
+
+  @override
+  String get plIndirectIncome => 'अप्रत्यक्ष आमदनी';
+
+  @override
+  String get plIndirectExpenses => 'अप्रत्यक्ष ख़र्चे';
+
+  @override
+  String get plGrossProfit => 'सकल लाभ';
+
+  @override
+  String get plNetProfit => 'शुद्ध लाभ';
+
+  @override
+  String get plNetLoss => 'शुद्ध हानि';
+
+  @override
+  String get bsTitle => 'बैलेंस शीट';
+
+  @override
+  String get bsAssets => 'संपत्ति';
+
+  @override
+  String get bsLiabilities => 'देनदारी';
+
+  @override
+  String get bsCapital => 'पूँजी';
+
+  @override
+  String get bsCurrentProfit => 'लाभ-हानि (चालू)';
+
+  @override
+  String bsOtherSide(String name) {
+    return '$name (उलटी तरफ़)';
+  }
+
+  @override
+  String get bsLiabilitiesAndCapital => 'देनदारी + पूँजी';
+
+  @override
+  String get ledgerTitle => 'खाता बही';
+
+  @override
+  String get ledgerPickAccount => 'खाता चुनें';
+
+  @override
+  String get ledgerOpening => 'शुरू की बाकी';
+
+  @override
+  String get ledgerClosing => 'आख़िरी बाकी';
+
+  @override
+  String get groupSummaryTitle => 'समूह सार';
+
+  @override
+  String get yearCloseTitle => 'साल बंद करें';
+
+  @override
+  String get yearCloseIntro =>
+      'साल बंद करने से उसका लाभ लाभ-हानि खाते में जाता है और उसकी हर तारीख़ बंद हो जाती है। बाकी अपने-आप आगे चलती है: खाते नहीं बदलते।';
+
+  @override
+  String get yearOpen => 'खुला';
+
+  @override
+  String yearClosedOn(String date) {
+    return '$date को बंद';
+  }
+
+  @override
+  String yearProfit(String amount) {
+    return 'लाभ $amount';
+  }
+
+  @override
+  String yearLoss(String amount) {
+    return 'हानि $amount';
+  }
+
+  @override
+  String get yearRunInterest => 'पहले 31 मार्च तक ब्याज चढ़ाएँ (मर्ज़ी से)';
+
+  @override
+  String yearCloseButton(String label) {
+    return '$label बंद करें';
+  }
+
+  @override
+  String yearCloseConfirm(String label) {
+    return '$label बंद करने से उसका लाभ लाभ-हानि खाते में जाएगा और उसकी हर तारीख़ बंद होगी; फिर सिर्फ़ मालिक कारण लिखकर एंट्री कर सकेगा। यह वापस नहीं होगा। आगे बढ़ें?';
+  }
+
+  @override
+  String yearClosedDone(String label) {
+    return '$label बंद हुआ';
+  }
+
+  @override
+  String get yearProblemOwner => 'साल सिर्फ़ मालिक बंद कर सकता है।';
+
+  @override
+  String get yearProblemNotEnded => 'साल अभी ख़त्म नहीं हुआ।';
+
+  @override
+  String get yearProblemEarlier => 'पहले पिछला साल बंद करें।';
+
+  @override
+  String get yearProblemBooks =>
+      'बही का मिलान नहीं: पहले बही की जाँच ठीक करें।';
+
+  @override
+  String get yearCloseEntry => 'साल बंदी';
+
+  @override
+  String get yearLockedError =>
+      'यह तारीख़ बंद साल में है। सिर्फ़ मालिक, साल बंद स्क्रीन पर कारण लिखकर खोलने के बाद, एंट्री कर सकता है।';
+
+  @override
+  String get yearUnlockTitle => 'बंद साल में एंट्री (इस बार के लिए)';
+
+  @override
+  String get yearUnlockReason => 'कारण';
+
+  @override
+  String get yearUnlockButton => 'खोलें';
+
+  @override
+  String yearUnlockOn(String reason) {
+    return 'इस बार के लिए खुला: $reason';
+  }
+
+  @override
+  String get yearUnlockOff => 'फिर बंद करें';
+
+  @override
+  String dashNeedsBooks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'बही का मिलान नहीं: $count गड़बड़ियाँ',
+      one: 'बही का मिलान नहीं: 1 गड़बड़ी',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get tallyTitle => 'टैली में भेजें';
+
+  @override
+  String get tallyIntro =>
+      'किसी समय की टैली प्राइम फ़ाइलें बनाता है (पहले लेजर, फिर वाउचर)। टैली प्राइम में: Import → Masters → 01-masters.xml, फिर Import → Transactions → 02-vouchers.xml।';
+
+  @override
+  String get tallyThisMonth => 'यह महीना';
+
+  @override
+  String get tallyLastMonth => 'पिछला महीना';
+
+  @override
+  String get tallyMapping => 'टैली में खातों के समूह';
+
+  @override
+  String get tallyGroupUnmapped => 'टैली समूह चुनें';
+
+  @override
+  String tallyCounts(int ledgers, int vouchers) {
+    return '$ledgers लेजर · $vouchers वाउचर';
+  }
+
+  @override
+  String tallyGroupLedgers(int count) {
+    return '$count लेजर';
+  }
+
+  @override
+  String get tallyExport => 'निर्यात (.zip)';
+
+  @override
+  String get tallyIssuesTitle => 'निर्यात से पहले जाँच';
+
+  @override
+  String get tallyNoIssues => 'कुछ ठीक नहीं करना: टैली के लिए तैयार।';
+
+  @override
+  String tallyIssueUnmapped(String subject, String detail) {
+    return '$subject: $detail का टैली समूह नहीं';
+  }
+
+  @override
+  String tallyIssueBadName(String subject) {
+    return '$subject: नाम ख़ाली है या 99 अक्षर से लंबा';
+  }
+
+  @override
+  String tallyIssueRenamed(String subject, String detail) {
+    return '$subject दो बार है; $detail नाम से भेजा';
+  }
+
+  @override
+  String tallyIssueUnbalanced(String subject) {
+    return '$subject: नाम और जमा अलग';
+  }
+
+  @override
+  String tallyIssueUnknown(String subject) {
+    return '$subject: एक खाता अभी सिंक नहीं हुआ';
+  }
+
+  @override
+  String get tallyExportBlocked => 'पहले ऊपर की गड़बड़ियाँ ठीक करें।';
 }

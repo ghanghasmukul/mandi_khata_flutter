@@ -157,3 +157,97 @@ Anything not answered I will implement as recommended above. Please also say if 
 - **Checks.** `BooksInvariants`: unbalanced entries, party accounts vs khata balances, cash / bank accounts vs the cash book; shown on the books screen and asserted after every scenario in `journal_integration_test`.
 - **Not built yet (later steps).** `voucher_id` stays empty until 3.2; the cash book (3.3), expenses (3.4) and statements (3.5) read these tables.
 
+
+## 11. Phase 3 additions (steps 3.2-3.6)
+
+Written before the code of each step; the owner approved "complete phase 3 in one go" on 2026-10-06 and the choices below follow the recommendations of section 9. Anything marked **(decision)** is also in `docs/decisions.md`.
+
+### 11.1 More chart rows (seeded with 3.2, same UUID v5 rules)
+
+| Group | Parent | Nature |
+|---|---|---|
+| Sales Accounts | none | income |
+| Purchase Accounts | none | expense |
+
+| System account | Group | Used for |
+|---|---|---|
+| Sales | Sales Accounts | sales vouchers (F7); the shop (phase 4) |
+| Purchase | Purchase Accounts | purchase vouchers (F8); the shop (phase 4) |
+| Capital | Capital Account | the owner's capital; year close moves Opening Balance Equity here |
+| Profit & Loss A/c | Capital Account | year close moves each year's profit or loss here |
+| Cash Short / Excess | Indirect Expenses | the difference found by a cash count (3.3) |
+
+Businesses may add their own accounts (name + group, `entries.reverse`). A client may never create an account that owns a party, a bank account or a system code: those are created by the server only.
+
+### 11.2 Vouchers (3.2)
+
+`vouchers(id, tenant_id, voucher_type, voucher_no, entry_date, narration, total_paise, status posted | reversed, reversed_at, device_id, …)`; its journal entry is `source_type = voucher`, `source_key = voucher:<id>`, `voucher_id = <id>`.
+
+| Type | Key | Rule (khata_core `VoucherRules`) | Default lines |
+|---|---|---|---|
+| Contra | F4 | every line is a cash / bank account; at least one debit and one credit | Dr bank, Cr cash |
+| Payment | F5 | at least one **credit** on a cash / bank account; no debit on one | Dr party / expense, Cr cash or bank |
+| Receipt | F6 | at least one **debit** on a cash / bank account; no credit on one | Dr cash or bank, Cr party / income |
+| Sales | F7 | at least one credit on a Sales Accounts account | Dr party (or cash), Cr Sales |
+| Purchase | F8 | at least one debit on a Purchase Accounts account | Dr Purchase, Cr party (or cash) |
+| Journal | F9 | no cash / bank account (Tally's rule) | any |
+
+All types: at least two lines, every line above zero, Σ Dr = Σ Cr, the same account at most once per side, no account that is switched off. Numbers per type and device: `CV-` contra, `PY-` payment, `RC-` receipt, `SV-` sales, `PU-` purchase, `JV-` journal (`business.number_series.<type>_voucher`).
+
+Side effects, in the **same transaction** as the voucher and its journal entry:
+- a line on a **party** account also writes that party's khata entry (`ref_type = voucher`, `ref_id` = voucher; Dr = udhaar, Cr = jama, one entry per party line), so principle 5 keeps holding;
+- a line on a **cash / bank** account writes a cash / bank book line (`cash_bank_entries.voucher_id`; Dr = in, Cr = out), so principle 6 keeps holding.
+
+Posting needs `entries.reverse` (owner / accountant, posting-rules section 6); a cash / bank line on a bank account also needs `finance.view` (book-line rule of 1.5). Back-dating follows `business.backdate_days`. A voucher is frozen once posted; **reversing** it (`entries.reverse`) reverses every khata entry and book line it wrote and mirrors its journal entry, all dated like the voucher, and marks it `reversed`. The khata screen does not reverse a voucher's khata line on its own.
+
+The **day book** (accounts) lists every journal entry of a date range (vouchers and documents), with drill-down to the lines; only vouchers are reversed there, other documents through their own screen.
+
+### 11.3 Cash book, bank book, reconciliation, cash count (3.3)
+
+- The cash / bank book of an account = its `cash_bank_entries` (payments, vouchers, expenses). Opening = Σ in − Σ out before the period; then receipts (in), payments (out), closing, and a total per day. A munshi sees the cash book only.
+- **Bank statement import**: CSV / XLSX through `SheetReader`; the column mapping (date, description, reference, debit, credit or one signed amount, balance; date format) is saved per bank account (`bank_accounts.statement_mapping`) and offered next time. Lines go to `bank_statement_lines` (deterministic ids per account + date + amount + reference + row text, so importing the same file twice adds nothing).
+- **Auto-match** (khata_core `BankReconciliation`): a statement line matches an unreconciled book line of the same account with the same direction and amount, dated within ±3 days; when a reference (UTR, cheque no.) is on both, it must agree, and a matching reference wins over the closest date. Each line matches at most once; ties go to the closest date, then the oldest line. Manual match pairs any one statement line with one book line of the same amount and direction.
+- **Reconciled**: `bank_reconciliations(book_line_id, statement_line_id null, reconciled_on)`; un-reconcile = soft delete (`deleted_at`). A reversed book line and its reversal may be reconciled together without a statement line.
+- **Dashboard**: bank book lines older than 7 days with no reconciliation show in "Needs you today" (finance members).
+- **Cash count** at day close (optional): denominations × count; difference = counted − cash book closing. A non-zero difference is posted (owner / accountant) as a **journal voucher** generated by the count: excess = Dr Cash / Cr Cash Short / Excess; short = Dr Cash Short / Excess / Cr Cash (a journal voucher may use Cash here because the count makes it, not the user). The count row stores the denominations and the voucher id.
+
+### 11.4 Expenses (3.4)
+
+- `expense_categories` (seeded: palledari, transport, salary, bardana, mandi charges, electricity, rent, misc; editable, switched off not deleted). Each category has its own expense account created by the server (`chart_id(tenant, 'expense', category_id)`), in **Direct Expenses** (palledari, transport, bardana, mandi charges) or **Indirect Expenses** (the rest; the user picks for new ones).
+- An expense (`expenses`: `EX-` number, date, category, amount, mode cash | bank, bank account, paid to, narration, bill path) posts **Dr expense account / Cr Cash or bank** (journal `source_type = expense`) and one book line (`cash_bank_entries.expense_id`), same transaction. Needs `payments.create` (+ `finance.view` for bank), back-date rule as usual; reversal needs `entries.reverse`.
+- **Bill photo**: stored on the device and uploaded to Supabase Storage (`bills/<tenant>/<expense id>/<file>`) when online; the expense row carries the path from the start. Upload failures retry; the expense never waits for the photo.
+- **Recurring** (`recurring_expenses`: category, amount, mode, account, paid to, day of month, from, until): the screen lists what is due (each month from `from` until today) and posts it with one click; the expense id is UUID v5 of template + month, so two devices never post a month twice. No automatic posting (same as interest).
+
+### 11.5 Statements and year close (3.5)
+
+- **Trial balance** (as of a date): every account's Σ Dr and Σ Cr up to the date; closing Dr or Cr balance; group level sums the accounts of each group and its sub-groups. Σ Dr balances = Σ Cr balances always (the journal balances).
+- **Profit & Loss** (period): income groups (Sales Accounts, Direct Income, Indirect Income) minus expense groups (Purchase Accounts, Direct Expenses, Indirect Expenses) over the period, **without year-close entries**. Gross profit = direct income + sales − purchases − direct expenses; net profit = gross + indirect income − indirect expenses.
+- **Balance sheet** (as of a date): assets and liabilities by group; a party or other account in a group of one nature with a balance of the other side is shown on the other side ("Sundry Debtors with credit balance" goes to liabilities). Profit not yet closed (every income / expense balance to that date) is shown in the Capital section as "Profit & Loss (current)", so assets = liabilities + capital.
+- **Ledger** of any account (period, opening, lines with running balance) and **group summary** (accounts of a group with balances).
+- **Year close (decision)**: the khata is cumulative, so closing does **not** post carry-forward khata entries (a closing jama plus an opening udhaar would restart grace tranches and change interest). Instead, for FY *Y*: (1) optional interest run up to 31 March; (2) the books must tally (`BooksInvariants`); (3) one **closing journal entry** dated 31 March (`source_type = year_close`) moves every income and expense account's balance for the year to **Profit & Loss A/c** and the balance of **Opening Balance Equity** to **Capital**; (4) `financial_years` row → `closed` with the lock. Opening balances of the next year are the closing balances (reports compute them). Re-opening is not offered in v1.
+- **Lock**: entries dated inside a closed financial year need the **owner** and a written **reason** (stored on the journal entry as `lock_reason` and in the audit row). The server rejects a khata entry, journal entry, payment, voucher, expense or book line dated in a closed year unless the uploader is an owner, and a journal entry there without a reason.
+
+### 11.6 Tally export (3.6)
+
+- Masters: one Tally ledger per account used in the period, with its parent group mapped to a Tally reserved group (defaults below; the business can change the mapping, setting `tally.group_map`). Ledger names must be unique in Tally: duplicates get the party code appended (`Gurmeet Singh (P-W1-0001)`).
+- Vouchers: one per journal entry in the range. Type: lines only on cash / bank → Contra; a cash / bank account credited → Payment; debited → Receipt; else the voucher's own type (sales, purchase) or Journal. Reversals export as their own voucher with the lines swapped. Amounts: Tally's sign convention (debit negative, `ISDEEMEDPOSITIVE` Yes).
+- Validation report before export: unmapped groups, names Tally refuses (empty, over 99 characters), duplicate names resolved, entries that do not balance (none expected), accounts referenced but not synced yet.
+
+| Our group | Tally group |
+|---|---|
+| Capital Account | Capital Account |
+| Current Assets | Current Assets |
+| Sundry Debtors | Sundry Debtors |
+| Cash-in-hand | Cash-in-Hand |
+| Bank Accounts | Bank Accounts |
+| Stock-in-hand | Stock-in-Hand |
+| Loans & Advances (Asset) | Loans & Advances (Asset) |
+| Current Liabilities | Current Liabilities |
+| Sundry Creditors | Sundry Creditors |
+| Duties & Taxes | Duties & Taxes |
+| Direct Income | Direct Incomes |
+| Indirect Income | Indirect Incomes |
+| Direct Expenses | Direct Expenses |
+| Indirect Expenses | Indirect Expenses |
+| Sales Accounts | Sales Accounts |
+| Purchase Accounts | Purchase Accounts |

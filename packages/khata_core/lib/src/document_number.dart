@@ -12,7 +12,18 @@ enum DocumentSeries {
   voucher('V', 'voucher'),
 
   /// Party codes made on a device (`P-W1-0001`); editable before saving.
-  party('P', 'party');
+  party('P', 'party'),
+
+  /// Vouchers entered on the accounts screen (step 3.2), one series each.
+  contraVoucher('CV', 'contra_voucher'),
+  paymentVoucher('PY', 'payment_voucher'),
+  receiptVoucher('RC', 'receipt_voucher'),
+  salesVoucher('SV', 'sales_voucher'),
+  purchaseVoucher('PU', 'purchase_voucher'),
+  journalVoucher('JV', 'journal_voucher'),
+
+  /// Expenses (step 3.4).
+  expense('EX', 'expense');
 
   const DocumentSeries(this.code, this.doc);
 

@@ -2,6 +2,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
+import 'package:mandi_khata_app/features/accounts/data/period_lock.dart';
 import 'package:mandi_khata_app/features/khata/domain/day_book.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:powersync/powersync.dart';
@@ -107,6 +108,9 @@ class LedgerRepository {
     required DateTime now,
     Map<String, Object?> planDefaults = const {},
   }) async {
+    if (await PeriodLock.refuses(tx, ctx, entryDate)) {
+      return const LedgerNotPermitted(Permission.adminManage, lockedYear: true);
+    }
     if (can(Permission.entriesReverse)) return null;
     final days = await backdateDays(
       tx,
@@ -228,16 +232,18 @@ class LedgerRepository {
     if (!can(Permission.entriesReverse)) {
       return const LedgerNotPermitted(Permission.entriesReverse);
     }
-    return await _db.writeTransaction(
-      (tx) => reverseIn(
+    return await _db.writeTransaction((tx) async {
+      final refused = await lockRefusal(tx, ctx, id, entryDate);
+      if (refused != null) return refused;
+      return await reverseIn(
         tx,
         ctx,
         id,
         entryDate: entryDate,
         narration: narration,
         now: now,
-      ),
-    );
+      );
+    });
   }
 
   /// Reverses entry [id] inside [tx], the caller's transaction (a document
@@ -299,6 +305,14 @@ class LedgerRepository {
     return await _db.writeTransaction((tx) async {
       final (:original, :problem) = await _reversible(tx, ctx.tenantId, id);
       if (original == null) return problem!;
+      for (final date in {original.entryDate, ?entryDate}) {
+        if (await PeriodLock.refuses(tx, ctx, date)) {
+          return const LedgerNotPermitted(
+            Permission.adminManage,
+            lockedYear: true,
+          );
+        }
+      }
       final newNarration = narration == null ? null : _clean(narration);
       if ((amount ?? original.amount) == original.amount &&
           (side ?? original.side) == original.side &&
@@ -345,6 +359,27 @@ class LedgerRepository {
       await _journalStandalone(tx, ctx, c.replacement, when);
       return LedgerPosted([c.reversal, c.replacement]);
     });
+  }
+
+  /// Refuses a reversal of entry [id] (dated like it, or [on]) that falls in
+  /// a closed financial year; null when allowed or the entry is missing.
+  static Future<LedgerNotPermitted?> lockRefusal(
+    SqliteReadContext tx,
+    WriteContext ctx,
+    String id,
+    LedgerDate? on,
+  ) async {
+    final row = await tx.getOptional(
+      'SELECT entry_date FROM ledger_entries WHERE tenant_id = ? AND id = ?',
+      [ctx.tenantId, id],
+    );
+    final date =
+        on ??
+        (row == null ? null : LedgerDate.parse(row['entry_date']! as String));
+    if (date != null && await PeriodLock.refuses(tx, ctx, date)) {
+      return const LedgerNotPermitted(Permission.adminManage, lockedYear: true);
+    }
+    return null;
   }
 
   /// A party's statement for [from]..[to] (either open), with the balance

@@ -323,6 +323,7 @@ const syncedTables = <SyncedTable>[
       'created_by': _t,
       'created_at': _t,
       'updated_at': _t,
+      'statement_mapping': _json,
     },
     indexes: {
       'tenant': ['tenant_id', 'sort_order'],
@@ -373,10 +374,14 @@ const syncedTables = <SyncedTable>[
       'device_id': _t,
       'created_by': _t,
       'created_at': _t,
+      'voucher_id': _t,
+      'expense_id': _t,
     },
     indexes: {
       'account_date': ['tenant_id', 'account_id', 'entry_date'],
       'payment': ['payment_id'],
+      'voucher': ['voucher_id'],
+      'expense': ['expense_id'],
     },
     appendOnly: true,
   ),
@@ -481,6 +486,7 @@ const syncedTables = <SyncedTable>[
       'created_by': _t,
       'created_at': _t,
       'updated_at': _t,
+      'expense_category_id': _t,
     },
     indexes: {
       'tenant': ['tenant_id', 'group_id'],
@@ -500,6 +506,7 @@ const syncedTables = <SyncedTable>[
       'device_id': _t,
       'created_by': _t,
       'created_at': _t,
+      'lock_reason': _t,
     },
     indexes: {
       'date': ['tenant_id', 'entry_date'],
@@ -526,6 +533,173 @@ const syncedTables = <SyncedTable>[
     },
     appendOnly: true,
   ),
+  SyncedTable(
+    'vouchers',
+    {
+      'tenant_id': _t,
+      'voucher_type': _t,
+      'voucher_no': _t,
+      'entry_date': _t,
+      'narration': _t,
+      'total_paise': _i,
+      'status': _t,
+      'reversed_at': _t,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'date': ['tenant_id', 'entry_date'],
+    },
+  ),
+  SyncedTable(
+    'bank_statement_lines',
+    {
+      'tenant_id': _t,
+      'bank_account_id': _t,
+      'txn_date': _t,
+      'direction': _t,
+      'amount_paise': _i,
+      'reference': _t,
+      'description': _t,
+      'balance_paise': _i,
+      'import_batch': _t,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+    },
+    indexes: {
+      'account': ['tenant_id', 'bank_account_id', 'txn_date'],
+    },
+    appendOnly: true,
+  ),
+  SyncedTable(
+    'bank_reconciliations',
+    {
+      'tenant_id': _t,
+      'bank_account_id': _t,
+      'book_line_id': _t,
+      'statement_line_id': _t,
+      'reconciled_on': _t,
+      'deleted_at': _t,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'account': ['tenant_id', 'bank_account_id'],
+      'book': ['book_line_id'],
+    },
+  ),
+  SyncedTable(
+    'cash_counts',
+    {
+      'tenant_id': _t,
+      'count_date': _t,
+      'bank_account_id': _t,
+      'denominations': _json,
+      'counted_paise': _i,
+      'book_paise': _i,
+      'difference_paise': _i,
+      'voucher_id': _t,
+      'note': _t,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'date': ['tenant_id', 'count_date'],
+    },
+  ),
+  SyncedTable(
+    'expense_categories',
+    {
+      'tenant_id': _t,
+      'code': _t,
+      'name': _t,
+      'group_code': _t,
+      'sort_order': _i,
+      'is_active': _bool,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'tenant': ['tenant_id', 'sort_order'],
+    },
+  ),
+  SyncedTable(
+    'recurring_expenses',
+    {
+      'tenant_id': _t,
+      'category_id': _t,
+      'amount_paise': _i,
+      'mode': _t,
+      'bank_account_id': _t,
+      'paid_to': _t,
+      'narration': _t,
+      'day_of_month': _i,
+      'start_date': _t,
+      'end_date': _t,
+      'is_active': _bool,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'tenant': ['tenant_id'],
+    },
+  ),
+  SyncedTable(
+    'expenses',
+    {
+      'tenant_id': _t,
+      'expense_no': _t,
+      'entry_date': _t,
+      'category_id': _t,
+      'amount_paise': _i,
+      'mode': _t,
+      'bank_account_id': _t,
+      'paid_to': _t,
+      'narration': _t,
+      'bill_path': _t,
+      'recurring_id': _t,
+      'period': _t,
+      'status': _t,
+      'reversed_at': _t,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'date': ['tenant_id', 'entry_date'],
+      'recurring': ['recurring_id', 'period'],
+    },
+  ),
+  SyncedTable(
+    'financial_years',
+    {
+      'tenant_id': _t,
+      'start_date': _t,
+      'end_date': _t,
+      'status': _t,
+      'closed_at': _t,
+      'closed_by': _t,
+      'closing_entry_id': _t,
+      'profit_paise': _i,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'tenant': ['tenant_id', 'start_date'],
+    },
+  ),
 ];
 
 /// Changes the server rejected for good (RLS, constraint, bad data). Kept on
@@ -544,9 +718,25 @@ const syncErrorsTable = Table.localOnly('sync_errors', [
   Column.integer('batch_seq'),
 ]);
 
+/// Bill photos waiting to go to Supabase Storage (step 3.4). Kept on this
+/// device only; the expense row already carries the path.
+const billUploadsTable = Table.localOnly('bill_uploads', [
+  Column.text('tenant_id'),
+  Column.text('expense_id'),
+  Column.text('path'),
+  Column.text('content_type'),
+  // The photo, base64 (also what the app shows until it can download it).
+  Column.text('data'),
+  Column.text('created_at'),
+  Column.text('uploaded_at'),
+  Column.integer('attempts'),
+  Column.text('last_error'),
+]);
+
 final powerSyncSchema = Schema([
   for (final table in syncedTables) table.toPowerSync(),
   syncErrorsTable,
+  billUploadsTable,
 ]);
 
 /// Looks up a synced table by name, or null for local-only / unknown tables.

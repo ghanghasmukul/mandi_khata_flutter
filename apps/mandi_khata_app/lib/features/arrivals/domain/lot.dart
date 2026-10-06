@@ -313,9 +313,16 @@ final class LotSaved extends LotSaveResult {
 }
 
 final class LotNotPermitted extends LotSaveResult {
-  const LotNotPermitted(this.permission, {this.backdateDays});
+  const LotNotPermitted(
+    this.permission, {
+    this.backdateDays,
+    this.lockedYear = false,
+  });
 
   final Permission permission;
+
+  /// The lot's date is in a closed financial year.
+  final bool lockedYear;
 
   /// Set when the lot's date is outside the back-date window
   /// (`business.backdate_days`); the window in days.

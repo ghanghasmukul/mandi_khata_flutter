@@ -37,6 +37,19 @@ streams:
       - SELECT * FROM loan_rate_changes WHERE tenant_id IN my_tenants
       # Posted interest and waivers (the khata entries behind them sync above).
       - SELECT * FROM interest_postings WHERE tenant_id IN my_tenants
+      # Vouchers (step 3.2): their khata and cash lines sync to everyone
+      # anyway; bank lines and the journal stay in finance_data.
+      - SELECT * FROM vouchers WHERE tenant_id IN my_tenants
+      # Cash counts at day close (step 3.3): the cash book is everyone's.
+      - SELECT * FROM cash_counts WHERE tenant_id IN my_tenants
+      # Expenses (step 3.4): a munshi pays palledari in cash too. Bank lines
+      # of bank expenses stay in finance_data.
+      - SELECT * FROM expense_categories WHERE tenant_id IN my_tenants
+      - SELECT * FROM recurring_expenses WHERE tenant_id IN my_tenants
+      - SELECT * FROM expenses WHERE tenant_id IN my_tenants
+      # Closed financial years (step 3.5): every device must refuse dates
+      # inside them.
+      - SELECT * FROM financial_years WHERE tenant_id IN my_tenants
       # Everyone gets the Cash account and its book lines; bank accounts and
       # their lines go only to finance members (stream below).
       - SELECT * FROM bank_accounts WHERE tenant_id IN my_tenants AND kind = 'cash'
@@ -59,6 +72,9 @@ streams:
       - SELECT * FROM accounts WHERE tenant_id IN finance_tenants
       - SELECT * FROM journal_entries WHERE tenant_id IN finance_tenants
       - SELECT * FROM journal_lines WHERE tenant_id IN finance_tenants
+      # Bank reconciliation (step 3.3).
+      - SELECT * FROM bank_statement_lines WHERE tenant_id IN finance_tenants
+      - SELECT * FROM bank_reconciliations WHERE tenant_id IN finance_tenants
 
   # Names of the people you work with (users screen, audit log, receipts).
   team_profiles:

@@ -78,6 +78,13 @@ enum AccountGroup {
     'Indirect Expenses',
     null,
     AccountNature.expense,
+  ),
+  salesAccounts('sales_accounts', 'Sales Accounts', null, AccountNature.income),
+  purchaseAccounts(
+    'purchase_accounts',
+    'Purchase Accounts',
+    null,
+    AccountNature.expense,
   );
 
   const AccountGroup(this.code, this.name, this.parent, this.nature);
@@ -86,6 +93,22 @@ enum AccountGroup {
   final String name;
   final AccountGroup? parent;
   final AccountNature nature;
+
+  /// The group with [code], or null.
+  static AccountGroup? fromCode(String code) {
+    for (final g in values) {
+      if (g.code == code) return g;
+    }
+    return null;
+  }
+
+  /// Whether this group is [other] or sits under it.
+  bool isWithin(AccountGroup other) {
+    for (AccountGroup? g = this; g != null; g = g.parent) {
+      if (g == other) return true;
+    }
+    return false;
+  }
 
   /// The group a party's account is created in (posting-rules Q2): Sundry
   /// Debtors when the party is a customer or buyer (also when it is more),
@@ -152,6 +175,15 @@ enum SystemAccount {
     'opening_balance_equity',
     'Opening Balance Equity',
     AccountGroup.capital,
+  ),
+  sales('sales', 'Sales', AccountGroup.salesAccounts),
+  purchase('purchase', 'Purchase', AccountGroup.purchaseAccounts),
+  capital('capital', 'Capital', AccountGroup.capital),
+  profitAndLoss('profit_and_loss', 'Profit & Loss A/c', AccountGroup.capital),
+  cashShortExcess(
+    'cash_short_excess',
+    'Cash Short / Excess',
+    AccountGroup.indirectExpenses,
   );
 
   const SystemAccount(this.code, this.name, this.group);
@@ -159,6 +191,14 @@ enum SystemAccount {
   final String code;
   final String name;
   final AccountGroup group;
+
+  /// The account with [code], or null.
+  static SystemAccount? fromCode(String code) {
+    for (final a in values) {
+      if (a.code == code) return a;
+    }
+    return null;
+  }
 }
 
 /// Which account a journal line is on. The app turns it into the account's
@@ -208,6 +248,17 @@ final class SystemJournalAccount extends JournalAccount {
 
   @override
   String get key => 'system:${account.code}';
+}
+
+/// Any other account of the chart (one the business added, or an expense
+/// category's account), named by its id.
+final class ChartAccount extends JournalAccount {
+  const ChartAccount(this.accountId);
+
+  final String accountId;
+
+  @override
+  String get key => 'account:$accountId';
 }
 
 /// One line of a journal entry: a debit or a credit, never both.

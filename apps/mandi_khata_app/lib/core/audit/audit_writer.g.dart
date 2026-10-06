@@ -48,4 +48,70 @@ final class WriteContextProvider
   }
 }
 
-String _$writeContextHash() => r'3fe08a31c88a6eb70c2b806544800aa4dc0fc9cb';
+String _$writeContextHash() => r'b490bf64b0c8dfe821224622167baea6dde7056e';
+
+/// The owner's reason while a closed financial year is unlocked on this
+/// device (Year close screen); cleared on restart. Only owners' writes
+/// carry it (writeContextProvider).
+
+@ProviderFor(LockOverride)
+final lockOverrideProvider = LockOverrideProvider._();
+
+/// The owner's reason while a closed financial year is unlocked on this
+/// device (Year close screen); cleared on restart. Only owners' writes
+/// carry it (writeContextProvider).
+final class LockOverrideProvider
+    extends $NotifierProvider<LockOverride, String?> {
+  /// The owner's reason while a closed financial year is unlocked on this
+  /// device (Year close screen); cleared on restart. Only owners' writes
+  /// carry it (writeContextProvider).
+  LockOverrideProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'lockOverrideProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$lockOverrideHash();
+
+  @$internal
+  @override
+  LockOverride create() => LockOverride();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
+  }
+}
+
+String _$lockOverrideHash() => r'95131e63c7ba571caa287d6d949daec1968a4e5b';
+
+/// The owner's reason while a closed financial year is unlocked on this
+/// device (Year close screen); cleared on restart. Only owners' writes
+/// carry it (writeContextProvider).
+
+abstract class _$LockOverride extends $Notifier<String?> {
+  String? build();
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<String?, String?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String?, String?>,
+              String?,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, build);
+  }
+}

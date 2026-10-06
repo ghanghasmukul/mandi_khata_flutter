@@ -190,6 +190,7 @@ extension PaymentLabels on AppLocalizations {
   /// A message for a failed save, or null when it saved.
   String? paymentSaveError(PaymentSaveResult r) => switch (r) {
     PaymentSaved() => null,
+    PaymentNotPermitted(lockedYear: true) => yearLockedError,
     PaymentNotPermitted(:final backdateDays?) => khataErrorBackdated(
       backdateDays,
     ),

@@ -6,9 +6,12 @@ import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/accounts/presentation/accounts_providers.dart';
+import 'package:mandi_khata_app/features/accounts/presentation/accounts_routes.dart';
 import 'package:mandi_khata_app/features/dashboard/domain/alerts.dart';
 import 'package:mandi_khata_app/features/dashboard/domain/dashboard.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
+import 'package:mandi_khata_app/features/expenses/presentation/expenses_providers.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
 import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
@@ -35,6 +38,16 @@ class NeedsYouCard extends ConsumerWidget {
     final loans = ref.watch(loanAlertsProvider).value ?? LoanAlerts.none;
     final credit = ref.watch(creditAlertsProvider).value ?? CreditAlerts.none;
     final unposted = ref.watch(unpostedInterestProvider).value;
+    final recurringDue = canCheques
+        ? ref.watch(dueRecurringProvider).value?.length ?? 0
+        : 0;
+    final books = ref.watch(booksAfterSyncProvider).value;
+    final booksProblems = books == null
+        ? 0
+        : books.unbalanced + books.partyDifferences + books.bookDifferences;
+    final staleBank = canFinance
+        ? ref.watch(staleBankLinesProvider).value ?? 0
+        : 0;
     final isOwner =
         ref.watch(activeMembershipProvider)?.role == MemberRole.owner;
 
@@ -75,6 +88,27 @@ class NeedsYouCard extends ConsumerWidget {
             unposted.amount.short(),
           ),
           onTap: () => context.go(LoanRoutes.postAsOf(unposted.asOf)),
+        ),
+      if (booksProblems > 0)
+        _NeedRow(
+          key: const ValueKey('need-books'),
+          icon: Icons.error_outline,
+          text: l10n.dashNeedsBooks(booksProblems),
+          onTap: () => context.go(AccountRoutes.books),
+        ),
+      if (staleBank > 0)
+        _NeedRow(
+          key: const ValueKey('need-unreconciled'),
+          icon: Icons.compare_arrows,
+          text: l10n.dashNeedsUnreconciled(staleBank),
+          onTap: () => context.go(AccountRoutes.reconcile),
+        ),
+      if (recurringDue > 0)
+        _NeedRow(
+          key: const ValueKey('need-recurring-due'),
+          icon: Icons.event_repeat,
+          text: l10n.dashNeedsRecurringDue(recurringDue),
+          onTap: () => context.go(AccountRoutes.expenses),
         ),
       if (canCheques && counts.chequesDue > 0)
         _NeedRow(

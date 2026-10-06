@@ -275,6 +275,7 @@ class BankAccounts extends Table {
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
   TextColumn get updatedAt => text().nullable()();
+  TextColumn get statementMapping => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};
@@ -317,12 +318,14 @@ class CashBankEntries extends Table {
   TextColumn get entryDate => text()();
   TextColumn get direction => text()();
   IntColumn get amountPaise => integer()();
-  TextColumn get paymentId => text()();
+  TextColumn get paymentId => text().nullable()();
   TextColumn get narration => text().nullable()();
   TextColumn get reversesId => text().nullable()();
   TextColumn get deviceId => text().nullable()();
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
+  TextColumn get voucherId => text().nullable()();
+  TextColumn get expenseId => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};
@@ -424,6 +427,7 @@ class Accounts extends Table {
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
   TextColumn get updatedAt => text().nullable()();
+  TextColumn get expenseCategoryId => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};
@@ -442,6 +446,7 @@ class JournalEntries extends Table {
   TextColumn get deviceId => text().nullable()();
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
+  TextColumn get lockReason => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};
@@ -459,6 +464,171 @@ class JournalLines extends Table {
   TextColumn get memo => text().nullable()();
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A voucher entered on the accounts screen (step 3.2). Frozen once
+/// posted; only `status` / `reversed_at` change.
+class Vouchers extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get voucherType => text()();
+  TextColumn get voucherNo => text()();
+  TextColumn get entryDate => text()();
+  TextColumn get narration => text().nullable()();
+  IntColumn get totalPaise => integer()();
+  TextColumn get status => text()();
+  TextColumn get reversedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// An imported bank statement line (step 3.3). Append-only.
+class BankStatementLines extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get bankAccountId => text()();
+  TextColumn get txnDate => text()();
+  TextColumn get direction => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get reference => text().nullable()();
+  TextColumn get description => text().nullable()();
+  IntColumn get balancePaise => integer().nullable()();
+  TextColumn get importBatch => text()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A bank book line marked reconciled (step 3.3); undo = `deleted_at`.
+class BankReconciliations extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get bankAccountId => text()();
+  TextColumn get bookLineId => text()();
+  TextColumn get statementLineId => text().nullable()();
+  TextColumn get reconciledOn => text()();
+  TextColumn get deletedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Cash counted at day close (step 3.3).
+class CashCounts extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get countDate => text()();
+  TextColumn get bankAccountId => text()();
+  TextColumn get denominations => text()();
+  IntColumn get countedPaise => integer()();
+  IntColumn get bookPaise => integer()();
+  IntColumn get differencePaise => integer()();
+  TextColumn get voucherId => text().nullable()();
+  TextColumn get note => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Expense categories (step 3.4); each has an account made by the server.
+class ExpenseCategories extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get code => text().nullable()();
+  TextColumn get name => text()();
+  TextColumn get groupCode => text()();
+  IntColumn get sortOrder => integer()();
+  BoolColumn get isActive => boolean()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// Recurring expense templates (step 3.4).
+class RecurringExpenses extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get categoryId => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get mode => text()();
+  TextColumn get bankAccountId => text()();
+  TextColumn get paidTo => text().nullable()();
+  TextColumn get narration => text().nullable()();
+  IntColumn get dayOfMonth => integer()();
+  TextColumn get startDate => text()();
+  TextColumn get endDate => text().nullable()();
+  BoolColumn get isActive => boolean()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// An expense (step 3.4). Frozen once posted.
+class Expenses extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get expenseNo => text()();
+  TextColumn get entryDate => text()();
+  TextColumn get categoryId => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get mode => text()();
+  TextColumn get bankAccountId => text()();
+  TextColumn get paidTo => text().nullable()();
+  TextColumn get narration => text().nullable()();
+  TextColumn get billPath => text().nullable()();
+  TextColumn get recurringId => text().nullable()();
+  TextColumn get period => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get reversedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A closed (or closing) financial year (step 3.5). Owner only.
+class FinancialYears extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get startDate => text()();
+  TextColumn get endDate => text()();
+  TextColumn get status => text()();
+  TextColumn get closedAt => text().nullable()();
+  TextColumn get closedBy => text().nullable()();
+  TextColumn get closingEntryId => text().nullable()();
+  IntColumn get profitPaise => integer()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};

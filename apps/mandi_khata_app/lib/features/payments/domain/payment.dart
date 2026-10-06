@@ -382,9 +382,17 @@ final class PaymentSaved extends PaymentSaveResult {
 }
 
 final class PaymentNotPermitted extends PaymentSaveResult {
-  const PaymentNotPermitted(this.permission, {this.backdateDays, this.limit});
+  const PaymentNotPermitted(
+    this.permission, {
+    this.backdateDays,
+    this.limit,
+    this.lockedYear = false,
+  });
 
   final Permission permission;
+
+  /// The date is in a closed financial year.
+  final bool lockedYear;
 
   /// Set when the date is outside the back-date window; the window in days.
   final int? backdateDays;

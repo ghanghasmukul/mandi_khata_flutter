@@ -5,6 +5,7 @@ import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/numbering/number_series_service.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
+import 'package:mandi_khata_app/features/accounts/data/period_lock.dart';
 import 'package:mandi_khata_app/features/arrivals/domain/lot.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
@@ -197,6 +198,7 @@ class LotsRepository {
           return LotNotPermitted(
             refused.permission,
             backdateDays: refused.backdateDays,
+            lockedYear: refused.lockedYear,
           );
         }
         final config = await resolveConfig(
@@ -345,6 +347,17 @@ class LotsRepository {
       final status = LotStatus.parse(lot['status']! as String);
       if (status != LotStatus.posted) return LotLocked(status);
       final lotNo = lot['lot_no']! as String;
+      final dated = await tx.get(
+        'SELECT entry_date FROM lots WHERE tenant_id = ? AND id = ?',
+        [ctx.tenantId, id],
+      );
+      if (await PeriodLock.refuses(
+        tx,
+        ctx,
+        LedgerDate.parse(dated['entry_date']! as String),
+      )) {
+        return const LotNotPermitted(Permission.adminManage, lockedYear: true);
+      }
 
       final entries = await tx.getAll(
         'SELECT e.id FROM ledger_entries e WHERE e.tenant_id = ? '

@@ -11,6 +11,7 @@ import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/storage/app_prefs.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/invite_acceptor.dart';
+import 'package:mandi_khata_app/features/expenses/presentation/expenses_providers.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -81,7 +82,9 @@ class _MandiKhataAppState extends ConsumerState<MandiKhataApp> {
       // Joins businesses that invited this phone number (once per sign-in).
       ..watch(inviteSyncProvider)
       // Tags error reports with the business id and device code.
-      ..watch(errorReportingTagsProvider);
+      ..watch(errorReportingTagsProvider)
+      // Sends queued bill photos to Storage when online.
+      ..watch(billUploadRunnerProvider);
     final language = ref.watch(appLanguageProvider);
     final router = ref.watch(routerProvider);
     return MaterialApp.router(

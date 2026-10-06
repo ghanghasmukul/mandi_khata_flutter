@@ -2,7 +2,9 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/numbering/number_series_service.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/features/accounts/data/book_line_writer.dart';
 import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
+import 'package:mandi_khata_app/features/accounts/data/period_lock.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:mandi_khata_app/features/payments/data/bank_accounts_repository.dart';
@@ -197,6 +199,7 @@ class PaymentsRepository {
       return PaymentNotPermitted(
         refused.permission,
         backdateDays: refused.backdateDays,
+        lockedYear: refused.lockedYear,
       );
     }
 
@@ -282,15 +285,16 @@ class PaymentsRepository {
       ),
       now: when,
     );
-    await _insertBookLine(
+    await BookLineWriter.insert(
       tx,
       ctx,
+      source: BookSource.payment,
+      sourceId: id,
       accountId: accountId,
       accountKind: draft.mode.usesCashAccount ? 'cash' : 'bank',
       entryDate: draft.entryDate,
       direction: draft.direction.book,
       amount: draft.amount,
-      paymentId: id,
       narration: narration,
       when: when,
     );
@@ -412,6 +416,16 @@ class PaymentsRepository {
     final reversalDate = bounced
         ? bounceDate ?? LedgerDate.fromDateTime(when)
         : null;
+    if (await PeriodLock.refuses(
+      tx,
+      ctx,
+      reversalDate ?? LedgerDate.parse(row['entry_date']! as String),
+    )) {
+      return const PaymentNotPermitted(
+        Permission.adminManage,
+        lockedYear: true,
+      );
+    }
 
     final entries = await tx.getAll(
       'SELECT e.id FROM ledger_entries e WHERE e.tenant_id = ? '
@@ -437,28 +451,15 @@ class PaymentsRepository {
       );
     }
 
-    final lines = await tx.getAll(
-      'SELECT l.* FROM cash_bank_entries l WHERE l.tenant_id = ? '
-      'AND l.payment_id = ? AND l.reverses_id IS NULL AND NOT EXISTS ( '
-      'SELECT 1 FROM cash_bank_entries r WHERE r.tenant_id = l.tenant_id '
-      'AND r.reverses_id = l.id) ORDER BY l.created_at, l.id',
-      [ctx.tenantId, id],
+    await BookLineWriter.reverseAll(
+      tx,
+      ctx,
+      source: BookSource.payment,
+      sourceId: id,
+      entryDate: reversalDate,
+      narration: receiptNo,
+      when: when,
     );
-    for (final l in lines) {
-      await _insertBookLine(
-        tx,
-        ctx,
-        accountId: l['account_id']! as String,
-        accountKind: l['account_kind']! as String,
-        entryDate: reversalDate ?? LedgerDate.parse(l['entry_date']! as String),
-        direction: BookDirection.parse(l['direction']! as String).opposite,
-        amount: Money(l['amount_paise']! as int),
-        paymentId: id,
-        narration: receiptNo,
-        reversesId: l['id']! as String,
-        when: when,
-      );
-    }
 
     final at = when.toUtc().toIso8601String();
     await tx.execute(
@@ -485,59 +486,6 @@ class PaymentsRepository {
       at: when,
     );
     return PaymentSaved(id, receiptNo);
-  }
-
-  static Future<void> _insertBookLine(
-    SqliteWriteContext tx,
-    WriteContext ctx, {
-    required String accountId,
-    required String accountKind,
-    required LedgerDate entryDate,
-    required BookDirection direction,
-    required Money amount,
-    required String paymentId,
-    required String? narration,
-    required DateTime when,
-    String? reversesId,
-  }) async {
-    final lineId = const Uuid().v4();
-    await tx.execute(
-      'INSERT INTO cash_bank_entries (id, tenant_id, account_id, '
-      'account_kind, entry_date, direction, amount_paise, payment_id, '
-      'narration, reverses_id, device_id, created_by, created_at) '
-      'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [
-        lineId,
-        ctx.tenantId,
-        accountId,
-        accountKind,
-        entryDate.toString(),
-        direction.dbName,
-        amount.paise,
-        paymentId,
-        narration,
-        reversesId,
-        ctx.deviceId,
-        ctx.userId,
-        when.toUtc().toIso8601String(),
-      ],
-    );
-    await AuditWriter.record(
-      tx,
-      ctx,
-      table: 'cash_bank_entries',
-      rowId: lineId,
-      action: reversesId == null ? AuditAction.insert : AuditAction.reverse,
-      after: {
-        'account_id': accountId,
-        'entry_date': entryDate.toString(),
-        'direction': direction.dbName,
-        'amount_paise': amount.paise,
-        'payment_id': paymentId,
-        'reverses_id': ?reversesId,
-      },
-      at: when,
-    );
   }
 
   static Future<Map<String, Object?>?> _payment(

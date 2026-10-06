@@ -1,5 +1,6 @@
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
+import 'package:mandi_khata_app/features/accounts/data/period_lock.dart';
 import 'package:sqlite_async/sqlite_async.dart';
 import 'package:uuid/uuid.dart';
 
@@ -30,7 +31,19 @@ abstract final class JournalWriter {
           _accountNamespace,
           '$tenantId|account|${a.code}',
         ),
+        ChartAccount(:final accountId) => accountId,
       };
+
+  /// The account of expense category [categoryId] (made by the server).
+  static String expenseAccountId(String tenantId, String categoryId) =>
+      const Uuid().v5(_accountNamespace, '$tenantId|expense|$categoryId');
+
+  /// The id of a seeded expense category.
+  static String expenseCategoryId(String tenantId, ExpenseCategorySeed seed) =>
+      const Uuid().v5(
+        _accountNamespace,
+        '$tenantId|expense_category|${seed.code}',
+      );
 
   /// The id of a system group, e.g. `sundry_debtors`.
   static String groupId(String tenantId, AccountGroup group) =>
@@ -46,12 +59,14 @@ abstract final class JournalWriter {
       sourceKey.substring(0, sourceKey.indexOf(':'));
 
   /// Writes [draft] with its lines and one audit row. Does nothing when the
-  /// entry already exists (idempotent). Returns whether it wrote.
+  /// entry already exists (idempotent). Returns whether it wrote. A
+  /// voucher's entry names it in [voucherId].
   static Future<bool> post(
     SqliteWriteContext tx,
     WriteContext ctx,
     JournalEntryDraft draft, {
     DateTime? now,
+    String? voucherId,
   }) async {
     if (draft.isReversal) {
       throw ArgumentError('Use JournalWriter.reverse for a reversal');
@@ -63,22 +78,26 @@ abstract final class JournalWriter {
       [ctx.tenantId, draft.sourceKey],
     );
     if (taken != null) return false;
+    final lockReason = await _lockReason(tx, ctx, draft.date);
 
     await tx.execute(
       'INSERT INTO journal_entries (id, tenant_id, source_key, source_type, '
-      'entry_date, narration, reverses_id, device_id, created_by, created_at) '
-      'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'voucher_id, entry_date, narration, reverses_id, device_id, '
+      'created_by, created_at, lock_reason) '
+      'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         id,
         ctx.tenantId,
         draft.sourceKey,
         sourceType(draft.sourceKey),
+        voucherId,
         draft.date.toString(),
         draft.narration,
         null,
         ctx.deviceId,
         ctx.userId,
         when.toIso8601String(),
+        lockReason,
       ],
     );
     for (var i = 0; i < draft.lines.length; i++) {
@@ -112,6 +131,8 @@ abstract final class JournalWriter {
         'entry_date': draft.date.toString(),
         'total_paise': draft.total.paise,
         'lines': draft.lines.length,
+        'voucher_id': ?voucherId,
+        'lock_reason': ?lockReason,
       },
       at: when,
     );
@@ -149,11 +170,12 @@ abstract final class JournalWriter {
       [ctx.tenantId, id],
     );
     if (taken != null) return false;
+    final lockReason = await _lockReason(tx, ctx, date);
 
     await tx.execute(
       'INSERT INTO journal_entries (id, tenant_id, source_key, source_type, '
-      'entry_date, narration, reverses_id, device_id, created_by, created_at) '
-      'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'entry_date, narration, reverses_id, device_id, created_by, created_at, '
+      'lock_reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         id,
         ctx.tenantId,
@@ -165,6 +187,7 @@ abstract final class JournalWriter {
         ctx.deviceId,
         ctx.userId,
         when.toIso8601String(),
+        lockReason,
       ],
     );
     var total = 0;
@@ -202,11 +225,24 @@ abstract final class JournalWriter {
         'total_paise': total,
         'lines': lines.length,
         'reverses_id': original['id'],
+        'lock_reason': ?lockReason,
       },
       at: when,
     );
     return true;
   }
+
+  /// The owner's reason when [date] is in a closed financial year (the
+  /// server refuses such an entry without one); null otherwise.
+  static Future<String?> _lockReason(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    LedgerDate date,
+  ) async =>
+      ctx.lockReason != null &&
+          await PeriodLock.isLocked(tx, ctx.tenantId, date)
+      ? ctx.lockReason
+      : null;
 
   /// The source key of the journal entry behind khata entry [e] (posting-rules
   /// section 4), or null when it has none (crop-proceeds loan lines, which net
@@ -251,6 +287,8 @@ abstract final class JournalWriter {
         return waiver == null ? null : 'waiver:$ref';
       case RefType.openingBalance:
         return 'entry:${e.id}';
+      case RefType.voucher:
+        return ref == null ? null : 'voucher:$ref';
       case RefType.reversal ||
           RefType.shopSale ||
           RefType.shopReturn ||

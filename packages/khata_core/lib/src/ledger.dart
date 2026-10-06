@@ -107,7 +107,10 @@ enum RefType {
   expense('expense'),
   journal('journal'),
   openingBalance('opening_balance'),
-  reversal('reversal');
+  reversal('reversal'),
+
+  /// A line of a voucher (step 3.2) on a party's account.
+  voucher('voucher');
 
   const RefType(this.dbName);
 
@@ -386,7 +389,8 @@ abstract final class LedgerPosting {
     return switch (refType) {
       RefType.reversal ||
       RefType.journal ||
-      RefType.openingBalance => Permission.entriesReverse,
+      RefType.openingBalance ||
+      RefType.voucher => Permission.entriesReverse,
       RefType.arrival => Permission.arrivalsManage,
       RefType.payment ||
       RefType.receipt ||

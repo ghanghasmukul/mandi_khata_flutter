@@ -13,10 +13,17 @@ const t1 = '11111111-1111-4111-8111-111111111111';
 /// in supabase/tests/16_chart_of_accounts_journal.test.sql).
 void main() {
   final repo = Directory.current.parent.parent;
-  final sql = File(
-    '${repo.path}/supabase/migrations/'
-    '20261005171417_chart_of_accounts_and_journal.sql',
-  ).readAsStringSync();
+  // The latest migration that (re)defines the seed wins.
+  final files =
+      Directory('${repo.path}/supabase/migrations')
+          .listSync()
+          .whereType<File>()
+          .where((f) => f.path.endsWith('.sql'))
+          .toList()
+        ..sort((a, b) => a.path.compareTo(b.path));
+  final sql = files
+      .map((f) => f.readAsStringSync())
+      .lastWhere((s) => s.contains('function private.seed_chart_accounts'));
 
   test('account ids equal the UUID v5 ids of the server', () {
     expect(
@@ -68,10 +75,8 @@ void main() {
   });
 
   test('the SQL account seed lists exactly the SystemAccount enum', () {
-    final block = sql.substring(
-      sql.indexOf('function private.seed_chart_accounts'),
-      sql.indexOf('function private.party_account_group'),
-    );
+    final start = sql.indexOf('function private.seed_chart_accounts');
+    final block = sql.substring(start, sql.indexOf(r'$$;', start));
     final rows = RegExp(
       r"\('([a-z_]+)',\s+'([^']+)',\s+'([a-z_]+)'\)",
     ).allMatches(block).toList();

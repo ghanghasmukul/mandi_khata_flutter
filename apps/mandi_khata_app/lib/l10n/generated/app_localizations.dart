@@ -7264,6 +7264,1596 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} cash or bank accounts differ from the cash book.'**
   String booksCheckBooksBad(int count);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Voucher'**
+  String get khataRefVoucher;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Accounts'**
+  String get acctHubTitle;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Vouchers, books and statements of the business. F4–F9 open a voucher of that type.'**
+  String get acctHubIntro;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Entry'**
+  String get acctHubSectionEntry;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get acctHubSectionBooks;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Statements'**
+  String get acctHubSectionStatements;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Year end and export'**
+  String get acctHubSectionYear;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'You need the “{permission}” permission.'**
+  String acctNeedsPermission(String permission);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Only an accountant or the owner can open the accounts.'**
+  String get acctNotPermitted;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Contra'**
+  String get voucherTypeContra;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get voucherTypePayment;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt'**
+  String get voucherTypeReceipt;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Sales'**
+  String get voucherTypeSales;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase'**
+  String get voucherTypePurchase;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Journal'**
+  String get voucherTypeJournal;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Voucher entry'**
+  String get voucherEntryTitle;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'No. {no}'**
+  String voucherNoPreview(String no);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get voucherDate;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Narration'**
+  String get voucherNarration;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Dr'**
+  String get voucherDr;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Cr'**
+  String get voucherCr;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get voucherAccount;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get voucherAmount;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Add line'**
+  String get voucherAddLine;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Remove line'**
+  String get voucherRemoveLine;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Dr {debit} · Cr {credit}'**
+  String voucherTotals(String debit, String credit);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Difference {amount}'**
+  String voucherDifference(String amount);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Balanced'**
+  String get voucherBalanced;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get voucherSave;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Saved {no}'**
+  String voucherSaved(String no);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'F4 Contra · F5 Payment · F6 Receipt · F7 Sales · F8 Purchase · F9 Journal · Enter next field · Ctrl+Enter save · Esc cancel'**
+  String get voucherShortcuts;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Search account'**
+  String get voucherAccountSearch;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'No account matches'**
+  String get voucherNoAccount;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A voucher needs at least two lines.'**
+  String get voucherProblemTooFewLines;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Every line needs an account and an amount above zero.'**
+  String get voucherProblemAmount;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Debit and credit must be equal.'**
+  String get voucherProblemUnbalanced;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'The same account is twice on one side.'**
+  String get voucherProblemDuplicate;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'An account on this voucher is switched off.'**
+  String get voucherProblemInactive;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A contra uses only cash and bank accounts, on both sides.'**
+  String get voucherProblemContra;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A payment credits cash or a bank, and debits none.'**
+  String get voucherProblemPayment;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A receipt debits cash or a bank, and credits none.'**
+  String get voucherProblemReceipt;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A sales voucher credits a Sales account.'**
+  String get voucherProblemSales;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A purchase voucher debits a Purchase account.'**
+  String get voucherProblemPurchase;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A journal does not use cash or bank: use a payment, receipt or contra.'**
+  String get voucherProblemJournal;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'An account on this voucher is no longer in the books.'**
+  String get voucherNotFound;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'This voucher is already reversed.'**
+  String get voucherLocked;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse voucher'**
+  String get voucherReverse;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Every khata entry, cash / bank line and journal line of this voucher is reversed, dated like the voucher. Continue?'**
+  String get voucherReverseBody;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Reversed'**
+  String get voucherReversedTag;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Day book (accounts)'**
+  String get dayBookAccountsTitle;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Vouchers only'**
+  String get dayBookVouchersOnly;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get dayBookAllTypes;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'No journal entries on these dates.'**
+  String get dayBookNoEntries;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'This entry belongs to a document: reverse it from that screen.'**
+  String get dayBookReverseOnDocument;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Lot'**
+  String get sourceLot;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Payment / receipt'**
+  String get sourcePayment;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Interest'**
+  String get sourceInterest;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Interest waived'**
+  String get sourceWaiver;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Khata entry'**
+  String get sourceEntry;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Reversal'**
+  String get sourceReversal;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Journal entry'**
+  String get journalEntryTitle;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Debit'**
+  String get journalDebit;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit'**
+  String get journalCredit;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Account not synced yet'**
+  String get journalAccountNotSynced;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Chart of accounts'**
+  String get chartTitle;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Search accounts'**
+  String get chartSearch;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Add account'**
+  String get chartAddAccount;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Edit account'**
+  String get chartEditAccount;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Account name'**
+  String get chartAccountName;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get chartGroup;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Switch off'**
+  String get chartSwitchOff;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Switch on'**
+  String get chartSwitchOn;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get chartOff;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for sync'**
+  String get chartNotSynced;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} Dr'**
+  String chartDrBalance(String amount);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} Cr'**
+  String chartCrBalance(String amount);
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name.'**
+  String get chartProblemNameEmpty;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'An account with this name already exists.'**
+  String get chartProblemNameTaken;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Parties and cash / bank accounts are added on their own screens.'**
+  String get chartProblemGroup;
+
+  /// Accounts: vouchers, day book, chart of accounts (step 3.2).
+  ///
+  /// In en, this message translates to:
+  /// **'This account cannot be changed here.'**
+  String get chartProblemNotOwn;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Cash / bank book'**
+  String get cashBookTitle;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get cashBookAccount;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening'**
+  String get cashBookOpening;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Receipts'**
+  String get cashBookReceipts;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Payments'**
+  String get cashBookPayments;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Closing'**
+  String get cashBookClosing;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get cashBookColDate;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Particulars'**
+  String get cashBookColText;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'In'**
+  String get cashBookColIn;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Out'**
+  String get cashBookColOut;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get cashBookColBalance;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Day total'**
+  String get cashBookDayTotal;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'No lines on these dates.'**
+  String get cashBookEmpty;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Count cash'**
+  String get cashCountTitle;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Notes and coins'**
+  String get cashCountNotes;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Loose change (₹)'**
+  String get cashCountLoose;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Counted {amount}'**
+  String cashCountCounted(String amount);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Cash book {amount}'**
+  String cashCountBook(String amount);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Excess {amount}'**
+  String cashCountExcess(String amount);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Short {amount}'**
+  String cashCountShort(String amount);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Matches the cash book'**
+  String get cashCountMatches;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Post the difference to Cash Short / Excess'**
+  String get cashCountPost;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get cashCountNote;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Save count'**
+  String get cashCountSave;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Count saved'**
+  String get cashCountSaved;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Count saved; difference posted as {no}'**
+  String cashCountSavedPosted(String no);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Earlier counts'**
+  String get cashCountHistory;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank reconciliation'**
+  String get reconTitle;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Add a bank account first (Payments → Bank accounts).'**
+  String get reconNoBank;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Import statement'**
+  String get reconImport;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-match'**
+  String get reconAutoMatch;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'{count} matched'**
+  String reconAutoMatched(int count);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Match'**
+  String get reconMatch;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Statement ({count})'**
+  String reconStatementTab(int count);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Book ({count})'**
+  String reconBookTab(int count);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Reconciled ({count})'**
+  String reconReconciledTab(int count);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Reconciled without statement'**
+  String get reconWithoutStatement;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Reconcile with its reversal'**
+  String get reconWithReversal;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get reconUndo;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Pick one statement line and one book line with the same amount, then Match.'**
+  String get reconPickBoth;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'These two lines differ in amount or direction.'**
+  String get reconMismatch;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Reconciled {date}'**
+  String reconOn(String date);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Import bank statement'**
+  String get reconImportTitle;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Pick which column is which. It is saved for this bank.'**
+  String get reconMappingHelp;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get reconColDate;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get reconColDescription;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Reference (UTR / cheque)'**
+  String get reconColReference;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawal (debit)'**
+  String get reconColDebit;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Deposit (credit)'**
+  String get reconColCredit;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount (one signed column)'**
+  String get reconColAmount;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get reconColBalance;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'One amount column'**
+  String get reconUseAmount;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Date format'**
+  String get reconDateFormat;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Rows to skip at the top'**
+  String get reconHeaderRows;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get reconNoColumn;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Column {n}: {sample}'**
+  String reconColumnN(int n, String sample);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'{rows} lines read, {errors} skipped'**
+  String reconPreview(int rows, int errors);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'{added} added, {duplicates} already there, {errors} skipped'**
+  String reconImportDone(int added, int duplicates, int errors);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row}: date not readable'**
+  String reconRowBadDate(int row);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row}: amount not readable'**
+  String reconRowBadAmount(int row);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row}: no amount, skipped'**
+  String reconRowNoAmount(int row);
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get reconImportButton;
+
+  /// Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 bank line not reconciled for over a week} other{{count} bank lines not reconciled for over a week}}'**
+  String dashNeedsUnreconciled(int count);
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get expensesTitle;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Add expense'**
+  String get expenseAdd;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get expenseCategory;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get expenseModeCash;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get expenseModeBank;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank account'**
+  String get expenseBankAccount;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid to'**
+  String get expensePaidTo;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Attach bill photo'**
+  String get expenseAttachBill;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Bill: {name}'**
+  String expenseBillAttached(String name);
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'View bill'**
+  String get expenseViewBill;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'The bill is not on this device; it opens when online.'**
+  String get expenseBillOffline;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 bill photo waiting to upload} other{{count} bill photos waiting to upload}}'**
+  String expenseUploadsPending(int count);
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Saved {no}'**
+  String expenseSaved(String no);
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse expense'**
+  String get expenseReverse;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'The journal entry and the cash / bank line of this expense are reversed, dated like the expense. Continue?'**
+  String get expenseReverseBody;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount above zero.'**
+  String get expenseProblemAmount;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a category.'**
+  String get expenseProblemCategory;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a bank account.'**
+  String get expenseProblemBank;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'The category or bank account is not available.'**
+  String get expenseNotFound;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Already reversed, or this month is already posted.'**
+  String get expenseLocked;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Entries'**
+  String get expensesEntriesTab;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Recurring'**
+  String get expensesRecurringTab;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
+  String get expensesReportTab;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses on these dates.'**
+  String get expensesEmpty;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Due now'**
+  String get expenseDueTitle;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Post'**
+  String get expenseDuePost;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing due.'**
+  String get expenseDueNone;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Add recurring expense'**
+  String get expenseRecurringAdd;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Day of month'**
+  String get expenseRecurringDay;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get expenseRecurringStart;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Every month on day {day} · {amount}'**
+  String expenseRecurringEvery(int day, String amount);
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Expense categories'**
+  String get expenseCategoriesTitle;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Add category'**
+  String get expenseCategoryAdd;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get expenseCategoryName;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Direct expense'**
+  String get expenseGroupDirect;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Indirect expense'**
+  String get expenseGroupIndirect;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get expenseReportTotal;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Palledari'**
+  String get expenseCategoryPalledari;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Transport'**
+  String get expenseCategoryTransport;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Salary'**
+  String get expenseCategorySalary;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Bardana'**
+  String get expenseCategoryBardana;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi charges'**
+  String get expenseCategoryMandiCharges;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity'**
+  String get expenseCategoryElectricity;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Rent'**
+  String get expenseCategoryRent;
+
+  /// Expenses (step 3.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Miscellaneous'**
+  String get expenseCategoryMisc;
+
+  /// Expenses (step 3.4), dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 recurring expense due} other{{count} recurring expenses due}}'**
+  String dashNeedsRecurringDue(int count);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Trial balance'**
+  String get tbTitle;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'As of {date}'**
+  String stmtAsOf(String date);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Change date'**
+  String get stmtPickDate;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Groups only'**
+  String get tbGroupsOnly;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Particulars'**
+  String get stmtParticulars;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Debit'**
+  String get stmtDebit;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit'**
+  String get stmtCredit;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get stmtAmount;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get stmtTotal;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get stmtBalance;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Tallies'**
+  String get stmtTallies;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Does not tally: difference {amount}'**
+  String stmtDoesNotTally(String amount);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No entries on these dates.'**
+  String get stmtEmpty;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'This year {label}'**
+  String stmtThisYear(String label);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Last year {label}'**
+  String stmtLastYear(String label);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Profit & loss'**
+  String get plTitle;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Sales'**
+  String get plSales;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Direct income'**
+  String get plDirectIncome;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases'**
+  String get plPurchases;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Direct expenses'**
+  String get plDirectExpenses;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Indirect income'**
+  String get plIndirectIncome;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Indirect expenses'**
+  String get plIndirectExpenses;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Gross profit'**
+  String get plGrossProfit;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Net profit'**
+  String get plNetProfit;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Net loss'**
+  String get plNetLoss;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Balance sheet'**
+  String get bsTitle;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Assets'**
+  String get bsAssets;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Liabilities'**
+  String get bsLiabilities;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Capital'**
+  String get bsCapital;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Profit & Loss (current)'**
+  String get bsCurrentProfit;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'{name} (other side)'**
+  String bsOtherSide(String name);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Liabilities + capital'**
+  String get bsLiabilitiesAndCapital;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Account ledger'**
+  String get ledgerTitle;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Pick an account'**
+  String get ledgerPickAccount;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening balance'**
+  String get ledgerOpening;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Closing balance'**
+  String get ledgerClosing;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Group summary'**
+  String get groupSummaryTitle;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Year close'**
+  String get yearCloseTitle;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Closing a year moves its profit to Profit & Loss A/c and locks every date in it. Balances simply carry on: the khata is not touched.'**
+  String get yearCloseIntro;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get yearOpen;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Closed {date}'**
+  String yearClosedOn(String date);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Profit {amount}'**
+  String yearProfit(String amount);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Loss {amount}'**
+  String yearLoss(String amount);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Post interest up to 31 March first (optional)'**
+  String get yearRunInterest;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Close {label}'**
+  String yearCloseButton(String label);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Closing {label} moves its profit to Profit & Loss A/c and locks every date in it; only the owner can then post there, with a reason. This cannot be undone. Continue?'**
+  String yearCloseConfirm(String label);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'{label} closed'**
+  String yearClosedDone(String label);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can close a year.'**
+  String get yearProblemOwner;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'The year has not ended yet.'**
+  String get yearProblemNotEnded;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Close the earlier year first.'**
+  String get yearProblemEarlier;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'The books do not tally: fix the books checks first.'**
+  String get yearProblemBooks;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Year close'**
+  String get yearCloseEntry;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'This date is in a closed financial year. Only the owner can post there, after unlocking it with a reason on the Year close screen.'**
+  String get yearLockedError;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Post into a closed year (this session)'**
+  String get yearUnlockTitle;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get yearUnlockReason;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock'**
+  String get yearUnlockButton;
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocked for this session: {reason}'**
+  String yearUnlockOn(String reason);
+
+  /// Accounts: statements and year close (step 3.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Lock again'**
+  String get yearUnlockOff;
+
+  /// Books check after every sync (phase 3 exit criterion).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{The books do not tally: 1 problem} other{The books do not tally: {count} problems}}'**
+  String dashNeedsBooks(int count);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Export to Tally'**
+  String get tallyTitle;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Makes Tally Prime files (ledgers, then vouchers) for a period. Import them in Tally Prime: Import → Masters → 01-masters.xml, then Import → Transactions → 02-vouchers.xml.'**
+  String get tallyIntro;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'This month'**
+  String get tallyThisMonth;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Last month'**
+  String get tallyLastMonth;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Account groups in Tally'**
+  String get tallyMapping;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a Tally group'**
+  String get tallyGroupUnmapped;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{ledgers} ledgers · {vouchers} vouchers'**
+  String tallyCounts(int ledgers, int vouchers);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{count} ledgers'**
+  String tallyGroupLedgers(int count);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Export (.zip)'**
+  String get tallyExport;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Checks before export'**
+  String get tallyIssuesTitle;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to fix: ready for Tally.'**
+  String get tallyNoIssues;
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: no Tally group for {detail}'**
+  String tallyIssueUnmapped(String subject, String detail);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: the name is empty or longer than 99 characters'**
+  String tallyIssueBadName(String subject);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{subject} is used twice; exported as {detail}'**
+  String tallyIssueRenamed(String subject, String detail);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: debit and credit differ'**
+  String tallyIssueUnbalanced(String subject);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'{subject}: an account has not synced yet'**
+  String tallyIssueUnknown(String subject);
+
+  /// Tally export (step 3.6).
+  ///
+  /// In en, this message translates to:
+  /// **'Fix the problems above first.'**
+  String get tallyExportBlocked;
 }
 
 class _AppLocalizationsDelegate

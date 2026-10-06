@@ -4103,4 +4103,948 @@ class AppLocalizationsEn extends AppLocalizations {
   String booksCheckBooksBad(int count) {
     return '$count cash or bank accounts differ from the cash book.';
   }
+
+  @override
+  String get khataRefVoucher => 'Voucher';
+
+  @override
+  String get acctHubTitle => 'Accounts';
+
+  @override
+  String get acctHubIntro =>
+      'Vouchers, books and statements of the business. F4–F9 open a voucher of that type.';
+
+  @override
+  String get acctHubSectionEntry => 'Entry';
+
+  @override
+  String get acctHubSectionBooks => 'Books';
+
+  @override
+  String get acctHubSectionStatements => 'Statements';
+
+  @override
+  String get acctHubSectionYear => 'Year end and export';
+
+  @override
+  String acctNeedsPermission(String permission) {
+    return 'You need the “$permission” permission.';
+  }
+
+  @override
+  String get acctNotPermitted =>
+      'Only an accountant or the owner can open the accounts.';
+
+  @override
+  String get voucherTypeContra => 'Contra';
+
+  @override
+  String get voucherTypePayment => 'Payment';
+
+  @override
+  String get voucherTypeReceipt => 'Receipt';
+
+  @override
+  String get voucherTypeSales => 'Sales';
+
+  @override
+  String get voucherTypePurchase => 'Purchase';
+
+  @override
+  String get voucherTypeJournal => 'Journal';
+
+  @override
+  String get voucherEntryTitle => 'Voucher entry';
+
+  @override
+  String voucherNoPreview(String no) {
+    return 'No. $no';
+  }
+
+  @override
+  String get voucherDate => 'Date';
+
+  @override
+  String get voucherNarration => 'Narration';
+
+  @override
+  String get voucherDr => 'Dr';
+
+  @override
+  String get voucherCr => 'Cr';
+
+  @override
+  String get voucherAccount => 'Account';
+
+  @override
+  String get voucherAmount => 'Amount';
+
+  @override
+  String get voucherAddLine => 'Add line';
+
+  @override
+  String get voucherRemoveLine => 'Remove line';
+
+  @override
+  String voucherTotals(String debit, String credit) {
+    return 'Dr $debit · Cr $credit';
+  }
+
+  @override
+  String voucherDifference(String amount) {
+    return 'Difference $amount';
+  }
+
+  @override
+  String get voucherBalanced => 'Balanced';
+
+  @override
+  String get voucherSave => 'Save';
+
+  @override
+  String voucherSaved(String no) {
+    return 'Saved $no';
+  }
+
+  @override
+  String get voucherShortcuts =>
+      'F4 Contra · F5 Payment · F6 Receipt · F7 Sales · F8 Purchase · F9 Journal · Enter next field · Ctrl+Enter save · Esc cancel';
+
+  @override
+  String get voucherAccountSearch => 'Search account';
+
+  @override
+  String get voucherNoAccount => 'No account matches';
+
+  @override
+  String get voucherProblemTooFewLines => 'A voucher needs at least two lines.';
+
+  @override
+  String get voucherProblemAmount =>
+      'Every line needs an account and an amount above zero.';
+
+  @override
+  String get voucherProblemUnbalanced => 'Debit and credit must be equal.';
+
+  @override
+  String get voucherProblemDuplicate =>
+      'The same account is twice on one side.';
+
+  @override
+  String get voucherProblemInactive =>
+      'An account on this voucher is switched off.';
+
+  @override
+  String get voucherProblemContra =>
+      'A contra uses only cash and bank accounts, on both sides.';
+
+  @override
+  String get voucherProblemPayment =>
+      'A payment credits cash or a bank, and debits none.';
+
+  @override
+  String get voucherProblemReceipt =>
+      'A receipt debits cash or a bank, and credits none.';
+
+  @override
+  String get voucherProblemSales => 'A sales voucher credits a Sales account.';
+
+  @override
+  String get voucherProblemPurchase =>
+      'A purchase voucher debits a Purchase account.';
+
+  @override
+  String get voucherProblemJournal =>
+      'A journal does not use cash or bank: use a payment, receipt or contra.';
+
+  @override
+  String get voucherNotFound =>
+      'An account on this voucher is no longer in the books.';
+
+  @override
+  String get voucherLocked => 'This voucher is already reversed.';
+
+  @override
+  String get voucherReverse => 'Reverse voucher';
+
+  @override
+  String get voucherReverseBody =>
+      'Every khata entry, cash / bank line and journal line of this voucher is reversed, dated like the voucher. Continue?';
+
+  @override
+  String get voucherReversedTag => 'Reversed';
+
+  @override
+  String get dayBookAccountsTitle => 'Day book (accounts)';
+
+  @override
+  String get dayBookVouchersOnly => 'Vouchers only';
+
+  @override
+  String get dayBookAllTypes => 'All';
+
+  @override
+  String get dayBookNoEntries => 'No journal entries on these dates.';
+
+  @override
+  String get dayBookReverseOnDocument =>
+      'This entry belongs to a document: reverse it from that screen.';
+
+  @override
+  String get sourceLot => 'Lot';
+
+  @override
+  String get sourcePayment => 'Payment / receipt';
+
+  @override
+  String get sourceInterest => 'Interest';
+
+  @override
+  String get sourceWaiver => 'Interest waived';
+
+  @override
+  String get sourceEntry => 'Khata entry';
+
+  @override
+  String get sourceReversal => 'Reversal';
+
+  @override
+  String get journalEntryTitle => 'Journal entry';
+
+  @override
+  String get journalDebit => 'Debit';
+
+  @override
+  String get journalCredit => 'Credit';
+
+  @override
+  String get journalAccountNotSynced => 'Account not synced yet';
+
+  @override
+  String get chartTitle => 'Chart of accounts';
+
+  @override
+  String get chartSearch => 'Search accounts';
+
+  @override
+  String get chartAddAccount => 'Add account';
+
+  @override
+  String get chartEditAccount => 'Edit account';
+
+  @override
+  String get chartAccountName => 'Account name';
+
+  @override
+  String get chartGroup => 'Group';
+
+  @override
+  String get chartSwitchOff => 'Switch off';
+
+  @override
+  String get chartSwitchOn => 'Switch on';
+
+  @override
+  String get chartOff => 'Off';
+
+  @override
+  String get chartNotSynced => 'Waiting for sync';
+
+  @override
+  String chartDrBalance(String amount) {
+    return '$amount Dr';
+  }
+
+  @override
+  String chartCrBalance(String amount) {
+    return '$amount Cr';
+  }
+
+  @override
+  String get chartProblemNameEmpty => 'Enter a name.';
+
+  @override
+  String get chartProblemNameTaken =>
+      'An account with this name already exists.';
+
+  @override
+  String get chartProblemGroup =>
+      'Parties and cash / bank accounts are added on their own screens.';
+
+  @override
+  String get chartProblemNotOwn => 'This account cannot be changed here.';
+
+  @override
+  String get cashBookTitle => 'Cash / bank book';
+
+  @override
+  String get cashBookAccount => 'Account';
+
+  @override
+  String get cashBookOpening => 'Opening';
+
+  @override
+  String get cashBookReceipts => 'Receipts';
+
+  @override
+  String get cashBookPayments => 'Payments';
+
+  @override
+  String get cashBookClosing => 'Closing';
+
+  @override
+  String get cashBookColDate => 'Date';
+
+  @override
+  String get cashBookColText => 'Particulars';
+
+  @override
+  String get cashBookColIn => 'In';
+
+  @override
+  String get cashBookColOut => 'Out';
+
+  @override
+  String get cashBookColBalance => 'Balance';
+
+  @override
+  String get cashBookDayTotal => 'Day total';
+
+  @override
+  String get cashBookEmpty => 'No lines on these dates.';
+
+  @override
+  String get cashCountTitle => 'Count cash';
+
+  @override
+  String get cashCountNotes => 'Notes and coins';
+
+  @override
+  String get cashCountLoose => 'Loose change (₹)';
+
+  @override
+  String cashCountCounted(String amount) {
+    return 'Counted $amount';
+  }
+
+  @override
+  String cashCountBook(String amount) {
+    return 'Cash book $amount';
+  }
+
+  @override
+  String cashCountExcess(String amount) {
+    return 'Excess $amount';
+  }
+
+  @override
+  String cashCountShort(String amount) {
+    return 'Short $amount';
+  }
+
+  @override
+  String get cashCountMatches => 'Matches the cash book';
+
+  @override
+  String get cashCountPost => 'Post the difference to Cash Short / Excess';
+
+  @override
+  String get cashCountNote => 'Note';
+
+  @override
+  String get cashCountSave => 'Save count';
+
+  @override
+  String get cashCountSaved => 'Count saved';
+
+  @override
+  String cashCountSavedPosted(String no) {
+    return 'Count saved; difference posted as $no';
+  }
+
+  @override
+  String get cashCountHistory => 'Earlier counts';
+
+  @override
+  String get reconTitle => 'Bank reconciliation';
+
+  @override
+  String get reconNoBank =>
+      'Add a bank account first (Payments → Bank accounts).';
+
+  @override
+  String get reconImport => 'Import statement';
+
+  @override
+  String get reconAutoMatch => 'Auto-match';
+
+  @override
+  String reconAutoMatched(int count) {
+    return '$count matched';
+  }
+
+  @override
+  String get reconMatch => 'Match';
+
+  @override
+  String reconStatementTab(int count) {
+    return 'Statement ($count)';
+  }
+
+  @override
+  String reconBookTab(int count) {
+    return 'Book ($count)';
+  }
+
+  @override
+  String reconReconciledTab(int count) {
+    return 'Reconciled ($count)';
+  }
+
+  @override
+  String get reconWithoutStatement => 'Reconciled without statement';
+
+  @override
+  String get reconWithReversal => 'Reconcile with its reversal';
+
+  @override
+  String get reconUndo => 'Undo';
+
+  @override
+  String get reconPickBoth =>
+      'Pick one statement line and one book line with the same amount, then Match.';
+
+  @override
+  String get reconMismatch => 'These two lines differ in amount or direction.';
+
+  @override
+  String reconOn(String date) {
+    return 'Reconciled $date';
+  }
+
+  @override
+  String get reconImportTitle => 'Import bank statement';
+
+  @override
+  String get reconMappingHelp =>
+      'Pick which column is which. It is saved for this bank.';
+
+  @override
+  String get reconColDate => 'Date';
+
+  @override
+  String get reconColDescription => 'Description';
+
+  @override
+  String get reconColReference => 'Reference (UTR / cheque)';
+
+  @override
+  String get reconColDebit => 'Withdrawal (debit)';
+
+  @override
+  String get reconColCredit => 'Deposit (credit)';
+
+  @override
+  String get reconColAmount => 'Amount (one signed column)';
+
+  @override
+  String get reconColBalance => 'Balance';
+
+  @override
+  String get reconUseAmount => 'One amount column';
+
+  @override
+  String get reconDateFormat => 'Date format';
+
+  @override
+  String get reconHeaderRows => 'Rows to skip at the top';
+
+  @override
+  String get reconNoColumn => '—';
+
+  @override
+  String reconColumnN(int n, String sample) {
+    return 'Column $n: $sample';
+  }
+
+  @override
+  String reconPreview(int rows, int errors) {
+    return '$rows lines read, $errors skipped';
+  }
+
+  @override
+  String reconImportDone(int added, int duplicates, int errors) {
+    return '$added added, $duplicates already there, $errors skipped';
+  }
+
+  @override
+  String reconRowBadDate(int row) {
+    return 'Row $row: date not readable';
+  }
+
+  @override
+  String reconRowBadAmount(int row) {
+    return 'Row $row: amount not readable';
+  }
+
+  @override
+  String reconRowNoAmount(int row) {
+    return 'Row $row: no amount, skipped';
+  }
+
+  @override
+  String get reconImportButton => 'Import';
+
+  @override
+  String dashNeedsUnreconciled(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count bank lines not reconciled for over a week',
+      one: '1 bank line not reconciled for over a week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get expensesTitle => 'Expenses';
+
+  @override
+  String get expenseAdd => 'Add expense';
+
+  @override
+  String get expenseCategory => 'Category';
+
+  @override
+  String get expenseModeCash => 'Cash';
+
+  @override
+  String get expenseModeBank => 'Bank';
+
+  @override
+  String get expenseBankAccount => 'Bank account';
+
+  @override
+  String get expensePaidTo => 'Paid to';
+
+  @override
+  String get expenseAttachBill => 'Attach bill photo';
+
+  @override
+  String expenseBillAttached(String name) {
+    return 'Bill: $name';
+  }
+
+  @override
+  String get expenseViewBill => 'View bill';
+
+  @override
+  String get expenseBillOffline =>
+      'The bill is not on this device; it opens when online.';
+
+  @override
+  String expenseUploadsPending(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count bill photos waiting to upload',
+      one: '1 bill photo waiting to upload',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String expenseSaved(String no) {
+    return 'Saved $no';
+  }
+
+  @override
+  String get expenseReverse => 'Reverse expense';
+
+  @override
+  String get expenseReverseBody =>
+      'The journal entry and the cash / bank line of this expense are reversed, dated like the expense. Continue?';
+
+  @override
+  String get expenseProblemAmount => 'Enter an amount above zero.';
+
+  @override
+  String get expenseProblemCategory => 'Pick a category.';
+
+  @override
+  String get expenseProblemBank => 'Pick a bank account.';
+
+  @override
+  String get expenseNotFound =>
+      'The category or bank account is not available.';
+
+  @override
+  String get expenseLocked =>
+      'Already reversed, or this month is already posted.';
+
+  @override
+  String get expensesEntriesTab => 'Entries';
+
+  @override
+  String get expensesRecurringTab => 'Recurring';
+
+  @override
+  String get expensesReportTab => 'Report';
+
+  @override
+  String get expensesEmpty => 'No expenses on these dates.';
+
+  @override
+  String get expenseDueTitle => 'Due now';
+
+  @override
+  String get expenseDuePost => 'Post';
+
+  @override
+  String get expenseDueNone => 'Nothing due.';
+
+  @override
+  String get expenseRecurringAdd => 'Add recurring expense';
+
+  @override
+  String get expenseRecurringDay => 'Day of month';
+
+  @override
+  String get expenseRecurringStart => 'From';
+
+  @override
+  String expenseRecurringEvery(int day, String amount) {
+    return 'Every month on day $day · $amount';
+  }
+
+  @override
+  String get expenseCategoriesTitle => 'Expense categories';
+
+  @override
+  String get expenseCategoryAdd => 'Add category';
+
+  @override
+  String get expenseCategoryName => 'Name';
+
+  @override
+  String get expenseGroupDirect => 'Direct expense';
+
+  @override
+  String get expenseGroupIndirect => 'Indirect expense';
+
+  @override
+  String get expenseReportTotal => 'Total';
+
+  @override
+  String get expenseCategoryPalledari => 'Palledari';
+
+  @override
+  String get expenseCategoryTransport => 'Transport';
+
+  @override
+  String get expenseCategorySalary => 'Salary';
+
+  @override
+  String get expenseCategoryBardana => 'Bardana';
+
+  @override
+  String get expenseCategoryMandiCharges => 'Mandi charges';
+
+  @override
+  String get expenseCategoryElectricity => 'Electricity';
+
+  @override
+  String get expenseCategoryRent => 'Rent';
+
+  @override
+  String get expenseCategoryMisc => 'Miscellaneous';
+
+  @override
+  String dashNeedsRecurringDue(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count recurring expenses due',
+      one: '1 recurring expense due',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get tbTitle => 'Trial balance';
+
+  @override
+  String stmtAsOf(String date) {
+    return 'As of $date';
+  }
+
+  @override
+  String get stmtPickDate => 'Change date';
+
+  @override
+  String get tbGroupsOnly => 'Groups only';
+
+  @override
+  String get stmtParticulars => 'Particulars';
+
+  @override
+  String get stmtDebit => 'Debit';
+
+  @override
+  String get stmtCredit => 'Credit';
+
+  @override
+  String get stmtAmount => 'Amount';
+
+  @override
+  String get stmtTotal => 'Total';
+
+  @override
+  String get stmtBalance => 'Balance';
+
+  @override
+  String get stmtTallies => 'Tallies';
+
+  @override
+  String stmtDoesNotTally(String amount) {
+    return 'Does not tally: difference $amount';
+  }
+
+  @override
+  String get stmtEmpty => 'No entries on these dates.';
+
+  @override
+  String stmtThisYear(String label) {
+    return 'This year $label';
+  }
+
+  @override
+  String stmtLastYear(String label) {
+    return 'Last year $label';
+  }
+
+  @override
+  String get plTitle => 'Profit & loss';
+
+  @override
+  String get plSales => 'Sales';
+
+  @override
+  String get plDirectIncome => 'Direct income';
+
+  @override
+  String get plPurchases => 'Purchases';
+
+  @override
+  String get plDirectExpenses => 'Direct expenses';
+
+  @override
+  String get plIndirectIncome => 'Indirect income';
+
+  @override
+  String get plIndirectExpenses => 'Indirect expenses';
+
+  @override
+  String get plGrossProfit => 'Gross profit';
+
+  @override
+  String get plNetProfit => 'Net profit';
+
+  @override
+  String get plNetLoss => 'Net loss';
+
+  @override
+  String get bsTitle => 'Balance sheet';
+
+  @override
+  String get bsAssets => 'Assets';
+
+  @override
+  String get bsLiabilities => 'Liabilities';
+
+  @override
+  String get bsCapital => 'Capital';
+
+  @override
+  String get bsCurrentProfit => 'Profit & Loss (current)';
+
+  @override
+  String bsOtherSide(String name) {
+    return '$name (other side)';
+  }
+
+  @override
+  String get bsLiabilitiesAndCapital => 'Liabilities + capital';
+
+  @override
+  String get ledgerTitle => 'Account ledger';
+
+  @override
+  String get ledgerPickAccount => 'Pick an account';
+
+  @override
+  String get ledgerOpening => 'Opening balance';
+
+  @override
+  String get ledgerClosing => 'Closing balance';
+
+  @override
+  String get groupSummaryTitle => 'Group summary';
+
+  @override
+  String get yearCloseTitle => 'Year close';
+
+  @override
+  String get yearCloseIntro =>
+      'Closing a year moves its profit to Profit & Loss A/c and locks every date in it. Balances simply carry on: the khata is not touched.';
+
+  @override
+  String get yearOpen => 'Open';
+
+  @override
+  String yearClosedOn(String date) {
+    return 'Closed $date';
+  }
+
+  @override
+  String yearProfit(String amount) {
+    return 'Profit $amount';
+  }
+
+  @override
+  String yearLoss(String amount) {
+    return 'Loss $amount';
+  }
+
+  @override
+  String get yearRunInterest => 'Post interest up to 31 March first (optional)';
+
+  @override
+  String yearCloseButton(String label) {
+    return 'Close $label';
+  }
+
+  @override
+  String yearCloseConfirm(String label) {
+    return 'Closing $label moves its profit to Profit & Loss A/c and locks every date in it; only the owner can then post there, with a reason. This cannot be undone. Continue?';
+  }
+
+  @override
+  String yearClosedDone(String label) {
+    return '$label closed';
+  }
+
+  @override
+  String get yearProblemOwner => 'Only the owner can close a year.';
+
+  @override
+  String get yearProblemNotEnded => 'The year has not ended yet.';
+
+  @override
+  String get yearProblemEarlier => 'Close the earlier year first.';
+
+  @override
+  String get yearProblemBooks =>
+      'The books do not tally: fix the books checks first.';
+
+  @override
+  String get yearCloseEntry => 'Year close';
+
+  @override
+  String get yearLockedError =>
+      'This date is in a closed financial year. Only the owner can post there, after unlocking it with a reason on the Year close screen.';
+
+  @override
+  String get yearUnlockTitle => 'Post into a closed year (this session)';
+
+  @override
+  String get yearUnlockReason => 'Reason';
+
+  @override
+  String get yearUnlockButton => 'Unlock';
+
+  @override
+  String yearUnlockOn(String reason) {
+    return 'Unlocked for this session: $reason';
+  }
+
+  @override
+  String get yearUnlockOff => 'Lock again';
+
+  @override
+  String dashNeedsBooks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'The books do not tally: $count problems',
+      one: 'The books do not tally: 1 problem',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get tallyTitle => 'Export to Tally';
+
+  @override
+  String get tallyIntro =>
+      'Makes Tally Prime files (ledgers, then vouchers) for a period. Import them in Tally Prime: Import → Masters → 01-masters.xml, then Import → Transactions → 02-vouchers.xml.';
+
+  @override
+  String get tallyThisMonth => 'This month';
+
+  @override
+  String get tallyLastMonth => 'Last month';
+
+  @override
+  String get tallyMapping => 'Account groups in Tally';
+
+  @override
+  String get tallyGroupUnmapped => 'Pick a Tally group';
+
+  @override
+  String tallyCounts(int ledgers, int vouchers) {
+    return '$ledgers ledgers · $vouchers vouchers';
+  }
+
+  @override
+  String tallyGroupLedgers(int count) {
+    return '$count ledgers';
+  }
+
+  @override
+  String get tallyExport => 'Export (.zip)';
+
+  @override
+  String get tallyIssuesTitle => 'Checks before export';
+
+  @override
+  String get tallyNoIssues => 'Nothing to fix: ready for Tally.';
+
+  @override
+  String tallyIssueUnmapped(String subject, String detail) {
+    return '$subject: no Tally group for $detail';
+  }
+
+  @override
+  String tallyIssueBadName(String subject) {
+    return '$subject: the name is empty or longer than 99 characters';
+  }
+
+  @override
+  String tallyIssueRenamed(String subject, String detail) {
+    return '$subject is used twice; exported as $detail';
+  }
+
+  @override
+  String tallyIssueUnbalanced(String subject) {
+    return '$subject: debit and credit differ';
+  }
+
+  @override
+  String tallyIssueUnknown(String subject) {
+    return '$subject: an account has not synced yet';
+  }
+
+  @override
+  String get tallyExportBlocked => 'Fix the problems above first.';
 }

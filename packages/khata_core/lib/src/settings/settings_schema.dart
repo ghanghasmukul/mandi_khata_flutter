@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:khata_core/src/settings/setting_scope.dart';
+import 'package:khata_core/src/tally_export.dart';
 import 'package:meta/meta.dart';
 
 /// How a setting's value is stored (JSON) and edited.
@@ -155,6 +156,7 @@ class SettingDef {
     required Object fallback,
     required bool Function(Object) validator,
     bool businessOnly = false,
+    bool hidden = false,
     String? suffixName,
     List<String>? suffixValues,
     Map<String, Object?> suffixDefaults = const {},
@@ -164,6 +166,7 @@ class SettingDef {
          systemDefault: fallback,
          validator: validator,
          businessOnly: businessOnly,
+         hidden: hidden,
          suffixName: suffixName,
          suffixValues: suffixValues,
          suffixDefaults: suffixDefaults,
@@ -469,6 +472,13 @@ abstract final class SettingsSchema {
         'karza',
         'voucher',
         'party',
+        'contra_voucher',
+        'payment_voucher',
+        'receipt_voucher',
+        'sales_voucher',
+        'purchase_voucher',
+        'journal_voucher',
+        'expense',
       ],
       suffixDefaults: {
         'receipt': {'prefix': 'R-', 'next': 1},
@@ -478,6 +488,13 @@ abstract final class SettingsSchema {
         'karza': {'prefix': 'KZ-', 'next': 1},
         'voucher': {'prefix': 'V-', 'next': 1},
         'party': {'prefix': 'P-', 'next': 1},
+        'contra_voucher': {'prefix': 'CV-', 'next': 1},
+        'payment_voucher': {'prefix': 'PY-', 'next': 1},
+        'receipt_voucher': {'prefix': 'RC-', 'next': 1},
+        'sales_voucher': {'prefix': 'SV-', 'next': 1},
+        'purchase_voucher': {'prefix': 'PU-', 'next': 1},
+        'journal_voucher': {'prefix': 'JV-', 'next': 1},
+        'expense': {'prefix': 'EX-', 'next': 1},
       },
     ),
     SettingDef.boolean(
@@ -509,6 +526,17 @@ abstract final class SettingsSchema {
       'notify.whatsapp_receipts',
       fallback: false,
       businessOnly: true,
+    ),
+
+    // Our account group code -> Tally group, for the Tally export (step 3.6;
+    // edited on the export screen, not in the settings editor). Groups not
+    // listed use `defaultTallyGroupMap`.
+    SettingDef.structured(
+      'tally.group_map',
+      fallback: <String, Object?>{},
+      validator: _validTallyGroupMap,
+      businessOnly: true,
+      hidden: true,
     ),
 
     // Onboarding wizard progress (hidden from the settings editor): the
@@ -608,6 +636,16 @@ abstract final class SettingsSchema {
 
   static bool _validIdentifierOrFalse(Object? v) =>
       v != null && _validIdentifier(v);
+
+  static bool _validTallyGroupMap(Object v) =>
+      v is Map &&
+      v.entries.every(
+        (e) =>
+            e.key is String &&
+            _identifier.hasMatch(e.key as String) &&
+            e.value is String &&
+            tallyGroups.contains(e.value),
+      );
 
   static bool _validNumberSeries(Object v) =>
       v is Map &&

@@ -39,17 +39,20 @@ class BooksInvariants {
 
   /// Journal entries whose lines do not balance (there should be none).
   Future<List<String>> unbalancedEntries(String tenantId) =>
-      _db.readTransaction(
-        (tx) async => [
-          for (final r in await tx.getAll(
-            'SELECT journal_entry_id FROM journal_lines WHERE tenant_id = ? '
-            'GROUP BY journal_entry_id '
-            'HAVING SUM(debit_paise) <> SUM(credit_paise)',
-            [tenantId],
-          ))
-            r['journal_entry_id']! as String,
-        ],
-      );
+      _db.readTransaction((tx) => unbalancedEntriesIn(tx, tenantId));
+
+  static Future<List<String>> unbalancedEntriesIn(
+    SqliteReadContext tx,
+    String tenantId,
+  ) async => [
+    for (final r in await tx.getAll(
+      'SELECT journal_entry_id FROM journal_lines WHERE tenant_id = ? '
+      'GROUP BY journal_entry_id '
+      'HAVING SUM(debit_paise) <> SUM(credit_paise)',
+      [tenantId],
+    ))
+      r['journal_entry_id']! as String,
+  ];
 
   /// Party accounts whose debit balance is not minus the khata balance
   /// (`Σ jama − Σ udhaar`), up to [asOn] (`yyyy-mm-dd`) when given.
@@ -106,7 +109,14 @@ class BooksInvariants {
   Future<List<BooksDifference>> bookDifferences(
     String tenantId, {
     String? asOn,
-  }) => _db.readTransaction((tx) async {
+  }) =>
+      _db.readTransaction((tx) => bookDifferencesIn(tx, tenantId, asOn: asOn));
+
+  static Future<List<BooksDifference>> bookDifferencesIn(
+    SqliteReadContext tx,
+    String tenantId, {
+    String? asOn,
+  }) async {
     final book = {
       for (final r in await tx.getAll(
         "SELECT account_id, SUM(CASE direction WHEN 'in' THEN amount_paise "
@@ -134,7 +144,7 @@ class BooksInvariants {
             actualPaise: actual(b['id']! as String),
           ),
     ];
-  });
+  }
 
   /// Debit minus credit per account id over all journal lines.
   static Future<Map<String, int>> _journalBalances(

@@ -3,18 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart' show Permission;
-import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/accounts/data/journal_backfill.dart';
 import 'package:mandi_khata_app/features/accounts/presentation/accounts_providers.dart';
+import 'package:mandi_khata_app/features/accounts/presentation/accounts_routes.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
-
-abstract final class AccountRoutes {
-  static const books = '/accounts/books';
-}
 
 /// The books (double-entry journal) of the business: whether every document
 /// has its journal entry, the button that writes the missing ones for
@@ -75,7 +71,7 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
     return CallbackShortcuts(
       bindings: {
         const SingleActivator(LogicalKeyboardKey.escape): () =>
-            context.go(GateRoutes.home),
+            context.go(AccountRoutes.hub),
       },
       child: Focus(
         autofocus: true,
@@ -90,7 +86,7 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
                     tooltip: MaterialLocalizations.of(
                       context,
                     ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
+                    onPressed: () => context.go(AccountRoutes.hub),
                     icon: const Icon(Icons.close),
                   ),
                 ],

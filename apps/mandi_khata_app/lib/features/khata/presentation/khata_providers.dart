@@ -190,6 +190,7 @@ extension KhataLabels on AppLocalizations {
     RefType.journal => khataRefJournal,
     RefType.openingBalance => khataRefOpeningBalance,
     RefType.reversal => khataRefReversal,
+    RefType.voucher => khataRefVoucher,
   };
 
   /// What a khata line says: its narration, else its type.
@@ -202,6 +203,7 @@ extension KhataLabels on AppLocalizations {
   /// A message for a failed post, or null when it posted.
   String? ledgerPostError(LedgerPostResult r) => switch (r) {
     LedgerPosted() => null,
+    LedgerNotPermitted(lockedYear: true) => yearLockedError,
     LedgerNotPermitted(:final backdateDays?) => khataErrorBackdated(
       backdateDays,
     ),
