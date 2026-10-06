@@ -46,7 +46,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [ ] Phase 2 review (run 2026-10-05, docs/reviews/phase-2.md: code-complete, not closed; HIGH + findings 2, 3, 5, 6 fixed; exit criterion 1 needs real accounts, all 11 findings fixed / accepted)
 
 ## Phase 3: Accounting
-- [ ] 3.1 Chart of accounts & journal (🧑 approve docs/domain/posting-rules.md)
+- [x] 3.1 Chart of accounts & journal (2026-10-05): posting-rules.md approved (Q1-Q8 as recommended); khata_core `AccountGroup` / `SystemAccount` / `JournalBuilder` / `PostingRules` (one per row of the mapping, 81-combination lot test, 529 core tests); migration with `account_groups`, `accounts`, `journal_entries`, `journal_lines` (server seed with UUID v5 ids, party / book account triggers, append-only, deferred balance + mirror check, RLS by document permission, pgTAP 16 = 23 tests, 350 total); journal written in the same transaction by lots, payments, loan disbursal / repayment, interest, waivers, manual entries, opening balances and every reversal / edit; idempotent back-fill + books screen `/accounts/books` with tally checks (a test rebuilds a busy day's journal identically); app 666 tests; web / macOS / APK build. 🧑 approve `supabase db push` (migration not on dev yet) and deploy powersync/sync-streams.yaml.
 - [ ] 3.2 Voucher entry
 - [ ] 3.3 Cash book, bank book, reconciliation
 - [ ] 3.4 Expenses

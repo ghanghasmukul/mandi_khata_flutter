@@ -234,7 +234,11 @@ void main() {
       final tables = (await rows(
         'audit_log',
       )).map((a) => a['table_name']).toList()..sort();
-      expect(tables, ['interest_postings', 'ledger_entries']);
+      expect(tables, [
+        'interest_postings',
+        'journal_entries',
+        'ledger_entries',
+      ]);
     });
 
     test('posted interest is not charged again and the next period starts '

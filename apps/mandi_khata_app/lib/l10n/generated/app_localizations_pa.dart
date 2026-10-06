@@ -3986,4 +3986,85 @@ class AppLocalizationsPa extends AppLocalizations {
   String byajStatementTerms(String rate, String method) {
     return '$rate% ਸਾਲਾਨਾ, $method';
   }
+
+  @override
+  String get booksTitle => 'ਖਾਤਾ-ਬਹੀ (ਹਿਸਾਬ-ਕਿਤਾਬ)';
+
+  @override
+  String get booksIntro =>
+      'ਹਰ ਲਾਟ, ਭੁਗਤਾਨ, ਕਰਜ਼ੇ ਅਤੇ ਵਿਆਜ ਦੀ ਐਂਟਰੀ ਨਾਲ ਇੱਕ ਸੰਤੁਲਿਤ ਜਰਨਲ ਐਂਟਰੀ (ਡੈਬਿਟ = ਕ੍ਰੈਡਿਟ) ਵੀ ਬਣਦੀ ਹੈ। ਇੱਥੇ ਵੇਖੋ ਕਿ ਪੁਰਾਣੇ ਕਾਗ਼ਜ਼ ਵੀ ਜੁੜੇ ਹਨ ਜਾਂ ਨਹੀਂ ਅਤੇ ਬਹੀ ਖਾਤੇ ਨਾਲ ਮਿਲਦੀ ਹੈ ਜਾਂ ਨਹੀਂ।';
+
+  @override
+  String get booksNotPermitted =>
+      'ਬਹੀ-ਖਾਤਾ ਸਿਰਫ਼ ਮੁਨੀਮ (ਅਕਾਊਂਟੈਂਟ) ਜਾਂ ਮਾਲਕ ਖੋਲ੍ਹ ਸਕਦੇ ਹਨ।';
+
+  @override
+  String get booksStatusTitle => 'ਜਰਨਲ ਐਂਟਰੀਆਂ';
+
+  @override
+  String get booksAllDone => 'ਹਰ ਕਾਗ਼ਜ਼ ਦੀ ਜਰਨਲ ਐਂਟਰੀ ਬਣੀ ਹੋਈ ਹੈ।';
+
+  @override
+  String booksMissing(int count) {
+    return '$count ਕਾਗ਼ਜ਼ਾਂ ਦੀ ਜਰਨਲ ਐਂਟਰੀ ਅਜੇ ਨਹੀਂ ਬਣੀ।';
+  }
+
+  @override
+  String booksMissingDetail(
+    int lots,
+    int payments,
+    int interest,
+    int waivers,
+    int entries,
+    int reversals,
+  ) {
+    return 'ਲਾਟ $lots · ਭੁਗਤਾਨ $payments · ਵਿਆਜ $interest · ਮਾਫ਼ੀ $waivers · ਖਾਤਾ ਐਂਟਰੀ $entries · ਉਲਟੀ ਐਂਟਰੀ $reversals';
+  }
+
+  @override
+  String get booksRun => 'ਬਾਕੀ ਐਂਟਰੀਆਂ ਬਣਾਓ';
+
+  @override
+  String booksRunning(int done, int total) {
+    return 'ਬਣ ਰਹੀਆਂ ਹਨ… $done / $total';
+  }
+
+  @override
+  String booksRunDone(int written) {
+    return 'ਹੋ ਗਿਆ: $written ਜਰਨਲ ਐਂਟਰੀਆਂ ਬਣੀਆਂ।';
+  }
+
+  @override
+  String get booksRunProblems =>
+      'ਇਨ੍ਹਾਂ ਲਈ ਨਹੀਂ ਬਣ ਸਕੀਆਂ (ਕੁਝ ਬਦਲਿਆ ਨਹੀਂ ਗਿਆ):';
+
+  @override
+  String get booksChecksTitle => 'ਜਾਂਚ';
+
+  @override
+  String get booksRecheck => 'ਦੁਬਾਰਾ ਜਾਂਚੋ';
+
+  @override
+  String get booksCheckBalanced => 'ਹਰ ਜਰਨਲ ਐਂਟਰੀ ਸੰਤੁਲਿਤ ਹੈ।';
+
+  @override
+  String booksCheckBalancedBad(int count) {
+    return '$count ਜਰਨਲ ਐਂਟਰੀਆਂ ਸੰਤੁਲਿਤ ਨਹੀਂ ਹਨ।';
+  }
+
+  @override
+  String get booksCheckParties => 'ਪਾਰਟੀ ਖਾਤੇ ਬਹੀ-ਖਾਤੇ ਨਾਲ ਮਿਲਦੇ ਹਨ।';
+
+  @override
+  String booksCheckPartiesBad(int count) {
+    return '$count ਪਾਰਟੀ ਖਾਤੇ ਬਹੀ-ਖਾਤੇ ਤੋਂ ਵੱਖਰੇ ਹਨ।';
+  }
+
+  @override
+  String get booksCheckBooks => 'ਨਕਦ ਅਤੇ ਬੈਂਕ ਖਾਤੇ ਕੈਸ਼-ਬੁੱਕ ਨਾਲ ਮਿਲਦੇ ਹਨ।';
+
+  @override
+  String booksCheckBooksBad(int count) {
+    return '$count ਨਕਦ/ਬੈਂਕ ਖਾਤੇ ਕੈਸ਼-ਬੁੱਕ ਤੋਂ ਵੱਖਰੇ ਹਨ।';
+  }
 }

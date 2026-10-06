@@ -5382,5 +5382,134 @@
         "type": "String"
       }
     }
+  },
+  "booksTitle": "Books (accounts)",
+  "@booksTitle": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksIntro": "Every lot, payment, loan and interest entry also makes a balanced journal entry (debit = credit). This page shows whether older documents are covered and whether the books tally with the khata.",
+  "@booksIntro": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksNotPermitted": "Only an accountant or the owner can open the books.",
+  "@booksNotPermitted": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksStatusTitle": "Journal entries",
+  "@booksStatusTitle": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksAllDone": "Every document has its journal entry.",
+  "@booksAllDone": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksMissing": "{count} documents have no journal entry yet.",
+  "@booksMissing": {
+      "description": "Books (chart of accounts and journal), step 3.1.",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "booksMissingDetail": "Lots {lots} · Payments {payments} · Interest {interest} · Waivers {waivers} · Khata entries {entries} · Reversals {reversals}",
+  "@booksMissingDetail": {
+      "description": "Books (chart of accounts and journal), step 3.1.",
+      "placeholders": {
+          "lots": {
+              "type": "int"
+          },
+          "payments": {
+              "type": "int"
+          },
+          "interest": {
+              "type": "int"
+          },
+          "waivers": {
+              "type": "int"
+          },
+          "entries": {
+              "type": "int"
+          },
+          "reversals": {
+              "type": "int"
+          }
+      }
+  },
+  "booksRun": "Write the missing entries",
+  "@booksRun": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksRunning": "Writing… {done} of {total}",
+  "@booksRunning": {
+      "description": "Books (chart of accounts and journal), step 3.1.",
+      "placeholders": {
+          "done": {
+              "type": "int"
+          },
+          "total": {
+              "type": "int"
+          }
+      }
+  },
+  "booksRunDone": "Done: {written} journal entries written.",
+  "@booksRunDone": {
+      "description": "Books (chart of accounts and journal), step 3.1.",
+      "placeholders": {
+          "written": {
+              "type": "int"
+          }
+      }
+  },
+  "booksRunProblems": "Could not write for these (nothing was changed):",
+  "@booksRunProblems": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksChecksTitle": "Checks",
+  "@booksChecksTitle": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksRecheck": "Check again",
+  "@booksRecheck": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksCheckBalanced": "Every journal entry balances.",
+  "@booksCheckBalanced": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksCheckBalancedBad": "{count} journal entries do not balance.",
+  "@booksCheckBalancedBad": {
+      "description": "Books (chart of accounts and journal), step 3.1.",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "booksCheckParties": "Party accounts match the khata.",
+  "@booksCheckParties": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksCheckPartiesBad": "{count} party accounts differ from the khata.",
+  "@booksCheckPartiesBad": {
+      "description": "Books (chart of accounts and journal), step 3.1.",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
+  },
+  "booksCheckBooks": "Cash and bank accounts match the cash book.",
+  "@booksCheckBooks": {
+      "description": "Books (chart of accounts and journal), step 3.1."
+  },
+  "booksCheckBooksBad": "{count} cash or bank accounts differ from the cash book.",
+  "@booksCheckBooksBad": {
+      "description": "Books (chart of accounts and journal), step 3.1.",
+      "placeholders": {
+          "count": {
+              "type": "int"
+          }
+      }
   }
 }

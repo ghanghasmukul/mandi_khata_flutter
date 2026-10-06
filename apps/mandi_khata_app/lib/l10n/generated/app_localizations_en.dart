@@ -4022,4 +4022,85 @@ class AppLocalizationsEn extends AppLocalizations {
   String byajStatementTerms(String rate, String method) {
     return '$rate% p.a., $method';
   }
+
+  @override
+  String get booksTitle => 'Books (accounts)';
+
+  @override
+  String get booksIntro =>
+      'Every lot, payment, loan and interest entry also makes a balanced journal entry (debit = credit). This page shows whether older documents are covered and whether the books tally with the khata.';
+
+  @override
+  String get booksNotPermitted =>
+      'Only an accountant or the owner can open the books.';
+
+  @override
+  String get booksStatusTitle => 'Journal entries';
+
+  @override
+  String get booksAllDone => 'Every document has its journal entry.';
+
+  @override
+  String booksMissing(int count) {
+    return '$count documents have no journal entry yet.';
+  }
+
+  @override
+  String booksMissingDetail(
+    int lots,
+    int payments,
+    int interest,
+    int waivers,
+    int entries,
+    int reversals,
+  ) {
+    return 'Lots $lots · Payments $payments · Interest $interest · Waivers $waivers · Khata entries $entries · Reversals $reversals';
+  }
+
+  @override
+  String get booksRun => 'Write the missing entries';
+
+  @override
+  String booksRunning(int done, int total) {
+    return 'Writing… $done of $total';
+  }
+
+  @override
+  String booksRunDone(int written) {
+    return 'Done: $written journal entries written.';
+  }
+
+  @override
+  String get booksRunProblems =>
+      'Could not write for these (nothing was changed):';
+
+  @override
+  String get booksChecksTitle => 'Checks';
+
+  @override
+  String get booksRecheck => 'Check again';
+
+  @override
+  String get booksCheckBalanced => 'Every journal entry balances.';
+
+  @override
+  String booksCheckBalancedBad(int count) {
+    return '$count journal entries do not balance.';
+  }
+
+  @override
+  String get booksCheckParties => 'Party accounts match the khata.';
+
+  @override
+  String booksCheckPartiesBad(int count) {
+    return '$count party accounts differ from the khata.';
+  }
+
+  @override
+  String get booksCheckBooks => 'Cash and bank accounts match the cash book.';
+
+  @override
+  String booksCheckBooksBad(int count) {
+    return '$count cash or bank accounts differ from the cash book.';
+  }
 }

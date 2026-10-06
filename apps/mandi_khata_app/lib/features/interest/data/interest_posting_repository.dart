@@ -1,6 +1,7 @@
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
 import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
@@ -440,6 +441,17 @@ class InterestPostingRepository {
       now: now,
       id: entryIdFor(tenantId, plan.periodKey),
     );
+    await JournalWriter.post(
+      tx,
+      ctx,
+      PostingRules.interest(
+        postingId: postingId,
+        date: plan.entryDate,
+        partyId: plan.partyId,
+        amount: plan.amount,
+      ),
+      now: now,
+    );
     return null;
   }
 
@@ -496,6 +508,18 @@ class InterestPostingRepository {
         refType: RefType.journal,
         refId: id,
         entryDate: on,
+        narration: reason,
+      ),
+      now: now,
+    );
+    await JournalWriter.post(
+      tx,
+      ctx,
+      PostingRules.waiver(
+        postingId: id,
+        date: on,
+        partyId: plan.partyId,
+        amount: Money(paise),
         narration: reason,
       ),
       now: now,

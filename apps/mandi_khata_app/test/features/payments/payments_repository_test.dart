@@ -187,7 +187,12 @@ void main() {
       expect(await transactions(), 1);
       final tables = (await audit()).map((a) => a['table_name']).toList()
         ..sort();
-      expect(tables, ['cash_bank_entries', 'ledger_entries', 'payments']);
+      expect(tables, [
+        'cash_bank_entries',
+        'journal_entries',
+        'ledger_entries',
+        'payments',
+      ]);
     });
 
     test('paying a farmer we owe ₹10,000 ₹4,000 leaves ₹6,000 jama', () async {
@@ -472,6 +477,7 @@ void main() {
         'payments',
         'ledger_entries',
         'cash_bank_entries',
+        'journal_entries',
       });
     });
 

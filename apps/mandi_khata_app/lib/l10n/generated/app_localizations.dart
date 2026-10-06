@@ -7143,6 +7143,127 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{rate}% p.a., {method}'**
   String byajStatementTerms(String rate, String method);
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Books (accounts)'**
+  String get booksTitle;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Every lot, payment, loan and interest entry also makes a balanced journal entry (debit = credit). This page shows whether older documents are covered and whether the books tally with the khata.'**
+  String get booksIntro;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Only an accountant or the owner can open the books.'**
+  String get booksNotPermitted;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Journal entries'**
+  String get booksStatusTitle;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Every document has its journal entry.'**
+  String get booksAllDone;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} documents have no journal entry yet.'**
+  String booksMissing(int count);
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Lots {lots} · Payments {payments} · Interest {interest} · Waivers {waivers} · Khata entries {entries} · Reversals {reversals}'**
+  String booksMissingDetail(
+    int lots,
+    int payments,
+    int interest,
+    int waivers,
+    int entries,
+    int reversals,
+  );
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Write the missing entries'**
+  String get booksRun;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Writing… {done} of {total}'**
+  String booksRunning(int done, int total);
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Done: {written} journal entries written.'**
+  String booksRunDone(int written);
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not write for these (nothing was changed):'**
+  String get booksRunProblems;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Checks'**
+  String get booksChecksTitle;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Check again'**
+  String get booksRecheck;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Every journal entry balances.'**
+  String get booksCheckBalanced;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} journal entries do not balance.'**
+  String booksCheckBalancedBad(int count);
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Party accounts match the khata.'**
+  String get booksCheckParties;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} party accounts differ from the khata.'**
+  String booksCheckPartiesBad(int count);
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash and bank accounts match the cash book.'**
+  String get booksCheckBooks;
+
+  /// Books (chart of accounts and journal), step 3.1.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cash or bank accounts differ from the cash book.'**
+  String booksCheckBooksBad(int count);
 }
 
 class _AppLocalizationsDelegate

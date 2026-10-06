@@ -1,6 +1,7 @@
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
 import 'package:mandi_khata_app/features/khata/domain/day_book.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:powersync/powersync.dart';
@@ -157,7 +158,61 @@ class LedgerRepository {
       after: _auditValues(entry),
       at: when,
     );
+    await _journalStandalone(tx, ctx, entry, when);
     return entry;
+  }
+
+  /// A manual khata entry or an opening balance is its own document: it makes
+  /// its own journal entry (counter side Khata Adjustments / Opening Balance
+  /// Equity). Every other entry is journalled by the document behind it.
+  static Future<void> _journalStandalone(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    LedgerEntry e,
+    DateTime when,
+  ) async {
+    final draft = switch (e.refType) {
+      RefType.journal when e.refId == null => PostingRules.manualEntry(
+        entryId: e.id,
+        date: e.entryDate,
+        side: e.side,
+        partyId: e.partyId,
+        amount: e.amount,
+        narration: e.narration,
+      ),
+      RefType.openingBalance => PostingRules.openingBalance(
+        entryId: e.id,
+        date: e.entryDate,
+        side: e.side,
+        partyId: e.partyId,
+        amount: e.amount,
+        narration: e.narration,
+      ),
+      _ => null,
+    };
+    if (draft != null) await JournalWriter.post(tx, ctx, draft, now: when);
+  }
+
+  /// Mirrors the journal entry behind [original], dated like the khata
+  /// reversal. A lot posts two khata entries and one journal entry: the first
+  /// reversal mirrors it, the second finds it done.
+  static Future<void> _journalReversal(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    LedgerEntry original,
+    LedgerEntry reversal,
+    DateTime when,
+  ) async {
+    final key = await JournalWriter.sourceKeyOf(tx, ctx.tenantId, original);
+    if (key == null) return;
+    await JournalWriter.reverse(
+      tx,
+      ctx,
+      key,
+      on: reversal.entryDate,
+      narration: reversal.narration,
+      now: when,
+    );
   }
 
   /// Cancels entry [id] with a reversal (needs `entries.reverse`). Dated
@@ -217,6 +272,7 @@ class LedgerRepository {
       after: _auditValues(reversal),
       at: when,
     );
+    await _journalReversal(tx, ctx, original, reversal, when);
     return LedgerPosted([reversal]);
   }
 
@@ -282,6 +338,11 @@ class LedgerRepository {
         after: _auditValues(c.replacement),
         at: when,
       );
+      // Only a manual entry is edited here (documents are corrected through
+      // the document), so its journal is reversed and re-posted for the
+      // replacement.
+      await _journalReversal(tx, ctx, original, c.reversal, when);
+      await _journalStandalone(tx, ctx, c.replacement, when);
       return LedgerPosted([c.reversal, c.replacement]);
     });
   }

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/app/home_screen.dart';
+import 'package:mandi_khata_app/features/accounts/presentation/books_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/lot_detail_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/lot_form_screen.dart';
@@ -206,6 +207,10 @@ GoRouter router(Ref ref) {
                 LoanDetailScreen(loanId: state.pathParameters['id']!),
           ),
         ],
+      ),
+      GoRoute(
+        path: AccountRoutes.books,
+        builder: (context, state) => const BooksScreen(),
       ),
       GoRoute(
         path: KhataRoutes.dayBook,

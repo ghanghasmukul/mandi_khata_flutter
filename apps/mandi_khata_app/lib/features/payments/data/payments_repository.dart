@@ -2,6 +2,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/numbering/number_series_service.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:mandi_khata_app/features/payments/data/bank_accounts_repository.dart';
@@ -292,6 +293,20 @@ class PaymentsRepository {
       paymentId: id,
       narration: narration,
       when: when,
+    );
+    await JournalWriter.post(
+      tx,
+      ctx,
+      PostingRules.payment(
+        paymentId: id,
+        date: draft.entryDate,
+        direction: draft.direction,
+        partyId: draft.partyId,
+        bankAccountId: accountId,
+        amount: draft.amount,
+        narration: narration,
+      ),
+      now: when,
     );
     return PaymentSaved(id, receiptNo);
   }

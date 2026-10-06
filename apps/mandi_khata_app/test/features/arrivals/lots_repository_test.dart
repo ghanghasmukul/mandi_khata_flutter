@@ -187,7 +187,7 @@ void main() {
 
       expect([
         for (final a in await audit()) a['table_name'],
-      ], unorderedEquals(['lots', 'ledger_entries']));
+      ], unorderedEquals(['lots', 'ledger_entries', 'journal_entries']));
       expect(
         await transactions(),
         1,

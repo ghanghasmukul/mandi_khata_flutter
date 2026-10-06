@@ -32,6 +32,10 @@ part 'app_database.g.dart';
     Loans,
     LoanRateChanges,
     InterestPostings,
+    AccountGroups,
+    Accounts,
+    JournalEntries,
+    JournalLines,
     SyncErrors,
   ],
 )

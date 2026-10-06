@@ -14957,6 +14957,2620 @@ class InterestPostingsCompanion extends UpdateCompanion<InterestPosting> {
   }
 }
 
+class $AccountGroupsTable extends AccountGroups
+    with TableInfo<$AccountGroupsTable, AccountGroup> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AccountGroupsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _codeMeta = const VerificationMeta('code');
+  @override
+  late final GeneratedColumn<String> code = GeneratedColumn<String>(
+    'code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _parentIdMeta = const VerificationMeta(
+    'parentId',
+  );
+  @override
+  late final GeneratedColumn<String> parentId = GeneratedColumn<String>(
+    'parent_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _natureMeta = const VerificationMeta('nature');
+  @override
+  late final GeneratedColumn<String> nature = GeneratedColumn<String>(
+    'nature',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _isSystemMeta = const VerificationMeta(
+    'isSystem',
+  );
+  @override
+  late final GeneratedColumn<bool> isSystem = GeneratedColumn<bool>(
+    'is_system',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_system" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    code,
+    name,
+    parentId,
+    nature,
+    isSystem,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'account_groups';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AccountGroup> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('code')) {
+      context.handle(
+        _codeMeta,
+        code.isAcceptableOrUnknown(data['code']!, _codeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_codeMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('parent_id')) {
+      context.handle(
+        _parentIdMeta,
+        parentId.isAcceptableOrUnknown(data['parent_id']!, _parentIdMeta),
+      );
+    }
+    if (data.containsKey('nature')) {
+      context.handle(
+        _natureMeta,
+        nature.isAcceptableOrUnknown(data['nature']!, _natureMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_natureMeta);
+    }
+    if (data.containsKey('is_system')) {
+      context.handle(
+        _isSystemMeta,
+        isSystem.isAcceptableOrUnknown(data['is_system']!, _isSystemMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isSystemMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  AccountGroup map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AccountGroup(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      code: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}code'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      parentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}parent_id'],
+      ),
+      nature: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}nature'],
+      )!,
+      isSystem: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_system'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $AccountGroupsTable createAlias(String alias) {
+    return $AccountGroupsTable(attachedDatabase, alias);
+  }
+}
+
+class AccountGroup extends DataClass implements Insertable<AccountGroup> {
+  final String id;
+  final String tenantId;
+  final String code;
+  final String name;
+  final String? parentId;
+  final String nature;
+  final bool isSystem;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const AccountGroup({
+    required this.id,
+    required this.tenantId,
+    required this.code,
+    required this.name,
+    this.parentId,
+    required this.nature,
+    required this.isSystem,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['code'] = Variable<String>(code);
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || parentId != null) {
+      map['parent_id'] = Variable<String>(parentId);
+    }
+    map['nature'] = Variable<String>(nature);
+    map['is_system'] = Variable<bool>(isSystem);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  AccountGroupsCompanion toCompanion(bool nullToAbsent) {
+    return AccountGroupsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      code: Value(code),
+      name: Value(name),
+      parentId: parentId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(parentId),
+      nature: Value(nature),
+      isSystem: Value(isSystem),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory AccountGroup.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AccountGroup(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      code: serializer.fromJson<String>(json['code']),
+      name: serializer.fromJson<String>(json['name']),
+      parentId: serializer.fromJson<String?>(json['parentId']),
+      nature: serializer.fromJson<String>(json['nature']),
+      isSystem: serializer.fromJson<bool>(json['isSystem']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'code': serializer.toJson<String>(code),
+      'name': serializer.toJson<String>(name),
+      'parentId': serializer.toJson<String?>(parentId),
+      'nature': serializer.toJson<String>(nature),
+      'isSystem': serializer.toJson<bool>(isSystem),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  AccountGroup copyWith({
+    String? id,
+    String? tenantId,
+    String? code,
+    String? name,
+    Value<String?> parentId = const Value.absent(),
+    String? nature,
+    bool? isSystem,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => AccountGroup(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    code: code ?? this.code,
+    name: name ?? this.name,
+    parentId: parentId.present ? parentId.value : this.parentId,
+    nature: nature ?? this.nature,
+    isSystem: isSystem ?? this.isSystem,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  AccountGroup copyWithCompanion(AccountGroupsCompanion data) {
+    return AccountGroup(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      code: data.code.present ? data.code.value : this.code,
+      name: data.name.present ? data.name.value : this.name,
+      parentId: data.parentId.present ? data.parentId.value : this.parentId,
+      nature: data.nature.present ? data.nature.value : this.nature,
+      isSystem: data.isSystem.present ? data.isSystem.value : this.isSystem,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AccountGroup(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('code: $code, ')
+          ..write('name: $name, ')
+          ..write('parentId: $parentId, ')
+          ..write('nature: $nature, ')
+          ..write('isSystem: $isSystem, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    code,
+    name,
+    parentId,
+    nature,
+    isSystem,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AccountGroup &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.code == this.code &&
+          other.name == this.name &&
+          other.parentId == this.parentId &&
+          other.nature == this.nature &&
+          other.isSystem == this.isSystem &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class AccountGroupsCompanion extends UpdateCompanion<AccountGroup> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> code;
+  final Value<String> name;
+  final Value<String?> parentId;
+  final Value<String> nature;
+  final Value<bool> isSystem;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const AccountGroupsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.code = const Value.absent(),
+    this.name = const Value.absent(),
+    this.parentId = const Value.absent(),
+    this.nature = const Value.absent(),
+    this.isSystem = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AccountGroupsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String code,
+    required String name,
+    this.parentId = const Value.absent(),
+    required String nature,
+    required bool isSystem,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       code = Value(code),
+       name = Value(name),
+       nature = Value(nature),
+       isSystem = Value(isSystem);
+  static Insertable<AccountGroup> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? code,
+    Expression<String>? name,
+    Expression<String>? parentId,
+    Expression<String>? nature,
+    Expression<bool>? isSystem,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (code != null) 'code': code,
+      if (name != null) 'name': name,
+      if (parentId != null) 'parent_id': parentId,
+      if (nature != null) 'nature': nature,
+      if (isSystem != null) 'is_system': isSystem,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AccountGroupsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? code,
+    Value<String>? name,
+    Value<String?>? parentId,
+    Value<String>? nature,
+    Value<bool>? isSystem,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return AccountGroupsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      code: code ?? this.code,
+      name: name ?? this.name,
+      parentId: parentId ?? this.parentId,
+      nature: nature ?? this.nature,
+      isSystem: isSystem ?? this.isSystem,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (code.present) {
+      map['code'] = Variable<String>(code.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (parentId.present) {
+      map['parent_id'] = Variable<String>(parentId.value);
+    }
+    if (nature.present) {
+      map['nature'] = Variable<String>(nature.value);
+    }
+    if (isSystem.present) {
+      map['is_system'] = Variable<bool>(isSystem.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AccountGroupsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('code: $code, ')
+          ..write('name: $name, ')
+          ..write('parentId: $parentId, ')
+          ..write('nature: $nature, ')
+          ..write('isSystem: $isSystem, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $AccountsTable extends Accounts with TableInfo<$AccountsTable, Account> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AccountsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _groupIdMeta = const VerificationMeta(
+    'groupId',
+  );
+  @override
+  late final GeneratedColumn<String> groupId = GeneratedColumn<String>(
+    'group_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _bankAccountIdMeta = const VerificationMeta(
+    'bankAccountId',
+  );
+  @override
+  late final GeneratedColumn<String> bankAccountId = GeneratedColumn<String>(
+    'bank_account_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _systemCodeMeta = const VerificationMeta(
+    'systemCode',
+  );
+  @override
+  late final GeneratedColumn<String> systemCode = GeneratedColumn<String>(
+    'system_code',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _isSystemMeta = const VerificationMeta(
+    'isSystem',
+  );
+  @override
+  late final GeneratedColumn<bool> isSystem = GeneratedColumn<bool>(
+    'is_system',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_system" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _isActiveMeta = const VerificationMeta(
+    'isActive',
+  );
+  @override
+  late final GeneratedColumn<bool> isActive = GeneratedColumn<bool>(
+    'is_active',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_active" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    groupId,
+    name,
+    partyId,
+    bankAccountId,
+    systemCode,
+    isSystem,
+    isActive,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'accounts';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Account> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('group_id')) {
+      context.handle(
+        _groupIdMeta,
+        groupId.isAcceptableOrUnknown(data['group_id']!, _groupIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_groupIdMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    }
+    if (data.containsKey('bank_account_id')) {
+      context.handle(
+        _bankAccountIdMeta,
+        bankAccountId.isAcceptableOrUnknown(
+          data['bank_account_id']!,
+          _bankAccountIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('system_code')) {
+      context.handle(
+        _systemCodeMeta,
+        systemCode.isAcceptableOrUnknown(data['system_code']!, _systemCodeMeta),
+      );
+    }
+    if (data.containsKey('is_system')) {
+      context.handle(
+        _isSystemMeta,
+        isSystem.isAcceptableOrUnknown(data['is_system']!, _isSystemMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isSystemMeta);
+    }
+    if (data.containsKey('is_active')) {
+      context.handle(
+        _isActiveMeta,
+        isActive.isAcceptableOrUnknown(data['is_active']!, _isActiveMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isActiveMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Account map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Account(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      groupId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}group_id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      ),
+      bankAccountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bank_account_id'],
+      ),
+      systemCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}system_code'],
+      ),
+      isSystem: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_system'],
+      )!,
+      isActive: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_active'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $AccountsTable createAlias(String alias) {
+    return $AccountsTable(attachedDatabase, alias);
+  }
+}
+
+class Account extends DataClass implements Insertable<Account> {
+  final String id;
+  final String tenantId;
+  final String groupId;
+  final String name;
+  final String? partyId;
+  final String? bankAccountId;
+  final String? systemCode;
+  final bool isSystem;
+  final bool isActive;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const Account({
+    required this.id,
+    required this.tenantId,
+    required this.groupId,
+    required this.name,
+    this.partyId,
+    this.bankAccountId,
+    this.systemCode,
+    required this.isSystem,
+    required this.isActive,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['group_id'] = Variable<String>(groupId);
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || partyId != null) {
+      map['party_id'] = Variable<String>(partyId);
+    }
+    if (!nullToAbsent || bankAccountId != null) {
+      map['bank_account_id'] = Variable<String>(bankAccountId);
+    }
+    if (!nullToAbsent || systemCode != null) {
+      map['system_code'] = Variable<String>(systemCode);
+    }
+    map['is_system'] = Variable<bool>(isSystem);
+    map['is_active'] = Variable<bool>(isActive);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  AccountsCompanion toCompanion(bool nullToAbsent) {
+    return AccountsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      groupId: Value(groupId),
+      name: Value(name),
+      partyId: partyId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(partyId),
+      bankAccountId: bankAccountId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bankAccountId),
+      systemCode: systemCode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(systemCode),
+      isSystem: Value(isSystem),
+      isActive: Value(isActive),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory Account.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Account(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      groupId: serializer.fromJson<String>(json['groupId']),
+      name: serializer.fromJson<String>(json['name']),
+      partyId: serializer.fromJson<String?>(json['partyId']),
+      bankAccountId: serializer.fromJson<String?>(json['bankAccountId']),
+      systemCode: serializer.fromJson<String?>(json['systemCode']),
+      isSystem: serializer.fromJson<bool>(json['isSystem']),
+      isActive: serializer.fromJson<bool>(json['isActive']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'groupId': serializer.toJson<String>(groupId),
+      'name': serializer.toJson<String>(name),
+      'partyId': serializer.toJson<String?>(partyId),
+      'bankAccountId': serializer.toJson<String?>(bankAccountId),
+      'systemCode': serializer.toJson<String?>(systemCode),
+      'isSystem': serializer.toJson<bool>(isSystem),
+      'isActive': serializer.toJson<bool>(isActive),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  Account copyWith({
+    String? id,
+    String? tenantId,
+    String? groupId,
+    String? name,
+    Value<String?> partyId = const Value.absent(),
+    Value<String?> bankAccountId = const Value.absent(),
+    Value<String?> systemCode = const Value.absent(),
+    bool? isSystem,
+    bool? isActive,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => Account(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    groupId: groupId ?? this.groupId,
+    name: name ?? this.name,
+    partyId: partyId.present ? partyId.value : this.partyId,
+    bankAccountId: bankAccountId.present
+        ? bankAccountId.value
+        : this.bankAccountId,
+    systemCode: systemCode.present ? systemCode.value : this.systemCode,
+    isSystem: isSystem ?? this.isSystem,
+    isActive: isActive ?? this.isActive,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  Account copyWithCompanion(AccountsCompanion data) {
+    return Account(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      groupId: data.groupId.present ? data.groupId.value : this.groupId,
+      name: data.name.present ? data.name.value : this.name,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      bankAccountId: data.bankAccountId.present
+          ? data.bankAccountId.value
+          : this.bankAccountId,
+      systemCode: data.systemCode.present
+          ? data.systemCode.value
+          : this.systemCode,
+      isSystem: data.isSystem.present ? data.isSystem.value : this.isSystem,
+      isActive: data.isActive.present ? data.isActive.value : this.isActive,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Account(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('groupId: $groupId, ')
+          ..write('name: $name, ')
+          ..write('partyId: $partyId, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('systemCode: $systemCode, ')
+          ..write('isSystem: $isSystem, ')
+          ..write('isActive: $isActive, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    groupId,
+    name,
+    partyId,
+    bankAccountId,
+    systemCode,
+    isSystem,
+    isActive,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Account &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.groupId == this.groupId &&
+          other.name == this.name &&
+          other.partyId == this.partyId &&
+          other.bankAccountId == this.bankAccountId &&
+          other.systemCode == this.systemCode &&
+          other.isSystem == this.isSystem &&
+          other.isActive == this.isActive &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class AccountsCompanion extends UpdateCompanion<Account> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> groupId;
+  final Value<String> name;
+  final Value<String?> partyId;
+  final Value<String?> bankAccountId;
+  final Value<String?> systemCode;
+  final Value<bool> isSystem;
+  final Value<bool> isActive;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const AccountsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.groupId = const Value.absent(),
+    this.name = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    this.systemCode = const Value.absent(),
+    this.isSystem = const Value.absent(),
+    this.isActive = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AccountsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String groupId,
+    required String name,
+    this.partyId = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    this.systemCode = const Value.absent(),
+    required bool isSystem,
+    required bool isActive,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       groupId = Value(groupId),
+       name = Value(name),
+       isSystem = Value(isSystem),
+       isActive = Value(isActive);
+  static Insertable<Account> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? groupId,
+    Expression<String>? name,
+    Expression<String>? partyId,
+    Expression<String>? bankAccountId,
+    Expression<String>? systemCode,
+    Expression<bool>? isSystem,
+    Expression<bool>? isActive,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (groupId != null) 'group_id': groupId,
+      if (name != null) 'name': name,
+      if (partyId != null) 'party_id': partyId,
+      if (bankAccountId != null) 'bank_account_id': bankAccountId,
+      if (systemCode != null) 'system_code': systemCode,
+      if (isSystem != null) 'is_system': isSystem,
+      if (isActive != null) 'is_active': isActive,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AccountsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? groupId,
+    Value<String>? name,
+    Value<String?>? partyId,
+    Value<String?>? bankAccountId,
+    Value<String?>? systemCode,
+    Value<bool>? isSystem,
+    Value<bool>? isActive,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return AccountsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      groupId: groupId ?? this.groupId,
+      name: name ?? this.name,
+      partyId: partyId ?? this.partyId,
+      bankAccountId: bankAccountId ?? this.bankAccountId,
+      systemCode: systemCode ?? this.systemCode,
+      isSystem: isSystem ?? this.isSystem,
+      isActive: isActive ?? this.isActive,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (groupId.present) {
+      map['group_id'] = Variable<String>(groupId.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (bankAccountId.present) {
+      map['bank_account_id'] = Variable<String>(bankAccountId.value);
+    }
+    if (systemCode.present) {
+      map['system_code'] = Variable<String>(systemCode.value);
+    }
+    if (isSystem.present) {
+      map['is_system'] = Variable<bool>(isSystem.value);
+    }
+    if (isActive.present) {
+      map['is_active'] = Variable<bool>(isActive.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AccountsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('groupId: $groupId, ')
+          ..write('name: $name, ')
+          ..write('partyId: $partyId, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('systemCode: $systemCode, ')
+          ..write('isSystem: $isSystem, ')
+          ..write('isActive: $isActive, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $JournalEntriesTable extends JournalEntries
+    with TableInfo<$JournalEntriesTable, JournalEntry> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $JournalEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sourceKeyMeta = const VerificationMeta(
+    'sourceKey',
+  );
+  @override
+  late final GeneratedColumn<String> sourceKey = GeneratedColumn<String>(
+    'source_key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sourceTypeMeta = const VerificationMeta(
+    'sourceType',
+  );
+  @override
+  late final GeneratedColumn<String> sourceType = GeneratedColumn<String>(
+    'source_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _voucherIdMeta = const VerificationMeta(
+    'voucherId',
+  );
+  @override
+  late final GeneratedColumn<String> voucherId = GeneratedColumn<String>(
+    'voucher_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _narrationMeta = const VerificationMeta(
+    'narration',
+  );
+  @override
+  late final GeneratedColumn<String> narration = GeneratedColumn<String>(
+    'narration',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reversesIdMeta = const VerificationMeta(
+    'reversesId',
+  );
+  @override
+  late final GeneratedColumn<String> reversesId = GeneratedColumn<String>(
+    'reverses_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    sourceKey,
+    sourceType,
+    voucherId,
+    entryDate,
+    narration,
+    reversesId,
+    deviceId,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'journal_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<JournalEntry> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('source_key')) {
+      context.handle(
+        _sourceKeyMeta,
+        sourceKey.isAcceptableOrUnknown(data['source_key']!, _sourceKeyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sourceKeyMeta);
+    }
+    if (data.containsKey('source_type')) {
+      context.handle(
+        _sourceTypeMeta,
+        sourceType.isAcceptableOrUnknown(data['source_type']!, _sourceTypeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sourceTypeMeta);
+    }
+    if (data.containsKey('voucher_id')) {
+      context.handle(
+        _voucherIdMeta,
+        voucherId.isAcceptableOrUnknown(data['voucher_id']!, _voucherIdMeta),
+      );
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('narration')) {
+      context.handle(
+        _narrationMeta,
+        narration.isAcceptableOrUnknown(data['narration']!, _narrationMeta),
+      );
+    }
+    if (data.containsKey('reverses_id')) {
+      context.handle(
+        _reversesIdMeta,
+        reversesId.isAcceptableOrUnknown(data['reverses_id']!, _reversesIdMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  JournalEntry map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return JournalEntry(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      sourceKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_key'],
+      )!,
+      sourceType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_type'],
+      )!,
+      voucherId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}voucher_id'],
+      ),
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      narration: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}narration'],
+      ),
+      reversesId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reverses_id'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $JournalEntriesTable createAlias(String alias) {
+    return $JournalEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class JournalEntry extends DataClass implements Insertable<JournalEntry> {
+  final String id;
+  final String tenantId;
+  final String sourceKey;
+  final String sourceType;
+  final String? voucherId;
+  final String entryDate;
+  final String? narration;
+  final String? reversesId;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  const JournalEntry({
+    required this.id,
+    required this.tenantId,
+    required this.sourceKey,
+    required this.sourceType,
+    this.voucherId,
+    required this.entryDate,
+    this.narration,
+    this.reversesId,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['source_key'] = Variable<String>(sourceKey);
+    map['source_type'] = Variable<String>(sourceType);
+    if (!nullToAbsent || voucherId != null) {
+      map['voucher_id'] = Variable<String>(voucherId);
+    }
+    map['entry_date'] = Variable<String>(entryDate);
+    if (!nullToAbsent || narration != null) {
+      map['narration'] = Variable<String>(narration);
+    }
+    if (!nullToAbsent || reversesId != null) {
+      map['reverses_id'] = Variable<String>(reversesId);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  JournalEntriesCompanion toCompanion(bool nullToAbsent) {
+    return JournalEntriesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      sourceKey: Value(sourceKey),
+      sourceType: Value(sourceType),
+      voucherId: voucherId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(voucherId),
+      entryDate: Value(entryDate),
+      narration: narration == null && nullToAbsent
+          ? const Value.absent()
+          : Value(narration),
+      reversesId: reversesId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversesId),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory JournalEntry.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return JournalEntry(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      sourceKey: serializer.fromJson<String>(json['sourceKey']),
+      sourceType: serializer.fromJson<String>(json['sourceType']),
+      voucherId: serializer.fromJson<String?>(json['voucherId']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      narration: serializer.fromJson<String?>(json['narration']),
+      reversesId: serializer.fromJson<String?>(json['reversesId']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'sourceKey': serializer.toJson<String>(sourceKey),
+      'sourceType': serializer.toJson<String>(sourceType),
+      'voucherId': serializer.toJson<String?>(voucherId),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'narration': serializer.toJson<String?>(narration),
+      'reversesId': serializer.toJson<String?>(reversesId),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  JournalEntry copyWith({
+    String? id,
+    String? tenantId,
+    String? sourceKey,
+    String? sourceType,
+    Value<String?> voucherId = const Value.absent(),
+    String? entryDate,
+    Value<String?> narration = const Value.absent(),
+    Value<String?> reversesId = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => JournalEntry(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    sourceKey: sourceKey ?? this.sourceKey,
+    sourceType: sourceType ?? this.sourceType,
+    voucherId: voucherId.present ? voucherId.value : this.voucherId,
+    entryDate: entryDate ?? this.entryDate,
+    narration: narration.present ? narration.value : this.narration,
+    reversesId: reversesId.present ? reversesId.value : this.reversesId,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  JournalEntry copyWithCompanion(JournalEntriesCompanion data) {
+    return JournalEntry(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      sourceKey: data.sourceKey.present ? data.sourceKey.value : this.sourceKey,
+      sourceType: data.sourceType.present
+          ? data.sourceType.value
+          : this.sourceType,
+      voucherId: data.voucherId.present ? data.voucherId.value : this.voucherId,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      narration: data.narration.present ? data.narration.value : this.narration,
+      reversesId: data.reversesId.present
+          ? data.reversesId.value
+          : this.reversesId,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JournalEntry(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('sourceKey: $sourceKey, ')
+          ..write('sourceType: $sourceType, ')
+          ..write('voucherId: $voucherId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('narration: $narration, ')
+          ..write('reversesId: $reversesId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    sourceKey,
+    sourceType,
+    voucherId,
+    entryDate,
+    narration,
+    reversesId,
+    deviceId,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is JournalEntry &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.sourceKey == this.sourceKey &&
+          other.sourceType == this.sourceType &&
+          other.voucherId == this.voucherId &&
+          other.entryDate == this.entryDate &&
+          other.narration == this.narration &&
+          other.reversesId == this.reversesId &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class JournalEntriesCompanion extends UpdateCompanion<JournalEntry> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> sourceKey;
+  final Value<String> sourceType;
+  final Value<String?> voucherId;
+  final Value<String> entryDate;
+  final Value<String?> narration;
+  final Value<String?> reversesId;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const JournalEntriesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.sourceKey = const Value.absent(),
+    this.sourceType = const Value.absent(),
+    this.voucherId = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.narration = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  JournalEntriesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String sourceKey,
+    required String sourceType,
+    this.voucherId = const Value.absent(),
+    required String entryDate,
+    this.narration = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       sourceKey = Value(sourceKey),
+       sourceType = Value(sourceType),
+       entryDate = Value(entryDate);
+  static Insertable<JournalEntry> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? sourceKey,
+    Expression<String>? sourceType,
+    Expression<String>? voucherId,
+    Expression<String>? entryDate,
+    Expression<String>? narration,
+    Expression<String>? reversesId,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (sourceKey != null) 'source_key': sourceKey,
+      if (sourceType != null) 'source_type': sourceType,
+      if (voucherId != null) 'voucher_id': voucherId,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (narration != null) 'narration': narration,
+      if (reversesId != null) 'reverses_id': reversesId,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  JournalEntriesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? sourceKey,
+    Value<String>? sourceType,
+    Value<String?>? voucherId,
+    Value<String>? entryDate,
+    Value<String?>? narration,
+    Value<String?>? reversesId,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return JournalEntriesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      sourceKey: sourceKey ?? this.sourceKey,
+      sourceType: sourceType ?? this.sourceType,
+      voucherId: voucherId ?? this.voucherId,
+      entryDate: entryDate ?? this.entryDate,
+      narration: narration ?? this.narration,
+      reversesId: reversesId ?? this.reversesId,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (sourceKey.present) {
+      map['source_key'] = Variable<String>(sourceKey.value);
+    }
+    if (sourceType.present) {
+      map['source_type'] = Variable<String>(sourceType.value);
+    }
+    if (voucherId.present) {
+      map['voucher_id'] = Variable<String>(voucherId.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (narration.present) {
+      map['narration'] = Variable<String>(narration.value);
+    }
+    if (reversesId.present) {
+      map['reverses_id'] = Variable<String>(reversesId.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JournalEntriesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('sourceKey: $sourceKey, ')
+          ..write('sourceType: $sourceType, ')
+          ..write('voucherId: $voucherId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('narration: $narration, ')
+          ..write('reversesId: $reversesId, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $JournalLinesTable extends JournalLines
+    with TableInfo<$JournalLinesTable, JournalLine> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $JournalLinesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _journalEntryIdMeta = const VerificationMeta(
+    'journalEntryId',
+  );
+  @override
+  late final GeneratedColumn<String> journalEntryId = GeneratedColumn<String>(
+    'journal_entry_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineNoMeta = const VerificationMeta('lineNo');
+  @override
+  late final GeneratedColumn<int> lineNo = GeneratedColumn<int>(
+    'line_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _accountIdMeta = const VerificationMeta(
+    'accountId',
+  );
+  @override
+  late final GeneratedColumn<String> accountId = GeneratedColumn<String>(
+    'account_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _debitPaiseMeta = const VerificationMeta(
+    'debitPaise',
+  );
+  @override
+  late final GeneratedColumn<int> debitPaise = GeneratedColumn<int>(
+    'debit_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _creditPaiseMeta = const VerificationMeta(
+    'creditPaise',
+  );
+  @override
+  late final GeneratedColumn<int> creditPaise = GeneratedColumn<int>(
+    'credit_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _memoMeta = const VerificationMeta('memo');
+  @override
+  late final GeneratedColumn<String> memo = GeneratedColumn<String>(
+    'memo',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    journalEntryId,
+    lineNo,
+    accountId,
+    debitPaise,
+    creditPaise,
+    memo,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'journal_lines';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<JournalLine> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('journal_entry_id')) {
+      context.handle(
+        _journalEntryIdMeta,
+        journalEntryId.isAcceptableOrUnknown(
+          data['journal_entry_id']!,
+          _journalEntryIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_journalEntryIdMeta);
+    }
+    if (data.containsKey('line_no')) {
+      context.handle(
+        _lineNoMeta,
+        lineNo.isAcceptableOrUnknown(data['line_no']!, _lineNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lineNoMeta);
+    }
+    if (data.containsKey('account_id')) {
+      context.handle(
+        _accountIdMeta,
+        accountId.isAcceptableOrUnknown(data['account_id']!, _accountIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_accountIdMeta);
+    }
+    if (data.containsKey('debit_paise')) {
+      context.handle(
+        _debitPaiseMeta,
+        debitPaise.isAcceptableOrUnknown(data['debit_paise']!, _debitPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_debitPaiseMeta);
+    }
+    if (data.containsKey('credit_paise')) {
+      context.handle(
+        _creditPaiseMeta,
+        creditPaise.isAcceptableOrUnknown(
+          data['credit_paise']!,
+          _creditPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_creditPaiseMeta);
+    }
+    if (data.containsKey('memo')) {
+      context.handle(
+        _memoMeta,
+        memo.isAcceptableOrUnknown(data['memo']!, _memoMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  JournalLine map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return JournalLine(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      journalEntryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}journal_entry_id'],
+      )!,
+      lineNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_no'],
+      )!,
+      accountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}account_id'],
+      )!,
+      debitPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}debit_paise'],
+      )!,
+      creditPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}credit_paise'],
+      )!,
+      memo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}memo'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $JournalLinesTable createAlias(String alias) {
+    return $JournalLinesTable(attachedDatabase, alias);
+  }
+}
+
+class JournalLine extends DataClass implements Insertable<JournalLine> {
+  final String id;
+  final String tenantId;
+  final String journalEntryId;
+  final int lineNo;
+  final String accountId;
+  final int debitPaise;
+  final int creditPaise;
+  final String? memo;
+  final String? createdBy;
+  final String? createdAt;
+  const JournalLine({
+    required this.id,
+    required this.tenantId,
+    required this.journalEntryId,
+    required this.lineNo,
+    required this.accountId,
+    required this.debitPaise,
+    required this.creditPaise,
+    this.memo,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['journal_entry_id'] = Variable<String>(journalEntryId);
+    map['line_no'] = Variable<int>(lineNo);
+    map['account_id'] = Variable<String>(accountId);
+    map['debit_paise'] = Variable<int>(debitPaise);
+    map['credit_paise'] = Variable<int>(creditPaise);
+    if (!nullToAbsent || memo != null) {
+      map['memo'] = Variable<String>(memo);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  JournalLinesCompanion toCompanion(bool nullToAbsent) {
+    return JournalLinesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      journalEntryId: Value(journalEntryId),
+      lineNo: Value(lineNo),
+      accountId: Value(accountId),
+      debitPaise: Value(debitPaise),
+      creditPaise: Value(creditPaise),
+      memo: memo == null && nullToAbsent ? const Value.absent() : Value(memo),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory JournalLine.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return JournalLine(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      journalEntryId: serializer.fromJson<String>(json['journalEntryId']),
+      lineNo: serializer.fromJson<int>(json['lineNo']),
+      accountId: serializer.fromJson<String>(json['accountId']),
+      debitPaise: serializer.fromJson<int>(json['debitPaise']),
+      creditPaise: serializer.fromJson<int>(json['creditPaise']),
+      memo: serializer.fromJson<String?>(json['memo']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'journalEntryId': serializer.toJson<String>(journalEntryId),
+      'lineNo': serializer.toJson<int>(lineNo),
+      'accountId': serializer.toJson<String>(accountId),
+      'debitPaise': serializer.toJson<int>(debitPaise),
+      'creditPaise': serializer.toJson<int>(creditPaise),
+      'memo': serializer.toJson<String?>(memo),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  JournalLine copyWith({
+    String? id,
+    String? tenantId,
+    String? journalEntryId,
+    int? lineNo,
+    String? accountId,
+    int? debitPaise,
+    int? creditPaise,
+    Value<String?> memo = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => JournalLine(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    journalEntryId: journalEntryId ?? this.journalEntryId,
+    lineNo: lineNo ?? this.lineNo,
+    accountId: accountId ?? this.accountId,
+    debitPaise: debitPaise ?? this.debitPaise,
+    creditPaise: creditPaise ?? this.creditPaise,
+    memo: memo.present ? memo.value : this.memo,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  JournalLine copyWithCompanion(JournalLinesCompanion data) {
+    return JournalLine(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      journalEntryId: data.journalEntryId.present
+          ? data.journalEntryId.value
+          : this.journalEntryId,
+      lineNo: data.lineNo.present ? data.lineNo.value : this.lineNo,
+      accountId: data.accountId.present ? data.accountId.value : this.accountId,
+      debitPaise: data.debitPaise.present
+          ? data.debitPaise.value
+          : this.debitPaise,
+      creditPaise: data.creditPaise.present
+          ? data.creditPaise.value
+          : this.creditPaise,
+      memo: data.memo.present ? data.memo.value : this.memo,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JournalLine(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('journalEntryId: $journalEntryId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('accountId: $accountId, ')
+          ..write('debitPaise: $debitPaise, ')
+          ..write('creditPaise: $creditPaise, ')
+          ..write('memo: $memo, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    journalEntryId,
+    lineNo,
+    accountId,
+    debitPaise,
+    creditPaise,
+    memo,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is JournalLine &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.journalEntryId == this.journalEntryId &&
+          other.lineNo == this.lineNo &&
+          other.accountId == this.accountId &&
+          other.debitPaise == this.debitPaise &&
+          other.creditPaise == this.creditPaise &&
+          other.memo == this.memo &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class JournalLinesCompanion extends UpdateCompanion<JournalLine> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> journalEntryId;
+  final Value<int> lineNo;
+  final Value<String> accountId;
+  final Value<int> debitPaise;
+  final Value<int> creditPaise;
+  final Value<String?> memo;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const JournalLinesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.journalEntryId = const Value.absent(),
+    this.lineNo = const Value.absent(),
+    this.accountId = const Value.absent(),
+    this.debitPaise = const Value.absent(),
+    this.creditPaise = const Value.absent(),
+    this.memo = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  JournalLinesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String journalEntryId,
+    required int lineNo,
+    required String accountId,
+    required int debitPaise,
+    required int creditPaise,
+    this.memo = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       journalEntryId = Value(journalEntryId),
+       lineNo = Value(lineNo),
+       accountId = Value(accountId),
+       debitPaise = Value(debitPaise),
+       creditPaise = Value(creditPaise);
+  static Insertable<JournalLine> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? journalEntryId,
+    Expression<int>? lineNo,
+    Expression<String>? accountId,
+    Expression<int>? debitPaise,
+    Expression<int>? creditPaise,
+    Expression<String>? memo,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (journalEntryId != null) 'journal_entry_id': journalEntryId,
+      if (lineNo != null) 'line_no': lineNo,
+      if (accountId != null) 'account_id': accountId,
+      if (debitPaise != null) 'debit_paise': debitPaise,
+      if (creditPaise != null) 'credit_paise': creditPaise,
+      if (memo != null) 'memo': memo,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  JournalLinesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? journalEntryId,
+    Value<int>? lineNo,
+    Value<String>? accountId,
+    Value<int>? debitPaise,
+    Value<int>? creditPaise,
+    Value<String?>? memo,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return JournalLinesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      journalEntryId: journalEntryId ?? this.journalEntryId,
+      lineNo: lineNo ?? this.lineNo,
+      accountId: accountId ?? this.accountId,
+      debitPaise: debitPaise ?? this.debitPaise,
+      creditPaise: creditPaise ?? this.creditPaise,
+      memo: memo ?? this.memo,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (journalEntryId.present) {
+      map['journal_entry_id'] = Variable<String>(journalEntryId.value);
+    }
+    if (lineNo.present) {
+      map['line_no'] = Variable<int>(lineNo.value);
+    }
+    if (accountId.present) {
+      map['account_id'] = Variable<String>(accountId.value);
+    }
+    if (debitPaise.present) {
+      map['debit_paise'] = Variable<int>(debitPaise.value);
+    }
+    if (creditPaise.present) {
+      map['credit_paise'] = Variable<int>(creditPaise.value);
+    }
+    if (memo.present) {
+      map['memo'] = Variable<String>(memo.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JournalLinesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('journalEntryId: $journalEntryId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('accountId: $accountId, ')
+          ..write('debitPaise: $debitPaise, ')
+          ..write('creditPaise: $creditPaise, ')
+          ..write('memo: $memo, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -15593,6 +18207,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $InterestPostingsTable interestPostings = $InterestPostingsTable(
     this,
   );
+  late final $AccountGroupsTable accountGroups = $AccountGroupsTable(this);
+  late final $AccountsTable accounts = $AccountsTable(this);
+  late final $JournalEntriesTable journalEntries = $JournalEntriesTable(this);
+  late final $JournalLinesTable journalLines = $JournalLinesTable(this);
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -15618,6 +18236,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     loans,
     loanRateChanges,
     interestPostings,
+    accountGroups,
+    accounts,
+    journalEntries,
+    journalLines,
     syncErrors,
   ];
 }
@@ -22684,6 +25306,1289 @@ typedef $$InterestPostingsTableProcessedTableManager =
       InterestPosting,
       PrefetchHooks Function()
     >;
+typedef $$AccountGroupsTableCreateCompanionBuilder =
+    AccountGroupsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String code,
+      required String name,
+      Value<String?> parentId,
+      required String nature,
+      required bool isSystem,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$AccountGroupsTableUpdateCompanionBuilder =
+    AccountGroupsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> code,
+      Value<String> name,
+      Value<String?> parentId,
+      Value<String> nature,
+      Value<bool> isSystem,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$AccountGroupsTableFilterComposer
+    extends Composer<_$AppDatabase, $AccountGroupsTable> {
+  $$AccountGroupsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get code => $composableBuilder(
+    column: $table.code,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get parentId => $composableBuilder(
+    column: $table.parentId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get nature => $composableBuilder(
+    column: $table.nature,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isSystem => $composableBuilder(
+    column: $table.isSystem,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AccountGroupsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AccountGroupsTable> {
+  $$AccountGroupsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get code => $composableBuilder(
+    column: $table.code,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get parentId => $composableBuilder(
+    column: $table.parentId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get nature => $composableBuilder(
+    column: $table.nature,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isSystem => $composableBuilder(
+    column: $table.isSystem,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AccountGroupsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AccountGroupsTable> {
+  $$AccountGroupsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get code =>
+      $composableBuilder(column: $table.code, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get parentId =>
+      $composableBuilder(column: $table.parentId, builder: (column) => column);
+
+  GeneratedColumn<String> get nature =>
+      $composableBuilder(column: $table.nature, builder: (column) => column);
+
+  GeneratedColumn<bool> get isSystem =>
+      $composableBuilder(column: $table.isSystem, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$AccountGroupsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AccountGroupsTable,
+          AccountGroup,
+          $$AccountGroupsTableFilterComposer,
+          $$AccountGroupsTableOrderingComposer,
+          $$AccountGroupsTableAnnotationComposer,
+          $$AccountGroupsTableCreateCompanionBuilder,
+          $$AccountGroupsTableUpdateCompanionBuilder,
+          (
+            AccountGroup,
+            BaseReferences<_$AppDatabase, $AccountGroupsTable, AccountGroup>,
+          ),
+          AccountGroup,
+          PrefetchHooks Function()
+        > {
+  $$AccountGroupsTableTableManager(_$AppDatabase db, $AccountGroupsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AccountGroupsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AccountGroupsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AccountGroupsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> code = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String?> parentId = const Value.absent(),
+                Value<String> nature = const Value.absent(),
+                Value<bool> isSystem = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AccountGroupsCompanion(
+                id: id,
+                tenantId: tenantId,
+                code: code,
+                name: name,
+                parentId: parentId,
+                nature: nature,
+                isSystem: isSystem,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String code,
+                required String name,
+                Value<String?> parentId = const Value.absent(),
+                required String nature,
+                required bool isSystem,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AccountGroupsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                code: code,
+                name: name,
+                parentId: parentId,
+                nature: nature,
+                isSystem: isSystem,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AccountGroupsTable, AccountGroup>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $AccountGroupsTable,
+                    AccountGroup
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AccountGroupsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AccountGroupsTable,
+      AccountGroup,
+      $$AccountGroupsTableFilterComposer,
+      $$AccountGroupsTableOrderingComposer,
+      $$AccountGroupsTableAnnotationComposer,
+      $$AccountGroupsTableCreateCompanionBuilder,
+      $$AccountGroupsTableUpdateCompanionBuilder,
+      (
+        AccountGroup,
+        BaseReferences<_$AppDatabase, $AccountGroupsTable, AccountGroup>,
+      ),
+      AccountGroup,
+      PrefetchHooks Function()
+    >;
+typedef $$AccountsTableCreateCompanionBuilder =
+    AccountsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String groupId,
+      required String name,
+      Value<String?> partyId,
+      Value<String?> bankAccountId,
+      Value<String?> systemCode,
+      required bool isSystem,
+      required bool isActive,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$AccountsTableUpdateCompanionBuilder =
+    AccountsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> groupId,
+      Value<String> name,
+      Value<String?> partyId,
+      Value<String?> bankAccountId,
+      Value<String?> systemCode,
+      Value<bool> isSystem,
+      Value<bool> isActive,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$AccountsTableFilterComposer
+    extends Composer<_$AppDatabase, $AccountsTable> {
+  $$AccountsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get groupId => $composableBuilder(
+    column: $table.groupId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get systemCode => $composableBuilder(
+    column: $table.systemCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isSystem => $composableBuilder(
+    column: $table.isSystem,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$AccountsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AccountsTable> {
+  $$AccountsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get groupId => $composableBuilder(
+    column: $table.groupId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get systemCode => $composableBuilder(
+    column: $table.systemCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isSystem => $composableBuilder(
+    column: $table.isSystem,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AccountsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AccountsTable> {
+  $$AccountsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get groupId =>
+      $composableBuilder(column: $table.groupId, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get systemCode => $composableBuilder(
+    column: $table.systemCode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get isSystem =>
+      $composableBuilder(column: $table.isSystem, builder: (column) => column);
+
+  GeneratedColumn<bool> get isActive =>
+      $composableBuilder(column: $table.isActive, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$AccountsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AccountsTable,
+          Account,
+          $$AccountsTableFilterComposer,
+          $$AccountsTableOrderingComposer,
+          $$AccountsTableAnnotationComposer,
+          $$AccountsTableCreateCompanionBuilder,
+          $$AccountsTableUpdateCompanionBuilder,
+          (Account, BaseReferences<_$AppDatabase, $AccountsTable, Account>),
+          Account,
+          PrefetchHooks Function()
+        > {
+  $$AccountsTableTableManager(_$AppDatabase db, $AccountsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AccountsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AccountsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AccountsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> groupId = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String?> partyId = const Value.absent(),
+                Value<String?> bankAccountId = const Value.absent(),
+                Value<String?> systemCode = const Value.absent(),
+                Value<bool> isSystem = const Value.absent(),
+                Value<bool> isActive = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AccountsCompanion(
+                id: id,
+                tenantId: tenantId,
+                groupId: groupId,
+                name: name,
+                partyId: partyId,
+                bankAccountId: bankAccountId,
+                systemCode: systemCode,
+                isSystem: isSystem,
+                isActive: isActive,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String groupId,
+                required String name,
+                Value<String?> partyId = const Value.absent(),
+                Value<String?> bankAccountId = const Value.absent(),
+                Value<String?> systemCode = const Value.absent(),
+                required bool isSystem,
+                required bool isActive,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => AccountsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                groupId: groupId,
+                name: name,
+                partyId: partyId,
+                bankAccountId: bankAccountId,
+                systemCode: systemCode,
+                isSystem: isSystem,
+                isActive: isActive,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AccountsTable, Account>(table),
+                  BaseReferences<_$AppDatabase, $AccountsTable, Account>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$AccountsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AccountsTable,
+      Account,
+      $$AccountsTableFilterComposer,
+      $$AccountsTableOrderingComposer,
+      $$AccountsTableAnnotationComposer,
+      $$AccountsTableCreateCompanionBuilder,
+      $$AccountsTableUpdateCompanionBuilder,
+      (Account, BaseReferences<_$AppDatabase, $AccountsTable, Account>),
+      Account,
+      PrefetchHooks Function()
+    >;
+typedef $$JournalEntriesTableCreateCompanionBuilder =
+    JournalEntriesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String sourceKey,
+      required String sourceType,
+      Value<String?> voucherId,
+      required String entryDate,
+      Value<String?> narration,
+      Value<String?> reversesId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$JournalEntriesTableUpdateCompanionBuilder =
+    JournalEntriesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> sourceKey,
+      Value<String> sourceType,
+      Value<String?> voucherId,
+      Value<String> entryDate,
+      Value<String?> narration,
+      Value<String?> reversesId,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$JournalEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $JournalEntriesTable> {
+  $$JournalEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceKey => $composableBuilder(
+    column: $table.sourceKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceType => $composableBuilder(
+    column: $table.sourceType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get voucherId => $composableBuilder(
+    column: $table.voucherId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$JournalEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $JournalEntriesTable> {
+  $$JournalEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceKey => $composableBuilder(
+    column: $table.sourceKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceType => $composableBuilder(
+    column: $table.sourceType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get voucherId => $composableBuilder(
+    column: $table.voucherId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get narration => $composableBuilder(
+    column: $table.narration,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$JournalEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $JournalEntriesTable> {
+  $$JournalEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceKey =>
+      $composableBuilder(column: $table.sourceKey, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceType => $composableBuilder(
+    column: $table.sourceType,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get voucherId =>
+      $composableBuilder(column: $table.voucherId, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<String> get narration =>
+      $composableBuilder(column: $table.narration, builder: (column) => column);
+
+  GeneratedColumn<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$JournalEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $JournalEntriesTable,
+          JournalEntry,
+          $$JournalEntriesTableFilterComposer,
+          $$JournalEntriesTableOrderingComposer,
+          $$JournalEntriesTableAnnotationComposer,
+          $$JournalEntriesTableCreateCompanionBuilder,
+          $$JournalEntriesTableUpdateCompanionBuilder,
+          (
+            JournalEntry,
+            BaseReferences<_$AppDatabase, $JournalEntriesTable, JournalEntry>,
+          ),
+          JournalEntry,
+          PrefetchHooks Function()
+        > {
+  $$JournalEntriesTableTableManager(
+    _$AppDatabase db,
+    $JournalEntriesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$JournalEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$JournalEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$JournalEntriesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> sourceKey = const Value.absent(),
+                Value<String> sourceType = const Value.absent(),
+                Value<String?> voucherId = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<String?> narration = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JournalEntriesCompanion(
+                id: id,
+                tenantId: tenantId,
+                sourceKey: sourceKey,
+                sourceType: sourceType,
+                voucherId: voucherId,
+                entryDate: entryDate,
+                narration: narration,
+                reversesId: reversesId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String sourceKey,
+                required String sourceType,
+                Value<String?> voucherId = const Value.absent(),
+                required String entryDate,
+                Value<String?> narration = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JournalEntriesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                sourceKey: sourceKey,
+                sourceType: sourceType,
+                voucherId: voucherId,
+                entryDate: entryDate,
+                narration: narration,
+                reversesId: reversesId,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$JournalEntriesTable, JournalEntry>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $JournalEntriesTable,
+                    JournalEntry
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$JournalEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $JournalEntriesTable,
+      JournalEntry,
+      $$JournalEntriesTableFilterComposer,
+      $$JournalEntriesTableOrderingComposer,
+      $$JournalEntriesTableAnnotationComposer,
+      $$JournalEntriesTableCreateCompanionBuilder,
+      $$JournalEntriesTableUpdateCompanionBuilder,
+      (
+        JournalEntry,
+        BaseReferences<_$AppDatabase, $JournalEntriesTable, JournalEntry>,
+      ),
+      JournalEntry,
+      PrefetchHooks Function()
+    >;
+typedef $$JournalLinesTableCreateCompanionBuilder =
+    JournalLinesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String journalEntryId,
+      required int lineNo,
+      required String accountId,
+      required int debitPaise,
+      required int creditPaise,
+      Value<String?> memo,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$JournalLinesTableUpdateCompanionBuilder =
+    JournalLinesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> journalEntryId,
+      Value<int> lineNo,
+      Value<String> accountId,
+      Value<int> debitPaise,
+      Value<int> creditPaise,
+      Value<String?> memo,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$JournalLinesTableFilterComposer
+    extends Composer<_$AppDatabase, $JournalLinesTable> {
+  $$JournalLinesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get journalEntryId => $composableBuilder(
+    column: $table.journalEntryId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get accountId => $composableBuilder(
+    column: $table.accountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get debitPaise => $composableBuilder(
+    column: $table.debitPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get creditPaise => $composableBuilder(
+    column: $table.creditPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get memo => $composableBuilder(
+    column: $table.memo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$JournalLinesTableOrderingComposer
+    extends Composer<_$AppDatabase, $JournalLinesTable> {
+  $$JournalLinesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get journalEntryId => $composableBuilder(
+    column: $table.journalEntryId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get accountId => $composableBuilder(
+    column: $table.accountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get debitPaise => $composableBuilder(
+    column: $table.debitPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get creditPaise => $composableBuilder(
+    column: $table.creditPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get memo => $composableBuilder(
+    column: $table.memo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$JournalLinesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $JournalLinesTable> {
+  $$JournalLinesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get journalEntryId => $composableBuilder(
+    column: $table.journalEntryId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get lineNo =>
+      $composableBuilder(column: $table.lineNo, builder: (column) => column);
+
+  GeneratedColumn<String> get accountId =>
+      $composableBuilder(column: $table.accountId, builder: (column) => column);
+
+  GeneratedColumn<int> get debitPaise => $composableBuilder(
+    column: $table.debitPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get creditPaise => $composableBuilder(
+    column: $table.creditPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get memo =>
+      $composableBuilder(column: $table.memo, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$JournalLinesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $JournalLinesTable,
+          JournalLine,
+          $$JournalLinesTableFilterComposer,
+          $$JournalLinesTableOrderingComposer,
+          $$JournalLinesTableAnnotationComposer,
+          $$JournalLinesTableCreateCompanionBuilder,
+          $$JournalLinesTableUpdateCompanionBuilder,
+          (
+            JournalLine,
+            BaseReferences<_$AppDatabase, $JournalLinesTable, JournalLine>,
+          ),
+          JournalLine,
+          PrefetchHooks Function()
+        > {
+  $$JournalLinesTableTableManager(_$AppDatabase db, $JournalLinesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$JournalLinesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$JournalLinesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$JournalLinesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> journalEntryId = const Value.absent(),
+                Value<int> lineNo = const Value.absent(),
+                Value<String> accountId = const Value.absent(),
+                Value<int> debitPaise = const Value.absent(),
+                Value<int> creditPaise = const Value.absent(),
+                Value<String?> memo = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JournalLinesCompanion(
+                id: id,
+                tenantId: tenantId,
+                journalEntryId: journalEntryId,
+                lineNo: lineNo,
+                accountId: accountId,
+                debitPaise: debitPaise,
+                creditPaise: creditPaise,
+                memo: memo,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String journalEntryId,
+                required int lineNo,
+                required String accountId,
+                required int debitPaise,
+                required int creditPaise,
+                Value<String?> memo = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JournalLinesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                journalEntryId: journalEntryId,
+                lineNo: lineNo,
+                accountId: accountId,
+                debitPaise: debitPaise,
+                creditPaise: creditPaise,
+                memo: memo,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$JournalLinesTable, JournalLine>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $JournalLinesTable,
+                    JournalLine
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$JournalLinesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $JournalLinesTable,
+      JournalLine,
+      $$JournalLinesTableFilterComposer,
+      $$JournalLinesTableOrderingComposer,
+      $$JournalLinesTableAnnotationComposer,
+      $$JournalLinesTableCreateCompanionBuilder,
+      $$JournalLinesTableUpdateCompanionBuilder,
+      (
+        JournalLine,
+        BaseReferences<_$AppDatabase, $JournalLinesTable, JournalLine>,
+      ),
+      JournalLine,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -23028,6 +26933,14 @@ class $AppDatabaseManager {
       $$LoanRateChangesTableTableManager(_db, _db.loanRateChanges);
   $$InterestPostingsTableTableManager get interestPostings =>
       $$InterestPostingsTableTableManager(_db, _db.interestPostings);
+  $$AccountGroupsTableTableManager get accountGroups =>
+      $$AccountGroupsTableTableManager(_db, _db.accountGroups);
+  $$AccountsTableTableManager get accounts =>
+      $$AccountsTableTableManager(_db, _db.accounts);
+  $$JournalEntriesTableTableManager get journalEntries =>
+      $$JournalEntriesTableTableManager(_db, _db.journalEntries);
+  $$JournalLinesTableTableManager get journalLines =>
+      $$JournalLinesTableTableManager(_db, _db.journalLines);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }

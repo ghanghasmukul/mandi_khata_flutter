@@ -393,6 +393,77 @@ class InterestPostings extends Table {
   Set<Column<Object>> get primaryKey => {id};
 }
 
+/// Tally-like account groups (posting-rules section 2).
+class AccountGroups extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get code => text()();
+  TextColumn get name => text()();
+  TextColumn get parentId => text().nullable()();
+  TextColumn get nature => text()();
+  BoolColumn get isSystem => boolean()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A party's, a cash / bank book's or a system account.
+class Accounts extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get groupId => text()();
+  TextColumn get name => text()();
+  TextColumn get partyId => text().nullable()();
+  TextColumn get bankAccountId => text().nullable()();
+  TextColumn get systemCode => text().nullable()();
+  BoolColumn get isSystem => boolean()();
+  BoolColumn get isActive => boolean()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// One balanced journal entry per document. Append-only.
+class JournalEntries extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get sourceKey => text()();
+  TextColumn get sourceType => text()();
+  TextColumn get voucherId => text().nullable()();
+  TextColumn get entryDate => text()();
+  TextColumn get narration => text().nullable()();
+  TextColumn get reversesId => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+/// A debit or a credit of a journal entry. Append-only.
+class JournalLines extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get journalEntryId => text()();
+  IntColumn get lineNo => integer()();
+  TextColumn get accountId => text()();
+  IntColumn get debitPaise => integer()();
+  IntColumn get creditPaise => integer()();
+  TextColumn get memo => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
 /// Local-only: uploads the server rejected permanently.
 class SyncErrors extends Table {
   TextColumn get id => text()();

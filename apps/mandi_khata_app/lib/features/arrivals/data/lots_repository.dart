@@ -4,6 +4,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/numbering/number_series_service.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
 import 'package:mandi_khata_app/features/arrivals/domain/lot.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
@@ -302,6 +303,17 @@ class LotsRepository {
             now: when,
           );
         }
+        await JournalWriter.post(
+          tx,
+          ctx,
+          PostingRules.lot(
+            lotId: lotId,
+            date: draft.entryDate,
+            plan: plan,
+            lotNo: lotNo,
+          ),
+          now: when,
+        );
       }
       return LotSaved(
         lotId,

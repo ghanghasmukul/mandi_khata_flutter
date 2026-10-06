@@ -450,6 +450,82 @@ const syncedTables = <SyncedTable>[
     },
     appendOnly: true,
   ),
+  SyncedTable(
+    'account_groups',
+    {
+      'tenant_id': _t,
+      'code': _t,
+      'name': _t,
+      'parent_id': _t,
+      'nature': _t,
+      'is_system': _bool,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'tenant': ['tenant_id', 'code'],
+    },
+  ),
+  SyncedTable(
+    'accounts',
+    {
+      'tenant_id': _t,
+      'group_id': _t,
+      'name': _t,
+      'party_id': _t,
+      'bank_account_id': _t,
+      'system_code': _t,
+      'is_system': _bool,
+      'is_active': _bool,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+    },
+    indexes: {
+      'tenant': ['tenant_id', 'group_id'],
+      'party': ['tenant_id', 'party_id'],
+    },
+  ),
+  SyncedTable(
+    'journal_entries',
+    {
+      'tenant_id': _t,
+      'source_key': _t,
+      'source_type': _t,
+      'voucher_id': _t,
+      'entry_date': _t,
+      'narration': _t,
+      'reverses_id': _t,
+      'device_id': _t,
+      'created_by': _t,
+      'created_at': _t,
+    },
+    indexes: {
+      'date': ['tenant_id', 'entry_date'],
+      'key': ['tenant_id', 'source_key'],
+    },
+    appendOnly: true,
+  ),
+  SyncedTable(
+    'journal_lines',
+    {
+      'tenant_id': _t,
+      'journal_entry_id': _t,
+      'line_no': _i,
+      'account_id': _t,
+      'debit_paise': _i,
+      'credit_paise': _i,
+      'memo': _t,
+      'created_by': _t,
+      'created_at': _t,
+    },
+    indexes: {
+      'account': ['tenant_id', 'account_id'],
+      'entry': ['journal_entry_id'],
+    },
+    appendOnly: true,
+  ),
 ];
 
 /// Changes the server rejected for good (RLS, constraint, bad data). Kept on

@@ -55,7 +55,7 @@ net_to_farmer     = gross − farmer_deductions
 - Posting a lot creates, in ONE local transaction with the lot row and audit rows (`ref_type=arrival`, `ref_id=lot.id`, narration = lot number, dated like the lot):
   - `jama` to the farmer for `net_to_farmer` (must be > 0, else posting is refused);
   - `udhaar` to the buyer for `gross + buyer-borne charges`, when a buyer is picked. **A buyer is required** when any buyer-borne charge is above zero.
-  - Commission income is not a khata entry: it stays on the lot (`lots.commission` = commission earned, zero when waived) until the chart of accounts (phase 3) posts it.
+  - Commission income is not a khata entry: `lots.commission` keeps the amount earned (zero when waived) and the lot's journal entry (phase 3, docs/domain/posting-rules.md) credits it to Commission Income.
 - Qtl can be entered directly or computed from bags × `mandi.bag_weight_kg` (`qtl_from_bags`); show both.
 - Lot states: `arrived → weighed → sold → posted → (reversed)`. Rules (khata_core `LotStatus` / `LotRules`, server trigger `private.guard_lot`):
   - An **open** lot (arrived / weighed / sold) is edited freely (`arrivals.manage`); its status follows what is filled in (no weight → arrived, weight → weighed, weight + rate → sold).

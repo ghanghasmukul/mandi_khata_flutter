@@ -291,6 +291,11 @@ void main() {
       expect((await crud()).map((o) => o['type']), [
         'ledger_entries',
         'audit_log',
+        // The manual entry's journal entry: header, two lines, audit row.
+        'journal_entries',
+        'journal_lines',
+        'journal_lines',
+        'audit_log',
       ]);
       final log = (await audit()).singleWhere((a) => a['row_id'] == rev.id);
       expect(log['action'], 'reverse');
@@ -540,6 +545,10 @@ void main() {
     expect((await crud()).map((o) => o['type']), [
       'parties',
       'ledger_entries',
+      'audit_log',
+      'journal_entries',
+      'journal_lines',
+      'journal_lines',
       'audit_log',
     ]);
   });

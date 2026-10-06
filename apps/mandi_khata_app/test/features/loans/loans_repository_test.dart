@@ -171,6 +171,8 @@ void main() {
       'payments',
       'ledger_entries',
       'cash_bank_entries',
+      'journal_entries',
+      'journal_lines',
       'audit_log',
       'loan_rate_changes',
       'number_series',
@@ -219,6 +221,7 @@ void main() {
       )).map((a) => a['table_name']).toList()..sort();
       expect(tables, [
         'cash_bank_entries',
+        'journal_entries',
         'ledger_entries',
         'loans',
         'payments',
