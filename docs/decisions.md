@@ -240,5 +240,5 @@
 - Editing a khata entry (`LedgerRepository.correct`) re-journals only manual entries and opening balances, which are the only entries the UI edits; document entries are corrected through their document.
 - Crop-proceeds loan repayments write no journal entry (both lines are on the same party account).
 - Hindi / Punjabi strings for the books screen were written without a native review.
-- Migration `chart_of_accounts_and_journal` is NOT yet on dev (needs `supabase db push` approval); advisors to run after the push. PowerSync: deploy `powersync/sync-streams.yaml` (the four new tables in `finance_data`).
+- Migrations `chart_of_accounts_and_journal` and `journal_fk_indexes` pushed to dev 2026-10-06 (dev seed: 3 businesses, 42 groups, 39 system accounts, 25 party and 3 cash / bank accounts). Advisors: two new unindexed-FK infos on the journal tables fixed by `journal_fk_indexes`; the new unused-index infos on the still-empty chart / journal tables are accepted (re-check after the pilot); everything else unchanged. PowerSync: deploy `powersync/sync-streams.yaml` (the four new tables in `finance_data`).
 
