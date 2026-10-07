@@ -6843,5 +6843,9 @@
   "tallyExportBlocked": "Fix the problems above first.",
   "@tallyExportBlocked": {
       "description": "Tally export (step 3.6)."
+  },
+  "expenseBillTooLarge": "The bill is over 8 MB. Choose a smaller photo.",
+  "@expenseBillTooLarge": {
+      "description": "Expenses (step 3.4), bill size."
   }
 }

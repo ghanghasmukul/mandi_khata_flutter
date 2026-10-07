@@ -8854,6 +8854,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fix the problems above first.'**
   String get tallyExportBlocked;
+
+  /// Expenses (step 3.4), bill size.
+  ///
+  /// In en, this message translates to:
+  /// **'The bill is over 8 MB. Choose a smaller photo.'**
+  String get expenseBillTooLarge;
 }
 
 class _AppLocalizationsDelegate

@@ -134,8 +134,8 @@ select lives_ok(
 select set_config('request.jwt.claims',
   '{"sub":"aaaaaaaa-0000-4000-8000-000000000004","role":"authenticated"}', true);
 select is(
-  (select count(*)::int from public.financial_years where status = 'closed'), 2,
-  'every member sees the closed years');
+  (select count(*)::int from public.financial_years where status = 'closed'), 0,
+  'a munshi does not see the years (their profit is finance data)');
 select throws_ok(
   $$insert into public.payments (id, tenant_id, receipt_no, entry_date, party_id, direction,
       mode, amount_paise, bank_account_id, device_id)
@@ -144,7 +144,7 @@ select throws_ok(
       (select id from public.bank_accounts
        where tenant_id = '11111111-1111-4111-8111-111111111111' and kind = 'cash'),
       'dddddddd-0000-4000-8000-000000000004')$$,
-  '42501', null, 'payments dated in a closed year are refused too');
+  '42501', null, 'but the server still refuses their payment dated in a closed year');
 
 select * from finish();
 rollback;

@@ -78,10 +78,12 @@ create trigger financial_years_guard before insert or update on public.financial
 
 alter table public.financial_years enable row level security;
 
--- Everyone sees which years are closed (their app must refuse dates there).
+-- The year's profit is finance data (finance.view); the lock itself is
+-- enforced by the server for everyone.
 create policy financial_years_select on public.financial_years
   for select to authenticated
-  using (tenant_id in (select private.auth_tenant_ids()));
+  using (tenant_id in (select private.auth_tenant_ids())
+    and (select private.has_permission(tenant_id, 'finance.view')));
 create policy financial_years_insert on public.financial_years
   for insert to authenticated
   with check (tenant_id in (select private.auth_tenant_ids())

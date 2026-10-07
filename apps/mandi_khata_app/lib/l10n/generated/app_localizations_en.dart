@@ -5047,4 +5047,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tallyExportBlocked => 'Fix the problems above first.';
+
+  @override
+  String get expenseBillTooLarge =>
+      'The bill is over 8 MB. Choose a smaller photo.';
 }

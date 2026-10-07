@@ -235,6 +235,14 @@ class LedgerRepository {
     return await _db.writeTransaction((tx) async {
       final refused = await lockRefusal(tx, ctx, id, entryDate);
       if (refused != null) return refused;
+      // A voucher is reversed as a whole (it also owns book lines).
+      final kind = await tx.getOptional(
+        'SELECT ref_type FROM ledger_entries WHERE tenant_id = ? AND id = ?',
+        [ctx.tenantId, id],
+      );
+      if (kind?['ref_type'] == RefType.voucher.dbName) {
+        return const LedgerInvalid(LedgerProblem.isReversal);
+      }
       return await reverseIn(
         tx,
         ctx,

@@ -55,8 +55,14 @@ class _ExpenseDialogState extends ConsumerState<ExpenseDialog> {
   }
 
   Future<void> _pickBill() async {
-    final bill = await ref.read(billPickerProvider)();
-    if (bill != null && mounted) setState(() => _bill = bill);
+    final messenger = ScaffoldMessenger.of(context);
+    final l10n = AppLocalizations.of(context);
+    try {
+      final bill = await ref.read(billPickerProvider)();
+      if (bill != null && mounted) setState(() => _bill = bill);
+    } on BillTooLarge {
+      messenger.showSnackBar(SnackBar(content: Text(l10n.expenseBillTooLarge)));
+    }
   }
 
   Future<void> _save() async {

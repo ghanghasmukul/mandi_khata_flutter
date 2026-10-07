@@ -207,15 +207,16 @@ class ExpensesRepository {
       );
     }
     final category = await tx.getOptional(
-      'SELECT name FROM expense_categories WHERE tenant_id = ? AND id = ? '
-      'AND is_active = 1',
+      'SELECT is_active FROM expense_categories WHERE tenant_id = ? AND id = ?',
       [ctx.tenantId, draft.categoryId],
     );
     final seeded = ExpenseCategorySeed.values.any(
       (s) =>
           JournalWriter.expenseCategoryId(ctx.tenantId, s) == draft.categoryId,
     );
-    if (category == null && !seeded) return const ExpenseNotFound();
+    if (category == null ? !seeded : category['is_active'] != 1) {
+      return const ExpenseNotFound();
+    }
 
     final String accountId;
     if (draft.isCash) {
@@ -604,7 +605,7 @@ class ExpensesRepository {
     final templates = await watchRecurring(tenantId).first;
     final posted = await _db.getAll(
       'SELECT recurring_id, period FROM expenses WHERE tenant_id = ? '
-      'AND recurring_id IS NOT NULL',
+      "AND recurring_id IS NOT NULL AND status = 'posted'",
       [tenantId],
     );
     final byTemplate = <String, Set<String>>{};

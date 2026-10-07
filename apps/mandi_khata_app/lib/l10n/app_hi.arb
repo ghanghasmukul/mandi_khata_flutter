@@ -1456,5 +1456,6 @@
   "tallyIssueRenamed": "{subject} दो बार है; {detail} नाम से भेजा",
   "tallyIssueUnbalanced": "{subject}: नाम और जमा अलग",
   "tallyIssueUnknown": "{subject}: एक खाता अभी सिंक नहीं हुआ",
-  "tallyExportBlocked": "पहले ऊपर की गड़बड़ियाँ ठीक करें।"
+  "tallyExportBlocked": "पहले ऊपर की गड़बड़ियाँ ठीक करें।",
+  "expenseBillTooLarge": "बिल 8 MB से बड़ा है। छोटी फ़ोटो चुनें।"
 }

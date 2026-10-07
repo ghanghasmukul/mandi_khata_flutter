@@ -11,6 +11,7 @@ import 'package:mandi_khata_app/features/accounts/data/voucher_repository.dart';
 import 'package:mandi_khata_app/features/accounts/domain/chart.dart';
 import 'package:mandi_khata_app/features/accounts/domain/voucher.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
+import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:mandi_khata_app/features/payments/data/bank_accounts_repository.dart';
 import 'package:powersync/powersync.dart';
 
@@ -474,6 +475,25 @@ void main() {
         );
         expect(row.refType, RefType.voucher);
       },
+    );
+  });
+
+  test('a voucher khata line cannot be reversed from the khata', () async {
+    final saved =
+        await post(VoucherType.journal, [
+              await dr(const PartyAccount(buyer), 100),
+              await cr(const PartyAccount(farmer), 100),
+            ])
+            as VoucherSaved;
+    final line = await db.get(
+      'SELECT id FROM ledger_entries WHERE ref_id = ? LIMIT 1',
+      [saved.id],
+    );
+    expect(
+      await LedgerRepository(
+        db,
+      ).reverse(ctx, line['id']! as String, can: owner),
+      isA<LedgerInvalid>(),
     );
   });
 

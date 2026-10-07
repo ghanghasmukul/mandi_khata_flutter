@@ -260,6 +260,16 @@ void main() {
       );
     });
 
+    test('Dr X and Cr X of the same amount is junk', () {
+      expect(
+        VoucherRules.validate(VoucherType.contra, [
+          dr(cash, c, 100),
+          cr(cash, c, 100),
+        ]),
+        contains(VoucherProblem.duplicateAccount),
+      );
+    });
+
     test('switched-off account', () {
       expect(
         VoucherRules.validate(VoucherType.journal, [

@@ -14,12 +14,18 @@ BillPickerFn billPicker(Ref ref) => () async {
     allowedExtensions: const ['jpg', 'jpeg', 'png', 'webp', 'heic', 'pdf'],
   );
   if (file == null) return null;
-  return BillPhoto(
-    file.name,
-    await file.readAsBytes(),
-    contentTypeOf(file.name),
-  );
+  final bytes = await file.readAsBytes();
+  if (bytes.length > maxBillBytes) throw const BillTooLarge();
+  return BillPhoto(file.name, bytes, contentTypeOf(file.name));
 };
+
+/// Larger than the Storage bucket accepts (10 MB, minus room for base64
+/// overhead): refused before it can sit queued forever.
+const int maxBillBytes = 8 * 1024 * 1024;
+
+class BillTooLarge implements Exception {
+  const BillTooLarge();
+}
 
 /// The MIME type of a bill file from its name.
 String contentTypeOf(String name) {

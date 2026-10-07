@@ -72,7 +72,13 @@ WriteContext? writeContext(Ref ref) {
 @Riverpod(keepAlive: true)
 class LockOverride extends _$LockOverride {
   @override
-  String? build() => null;
+  String? build() {
+    // A new business or a new sign-in starts locked again.
+    ref
+      ..watch(activeTenantProvider)
+      ..watch(sessionProvider);
+    return null;
+  }
 
   void set(String? reason) {
     final r = reason?.trim();

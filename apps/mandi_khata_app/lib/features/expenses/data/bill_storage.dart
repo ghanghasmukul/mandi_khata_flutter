@@ -18,8 +18,15 @@ abstract final class BillStorage {
         .uploadBinary(
           path,
           bytes,
-          fileOptions: FileOptions(contentType: contentType, upsert: true),
-        );
+          fileOptions: FileOptions(contentType: contentType),
+        )
+        // A retry after a lost response finds the file already there.
+        .onError<StorageException>((e, _) {
+          if (e.statusCode == '409' || e.statusCode == '400') {
+            if (e.message.toLowerCase().contains('exist')) return '';
+          }
+          throw e;
+        });
   }
 
   /// A link valid for ten minutes.

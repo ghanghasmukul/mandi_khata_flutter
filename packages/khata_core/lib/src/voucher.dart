@@ -167,6 +167,13 @@ abstract final class VoucherRules {
     if (!difference(lines).isZero) add(VoucherProblem.unbalanced);
     final seen = <(JournalAccount, DrCr)>{};
     for (final l in lines) {
+      // Dr X and Cr X of the same amount nets to nothing: junk.
+      if (lines.any(
+        (o) =>
+            o.account == l.account && o.side != l.side && o.amount == l.amount,
+      )) {
+        add(VoucherProblem.duplicateAccount);
+      }
       if (!seen.add((l.account, l.side))) add(VoucherProblem.duplicateAccount);
       if (!l.isActive) add(VoucherProblem.inactiveAccount);
     }

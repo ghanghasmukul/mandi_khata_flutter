@@ -183,6 +183,19 @@ void main() {
     },
   );
 
+  test('a switched-off seeded category takes no expense', () async {
+    await db.execute(
+      'INSERT INTO expense_categories (id, tenant_id, code, name, group_code, '
+      "sort_order, is_active) VALUES (?, ?, 'salary', 'Salary', "
+      "'indirect_expenses', 30, 0)",
+      [salary, t1],
+    );
+    expect(
+      await repo.save(ctx, draft(), can: owner, now: now),
+      isA<ExpenseNotFound>(),
+    );
+  });
+
   test('a munshi records a cash expense today', () async {
     expect(
       await repo.save(ctx, draft(), can: munshi, now: now),

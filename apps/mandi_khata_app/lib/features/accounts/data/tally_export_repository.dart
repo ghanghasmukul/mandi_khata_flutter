@@ -64,11 +64,11 @@ class TallyExportRepository {
       'FROM journal_entries e '
       'LEFT JOIN vouchers v ON v.id = e.voucher_id '
       'AND v.tenant_id = e.tenant_id '
-      "LEFT JOIN payments p ON e.source_key = 'payment:' || p.id "
+      'LEFT JOIN payments p ON p.id = substr(e.source_key, 9)  '
       'AND p.tenant_id = e.tenant_id '
-      "LEFT JOIN expenses x ON e.source_key = 'expense:' || x.id "
+      'LEFT JOIN expenses x ON x.id = substr(e.source_key, 9)  '
       'AND x.tenant_id = e.tenant_id '
-      "LEFT JOIN lots l ON e.source_key = 'lot:' || l.id "
+      'LEFT JOIN lots l ON l.id = substr(e.source_key, 5)  '
       'AND l.tenant_id = e.tenant_id '
       'WHERE e.tenant_id = ? AND e.entry_date >= ? AND e.entry_date <= ? '
       'ORDER BY e.entry_date, e.created_at, e.id',

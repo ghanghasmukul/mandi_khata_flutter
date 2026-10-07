@@ -116,16 +116,21 @@ class CashCountRepository {
         );
         if (postDifference && lines != null) {
           final chart = await ChartRepository.load(tx, ctx.tenantId);
+          final accounts = [
+            for (final l in lines)
+              chart.byId(JournalWriter.accountId(ctx.tenantId, l.account)),
+          ];
+          if (accounts.contains(null)) {
+            throw const _Refused(VoucherNotFound());
+          }
           final draft = VoucherDraft(
             type: VoucherType.journal,
             date: on,
             narration: note,
             lines: [
-              for (final l in lines)
+              for (final (i, l) in lines.indexed)
                 VoucherDraftLine(
-                  account: chart.byId(
-                    JournalWriter.accountId(ctx.tenantId, l.account),
-                  )!,
+                  account: accounts[i]!,
                   side: l.side,
                   amount: l.amount,
                 ),

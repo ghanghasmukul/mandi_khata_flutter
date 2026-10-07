@@ -55,7 +55,15 @@ class ExpenseDetailDialog extends ConsumerWidget {
   }
 
   Future<void> _attach(BuildContext context, WidgetRef ref) async {
-    final bill = await ref.read(billPickerProvider)();
+    final messenger = ScaffoldMessenger.of(context);
+    final l10n = AppLocalizations.of(context);
+    final BillPhoto? bill;
+    try {
+      bill = await ref.read(billPickerProvider)();
+    } on BillTooLarge {
+      messenger.showSnackBar(SnackBar(content: Text(l10n.expenseBillTooLarge)));
+      return;
+    }
     if (bill == null) return;
     await ref.read(expensesWriterProvider).attachBill(expense.id, bill);
     if (context.mounted) Navigator.of(context).pop();

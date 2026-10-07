@@ -5007,4 +5007,7 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get tallyExportBlocked => 'ਪਹਿਲਾਂ ਉੱਪਰ ਦੀਆਂ ਗੜਬੜਾਂ ਠੀਕ ਕਰੋ।';
+
+  @override
+  String get expenseBillTooLarge => 'ਬਿੱਲ 8 MB ਤੋਂ ਵੱਡਾ ਹੈ। ਛੋਟੀ ਫ਼ੋਟੋ ਚੁਣੋ।';
 }

@@ -1456,5 +1456,6 @@
   "tallyIssueRenamed": "{subject} ਦੋ ਵਾਰ ਹੈ; {detail} ਨਾਮ ਨਾਲ ਭੇਜਿਆ",
   "tallyIssueUnbalanced": "{subject}: ਨਾਮ ਅਤੇ ਜਮ੍ਹਾਂ ਵੱਖਰੇ",
   "tallyIssueUnknown": "{subject}: ਇੱਕ ਖਾਤਾ ਹਾਲੇ ਸਿੰਕ ਨਹੀਂ ਹੋਇਆ",
-  "tallyExportBlocked": "ਪਹਿਲਾਂ ਉੱਪਰ ਦੀਆਂ ਗੜਬੜਾਂ ਠੀਕ ਕਰੋ।"
+  "tallyExportBlocked": "ਪਹਿਲਾਂ ਉੱਪਰ ਦੀਆਂ ਗੜਬੜਾਂ ਠੀਕ ਕਰੋ।",
+  "expenseBillTooLarge": "ਬਿੱਲ 8 MB ਤੋਂ ਵੱਡਾ ਹੈ। ਛੋਟੀ ਫ਼ੋਟੋ ਚੁਣੋ।"
 }
