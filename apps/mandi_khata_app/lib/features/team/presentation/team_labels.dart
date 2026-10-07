@@ -15,6 +15,12 @@ extension TeamLabels on AppLocalizations {
     Permission.masterDelete => permission_masterDelete,
     Permission.settingsManage => permission_settingsManage,
     Permission.auditView => permission_auditView,
+    Permission.productsManage => permission_productsManage,
+    Permission.purchasesCreate => permission_purchasesCreate,
+    Permission.salesCreate => permission_salesCreate,
+    Permission.salesReturn => permission_salesReturn,
+    Permission.stockAdjust => permission_stockAdjust,
+    Permission.shopViewProfit => permission_shopViewProfit,
   };
 
   /// Message for a failed team change, or null when it saved.

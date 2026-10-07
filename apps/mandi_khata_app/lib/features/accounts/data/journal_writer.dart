@@ -289,11 +289,15 @@ abstract final class JournalWriter {
         return 'entry:${e.id}';
       case RefType.voucher:
         return ref == null ? null : 'voucher:$ref';
-      case RefType.reversal ||
-          RefType.shopSale ||
-          RefType.shopReturn ||
-          RefType.purchase ||
-          RefType.expense:
+      case RefType.shopSale:
+        return ref == null ? null : 'shop_sale:$ref';
+      case RefType.shopReturn:
+        return ref == null ? null : 'shop_return:$ref';
+      case RefType.purchase:
+        return ref == null ? null : 'purchase:$ref';
+      case RefType.purchaseReturn:
+        return ref == null ? null : 'purchase_return:$ref';
+      case RefType.reversal || RefType.expense:
         return null;
     }
   }

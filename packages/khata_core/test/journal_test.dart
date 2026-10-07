@@ -126,7 +126,9 @@ void main() {
     test('codes are unique, the groups form a two-level tree', () {
       final codes = {for (final g in AccountGroup.values) g.code};
       expect(codes, hasLength(AccountGroup.values.length));
-      expect({for (final a in SystemAccount.values) a.code}, hasLength(18));
+      expect({
+        for (final a in SystemAccount.values) a.code,
+      }, hasLength(SystemAccount.values.length));
       for (final g in AccountGroup.values) {
         expect(g.parent?.parent, isNull);
         if (g.parent != null) expect(g.parent!.nature, g.nature);

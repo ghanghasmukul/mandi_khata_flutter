@@ -8,7 +8,11 @@ import 'package:uuid/uuid.dart';
 enum BookSource {
   payment('payment_id'),
   voucher('voucher_id'),
-  expense('expense_id');
+  expense('expense_id'),
+  purchase('purchase_id'),
+  purchaseReturn('purchase_return_id'),
+  shopSale('shop_sale_id'),
+  shopReturn('shop_return_id');
 
   const BookSource(this.column);
 

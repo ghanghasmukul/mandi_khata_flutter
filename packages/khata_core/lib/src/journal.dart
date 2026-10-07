@@ -184,7 +184,39 @@ enum SystemAccount {
     'cash_short_excess',
     'Cash Short / Excess',
     AccountGroup.indirectExpenses,
-  );
+  ),
+
+  /// The shop (phase 4, docs/domain/shop-rules.md section 10).
+  stockInHand('stock_in_hand', 'Stock-in-Hand', AccountGroup.stockInHand),
+  costOfGoodsSold(
+    'cost_of_goods_sold',
+    'Cost of Goods Sold',
+    AccountGroup.directExpenses,
+  ),
+  stockAdjustment(
+    'stock_adjustment',
+    'Stock Adjustment',
+    AccountGroup.directExpenses,
+  ),
+  roundOff('round_off', 'Round Off', AccountGroup.indirectExpenses),
+  gstOutputCgst(
+    'gst_output_cgst',
+    'GST Output CGST',
+    AccountGroup.dutiesAndTaxes,
+  ),
+  gstOutputSgst(
+    'gst_output_sgst',
+    'GST Output SGST',
+    AccountGroup.dutiesAndTaxes,
+  ),
+  gstOutputIgst(
+    'gst_output_igst',
+    'GST Output IGST',
+    AccountGroup.dutiesAndTaxes,
+  ),
+  gstInputCgst('gst_input_cgst', 'GST Input CGST', AccountGroup.dutiesAndTaxes),
+  gstInputSgst('gst_input_sgst', 'GST Input SGST', AccountGroup.dutiesAndTaxes),
+  gstInputIgst('gst_input_igst', 'GST Input IGST', AccountGroup.dutiesAndTaxes);
 
   const SystemAccount(this.code, this.name, this.group);
 

@@ -51,6 +51,7 @@ void main() {
         Permission.partiesManage,
         Permission.arrivalsManage,
         Permission.paymentsCreate,
+        Permission.salesCreate,
       });
     });
 
@@ -74,6 +75,7 @@ void main() {
       final granted = {
         Permission.partiesManage,
         Permission.arrivalsManage,
+        Permission.salesCreate,
         Permission.entriesReverse, // extra
         // payments.create removed
       };

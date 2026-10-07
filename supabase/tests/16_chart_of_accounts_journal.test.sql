@@ -101,8 +101,8 @@ select is(
   'a business gets its 16 account groups');
 select is(
   (select count(*)::int from public.accounts
-   where tenant_id = '11111111-1111-4111-8111-111111111111' and is_system), 18,
-  'and its 18 system accounts');
+   where tenant_id = '11111111-1111-4111-8111-111111111111' and is_system), 28,
+  'and its 28 system accounts');
 -- The Dart app computes the same ids (apps/mandi_khata_app/test/features/
 -- accounts/chart_consistency_test.dart asserts these constants).
 select is(

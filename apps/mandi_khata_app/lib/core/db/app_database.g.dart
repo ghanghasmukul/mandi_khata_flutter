@@ -11923,6 +11923,50 @@ class $CashBankEntriesTable extends CashBankEntries
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _purchaseIdMeta = const VerificationMeta(
+    'purchaseId',
+  );
+  @override
+  late final GeneratedColumn<String> purchaseId = GeneratedColumn<String>(
+    'purchase_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _purchaseReturnIdMeta = const VerificationMeta(
+    'purchaseReturnId',
+  );
+  @override
+  late final GeneratedColumn<String> purchaseReturnId = GeneratedColumn<String>(
+    'purchase_return_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _shopSaleIdMeta = const VerificationMeta(
+    'shopSaleId',
+  );
+  @override
+  late final GeneratedColumn<String> shopSaleId = GeneratedColumn<String>(
+    'shop_sale_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _shopReturnIdMeta = const VerificationMeta(
+    'shopReturnId',
+  );
+  @override
+  late final GeneratedColumn<String> shopReturnId = GeneratedColumn<String>(
+    'shop_return_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -11940,6 +11984,10 @@ class $CashBankEntriesTable extends CashBankEntries
     createdAt,
     voucherId,
     expenseId,
+    purchaseId,
+    purchaseReturnId,
+    shopSaleId,
+    shopReturnId,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -12060,6 +12108,39 @@ class $CashBankEntriesTable extends CashBankEntries
         expenseId.isAcceptableOrUnknown(data['expense_id']!, _expenseIdMeta),
       );
     }
+    if (data.containsKey('purchase_id')) {
+      context.handle(
+        _purchaseIdMeta,
+        purchaseId.isAcceptableOrUnknown(data['purchase_id']!, _purchaseIdMeta),
+      );
+    }
+    if (data.containsKey('purchase_return_id')) {
+      context.handle(
+        _purchaseReturnIdMeta,
+        purchaseReturnId.isAcceptableOrUnknown(
+          data['purchase_return_id']!,
+          _purchaseReturnIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('shop_sale_id')) {
+      context.handle(
+        _shopSaleIdMeta,
+        shopSaleId.isAcceptableOrUnknown(
+          data['shop_sale_id']!,
+          _shopSaleIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('shop_return_id')) {
+      context.handle(
+        _shopReturnIdMeta,
+        shopReturnId.isAcceptableOrUnknown(
+          data['shop_return_id']!,
+          _shopReturnIdMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -12129,6 +12210,22 @@ class $CashBankEntriesTable extends CashBankEntries
         DriftSqlType.string,
         data['${effectivePrefix}expense_id'],
       ),
+      purchaseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purchase_id'],
+      ),
+      purchaseReturnId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purchase_return_id'],
+      ),
+      shopSaleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}shop_sale_id'],
+      ),
+      shopReturnId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}shop_return_id'],
+      ),
     );
   }
 
@@ -12154,6 +12251,10 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
   final String? createdAt;
   final String? voucherId;
   final String? expenseId;
+  final String? purchaseId;
+  final String? purchaseReturnId;
+  final String? shopSaleId;
+  final String? shopReturnId;
   const CashBankEntry({
     required this.id,
     required this.tenantId,
@@ -12170,6 +12271,10 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
     this.createdAt,
     this.voucherId,
     this.expenseId,
+    this.purchaseId,
+    this.purchaseReturnId,
+    this.shopSaleId,
+    this.shopReturnId,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -12204,6 +12309,18 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
     }
     if (!nullToAbsent || expenseId != null) {
       map['expense_id'] = Variable<String>(expenseId);
+    }
+    if (!nullToAbsent || purchaseId != null) {
+      map['purchase_id'] = Variable<String>(purchaseId);
+    }
+    if (!nullToAbsent || purchaseReturnId != null) {
+      map['purchase_return_id'] = Variable<String>(purchaseReturnId);
+    }
+    if (!nullToAbsent || shopSaleId != null) {
+      map['shop_sale_id'] = Variable<String>(shopSaleId);
+    }
+    if (!nullToAbsent || shopReturnId != null) {
+      map['shop_return_id'] = Variable<String>(shopReturnId);
     }
     return map;
   }
@@ -12241,6 +12358,18 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
       expenseId: expenseId == null && nullToAbsent
           ? const Value.absent()
           : Value(expenseId),
+      purchaseId: purchaseId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(purchaseId),
+      purchaseReturnId: purchaseReturnId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(purchaseReturnId),
+      shopSaleId: shopSaleId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(shopSaleId),
+      shopReturnId: shopReturnId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(shopReturnId),
     );
   }
 
@@ -12265,6 +12394,10 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
       createdAt: serializer.fromJson<String?>(json['createdAt']),
       voucherId: serializer.fromJson<String?>(json['voucherId']),
       expenseId: serializer.fromJson<String?>(json['expenseId']),
+      purchaseId: serializer.fromJson<String?>(json['purchaseId']),
+      purchaseReturnId: serializer.fromJson<String?>(json['purchaseReturnId']),
+      shopSaleId: serializer.fromJson<String?>(json['shopSaleId']),
+      shopReturnId: serializer.fromJson<String?>(json['shopReturnId']),
     );
   }
   @override
@@ -12286,6 +12419,10 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
       'createdAt': serializer.toJson<String?>(createdAt),
       'voucherId': serializer.toJson<String?>(voucherId),
       'expenseId': serializer.toJson<String?>(expenseId),
+      'purchaseId': serializer.toJson<String?>(purchaseId),
+      'purchaseReturnId': serializer.toJson<String?>(purchaseReturnId),
+      'shopSaleId': serializer.toJson<String?>(shopSaleId),
+      'shopReturnId': serializer.toJson<String?>(shopReturnId),
     };
   }
 
@@ -12305,6 +12442,10 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
     Value<String?> createdAt = const Value.absent(),
     Value<String?> voucherId = const Value.absent(),
     Value<String?> expenseId = const Value.absent(),
+    Value<String?> purchaseId = const Value.absent(),
+    Value<String?> purchaseReturnId = const Value.absent(),
+    Value<String?> shopSaleId = const Value.absent(),
+    Value<String?> shopReturnId = const Value.absent(),
   }) => CashBankEntry(
     id: id ?? this.id,
     tenantId: tenantId ?? this.tenantId,
@@ -12321,6 +12462,12 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
     createdAt: createdAt.present ? createdAt.value : this.createdAt,
     voucherId: voucherId.present ? voucherId.value : this.voucherId,
     expenseId: expenseId.present ? expenseId.value : this.expenseId,
+    purchaseId: purchaseId.present ? purchaseId.value : this.purchaseId,
+    purchaseReturnId: purchaseReturnId.present
+        ? purchaseReturnId.value
+        : this.purchaseReturnId,
+    shopSaleId: shopSaleId.present ? shopSaleId.value : this.shopSaleId,
+    shopReturnId: shopReturnId.present ? shopReturnId.value : this.shopReturnId,
   );
   CashBankEntry copyWithCompanion(CashBankEntriesCompanion data) {
     return CashBankEntry(
@@ -12345,6 +12492,18 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       voucherId: data.voucherId.present ? data.voucherId.value : this.voucherId,
       expenseId: data.expenseId.present ? data.expenseId.value : this.expenseId,
+      purchaseId: data.purchaseId.present
+          ? data.purchaseId.value
+          : this.purchaseId,
+      purchaseReturnId: data.purchaseReturnId.present
+          ? data.purchaseReturnId.value
+          : this.purchaseReturnId,
+      shopSaleId: data.shopSaleId.present
+          ? data.shopSaleId.value
+          : this.shopSaleId,
+      shopReturnId: data.shopReturnId.present
+          ? data.shopReturnId.value
+          : this.shopReturnId,
     );
   }
 
@@ -12365,7 +12524,11 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
           ..write('createdBy: $createdBy, ')
           ..write('createdAt: $createdAt, ')
           ..write('voucherId: $voucherId, ')
-          ..write('expenseId: $expenseId')
+          ..write('expenseId: $expenseId, ')
+          ..write('purchaseId: $purchaseId, ')
+          ..write('purchaseReturnId: $purchaseReturnId, ')
+          ..write('shopSaleId: $shopSaleId, ')
+          ..write('shopReturnId: $shopReturnId')
           ..write(')'))
         .toString();
   }
@@ -12387,6 +12550,10 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
     createdAt,
     voucherId,
     expenseId,
+    purchaseId,
+    purchaseReturnId,
+    shopSaleId,
+    shopReturnId,
   );
   @override
   bool operator ==(Object other) =>
@@ -12406,7 +12573,11 @@ class CashBankEntry extends DataClass implements Insertable<CashBankEntry> {
           other.createdBy == this.createdBy &&
           other.createdAt == this.createdAt &&
           other.voucherId == this.voucherId &&
-          other.expenseId == this.expenseId);
+          other.expenseId == this.expenseId &&
+          other.purchaseId == this.purchaseId &&
+          other.purchaseReturnId == this.purchaseReturnId &&
+          other.shopSaleId == this.shopSaleId &&
+          other.shopReturnId == this.shopReturnId);
 }
 
 class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
@@ -12425,6 +12596,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
   final Value<String?> createdAt;
   final Value<String?> voucherId;
   final Value<String?> expenseId;
+  final Value<String?> purchaseId;
+  final Value<String?> purchaseReturnId;
+  final Value<String?> shopSaleId;
+  final Value<String?> shopReturnId;
   final Value<int> rowid;
   const CashBankEntriesCompanion({
     this.id = const Value.absent(),
@@ -12442,6 +12617,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
     this.createdAt = const Value.absent(),
     this.voucherId = const Value.absent(),
     this.expenseId = const Value.absent(),
+    this.purchaseId = const Value.absent(),
+    this.purchaseReturnId = const Value.absent(),
+    this.shopSaleId = const Value.absent(),
+    this.shopReturnId = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   CashBankEntriesCompanion.insert({
@@ -12460,6 +12639,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
     this.createdAt = const Value.absent(),
     this.voucherId = const Value.absent(),
     this.expenseId = const Value.absent(),
+    this.purchaseId = const Value.absent(),
+    this.purchaseReturnId = const Value.absent(),
+    this.shopSaleId = const Value.absent(),
+    this.shopReturnId = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : id = Value(id),
        tenantId = Value(tenantId),
@@ -12484,6 +12667,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
     Expression<String>? createdAt,
     Expression<String>? voucherId,
     Expression<String>? expenseId,
+    Expression<String>? purchaseId,
+    Expression<String>? purchaseReturnId,
+    Expression<String>? shopSaleId,
+    Expression<String>? shopReturnId,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -12502,6 +12689,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
       if (createdAt != null) 'created_at': createdAt,
       if (voucherId != null) 'voucher_id': voucherId,
       if (expenseId != null) 'expense_id': expenseId,
+      if (purchaseId != null) 'purchase_id': purchaseId,
+      if (purchaseReturnId != null) 'purchase_return_id': purchaseReturnId,
+      if (shopSaleId != null) 'shop_sale_id': shopSaleId,
+      if (shopReturnId != null) 'shop_return_id': shopReturnId,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -12522,6 +12713,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
     Value<String?>? createdAt,
     Value<String?>? voucherId,
     Value<String?>? expenseId,
+    Value<String?>? purchaseId,
+    Value<String?>? purchaseReturnId,
+    Value<String?>? shopSaleId,
+    Value<String?>? shopReturnId,
     Value<int>? rowid,
   }) {
     return CashBankEntriesCompanion(
@@ -12540,6 +12735,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
       createdAt: createdAt ?? this.createdAt,
       voucherId: voucherId ?? this.voucherId,
       expenseId: expenseId ?? this.expenseId,
+      purchaseId: purchaseId ?? this.purchaseId,
+      purchaseReturnId: purchaseReturnId ?? this.purchaseReturnId,
+      shopSaleId: shopSaleId ?? this.shopSaleId,
+      shopReturnId: shopReturnId ?? this.shopReturnId,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -12592,6 +12791,18 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
     if (expenseId.present) {
       map['expense_id'] = Variable<String>(expenseId.value);
     }
+    if (purchaseId.present) {
+      map['purchase_id'] = Variable<String>(purchaseId.value);
+    }
+    if (purchaseReturnId.present) {
+      map['purchase_return_id'] = Variable<String>(purchaseReturnId.value);
+    }
+    if (shopSaleId.present) {
+      map['shop_sale_id'] = Variable<String>(shopSaleId.value);
+    }
+    if (shopReturnId.present) {
+      map['shop_return_id'] = Variable<String>(shopReturnId.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -12616,6 +12827,10 @@ class CashBankEntriesCompanion extends UpdateCompanion<CashBankEntry> {
           ..write('createdAt: $createdAt, ')
           ..write('voucherId: $voucherId, ')
           ..write('expenseId: $expenseId, ')
+          ..write('purchaseId: $purchaseId, ')
+          ..write('purchaseReturnId: $purchaseReturnId, ')
+          ..write('shopSaleId: $shopSaleId, ')
+          ..write('shopReturnId: $shopReturnId, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -24200,6 +24415,12313 @@ class FinancialYearsCompanion extends UpdateCompanion<FinancialYear> {
   }
 }
 
+class $ProductCategoriesTable extends ProductCategories
+    with TableInfo<$ProductCategoriesTable, ProductCategory> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ProductCategoriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sortOrderMeta = const VerificationMeta(
+    'sortOrder',
+  );
+  @override
+  late final GeneratedColumn<int> sortOrder = GeneratedColumn<int>(
+    'sort_order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _isActiveMeta = const VerificationMeta(
+    'isActive',
+  );
+  @override
+  late final GeneratedColumn<bool> isActive = GeneratedColumn<bool>(
+    'is_active',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_active" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<String> deletedAt = GeneratedColumn<String>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    name,
+    sortOrder,
+    isActive,
+    deletedAt,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'product_categories';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ProductCategory> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('sort_order')) {
+      context.handle(
+        _sortOrderMeta,
+        sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sortOrderMeta);
+    }
+    if (data.containsKey('is_active')) {
+      context.handle(
+        _isActiveMeta,
+        isActive.isAcceptableOrUnknown(data['is_active']!, _isActiveMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isActiveMeta);
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ProductCategory map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ProductCategory(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      sortOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sort_order'],
+      )!,
+      isActive: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_active'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $ProductCategoriesTable createAlias(String alias) {
+    return $ProductCategoriesTable(attachedDatabase, alias);
+  }
+}
+
+class ProductCategory extends DataClass implements Insertable<ProductCategory> {
+  final String id;
+  final String tenantId;
+  final String name;
+  final int sortOrder;
+  final bool isActive;
+  final String? deletedAt;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const ProductCategory({
+    required this.id,
+    required this.tenantId,
+    required this.name,
+    required this.sortOrder,
+    required this.isActive,
+    this.deletedAt,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['name'] = Variable<String>(name);
+    map['sort_order'] = Variable<int>(sortOrder);
+    map['is_active'] = Variable<bool>(isActive);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<String>(deletedAt);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  ProductCategoriesCompanion toCompanion(bool nullToAbsent) {
+    return ProductCategoriesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      name: Value(name),
+      sortOrder: Value(sortOrder),
+      isActive: Value(isActive),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory ProductCategory.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ProductCategory(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      name: serializer.fromJson<String>(json['name']),
+      sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      isActive: serializer.fromJson<bool>(json['isActive']),
+      deletedAt: serializer.fromJson<String?>(json['deletedAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'name': serializer.toJson<String>(name),
+      'sortOrder': serializer.toJson<int>(sortOrder),
+      'isActive': serializer.toJson<bool>(isActive),
+      'deletedAt': serializer.toJson<String?>(deletedAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  ProductCategory copyWith({
+    String? id,
+    String? tenantId,
+    String? name,
+    int? sortOrder,
+    bool? isActive,
+    Value<String?> deletedAt = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => ProductCategory(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    name: name ?? this.name,
+    sortOrder: sortOrder ?? this.sortOrder,
+    isActive: isActive ?? this.isActive,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  ProductCategory copyWithCompanion(ProductCategoriesCompanion data) {
+    return ProductCategory(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      name: data.name.present ? data.name.value : this.name,
+      sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      isActive: data.isActive.present ? data.isActive.value : this.isActive,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductCategory(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('name: $name, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('isActive: $isActive, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    name,
+    sortOrder,
+    isActive,
+    deletedAt,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ProductCategory &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.name == this.name &&
+          other.sortOrder == this.sortOrder &&
+          other.isActive == this.isActive &&
+          other.deletedAt == this.deletedAt &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class ProductCategoriesCompanion extends UpdateCompanion<ProductCategory> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> name;
+  final Value<int> sortOrder;
+  final Value<bool> isActive;
+  final Value<String?> deletedAt;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const ProductCategoriesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.name = const Value.absent(),
+    this.sortOrder = const Value.absent(),
+    this.isActive = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ProductCategoriesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String name,
+    required int sortOrder,
+    required bool isActive,
+    this.deletedAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       name = Value(name),
+       sortOrder = Value(sortOrder),
+       isActive = Value(isActive);
+  static Insertable<ProductCategory> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? name,
+    Expression<int>? sortOrder,
+    Expression<bool>? isActive,
+    Expression<String>? deletedAt,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (name != null) 'name': name,
+      if (sortOrder != null) 'sort_order': sortOrder,
+      if (isActive != null) 'is_active': isActive,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ProductCategoriesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? name,
+    Value<int>? sortOrder,
+    Value<bool>? isActive,
+    Value<String?>? deletedAt,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return ProductCategoriesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      name: name ?? this.name,
+      sortOrder: sortOrder ?? this.sortOrder,
+      isActive: isActive ?? this.isActive,
+      deletedAt: deletedAt ?? this.deletedAt,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (sortOrder.present) {
+      map['sort_order'] = Variable<int>(sortOrder.value);
+    }
+    if (isActive.present) {
+      map['is_active'] = Variable<bool>(isActive.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<String>(deletedAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductCategoriesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('name: $name, ')
+          ..write('sortOrder: $sortOrder, ')
+          ..write('isActive: $isActive, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ProductsTable extends Products with TableInfo<$ProductsTable, Product> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ProductsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _skuMeta = const VerificationMeta('sku');
+  @override
+  late final GeneratedColumn<String> sku = GeneratedColumn<String>(
+    'sku',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _barcodeMeta = const VerificationMeta(
+    'barcode',
+  );
+  @override
+  late final GeneratedColumn<String> barcode = GeneratedColumn<String>(
+    'barcode',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+    'name',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _brandMeta = const VerificationMeta('brand');
+  @override
+  late final GeneratedColumn<String> brand = GeneratedColumn<String>(
+    'brand',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _categoryIdMeta = const VerificationMeta(
+    'categoryId',
+  );
+  @override
+  late final GeneratedColumn<String> categoryId = GeneratedColumn<String>(
+    'category_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _unitMeta = const VerificationMeta('unit');
+  @override
+  late final GeneratedColumn<String> unit = GeneratedColumn<String>(
+    'unit',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _packSizeMeta = const VerificationMeta(
+    'packSize',
+  );
+  @override
+  late final GeneratedColumn<String> packSize = GeneratedColumn<String>(
+    'pack_size',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _hsnMeta = const VerificationMeta('hsn');
+  @override
+  late final GeneratedColumn<String> hsn = GeneratedColumn<String>(
+    'hsn',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _gstRateMeta = const VerificationMeta(
+    'gstRate',
+  );
+  @override
+  late final GeneratedColumn<double> gstRate = GeneratedColumn<double>(
+    'gst_rate',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reorderLevelMilliMeta = const VerificationMeta(
+    'reorderLevelMilli',
+  );
+  @override
+  late final GeneratedColumn<int> reorderLevelMilli = GeneratedColumn<int>(
+    'reorder_level_milli',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _pricesMeta = const VerificationMeta('prices');
+  @override
+  late final GeneratedColumn<String> prices = GeneratedColumn<String>(
+    'prices',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _isActiveMeta = const VerificationMeta(
+    'isActive',
+  );
+  @override
+  late final GeneratedColumn<bool> isActive = GeneratedColumn<bool>(
+    'is_active',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_active" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<String> deletedAt = GeneratedColumn<String>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    sku,
+    barcode,
+    name,
+    brand,
+    categoryId,
+    unit,
+    packSize,
+    hsn,
+    gstRate,
+    reorderLevelMilli,
+    prices,
+    isActive,
+    deletedAt,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'products';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Product> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('sku')) {
+      context.handle(
+        _skuMeta,
+        sku.isAcceptableOrUnknown(data['sku']!, _skuMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_skuMeta);
+    }
+    if (data.containsKey('barcode')) {
+      context.handle(
+        _barcodeMeta,
+        barcode.isAcceptableOrUnknown(data['barcode']!, _barcodeMeta),
+      );
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('brand')) {
+      context.handle(
+        _brandMeta,
+        brand.isAcceptableOrUnknown(data['brand']!, _brandMeta),
+      );
+    }
+    if (data.containsKey('category_id')) {
+      context.handle(
+        _categoryIdMeta,
+        categoryId.isAcceptableOrUnknown(data['category_id']!, _categoryIdMeta),
+      );
+    }
+    if (data.containsKey('unit')) {
+      context.handle(
+        _unitMeta,
+        unit.isAcceptableOrUnknown(data['unit']!, _unitMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_unitMeta);
+    }
+    if (data.containsKey('pack_size')) {
+      context.handle(
+        _packSizeMeta,
+        packSize.isAcceptableOrUnknown(data['pack_size']!, _packSizeMeta),
+      );
+    }
+    if (data.containsKey('hsn')) {
+      context.handle(
+        _hsnMeta,
+        hsn.isAcceptableOrUnknown(data['hsn']!, _hsnMeta),
+      );
+    }
+    if (data.containsKey('gst_rate')) {
+      context.handle(
+        _gstRateMeta,
+        gstRate.isAcceptableOrUnknown(data['gst_rate']!, _gstRateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_gstRateMeta);
+    }
+    if (data.containsKey('reorder_level_milli')) {
+      context.handle(
+        _reorderLevelMilliMeta,
+        reorderLevelMilli.isAcceptableOrUnknown(
+          data['reorder_level_milli']!,
+          _reorderLevelMilliMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_reorderLevelMilliMeta);
+    }
+    if (data.containsKey('prices')) {
+      context.handle(
+        _pricesMeta,
+        prices.isAcceptableOrUnknown(data['prices']!, _pricesMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_pricesMeta);
+    }
+    if (data.containsKey('is_active')) {
+      context.handle(
+        _isActiveMeta,
+        isActive.isAcceptableOrUnknown(data['is_active']!, _isActiveMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isActiveMeta);
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Product map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Product(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      sku: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sku'],
+      )!,
+      barcode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}barcode'],
+      ),
+      name: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}name'],
+      )!,
+      brand: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}brand'],
+      ),
+      categoryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category_id'],
+      ),
+      unit: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}unit'],
+      )!,
+      packSize: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}pack_size'],
+      ),
+      hsn: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}hsn'],
+      ),
+      gstRate: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}gst_rate'],
+      )!,
+      reorderLevelMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}reorder_level_milli'],
+      )!,
+      prices: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}prices'],
+      )!,
+      isActive: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_active'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $ProductsTable createAlias(String alias) {
+    return $ProductsTable(attachedDatabase, alias);
+  }
+}
+
+class Product extends DataClass implements Insertable<Product> {
+  final String id;
+  final String tenantId;
+  final String sku;
+  final String? barcode;
+  final String name;
+  final String? brand;
+  final String? categoryId;
+  final String unit;
+  final String? packSize;
+  final String? hsn;
+  final double gstRate;
+  final int reorderLevelMilli;
+  final String prices;
+  final bool isActive;
+  final String? deletedAt;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const Product({
+    required this.id,
+    required this.tenantId,
+    required this.sku,
+    this.barcode,
+    required this.name,
+    this.brand,
+    this.categoryId,
+    required this.unit,
+    this.packSize,
+    this.hsn,
+    required this.gstRate,
+    required this.reorderLevelMilli,
+    required this.prices,
+    required this.isActive,
+    this.deletedAt,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['sku'] = Variable<String>(sku);
+    if (!nullToAbsent || barcode != null) {
+      map['barcode'] = Variable<String>(barcode);
+    }
+    map['name'] = Variable<String>(name);
+    if (!nullToAbsent || brand != null) {
+      map['brand'] = Variable<String>(brand);
+    }
+    if (!nullToAbsent || categoryId != null) {
+      map['category_id'] = Variable<String>(categoryId);
+    }
+    map['unit'] = Variable<String>(unit);
+    if (!nullToAbsent || packSize != null) {
+      map['pack_size'] = Variable<String>(packSize);
+    }
+    if (!nullToAbsent || hsn != null) {
+      map['hsn'] = Variable<String>(hsn);
+    }
+    map['gst_rate'] = Variable<double>(gstRate);
+    map['reorder_level_milli'] = Variable<int>(reorderLevelMilli);
+    map['prices'] = Variable<String>(prices);
+    map['is_active'] = Variable<bool>(isActive);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<String>(deletedAt);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  ProductsCompanion toCompanion(bool nullToAbsent) {
+    return ProductsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      sku: Value(sku),
+      barcode: barcode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(barcode),
+      name: Value(name),
+      brand: brand == null && nullToAbsent
+          ? const Value.absent()
+          : Value(brand),
+      categoryId: categoryId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(categoryId),
+      unit: Value(unit),
+      packSize: packSize == null && nullToAbsent
+          ? const Value.absent()
+          : Value(packSize),
+      hsn: hsn == null && nullToAbsent ? const Value.absent() : Value(hsn),
+      gstRate: Value(gstRate),
+      reorderLevelMilli: Value(reorderLevelMilli),
+      prices: Value(prices),
+      isActive: Value(isActive),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory Product.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Product(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      sku: serializer.fromJson<String>(json['sku']),
+      barcode: serializer.fromJson<String?>(json['barcode']),
+      name: serializer.fromJson<String>(json['name']),
+      brand: serializer.fromJson<String?>(json['brand']),
+      categoryId: serializer.fromJson<String?>(json['categoryId']),
+      unit: serializer.fromJson<String>(json['unit']),
+      packSize: serializer.fromJson<String?>(json['packSize']),
+      hsn: serializer.fromJson<String?>(json['hsn']),
+      gstRate: serializer.fromJson<double>(json['gstRate']),
+      reorderLevelMilli: serializer.fromJson<int>(json['reorderLevelMilli']),
+      prices: serializer.fromJson<String>(json['prices']),
+      isActive: serializer.fromJson<bool>(json['isActive']),
+      deletedAt: serializer.fromJson<String?>(json['deletedAt']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'sku': serializer.toJson<String>(sku),
+      'barcode': serializer.toJson<String?>(barcode),
+      'name': serializer.toJson<String>(name),
+      'brand': serializer.toJson<String?>(brand),
+      'categoryId': serializer.toJson<String?>(categoryId),
+      'unit': serializer.toJson<String>(unit),
+      'packSize': serializer.toJson<String?>(packSize),
+      'hsn': serializer.toJson<String?>(hsn),
+      'gstRate': serializer.toJson<double>(gstRate),
+      'reorderLevelMilli': serializer.toJson<int>(reorderLevelMilli),
+      'prices': serializer.toJson<String>(prices),
+      'isActive': serializer.toJson<bool>(isActive),
+      'deletedAt': serializer.toJson<String?>(deletedAt),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  Product copyWith({
+    String? id,
+    String? tenantId,
+    String? sku,
+    Value<String?> barcode = const Value.absent(),
+    String? name,
+    Value<String?> brand = const Value.absent(),
+    Value<String?> categoryId = const Value.absent(),
+    String? unit,
+    Value<String?> packSize = const Value.absent(),
+    Value<String?> hsn = const Value.absent(),
+    double? gstRate,
+    int? reorderLevelMilli,
+    String? prices,
+    bool? isActive,
+    Value<String?> deletedAt = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => Product(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    sku: sku ?? this.sku,
+    barcode: barcode.present ? barcode.value : this.barcode,
+    name: name ?? this.name,
+    brand: brand.present ? brand.value : this.brand,
+    categoryId: categoryId.present ? categoryId.value : this.categoryId,
+    unit: unit ?? this.unit,
+    packSize: packSize.present ? packSize.value : this.packSize,
+    hsn: hsn.present ? hsn.value : this.hsn,
+    gstRate: gstRate ?? this.gstRate,
+    reorderLevelMilli: reorderLevelMilli ?? this.reorderLevelMilli,
+    prices: prices ?? this.prices,
+    isActive: isActive ?? this.isActive,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  Product copyWithCompanion(ProductsCompanion data) {
+    return Product(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      sku: data.sku.present ? data.sku.value : this.sku,
+      barcode: data.barcode.present ? data.barcode.value : this.barcode,
+      name: data.name.present ? data.name.value : this.name,
+      brand: data.brand.present ? data.brand.value : this.brand,
+      categoryId: data.categoryId.present
+          ? data.categoryId.value
+          : this.categoryId,
+      unit: data.unit.present ? data.unit.value : this.unit,
+      packSize: data.packSize.present ? data.packSize.value : this.packSize,
+      hsn: data.hsn.present ? data.hsn.value : this.hsn,
+      gstRate: data.gstRate.present ? data.gstRate.value : this.gstRate,
+      reorderLevelMilli: data.reorderLevelMilli.present
+          ? data.reorderLevelMilli.value
+          : this.reorderLevelMilli,
+      prices: data.prices.present ? data.prices.value : this.prices,
+      isActive: data.isActive.present ? data.isActive.value : this.isActive,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Product(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('sku: $sku, ')
+          ..write('barcode: $barcode, ')
+          ..write('name: $name, ')
+          ..write('brand: $brand, ')
+          ..write('categoryId: $categoryId, ')
+          ..write('unit: $unit, ')
+          ..write('packSize: $packSize, ')
+          ..write('hsn: $hsn, ')
+          ..write('gstRate: $gstRate, ')
+          ..write('reorderLevelMilli: $reorderLevelMilli, ')
+          ..write('prices: $prices, ')
+          ..write('isActive: $isActive, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    sku,
+    barcode,
+    name,
+    brand,
+    categoryId,
+    unit,
+    packSize,
+    hsn,
+    gstRate,
+    reorderLevelMilli,
+    prices,
+    isActive,
+    deletedAt,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Product &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.sku == this.sku &&
+          other.barcode == this.barcode &&
+          other.name == this.name &&
+          other.brand == this.brand &&
+          other.categoryId == this.categoryId &&
+          other.unit == this.unit &&
+          other.packSize == this.packSize &&
+          other.hsn == this.hsn &&
+          other.gstRate == this.gstRate &&
+          other.reorderLevelMilli == this.reorderLevelMilli &&
+          other.prices == this.prices &&
+          other.isActive == this.isActive &&
+          other.deletedAt == this.deletedAt &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class ProductsCompanion extends UpdateCompanion<Product> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> sku;
+  final Value<String?> barcode;
+  final Value<String> name;
+  final Value<String?> brand;
+  final Value<String?> categoryId;
+  final Value<String> unit;
+  final Value<String?> packSize;
+  final Value<String?> hsn;
+  final Value<double> gstRate;
+  final Value<int> reorderLevelMilli;
+  final Value<String> prices;
+  final Value<bool> isActive;
+  final Value<String?> deletedAt;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const ProductsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.sku = const Value.absent(),
+    this.barcode = const Value.absent(),
+    this.name = const Value.absent(),
+    this.brand = const Value.absent(),
+    this.categoryId = const Value.absent(),
+    this.unit = const Value.absent(),
+    this.packSize = const Value.absent(),
+    this.hsn = const Value.absent(),
+    this.gstRate = const Value.absent(),
+    this.reorderLevelMilli = const Value.absent(),
+    this.prices = const Value.absent(),
+    this.isActive = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ProductsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String sku,
+    this.barcode = const Value.absent(),
+    required String name,
+    this.brand = const Value.absent(),
+    this.categoryId = const Value.absent(),
+    required String unit,
+    this.packSize = const Value.absent(),
+    this.hsn = const Value.absent(),
+    required double gstRate,
+    required int reorderLevelMilli,
+    required String prices,
+    required bool isActive,
+    this.deletedAt = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       sku = Value(sku),
+       name = Value(name),
+       unit = Value(unit),
+       gstRate = Value(gstRate),
+       reorderLevelMilli = Value(reorderLevelMilli),
+       prices = Value(prices),
+       isActive = Value(isActive);
+  static Insertable<Product> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? sku,
+    Expression<String>? barcode,
+    Expression<String>? name,
+    Expression<String>? brand,
+    Expression<String>? categoryId,
+    Expression<String>? unit,
+    Expression<String>? packSize,
+    Expression<String>? hsn,
+    Expression<double>? gstRate,
+    Expression<int>? reorderLevelMilli,
+    Expression<String>? prices,
+    Expression<bool>? isActive,
+    Expression<String>? deletedAt,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (sku != null) 'sku': sku,
+      if (barcode != null) 'barcode': barcode,
+      if (name != null) 'name': name,
+      if (brand != null) 'brand': brand,
+      if (categoryId != null) 'category_id': categoryId,
+      if (unit != null) 'unit': unit,
+      if (packSize != null) 'pack_size': packSize,
+      if (hsn != null) 'hsn': hsn,
+      if (gstRate != null) 'gst_rate': gstRate,
+      if (reorderLevelMilli != null) 'reorder_level_milli': reorderLevelMilli,
+      if (prices != null) 'prices': prices,
+      if (isActive != null) 'is_active': isActive,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ProductsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? sku,
+    Value<String?>? barcode,
+    Value<String>? name,
+    Value<String?>? brand,
+    Value<String?>? categoryId,
+    Value<String>? unit,
+    Value<String?>? packSize,
+    Value<String?>? hsn,
+    Value<double>? gstRate,
+    Value<int>? reorderLevelMilli,
+    Value<String>? prices,
+    Value<bool>? isActive,
+    Value<String?>? deletedAt,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return ProductsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      sku: sku ?? this.sku,
+      barcode: barcode ?? this.barcode,
+      name: name ?? this.name,
+      brand: brand ?? this.brand,
+      categoryId: categoryId ?? this.categoryId,
+      unit: unit ?? this.unit,
+      packSize: packSize ?? this.packSize,
+      hsn: hsn ?? this.hsn,
+      gstRate: gstRate ?? this.gstRate,
+      reorderLevelMilli: reorderLevelMilli ?? this.reorderLevelMilli,
+      prices: prices ?? this.prices,
+      isActive: isActive ?? this.isActive,
+      deletedAt: deletedAt ?? this.deletedAt,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (sku.present) {
+      map['sku'] = Variable<String>(sku.value);
+    }
+    if (barcode.present) {
+      map['barcode'] = Variable<String>(barcode.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (brand.present) {
+      map['brand'] = Variable<String>(brand.value);
+    }
+    if (categoryId.present) {
+      map['category_id'] = Variable<String>(categoryId.value);
+    }
+    if (unit.present) {
+      map['unit'] = Variable<String>(unit.value);
+    }
+    if (packSize.present) {
+      map['pack_size'] = Variable<String>(packSize.value);
+    }
+    if (hsn.present) {
+      map['hsn'] = Variable<String>(hsn.value);
+    }
+    if (gstRate.present) {
+      map['gst_rate'] = Variable<double>(gstRate.value);
+    }
+    if (reorderLevelMilli.present) {
+      map['reorder_level_milli'] = Variable<int>(reorderLevelMilli.value);
+    }
+    if (prices.present) {
+      map['prices'] = Variable<String>(prices.value);
+    }
+    if (isActive.present) {
+      map['is_active'] = Variable<bool>(isActive.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<String>(deletedAt.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProductsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('sku: $sku, ')
+          ..write('barcode: $barcode, ')
+          ..write('name: $name, ')
+          ..write('brand: $brand, ')
+          ..write('categoryId: $categoryId, ')
+          ..write('unit: $unit, ')
+          ..write('packSize: $packSize, ')
+          ..write('hsn: $hsn, ')
+          ..write('gstRate: $gstRate, ')
+          ..write('reorderLevelMilli: $reorderLevelMilli, ')
+          ..write('prices: $prices, ')
+          ..write('isActive: $isActive, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $BatchesTable extends Batches with TableInfo<$BatchesTable, Batche> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $BatchesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productIdMeta = const VerificationMeta(
+    'productId',
+  );
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+    'product_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchNoMeta = const VerificationMeta(
+    'batchNo',
+  );
+  @override
+  late final GeneratedColumn<String> batchNo = GeneratedColumn<String>(
+    'batch_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _mfgDateMeta = const VerificationMeta(
+    'mfgDate',
+  );
+  @override
+  late final GeneratedColumn<String> mfgDate = GeneratedColumn<String>(
+    'mfg_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _expiryDateMeta = const VerificationMeta(
+    'expiryDate',
+  );
+  @override
+  late final GeneratedColumn<String> expiryDate = GeneratedColumn<String>(
+    'expiry_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _costPaiseMeta = const VerificationMeta(
+    'costPaise',
+  );
+  @override
+  late final GeneratedColumn<int> costPaise = GeneratedColumn<int>(
+    'cost_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _qtyMilliMeta = const VerificationMeta(
+    'qtyMilli',
+  );
+  @override
+  late final GeneratedColumn<int> qtyMilli = GeneratedColumn<int>(
+    'qty_milli',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    productId,
+    batchNo,
+    mfgDate,
+    expiryDate,
+    costPaise,
+    qtyMilli,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'batches';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Batche> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(
+        _productIdMeta,
+        productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('batch_no')) {
+      context.handle(
+        _batchNoMeta,
+        batchNo.isAcceptableOrUnknown(data['batch_no']!, _batchNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_batchNoMeta);
+    }
+    if (data.containsKey('mfg_date')) {
+      context.handle(
+        _mfgDateMeta,
+        mfgDate.isAcceptableOrUnknown(data['mfg_date']!, _mfgDateMeta),
+      );
+    }
+    if (data.containsKey('expiry_date')) {
+      context.handle(
+        _expiryDateMeta,
+        expiryDate.isAcceptableOrUnknown(data['expiry_date']!, _expiryDateMeta),
+      );
+    }
+    if (data.containsKey('cost_paise')) {
+      context.handle(
+        _costPaiseMeta,
+        costPaise.isAcceptableOrUnknown(data['cost_paise']!, _costPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_costPaiseMeta);
+    }
+    if (data.containsKey('qty_milli')) {
+      context.handle(
+        _qtyMilliMeta,
+        qtyMilli.isAcceptableOrUnknown(data['qty_milli']!, _qtyMilliMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_qtyMilliMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Batche map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Batche(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      productId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}product_id'],
+      )!,
+      batchNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_no'],
+      )!,
+      mfgDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mfg_date'],
+      ),
+      expiryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}expiry_date'],
+      ),
+      costPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cost_paise'],
+      )!,
+      qtyMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}qty_milli'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $BatchesTable createAlias(String alias) {
+    return $BatchesTable(attachedDatabase, alias);
+  }
+}
+
+class Batche extends DataClass implements Insertable<Batche> {
+  final String id;
+  final String tenantId;
+  final String productId;
+  final String batchNo;
+  final String? mfgDate;
+  final String? expiryDate;
+  final int costPaise;
+  final int qtyMilli;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const Batche({
+    required this.id,
+    required this.tenantId,
+    required this.productId,
+    required this.batchNo,
+    this.mfgDate,
+    this.expiryDate,
+    required this.costPaise,
+    required this.qtyMilli,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['product_id'] = Variable<String>(productId);
+    map['batch_no'] = Variable<String>(batchNo);
+    if (!nullToAbsent || mfgDate != null) {
+      map['mfg_date'] = Variable<String>(mfgDate);
+    }
+    if (!nullToAbsent || expiryDate != null) {
+      map['expiry_date'] = Variable<String>(expiryDate);
+    }
+    map['cost_paise'] = Variable<int>(costPaise);
+    map['qty_milli'] = Variable<int>(qtyMilli);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  BatchesCompanion toCompanion(bool nullToAbsent) {
+    return BatchesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      productId: Value(productId),
+      batchNo: Value(batchNo),
+      mfgDate: mfgDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mfgDate),
+      expiryDate: expiryDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(expiryDate),
+      costPaise: Value(costPaise),
+      qtyMilli: Value(qtyMilli),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory Batche.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Batche(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      productId: serializer.fromJson<String>(json['productId']),
+      batchNo: serializer.fromJson<String>(json['batchNo']),
+      mfgDate: serializer.fromJson<String?>(json['mfgDate']),
+      expiryDate: serializer.fromJson<String?>(json['expiryDate']),
+      costPaise: serializer.fromJson<int>(json['costPaise']),
+      qtyMilli: serializer.fromJson<int>(json['qtyMilli']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'productId': serializer.toJson<String>(productId),
+      'batchNo': serializer.toJson<String>(batchNo),
+      'mfgDate': serializer.toJson<String?>(mfgDate),
+      'expiryDate': serializer.toJson<String?>(expiryDate),
+      'costPaise': serializer.toJson<int>(costPaise),
+      'qtyMilli': serializer.toJson<int>(qtyMilli),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  Batche copyWith({
+    String? id,
+    String? tenantId,
+    String? productId,
+    String? batchNo,
+    Value<String?> mfgDate = const Value.absent(),
+    Value<String?> expiryDate = const Value.absent(),
+    int? costPaise,
+    int? qtyMilli,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => Batche(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    productId: productId ?? this.productId,
+    batchNo: batchNo ?? this.batchNo,
+    mfgDate: mfgDate.present ? mfgDate.value : this.mfgDate,
+    expiryDate: expiryDate.present ? expiryDate.value : this.expiryDate,
+    costPaise: costPaise ?? this.costPaise,
+    qtyMilli: qtyMilli ?? this.qtyMilli,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  Batche copyWithCompanion(BatchesCompanion data) {
+    return Batche(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      batchNo: data.batchNo.present ? data.batchNo.value : this.batchNo,
+      mfgDate: data.mfgDate.present ? data.mfgDate.value : this.mfgDate,
+      expiryDate: data.expiryDate.present
+          ? data.expiryDate.value
+          : this.expiryDate,
+      costPaise: data.costPaise.present ? data.costPaise.value : this.costPaise,
+      qtyMilli: data.qtyMilli.present ? data.qtyMilli.value : this.qtyMilli,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Batche(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('productId: $productId, ')
+          ..write('batchNo: $batchNo, ')
+          ..write('mfgDate: $mfgDate, ')
+          ..write('expiryDate: $expiryDate, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    productId,
+    batchNo,
+    mfgDate,
+    expiryDate,
+    costPaise,
+    qtyMilli,
+    createdBy,
+    createdAt,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Batche &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.productId == this.productId &&
+          other.batchNo == this.batchNo &&
+          other.mfgDate == this.mfgDate &&
+          other.expiryDate == this.expiryDate &&
+          other.costPaise == this.costPaise &&
+          other.qtyMilli == this.qtyMilli &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class BatchesCompanion extends UpdateCompanion<Batche> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> productId;
+  final Value<String> batchNo;
+  final Value<String?> mfgDate;
+  final Value<String?> expiryDate;
+  final Value<int> costPaise;
+  final Value<int> qtyMilli;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const BatchesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.batchNo = const Value.absent(),
+    this.mfgDate = const Value.absent(),
+    this.expiryDate = const Value.absent(),
+    this.costPaise = const Value.absent(),
+    this.qtyMilli = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  BatchesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String productId,
+    required String batchNo,
+    this.mfgDate = const Value.absent(),
+    this.expiryDate = const Value.absent(),
+    required int costPaise,
+    required int qtyMilli,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       productId = Value(productId),
+       batchNo = Value(batchNo),
+       costPaise = Value(costPaise),
+       qtyMilli = Value(qtyMilli);
+  static Insertable<Batche> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? productId,
+    Expression<String>? batchNo,
+    Expression<String>? mfgDate,
+    Expression<String>? expiryDate,
+    Expression<int>? costPaise,
+    Expression<int>? qtyMilli,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (productId != null) 'product_id': productId,
+      if (batchNo != null) 'batch_no': batchNo,
+      if (mfgDate != null) 'mfg_date': mfgDate,
+      if (expiryDate != null) 'expiry_date': expiryDate,
+      if (costPaise != null) 'cost_paise': costPaise,
+      if (qtyMilli != null) 'qty_milli': qtyMilli,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  BatchesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? productId,
+    Value<String>? batchNo,
+    Value<String?>? mfgDate,
+    Value<String?>? expiryDate,
+    Value<int>? costPaise,
+    Value<int>? qtyMilli,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return BatchesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      productId: productId ?? this.productId,
+      batchNo: batchNo ?? this.batchNo,
+      mfgDate: mfgDate ?? this.mfgDate,
+      expiryDate: expiryDate ?? this.expiryDate,
+      costPaise: costPaise ?? this.costPaise,
+      qtyMilli: qtyMilli ?? this.qtyMilli,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (batchNo.present) {
+      map['batch_no'] = Variable<String>(batchNo.value);
+    }
+    if (mfgDate.present) {
+      map['mfg_date'] = Variable<String>(mfgDate.value);
+    }
+    if (expiryDate.present) {
+      map['expiry_date'] = Variable<String>(expiryDate.value);
+    }
+    if (costPaise.present) {
+      map['cost_paise'] = Variable<int>(costPaise.value);
+    }
+    if (qtyMilli.present) {
+      map['qty_milli'] = Variable<int>(qtyMilli.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BatchesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('productId: $productId, ')
+          ..write('batchNo: $batchNo, ')
+          ..write('mfgDate: $mfgDate, ')
+          ..write('expiryDate: $expiryDate, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $StockMovementsTable extends StockMovements
+    with TableInfo<$StockMovementsTable, StockMovement> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $StockMovementsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productIdMeta = const VerificationMeta(
+    'productId',
+  );
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+    'product_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchIdMeta = const VerificationMeta(
+    'batchId',
+  );
+  @override
+  late final GeneratedColumn<String> batchId = GeneratedColumn<String>(
+    'batch_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _qtyMilliMeta = const VerificationMeta(
+    'qtyMilli',
+  );
+  @override
+  late final GeneratedColumn<int> qtyMilli = GeneratedColumn<int>(
+    'qty_milli',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reasonMeta = const VerificationMeta('reason');
+  @override
+  late final GeneratedColumn<String> reason = GeneratedColumn<String>(
+    'reason',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refTypeMeta = const VerificationMeta(
+    'refType',
+  );
+  @override
+  late final GeneratedColumn<String> refType = GeneratedColumn<String>(
+    'ref_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _refIdMeta = const VerificationMeta('refId');
+  @override
+  late final GeneratedColumn<String> refId = GeneratedColumn<String>(
+    'ref_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _receivedAtMeta = const VerificationMeta(
+    'receivedAt',
+  );
+  @override
+  late final GeneratedColumn<String> receivedAt = GeneratedColumn<String>(
+    'received_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    productId,
+    batchId,
+    entryDate,
+    qtyMilli,
+    reason,
+    refType,
+    refId,
+    note,
+    deviceId,
+    createdBy,
+    createdAt,
+    receivedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'stock_movements';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<StockMovement> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(
+        _productIdMeta,
+        productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('batch_id')) {
+      context.handle(
+        _batchIdMeta,
+        batchId.isAcceptableOrUnknown(data['batch_id']!, _batchIdMeta),
+      );
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('qty_milli')) {
+      context.handle(
+        _qtyMilliMeta,
+        qtyMilli.isAcceptableOrUnknown(data['qty_milli']!, _qtyMilliMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_qtyMilliMeta);
+    }
+    if (data.containsKey('reason')) {
+      context.handle(
+        _reasonMeta,
+        reason.isAcceptableOrUnknown(data['reason']!, _reasonMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_reasonMeta);
+    }
+    if (data.containsKey('ref_type')) {
+      context.handle(
+        _refTypeMeta,
+        refType.isAcceptableOrUnknown(data['ref_type']!, _refTypeMeta),
+      );
+    }
+    if (data.containsKey('ref_id')) {
+      context.handle(
+        _refIdMeta,
+        refId.isAcceptableOrUnknown(data['ref_id']!, _refIdMeta),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('received_at')) {
+      context.handle(
+        _receivedAtMeta,
+        receivedAt.isAcceptableOrUnknown(data['received_at']!, _receivedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  StockMovement map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return StockMovement(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      productId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}product_id'],
+      )!,
+      batchId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_id'],
+      ),
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      qtyMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}qty_milli'],
+      )!,
+      reason: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reason'],
+      )!,
+      refType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_type'],
+      ),
+      refId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_id'],
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      receivedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}received_at'],
+      ),
+    );
+  }
+
+  @override
+  $StockMovementsTable createAlias(String alias) {
+    return $StockMovementsTable(attachedDatabase, alias);
+  }
+}
+
+class StockMovement extends DataClass implements Insertable<StockMovement> {
+  final String id;
+  final String tenantId;
+  final String productId;
+  final String? batchId;
+  final String entryDate;
+  final int qtyMilli;
+  final String reason;
+  final String? refType;
+  final String? refId;
+  final String? note;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  final String? receivedAt;
+  const StockMovement({
+    required this.id,
+    required this.tenantId,
+    required this.productId,
+    this.batchId,
+    required this.entryDate,
+    required this.qtyMilli,
+    required this.reason,
+    this.refType,
+    this.refId,
+    this.note,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+    this.receivedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['product_id'] = Variable<String>(productId);
+    if (!nullToAbsent || batchId != null) {
+      map['batch_id'] = Variable<String>(batchId);
+    }
+    map['entry_date'] = Variable<String>(entryDate);
+    map['qty_milli'] = Variable<int>(qtyMilli);
+    map['reason'] = Variable<String>(reason);
+    if (!nullToAbsent || refType != null) {
+      map['ref_type'] = Variable<String>(refType);
+    }
+    if (!nullToAbsent || refId != null) {
+      map['ref_id'] = Variable<String>(refId);
+    }
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || receivedAt != null) {
+      map['received_at'] = Variable<String>(receivedAt);
+    }
+    return map;
+  }
+
+  StockMovementsCompanion toCompanion(bool nullToAbsent) {
+    return StockMovementsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      productId: Value(productId),
+      batchId: batchId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(batchId),
+      entryDate: Value(entryDate),
+      qtyMilli: Value(qtyMilli),
+      reason: Value(reason),
+      refType: refType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(refType),
+      refId: refId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(refId),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      receivedAt: receivedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(receivedAt),
+    );
+  }
+
+  factory StockMovement.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return StockMovement(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      productId: serializer.fromJson<String>(json['productId']),
+      batchId: serializer.fromJson<String?>(json['batchId']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      qtyMilli: serializer.fromJson<int>(json['qtyMilli']),
+      reason: serializer.fromJson<String>(json['reason']),
+      refType: serializer.fromJson<String?>(json['refType']),
+      refId: serializer.fromJson<String?>(json['refId']),
+      note: serializer.fromJson<String?>(json['note']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      receivedAt: serializer.fromJson<String?>(json['receivedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'productId': serializer.toJson<String>(productId),
+      'batchId': serializer.toJson<String?>(batchId),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'qtyMilli': serializer.toJson<int>(qtyMilli),
+      'reason': serializer.toJson<String>(reason),
+      'refType': serializer.toJson<String?>(refType),
+      'refId': serializer.toJson<String?>(refId),
+      'note': serializer.toJson<String?>(note),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'receivedAt': serializer.toJson<String?>(receivedAt),
+    };
+  }
+
+  StockMovement copyWith({
+    String? id,
+    String? tenantId,
+    String? productId,
+    Value<String?> batchId = const Value.absent(),
+    String? entryDate,
+    int? qtyMilli,
+    String? reason,
+    Value<String?> refType = const Value.absent(),
+    Value<String?> refId = const Value.absent(),
+    Value<String?> note = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> receivedAt = const Value.absent(),
+  }) => StockMovement(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    productId: productId ?? this.productId,
+    batchId: batchId.present ? batchId.value : this.batchId,
+    entryDate: entryDate ?? this.entryDate,
+    qtyMilli: qtyMilli ?? this.qtyMilli,
+    reason: reason ?? this.reason,
+    refType: refType.present ? refType.value : this.refType,
+    refId: refId.present ? refId.value : this.refId,
+    note: note.present ? note.value : this.note,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    receivedAt: receivedAt.present ? receivedAt.value : this.receivedAt,
+  );
+  StockMovement copyWithCompanion(StockMovementsCompanion data) {
+    return StockMovement(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      batchId: data.batchId.present ? data.batchId.value : this.batchId,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      qtyMilli: data.qtyMilli.present ? data.qtyMilli.value : this.qtyMilli,
+      reason: data.reason.present ? data.reason.value : this.reason,
+      refType: data.refType.present ? data.refType.value : this.refType,
+      refId: data.refId.present ? data.refId.value : this.refId,
+      note: data.note.present ? data.note.value : this.note,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      receivedAt: data.receivedAt.present
+          ? data.receivedAt.value
+          : this.receivedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('StockMovement(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('reason: $reason, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('note: $note, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('receivedAt: $receivedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    productId,
+    batchId,
+    entryDate,
+    qtyMilli,
+    reason,
+    refType,
+    refId,
+    note,
+    deviceId,
+    createdBy,
+    createdAt,
+    receivedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is StockMovement &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.productId == this.productId &&
+          other.batchId == this.batchId &&
+          other.entryDate == this.entryDate &&
+          other.qtyMilli == this.qtyMilli &&
+          other.reason == this.reason &&
+          other.refType == this.refType &&
+          other.refId == this.refId &&
+          other.note == this.note &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.receivedAt == this.receivedAt);
+}
+
+class StockMovementsCompanion extends UpdateCompanion<StockMovement> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> productId;
+  final Value<String?> batchId;
+  final Value<String> entryDate;
+  final Value<int> qtyMilli;
+  final Value<String> reason;
+  final Value<String?> refType;
+  final Value<String?> refId;
+  final Value<String?> note;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> receivedAt;
+  final Value<int> rowid;
+  const StockMovementsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.batchId = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.qtyMilli = const Value.absent(),
+    this.reason = const Value.absent(),
+    this.refType = const Value.absent(),
+    this.refId = const Value.absent(),
+    this.note = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.receivedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  StockMovementsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String productId,
+    this.batchId = const Value.absent(),
+    required String entryDate,
+    required int qtyMilli,
+    required String reason,
+    this.refType = const Value.absent(),
+    this.refId = const Value.absent(),
+    this.note = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.receivedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       productId = Value(productId),
+       entryDate = Value(entryDate),
+       qtyMilli = Value(qtyMilli),
+       reason = Value(reason);
+  static Insertable<StockMovement> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? productId,
+    Expression<String>? batchId,
+    Expression<String>? entryDate,
+    Expression<int>? qtyMilli,
+    Expression<String>? reason,
+    Expression<String>? refType,
+    Expression<String>? refId,
+    Expression<String>? note,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? receivedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (productId != null) 'product_id': productId,
+      if (batchId != null) 'batch_id': batchId,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (qtyMilli != null) 'qty_milli': qtyMilli,
+      if (reason != null) 'reason': reason,
+      if (refType != null) 'ref_type': refType,
+      if (refId != null) 'ref_id': refId,
+      if (note != null) 'note': note,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (receivedAt != null) 'received_at': receivedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  StockMovementsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? productId,
+    Value<String?>? batchId,
+    Value<String>? entryDate,
+    Value<int>? qtyMilli,
+    Value<String>? reason,
+    Value<String?>? refType,
+    Value<String?>? refId,
+    Value<String?>? note,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? receivedAt,
+    Value<int>? rowid,
+  }) {
+    return StockMovementsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      productId: productId ?? this.productId,
+      batchId: batchId ?? this.batchId,
+      entryDate: entryDate ?? this.entryDate,
+      qtyMilli: qtyMilli ?? this.qtyMilli,
+      reason: reason ?? this.reason,
+      refType: refType ?? this.refType,
+      refId: refId ?? this.refId,
+      note: note ?? this.note,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      receivedAt: receivedAt ?? this.receivedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (batchId.present) {
+      map['batch_id'] = Variable<String>(batchId.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (qtyMilli.present) {
+      map['qty_milli'] = Variable<int>(qtyMilli.value);
+    }
+    if (reason.present) {
+      map['reason'] = Variable<String>(reason.value);
+    }
+    if (refType.present) {
+      map['ref_type'] = Variable<String>(refType.value);
+    }
+    if (refId.present) {
+      map['ref_id'] = Variable<String>(refId.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (receivedAt.present) {
+      map['received_at'] = Variable<String>(receivedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('StockMovementsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('reason: $reason, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('note: $note, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('receivedAt: $receivedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PurchasesTable extends Purchases
+    with TableInfo<$PurchasesTable, Purchase> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PurchasesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _purchaseNoMeta = const VerificationMeta(
+    'purchaseNo',
+  );
+  @override
+  late final GeneratedColumn<String> purchaseNo = GeneratedColumn<String>(
+    'purchase_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _supplierInvoiceNoMeta = const VerificationMeta(
+    'supplierInvoiceNo',
+  );
+  @override
+  late final GeneratedColumn<String> supplierInvoiceNo =
+      GeneratedColumn<String>(
+        'supplier_invoice_no',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _invoiceDateMeta = const VerificationMeta(
+    'invoiceDate',
+  );
+  @override
+  late final GeneratedColumn<String> invoiceDate = GeneratedColumn<String>(
+    'invoice_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _freightPaiseMeta = const VerificationMeta(
+    'freightPaise',
+  );
+  @override
+  late final GeneratedColumn<int> freightPaise = GeneratedColumn<int>(
+    'freight_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _otherChargesPaiseMeta = const VerificationMeta(
+    'otherChargesPaise',
+  );
+  @override
+  late final GeneratedColumn<int> otherChargesPaise = GeneratedColumn<int>(
+    'other_charges_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _gstPaiseMeta = const VerificationMeta(
+    'gstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> gstPaise = GeneratedColumn<int>(
+    'gst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _roundOffPaiseMeta = const VerificationMeta(
+    'roundOffPaise',
+  );
+  @override
+  late final GeneratedColumn<int> roundOffPaise = GeneratedColumn<int>(
+    'round_off_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _totalPaiseMeta = const VerificationMeta(
+    'totalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> totalPaise = GeneratedColumn<int>(
+    'total_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paidPaiseMeta = const VerificationMeta(
+    'paidPaise',
+  );
+  @override
+  late final GeneratedColumn<int> paidPaise = GeneratedColumn<int>(
+    'paid_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paymentModeMeta = const VerificationMeta(
+    'paymentMode',
+  );
+  @override
+  late final GeneratedColumn<String> paymentMode = GeneratedColumn<String>(
+    'payment_mode',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _bankAccountIdMeta = const VerificationMeta(
+    'bankAccountId',
+  );
+  @override
+  late final GeneratedColumn<String> bankAccountId = GeneratedColumn<String>(
+    'bank_account_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _creditDaysMeta = const VerificationMeta(
+    'creditDays',
+  );
+  @override
+  late final GeneratedColumn<int> creditDays = GeneratedColumn<int>(
+    'credit_days',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dueDateMeta = const VerificationMeta(
+    'dueDate',
+  );
+  @override
+  late final GeneratedColumn<String> dueDate = GeneratedColumn<String>(
+    'due_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reversedAtMeta = const VerificationMeta(
+    'reversedAt',
+  );
+  @override
+  late final GeneratedColumn<String> reversedAt = GeneratedColumn<String>(
+    'reversed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    purchaseNo,
+    partyId,
+    supplierInvoiceNo,
+    invoiceDate,
+    entryDate,
+    freightPaise,
+    otherChargesPaise,
+    taxablePaise,
+    gstPaise,
+    roundOffPaise,
+    totalPaise,
+    paidPaise,
+    paymentMode,
+    bankAccountId,
+    creditDays,
+    dueDate,
+    notes,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'purchases';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Purchase> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('purchase_no')) {
+      context.handle(
+        _purchaseNoMeta,
+        purchaseNo.isAcceptableOrUnknown(data['purchase_no']!, _purchaseNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_purchaseNoMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyIdMeta);
+    }
+    if (data.containsKey('supplier_invoice_no')) {
+      context.handle(
+        _supplierInvoiceNoMeta,
+        supplierInvoiceNo.isAcceptableOrUnknown(
+          data['supplier_invoice_no']!,
+          _supplierInvoiceNoMeta,
+        ),
+      );
+    }
+    if (data.containsKey('invoice_date')) {
+      context.handle(
+        _invoiceDateMeta,
+        invoiceDate.isAcceptableOrUnknown(
+          data['invoice_date']!,
+          _invoiceDateMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_invoiceDateMeta);
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('freight_paise')) {
+      context.handle(
+        _freightPaiseMeta,
+        freightPaise.isAcceptableOrUnknown(
+          data['freight_paise']!,
+          _freightPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_freightPaiseMeta);
+    }
+    if (data.containsKey('other_charges_paise')) {
+      context.handle(
+        _otherChargesPaiseMeta,
+        otherChargesPaise.isAcceptableOrUnknown(
+          data['other_charges_paise']!,
+          _otherChargesPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_otherChargesPaiseMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('gst_paise')) {
+      context.handle(
+        _gstPaiseMeta,
+        gstPaise.isAcceptableOrUnknown(data['gst_paise']!, _gstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_gstPaiseMeta);
+    }
+    if (data.containsKey('round_off_paise')) {
+      context.handle(
+        _roundOffPaiseMeta,
+        roundOffPaise.isAcceptableOrUnknown(
+          data['round_off_paise']!,
+          _roundOffPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_roundOffPaiseMeta);
+    }
+    if (data.containsKey('total_paise')) {
+      context.handle(
+        _totalPaiseMeta,
+        totalPaise.isAcceptableOrUnknown(data['total_paise']!, _totalPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_totalPaiseMeta);
+    }
+    if (data.containsKey('paid_paise')) {
+      context.handle(
+        _paidPaiseMeta,
+        paidPaise.isAcceptableOrUnknown(data['paid_paise']!, _paidPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_paidPaiseMeta);
+    }
+    if (data.containsKey('payment_mode')) {
+      context.handle(
+        _paymentModeMeta,
+        paymentMode.isAcceptableOrUnknown(
+          data['payment_mode']!,
+          _paymentModeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('bank_account_id')) {
+      context.handle(
+        _bankAccountIdMeta,
+        bankAccountId.isAcceptableOrUnknown(
+          data['bank_account_id']!,
+          _bankAccountIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('credit_days')) {
+      context.handle(
+        _creditDaysMeta,
+        creditDays.isAcceptableOrUnknown(data['credit_days']!, _creditDaysMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_creditDaysMeta);
+    }
+    if (data.containsKey('due_date')) {
+      context.handle(
+        _dueDateMeta,
+        dueDate.isAcceptableOrUnknown(data['due_date']!, _dueDateMeta),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('reversed_at')) {
+      context.handle(
+        _reversedAtMeta,
+        reversedAt.isAcceptableOrUnknown(data['reversed_at']!, _reversedAtMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Purchase map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Purchase(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      purchaseNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purchase_no'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      supplierInvoiceNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}supplier_invoice_no'],
+      ),
+      invoiceDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}invoice_date'],
+      )!,
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      freightPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}freight_paise'],
+      )!,
+      otherChargesPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}other_charges_paise'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      gstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}gst_paise'],
+      )!,
+      roundOffPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}round_off_paise'],
+      )!,
+      totalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_paise'],
+      )!,
+      paidPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}paid_paise'],
+      )!,
+      paymentMode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_mode'],
+      ),
+      bankAccountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bank_account_id'],
+      ),
+      creditDays: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}credit_days'],
+      )!,
+      dueDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}due_date'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      reversedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reversed_at'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $PurchasesTable createAlias(String alias) {
+    return $PurchasesTable(attachedDatabase, alias);
+  }
+}
+
+class Purchase extends DataClass implements Insertable<Purchase> {
+  final String id;
+  final String tenantId;
+  final String purchaseNo;
+  final String partyId;
+  final String? supplierInvoiceNo;
+  final String invoiceDate;
+  final String entryDate;
+  final int freightPaise;
+  final int otherChargesPaise;
+  final int taxablePaise;
+  final int gstPaise;
+  final int roundOffPaise;
+  final int totalPaise;
+  final int paidPaise;
+  final String? paymentMode;
+  final String? bankAccountId;
+  final int creditDays;
+  final String? dueDate;
+  final String? notes;
+  final String status;
+  final String? reversedAt;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const Purchase({
+    required this.id,
+    required this.tenantId,
+    required this.purchaseNo,
+    required this.partyId,
+    this.supplierInvoiceNo,
+    required this.invoiceDate,
+    required this.entryDate,
+    required this.freightPaise,
+    required this.otherChargesPaise,
+    required this.taxablePaise,
+    required this.gstPaise,
+    required this.roundOffPaise,
+    required this.totalPaise,
+    required this.paidPaise,
+    this.paymentMode,
+    this.bankAccountId,
+    required this.creditDays,
+    this.dueDate,
+    this.notes,
+    required this.status,
+    this.reversedAt,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['purchase_no'] = Variable<String>(purchaseNo);
+    map['party_id'] = Variable<String>(partyId);
+    if (!nullToAbsent || supplierInvoiceNo != null) {
+      map['supplier_invoice_no'] = Variable<String>(supplierInvoiceNo);
+    }
+    map['invoice_date'] = Variable<String>(invoiceDate);
+    map['entry_date'] = Variable<String>(entryDate);
+    map['freight_paise'] = Variable<int>(freightPaise);
+    map['other_charges_paise'] = Variable<int>(otherChargesPaise);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['gst_paise'] = Variable<int>(gstPaise);
+    map['round_off_paise'] = Variable<int>(roundOffPaise);
+    map['total_paise'] = Variable<int>(totalPaise);
+    map['paid_paise'] = Variable<int>(paidPaise);
+    if (!nullToAbsent || paymentMode != null) {
+      map['payment_mode'] = Variable<String>(paymentMode);
+    }
+    if (!nullToAbsent || bankAccountId != null) {
+      map['bank_account_id'] = Variable<String>(bankAccountId);
+    }
+    map['credit_days'] = Variable<int>(creditDays);
+    if (!nullToAbsent || dueDate != null) {
+      map['due_date'] = Variable<String>(dueDate);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || reversedAt != null) {
+      map['reversed_at'] = Variable<String>(reversedAt);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  PurchasesCompanion toCompanion(bool nullToAbsent) {
+    return PurchasesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      purchaseNo: Value(purchaseNo),
+      partyId: Value(partyId),
+      supplierInvoiceNo: supplierInvoiceNo == null && nullToAbsent
+          ? const Value.absent()
+          : Value(supplierInvoiceNo),
+      invoiceDate: Value(invoiceDate),
+      entryDate: Value(entryDate),
+      freightPaise: Value(freightPaise),
+      otherChargesPaise: Value(otherChargesPaise),
+      taxablePaise: Value(taxablePaise),
+      gstPaise: Value(gstPaise),
+      roundOffPaise: Value(roundOffPaise),
+      totalPaise: Value(totalPaise),
+      paidPaise: Value(paidPaise),
+      paymentMode: paymentMode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(paymentMode),
+      bankAccountId: bankAccountId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bankAccountId),
+      creditDays: Value(creditDays),
+      dueDate: dueDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dueDate),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      status: Value(status),
+      reversedAt: reversedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversedAt),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory Purchase.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Purchase(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      purchaseNo: serializer.fromJson<String>(json['purchaseNo']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      supplierInvoiceNo: serializer.fromJson<String?>(
+        json['supplierInvoiceNo'],
+      ),
+      invoiceDate: serializer.fromJson<String>(json['invoiceDate']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      freightPaise: serializer.fromJson<int>(json['freightPaise']),
+      otherChargesPaise: serializer.fromJson<int>(json['otherChargesPaise']),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      gstPaise: serializer.fromJson<int>(json['gstPaise']),
+      roundOffPaise: serializer.fromJson<int>(json['roundOffPaise']),
+      totalPaise: serializer.fromJson<int>(json['totalPaise']),
+      paidPaise: serializer.fromJson<int>(json['paidPaise']),
+      paymentMode: serializer.fromJson<String?>(json['paymentMode']),
+      bankAccountId: serializer.fromJson<String?>(json['bankAccountId']),
+      creditDays: serializer.fromJson<int>(json['creditDays']),
+      dueDate: serializer.fromJson<String?>(json['dueDate']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      status: serializer.fromJson<String>(json['status']),
+      reversedAt: serializer.fromJson<String?>(json['reversedAt']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'purchaseNo': serializer.toJson<String>(purchaseNo),
+      'partyId': serializer.toJson<String>(partyId),
+      'supplierInvoiceNo': serializer.toJson<String?>(supplierInvoiceNo),
+      'invoiceDate': serializer.toJson<String>(invoiceDate),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'freightPaise': serializer.toJson<int>(freightPaise),
+      'otherChargesPaise': serializer.toJson<int>(otherChargesPaise),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'gstPaise': serializer.toJson<int>(gstPaise),
+      'roundOffPaise': serializer.toJson<int>(roundOffPaise),
+      'totalPaise': serializer.toJson<int>(totalPaise),
+      'paidPaise': serializer.toJson<int>(paidPaise),
+      'paymentMode': serializer.toJson<String?>(paymentMode),
+      'bankAccountId': serializer.toJson<String?>(bankAccountId),
+      'creditDays': serializer.toJson<int>(creditDays),
+      'dueDate': serializer.toJson<String?>(dueDate),
+      'notes': serializer.toJson<String?>(notes),
+      'status': serializer.toJson<String>(status),
+      'reversedAt': serializer.toJson<String?>(reversedAt),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  Purchase copyWith({
+    String? id,
+    String? tenantId,
+    String? purchaseNo,
+    String? partyId,
+    Value<String?> supplierInvoiceNo = const Value.absent(),
+    String? invoiceDate,
+    String? entryDate,
+    int? freightPaise,
+    int? otherChargesPaise,
+    int? taxablePaise,
+    int? gstPaise,
+    int? roundOffPaise,
+    int? totalPaise,
+    int? paidPaise,
+    Value<String?> paymentMode = const Value.absent(),
+    Value<String?> bankAccountId = const Value.absent(),
+    int? creditDays,
+    Value<String?> dueDate = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+    String? status,
+    Value<String?> reversedAt = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => Purchase(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    purchaseNo: purchaseNo ?? this.purchaseNo,
+    partyId: partyId ?? this.partyId,
+    supplierInvoiceNo: supplierInvoiceNo.present
+        ? supplierInvoiceNo.value
+        : this.supplierInvoiceNo,
+    invoiceDate: invoiceDate ?? this.invoiceDate,
+    entryDate: entryDate ?? this.entryDate,
+    freightPaise: freightPaise ?? this.freightPaise,
+    otherChargesPaise: otherChargesPaise ?? this.otherChargesPaise,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    gstPaise: gstPaise ?? this.gstPaise,
+    roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+    totalPaise: totalPaise ?? this.totalPaise,
+    paidPaise: paidPaise ?? this.paidPaise,
+    paymentMode: paymentMode.present ? paymentMode.value : this.paymentMode,
+    bankAccountId: bankAccountId.present
+        ? bankAccountId.value
+        : this.bankAccountId,
+    creditDays: creditDays ?? this.creditDays,
+    dueDate: dueDate.present ? dueDate.value : this.dueDate,
+    notes: notes.present ? notes.value : this.notes,
+    status: status ?? this.status,
+    reversedAt: reversedAt.present ? reversedAt.value : this.reversedAt,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  Purchase copyWithCompanion(PurchasesCompanion data) {
+    return Purchase(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      purchaseNo: data.purchaseNo.present
+          ? data.purchaseNo.value
+          : this.purchaseNo,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      supplierInvoiceNo: data.supplierInvoiceNo.present
+          ? data.supplierInvoiceNo.value
+          : this.supplierInvoiceNo,
+      invoiceDate: data.invoiceDate.present
+          ? data.invoiceDate.value
+          : this.invoiceDate,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      freightPaise: data.freightPaise.present
+          ? data.freightPaise.value
+          : this.freightPaise,
+      otherChargesPaise: data.otherChargesPaise.present
+          ? data.otherChargesPaise.value
+          : this.otherChargesPaise,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      gstPaise: data.gstPaise.present ? data.gstPaise.value : this.gstPaise,
+      roundOffPaise: data.roundOffPaise.present
+          ? data.roundOffPaise.value
+          : this.roundOffPaise,
+      totalPaise: data.totalPaise.present
+          ? data.totalPaise.value
+          : this.totalPaise,
+      paidPaise: data.paidPaise.present ? data.paidPaise.value : this.paidPaise,
+      paymentMode: data.paymentMode.present
+          ? data.paymentMode.value
+          : this.paymentMode,
+      bankAccountId: data.bankAccountId.present
+          ? data.bankAccountId.value
+          : this.bankAccountId,
+      creditDays: data.creditDays.present
+          ? data.creditDays.value
+          : this.creditDays,
+      dueDate: data.dueDate.present ? data.dueDate.value : this.dueDate,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      status: data.status.present ? data.status.value : this.status,
+      reversedAt: data.reversedAt.present
+          ? data.reversedAt.value
+          : this.reversedAt,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Purchase(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('purchaseNo: $purchaseNo, ')
+          ..write('partyId: $partyId, ')
+          ..write('supplierInvoiceNo: $supplierInvoiceNo, ')
+          ..write('invoiceDate: $invoiceDate, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('freightPaise: $freightPaise, ')
+          ..write('otherChargesPaise: $otherChargesPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('paidPaise: $paidPaise, ')
+          ..write('paymentMode: $paymentMode, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('creditDays: $creditDays, ')
+          ..write('dueDate: $dueDate, ')
+          ..write('notes: $notes, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    id,
+    tenantId,
+    purchaseNo,
+    partyId,
+    supplierInvoiceNo,
+    invoiceDate,
+    entryDate,
+    freightPaise,
+    otherChargesPaise,
+    taxablePaise,
+    gstPaise,
+    roundOffPaise,
+    totalPaise,
+    paidPaise,
+    paymentMode,
+    bankAccountId,
+    creditDays,
+    dueDate,
+    notes,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Purchase &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.purchaseNo == this.purchaseNo &&
+          other.partyId == this.partyId &&
+          other.supplierInvoiceNo == this.supplierInvoiceNo &&
+          other.invoiceDate == this.invoiceDate &&
+          other.entryDate == this.entryDate &&
+          other.freightPaise == this.freightPaise &&
+          other.otherChargesPaise == this.otherChargesPaise &&
+          other.taxablePaise == this.taxablePaise &&
+          other.gstPaise == this.gstPaise &&
+          other.roundOffPaise == this.roundOffPaise &&
+          other.totalPaise == this.totalPaise &&
+          other.paidPaise == this.paidPaise &&
+          other.paymentMode == this.paymentMode &&
+          other.bankAccountId == this.bankAccountId &&
+          other.creditDays == this.creditDays &&
+          other.dueDate == this.dueDate &&
+          other.notes == this.notes &&
+          other.status == this.status &&
+          other.reversedAt == this.reversedAt &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class PurchasesCompanion extends UpdateCompanion<Purchase> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> purchaseNo;
+  final Value<String> partyId;
+  final Value<String?> supplierInvoiceNo;
+  final Value<String> invoiceDate;
+  final Value<String> entryDate;
+  final Value<int> freightPaise;
+  final Value<int> otherChargesPaise;
+  final Value<int> taxablePaise;
+  final Value<int> gstPaise;
+  final Value<int> roundOffPaise;
+  final Value<int> totalPaise;
+  final Value<int> paidPaise;
+  final Value<String?> paymentMode;
+  final Value<String?> bankAccountId;
+  final Value<int> creditDays;
+  final Value<String?> dueDate;
+  final Value<String?> notes;
+  final Value<String> status;
+  final Value<String?> reversedAt;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const PurchasesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.purchaseNo = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.supplierInvoiceNo = const Value.absent(),
+    this.invoiceDate = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.freightPaise = const Value.absent(),
+    this.otherChargesPaise = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.gstPaise = const Value.absent(),
+    this.roundOffPaise = const Value.absent(),
+    this.totalPaise = const Value.absent(),
+    this.paidPaise = const Value.absent(),
+    this.paymentMode = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    this.creditDays = const Value.absent(),
+    this.dueDate = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.status = const Value.absent(),
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PurchasesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String purchaseNo,
+    required String partyId,
+    this.supplierInvoiceNo = const Value.absent(),
+    required String invoiceDate,
+    required String entryDate,
+    required int freightPaise,
+    required int otherChargesPaise,
+    required int taxablePaise,
+    required int gstPaise,
+    required int roundOffPaise,
+    required int totalPaise,
+    required int paidPaise,
+    this.paymentMode = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    required int creditDays,
+    this.dueDate = const Value.absent(),
+    this.notes = const Value.absent(),
+    required String status,
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       purchaseNo = Value(purchaseNo),
+       partyId = Value(partyId),
+       invoiceDate = Value(invoiceDate),
+       entryDate = Value(entryDate),
+       freightPaise = Value(freightPaise),
+       otherChargesPaise = Value(otherChargesPaise),
+       taxablePaise = Value(taxablePaise),
+       gstPaise = Value(gstPaise),
+       roundOffPaise = Value(roundOffPaise),
+       totalPaise = Value(totalPaise),
+       paidPaise = Value(paidPaise),
+       creditDays = Value(creditDays),
+       status = Value(status);
+  static Insertable<Purchase> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? purchaseNo,
+    Expression<String>? partyId,
+    Expression<String>? supplierInvoiceNo,
+    Expression<String>? invoiceDate,
+    Expression<String>? entryDate,
+    Expression<int>? freightPaise,
+    Expression<int>? otherChargesPaise,
+    Expression<int>? taxablePaise,
+    Expression<int>? gstPaise,
+    Expression<int>? roundOffPaise,
+    Expression<int>? totalPaise,
+    Expression<int>? paidPaise,
+    Expression<String>? paymentMode,
+    Expression<String>? bankAccountId,
+    Expression<int>? creditDays,
+    Expression<String>? dueDate,
+    Expression<String>? notes,
+    Expression<String>? status,
+    Expression<String>? reversedAt,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (purchaseNo != null) 'purchase_no': purchaseNo,
+      if (partyId != null) 'party_id': partyId,
+      if (supplierInvoiceNo != null) 'supplier_invoice_no': supplierInvoiceNo,
+      if (invoiceDate != null) 'invoice_date': invoiceDate,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (freightPaise != null) 'freight_paise': freightPaise,
+      if (otherChargesPaise != null) 'other_charges_paise': otherChargesPaise,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (gstPaise != null) 'gst_paise': gstPaise,
+      if (roundOffPaise != null) 'round_off_paise': roundOffPaise,
+      if (totalPaise != null) 'total_paise': totalPaise,
+      if (paidPaise != null) 'paid_paise': paidPaise,
+      if (paymentMode != null) 'payment_mode': paymentMode,
+      if (bankAccountId != null) 'bank_account_id': bankAccountId,
+      if (creditDays != null) 'credit_days': creditDays,
+      if (dueDate != null) 'due_date': dueDate,
+      if (notes != null) 'notes': notes,
+      if (status != null) 'status': status,
+      if (reversedAt != null) 'reversed_at': reversedAt,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PurchasesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? purchaseNo,
+    Value<String>? partyId,
+    Value<String?>? supplierInvoiceNo,
+    Value<String>? invoiceDate,
+    Value<String>? entryDate,
+    Value<int>? freightPaise,
+    Value<int>? otherChargesPaise,
+    Value<int>? taxablePaise,
+    Value<int>? gstPaise,
+    Value<int>? roundOffPaise,
+    Value<int>? totalPaise,
+    Value<int>? paidPaise,
+    Value<String?>? paymentMode,
+    Value<String?>? bankAccountId,
+    Value<int>? creditDays,
+    Value<String?>? dueDate,
+    Value<String?>? notes,
+    Value<String>? status,
+    Value<String?>? reversedAt,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return PurchasesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      purchaseNo: purchaseNo ?? this.purchaseNo,
+      partyId: partyId ?? this.partyId,
+      supplierInvoiceNo: supplierInvoiceNo ?? this.supplierInvoiceNo,
+      invoiceDate: invoiceDate ?? this.invoiceDate,
+      entryDate: entryDate ?? this.entryDate,
+      freightPaise: freightPaise ?? this.freightPaise,
+      otherChargesPaise: otherChargesPaise ?? this.otherChargesPaise,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      gstPaise: gstPaise ?? this.gstPaise,
+      roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+      totalPaise: totalPaise ?? this.totalPaise,
+      paidPaise: paidPaise ?? this.paidPaise,
+      paymentMode: paymentMode ?? this.paymentMode,
+      bankAccountId: bankAccountId ?? this.bankAccountId,
+      creditDays: creditDays ?? this.creditDays,
+      dueDate: dueDate ?? this.dueDate,
+      notes: notes ?? this.notes,
+      status: status ?? this.status,
+      reversedAt: reversedAt ?? this.reversedAt,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (purchaseNo.present) {
+      map['purchase_no'] = Variable<String>(purchaseNo.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (supplierInvoiceNo.present) {
+      map['supplier_invoice_no'] = Variable<String>(supplierInvoiceNo.value);
+    }
+    if (invoiceDate.present) {
+      map['invoice_date'] = Variable<String>(invoiceDate.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (freightPaise.present) {
+      map['freight_paise'] = Variable<int>(freightPaise.value);
+    }
+    if (otherChargesPaise.present) {
+      map['other_charges_paise'] = Variable<int>(otherChargesPaise.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (gstPaise.present) {
+      map['gst_paise'] = Variable<int>(gstPaise.value);
+    }
+    if (roundOffPaise.present) {
+      map['round_off_paise'] = Variable<int>(roundOffPaise.value);
+    }
+    if (totalPaise.present) {
+      map['total_paise'] = Variable<int>(totalPaise.value);
+    }
+    if (paidPaise.present) {
+      map['paid_paise'] = Variable<int>(paidPaise.value);
+    }
+    if (paymentMode.present) {
+      map['payment_mode'] = Variable<String>(paymentMode.value);
+    }
+    if (bankAccountId.present) {
+      map['bank_account_id'] = Variable<String>(bankAccountId.value);
+    }
+    if (creditDays.present) {
+      map['credit_days'] = Variable<int>(creditDays.value);
+    }
+    if (dueDate.present) {
+      map['due_date'] = Variable<String>(dueDate.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (reversedAt.present) {
+      map['reversed_at'] = Variable<String>(reversedAt.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PurchasesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('purchaseNo: $purchaseNo, ')
+          ..write('partyId: $partyId, ')
+          ..write('supplierInvoiceNo: $supplierInvoiceNo, ')
+          ..write('invoiceDate: $invoiceDate, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('freightPaise: $freightPaise, ')
+          ..write('otherChargesPaise: $otherChargesPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('paidPaise: $paidPaise, ')
+          ..write('paymentMode: $paymentMode, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('creditDays: $creditDays, ')
+          ..write('dueDate: $dueDate, ')
+          ..write('notes: $notes, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PurchaseLinesTable extends PurchaseLines
+    with TableInfo<$PurchaseLinesTable, PurchaseLine> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PurchaseLinesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _purchaseIdMeta = const VerificationMeta(
+    'purchaseId',
+  );
+  @override
+  late final GeneratedColumn<String> purchaseId = GeneratedColumn<String>(
+    'purchase_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineNoMeta = const VerificationMeta('lineNo');
+  @override
+  late final GeneratedColumn<int> lineNo = GeneratedColumn<int>(
+    'line_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productIdMeta = const VerificationMeta(
+    'productId',
+  );
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+    'product_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchIdMeta = const VerificationMeta(
+    'batchId',
+  );
+  @override
+  late final GeneratedColumn<String> batchId = GeneratedColumn<String>(
+    'batch_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchNoMeta = const VerificationMeta(
+    'batchNo',
+  );
+  @override
+  late final GeneratedColumn<String> batchNo = GeneratedColumn<String>(
+    'batch_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _mfgDateMeta = const VerificationMeta(
+    'mfgDate',
+  );
+  @override
+  late final GeneratedColumn<String> mfgDate = GeneratedColumn<String>(
+    'mfg_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _expiryDateMeta = const VerificationMeta(
+    'expiryDate',
+  );
+  @override
+  late final GeneratedColumn<String> expiryDate = GeneratedColumn<String>(
+    'expiry_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _qtyMilliMeta = const VerificationMeta(
+    'qtyMilli',
+  );
+  @override
+  late final GeneratedColumn<int> qtyMilli = GeneratedColumn<int>(
+    'qty_milli',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _costPaiseMeta = const VerificationMeta(
+    'costPaise',
+  );
+  @override
+  late final GeneratedColumn<int> costPaise = GeneratedColumn<int>(
+    'cost_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _gstRateMeta = const VerificationMeta(
+    'gstRate',
+  );
+  @override
+  late final GeneratedColumn<double> gstRate = GeneratedColumn<double>(
+    'gst_rate',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _gstPaiseMeta = const VerificationMeta(
+    'gstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> gstPaise = GeneratedColumn<int>(
+    'gst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineTotalPaiseMeta = const VerificationMeta(
+    'lineTotalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> lineTotalPaise = GeneratedColumn<int>(
+    'line_total_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    purchaseId,
+    lineNo,
+    productId,
+    batchId,
+    batchNo,
+    mfgDate,
+    expiryDate,
+    qtyMilli,
+    costPaise,
+    gstRate,
+    taxablePaise,
+    gstPaise,
+    lineTotalPaise,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'purchase_lines';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PurchaseLine> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('purchase_id')) {
+      context.handle(
+        _purchaseIdMeta,
+        purchaseId.isAcceptableOrUnknown(data['purchase_id']!, _purchaseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_purchaseIdMeta);
+    }
+    if (data.containsKey('line_no')) {
+      context.handle(
+        _lineNoMeta,
+        lineNo.isAcceptableOrUnknown(data['line_no']!, _lineNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lineNoMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(
+        _productIdMeta,
+        productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('batch_id')) {
+      context.handle(
+        _batchIdMeta,
+        batchId.isAcceptableOrUnknown(data['batch_id']!, _batchIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_batchIdMeta);
+    }
+    if (data.containsKey('batch_no')) {
+      context.handle(
+        _batchNoMeta,
+        batchNo.isAcceptableOrUnknown(data['batch_no']!, _batchNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_batchNoMeta);
+    }
+    if (data.containsKey('mfg_date')) {
+      context.handle(
+        _mfgDateMeta,
+        mfgDate.isAcceptableOrUnknown(data['mfg_date']!, _mfgDateMeta),
+      );
+    }
+    if (data.containsKey('expiry_date')) {
+      context.handle(
+        _expiryDateMeta,
+        expiryDate.isAcceptableOrUnknown(data['expiry_date']!, _expiryDateMeta),
+      );
+    }
+    if (data.containsKey('qty_milli')) {
+      context.handle(
+        _qtyMilliMeta,
+        qtyMilli.isAcceptableOrUnknown(data['qty_milli']!, _qtyMilliMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_qtyMilliMeta);
+    }
+    if (data.containsKey('cost_paise')) {
+      context.handle(
+        _costPaiseMeta,
+        costPaise.isAcceptableOrUnknown(data['cost_paise']!, _costPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_costPaiseMeta);
+    }
+    if (data.containsKey('gst_rate')) {
+      context.handle(
+        _gstRateMeta,
+        gstRate.isAcceptableOrUnknown(data['gst_rate']!, _gstRateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_gstRateMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('gst_paise')) {
+      context.handle(
+        _gstPaiseMeta,
+        gstPaise.isAcceptableOrUnknown(data['gst_paise']!, _gstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_gstPaiseMeta);
+    }
+    if (data.containsKey('line_total_paise')) {
+      context.handle(
+        _lineTotalPaiseMeta,
+        lineTotalPaise.isAcceptableOrUnknown(
+          data['line_total_paise']!,
+          _lineTotalPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lineTotalPaiseMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  PurchaseLine map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PurchaseLine(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      purchaseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purchase_id'],
+      )!,
+      lineNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_no'],
+      )!,
+      productId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}product_id'],
+      )!,
+      batchId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_id'],
+      )!,
+      batchNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_no'],
+      )!,
+      mfgDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mfg_date'],
+      ),
+      expiryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}expiry_date'],
+      ),
+      qtyMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}qty_milli'],
+      )!,
+      costPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cost_paise'],
+      )!,
+      gstRate: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}gst_rate'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      gstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}gst_paise'],
+      )!,
+      lineTotalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_total_paise'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $PurchaseLinesTable createAlias(String alias) {
+    return $PurchaseLinesTable(attachedDatabase, alias);
+  }
+}
+
+class PurchaseLine extends DataClass implements Insertable<PurchaseLine> {
+  final String id;
+  final String tenantId;
+  final String purchaseId;
+  final int lineNo;
+  final String productId;
+  final String batchId;
+  final String batchNo;
+  final String? mfgDate;
+  final String? expiryDate;
+  final int qtyMilli;
+  final int costPaise;
+  final double gstRate;
+  final int taxablePaise;
+  final int gstPaise;
+  final int lineTotalPaise;
+  final String? createdBy;
+  final String? createdAt;
+  const PurchaseLine({
+    required this.id,
+    required this.tenantId,
+    required this.purchaseId,
+    required this.lineNo,
+    required this.productId,
+    required this.batchId,
+    required this.batchNo,
+    this.mfgDate,
+    this.expiryDate,
+    required this.qtyMilli,
+    required this.costPaise,
+    required this.gstRate,
+    required this.taxablePaise,
+    required this.gstPaise,
+    required this.lineTotalPaise,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['purchase_id'] = Variable<String>(purchaseId);
+    map['line_no'] = Variable<int>(lineNo);
+    map['product_id'] = Variable<String>(productId);
+    map['batch_id'] = Variable<String>(batchId);
+    map['batch_no'] = Variable<String>(batchNo);
+    if (!nullToAbsent || mfgDate != null) {
+      map['mfg_date'] = Variable<String>(mfgDate);
+    }
+    if (!nullToAbsent || expiryDate != null) {
+      map['expiry_date'] = Variable<String>(expiryDate);
+    }
+    map['qty_milli'] = Variable<int>(qtyMilli);
+    map['cost_paise'] = Variable<int>(costPaise);
+    map['gst_rate'] = Variable<double>(gstRate);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['gst_paise'] = Variable<int>(gstPaise);
+    map['line_total_paise'] = Variable<int>(lineTotalPaise);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  PurchaseLinesCompanion toCompanion(bool nullToAbsent) {
+    return PurchaseLinesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      purchaseId: Value(purchaseId),
+      lineNo: Value(lineNo),
+      productId: Value(productId),
+      batchId: Value(batchId),
+      batchNo: Value(batchNo),
+      mfgDate: mfgDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mfgDate),
+      expiryDate: expiryDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(expiryDate),
+      qtyMilli: Value(qtyMilli),
+      costPaise: Value(costPaise),
+      gstRate: Value(gstRate),
+      taxablePaise: Value(taxablePaise),
+      gstPaise: Value(gstPaise),
+      lineTotalPaise: Value(lineTotalPaise),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory PurchaseLine.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PurchaseLine(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      purchaseId: serializer.fromJson<String>(json['purchaseId']),
+      lineNo: serializer.fromJson<int>(json['lineNo']),
+      productId: serializer.fromJson<String>(json['productId']),
+      batchId: serializer.fromJson<String>(json['batchId']),
+      batchNo: serializer.fromJson<String>(json['batchNo']),
+      mfgDate: serializer.fromJson<String?>(json['mfgDate']),
+      expiryDate: serializer.fromJson<String?>(json['expiryDate']),
+      qtyMilli: serializer.fromJson<int>(json['qtyMilli']),
+      costPaise: serializer.fromJson<int>(json['costPaise']),
+      gstRate: serializer.fromJson<double>(json['gstRate']),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      gstPaise: serializer.fromJson<int>(json['gstPaise']),
+      lineTotalPaise: serializer.fromJson<int>(json['lineTotalPaise']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'purchaseId': serializer.toJson<String>(purchaseId),
+      'lineNo': serializer.toJson<int>(lineNo),
+      'productId': serializer.toJson<String>(productId),
+      'batchId': serializer.toJson<String>(batchId),
+      'batchNo': serializer.toJson<String>(batchNo),
+      'mfgDate': serializer.toJson<String?>(mfgDate),
+      'expiryDate': serializer.toJson<String?>(expiryDate),
+      'qtyMilli': serializer.toJson<int>(qtyMilli),
+      'costPaise': serializer.toJson<int>(costPaise),
+      'gstRate': serializer.toJson<double>(gstRate),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'gstPaise': serializer.toJson<int>(gstPaise),
+      'lineTotalPaise': serializer.toJson<int>(lineTotalPaise),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  PurchaseLine copyWith({
+    String? id,
+    String? tenantId,
+    String? purchaseId,
+    int? lineNo,
+    String? productId,
+    String? batchId,
+    String? batchNo,
+    Value<String?> mfgDate = const Value.absent(),
+    Value<String?> expiryDate = const Value.absent(),
+    int? qtyMilli,
+    int? costPaise,
+    double? gstRate,
+    int? taxablePaise,
+    int? gstPaise,
+    int? lineTotalPaise,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => PurchaseLine(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    purchaseId: purchaseId ?? this.purchaseId,
+    lineNo: lineNo ?? this.lineNo,
+    productId: productId ?? this.productId,
+    batchId: batchId ?? this.batchId,
+    batchNo: batchNo ?? this.batchNo,
+    mfgDate: mfgDate.present ? mfgDate.value : this.mfgDate,
+    expiryDate: expiryDate.present ? expiryDate.value : this.expiryDate,
+    qtyMilli: qtyMilli ?? this.qtyMilli,
+    costPaise: costPaise ?? this.costPaise,
+    gstRate: gstRate ?? this.gstRate,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    gstPaise: gstPaise ?? this.gstPaise,
+    lineTotalPaise: lineTotalPaise ?? this.lineTotalPaise,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  PurchaseLine copyWithCompanion(PurchaseLinesCompanion data) {
+    return PurchaseLine(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      purchaseId: data.purchaseId.present
+          ? data.purchaseId.value
+          : this.purchaseId,
+      lineNo: data.lineNo.present ? data.lineNo.value : this.lineNo,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      batchId: data.batchId.present ? data.batchId.value : this.batchId,
+      batchNo: data.batchNo.present ? data.batchNo.value : this.batchNo,
+      mfgDate: data.mfgDate.present ? data.mfgDate.value : this.mfgDate,
+      expiryDate: data.expiryDate.present
+          ? data.expiryDate.value
+          : this.expiryDate,
+      qtyMilli: data.qtyMilli.present ? data.qtyMilli.value : this.qtyMilli,
+      costPaise: data.costPaise.present ? data.costPaise.value : this.costPaise,
+      gstRate: data.gstRate.present ? data.gstRate.value : this.gstRate,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      gstPaise: data.gstPaise.present ? data.gstPaise.value : this.gstPaise,
+      lineTotalPaise: data.lineTotalPaise.present
+          ? data.lineTotalPaise.value
+          : this.lineTotalPaise,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PurchaseLine(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('purchaseId: $purchaseId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('batchNo: $batchNo, ')
+          ..write('mfgDate: $mfgDate, ')
+          ..write('expiryDate: $expiryDate, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('gstRate: $gstRate, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('lineTotalPaise: $lineTotalPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    purchaseId,
+    lineNo,
+    productId,
+    batchId,
+    batchNo,
+    mfgDate,
+    expiryDate,
+    qtyMilli,
+    costPaise,
+    gstRate,
+    taxablePaise,
+    gstPaise,
+    lineTotalPaise,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PurchaseLine &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.purchaseId == this.purchaseId &&
+          other.lineNo == this.lineNo &&
+          other.productId == this.productId &&
+          other.batchId == this.batchId &&
+          other.batchNo == this.batchNo &&
+          other.mfgDate == this.mfgDate &&
+          other.expiryDate == this.expiryDate &&
+          other.qtyMilli == this.qtyMilli &&
+          other.costPaise == this.costPaise &&
+          other.gstRate == this.gstRate &&
+          other.taxablePaise == this.taxablePaise &&
+          other.gstPaise == this.gstPaise &&
+          other.lineTotalPaise == this.lineTotalPaise &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class PurchaseLinesCompanion extends UpdateCompanion<PurchaseLine> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> purchaseId;
+  final Value<int> lineNo;
+  final Value<String> productId;
+  final Value<String> batchId;
+  final Value<String> batchNo;
+  final Value<String?> mfgDate;
+  final Value<String?> expiryDate;
+  final Value<int> qtyMilli;
+  final Value<int> costPaise;
+  final Value<double> gstRate;
+  final Value<int> taxablePaise;
+  final Value<int> gstPaise;
+  final Value<int> lineTotalPaise;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const PurchaseLinesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.purchaseId = const Value.absent(),
+    this.lineNo = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.batchId = const Value.absent(),
+    this.batchNo = const Value.absent(),
+    this.mfgDate = const Value.absent(),
+    this.expiryDate = const Value.absent(),
+    this.qtyMilli = const Value.absent(),
+    this.costPaise = const Value.absent(),
+    this.gstRate = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.gstPaise = const Value.absent(),
+    this.lineTotalPaise = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PurchaseLinesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String purchaseId,
+    required int lineNo,
+    required String productId,
+    required String batchId,
+    required String batchNo,
+    this.mfgDate = const Value.absent(),
+    this.expiryDate = const Value.absent(),
+    required int qtyMilli,
+    required int costPaise,
+    required double gstRate,
+    required int taxablePaise,
+    required int gstPaise,
+    required int lineTotalPaise,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       purchaseId = Value(purchaseId),
+       lineNo = Value(lineNo),
+       productId = Value(productId),
+       batchId = Value(batchId),
+       batchNo = Value(batchNo),
+       qtyMilli = Value(qtyMilli),
+       costPaise = Value(costPaise),
+       gstRate = Value(gstRate),
+       taxablePaise = Value(taxablePaise),
+       gstPaise = Value(gstPaise),
+       lineTotalPaise = Value(lineTotalPaise);
+  static Insertable<PurchaseLine> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? purchaseId,
+    Expression<int>? lineNo,
+    Expression<String>? productId,
+    Expression<String>? batchId,
+    Expression<String>? batchNo,
+    Expression<String>? mfgDate,
+    Expression<String>? expiryDate,
+    Expression<int>? qtyMilli,
+    Expression<int>? costPaise,
+    Expression<double>? gstRate,
+    Expression<int>? taxablePaise,
+    Expression<int>? gstPaise,
+    Expression<int>? lineTotalPaise,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (purchaseId != null) 'purchase_id': purchaseId,
+      if (lineNo != null) 'line_no': lineNo,
+      if (productId != null) 'product_id': productId,
+      if (batchId != null) 'batch_id': batchId,
+      if (batchNo != null) 'batch_no': batchNo,
+      if (mfgDate != null) 'mfg_date': mfgDate,
+      if (expiryDate != null) 'expiry_date': expiryDate,
+      if (qtyMilli != null) 'qty_milli': qtyMilli,
+      if (costPaise != null) 'cost_paise': costPaise,
+      if (gstRate != null) 'gst_rate': gstRate,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (gstPaise != null) 'gst_paise': gstPaise,
+      if (lineTotalPaise != null) 'line_total_paise': lineTotalPaise,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PurchaseLinesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? purchaseId,
+    Value<int>? lineNo,
+    Value<String>? productId,
+    Value<String>? batchId,
+    Value<String>? batchNo,
+    Value<String?>? mfgDate,
+    Value<String?>? expiryDate,
+    Value<int>? qtyMilli,
+    Value<int>? costPaise,
+    Value<double>? gstRate,
+    Value<int>? taxablePaise,
+    Value<int>? gstPaise,
+    Value<int>? lineTotalPaise,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return PurchaseLinesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      purchaseId: purchaseId ?? this.purchaseId,
+      lineNo: lineNo ?? this.lineNo,
+      productId: productId ?? this.productId,
+      batchId: batchId ?? this.batchId,
+      batchNo: batchNo ?? this.batchNo,
+      mfgDate: mfgDate ?? this.mfgDate,
+      expiryDate: expiryDate ?? this.expiryDate,
+      qtyMilli: qtyMilli ?? this.qtyMilli,
+      costPaise: costPaise ?? this.costPaise,
+      gstRate: gstRate ?? this.gstRate,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      gstPaise: gstPaise ?? this.gstPaise,
+      lineTotalPaise: lineTotalPaise ?? this.lineTotalPaise,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (purchaseId.present) {
+      map['purchase_id'] = Variable<String>(purchaseId.value);
+    }
+    if (lineNo.present) {
+      map['line_no'] = Variable<int>(lineNo.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (batchId.present) {
+      map['batch_id'] = Variable<String>(batchId.value);
+    }
+    if (batchNo.present) {
+      map['batch_no'] = Variable<String>(batchNo.value);
+    }
+    if (mfgDate.present) {
+      map['mfg_date'] = Variable<String>(mfgDate.value);
+    }
+    if (expiryDate.present) {
+      map['expiry_date'] = Variable<String>(expiryDate.value);
+    }
+    if (qtyMilli.present) {
+      map['qty_milli'] = Variable<int>(qtyMilli.value);
+    }
+    if (costPaise.present) {
+      map['cost_paise'] = Variable<int>(costPaise.value);
+    }
+    if (gstRate.present) {
+      map['gst_rate'] = Variable<double>(gstRate.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (gstPaise.present) {
+      map['gst_paise'] = Variable<int>(gstPaise.value);
+    }
+    if (lineTotalPaise.present) {
+      map['line_total_paise'] = Variable<int>(lineTotalPaise.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PurchaseLinesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('purchaseId: $purchaseId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('batchNo: $batchNo, ')
+          ..write('mfgDate: $mfgDate, ')
+          ..write('expiryDate: $expiryDate, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('gstRate: $gstRate, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('lineTotalPaise: $lineTotalPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PurchaseReturnsTable extends PurchaseReturns
+    with TableInfo<$PurchaseReturnsTable, PurchaseReturn> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PurchaseReturnsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _returnNoMeta = const VerificationMeta(
+    'returnNo',
+  );
+  @override
+  late final GeneratedColumn<String> returnNo = GeneratedColumn<String>(
+    'return_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _purchaseIdMeta = const VerificationMeta(
+    'purchaseId',
+  );
+  @override
+  late final GeneratedColumn<String> purchaseId = GeneratedColumn<String>(
+    'purchase_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _gstPaiseMeta = const VerificationMeta(
+    'gstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> gstPaise = GeneratedColumn<int>(
+    'gst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _roundOffPaiseMeta = const VerificationMeta(
+    'roundOffPaise',
+  );
+  @override
+  late final GeneratedColumn<int> roundOffPaise = GeneratedColumn<int>(
+    'round_off_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _totalPaiseMeta = const VerificationMeta(
+    'totalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> totalPaise = GeneratedColumn<int>(
+    'total_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refundKhataPaiseMeta = const VerificationMeta(
+    'refundKhataPaise',
+  );
+  @override
+  late final GeneratedColumn<int> refundKhataPaise = GeneratedColumn<int>(
+    'refund_khata_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refundPaidPaiseMeta = const VerificationMeta(
+    'refundPaidPaise',
+  );
+  @override
+  late final GeneratedColumn<int> refundPaidPaise = GeneratedColumn<int>(
+    'refund_paid_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paymentModeMeta = const VerificationMeta(
+    'paymentMode',
+  );
+  @override
+  late final GeneratedColumn<String> paymentMode = GeneratedColumn<String>(
+    'payment_mode',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _bankAccountIdMeta = const VerificationMeta(
+    'bankAccountId',
+  );
+  @override
+  late final GeneratedColumn<String> bankAccountId = GeneratedColumn<String>(
+    'bank_account_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reversedAtMeta = const VerificationMeta(
+    'reversedAt',
+  );
+  @override
+  late final GeneratedColumn<String> reversedAt = GeneratedColumn<String>(
+    'reversed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    returnNo,
+    purchaseId,
+    partyId,
+    entryDate,
+    taxablePaise,
+    gstPaise,
+    roundOffPaise,
+    totalPaise,
+    refundKhataPaise,
+    refundPaidPaise,
+    paymentMode,
+    bankAccountId,
+    note,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'purchase_returns';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PurchaseReturn> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('return_no')) {
+      context.handle(
+        _returnNoMeta,
+        returnNo.isAcceptableOrUnknown(data['return_no']!, _returnNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_returnNoMeta);
+    }
+    if (data.containsKey('purchase_id')) {
+      context.handle(
+        _purchaseIdMeta,
+        purchaseId.isAcceptableOrUnknown(data['purchase_id']!, _purchaseIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_purchaseIdMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyIdMeta);
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('gst_paise')) {
+      context.handle(
+        _gstPaiseMeta,
+        gstPaise.isAcceptableOrUnknown(data['gst_paise']!, _gstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_gstPaiseMeta);
+    }
+    if (data.containsKey('round_off_paise')) {
+      context.handle(
+        _roundOffPaiseMeta,
+        roundOffPaise.isAcceptableOrUnknown(
+          data['round_off_paise']!,
+          _roundOffPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_roundOffPaiseMeta);
+    }
+    if (data.containsKey('total_paise')) {
+      context.handle(
+        _totalPaiseMeta,
+        totalPaise.isAcceptableOrUnknown(data['total_paise']!, _totalPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_totalPaiseMeta);
+    }
+    if (data.containsKey('refund_khata_paise')) {
+      context.handle(
+        _refundKhataPaiseMeta,
+        refundKhataPaise.isAcceptableOrUnknown(
+          data['refund_khata_paise']!,
+          _refundKhataPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_refundKhataPaiseMeta);
+    }
+    if (data.containsKey('refund_paid_paise')) {
+      context.handle(
+        _refundPaidPaiseMeta,
+        refundPaidPaise.isAcceptableOrUnknown(
+          data['refund_paid_paise']!,
+          _refundPaidPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_refundPaidPaiseMeta);
+    }
+    if (data.containsKey('payment_mode')) {
+      context.handle(
+        _paymentModeMeta,
+        paymentMode.isAcceptableOrUnknown(
+          data['payment_mode']!,
+          _paymentModeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('bank_account_id')) {
+      context.handle(
+        _bankAccountIdMeta,
+        bankAccountId.isAcceptableOrUnknown(
+          data['bank_account_id']!,
+          _bankAccountIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('reversed_at')) {
+      context.handle(
+        _reversedAtMeta,
+        reversedAt.isAcceptableOrUnknown(data['reversed_at']!, _reversedAtMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  PurchaseReturn map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PurchaseReturn(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      returnNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}return_no'],
+      )!,
+      purchaseId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purchase_id'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      gstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}gst_paise'],
+      )!,
+      roundOffPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}round_off_paise'],
+      )!,
+      totalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_paise'],
+      )!,
+      refundKhataPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}refund_khata_paise'],
+      )!,
+      refundPaidPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}refund_paid_paise'],
+      )!,
+      paymentMode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_mode'],
+      ),
+      bankAccountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bank_account_id'],
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      reversedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reversed_at'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $PurchaseReturnsTable createAlias(String alias) {
+    return $PurchaseReturnsTable(attachedDatabase, alias);
+  }
+}
+
+class PurchaseReturn extends DataClass implements Insertable<PurchaseReturn> {
+  final String id;
+  final String tenantId;
+  final String returnNo;
+  final String purchaseId;
+  final String partyId;
+  final String entryDate;
+  final int taxablePaise;
+  final int gstPaise;
+  final int roundOffPaise;
+  final int totalPaise;
+  final int refundKhataPaise;
+  final int refundPaidPaise;
+  final String? paymentMode;
+  final String? bankAccountId;
+  final String? note;
+  final String status;
+  final String? reversedAt;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const PurchaseReturn({
+    required this.id,
+    required this.tenantId,
+    required this.returnNo,
+    required this.purchaseId,
+    required this.partyId,
+    required this.entryDate,
+    required this.taxablePaise,
+    required this.gstPaise,
+    required this.roundOffPaise,
+    required this.totalPaise,
+    required this.refundKhataPaise,
+    required this.refundPaidPaise,
+    this.paymentMode,
+    this.bankAccountId,
+    this.note,
+    required this.status,
+    this.reversedAt,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['return_no'] = Variable<String>(returnNo);
+    map['purchase_id'] = Variable<String>(purchaseId);
+    map['party_id'] = Variable<String>(partyId);
+    map['entry_date'] = Variable<String>(entryDate);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['gst_paise'] = Variable<int>(gstPaise);
+    map['round_off_paise'] = Variable<int>(roundOffPaise);
+    map['total_paise'] = Variable<int>(totalPaise);
+    map['refund_khata_paise'] = Variable<int>(refundKhataPaise);
+    map['refund_paid_paise'] = Variable<int>(refundPaidPaise);
+    if (!nullToAbsent || paymentMode != null) {
+      map['payment_mode'] = Variable<String>(paymentMode);
+    }
+    if (!nullToAbsent || bankAccountId != null) {
+      map['bank_account_id'] = Variable<String>(bankAccountId);
+    }
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || reversedAt != null) {
+      map['reversed_at'] = Variable<String>(reversedAt);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  PurchaseReturnsCompanion toCompanion(bool nullToAbsent) {
+    return PurchaseReturnsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      returnNo: Value(returnNo),
+      purchaseId: Value(purchaseId),
+      partyId: Value(partyId),
+      entryDate: Value(entryDate),
+      taxablePaise: Value(taxablePaise),
+      gstPaise: Value(gstPaise),
+      roundOffPaise: Value(roundOffPaise),
+      totalPaise: Value(totalPaise),
+      refundKhataPaise: Value(refundKhataPaise),
+      refundPaidPaise: Value(refundPaidPaise),
+      paymentMode: paymentMode == null && nullToAbsent
+          ? const Value.absent()
+          : Value(paymentMode),
+      bankAccountId: bankAccountId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bankAccountId),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      status: Value(status),
+      reversedAt: reversedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversedAt),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory PurchaseReturn.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PurchaseReturn(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      returnNo: serializer.fromJson<String>(json['returnNo']),
+      purchaseId: serializer.fromJson<String>(json['purchaseId']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      gstPaise: serializer.fromJson<int>(json['gstPaise']),
+      roundOffPaise: serializer.fromJson<int>(json['roundOffPaise']),
+      totalPaise: serializer.fromJson<int>(json['totalPaise']),
+      refundKhataPaise: serializer.fromJson<int>(json['refundKhataPaise']),
+      refundPaidPaise: serializer.fromJson<int>(json['refundPaidPaise']),
+      paymentMode: serializer.fromJson<String?>(json['paymentMode']),
+      bankAccountId: serializer.fromJson<String?>(json['bankAccountId']),
+      note: serializer.fromJson<String?>(json['note']),
+      status: serializer.fromJson<String>(json['status']),
+      reversedAt: serializer.fromJson<String?>(json['reversedAt']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'returnNo': serializer.toJson<String>(returnNo),
+      'purchaseId': serializer.toJson<String>(purchaseId),
+      'partyId': serializer.toJson<String>(partyId),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'gstPaise': serializer.toJson<int>(gstPaise),
+      'roundOffPaise': serializer.toJson<int>(roundOffPaise),
+      'totalPaise': serializer.toJson<int>(totalPaise),
+      'refundKhataPaise': serializer.toJson<int>(refundKhataPaise),
+      'refundPaidPaise': serializer.toJson<int>(refundPaidPaise),
+      'paymentMode': serializer.toJson<String?>(paymentMode),
+      'bankAccountId': serializer.toJson<String?>(bankAccountId),
+      'note': serializer.toJson<String?>(note),
+      'status': serializer.toJson<String>(status),
+      'reversedAt': serializer.toJson<String?>(reversedAt),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  PurchaseReturn copyWith({
+    String? id,
+    String? tenantId,
+    String? returnNo,
+    String? purchaseId,
+    String? partyId,
+    String? entryDate,
+    int? taxablePaise,
+    int? gstPaise,
+    int? roundOffPaise,
+    int? totalPaise,
+    int? refundKhataPaise,
+    int? refundPaidPaise,
+    Value<String?> paymentMode = const Value.absent(),
+    Value<String?> bankAccountId = const Value.absent(),
+    Value<String?> note = const Value.absent(),
+    String? status,
+    Value<String?> reversedAt = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => PurchaseReturn(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    returnNo: returnNo ?? this.returnNo,
+    purchaseId: purchaseId ?? this.purchaseId,
+    partyId: partyId ?? this.partyId,
+    entryDate: entryDate ?? this.entryDate,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    gstPaise: gstPaise ?? this.gstPaise,
+    roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+    totalPaise: totalPaise ?? this.totalPaise,
+    refundKhataPaise: refundKhataPaise ?? this.refundKhataPaise,
+    refundPaidPaise: refundPaidPaise ?? this.refundPaidPaise,
+    paymentMode: paymentMode.present ? paymentMode.value : this.paymentMode,
+    bankAccountId: bankAccountId.present
+        ? bankAccountId.value
+        : this.bankAccountId,
+    note: note.present ? note.value : this.note,
+    status: status ?? this.status,
+    reversedAt: reversedAt.present ? reversedAt.value : this.reversedAt,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  PurchaseReturn copyWithCompanion(PurchaseReturnsCompanion data) {
+    return PurchaseReturn(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      returnNo: data.returnNo.present ? data.returnNo.value : this.returnNo,
+      purchaseId: data.purchaseId.present
+          ? data.purchaseId.value
+          : this.purchaseId,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      gstPaise: data.gstPaise.present ? data.gstPaise.value : this.gstPaise,
+      roundOffPaise: data.roundOffPaise.present
+          ? data.roundOffPaise.value
+          : this.roundOffPaise,
+      totalPaise: data.totalPaise.present
+          ? data.totalPaise.value
+          : this.totalPaise,
+      refundKhataPaise: data.refundKhataPaise.present
+          ? data.refundKhataPaise.value
+          : this.refundKhataPaise,
+      refundPaidPaise: data.refundPaidPaise.present
+          ? data.refundPaidPaise.value
+          : this.refundPaidPaise,
+      paymentMode: data.paymentMode.present
+          ? data.paymentMode.value
+          : this.paymentMode,
+      bankAccountId: data.bankAccountId.present
+          ? data.bankAccountId.value
+          : this.bankAccountId,
+      note: data.note.present ? data.note.value : this.note,
+      status: data.status.present ? data.status.value : this.status,
+      reversedAt: data.reversedAt.present
+          ? data.reversedAt.value
+          : this.reversedAt,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PurchaseReturn(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('returnNo: $returnNo, ')
+          ..write('purchaseId: $purchaseId, ')
+          ..write('partyId: $partyId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('refundKhataPaise: $refundKhataPaise, ')
+          ..write('refundPaidPaise: $refundPaidPaise, ')
+          ..write('paymentMode: $paymentMode, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('note: $note, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    id,
+    tenantId,
+    returnNo,
+    purchaseId,
+    partyId,
+    entryDate,
+    taxablePaise,
+    gstPaise,
+    roundOffPaise,
+    totalPaise,
+    refundKhataPaise,
+    refundPaidPaise,
+    paymentMode,
+    bankAccountId,
+    note,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PurchaseReturn &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.returnNo == this.returnNo &&
+          other.purchaseId == this.purchaseId &&
+          other.partyId == this.partyId &&
+          other.entryDate == this.entryDate &&
+          other.taxablePaise == this.taxablePaise &&
+          other.gstPaise == this.gstPaise &&
+          other.roundOffPaise == this.roundOffPaise &&
+          other.totalPaise == this.totalPaise &&
+          other.refundKhataPaise == this.refundKhataPaise &&
+          other.refundPaidPaise == this.refundPaidPaise &&
+          other.paymentMode == this.paymentMode &&
+          other.bankAccountId == this.bankAccountId &&
+          other.note == this.note &&
+          other.status == this.status &&
+          other.reversedAt == this.reversedAt &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class PurchaseReturnsCompanion extends UpdateCompanion<PurchaseReturn> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> returnNo;
+  final Value<String> purchaseId;
+  final Value<String> partyId;
+  final Value<String> entryDate;
+  final Value<int> taxablePaise;
+  final Value<int> gstPaise;
+  final Value<int> roundOffPaise;
+  final Value<int> totalPaise;
+  final Value<int> refundKhataPaise;
+  final Value<int> refundPaidPaise;
+  final Value<String?> paymentMode;
+  final Value<String?> bankAccountId;
+  final Value<String?> note;
+  final Value<String> status;
+  final Value<String?> reversedAt;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const PurchaseReturnsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.returnNo = const Value.absent(),
+    this.purchaseId = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.gstPaise = const Value.absent(),
+    this.roundOffPaise = const Value.absent(),
+    this.totalPaise = const Value.absent(),
+    this.refundKhataPaise = const Value.absent(),
+    this.refundPaidPaise = const Value.absent(),
+    this.paymentMode = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    this.note = const Value.absent(),
+    this.status = const Value.absent(),
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PurchaseReturnsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String returnNo,
+    required String purchaseId,
+    required String partyId,
+    required String entryDate,
+    required int taxablePaise,
+    required int gstPaise,
+    required int roundOffPaise,
+    required int totalPaise,
+    required int refundKhataPaise,
+    required int refundPaidPaise,
+    this.paymentMode = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    this.note = const Value.absent(),
+    required String status,
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       returnNo = Value(returnNo),
+       purchaseId = Value(purchaseId),
+       partyId = Value(partyId),
+       entryDate = Value(entryDate),
+       taxablePaise = Value(taxablePaise),
+       gstPaise = Value(gstPaise),
+       roundOffPaise = Value(roundOffPaise),
+       totalPaise = Value(totalPaise),
+       refundKhataPaise = Value(refundKhataPaise),
+       refundPaidPaise = Value(refundPaidPaise),
+       status = Value(status);
+  static Insertable<PurchaseReturn> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? returnNo,
+    Expression<String>? purchaseId,
+    Expression<String>? partyId,
+    Expression<String>? entryDate,
+    Expression<int>? taxablePaise,
+    Expression<int>? gstPaise,
+    Expression<int>? roundOffPaise,
+    Expression<int>? totalPaise,
+    Expression<int>? refundKhataPaise,
+    Expression<int>? refundPaidPaise,
+    Expression<String>? paymentMode,
+    Expression<String>? bankAccountId,
+    Expression<String>? note,
+    Expression<String>? status,
+    Expression<String>? reversedAt,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (returnNo != null) 'return_no': returnNo,
+      if (purchaseId != null) 'purchase_id': purchaseId,
+      if (partyId != null) 'party_id': partyId,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (gstPaise != null) 'gst_paise': gstPaise,
+      if (roundOffPaise != null) 'round_off_paise': roundOffPaise,
+      if (totalPaise != null) 'total_paise': totalPaise,
+      if (refundKhataPaise != null) 'refund_khata_paise': refundKhataPaise,
+      if (refundPaidPaise != null) 'refund_paid_paise': refundPaidPaise,
+      if (paymentMode != null) 'payment_mode': paymentMode,
+      if (bankAccountId != null) 'bank_account_id': bankAccountId,
+      if (note != null) 'note': note,
+      if (status != null) 'status': status,
+      if (reversedAt != null) 'reversed_at': reversedAt,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PurchaseReturnsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? returnNo,
+    Value<String>? purchaseId,
+    Value<String>? partyId,
+    Value<String>? entryDate,
+    Value<int>? taxablePaise,
+    Value<int>? gstPaise,
+    Value<int>? roundOffPaise,
+    Value<int>? totalPaise,
+    Value<int>? refundKhataPaise,
+    Value<int>? refundPaidPaise,
+    Value<String?>? paymentMode,
+    Value<String?>? bankAccountId,
+    Value<String?>? note,
+    Value<String>? status,
+    Value<String?>? reversedAt,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return PurchaseReturnsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      returnNo: returnNo ?? this.returnNo,
+      purchaseId: purchaseId ?? this.purchaseId,
+      partyId: partyId ?? this.partyId,
+      entryDate: entryDate ?? this.entryDate,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      gstPaise: gstPaise ?? this.gstPaise,
+      roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+      totalPaise: totalPaise ?? this.totalPaise,
+      refundKhataPaise: refundKhataPaise ?? this.refundKhataPaise,
+      refundPaidPaise: refundPaidPaise ?? this.refundPaidPaise,
+      paymentMode: paymentMode ?? this.paymentMode,
+      bankAccountId: bankAccountId ?? this.bankAccountId,
+      note: note ?? this.note,
+      status: status ?? this.status,
+      reversedAt: reversedAt ?? this.reversedAt,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (returnNo.present) {
+      map['return_no'] = Variable<String>(returnNo.value);
+    }
+    if (purchaseId.present) {
+      map['purchase_id'] = Variable<String>(purchaseId.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (gstPaise.present) {
+      map['gst_paise'] = Variable<int>(gstPaise.value);
+    }
+    if (roundOffPaise.present) {
+      map['round_off_paise'] = Variable<int>(roundOffPaise.value);
+    }
+    if (totalPaise.present) {
+      map['total_paise'] = Variable<int>(totalPaise.value);
+    }
+    if (refundKhataPaise.present) {
+      map['refund_khata_paise'] = Variable<int>(refundKhataPaise.value);
+    }
+    if (refundPaidPaise.present) {
+      map['refund_paid_paise'] = Variable<int>(refundPaidPaise.value);
+    }
+    if (paymentMode.present) {
+      map['payment_mode'] = Variable<String>(paymentMode.value);
+    }
+    if (bankAccountId.present) {
+      map['bank_account_id'] = Variable<String>(bankAccountId.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (reversedAt.present) {
+      map['reversed_at'] = Variable<String>(reversedAt.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PurchaseReturnsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('returnNo: $returnNo, ')
+          ..write('purchaseId: $purchaseId, ')
+          ..write('partyId: $partyId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('refundKhataPaise: $refundKhataPaise, ')
+          ..write('refundPaidPaise: $refundPaidPaise, ')
+          ..write('paymentMode: $paymentMode, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('note: $note, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PurchaseReturnLinesTable extends PurchaseReturnLines
+    with TableInfo<$PurchaseReturnLinesTable, PurchaseReturnLine> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PurchaseReturnLinesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _purchaseReturnIdMeta = const VerificationMeta(
+    'purchaseReturnId',
+  );
+  @override
+  late final GeneratedColumn<String> purchaseReturnId = GeneratedColumn<String>(
+    'purchase_return_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineNoMeta = const VerificationMeta('lineNo');
+  @override
+  late final GeneratedColumn<int> lineNo = GeneratedColumn<int>(
+    'line_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _purchaseLineIdMeta = const VerificationMeta(
+    'purchaseLineId',
+  );
+  @override
+  late final GeneratedColumn<String> purchaseLineId = GeneratedColumn<String>(
+    'purchase_line_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productIdMeta = const VerificationMeta(
+    'productId',
+  );
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+    'product_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchIdMeta = const VerificationMeta(
+    'batchId',
+  );
+  @override
+  late final GeneratedColumn<String> batchId = GeneratedColumn<String>(
+    'batch_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _qtyMilliMeta = const VerificationMeta(
+    'qtyMilli',
+  );
+  @override
+  late final GeneratedColumn<int> qtyMilli = GeneratedColumn<int>(
+    'qty_milli',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _costPaiseMeta = const VerificationMeta(
+    'costPaise',
+  );
+  @override
+  late final GeneratedColumn<int> costPaise = GeneratedColumn<int>(
+    'cost_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _gstPaiseMeta = const VerificationMeta(
+    'gstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> gstPaise = GeneratedColumn<int>(
+    'gst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineTotalPaiseMeta = const VerificationMeta(
+    'lineTotalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> lineTotalPaise = GeneratedColumn<int>(
+    'line_total_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    purchaseReturnId,
+    lineNo,
+    purchaseLineId,
+    productId,
+    batchId,
+    qtyMilli,
+    costPaise,
+    taxablePaise,
+    gstPaise,
+    lineTotalPaise,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'purchase_return_lines';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PurchaseReturnLine> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('purchase_return_id')) {
+      context.handle(
+        _purchaseReturnIdMeta,
+        purchaseReturnId.isAcceptableOrUnknown(
+          data['purchase_return_id']!,
+          _purchaseReturnIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_purchaseReturnIdMeta);
+    }
+    if (data.containsKey('line_no')) {
+      context.handle(
+        _lineNoMeta,
+        lineNo.isAcceptableOrUnknown(data['line_no']!, _lineNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lineNoMeta);
+    }
+    if (data.containsKey('purchase_line_id')) {
+      context.handle(
+        _purchaseLineIdMeta,
+        purchaseLineId.isAcceptableOrUnknown(
+          data['purchase_line_id']!,
+          _purchaseLineIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_purchaseLineIdMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(
+        _productIdMeta,
+        productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('batch_id')) {
+      context.handle(
+        _batchIdMeta,
+        batchId.isAcceptableOrUnknown(data['batch_id']!, _batchIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_batchIdMeta);
+    }
+    if (data.containsKey('qty_milli')) {
+      context.handle(
+        _qtyMilliMeta,
+        qtyMilli.isAcceptableOrUnknown(data['qty_milli']!, _qtyMilliMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_qtyMilliMeta);
+    }
+    if (data.containsKey('cost_paise')) {
+      context.handle(
+        _costPaiseMeta,
+        costPaise.isAcceptableOrUnknown(data['cost_paise']!, _costPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_costPaiseMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('gst_paise')) {
+      context.handle(
+        _gstPaiseMeta,
+        gstPaise.isAcceptableOrUnknown(data['gst_paise']!, _gstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_gstPaiseMeta);
+    }
+    if (data.containsKey('line_total_paise')) {
+      context.handle(
+        _lineTotalPaiseMeta,
+        lineTotalPaise.isAcceptableOrUnknown(
+          data['line_total_paise']!,
+          _lineTotalPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lineTotalPaiseMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  PurchaseReturnLine map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PurchaseReturnLine(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      purchaseReturnId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purchase_return_id'],
+      )!,
+      lineNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_no'],
+      )!,
+      purchaseLineId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}purchase_line_id'],
+      )!,
+      productId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}product_id'],
+      )!,
+      batchId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_id'],
+      )!,
+      qtyMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}qty_milli'],
+      )!,
+      costPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cost_paise'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      gstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}gst_paise'],
+      )!,
+      lineTotalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_total_paise'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $PurchaseReturnLinesTable createAlias(String alias) {
+    return $PurchaseReturnLinesTable(attachedDatabase, alias);
+  }
+}
+
+class PurchaseReturnLine extends DataClass
+    implements Insertable<PurchaseReturnLine> {
+  final String id;
+  final String tenantId;
+  final String purchaseReturnId;
+  final int lineNo;
+  final String purchaseLineId;
+  final String productId;
+  final String batchId;
+  final int qtyMilli;
+  final int costPaise;
+  final int taxablePaise;
+  final int gstPaise;
+  final int lineTotalPaise;
+  final String? createdBy;
+  final String? createdAt;
+  const PurchaseReturnLine({
+    required this.id,
+    required this.tenantId,
+    required this.purchaseReturnId,
+    required this.lineNo,
+    required this.purchaseLineId,
+    required this.productId,
+    required this.batchId,
+    required this.qtyMilli,
+    required this.costPaise,
+    required this.taxablePaise,
+    required this.gstPaise,
+    required this.lineTotalPaise,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['purchase_return_id'] = Variable<String>(purchaseReturnId);
+    map['line_no'] = Variable<int>(lineNo);
+    map['purchase_line_id'] = Variable<String>(purchaseLineId);
+    map['product_id'] = Variable<String>(productId);
+    map['batch_id'] = Variable<String>(batchId);
+    map['qty_milli'] = Variable<int>(qtyMilli);
+    map['cost_paise'] = Variable<int>(costPaise);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['gst_paise'] = Variable<int>(gstPaise);
+    map['line_total_paise'] = Variable<int>(lineTotalPaise);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  PurchaseReturnLinesCompanion toCompanion(bool nullToAbsent) {
+    return PurchaseReturnLinesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      purchaseReturnId: Value(purchaseReturnId),
+      lineNo: Value(lineNo),
+      purchaseLineId: Value(purchaseLineId),
+      productId: Value(productId),
+      batchId: Value(batchId),
+      qtyMilli: Value(qtyMilli),
+      costPaise: Value(costPaise),
+      taxablePaise: Value(taxablePaise),
+      gstPaise: Value(gstPaise),
+      lineTotalPaise: Value(lineTotalPaise),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory PurchaseReturnLine.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PurchaseReturnLine(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      purchaseReturnId: serializer.fromJson<String>(json['purchaseReturnId']),
+      lineNo: serializer.fromJson<int>(json['lineNo']),
+      purchaseLineId: serializer.fromJson<String>(json['purchaseLineId']),
+      productId: serializer.fromJson<String>(json['productId']),
+      batchId: serializer.fromJson<String>(json['batchId']),
+      qtyMilli: serializer.fromJson<int>(json['qtyMilli']),
+      costPaise: serializer.fromJson<int>(json['costPaise']),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      gstPaise: serializer.fromJson<int>(json['gstPaise']),
+      lineTotalPaise: serializer.fromJson<int>(json['lineTotalPaise']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'purchaseReturnId': serializer.toJson<String>(purchaseReturnId),
+      'lineNo': serializer.toJson<int>(lineNo),
+      'purchaseLineId': serializer.toJson<String>(purchaseLineId),
+      'productId': serializer.toJson<String>(productId),
+      'batchId': serializer.toJson<String>(batchId),
+      'qtyMilli': serializer.toJson<int>(qtyMilli),
+      'costPaise': serializer.toJson<int>(costPaise),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'gstPaise': serializer.toJson<int>(gstPaise),
+      'lineTotalPaise': serializer.toJson<int>(lineTotalPaise),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  PurchaseReturnLine copyWith({
+    String? id,
+    String? tenantId,
+    String? purchaseReturnId,
+    int? lineNo,
+    String? purchaseLineId,
+    String? productId,
+    String? batchId,
+    int? qtyMilli,
+    int? costPaise,
+    int? taxablePaise,
+    int? gstPaise,
+    int? lineTotalPaise,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => PurchaseReturnLine(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    purchaseReturnId: purchaseReturnId ?? this.purchaseReturnId,
+    lineNo: lineNo ?? this.lineNo,
+    purchaseLineId: purchaseLineId ?? this.purchaseLineId,
+    productId: productId ?? this.productId,
+    batchId: batchId ?? this.batchId,
+    qtyMilli: qtyMilli ?? this.qtyMilli,
+    costPaise: costPaise ?? this.costPaise,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    gstPaise: gstPaise ?? this.gstPaise,
+    lineTotalPaise: lineTotalPaise ?? this.lineTotalPaise,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  PurchaseReturnLine copyWithCompanion(PurchaseReturnLinesCompanion data) {
+    return PurchaseReturnLine(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      purchaseReturnId: data.purchaseReturnId.present
+          ? data.purchaseReturnId.value
+          : this.purchaseReturnId,
+      lineNo: data.lineNo.present ? data.lineNo.value : this.lineNo,
+      purchaseLineId: data.purchaseLineId.present
+          ? data.purchaseLineId.value
+          : this.purchaseLineId,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      batchId: data.batchId.present ? data.batchId.value : this.batchId,
+      qtyMilli: data.qtyMilli.present ? data.qtyMilli.value : this.qtyMilli,
+      costPaise: data.costPaise.present ? data.costPaise.value : this.costPaise,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      gstPaise: data.gstPaise.present ? data.gstPaise.value : this.gstPaise,
+      lineTotalPaise: data.lineTotalPaise.present
+          ? data.lineTotalPaise.value
+          : this.lineTotalPaise,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PurchaseReturnLine(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('purchaseReturnId: $purchaseReturnId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('purchaseLineId: $purchaseLineId, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('lineTotalPaise: $lineTotalPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    purchaseReturnId,
+    lineNo,
+    purchaseLineId,
+    productId,
+    batchId,
+    qtyMilli,
+    costPaise,
+    taxablePaise,
+    gstPaise,
+    lineTotalPaise,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PurchaseReturnLine &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.purchaseReturnId == this.purchaseReturnId &&
+          other.lineNo == this.lineNo &&
+          other.purchaseLineId == this.purchaseLineId &&
+          other.productId == this.productId &&
+          other.batchId == this.batchId &&
+          other.qtyMilli == this.qtyMilli &&
+          other.costPaise == this.costPaise &&
+          other.taxablePaise == this.taxablePaise &&
+          other.gstPaise == this.gstPaise &&
+          other.lineTotalPaise == this.lineTotalPaise &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class PurchaseReturnLinesCompanion extends UpdateCompanion<PurchaseReturnLine> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> purchaseReturnId;
+  final Value<int> lineNo;
+  final Value<String> purchaseLineId;
+  final Value<String> productId;
+  final Value<String> batchId;
+  final Value<int> qtyMilli;
+  final Value<int> costPaise;
+  final Value<int> taxablePaise;
+  final Value<int> gstPaise;
+  final Value<int> lineTotalPaise;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const PurchaseReturnLinesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.purchaseReturnId = const Value.absent(),
+    this.lineNo = const Value.absent(),
+    this.purchaseLineId = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.batchId = const Value.absent(),
+    this.qtyMilli = const Value.absent(),
+    this.costPaise = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.gstPaise = const Value.absent(),
+    this.lineTotalPaise = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PurchaseReturnLinesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String purchaseReturnId,
+    required int lineNo,
+    required String purchaseLineId,
+    required String productId,
+    required String batchId,
+    required int qtyMilli,
+    required int costPaise,
+    required int taxablePaise,
+    required int gstPaise,
+    required int lineTotalPaise,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       purchaseReturnId = Value(purchaseReturnId),
+       lineNo = Value(lineNo),
+       purchaseLineId = Value(purchaseLineId),
+       productId = Value(productId),
+       batchId = Value(batchId),
+       qtyMilli = Value(qtyMilli),
+       costPaise = Value(costPaise),
+       taxablePaise = Value(taxablePaise),
+       gstPaise = Value(gstPaise),
+       lineTotalPaise = Value(lineTotalPaise);
+  static Insertable<PurchaseReturnLine> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? purchaseReturnId,
+    Expression<int>? lineNo,
+    Expression<String>? purchaseLineId,
+    Expression<String>? productId,
+    Expression<String>? batchId,
+    Expression<int>? qtyMilli,
+    Expression<int>? costPaise,
+    Expression<int>? taxablePaise,
+    Expression<int>? gstPaise,
+    Expression<int>? lineTotalPaise,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (purchaseReturnId != null) 'purchase_return_id': purchaseReturnId,
+      if (lineNo != null) 'line_no': lineNo,
+      if (purchaseLineId != null) 'purchase_line_id': purchaseLineId,
+      if (productId != null) 'product_id': productId,
+      if (batchId != null) 'batch_id': batchId,
+      if (qtyMilli != null) 'qty_milli': qtyMilli,
+      if (costPaise != null) 'cost_paise': costPaise,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (gstPaise != null) 'gst_paise': gstPaise,
+      if (lineTotalPaise != null) 'line_total_paise': lineTotalPaise,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PurchaseReturnLinesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? purchaseReturnId,
+    Value<int>? lineNo,
+    Value<String>? purchaseLineId,
+    Value<String>? productId,
+    Value<String>? batchId,
+    Value<int>? qtyMilli,
+    Value<int>? costPaise,
+    Value<int>? taxablePaise,
+    Value<int>? gstPaise,
+    Value<int>? lineTotalPaise,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return PurchaseReturnLinesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      purchaseReturnId: purchaseReturnId ?? this.purchaseReturnId,
+      lineNo: lineNo ?? this.lineNo,
+      purchaseLineId: purchaseLineId ?? this.purchaseLineId,
+      productId: productId ?? this.productId,
+      batchId: batchId ?? this.batchId,
+      qtyMilli: qtyMilli ?? this.qtyMilli,
+      costPaise: costPaise ?? this.costPaise,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      gstPaise: gstPaise ?? this.gstPaise,
+      lineTotalPaise: lineTotalPaise ?? this.lineTotalPaise,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (purchaseReturnId.present) {
+      map['purchase_return_id'] = Variable<String>(purchaseReturnId.value);
+    }
+    if (lineNo.present) {
+      map['line_no'] = Variable<int>(lineNo.value);
+    }
+    if (purchaseLineId.present) {
+      map['purchase_line_id'] = Variable<String>(purchaseLineId.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (batchId.present) {
+      map['batch_id'] = Variable<String>(batchId.value);
+    }
+    if (qtyMilli.present) {
+      map['qty_milli'] = Variable<int>(qtyMilli.value);
+    }
+    if (costPaise.present) {
+      map['cost_paise'] = Variable<int>(costPaise.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (gstPaise.present) {
+      map['gst_paise'] = Variable<int>(gstPaise.value);
+    }
+    if (lineTotalPaise.present) {
+      map['line_total_paise'] = Variable<int>(lineTotalPaise.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PurchaseReturnLinesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('purchaseReturnId: $purchaseReturnId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('purchaseLineId: $purchaseLineId, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstPaise: $gstPaise, ')
+          ..write('lineTotalPaise: $lineTotalPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ShopSalesTable extends ShopSales
+    with TableInfo<$ShopSalesTable, ShopSale> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShopSalesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _saleNoMeta = const VerificationMeta('saleNo');
+  @override
+  late final GeneratedColumn<String> saleNo = GeneratedColumn<String>(
+    'sale_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _customerNameMeta = const VerificationMeta(
+    'customerName',
+  );
+  @override
+  late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
+    'customer_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _customerGstinMeta = const VerificationMeta(
+    'customerGstin',
+  );
+  @override
+  late final GeneratedColumn<String> customerGstin = GeneratedColumn<String>(
+    'customer_gstin',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _placeOfSupplyMeta = const VerificationMeta(
+    'placeOfSupply',
+  );
+  @override
+  late final GeneratedColumn<String> placeOfSupply = GeneratedColumn<String>(
+    'place_of_supply',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _tierMeta = const VerificationMeta('tier');
+  @override
+  late final GeneratedColumn<String> tier = GeneratedColumn<String>(
+    'tier',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _subtotalPaiseMeta = const VerificationMeta(
+    'subtotalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> subtotalPaise = GeneratedColumn<int>(
+    'subtotal_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _discountPaiseMeta = const VerificationMeta(
+    'discountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> discountPaise = GeneratedColumn<int>(
+    'discount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _invoiceDiscountPctMeta =
+      const VerificationMeta('invoiceDiscountPct');
+  @override
+  late final GeneratedColumn<double> invoiceDiscountPct =
+      GeneratedColumn<double>(
+        'invoice_discount_pct',
+        aliasedName,
+        false,
+        type: DriftSqlType.double,
+        requiredDuringInsert: true,
+      );
+  static const VerificationMeta _invoiceDiscountPaiseMeta =
+      const VerificationMeta('invoiceDiscountPaise');
+  @override
+  late final GeneratedColumn<int> invoiceDiscountPaise = GeneratedColumn<int>(
+    'invoice_discount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cgstPaiseMeta = const VerificationMeta(
+    'cgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> cgstPaise = GeneratedColumn<int>(
+    'cgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sgstPaiseMeta = const VerificationMeta(
+    'sgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> sgstPaise = GeneratedColumn<int>(
+    'sgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _igstPaiseMeta = const VerificationMeta(
+    'igstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> igstPaise = GeneratedColumn<int>(
+    'igst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _roundOffPaiseMeta = const VerificationMeta(
+    'roundOffPaise',
+  );
+  @override
+  late final GeneratedColumn<int> roundOffPaise = GeneratedColumn<int>(
+    'round_off_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _totalPaiseMeta = const VerificationMeta(
+    'totalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> totalPaise = GeneratedColumn<int>(
+    'total_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paidCashPaiseMeta = const VerificationMeta(
+    'paidCashPaise',
+  );
+  @override
+  late final GeneratedColumn<int> paidCashPaise = GeneratedColumn<int>(
+    'paid_cash_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paidUpiPaiseMeta = const VerificationMeta(
+    'paidUpiPaise',
+  );
+  @override
+  late final GeneratedColumn<int> paidUpiPaise = GeneratedColumn<int>(
+    'paid_upi_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paidCreditPaiseMeta = const VerificationMeta(
+    'paidCreditPaise',
+  );
+  @override
+  late final GeneratedColumn<int> paidCreditPaise = GeneratedColumn<int>(
+    'paid_credit_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _upiAccountIdMeta = const VerificationMeta(
+    'upiAccountId',
+  );
+  @override
+  late final GeneratedColumn<String> upiAccountId = GeneratedColumn<String>(
+    'upi_account_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reversedAtMeta = const VerificationMeta(
+    'reversedAt',
+  );
+  @override
+  late final GeneratedColumn<String> reversedAt = GeneratedColumn<String>(
+    'reversed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    saleNo,
+    partyId,
+    customerName,
+    customerGstin,
+    placeOfSupply,
+    tier,
+    entryDate,
+    subtotalPaise,
+    discountPaise,
+    invoiceDiscountPct,
+    invoiceDiscountPaise,
+    taxablePaise,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    roundOffPaise,
+    totalPaise,
+    paidCashPaise,
+    paidUpiPaise,
+    paidCreditPaise,
+    upiAccountId,
+    notes,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'shop_sales';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShopSale> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('sale_no')) {
+      context.handle(
+        _saleNoMeta,
+        saleNo.isAcceptableOrUnknown(data['sale_no']!, _saleNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_saleNoMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    }
+    if (data.containsKey('customer_name')) {
+      context.handle(
+        _customerNameMeta,
+        customerName.isAcceptableOrUnknown(
+          data['customer_name']!,
+          _customerNameMeta,
+        ),
+      );
+    }
+    if (data.containsKey('customer_gstin')) {
+      context.handle(
+        _customerGstinMeta,
+        customerGstin.isAcceptableOrUnknown(
+          data['customer_gstin']!,
+          _customerGstinMeta,
+        ),
+      );
+    }
+    if (data.containsKey('place_of_supply')) {
+      context.handle(
+        _placeOfSupplyMeta,
+        placeOfSupply.isAcceptableOrUnknown(
+          data['place_of_supply']!,
+          _placeOfSupplyMeta,
+        ),
+      );
+    }
+    if (data.containsKey('tier')) {
+      context.handle(
+        _tierMeta,
+        tier.isAcceptableOrUnknown(data['tier']!, _tierMeta),
+      );
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('subtotal_paise')) {
+      context.handle(
+        _subtotalPaiseMeta,
+        subtotalPaise.isAcceptableOrUnknown(
+          data['subtotal_paise']!,
+          _subtotalPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_subtotalPaiseMeta);
+    }
+    if (data.containsKey('discount_paise')) {
+      context.handle(
+        _discountPaiseMeta,
+        discountPaise.isAcceptableOrUnknown(
+          data['discount_paise']!,
+          _discountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_discountPaiseMeta);
+    }
+    if (data.containsKey('invoice_discount_pct')) {
+      context.handle(
+        _invoiceDiscountPctMeta,
+        invoiceDiscountPct.isAcceptableOrUnknown(
+          data['invoice_discount_pct']!,
+          _invoiceDiscountPctMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_invoiceDiscountPctMeta);
+    }
+    if (data.containsKey('invoice_discount_paise')) {
+      context.handle(
+        _invoiceDiscountPaiseMeta,
+        invoiceDiscountPaise.isAcceptableOrUnknown(
+          data['invoice_discount_paise']!,
+          _invoiceDiscountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_invoiceDiscountPaiseMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('cgst_paise')) {
+      context.handle(
+        _cgstPaiseMeta,
+        cgstPaise.isAcceptableOrUnknown(data['cgst_paise']!, _cgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cgstPaiseMeta);
+    }
+    if (data.containsKey('sgst_paise')) {
+      context.handle(
+        _sgstPaiseMeta,
+        sgstPaise.isAcceptableOrUnknown(data['sgst_paise']!, _sgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sgstPaiseMeta);
+    }
+    if (data.containsKey('igst_paise')) {
+      context.handle(
+        _igstPaiseMeta,
+        igstPaise.isAcceptableOrUnknown(data['igst_paise']!, _igstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_igstPaiseMeta);
+    }
+    if (data.containsKey('round_off_paise')) {
+      context.handle(
+        _roundOffPaiseMeta,
+        roundOffPaise.isAcceptableOrUnknown(
+          data['round_off_paise']!,
+          _roundOffPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_roundOffPaiseMeta);
+    }
+    if (data.containsKey('total_paise')) {
+      context.handle(
+        _totalPaiseMeta,
+        totalPaise.isAcceptableOrUnknown(data['total_paise']!, _totalPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_totalPaiseMeta);
+    }
+    if (data.containsKey('paid_cash_paise')) {
+      context.handle(
+        _paidCashPaiseMeta,
+        paidCashPaise.isAcceptableOrUnknown(
+          data['paid_cash_paise']!,
+          _paidCashPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_paidCashPaiseMeta);
+    }
+    if (data.containsKey('paid_upi_paise')) {
+      context.handle(
+        _paidUpiPaiseMeta,
+        paidUpiPaise.isAcceptableOrUnknown(
+          data['paid_upi_paise']!,
+          _paidUpiPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_paidUpiPaiseMeta);
+    }
+    if (data.containsKey('paid_credit_paise')) {
+      context.handle(
+        _paidCreditPaiseMeta,
+        paidCreditPaise.isAcceptableOrUnknown(
+          data['paid_credit_paise']!,
+          _paidCreditPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_paidCreditPaiseMeta);
+    }
+    if (data.containsKey('upi_account_id')) {
+      context.handle(
+        _upiAccountIdMeta,
+        upiAccountId.isAcceptableOrUnknown(
+          data['upi_account_id']!,
+          _upiAccountIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('reversed_at')) {
+      context.handle(
+        _reversedAtMeta,
+        reversedAt.isAcceptableOrUnknown(data['reversed_at']!, _reversedAtMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ShopSale map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShopSale(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      saleNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sale_no'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      ),
+      customerName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}customer_name'],
+      ),
+      customerGstin: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}customer_gstin'],
+      ),
+      placeOfSupply: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}place_of_supply'],
+      ),
+      tier: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tier'],
+      ),
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      subtotalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}subtotal_paise'],
+      )!,
+      discountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}discount_paise'],
+      )!,
+      invoiceDiscountPct: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}invoice_discount_pct'],
+      )!,
+      invoiceDiscountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}invoice_discount_paise'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      cgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cgst_paise'],
+      )!,
+      sgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sgst_paise'],
+      )!,
+      igstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}igst_paise'],
+      )!,
+      roundOffPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}round_off_paise'],
+      )!,
+      totalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_paise'],
+      )!,
+      paidCashPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}paid_cash_paise'],
+      )!,
+      paidUpiPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}paid_upi_paise'],
+      )!,
+      paidCreditPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}paid_credit_paise'],
+      )!,
+      upiAccountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}upi_account_id'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      reversedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reversed_at'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $ShopSalesTable createAlias(String alias) {
+    return $ShopSalesTable(attachedDatabase, alias);
+  }
+}
+
+class ShopSale extends DataClass implements Insertable<ShopSale> {
+  final String id;
+  final String tenantId;
+  final String saleNo;
+  final String? partyId;
+  final String? customerName;
+  final String? customerGstin;
+  final String? placeOfSupply;
+  final String? tier;
+  final String entryDate;
+  final int subtotalPaise;
+  final int discountPaise;
+  final double invoiceDiscountPct;
+  final int invoiceDiscountPaise;
+  final int taxablePaise;
+  final int cgstPaise;
+  final int sgstPaise;
+  final int igstPaise;
+  final int roundOffPaise;
+  final int totalPaise;
+  final int paidCashPaise;
+  final int paidUpiPaise;
+  final int paidCreditPaise;
+  final String? upiAccountId;
+  final String? notes;
+  final String status;
+  final String? reversedAt;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const ShopSale({
+    required this.id,
+    required this.tenantId,
+    required this.saleNo,
+    this.partyId,
+    this.customerName,
+    this.customerGstin,
+    this.placeOfSupply,
+    this.tier,
+    required this.entryDate,
+    required this.subtotalPaise,
+    required this.discountPaise,
+    required this.invoiceDiscountPct,
+    required this.invoiceDiscountPaise,
+    required this.taxablePaise,
+    required this.cgstPaise,
+    required this.sgstPaise,
+    required this.igstPaise,
+    required this.roundOffPaise,
+    required this.totalPaise,
+    required this.paidCashPaise,
+    required this.paidUpiPaise,
+    required this.paidCreditPaise,
+    this.upiAccountId,
+    this.notes,
+    required this.status,
+    this.reversedAt,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['sale_no'] = Variable<String>(saleNo);
+    if (!nullToAbsent || partyId != null) {
+      map['party_id'] = Variable<String>(partyId);
+    }
+    if (!nullToAbsent || customerName != null) {
+      map['customer_name'] = Variable<String>(customerName);
+    }
+    if (!nullToAbsent || customerGstin != null) {
+      map['customer_gstin'] = Variable<String>(customerGstin);
+    }
+    if (!nullToAbsent || placeOfSupply != null) {
+      map['place_of_supply'] = Variable<String>(placeOfSupply);
+    }
+    if (!nullToAbsent || tier != null) {
+      map['tier'] = Variable<String>(tier);
+    }
+    map['entry_date'] = Variable<String>(entryDate);
+    map['subtotal_paise'] = Variable<int>(subtotalPaise);
+    map['discount_paise'] = Variable<int>(discountPaise);
+    map['invoice_discount_pct'] = Variable<double>(invoiceDiscountPct);
+    map['invoice_discount_paise'] = Variable<int>(invoiceDiscountPaise);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['cgst_paise'] = Variable<int>(cgstPaise);
+    map['sgst_paise'] = Variable<int>(sgstPaise);
+    map['igst_paise'] = Variable<int>(igstPaise);
+    map['round_off_paise'] = Variable<int>(roundOffPaise);
+    map['total_paise'] = Variable<int>(totalPaise);
+    map['paid_cash_paise'] = Variable<int>(paidCashPaise);
+    map['paid_upi_paise'] = Variable<int>(paidUpiPaise);
+    map['paid_credit_paise'] = Variable<int>(paidCreditPaise);
+    if (!nullToAbsent || upiAccountId != null) {
+      map['upi_account_id'] = Variable<String>(upiAccountId);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || reversedAt != null) {
+      map['reversed_at'] = Variable<String>(reversedAt);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  ShopSalesCompanion toCompanion(bool nullToAbsent) {
+    return ShopSalesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      saleNo: Value(saleNo),
+      partyId: partyId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(partyId),
+      customerName: customerName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customerName),
+      customerGstin: customerGstin == null && nullToAbsent
+          ? const Value.absent()
+          : Value(customerGstin),
+      placeOfSupply: placeOfSupply == null && nullToAbsent
+          ? const Value.absent()
+          : Value(placeOfSupply),
+      tier: tier == null && nullToAbsent ? const Value.absent() : Value(tier),
+      entryDate: Value(entryDate),
+      subtotalPaise: Value(subtotalPaise),
+      discountPaise: Value(discountPaise),
+      invoiceDiscountPct: Value(invoiceDiscountPct),
+      invoiceDiscountPaise: Value(invoiceDiscountPaise),
+      taxablePaise: Value(taxablePaise),
+      cgstPaise: Value(cgstPaise),
+      sgstPaise: Value(sgstPaise),
+      igstPaise: Value(igstPaise),
+      roundOffPaise: Value(roundOffPaise),
+      totalPaise: Value(totalPaise),
+      paidCashPaise: Value(paidCashPaise),
+      paidUpiPaise: Value(paidUpiPaise),
+      paidCreditPaise: Value(paidCreditPaise),
+      upiAccountId: upiAccountId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(upiAccountId),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      status: Value(status),
+      reversedAt: reversedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversedAt),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory ShopSale.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShopSale(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      saleNo: serializer.fromJson<String>(json['saleNo']),
+      partyId: serializer.fromJson<String?>(json['partyId']),
+      customerName: serializer.fromJson<String?>(json['customerName']),
+      customerGstin: serializer.fromJson<String?>(json['customerGstin']),
+      placeOfSupply: serializer.fromJson<String?>(json['placeOfSupply']),
+      tier: serializer.fromJson<String?>(json['tier']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      subtotalPaise: serializer.fromJson<int>(json['subtotalPaise']),
+      discountPaise: serializer.fromJson<int>(json['discountPaise']),
+      invoiceDiscountPct: serializer.fromJson<double>(
+        json['invoiceDiscountPct'],
+      ),
+      invoiceDiscountPaise: serializer.fromJson<int>(
+        json['invoiceDiscountPaise'],
+      ),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      cgstPaise: serializer.fromJson<int>(json['cgstPaise']),
+      sgstPaise: serializer.fromJson<int>(json['sgstPaise']),
+      igstPaise: serializer.fromJson<int>(json['igstPaise']),
+      roundOffPaise: serializer.fromJson<int>(json['roundOffPaise']),
+      totalPaise: serializer.fromJson<int>(json['totalPaise']),
+      paidCashPaise: serializer.fromJson<int>(json['paidCashPaise']),
+      paidUpiPaise: serializer.fromJson<int>(json['paidUpiPaise']),
+      paidCreditPaise: serializer.fromJson<int>(json['paidCreditPaise']),
+      upiAccountId: serializer.fromJson<String?>(json['upiAccountId']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      status: serializer.fromJson<String>(json['status']),
+      reversedAt: serializer.fromJson<String?>(json['reversedAt']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'saleNo': serializer.toJson<String>(saleNo),
+      'partyId': serializer.toJson<String?>(partyId),
+      'customerName': serializer.toJson<String?>(customerName),
+      'customerGstin': serializer.toJson<String?>(customerGstin),
+      'placeOfSupply': serializer.toJson<String?>(placeOfSupply),
+      'tier': serializer.toJson<String?>(tier),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'subtotalPaise': serializer.toJson<int>(subtotalPaise),
+      'discountPaise': serializer.toJson<int>(discountPaise),
+      'invoiceDiscountPct': serializer.toJson<double>(invoiceDiscountPct),
+      'invoiceDiscountPaise': serializer.toJson<int>(invoiceDiscountPaise),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'cgstPaise': serializer.toJson<int>(cgstPaise),
+      'sgstPaise': serializer.toJson<int>(sgstPaise),
+      'igstPaise': serializer.toJson<int>(igstPaise),
+      'roundOffPaise': serializer.toJson<int>(roundOffPaise),
+      'totalPaise': serializer.toJson<int>(totalPaise),
+      'paidCashPaise': serializer.toJson<int>(paidCashPaise),
+      'paidUpiPaise': serializer.toJson<int>(paidUpiPaise),
+      'paidCreditPaise': serializer.toJson<int>(paidCreditPaise),
+      'upiAccountId': serializer.toJson<String?>(upiAccountId),
+      'notes': serializer.toJson<String?>(notes),
+      'status': serializer.toJson<String>(status),
+      'reversedAt': serializer.toJson<String?>(reversedAt),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  ShopSale copyWith({
+    String? id,
+    String? tenantId,
+    String? saleNo,
+    Value<String?> partyId = const Value.absent(),
+    Value<String?> customerName = const Value.absent(),
+    Value<String?> customerGstin = const Value.absent(),
+    Value<String?> placeOfSupply = const Value.absent(),
+    Value<String?> tier = const Value.absent(),
+    String? entryDate,
+    int? subtotalPaise,
+    int? discountPaise,
+    double? invoiceDiscountPct,
+    int? invoiceDiscountPaise,
+    int? taxablePaise,
+    int? cgstPaise,
+    int? sgstPaise,
+    int? igstPaise,
+    int? roundOffPaise,
+    int? totalPaise,
+    int? paidCashPaise,
+    int? paidUpiPaise,
+    int? paidCreditPaise,
+    Value<String?> upiAccountId = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+    String? status,
+    Value<String?> reversedAt = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => ShopSale(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    saleNo: saleNo ?? this.saleNo,
+    partyId: partyId.present ? partyId.value : this.partyId,
+    customerName: customerName.present ? customerName.value : this.customerName,
+    customerGstin: customerGstin.present
+        ? customerGstin.value
+        : this.customerGstin,
+    placeOfSupply: placeOfSupply.present
+        ? placeOfSupply.value
+        : this.placeOfSupply,
+    tier: tier.present ? tier.value : this.tier,
+    entryDate: entryDate ?? this.entryDate,
+    subtotalPaise: subtotalPaise ?? this.subtotalPaise,
+    discountPaise: discountPaise ?? this.discountPaise,
+    invoiceDiscountPct: invoiceDiscountPct ?? this.invoiceDiscountPct,
+    invoiceDiscountPaise: invoiceDiscountPaise ?? this.invoiceDiscountPaise,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    cgstPaise: cgstPaise ?? this.cgstPaise,
+    sgstPaise: sgstPaise ?? this.sgstPaise,
+    igstPaise: igstPaise ?? this.igstPaise,
+    roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+    totalPaise: totalPaise ?? this.totalPaise,
+    paidCashPaise: paidCashPaise ?? this.paidCashPaise,
+    paidUpiPaise: paidUpiPaise ?? this.paidUpiPaise,
+    paidCreditPaise: paidCreditPaise ?? this.paidCreditPaise,
+    upiAccountId: upiAccountId.present ? upiAccountId.value : this.upiAccountId,
+    notes: notes.present ? notes.value : this.notes,
+    status: status ?? this.status,
+    reversedAt: reversedAt.present ? reversedAt.value : this.reversedAt,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  ShopSale copyWithCompanion(ShopSalesCompanion data) {
+    return ShopSale(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      saleNo: data.saleNo.present ? data.saleNo.value : this.saleNo,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      customerName: data.customerName.present
+          ? data.customerName.value
+          : this.customerName,
+      customerGstin: data.customerGstin.present
+          ? data.customerGstin.value
+          : this.customerGstin,
+      placeOfSupply: data.placeOfSupply.present
+          ? data.placeOfSupply.value
+          : this.placeOfSupply,
+      tier: data.tier.present ? data.tier.value : this.tier,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      subtotalPaise: data.subtotalPaise.present
+          ? data.subtotalPaise.value
+          : this.subtotalPaise,
+      discountPaise: data.discountPaise.present
+          ? data.discountPaise.value
+          : this.discountPaise,
+      invoiceDiscountPct: data.invoiceDiscountPct.present
+          ? data.invoiceDiscountPct.value
+          : this.invoiceDiscountPct,
+      invoiceDiscountPaise: data.invoiceDiscountPaise.present
+          ? data.invoiceDiscountPaise.value
+          : this.invoiceDiscountPaise,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      cgstPaise: data.cgstPaise.present ? data.cgstPaise.value : this.cgstPaise,
+      sgstPaise: data.sgstPaise.present ? data.sgstPaise.value : this.sgstPaise,
+      igstPaise: data.igstPaise.present ? data.igstPaise.value : this.igstPaise,
+      roundOffPaise: data.roundOffPaise.present
+          ? data.roundOffPaise.value
+          : this.roundOffPaise,
+      totalPaise: data.totalPaise.present
+          ? data.totalPaise.value
+          : this.totalPaise,
+      paidCashPaise: data.paidCashPaise.present
+          ? data.paidCashPaise.value
+          : this.paidCashPaise,
+      paidUpiPaise: data.paidUpiPaise.present
+          ? data.paidUpiPaise.value
+          : this.paidUpiPaise,
+      paidCreditPaise: data.paidCreditPaise.present
+          ? data.paidCreditPaise.value
+          : this.paidCreditPaise,
+      upiAccountId: data.upiAccountId.present
+          ? data.upiAccountId.value
+          : this.upiAccountId,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      status: data.status.present ? data.status.value : this.status,
+      reversedAt: data.reversedAt.present
+          ? data.reversedAt.value
+          : this.reversedAt,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopSale(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('saleNo: $saleNo, ')
+          ..write('partyId: $partyId, ')
+          ..write('customerName: $customerName, ')
+          ..write('customerGstin: $customerGstin, ')
+          ..write('placeOfSupply: $placeOfSupply, ')
+          ..write('tier: $tier, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('subtotalPaise: $subtotalPaise, ')
+          ..write('discountPaise: $discountPaise, ')
+          ..write('invoiceDiscountPct: $invoiceDiscountPct, ')
+          ..write('invoiceDiscountPaise: $invoiceDiscountPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('paidCashPaise: $paidCashPaise, ')
+          ..write('paidUpiPaise: $paidUpiPaise, ')
+          ..write('paidCreditPaise: $paidCreditPaise, ')
+          ..write('upiAccountId: $upiAccountId, ')
+          ..write('notes: $notes, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    id,
+    tenantId,
+    saleNo,
+    partyId,
+    customerName,
+    customerGstin,
+    placeOfSupply,
+    tier,
+    entryDate,
+    subtotalPaise,
+    discountPaise,
+    invoiceDiscountPct,
+    invoiceDiscountPaise,
+    taxablePaise,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    roundOffPaise,
+    totalPaise,
+    paidCashPaise,
+    paidUpiPaise,
+    paidCreditPaise,
+    upiAccountId,
+    notes,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShopSale &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.saleNo == this.saleNo &&
+          other.partyId == this.partyId &&
+          other.customerName == this.customerName &&
+          other.customerGstin == this.customerGstin &&
+          other.placeOfSupply == this.placeOfSupply &&
+          other.tier == this.tier &&
+          other.entryDate == this.entryDate &&
+          other.subtotalPaise == this.subtotalPaise &&
+          other.discountPaise == this.discountPaise &&
+          other.invoiceDiscountPct == this.invoiceDiscountPct &&
+          other.invoiceDiscountPaise == this.invoiceDiscountPaise &&
+          other.taxablePaise == this.taxablePaise &&
+          other.cgstPaise == this.cgstPaise &&
+          other.sgstPaise == this.sgstPaise &&
+          other.igstPaise == this.igstPaise &&
+          other.roundOffPaise == this.roundOffPaise &&
+          other.totalPaise == this.totalPaise &&
+          other.paidCashPaise == this.paidCashPaise &&
+          other.paidUpiPaise == this.paidUpiPaise &&
+          other.paidCreditPaise == this.paidCreditPaise &&
+          other.upiAccountId == this.upiAccountId &&
+          other.notes == this.notes &&
+          other.status == this.status &&
+          other.reversedAt == this.reversedAt &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class ShopSalesCompanion extends UpdateCompanion<ShopSale> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> saleNo;
+  final Value<String?> partyId;
+  final Value<String?> customerName;
+  final Value<String?> customerGstin;
+  final Value<String?> placeOfSupply;
+  final Value<String?> tier;
+  final Value<String> entryDate;
+  final Value<int> subtotalPaise;
+  final Value<int> discountPaise;
+  final Value<double> invoiceDiscountPct;
+  final Value<int> invoiceDiscountPaise;
+  final Value<int> taxablePaise;
+  final Value<int> cgstPaise;
+  final Value<int> sgstPaise;
+  final Value<int> igstPaise;
+  final Value<int> roundOffPaise;
+  final Value<int> totalPaise;
+  final Value<int> paidCashPaise;
+  final Value<int> paidUpiPaise;
+  final Value<int> paidCreditPaise;
+  final Value<String?> upiAccountId;
+  final Value<String?> notes;
+  final Value<String> status;
+  final Value<String?> reversedAt;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const ShopSalesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.saleNo = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.customerName = const Value.absent(),
+    this.customerGstin = const Value.absent(),
+    this.placeOfSupply = const Value.absent(),
+    this.tier = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.subtotalPaise = const Value.absent(),
+    this.discountPaise = const Value.absent(),
+    this.invoiceDiscountPct = const Value.absent(),
+    this.invoiceDiscountPaise = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.cgstPaise = const Value.absent(),
+    this.sgstPaise = const Value.absent(),
+    this.igstPaise = const Value.absent(),
+    this.roundOffPaise = const Value.absent(),
+    this.totalPaise = const Value.absent(),
+    this.paidCashPaise = const Value.absent(),
+    this.paidUpiPaise = const Value.absent(),
+    this.paidCreditPaise = const Value.absent(),
+    this.upiAccountId = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.status = const Value.absent(),
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShopSalesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String saleNo,
+    this.partyId = const Value.absent(),
+    this.customerName = const Value.absent(),
+    this.customerGstin = const Value.absent(),
+    this.placeOfSupply = const Value.absent(),
+    this.tier = const Value.absent(),
+    required String entryDate,
+    required int subtotalPaise,
+    required int discountPaise,
+    required double invoiceDiscountPct,
+    required int invoiceDiscountPaise,
+    required int taxablePaise,
+    required int cgstPaise,
+    required int sgstPaise,
+    required int igstPaise,
+    required int roundOffPaise,
+    required int totalPaise,
+    required int paidCashPaise,
+    required int paidUpiPaise,
+    required int paidCreditPaise,
+    this.upiAccountId = const Value.absent(),
+    this.notes = const Value.absent(),
+    required String status,
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       saleNo = Value(saleNo),
+       entryDate = Value(entryDate),
+       subtotalPaise = Value(subtotalPaise),
+       discountPaise = Value(discountPaise),
+       invoiceDiscountPct = Value(invoiceDiscountPct),
+       invoiceDiscountPaise = Value(invoiceDiscountPaise),
+       taxablePaise = Value(taxablePaise),
+       cgstPaise = Value(cgstPaise),
+       sgstPaise = Value(sgstPaise),
+       igstPaise = Value(igstPaise),
+       roundOffPaise = Value(roundOffPaise),
+       totalPaise = Value(totalPaise),
+       paidCashPaise = Value(paidCashPaise),
+       paidUpiPaise = Value(paidUpiPaise),
+       paidCreditPaise = Value(paidCreditPaise),
+       status = Value(status);
+  static Insertable<ShopSale> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? saleNo,
+    Expression<String>? partyId,
+    Expression<String>? customerName,
+    Expression<String>? customerGstin,
+    Expression<String>? placeOfSupply,
+    Expression<String>? tier,
+    Expression<String>? entryDate,
+    Expression<int>? subtotalPaise,
+    Expression<int>? discountPaise,
+    Expression<double>? invoiceDiscountPct,
+    Expression<int>? invoiceDiscountPaise,
+    Expression<int>? taxablePaise,
+    Expression<int>? cgstPaise,
+    Expression<int>? sgstPaise,
+    Expression<int>? igstPaise,
+    Expression<int>? roundOffPaise,
+    Expression<int>? totalPaise,
+    Expression<int>? paidCashPaise,
+    Expression<int>? paidUpiPaise,
+    Expression<int>? paidCreditPaise,
+    Expression<String>? upiAccountId,
+    Expression<String>? notes,
+    Expression<String>? status,
+    Expression<String>? reversedAt,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (saleNo != null) 'sale_no': saleNo,
+      if (partyId != null) 'party_id': partyId,
+      if (customerName != null) 'customer_name': customerName,
+      if (customerGstin != null) 'customer_gstin': customerGstin,
+      if (placeOfSupply != null) 'place_of_supply': placeOfSupply,
+      if (tier != null) 'tier': tier,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (subtotalPaise != null) 'subtotal_paise': subtotalPaise,
+      if (discountPaise != null) 'discount_paise': discountPaise,
+      if (invoiceDiscountPct != null)
+        'invoice_discount_pct': invoiceDiscountPct,
+      if (invoiceDiscountPaise != null)
+        'invoice_discount_paise': invoiceDiscountPaise,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (cgstPaise != null) 'cgst_paise': cgstPaise,
+      if (sgstPaise != null) 'sgst_paise': sgstPaise,
+      if (igstPaise != null) 'igst_paise': igstPaise,
+      if (roundOffPaise != null) 'round_off_paise': roundOffPaise,
+      if (totalPaise != null) 'total_paise': totalPaise,
+      if (paidCashPaise != null) 'paid_cash_paise': paidCashPaise,
+      if (paidUpiPaise != null) 'paid_upi_paise': paidUpiPaise,
+      if (paidCreditPaise != null) 'paid_credit_paise': paidCreditPaise,
+      if (upiAccountId != null) 'upi_account_id': upiAccountId,
+      if (notes != null) 'notes': notes,
+      if (status != null) 'status': status,
+      if (reversedAt != null) 'reversed_at': reversedAt,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShopSalesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? saleNo,
+    Value<String?>? partyId,
+    Value<String?>? customerName,
+    Value<String?>? customerGstin,
+    Value<String?>? placeOfSupply,
+    Value<String?>? tier,
+    Value<String>? entryDate,
+    Value<int>? subtotalPaise,
+    Value<int>? discountPaise,
+    Value<double>? invoiceDiscountPct,
+    Value<int>? invoiceDiscountPaise,
+    Value<int>? taxablePaise,
+    Value<int>? cgstPaise,
+    Value<int>? sgstPaise,
+    Value<int>? igstPaise,
+    Value<int>? roundOffPaise,
+    Value<int>? totalPaise,
+    Value<int>? paidCashPaise,
+    Value<int>? paidUpiPaise,
+    Value<int>? paidCreditPaise,
+    Value<String?>? upiAccountId,
+    Value<String?>? notes,
+    Value<String>? status,
+    Value<String?>? reversedAt,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return ShopSalesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      saleNo: saleNo ?? this.saleNo,
+      partyId: partyId ?? this.partyId,
+      customerName: customerName ?? this.customerName,
+      customerGstin: customerGstin ?? this.customerGstin,
+      placeOfSupply: placeOfSupply ?? this.placeOfSupply,
+      tier: tier ?? this.tier,
+      entryDate: entryDate ?? this.entryDate,
+      subtotalPaise: subtotalPaise ?? this.subtotalPaise,
+      discountPaise: discountPaise ?? this.discountPaise,
+      invoiceDiscountPct: invoiceDiscountPct ?? this.invoiceDiscountPct,
+      invoiceDiscountPaise: invoiceDiscountPaise ?? this.invoiceDiscountPaise,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      cgstPaise: cgstPaise ?? this.cgstPaise,
+      sgstPaise: sgstPaise ?? this.sgstPaise,
+      igstPaise: igstPaise ?? this.igstPaise,
+      roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+      totalPaise: totalPaise ?? this.totalPaise,
+      paidCashPaise: paidCashPaise ?? this.paidCashPaise,
+      paidUpiPaise: paidUpiPaise ?? this.paidUpiPaise,
+      paidCreditPaise: paidCreditPaise ?? this.paidCreditPaise,
+      upiAccountId: upiAccountId ?? this.upiAccountId,
+      notes: notes ?? this.notes,
+      status: status ?? this.status,
+      reversedAt: reversedAt ?? this.reversedAt,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (saleNo.present) {
+      map['sale_no'] = Variable<String>(saleNo.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (customerName.present) {
+      map['customer_name'] = Variable<String>(customerName.value);
+    }
+    if (customerGstin.present) {
+      map['customer_gstin'] = Variable<String>(customerGstin.value);
+    }
+    if (placeOfSupply.present) {
+      map['place_of_supply'] = Variable<String>(placeOfSupply.value);
+    }
+    if (tier.present) {
+      map['tier'] = Variable<String>(tier.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (subtotalPaise.present) {
+      map['subtotal_paise'] = Variable<int>(subtotalPaise.value);
+    }
+    if (discountPaise.present) {
+      map['discount_paise'] = Variable<int>(discountPaise.value);
+    }
+    if (invoiceDiscountPct.present) {
+      map['invoice_discount_pct'] = Variable<double>(invoiceDiscountPct.value);
+    }
+    if (invoiceDiscountPaise.present) {
+      map['invoice_discount_paise'] = Variable<int>(invoiceDiscountPaise.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (cgstPaise.present) {
+      map['cgst_paise'] = Variable<int>(cgstPaise.value);
+    }
+    if (sgstPaise.present) {
+      map['sgst_paise'] = Variable<int>(sgstPaise.value);
+    }
+    if (igstPaise.present) {
+      map['igst_paise'] = Variable<int>(igstPaise.value);
+    }
+    if (roundOffPaise.present) {
+      map['round_off_paise'] = Variable<int>(roundOffPaise.value);
+    }
+    if (totalPaise.present) {
+      map['total_paise'] = Variable<int>(totalPaise.value);
+    }
+    if (paidCashPaise.present) {
+      map['paid_cash_paise'] = Variable<int>(paidCashPaise.value);
+    }
+    if (paidUpiPaise.present) {
+      map['paid_upi_paise'] = Variable<int>(paidUpiPaise.value);
+    }
+    if (paidCreditPaise.present) {
+      map['paid_credit_paise'] = Variable<int>(paidCreditPaise.value);
+    }
+    if (upiAccountId.present) {
+      map['upi_account_id'] = Variable<String>(upiAccountId.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (reversedAt.present) {
+      map['reversed_at'] = Variable<String>(reversedAt.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopSalesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('saleNo: $saleNo, ')
+          ..write('partyId: $partyId, ')
+          ..write('customerName: $customerName, ')
+          ..write('customerGstin: $customerGstin, ')
+          ..write('placeOfSupply: $placeOfSupply, ')
+          ..write('tier: $tier, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('subtotalPaise: $subtotalPaise, ')
+          ..write('discountPaise: $discountPaise, ')
+          ..write('invoiceDiscountPct: $invoiceDiscountPct, ')
+          ..write('invoiceDiscountPaise: $invoiceDiscountPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('paidCashPaise: $paidCashPaise, ')
+          ..write('paidUpiPaise: $paidUpiPaise, ')
+          ..write('paidCreditPaise: $paidCreditPaise, ')
+          ..write('upiAccountId: $upiAccountId, ')
+          ..write('notes: $notes, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ShopSaleLinesTable extends ShopSaleLines
+    with TableInfo<$ShopSaleLinesTable, ShopSaleLine> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShopSaleLinesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _saleIdMeta = const VerificationMeta('saleId');
+  @override
+  late final GeneratedColumn<String> saleId = GeneratedColumn<String>(
+    'sale_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineNoMeta = const VerificationMeta('lineNo');
+  @override
+  late final GeneratedColumn<int> lineNo = GeneratedColumn<int>(
+    'line_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productIdMeta = const VerificationMeta(
+    'productId',
+  );
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+    'product_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchIdMeta = const VerificationMeta(
+    'batchId',
+  );
+  @override
+  late final GeneratedColumn<String> batchId = GeneratedColumn<String>(
+    'batch_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _qtyMilliMeta = const VerificationMeta(
+    'qtyMilli',
+  );
+  @override
+  late final GeneratedColumn<int> qtyMilli = GeneratedColumn<int>(
+    'qty_milli',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _unitPricePaiseMeta = const VerificationMeta(
+    'unitPricePaise',
+  );
+  @override
+  late final GeneratedColumn<int> unitPricePaise = GeneratedColumn<int>(
+    'unit_price_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tierMeta = const VerificationMeta('tier');
+  @override
+  late final GeneratedColumn<String> tier = GeneratedColumn<String>(
+    'tier',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _discountPaiseMeta = const VerificationMeta(
+    'discountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> discountPaise = GeneratedColumn<int>(
+    'discount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _gstRateMeta = const VerificationMeta(
+    'gstRate',
+  );
+  @override
+  late final GeneratedColumn<double> gstRate = GeneratedColumn<double>(
+    'gst_rate',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cgstPaiseMeta = const VerificationMeta(
+    'cgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> cgstPaise = GeneratedColumn<int>(
+    'cgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sgstPaiseMeta = const VerificationMeta(
+    'sgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> sgstPaise = GeneratedColumn<int>(
+    'sgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _igstPaiseMeta = const VerificationMeta(
+    'igstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> igstPaise = GeneratedColumn<int>(
+    'igst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineTotalPaiseMeta = const VerificationMeta(
+    'lineTotalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> lineTotalPaise = GeneratedColumn<int>(
+    'line_total_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _hsnMeta = const VerificationMeta('hsn');
+  @override
+  late final GeneratedColumn<String> hsn = GeneratedColumn<String>(
+    'hsn',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _costPaiseMeta = const VerificationMeta(
+    'costPaise',
+  );
+  @override
+  late final GeneratedColumn<int> costPaise = GeneratedColumn<int>(
+    'cost_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    saleId,
+    lineNo,
+    productId,
+    batchId,
+    qtyMilli,
+    unitPricePaise,
+    tier,
+    discountPaise,
+    taxablePaise,
+    gstRate,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    lineTotalPaise,
+    hsn,
+    costPaise,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'shop_sale_lines';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShopSaleLine> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('sale_id')) {
+      context.handle(
+        _saleIdMeta,
+        saleId.isAcceptableOrUnknown(data['sale_id']!, _saleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_saleIdMeta);
+    }
+    if (data.containsKey('line_no')) {
+      context.handle(
+        _lineNoMeta,
+        lineNo.isAcceptableOrUnknown(data['line_no']!, _lineNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lineNoMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(
+        _productIdMeta,
+        productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('batch_id')) {
+      context.handle(
+        _batchIdMeta,
+        batchId.isAcceptableOrUnknown(data['batch_id']!, _batchIdMeta),
+      );
+    }
+    if (data.containsKey('qty_milli')) {
+      context.handle(
+        _qtyMilliMeta,
+        qtyMilli.isAcceptableOrUnknown(data['qty_milli']!, _qtyMilliMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_qtyMilliMeta);
+    }
+    if (data.containsKey('unit_price_paise')) {
+      context.handle(
+        _unitPricePaiseMeta,
+        unitPricePaise.isAcceptableOrUnknown(
+          data['unit_price_paise']!,
+          _unitPricePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_unitPricePaiseMeta);
+    }
+    if (data.containsKey('tier')) {
+      context.handle(
+        _tierMeta,
+        tier.isAcceptableOrUnknown(data['tier']!, _tierMeta),
+      );
+    }
+    if (data.containsKey('discount_paise')) {
+      context.handle(
+        _discountPaiseMeta,
+        discountPaise.isAcceptableOrUnknown(
+          data['discount_paise']!,
+          _discountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_discountPaiseMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('gst_rate')) {
+      context.handle(
+        _gstRateMeta,
+        gstRate.isAcceptableOrUnknown(data['gst_rate']!, _gstRateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_gstRateMeta);
+    }
+    if (data.containsKey('cgst_paise')) {
+      context.handle(
+        _cgstPaiseMeta,
+        cgstPaise.isAcceptableOrUnknown(data['cgst_paise']!, _cgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cgstPaiseMeta);
+    }
+    if (data.containsKey('sgst_paise')) {
+      context.handle(
+        _sgstPaiseMeta,
+        sgstPaise.isAcceptableOrUnknown(data['sgst_paise']!, _sgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sgstPaiseMeta);
+    }
+    if (data.containsKey('igst_paise')) {
+      context.handle(
+        _igstPaiseMeta,
+        igstPaise.isAcceptableOrUnknown(data['igst_paise']!, _igstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_igstPaiseMeta);
+    }
+    if (data.containsKey('line_total_paise')) {
+      context.handle(
+        _lineTotalPaiseMeta,
+        lineTotalPaise.isAcceptableOrUnknown(
+          data['line_total_paise']!,
+          _lineTotalPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_lineTotalPaiseMeta);
+    }
+    if (data.containsKey('hsn')) {
+      context.handle(
+        _hsnMeta,
+        hsn.isAcceptableOrUnknown(data['hsn']!, _hsnMeta),
+      );
+    }
+    if (data.containsKey('cost_paise')) {
+      context.handle(
+        _costPaiseMeta,
+        costPaise.isAcceptableOrUnknown(data['cost_paise']!, _costPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_costPaiseMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ShopSaleLine map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShopSaleLine(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      saleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sale_id'],
+      )!,
+      lineNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_no'],
+      )!,
+      productId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}product_id'],
+      )!,
+      batchId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_id'],
+      ),
+      qtyMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}qty_milli'],
+      )!,
+      unitPricePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}unit_price_paise'],
+      )!,
+      tier: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tier'],
+      ),
+      discountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}discount_paise'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      gstRate: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}gst_rate'],
+      )!,
+      cgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cgst_paise'],
+      )!,
+      sgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sgst_paise'],
+      )!,
+      igstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}igst_paise'],
+      )!,
+      lineTotalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_total_paise'],
+      )!,
+      hsn: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}hsn'],
+      ),
+      costPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cost_paise'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $ShopSaleLinesTable createAlias(String alias) {
+    return $ShopSaleLinesTable(attachedDatabase, alias);
+  }
+}
+
+class ShopSaleLine extends DataClass implements Insertable<ShopSaleLine> {
+  final String id;
+  final String tenantId;
+  final String saleId;
+  final int lineNo;
+  final String productId;
+  final String? batchId;
+  final int qtyMilli;
+  final int unitPricePaise;
+  final String? tier;
+  final int discountPaise;
+  final int taxablePaise;
+  final double gstRate;
+  final int cgstPaise;
+  final int sgstPaise;
+  final int igstPaise;
+  final int lineTotalPaise;
+  final String? hsn;
+  final int costPaise;
+  final String? createdBy;
+  final String? createdAt;
+  const ShopSaleLine({
+    required this.id,
+    required this.tenantId,
+    required this.saleId,
+    required this.lineNo,
+    required this.productId,
+    this.batchId,
+    required this.qtyMilli,
+    required this.unitPricePaise,
+    this.tier,
+    required this.discountPaise,
+    required this.taxablePaise,
+    required this.gstRate,
+    required this.cgstPaise,
+    required this.sgstPaise,
+    required this.igstPaise,
+    required this.lineTotalPaise,
+    this.hsn,
+    required this.costPaise,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['sale_id'] = Variable<String>(saleId);
+    map['line_no'] = Variable<int>(lineNo);
+    map['product_id'] = Variable<String>(productId);
+    if (!nullToAbsent || batchId != null) {
+      map['batch_id'] = Variable<String>(batchId);
+    }
+    map['qty_milli'] = Variable<int>(qtyMilli);
+    map['unit_price_paise'] = Variable<int>(unitPricePaise);
+    if (!nullToAbsent || tier != null) {
+      map['tier'] = Variable<String>(tier);
+    }
+    map['discount_paise'] = Variable<int>(discountPaise);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['gst_rate'] = Variable<double>(gstRate);
+    map['cgst_paise'] = Variable<int>(cgstPaise);
+    map['sgst_paise'] = Variable<int>(sgstPaise);
+    map['igst_paise'] = Variable<int>(igstPaise);
+    map['line_total_paise'] = Variable<int>(lineTotalPaise);
+    if (!nullToAbsent || hsn != null) {
+      map['hsn'] = Variable<String>(hsn);
+    }
+    map['cost_paise'] = Variable<int>(costPaise);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  ShopSaleLinesCompanion toCompanion(bool nullToAbsent) {
+    return ShopSaleLinesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      saleId: Value(saleId),
+      lineNo: Value(lineNo),
+      productId: Value(productId),
+      batchId: batchId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(batchId),
+      qtyMilli: Value(qtyMilli),
+      unitPricePaise: Value(unitPricePaise),
+      tier: tier == null && nullToAbsent ? const Value.absent() : Value(tier),
+      discountPaise: Value(discountPaise),
+      taxablePaise: Value(taxablePaise),
+      gstRate: Value(gstRate),
+      cgstPaise: Value(cgstPaise),
+      sgstPaise: Value(sgstPaise),
+      igstPaise: Value(igstPaise),
+      lineTotalPaise: Value(lineTotalPaise),
+      hsn: hsn == null && nullToAbsent ? const Value.absent() : Value(hsn),
+      costPaise: Value(costPaise),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory ShopSaleLine.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShopSaleLine(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      saleId: serializer.fromJson<String>(json['saleId']),
+      lineNo: serializer.fromJson<int>(json['lineNo']),
+      productId: serializer.fromJson<String>(json['productId']),
+      batchId: serializer.fromJson<String?>(json['batchId']),
+      qtyMilli: serializer.fromJson<int>(json['qtyMilli']),
+      unitPricePaise: serializer.fromJson<int>(json['unitPricePaise']),
+      tier: serializer.fromJson<String?>(json['tier']),
+      discountPaise: serializer.fromJson<int>(json['discountPaise']),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      gstRate: serializer.fromJson<double>(json['gstRate']),
+      cgstPaise: serializer.fromJson<int>(json['cgstPaise']),
+      sgstPaise: serializer.fromJson<int>(json['sgstPaise']),
+      igstPaise: serializer.fromJson<int>(json['igstPaise']),
+      lineTotalPaise: serializer.fromJson<int>(json['lineTotalPaise']),
+      hsn: serializer.fromJson<String?>(json['hsn']),
+      costPaise: serializer.fromJson<int>(json['costPaise']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'saleId': serializer.toJson<String>(saleId),
+      'lineNo': serializer.toJson<int>(lineNo),
+      'productId': serializer.toJson<String>(productId),
+      'batchId': serializer.toJson<String?>(batchId),
+      'qtyMilli': serializer.toJson<int>(qtyMilli),
+      'unitPricePaise': serializer.toJson<int>(unitPricePaise),
+      'tier': serializer.toJson<String?>(tier),
+      'discountPaise': serializer.toJson<int>(discountPaise),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'gstRate': serializer.toJson<double>(gstRate),
+      'cgstPaise': serializer.toJson<int>(cgstPaise),
+      'sgstPaise': serializer.toJson<int>(sgstPaise),
+      'igstPaise': serializer.toJson<int>(igstPaise),
+      'lineTotalPaise': serializer.toJson<int>(lineTotalPaise),
+      'hsn': serializer.toJson<String?>(hsn),
+      'costPaise': serializer.toJson<int>(costPaise),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  ShopSaleLine copyWith({
+    String? id,
+    String? tenantId,
+    String? saleId,
+    int? lineNo,
+    String? productId,
+    Value<String?> batchId = const Value.absent(),
+    int? qtyMilli,
+    int? unitPricePaise,
+    Value<String?> tier = const Value.absent(),
+    int? discountPaise,
+    int? taxablePaise,
+    double? gstRate,
+    int? cgstPaise,
+    int? sgstPaise,
+    int? igstPaise,
+    int? lineTotalPaise,
+    Value<String?> hsn = const Value.absent(),
+    int? costPaise,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => ShopSaleLine(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    saleId: saleId ?? this.saleId,
+    lineNo: lineNo ?? this.lineNo,
+    productId: productId ?? this.productId,
+    batchId: batchId.present ? batchId.value : this.batchId,
+    qtyMilli: qtyMilli ?? this.qtyMilli,
+    unitPricePaise: unitPricePaise ?? this.unitPricePaise,
+    tier: tier.present ? tier.value : this.tier,
+    discountPaise: discountPaise ?? this.discountPaise,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    gstRate: gstRate ?? this.gstRate,
+    cgstPaise: cgstPaise ?? this.cgstPaise,
+    sgstPaise: sgstPaise ?? this.sgstPaise,
+    igstPaise: igstPaise ?? this.igstPaise,
+    lineTotalPaise: lineTotalPaise ?? this.lineTotalPaise,
+    hsn: hsn.present ? hsn.value : this.hsn,
+    costPaise: costPaise ?? this.costPaise,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  ShopSaleLine copyWithCompanion(ShopSaleLinesCompanion data) {
+    return ShopSaleLine(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      saleId: data.saleId.present ? data.saleId.value : this.saleId,
+      lineNo: data.lineNo.present ? data.lineNo.value : this.lineNo,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      batchId: data.batchId.present ? data.batchId.value : this.batchId,
+      qtyMilli: data.qtyMilli.present ? data.qtyMilli.value : this.qtyMilli,
+      unitPricePaise: data.unitPricePaise.present
+          ? data.unitPricePaise.value
+          : this.unitPricePaise,
+      tier: data.tier.present ? data.tier.value : this.tier,
+      discountPaise: data.discountPaise.present
+          ? data.discountPaise.value
+          : this.discountPaise,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      gstRate: data.gstRate.present ? data.gstRate.value : this.gstRate,
+      cgstPaise: data.cgstPaise.present ? data.cgstPaise.value : this.cgstPaise,
+      sgstPaise: data.sgstPaise.present ? data.sgstPaise.value : this.sgstPaise,
+      igstPaise: data.igstPaise.present ? data.igstPaise.value : this.igstPaise,
+      lineTotalPaise: data.lineTotalPaise.present
+          ? data.lineTotalPaise.value
+          : this.lineTotalPaise,
+      hsn: data.hsn.present ? data.hsn.value : this.hsn,
+      costPaise: data.costPaise.present ? data.costPaise.value : this.costPaise,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopSaleLine(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('saleId: $saleId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('unitPricePaise: $unitPricePaise, ')
+          ..write('tier: $tier, ')
+          ..write('discountPaise: $discountPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstRate: $gstRate, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('lineTotalPaise: $lineTotalPaise, ')
+          ..write('hsn: $hsn, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    saleId,
+    lineNo,
+    productId,
+    batchId,
+    qtyMilli,
+    unitPricePaise,
+    tier,
+    discountPaise,
+    taxablePaise,
+    gstRate,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    lineTotalPaise,
+    hsn,
+    costPaise,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShopSaleLine &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.saleId == this.saleId &&
+          other.lineNo == this.lineNo &&
+          other.productId == this.productId &&
+          other.batchId == this.batchId &&
+          other.qtyMilli == this.qtyMilli &&
+          other.unitPricePaise == this.unitPricePaise &&
+          other.tier == this.tier &&
+          other.discountPaise == this.discountPaise &&
+          other.taxablePaise == this.taxablePaise &&
+          other.gstRate == this.gstRate &&
+          other.cgstPaise == this.cgstPaise &&
+          other.sgstPaise == this.sgstPaise &&
+          other.igstPaise == this.igstPaise &&
+          other.lineTotalPaise == this.lineTotalPaise &&
+          other.hsn == this.hsn &&
+          other.costPaise == this.costPaise &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class ShopSaleLinesCompanion extends UpdateCompanion<ShopSaleLine> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> saleId;
+  final Value<int> lineNo;
+  final Value<String> productId;
+  final Value<String?> batchId;
+  final Value<int> qtyMilli;
+  final Value<int> unitPricePaise;
+  final Value<String?> tier;
+  final Value<int> discountPaise;
+  final Value<int> taxablePaise;
+  final Value<double> gstRate;
+  final Value<int> cgstPaise;
+  final Value<int> sgstPaise;
+  final Value<int> igstPaise;
+  final Value<int> lineTotalPaise;
+  final Value<String?> hsn;
+  final Value<int> costPaise;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const ShopSaleLinesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.saleId = const Value.absent(),
+    this.lineNo = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.batchId = const Value.absent(),
+    this.qtyMilli = const Value.absent(),
+    this.unitPricePaise = const Value.absent(),
+    this.tier = const Value.absent(),
+    this.discountPaise = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.gstRate = const Value.absent(),
+    this.cgstPaise = const Value.absent(),
+    this.sgstPaise = const Value.absent(),
+    this.igstPaise = const Value.absent(),
+    this.lineTotalPaise = const Value.absent(),
+    this.hsn = const Value.absent(),
+    this.costPaise = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShopSaleLinesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String saleId,
+    required int lineNo,
+    required String productId,
+    this.batchId = const Value.absent(),
+    required int qtyMilli,
+    required int unitPricePaise,
+    this.tier = const Value.absent(),
+    required int discountPaise,
+    required int taxablePaise,
+    required double gstRate,
+    required int cgstPaise,
+    required int sgstPaise,
+    required int igstPaise,
+    required int lineTotalPaise,
+    this.hsn = const Value.absent(),
+    required int costPaise,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       saleId = Value(saleId),
+       lineNo = Value(lineNo),
+       productId = Value(productId),
+       qtyMilli = Value(qtyMilli),
+       unitPricePaise = Value(unitPricePaise),
+       discountPaise = Value(discountPaise),
+       taxablePaise = Value(taxablePaise),
+       gstRate = Value(gstRate),
+       cgstPaise = Value(cgstPaise),
+       sgstPaise = Value(sgstPaise),
+       igstPaise = Value(igstPaise),
+       lineTotalPaise = Value(lineTotalPaise),
+       costPaise = Value(costPaise);
+  static Insertable<ShopSaleLine> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? saleId,
+    Expression<int>? lineNo,
+    Expression<String>? productId,
+    Expression<String>? batchId,
+    Expression<int>? qtyMilli,
+    Expression<int>? unitPricePaise,
+    Expression<String>? tier,
+    Expression<int>? discountPaise,
+    Expression<int>? taxablePaise,
+    Expression<double>? gstRate,
+    Expression<int>? cgstPaise,
+    Expression<int>? sgstPaise,
+    Expression<int>? igstPaise,
+    Expression<int>? lineTotalPaise,
+    Expression<String>? hsn,
+    Expression<int>? costPaise,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (saleId != null) 'sale_id': saleId,
+      if (lineNo != null) 'line_no': lineNo,
+      if (productId != null) 'product_id': productId,
+      if (batchId != null) 'batch_id': batchId,
+      if (qtyMilli != null) 'qty_milli': qtyMilli,
+      if (unitPricePaise != null) 'unit_price_paise': unitPricePaise,
+      if (tier != null) 'tier': tier,
+      if (discountPaise != null) 'discount_paise': discountPaise,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (gstRate != null) 'gst_rate': gstRate,
+      if (cgstPaise != null) 'cgst_paise': cgstPaise,
+      if (sgstPaise != null) 'sgst_paise': sgstPaise,
+      if (igstPaise != null) 'igst_paise': igstPaise,
+      if (lineTotalPaise != null) 'line_total_paise': lineTotalPaise,
+      if (hsn != null) 'hsn': hsn,
+      if (costPaise != null) 'cost_paise': costPaise,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShopSaleLinesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? saleId,
+    Value<int>? lineNo,
+    Value<String>? productId,
+    Value<String?>? batchId,
+    Value<int>? qtyMilli,
+    Value<int>? unitPricePaise,
+    Value<String?>? tier,
+    Value<int>? discountPaise,
+    Value<int>? taxablePaise,
+    Value<double>? gstRate,
+    Value<int>? cgstPaise,
+    Value<int>? sgstPaise,
+    Value<int>? igstPaise,
+    Value<int>? lineTotalPaise,
+    Value<String?>? hsn,
+    Value<int>? costPaise,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return ShopSaleLinesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      saleId: saleId ?? this.saleId,
+      lineNo: lineNo ?? this.lineNo,
+      productId: productId ?? this.productId,
+      batchId: batchId ?? this.batchId,
+      qtyMilli: qtyMilli ?? this.qtyMilli,
+      unitPricePaise: unitPricePaise ?? this.unitPricePaise,
+      tier: tier ?? this.tier,
+      discountPaise: discountPaise ?? this.discountPaise,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      gstRate: gstRate ?? this.gstRate,
+      cgstPaise: cgstPaise ?? this.cgstPaise,
+      sgstPaise: sgstPaise ?? this.sgstPaise,
+      igstPaise: igstPaise ?? this.igstPaise,
+      lineTotalPaise: lineTotalPaise ?? this.lineTotalPaise,
+      hsn: hsn ?? this.hsn,
+      costPaise: costPaise ?? this.costPaise,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (saleId.present) {
+      map['sale_id'] = Variable<String>(saleId.value);
+    }
+    if (lineNo.present) {
+      map['line_no'] = Variable<int>(lineNo.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (batchId.present) {
+      map['batch_id'] = Variable<String>(batchId.value);
+    }
+    if (qtyMilli.present) {
+      map['qty_milli'] = Variable<int>(qtyMilli.value);
+    }
+    if (unitPricePaise.present) {
+      map['unit_price_paise'] = Variable<int>(unitPricePaise.value);
+    }
+    if (tier.present) {
+      map['tier'] = Variable<String>(tier.value);
+    }
+    if (discountPaise.present) {
+      map['discount_paise'] = Variable<int>(discountPaise.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (gstRate.present) {
+      map['gst_rate'] = Variable<double>(gstRate.value);
+    }
+    if (cgstPaise.present) {
+      map['cgst_paise'] = Variable<int>(cgstPaise.value);
+    }
+    if (sgstPaise.present) {
+      map['sgst_paise'] = Variable<int>(sgstPaise.value);
+    }
+    if (igstPaise.present) {
+      map['igst_paise'] = Variable<int>(igstPaise.value);
+    }
+    if (lineTotalPaise.present) {
+      map['line_total_paise'] = Variable<int>(lineTotalPaise.value);
+    }
+    if (hsn.present) {
+      map['hsn'] = Variable<String>(hsn.value);
+    }
+    if (costPaise.present) {
+      map['cost_paise'] = Variable<int>(costPaise.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopSaleLinesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('saleId: $saleId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('unitPricePaise: $unitPricePaise, ')
+          ..write('tier: $tier, ')
+          ..write('discountPaise: $discountPaise, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('gstRate: $gstRate, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('lineTotalPaise: $lineTotalPaise, ')
+          ..write('hsn: $hsn, ')
+          ..write('costPaise: $costPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ShopReturnsTable extends ShopReturns
+    with TableInfo<$ShopReturnsTable, ShopReturn> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShopReturnsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _returnNoMeta = const VerificationMeta(
+    'returnNo',
+  );
+  @override
+  late final GeneratedColumn<String> returnNo = GeneratedColumn<String>(
+    'return_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _saleIdMeta = const VerificationMeta('saleId');
+  @override
+  late final GeneratedColumn<String> saleId = GeneratedColumn<String>(
+    'sale_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cgstPaiseMeta = const VerificationMeta(
+    'cgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> cgstPaise = GeneratedColumn<int>(
+    'cgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sgstPaiseMeta = const VerificationMeta(
+    'sgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> sgstPaise = GeneratedColumn<int>(
+    'sgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _igstPaiseMeta = const VerificationMeta(
+    'igstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> igstPaise = GeneratedColumn<int>(
+    'igst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _roundOffPaiseMeta = const VerificationMeta(
+    'roundOffPaise',
+  );
+  @override
+  late final GeneratedColumn<int> roundOffPaise = GeneratedColumn<int>(
+    'round_off_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _totalPaiseMeta = const VerificationMeta(
+    'totalPaise',
+  );
+  @override
+  late final GeneratedColumn<int> totalPaise = GeneratedColumn<int>(
+    'total_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refundModeMeta = const VerificationMeta(
+    'refundMode',
+  );
+  @override
+  late final GeneratedColumn<String> refundMode = GeneratedColumn<String>(
+    'refund_mode',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refundKhataPaiseMeta = const VerificationMeta(
+    'refundKhataPaise',
+  );
+  @override
+  late final GeneratedColumn<int> refundKhataPaise = GeneratedColumn<int>(
+    'refund_khata_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refundCashPaiseMeta = const VerificationMeta(
+    'refundCashPaise',
+  );
+  @override
+  late final GeneratedColumn<int> refundCashPaise = GeneratedColumn<int>(
+    'refund_cash_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refundUpiPaiseMeta = const VerificationMeta(
+    'refundUpiPaise',
+  );
+  @override
+  late final GeneratedColumn<int> refundUpiPaise = GeneratedColumn<int>(
+    'refund_upi_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bankAccountIdMeta = const VerificationMeta(
+    'bankAccountId',
+  );
+  @override
+  late final GeneratedColumn<String> bankAccountId = GeneratedColumn<String>(
+    'bank_account_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reversedAtMeta = const VerificationMeta(
+    'reversedAt',
+  );
+  @override
+  late final GeneratedColumn<String> reversedAt = GeneratedColumn<String>(
+    'reversed_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    returnNo,
+    saleId,
+    partyId,
+    entryDate,
+    taxablePaise,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    roundOffPaise,
+    totalPaise,
+    refundMode,
+    refundKhataPaise,
+    refundCashPaise,
+    refundUpiPaise,
+    bankAccountId,
+    note,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'shop_returns';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShopReturn> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('return_no')) {
+      context.handle(
+        _returnNoMeta,
+        returnNo.isAcceptableOrUnknown(data['return_no']!, _returnNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_returnNoMeta);
+    }
+    if (data.containsKey('sale_id')) {
+      context.handle(
+        _saleIdMeta,
+        saleId.isAcceptableOrUnknown(data['sale_id']!, _saleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_saleIdMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('cgst_paise')) {
+      context.handle(
+        _cgstPaiseMeta,
+        cgstPaise.isAcceptableOrUnknown(data['cgst_paise']!, _cgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cgstPaiseMeta);
+    }
+    if (data.containsKey('sgst_paise')) {
+      context.handle(
+        _sgstPaiseMeta,
+        sgstPaise.isAcceptableOrUnknown(data['sgst_paise']!, _sgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sgstPaiseMeta);
+    }
+    if (data.containsKey('igst_paise')) {
+      context.handle(
+        _igstPaiseMeta,
+        igstPaise.isAcceptableOrUnknown(data['igst_paise']!, _igstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_igstPaiseMeta);
+    }
+    if (data.containsKey('round_off_paise')) {
+      context.handle(
+        _roundOffPaiseMeta,
+        roundOffPaise.isAcceptableOrUnknown(
+          data['round_off_paise']!,
+          _roundOffPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_roundOffPaiseMeta);
+    }
+    if (data.containsKey('total_paise')) {
+      context.handle(
+        _totalPaiseMeta,
+        totalPaise.isAcceptableOrUnknown(data['total_paise']!, _totalPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_totalPaiseMeta);
+    }
+    if (data.containsKey('refund_mode')) {
+      context.handle(
+        _refundModeMeta,
+        refundMode.isAcceptableOrUnknown(data['refund_mode']!, _refundModeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_refundModeMeta);
+    }
+    if (data.containsKey('refund_khata_paise')) {
+      context.handle(
+        _refundKhataPaiseMeta,
+        refundKhataPaise.isAcceptableOrUnknown(
+          data['refund_khata_paise']!,
+          _refundKhataPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_refundKhataPaiseMeta);
+    }
+    if (data.containsKey('refund_cash_paise')) {
+      context.handle(
+        _refundCashPaiseMeta,
+        refundCashPaise.isAcceptableOrUnknown(
+          data['refund_cash_paise']!,
+          _refundCashPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_refundCashPaiseMeta);
+    }
+    if (data.containsKey('refund_upi_paise')) {
+      context.handle(
+        _refundUpiPaiseMeta,
+        refundUpiPaise.isAcceptableOrUnknown(
+          data['refund_upi_paise']!,
+          _refundUpiPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_refundUpiPaiseMeta);
+    }
+    if (data.containsKey('bank_account_id')) {
+      context.handle(
+        _bankAccountIdMeta,
+        bankAccountId.isAcceptableOrUnknown(
+          data['bank_account_id']!,
+          _bankAccountIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('reversed_at')) {
+      context.handle(
+        _reversedAtMeta,
+        reversedAt.isAcceptableOrUnknown(data['reversed_at']!, _reversedAtMeta),
+      );
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ShopReturn map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShopReturn(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      returnNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}return_no'],
+      )!,
+      saleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sale_id'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      ),
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      cgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cgst_paise'],
+      )!,
+      sgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sgst_paise'],
+      )!,
+      igstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}igst_paise'],
+      )!,
+      roundOffPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}round_off_paise'],
+      )!,
+      totalPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_paise'],
+      )!,
+      refundMode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}refund_mode'],
+      )!,
+      refundKhataPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}refund_khata_paise'],
+      )!,
+      refundCashPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}refund_cash_paise'],
+      )!,
+      refundUpiPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}refund_upi_paise'],
+      )!,
+      bankAccountId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bank_account_id'],
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      reversedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reversed_at'],
+      ),
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $ShopReturnsTable createAlias(String alias) {
+    return $ShopReturnsTable(attachedDatabase, alias);
+  }
+}
+
+class ShopReturn extends DataClass implements Insertable<ShopReturn> {
+  final String id;
+  final String tenantId;
+  final String returnNo;
+  final String saleId;
+  final String? partyId;
+  final String entryDate;
+  final int taxablePaise;
+  final int cgstPaise;
+  final int sgstPaise;
+  final int igstPaise;
+  final int roundOffPaise;
+  final int totalPaise;
+  final String refundMode;
+  final int refundKhataPaise;
+  final int refundCashPaise;
+  final int refundUpiPaise;
+  final String? bankAccountId;
+  final String? note;
+  final String status;
+  final String? reversedAt;
+  final String? deviceId;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  const ShopReturn({
+    required this.id,
+    required this.tenantId,
+    required this.returnNo,
+    required this.saleId,
+    this.partyId,
+    required this.entryDate,
+    required this.taxablePaise,
+    required this.cgstPaise,
+    required this.sgstPaise,
+    required this.igstPaise,
+    required this.roundOffPaise,
+    required this.totalPaise,
+    required this.refundMode,
+    required this.refundKhataPaise,
+    required this.refundCashPaise,
+    required this.refundUpiPaise,
+    this.bankAccountId,
+    this.note,
+    required this.status,
+    this.reversedAt,
+    this.deviceId,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['return_no'] = Variable<String>(returnNo);
+    map['sale_id'] = Variable<String>(saleId);
+    if (!nullToAbsent || partyId != null) {
+      map['party_id'] = Variable<String>(partyId);
+    }
+    map['entry_date'] = Variable<String>(entryDate);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['cgst_paise'] = Variable<int>(cgstPaise);
+    map['sgst_paise'] = Variable<int>(sgstPaise);
+    map['igst_paise'] = Variable<int>(igstPaise);
+    map['round_off_paise'] = Variable<int>(roundOffPaise);
+    map['total_paise'] = Variable<int>(totalPaise);
+    map['refund_mode'] = Variable<String>(refundMode);
+    map['refund_khata_paise'] = Variable<int>(refundKhataPaise);
+    map['refund_cash_paise'] = Variable<int>(refundCashPaise);
+    map['refund_upi_paise'] = Variable<int>(refundUpiPaise);
+    if (!nullToAbsent || bankAccountId != null) {
+      map['bank_account_id'] = Variable<String>(bankAccountId);
+    }
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || reversedAt != null) {
+      map['reversed_at'] = Variable<String>(reversedAt);
+    }
+    if (!nullToAbsent || deviceId != null) {
+      map['device_id'] = Variable<String>(deviceId);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    return map;
+  }
+
+  ShopReturnsCompanion toCompanion(bool nullToAbsent) {
+    return ShopReturnsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      returnNo: Value(returnNo),
+      saleId: Value(saleId),
+      partyId: partyId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(partyId),
+      entryDate: Value(entryDate),
+      taxablePaise: Value(taxablePaise),
+      cgstPaise: Value(cgstPaise),
+      sgstPaise: Value(sgstPaise),
+      igstPaise: Value(igstPaise),
+      roundOffPaise: Value(roundOffPaise),
+      totalPaise: Value(totalPaise),
+      refundMode: Value(refundMode),
+      refundKhataPaise: Value(refundKhataPaise),
+      refundCashPaise: Value(refundCashPaise),
+      refundUpiPaise: Value(refundUpiPaise),
+      bankAccountId: bankAccountId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bankAccountId),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      status: Value(status),
+      reversedAt: reversedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversedAt),
+      deviceId: deviceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deviceId),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory ShopReturn.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShopReturn(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      returnNo: serializer.fromJson<String>(json['returnNo']),
+      saleId: serializer.fromJson<String>(json['saleId']),
+      partyId: serializer.fromJson<String?>(json['partyId']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      cgstPaise: serializer.fromJson<int>(json['cgstPaise']),
+      sgstPaise: serializer.fromJson<int>(json['sgstPaise']),
+      igstPaise: serializer.fromJson<int>(json['igstPaise']),
+      roundOffPaise: serializer.fromJson<int>(json['roundOffPaise']),
+      totalPaise: serializer.fromJson<int>(json['totalPaise']),
+      refundMode: serializer.fromJson<String>(json['refundMode']),
+      refundKhataPaise: serializer.fromJson<int>(json['refundKhataPaise']),
+      refundCashPaise: serializer.fromJson<int>(json['refundCashPaise']),
+      refundUpiPaise: serializer.fromJson<int>(json['refundUpiPaise']),
+      bankAccountId: serializer.fromJson<String?>(json['bankAccountId']),
+      note: serializer.fromJson<String?>(json['note']),
+      status: serializer.fromJson<String>(json['status']),
+      reversedAt: serializer.fromJson<String?>(json['reversedAt']),
+      deviceId: serializer.fromJson<String?>(json['deviceId']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'returnNo': serializer.toJson<String>(returnNo),
+      'saleId': serializer.toJson<String>(saleId),
+      'partyId': serializer.toJson<String?>(partyId),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'cgstPaise': serializer.toJson<int>(cgstPaise),
+      'sgstPaise': serializer.toJson<int>(sgstPaise),
+      'igstPaise': serializer.toJson<int>(igstPaise),
+      'roundOffPaise': serializer.toJson<int>(roundOffPaise),
+      'totalPaise': serializer.toJson<int>(totalPaise),
+      'refundMode': serializer.toJson<String>(refundMode),
+      'refundKhataPaise': serializer.toJson<int>(refundKhataPaise),
+      'refundCashPaise': serializer.toJson<int>(refundCashPaise),
+      'refundUpiPaise': serializer.toJson<int>(refundUpiPaise),
+      'bankAccountId': serializer.toJson<String?>(bankAccountId),
+      'note': serializer.toJson<String?>(note),
+      'status': serializer.toJson<String>(status),
+      'reversedAt': serializer.toJson<String?>(reversedAt),
+      'deviceId': serializer.toJson<String?>(deviceId),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+    };
+  }
+
+  ShopReturn copyWith({
+    String? id,
+    String? tenantId,
+    String? returnNo,
+    String? saleId,
+    Value<String?> partyId = const Value.absent(),
+    String? entryDate,
+    int? taxablePaise,
+    int? cgstPaise,
+    int? sgstPaise,
+    int? igstPaise,
+    int? roundOffPaise,
+    int? totalPaise,
+    String? refundMode,
+    int? refundKhataPaise,
+    int? refundCashPaise,
+    int? refundUpiPaise,
+    Value<String?> bankAccountId = const Value.absent(),
+    Value<String?> note = const Value.absent(),
+    String? status,
+    Value<String?> reversedAt = const Value.absent(),
+    Value<String?> deviceId = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+  }) => ShopReturn(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    returnNo: returnNo ?? this.returnNo,
+    saleId: saleId ?? this.saleId,
+    partyId: partyId.present ? partyId.value : this.partyId,
+    entryDate: entryDate ?? this.entryDate,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    cgstPaise: cgstPaise ?? this.cgstPaise,
+    sgstPaise: sgstPaise ?? this.sgstPaise,
+    igstPaise: igstPaise ?? this.igstPaise,
+    roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+    totalPaise: totalPaise ?? this.totalPaise,
+    refundMode: refundMode ?? this.refundMode,
+    refundKhataPaise: refundKhataPaise ?? this.refundKhataPaise,
+    refundCashPaise: refundCashPaise ?? this.refundCashPaise,
+    refundUpiPaise: refundUpiPaise ?? this.refundUpiPaise,
+    bankAccountId: bankAccountId.present
+        ? bankAccountId.value
+        : this.bankAccountId,
+    note: note.present ? note.value : this.note,
+    status: status ?? this.status,
+    reversedAt: reversedAt.present ? reversedAt.value : this.reversedAt,
+    deviceId: deviceId.present ? deviceId.value : this.deviceId,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  ShopReturn copyWithCompanion(ShopReturnsCompanion data) {
+    return ShopReturn(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      returnNo: data.returnNo.present ? data.returnNo.value : this.returnNo,
+      saleId: data.saleId.present ? data.saleId.value : this.saleId,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      cgstPaise: data.cgstPaise.present ? data.cgstPaise.value : this.cgstPaise,
+      sgstPaise: data.sgstPaise.present ? data.sgstPaise.value : this.sgstPaise,
+      igstPaise: data.igstPaise.present ? data.igstPaise.value : this.igstPaise,
+      roundOffPaise: data.roundOffPaise.present
+          ? data.roundOffPaise.value
+          : this.roundOffPaise,
+      totalPaise: data.totalPaise.present
+          ? data.totalPaise.value
+          : this.totalPaise,
+      refundMode: data.refundMode.present
+          ? data.refundMode.value
+          : this.refundMode,
+      refundKhataPaise: data.refundKhataPaise.present
+          ? data.refundKhataPaise.value
+          : this.refundKhataPaise,
+      refundCashPaise: data.refundCashPaise.present
+          ? data.refundCashPaise.value
+          : this.refundCashPaise,
+      refundUpiPaise: data.refundUpiPaise.present
+          ? data.refundUpiPaise.value
+          : this.refundUpiPaise,
+      bankAccountId: data.bankAccountId.present
+          ? data.bankAccountId.value
+          : this.bankAccountId,
+      note: data.note.present ? data.note.value : this.note,
+      status: data.status.present ? data.status.value : this.status,
+      reversedAt: data.reversedAt.present
+          ? data.reversedAt.value
+          : this.reversedAt,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopReturn(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('returnNo: $returnNo, ')
+          ..write('saleId: $saleId, ')
+          ..write('partyId: $partyId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('refundMode: $refundMode, ')
+          ..write('refundKhataPaise: $refundKhataPaise, ')
+          ..write('refundCashPaise: $refundCashPaise, ')
+          ..write('refundUpiPaise: $refundUpiPaise, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('note: $note, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    id,
+    tenantId,
+    returnNo,
+    saleId,
+    partyId,
+    entryDate,
+    taxablePaise,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    roundOffPaise,
+    totalPaise,
+    refundMode,
+    refundKhataPaise,
+    refundCashPaise,
+    refundUpiPaise,
+    bankAccountId,
+    note,
+    status,
+    reversedAt,
+    deviceId,
+    createdBy,
+    createdAt,
+    updatedAt,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShopReturn &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.returnNo == this.returnNo &&
+          other.saleId == this.saleId &&
+          other.partyId == this.partyId &&
+          other.entryDate == this.entryDate &&
+          other.taxablePaise == this.taxablePaise &&
+          other.cgstPaise == this.cgstPaise &&
+          other.sgstPaise == this.sgstPaise &&
+          other.igstPaise == this.igstPaise &&
+          other.roundOffPaise == this.roundOffPaise &&
+          other.totalPaise == this.totalPaise &&
+          other.refundMode == this.refundMode &&
+          other.refundKhataPaise == this.refundKhataPaise &&
+          other.refundCashPaise == this.refundCashPaise &&
+          other.refundUpiPaise == this.refundUpiPaise &&
+          other.bankAccountId == this.bankAccountId &&
+          other.note == this.note &&
+          other.status == this.status &&
+          other.reversedAt == this.reversedAt &&
+          other.deviceId == this.deviceId &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt);
+}
+
+class ShopReturnsCompanion extends UpdateCompanion<ShopReturn> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> returnNo;
+  final Value<String> saleId;
+  final Value<String?> partyId;
+  final Value<String> entryDate;
+  final Value<int> taxablePaise;
+  final Value<int> cgstPaise;
+  final Value<int> sgstPaise;
+  final Value<int> igstPaise;
+  final Value<int> roundOffPaise;
+  final Value<int> totalPaise;
+  final Value<String> refundMode;
+  final Value<int> refundKhataPaise;
+  final Value<int> refundCashPaise;
+  final Value<int> refundUpiPaise;
+  final Value<String?> bankAccountId;
+  final Value<String?> note;
+  final Value<String> status;
+  final Value<String?> reversedAt;
+  final Value<String?> deviceId;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<int> rowid;
+  const ShopReturnsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.returnNo = const Value.absent(),
+    this.saleId = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.cgstPaise = const Value.absent(),
+    this.sgstPaise = const Value.absent(),
+    this.igstPaise = const Value.absent(),
+    this.roundOffPaise = const Value.absent(),
+    this.totalPaise = const Value.absent(),
+    this.refundMode = const Value.absent(),
+    this.refundKhataPaise = const Value.absent(),
+    this.refundCashPaise = const Value.absent(),
+    this.refundUpiPaise = const Value.absent(),
+    this.bankAccountId = const Value.absent(),
+    this.note = const Value.absent(),
+    this.status = const Value.absent(),
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShopReturnsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String returnNo,
+    required String saleId,
+    this.partyId = const Value.absent(),
+    required String entryDate,
+    required int taxablePaise,
+    required int cgstPaise,
+    required int sgstPaise,
+    required int igstPaise,
+    required int roundOffPaise,
+    required int totalPaise,
+    required String refundMode,
+    required int refundKhataPaise,
+    required int refundCashPaise,
+    required int refundUpiPaise,
+    this.bankAccountId = const Value.absent(),
+    this.note = const Value.absent(),
+    required String status,
+    this.reversedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       returnNo = Value(returnNo),
+       saleId = Value(saleId),
+       entryDate = Value(entryDate),
+       taxablePaise = Value(taxablePaise),
+       cgstPaise = Value(cgstPaise),
+       sgstPaise = Value(sgstPaise),
+       igstPaise = Value(igstPaise),
+       roundOffPaise = Value(roundOffPaise),
+       totalPaise = Value(totalPaise),
+       refundMode = Value(refundMode),
+       refundKhataPaise = Value(refundKhataPaise),
+       refundCashPaise = Value(refundCashPaise),
+       refundUpiPaise = Value(refundUpiPaise),
+       status = Value(status);
+  static Insertable<ShopReturn> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? returnNo,
+    Expression<String>? saleId,
+    Expression<String>? partyId,
+    Expression<String>? entryDate,
+    Expression<int>? taxablePaise,
+    Expression<int>? cgstPaise,
+    Expression<int>? sgstPaise,
+    Expression<int>? igstPaise,
+    Expression<int>? roundOffPaise,
+    Expression<int>? totalPaise,
+    Expression<String>? refundMode,
+    Expression<int>? refundKhataPaise,
+    Expression<int>? refundCashPaise,
+    Expression<int>? refundUpiPaise,
+    Expression<String>? bankAccountId,
+    Expression<String>? note,
+    Expression<String>? status,
+    Expression<String>? reversedAt,
+    Expression<String>? deviceId,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (returnNo != null) 'return_no': returnNo,
+      if (saleId != null) 'sale_id': saleId,
+      if (partyId != null) 'party_id': partyId,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (cgstPaise != null) 'cgst_paise': cgstPaise,
+      if (sgstPaise != null) 'sgst_paise': sgstPaise,
+      if (igstPaise != null) 'igst_paise': igstPaise,
+      if (roundOffPaise != null) 'round_off_paise': roundOffPaise,
+      if (totalPaise != null) 'total_paise': totalPaise,
+      if (refundMode != null) 'refund_mode': refundMode,
+      if (refundKhataPaise != null) 'refund_khata_paise': refundKhataPaise,
+      if (refundCashPaise != null) 'refund_cash_paise': refundCashPaise,
+      if (refundUpiPaise != null) 'refund_upi_paise': refundUpiPaise,
+      if (bankAccountId != null) 'bank_account_id': bankAccountId,
+      if (note != null) 'note': note,
+      if (status != null) 'status': status,
+      if (reversedAt != null) 'reversed_at': reversedAt,
+      if (deviceId != null) 'device_id': deviceId,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShopReturnsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? returnNo,
+    Value<String>? saleId,
+    Value<String?>? partyId,
+    Value<String>? entryDate,
+    Value<int>? taxablePaise,
+    Value<int>? cgstPaise,
+    Value<int>? sgstPaise,
+    Value<int>? igstPaise,
+    Value<int>? roundOffPaise,
+    Value<int>? totalPaise,
+    Value<String>? refundMode,
+    Value<int>? refundKhataPaise,
+    Value<int>? refundCashPaise,
+    Value<int>? refundUpiPaise,
+    Value<String?>? bankAccountId,
+    Value<String?>? note,
+    Value<String>? status,
+    Value<String?>? reversedAt,
+    Value<String?>? deviceId,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return ShopReturnsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      returnNo: returnNo ?? this.returnNo,
+      saleId: saleId ?? this.saleId,
+      partyId: partyId ?? this.partyId,
+      entryDate: entryDate ?? this.entryDate,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      cgstPaise: cgstPaise ?? this.cgstPaise,
+      sgstPaise: sgstPaise ?? this.sgstPaise,
+      igstPaise: igstPaise ?? this.igstPaise,
+      roundOffPaise: roundOffPaise ?? this.roundOffPaise,
+      totalPaise: totalPaise ?? this.totalPaise,
+      refundMode: refundMode ?? this.refundMode,
+      refundKhataPaise: refundKhataPaise ?? this.refundKhataPaise,
+      refundCashPaise: refundCashPaise ?? this.refundCashPaise,
+      refundUpiPaise: refundUpiPaise ?? this.refundUpiPaise,
+      bankAccountId: bankAccountId ?? this.bankAccountId,
+      note: note ?? this.note,
+      status: status ?? this.status,
+      reversedAt: reversedAt ?? this.reversedAt,
+      deviceId: deviceId ?? this.deviceId,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (returnNo.present) {
+      map['return_no'] = Variable<String>(returnNo.value);
+    }
+    if (saleId.present) {
+      map['sale_id'] = Variable<String>(saleId.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (cgstPaise.present) {
+      map['cgst_paise'] = Variable<int>(cgstPaise.value);
+    }
+    if (sgstPaise.present) {
+      map['sgst_paise'] = Variable<int>(sgstPaise.value);
+    }
+    if (igstPaise.present) {
+      map['igst_paise'] = Variable<int>(igstPaise.value);
+    }
+    if (roundOffPaise.present) {
+      map['round_off_paise'] = Variable<int>(roundOffPaise.value);
+    }
+    if (totalPaise.present) {
+      map['total_paise'] = Variable<int>(totalPaise.value);
+    }
+    if (refundMode.present) {
+      map['refund_mode'] = Variable<String>(refundMode.value);
+    }
+    if (refundKhataPaise.present) {
+      map['refund_khata_paise'] = Variable<int>(refundKhataPaise.value);
+    }
+    if (refundCashPaise.present) {
+      map['refund_cash_paise'] = Variable<int>(refundCashPaise.value);
+    }
+    if (refundUpiPaise.present) {
+      map['refund_upi_paise'] = Variable<int>(refundUpiPaise.value);
+    }
+    if (bankAccountId.present) {
+      map['bank_account_id'] = Variable<String>(bankAccountId.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (reversedAt.present) {
+      map['reversed_at'] = Variable<String>(reversedAt.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopReturnsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('returnNo: $returnNo, ')
+          ..write('saleId: $saleId, ')
+          ..write('partyId: $partyId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('roundOffPaise: $roundOffPaise, ')
+          ..write('totalPaise: $totalPaise, ')
+          ..write('refundMode: $refundMode, ')
+          ..write('refundKhataPaise: $refundKhataPaise, ')
+          ..write('refundCashPaise: $refundCashPaise, ')
+          ..write('refundUpiPaise: $refundUpiPaise, ')
+          ..write('bankAccountId: $bankAccountId, ')
+          ..write('note: $note, ')
+          ..write('status: $status, ')
+          ..write('reversedAt: $reversedAt, ')
+          ..write('deviceId: $deviceId, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ShopReturnLinesTable extends ShopReturnLines
+    with TableInfo<$ShopReturnLinesTable, ShopReturnLine> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ShopReturnLinesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _shopReturnIdMeta = const VerificationMeta(
+    'shopReturnId',
+  );
+  @override
+  late final GeneratedColumn<String> shopReturnId = GeneratedColumn<String>(
+    'shop_return_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _lineNoMeta = const VerificationMeta('lineNo');
+  @override
+  late final GeneratedColumn<int> lineNo = GeneratedColumn<int>(
+    'line_no',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _saleLineIdMeta = const VerificationMeta(
+    'saleLineId',
+  );
+  @override
+  late final GeneratedColumn<String> saleLineId = GeneratedColumn<String>(
+    'sale_line_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _productIdMeta = const VerificationMeta(
+    'productId',
+  );
+  @override
+  late final GeneratedColumn<String> productId = GeneratedColumn<String>(
+    'product_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _batchIdMeta = const VerificationMeta(
+    'batchId',
+  );
+  @override
+  late final GeneratedColumn<String> batchId = GeneratedColumn<String>(
+    'batch_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _qtyMilliMeta = const VerificationMeta(
+    'qtyMilli',
+  );
+  @override
+  late final GeneratedColumn<int> qtyMilli = GeneratedColumn<int>(
+    'qty_milli',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _taxablePaiseMeta = const VerificationMeta(
+    'taxablePaise',
+  );
+  @override
+  late final GeneratedColumn<int> taxablePaise = GeneratedColumn<int>(
+    'taxable_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cgstPaiseMeta = const VerificationMeta(
+    'cgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> cgstPaise = GeneratedColumn<int>(
+    'cgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sgstPaiseMeta = const VerificationMeta(
+    'sgstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> sgstPaise = GeneratedColumn<int>(
+    'sgst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _igstPaiseMeta = const VerificationMeta(
+    'igstPaise',
+  );
+  @override
+  late final GeneratedColumn<int> igstPaise = GeneratedColumn<int>(
+    'igst_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountPaiseMeta = const VerificationMeta(
+    'amountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> amountPaise = GeneratedColumn<int>(
+    'amount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    shopReturnId,
+    lineNo,
+    saleLineId,
+    productId,
+    batchId,
+    qtyMilli,
+    taxablePaise,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    amountPaise,
+    createdBy,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'shop_return_lines';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ShopReturnLine> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('shop_return_id')) {
+      context.handle(
+        _shopReturnIdMeta,
+        shopReturnId.isAcceptableOrUnknown(
+          data['shop_return_id']!,
+          _shopReturnIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_shopReturnIdMeta);
+    }
+    if (data.containsKey('line_no')) {
+      context.handle(
+        _lineNoMeta,
+        lineNo.isAcceptableOrUnknown(data['line_no']!, _lineNoMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_lineNoMeta);
+    }
+    if (data.containsKey('sale_line_id')) {
+      context.handle(
+        _saleLineIdMeta,
+        saleLineId.isAcceptableOrUnknown(
+          data['sale_line_id']!,
+          _saleLineIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_saleLineIdMeta);
+    }
+    if (data.containsKey('product_id')) {
+      context.handle(
+        _productIdMeta,
+        productId.isAcceptableOrUnknown(data['product_id']!, _productIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_productIdMeta);
+    }
+    if (data.containsKey('batch_id')) {
+      context.handle(
+        _batchIdMeta,
+        batchId.isAcceptableOrUnknown(data['batch_id']!, _batchIdMeta),
+      );
+    }
+    if (data.containsKey('qty_milli')) {
+      context.handle(
+        _qtyMilliMeta,
+        qtyMilli.isAcceptableOrUnknown(data['qty_milli']!, _qtyMilliMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_qtyMilliMeta);
+    }
+    if (data.containsKey('taxable_paise')) {
+      context.handle(
+        _taxablePaiseMeta,
+        taxablePaise.isAcceptableOrUnknown(
+          data['taxable_paise']!,
+          _taxablePaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_taxablePaiseMeta);
+    }
+    if (data.containsKey('cgst_paise')) {
+      context.handle(
+        _cgstPaiseMeta,
+        cgstPaise.isAcceptableOrUnknown(data['cgst_paise']!, _cgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cgstPaiseMeta);
+    }
+    if (data.containsKey('sgst_paise')) {
+      context.handle(
+        _sgstPaiseMeta,
+        sgstPaise.isAcceptableOrUnknown(data['sgst_paise']!, _sgstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sgstPaiseMeta);
+    }
+    if (data.containsKey('igst_paise')) {
+      context.handle(
+        _igstPaiseMeta,
+        igstPaise.isAcceptableOrUnknown(data['igst_paise']!, _igstPaiseMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_igstPaiseMeta);
+    }
+    if (data.containsKey('amount_paise')) {
+      context.handle(
+        _amountPaiseMeta,
+        amountPaise.isAcceptableOrUnknown(
+          data['amount_paise']!,
+          _amountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountPaiseMeta);
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ShopReturnLine map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ShopReturnLine(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      shopReturnId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}shop_return_id'],
+      )!,
+      lineNo: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}line_no'],
+      )!,
+      saleLineId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sale_line_id'],
+      )!,
+      productId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}product_id'],
+      )!,
+      batchId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}batch_id'],
+      ),
+      qtyMilli: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}qty_milli'],
+      )!,
+      taxablePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}taxable_paise'],
+      )!,
+      cgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}cgst_paise'],
+      )!,
+      sgstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}sgst_paise'],
+      )!,
+      igstPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}igst_paise'],
+      )!,
+      amountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_paise'],
+      )!,
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+    );
+  }
+
+  @override
+  $ShopReturnLinesTable createAlias(String alias) {
+    return $ShopReturnLinesTable(attachedDatabase, alias);
+  }
+}
+
+class ShopReturnLine extends DataClass implements Insertable<ShopReturnLine> {
+  final String id;
+  final String tenantId;
+  final String shopReturnId;
+  final int lineNo;
+  final String saleLineId;
+  final String productId;
+  final String? batchId;
+  final int qtyMilli;
+  final int taxablePaise;
+  final int cgstPaise;
+  final int sgstPaise;
+  final int igstPaise;
+  final int amountPaise;
+  final String? createdBy;
+  final String? createdAt;
+  const ShopReturnLine({
+    required this.id,
+    required this.tenantId,
+    required this.shopReturnId,
+    required this.lineNo,
+    required this.saleLineId,
+    required this.productId,
+    this.batchId,
+    required this.qtyMilli,
+    required this.taxablePaise,
+    required this.cgstPaise,
+    required this.sgstPaise,
+    required this.igstPaise,
+    required this.amountPaise,
+    this.createdBy,
+    this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['shop_return_id'] = Variable<String>(shopReturnId);
+    map['line_no'] = Variable<int>(lineNo);
+    map['sale_line_id'] = Variable<String>(saleLineId);
+    map['product_id'] = Variable<String>(productId);
+    if (!nullToAbsent || batchId != null) {
+      map['batch_id'] = Variable<String>(batchId);
+    }
+    map['qty_milli'] = Variable<int>(qtyMilli);
+    map['taxable_paise'] = Variable<int>(taxablePaise);
+    map['cgst_paise'] = Variable<int>(cgstPaise);
+    map['sgst_paise'] = Variable<int>(sgstPaise);
+    map['igst_paise'] = Variable<int>(igstPaise);
+    map['amount_paise'] = Variable<int>(amountPaise);
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    return map;
+  }
+
+  ShopReturnLinesCompanion toCompanion(bool nullToAbsent) {
+    return ShopReturnLinesCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      shopReturnId: Value(shopReturnId),
+      lineNo: Value(lineNo),
+      saleLineId: Value(saleLineId),
+      productId: Value(productId),
+      batchId: batchId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(batchId),
+      qtyMilli: Value(qtyMilli),
+      taxablePaise: Value(taxablePaise),
+      cgstPaise: Value(cgstPaise),
+      sgstPaise: Value(sgstPaise),
+      igstPaise: Value(igstPaise),
+      amountPaise: Value(amountPaise),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+    );
+  }
+
+  factory ShopReturnLine.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ShopReturnLine(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      shopReturnId: serializer.fromJson<String>(json['shopReturnId']),
+      lineNo: serializer.fromJson<int>(json['lineNo']),
+      saleLineId: serializer.fromJson<String>(json['saleLineId']),
+      productId: serializer.fromJson<String>(json['productId']),
+      batchId: serializer.fromJson<String?>(json['batchId']),
+      qtyMilli: serializer.fromJson<int>(json['qtyMilli']),
+      taxablePaise: serializer.fromJson<int>(json['taxablePaise']),
+      cgstPaise: serializer.fromJson<int>(json['cgstPaise']),
+      sgstPaise: serializer.fromJson<int>(json['sgstPaise']),
+      igstPaise: serializer.fromJson<int>(json['igstPaise']),
+      amountPaise: serializer.fromJson<int>(json['amountPaise']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'shopReturnId': serializer.toJson<String>(shopReturnId),
+      'lineNo': serializer.toJson<int>(lineNo),
+      'saleLineId': serializer.toJson<String>(saleLineId),
+      'productId': serializer.toJson<String>(productId),
+      'batchId': serializer.toJson<String?>(batchId),
+      'qtyMilli': serializer.toJson<int>(qtyMilli),
+      'taxablePaise': serializer.toJson<int>(taxablePaise),
+      'cgstPaise': serializer.toJson<int>(cgstPaise),
+      'sgstPaise': serializer.toJson<int>(sgstPaise),
+      'igstPaise': serializer.toJson<int>(igstPaise),
+      'amountPaise': serializer.toJson<int>(amountPaise),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+    };
+  }
+
+  ShopReturnLine copyWith({
+    String? id,
+    String? tenantId,
+    String? shopReturnId,
+    int? lineNo,
+    String? saleLineId,
+    String? productId,
+    Value<String?> batchId = const Value.absent(),
+    int? qtyMilli,
+    int? taxablePaise,
+    int? cgstPaise,
+    int? sgstPaise,
+    int? igstPaise,
+    int? amountPaise,
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+  }) => ShopReturnLine(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    shopReturnId: shopReturnId ?? this.shopReturnId,
+    lineNo: lineNo ?? this.lineNo,
+    saleLineId: saleLineId ?? this.saleLineId,
+    productId: productId ?? this.productId,
+    batchId: batchId.present ? batchId.value : this.batchId,
+    qtyMilli: qtyMilli ?? this.qtyMilli,
+    taxablePaise: taxablePaise ?? this.taxablePaise,
+    cgstPaise: cgstPaise ?? this.cgstPaise,
+    sgstPaise: sgstPaise ?? this.sgstPaise,
+    igstPaise: igstPaise ?? this.igstPaise,
+    amountPaise: amountPaise ?? this.amountPaise,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+  );
+  ShopReturnLine copyWithCompanion(ShopReturnLinesCompanion data) {
+    return ShopReturnLine(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      shopReturnId: data.shopReturnId.present
+          ? data.shopReturnId.value
+          : this.shopReturnId,
+      lineNo: data.lineNo.present ? data.lineNo.value : this.lineNo,
+      saleLineId: data.saleLineId.present
+          ? data.saleLineId.value
+          : this.saleLineId,
+      productId: data.productId.present ? data.productId.value : this.productId,
+      batchId: data.batchId.present ? data.batchId.value : this.batchId,
+      qtyMilli: data.qtyMilli.present ? data.qtyMilli.value : this.qtyMilli,
+      taxablePaise: data.taxablePaise.present
+          ? data.taxablePaise.value
+          : this.taxablePaise,
+      cgstPaise: data.cgstPaise.present ? data.cgstPaise.value : this.cgstPaise,
+      sgstPaise: data.sgstPaise.present ? data.sgstPaise.value : this.sgstPaise,
+      igstPaise: data.igstPaise.present ? data.igstPaise.value : this.igstPaise,
+      amountPaise: data.amountPaise.present
+          ? data.amountPaise.value
+          : this.amountPaise,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopReturnLine(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('shopReturnId: $shopReturnId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('saleLineId: $saleLineId, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    shopReturnId,
+    lineNo,
+    saleLineId,
+    productId,
+    batchId,
+    qtyMilli,
+    taxablePaise,
+    cgstPaise,
+    sgstPaise,
+    igstPaise,
+    amountPaise,
+    createdBy,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ShopReturnLine &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.shopReturnId == this.shopReturnId &&
+          other.lineNo == this.lineNo &&
+          other.saleLineId == this.saleLineId &&
+          other.productId == this.productId &&
+          other.batchId == this.batchId &&
+          other.qtyMilli == this.qtyMilli &&
+          other.taxablePaise == this.taxablePaise &&
+          other.cgstPaise == this.cgstPaise &&
+          other.sgstPaise == this.sgstPaise &&
+          other.igstPaise == this.igstPaise &&
+          other.amountPaise == this.amountPaise &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt);
+}
+
+class ShopReturnLinesCompanion extends UpdateCompanion<ShopReturnLine> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> shopReturnId;
+  final Value<int> lineNo;
+  final Value<String> saleLineId;
+  final Value<String> productId;
+  final Value<String?> batchId;
+  final Value<int> qtyMilli;
+  final Value<int> taxablePaise;
+  final Value<int> cgstPaise;
+  final Value<int> sgstPaise;
+  final Value<int> igstPaise;
+  final Value<int> amountPaise;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<int> rowid;
+  const ShopReturnLinesCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.shopReturnId = const Value.absent(),
+    this.lineNo = const Value.absent(),
+    this.saleLineId = const Value.absent(),
+    this.productId = const Value.absent(),
+    this.batchId = const Value.absent(),
+    this.qtyMilli = const Value.absent(),
+    this.taxablePaise = const Value.absent(),
+    this.cgstPaise = const Value.absent(),
+    this.sgstPaise = const Value.absent(),
+    this.igstPaise = const Value.absent(),
+    this.amountPaise = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ShopReturnLinesCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String shopReturnId,
+    required int lineNo,
+    required String saleLineId,
+    required String productId,
+    this.batchId = const Value.absent(),
+    required int qtyMilli,
+    required int taxablePaise,
+    required int cgstPaise,
+    required int sgstPaise,
+    required int igstPaise,
+    required int amountPaise,
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       shopReturnId = Value(shopReturnId),
+       lineNo = Value(lineNo),
+       saleLineId = Value(saleLineId),
+       productId = Value(productId),
+       qtyMilli = Value(qtyMilli),
+       taxablePaise = Value(taxablePaise),
+       cgstPaise = Value(cgstPaise),
+       sgstPaise = Value(sgstPaise),
+       igstPaise = Value(igstPaise),
+       amountPaise = Value(amountPaise);
+  static Insertable<ShopReturnLine> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? shopReturnId,
+    Expression<int>? lineNo,
+    Expression<String>? saleLineId,
+    Expression<String>? productId,
+    Expression<String>? batchId,
+    Expression<int>? qtyMilli,
+    Expression<int>? taxablePaise,
+    Expression<int>? cgstPaise,
+    Expression<int>? sgstPaise,
+    Expression<int>? igstPaise,
+    Expression<int>? amountPaise,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (shopReturnId != null) 'shop_return_id': shopReturnId,
+      if (lineNo != null) 'line_no': lineNo,
+      if (saleLineId != null) 'sale_line_id': saleLineId,
+      if (productId != null) 'product_id': productId,
+      if (batchId != null) 'batch_id': batchId,
+      if (qtyMilli != null) 'qty_milli': qtyMilli,
+      if (taxablePaise != null) 'taxable_paise': taxablePaise,
+      if (cgstPaise != null) 'cgst_paise': cgstPaise,
+      if (sgstPaise != null) 'sgst_paise': sgstPaise,
+      if (igstPaise != null) 'igst_paise': igstPaise,
+      if (amountPaise != null) 'amount_paise': amountPaise,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ShopReturnLinesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? shopReturnId,
+    Value<int>? lineNo,
+    Value<String>? saleLineId,
+    Value<String>? productId,
+    Value<String?>? batchId,
+    Value<int>? qtyMilli,
+    Value<int>? taxablePaise,
+    Value<int>? cgstPaise,
+    Value<int>? sgstPaise,
+    Value<int>? igstPaise,
+    Value<int>? amountPaise,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return ShopReturnLinesCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      shopReturnId: shopReturnId ?? this.shopReturnId,
+      lineNo: lineNo ?? this.lineNo,
+      saleLineId: saleLineId ?? this.saleLineId,
+      productId: productId ?? this.productId,
+      batchId: batchId ?? this.batchId,
+      qtyMilli: qtyMilli ?? this.qtyMilli,
+      taxablePaise: taxablePaise ?? this.taxablePaise,
+      cgstPaise: cgstPaise ?? this.cgstPaise,
+      sgstPaise: sgstPaise ?? this.sgstPaise,
+      igstPaise: igstPaise ?? this.igstPaise,
+      amountPaise: amountPaise ?? this.amountPaise,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (shopReturnId.present) {
+      map['shop_return_id'] = Variable<String>(shopReturnId.value);
+    }
+    if (lineNo.present) {
+      map['line_no'] = Variable<int>(lineNo.value);
+    }
+    if (saleLineId.present) {
+      map['sale_line_id'] = Variable<String>(saleLineId.value);
+    }
+    if (productId.present) {
+      map['product_id'] = Variable<String>(productId.value);
+    }
+    if (batchId.present) {
+      map['batch_id'] = Variable<String>(batchId.value);
+    }
+    if (qtyMilli.present) {
+      map['qty_milli'] = Variable<int>(qtyMilli.value);
+    }
+    if (taxablePaise.present) {
+      map['taxable_paise'] = Variable<int>(taxablePaise.value);
+    }
+    if (cgstPaise.present) {
+      map['cgst_paise'] = Variable<int>(cgstPaise.value);
+    }
+    if (sgstPaise.present) {
+      map['sgst_paise'] = Variable<int>(sgstPaise.value);
+    }
+    if (igstPaise.present) {
+      map['igst_paise'] = Variable<int>(igstPaise.value);
+    }
+    if (amountPaise.present) {
+      map['amount_paise'] = Variable<int>(amountPaise.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ShopReturnLinesCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('shopReturnId: $shopReturnId, ')
+          ..write('lineNo: $lineNo, ')
+          ..write('saleLineId: $saleLineId, ')
+          ..write('productId: $productId, ')
+          ..write('batchId: $batchId, ')
+          ..write('qtyMilli: $qtyMilli, ')
+          ..write('taxablePaise: $taxablePaise, ')
+          ..write('cgstPaise: $cgstPaise, ')
+          ..write('sgstPaise: $sgstPaise, ')
+          ..write('igstPaise: $igstPaise, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -24852,6 +37374,24 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $RecurringExpensesTable(this);
   late final $ExpensesTable expenses = $ExpensesTable(this);
   late final $FinancialYearsTable financialYears = $FinancialYearsTable(this);
+  late final $ProductCategoriesTable productCategories =
+      $ProductCategoriesTable(this);
+  late final $ProductsTable products = $ProductsTable(this);
+  late final $BatchesTable batches = $BatchesTable(this);
+  late final $StockMovementsTable stockMovements = $StockMovementsTable(this);
+  late final $PurchasesTable purchases = $PurchasesTable(this);
+  late final $PurchaseLinesTable purchaseLines = $PurchaseLinesTable(this);
+  late final $PurchaseReturnsTable purchaseReturns = $PurchaseReturnsTable(
+    this,
+  );
+  late final $PurchaseReturnLinesTable purchaseReturnLines =
+      $PurchaseReturnLinesTable(this);
+  late final $ShopSalesTable shopSales = $ShopSalesTable(this);
+  late final $ShopSaleLinesTable shopSaleLines = $ShopSaleLinesTable(this);
+  late final $ShopReturnsTable shopReturns = $ShopReturnsTable(this);
+  late final $ShopReturnLinesTable shopReturnLines = $ShopReturnLinesTable(
+    this,
+  );
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -24889,6 +37429,18 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     recurringExpenses,
     expenses,
     financialYears,
+    productCategories,
+    products,
+    batches,
+    stockMovements,
+    purchases,
+    purchaseLines,
+    purchaseReturns,
+    purchaseReturnLines,
+    shopSales,
+    shopSaleLines,
+    shopReturns,
+    shopReturnLines,
     syncErrors,
   ];
 }
@@ -30446,6 +42998,10 @@ typedef $$CashBankEntriesTableCreateCompanionBuilder =
       Value<String?> createdAt,
       Value<String?> voucherId,
       Value<String?> expenseId,
+      Value<String?> purchaseId,
+      Value<String?> purchaseReturnId,
+      Value<String?> shopSaleId,
+      Value<String?> shopReturnId,
       Value<int> rowid,
     });
 typedef $$CashBankEntriesTableUpdateCompanionBuilder =
@@ -30465,6 +43021,10 @@ typedef $$CashBankEntriesTableUpdateCompanionBuilder =
       Value<String?> createdAt,
       Value<String?> voucherId,
       Value<String?> expenseId,
+      Value<String?> purchaseId,
+      Value<String?> purchaseReturnId,
+      Value<String?> shopSaleId,
+      Value<String?> shopReturnId,
       Value<int> rowid,
     });
 
@@ -30549,6 +43109,26 @@ class $$CashBankEntriesTableFilterComposer
 
   ColumnFilters<String> get expenseId => $composableBuilder(
     column: $table.expenseId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purchaseReturnId => $composableBuilder(
+    column: $table.purchaseReturnId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get shopSaleId => $composableBuilder(
+    column: $table.shopSaleId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get shopReturnId => $composableBuilder(
+    column: $table.shopReturnId,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -30636,6 +43216,26 @@ class $$CashBankEntriesTableOrderingComposer
     column: $table.expenseId,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get purchaseReturnId => $composableBuilder(
+    column: $table.purchaseReturnId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get shopSaleId => $composableBuilder(
+    column: $table.shopSaleId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get shopReturnId => $composableBuilder(
+    column: $table.shopReturnId,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$CashBankEntriesTableAnnotationComposer
@@ -30697,6 +43297,26 @@ class $$CashBankEntriesTableAnnotationComposer
 
   GeneratedColumn<String> get expenseId =>
       $composableBuilder(column: $table.expenseId, builder: (column) => column);
+
+  GeneratedColumn<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get purchaseReturnId => $composableBuilder(
+    column: $table.purchaseReturnId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get shopSaleId => $composableBuilder(
+    column: $table.shopSaleId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get shopReturnId => $composableBuilder(
+    column: $table.shopReturnId,
+    builder: (column) => column,
+  );
 }
 
 class $$CashBankEntriesTableTableManager
@@ -30747,6 +43367,10 @@ class $$CashBankEntriesTableTableManager
                 Value<String?> createdAt = const Value.absent(),
                 Value<String?> voucherId = const Value.absent(),
                 Value<String?> expenseId = const Value.absent(),
+                Value<String?> purchaseId = const Value.absent(),
+                Value<String?> purchaseReturnId = const Value.absent(),
+                Value<String?> shopSaleId = const Value.absent(),
+                Value<String?> shopReturnId = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => CashBankEntriesCompanion(
                 id: id,
@@ -30764,6 +43388,10 @@ class $$CashBankEntriesTableTableManager
                 createdAt: createdAt,
                 voucherId: voucherId,
                 expenseId: expenseId,
+                purchaseId: purchaseId,
+                purchaseReturnId: purchaseReturnId,
+                shopSaleId: shopSaleId,
+                shopReturnId: shopReturnId,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -30783,6 +43411,10 @@ class $$CashBankEntriesTableTableManager
                 Value<String?> createdAt = const Value.absent(),
                 Value<String?> voucherId = const Value.absent(),
                 Value<String?> expenseId = const Value.absent(),
+                Value<String?> purchaseId = const Value.absent(),
+                Value<String?> purchaseReturnId = const Value.absent(),
+                Value<String?> shopSaleId = const Value.absent(),
+                Value<String?> shopReturnId = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => CashBankEntriesCompanion.insert(
                 id: id,
@@ -30800,6 +43432,10 @@ class $$CashBankEntriesTableTableManager
                 createdAt: createdAt,
                 voucherId: voucherId,
                 expenseId: expenseId,
+                purchaseId: purchaseId,
+                purchaseReturnId: purchaseReturnId,
+                shopSaleId: shopSaleId,
+                shopReturnId: shopReturnId,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
@@ -36399,6 +49035,5663 @@ typedef $$FinancialYearsTableProcessedTableManager =
       FinancialYear,
       PrefetchHooks Function()
     >;
+typedef $$ProductCategoriesTableCreateCompanionBuilder =
+    ProductCategoriesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String name,
+      required int sortOrder,
+      required bool isActive,
+      Value<String?> deletedAt,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$ProductCategoriesTableUpdateCompanionBuilder =
+    ProductCategoriesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> name,
+      Value<int> sortOrder,
+      Value<bool> isActive,
+      Value<String?> deletedAt,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$ProductCategoriesTableFilterComposer
+    extends Composer<_$AppDatabase, $ProductCategoriesTable> {
+  $$ProductCategoriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ProductCategoriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ProductCategoriesTable> {
+  $$ProductCategoriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sortOrder => $composableBuilder(
+    column: $table.sortOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ProductCategoriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ProductCategoriesTable> {
+  $$ProductCategoriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<int> get sortOrder =>
+      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+
+  GeneratedColumn<bool> get isActive =>
+      $composableBuilder(column: $table.isActive, builder: (column) => column);
+
+  GeneratedColumn<String> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$ProductCategoriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ProductCategoriesTable,
+          ProductCategory,
+          $$ProductCategoriesTableFilterComposer,
+          $$ProductCategoriesTableOrderingComposer,
+          $$ProductCategoriesTableAnnotationComposer,
+          $$ProductCategoriesTableCreateCompanionBuilder,
+          $$ProductCategoriesTableUpdateCompanionBuilder,
+          (
+            ProductCategory,
+            BaseReferences<
+              _$AppDatabase,
+              $ProductCategoriesTable,
+              ProductCategory
+            >,
+          ),
+          ProductCategory,
+          PrefetchHooks Function()
+        > {
+  $$ProductCategoriesTableTableManager(
+    _$AppDatabase db,
+    $ProductCategoriesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ProductCategoriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ProductCategoriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ProductCategoriesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<int> sortOrder = const Value.absent(),
+                Value<bool> isActive = const Value.absent(),
+                Value<String?> deletedAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ProductCategoriesCompanion(
+                id: id,
+                tenantId: tenantId,
+                name: name,
+                sortOrder: sortOrder,
+                isActive: isActive,
+                deletedAt: deletedAt,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String name,
+                required int sortOrder,
+                required bool isActive,
+                Value<String?> deletedAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ProductCategoriesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                name: name,
+                sortOrder: sortOrder,
+                isActive: isActive,
+                deletedAt: deletedAt,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ProductCategoriesTable, ProductCategory>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $ProductCategoriesTable,
+                    ProductCategory
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ProductCategoriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ProductCategoriesTable,
+      ProductCategory,
+      $$ProductCategoriesTableFilterComposer,
+      $$ProductCategoriesTableOrderingComposer,
+      $$ProductCategoriesTableAnnotationComposer,
+      $$ProductCategoriesTableCreateCompanionBuilder,
+      $$ProductCategoriesTableUpdateCompanionBuilder,
+      (
+        ProductCategory,
+        BaseReferences<_$AppDatabase, $ProductCategoriesTable, ProductCategory>,
+      ),
+      ProductCategory,
+      PrefetchHooks Function()
+    >;
+typedef $$ProductsTableCreateCompanionBuilder =
+    ProductsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String sku,
+      Value<String?> barcode,
+      required String name,
+      Value<String?> brand,
+      Value<String?> categoryId,
+      required String unit,
+      Value<String?> packSize,
+      Value<String?> hsn,
+      required double gstRate,
+      required int reorderLevelMilli,
+      required String prices,
+      required bool isActive,
+      Value<String?> deletedAt,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$ProductsTableUpdateCompanionBuilder =
+    ProductsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> sku,
+      Value<String?> barcode,
+      Value<String> name,
+      Value<String?> brand,
+      Value<String?> categoryId,
+      Value<String> unit,
+      Value<String?> packSize,
+      Value<String?> hsn,
+      Value<double> gstRate,
+      Value<int> reorderLevelMilli,
+      Value<String> prices,
+      Value<bool> isActive,
+      Value<String?> deletedAt,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$ProductsTableFilterComposer
+    extends Composer<_$AppDatabase, $ProductsTable> {
+  $$ProductsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sku => $composableBuilder(
+    column: $table.sku,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get barcode => $composableBuilder(
+    column: $table.barcode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get brand => $composableBuilder(
+    column: $table.brand,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get categoryId => $composableBuilder(
+    column: $table.categoryId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get packSize => $composableBuilder(
+    column: $table.packSize,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get hsn => $composableBuilder(
+    column: $table.hsn,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get gstRate => $composableBuilder(
+    column: $table.gstRate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get reorderLevelMilli => $composableBuilder(
+    column: $table.reorderLevelMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get prices => $composableBuilder(
+    column: $table.prices,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ProductsTableOrderingComposer
+    extends Composer<_$AppDatabase, $ProductsTable> {
+  $$ProductsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sku => $composableBuilder(
+    column: $table.sku,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get barcode => $composableBuilder(
+    column: $table.barcode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get name => $composableBuilder(
+    column: $table.name,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get brand => $composableBuilder(
+    column: $table.brand,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get categoryId => $composableBuilder(
+    column: $table.categoryId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get unit => $composableBuilder(
+    column: $table.unit,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get packSize => $composableBuilder(
+    column: $table.packSize,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get hsn => $composableBuilder(
+    column: $table.hsn,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get gstRate => $composableBuilder(
+    column: $table.gstRate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get reorderLevelMilli => $composableBuilder(
+    column: $table.reorderLevelMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get prices => $composableBuilder(
+    column: $table.prices,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ProductsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ProductsTable> {
+  $$ProductsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get sku =>
+      $composableBuilder(column: $table.sku, builder: (column) => column);
+
+  GeneratedColumn<String> get barcode =>
+      $composableBuilder(column: $table.barcode, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get brand =>
+      $composableBuilder(column: $table.brand, builder: (column) => column);
+
+  GeneratedColumn<String> get categoryId => $composableBuilder(
+    column: $table.categoryId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get unit =>
+      $composableBuilder(column: $table.unit, builder: (column) => column);
+
+  GeneratedColumn<String> get packSize =>
+      $composableBuilder(column: $table.packSize, builder: (column) => column);
+
+  GeneratedColumn<String> get hsn =>
+      $composableBuilder(column: $table.hsn, builder: (column) => column);
+
+  GeneratedColumn<double> get gstRate =>
+      $composableBuilder(column: $table.gstRate, builder: (column) => column);
+
+  GeneratedColumn<int> get reorderLevelMilli => $composableBuilder(
+    column: $table.reorderLevelMilli,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get prices =>
+      $composableBuilder(column: $table.prices, builder: (column) => column);
+
+  GeneratedColumn<bool> get isActive =>
+      $composableBuilder(column: $table.isActive, builder: (column) => column);
+
+  GeneratedColumn<String> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$ProductsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ProductsTable,
+          Product,
+          $$ProductsTableFilterComposer,
+          $$ProductsTableOrderingComposer,
+          $$ProductsTableAnnotationComposer,
+          $$ProductsTableCreateCompanionBuilder,
+          $$ProductsTableUpdateCompanionBuilder,
+          (Product, BaseReferences<_$AppDatabase, $ProductsTable, Product>),
+          Product,
+          PrefetchHooks Function()
+        > {
+  $$ProductsTableTableManager(_$AppDatabase db, $ProductsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ProductsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ProductsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ProductsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> sku = const Value.absent(),
+                Value<String?> barcode = const Value.absent(),
+                Value<String> name = const Value.absent(),
+                Value<String?> brand = const Value.absent(),
+                Value<String?> categoryId = const Value.absent(),
+                Value<String> unit = const Value.absent(),
+                Value<String?> packSize = const Value.absent(),
+                Value<String?> hsn = const Value.absent(),
+                Value<double> gstRate = const Value.absent(),
+                Value<int> reorderLevelMilli = const Value.absent(),
+                Value<String> prices = const Value.absent(),
+                Value<bool> isActive = const Value.absent(),
+                Value<String?> deletedAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ProductsCompanion(
+                id: id,
+                tenantId: tenantId,
+                sku: sku,
+                barcode: barcode,
+                name: name,
+                brand: brand,
+                categoryId: categoryId,
+                unit: unit,
+                packSize: packSize,
+                hsn: hsn,
+                gstRate: gstRate,
+                reorderLevelMilli: reorderLevelMilli,
+                prices: prices,
+                isActive: isActive,
+                deletedAt: deletedAt,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String sku,
+                Value<String?> barcode = const Value.absent(),
+                required String name,
+                Value<String?> brand = const Value.absent(),
+                Value<String?> categoryId = const Value.absent(),
+                required String unit,
+                Value<String?> packSize = const Value.absent(),
+                Value<String?> hsn = const Value.absent(),
+                required double gstRate,
+                required int reorderLevelMilli,
+                required String prices,
+                required bool isActive,
+                Value<String?> deletedAt = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ProductsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                sku: sku,
+                barcode: barcode,
+                name: name,
+                brand: brand,
+                categoryId: categoryId,
+                unit: unit,
+                packSize: packSize,
+                hsn: hsn,
+                gstRate: gstRate,
+                reorderLevelMilli: reorderLevelMilli,
+                prices: prices,
+                isActive: isActive,
+                deletedAt: deletedAt,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ProductsTable, Product>(table),
+                  BaseReferences<_$AppDatabase, $ProductsTable, Product>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ProductsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ProductsTable,
+      Product,
+      $$ProductsTableFilterComposer,
+      $$ProductsTableOrderingComposer,
+      $$ProductsTableAnnotationComposer,
+      $$ProductsTableCreateCompanionBuilder,
+      $$ProductsTableUpdateCompanionBuilder,
+      (Product, BaseReferences<_$AppDatabase, $ProductsTable, Product>),
+      Product,
+      PrefetchHooks Function()
+    >;
+typedef $$BatchesTableCreateCompanionBuilder =
+    BatchesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String productId,
+      required String batchNo,
+      Value<String?> mfgDate,
+      Value<String?> expiryDate,
+      required int costPaise,
+      required int qtyMilli,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$BatchesTableUpdateCompanionBuilder =
+    BatchesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> productId,
+      Value<String> batchNo,
+      Value<String?> mfgDate,
+      Value<String?> expiryDate,
+      Value<int> costPaise,
+      Value<int> qtyMilli,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$BatchesTableFilterComposer
+    extends Composer<_$AppDatabase, $BatchesTable> {
+  $$BatchesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchNo => $composableBuilder(
+    column: $table.batchNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mfgDate => $composableBuilder(
+    column: $table.mfgDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get expiryDate => $composableBuilder(
+    column: $table.expiryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$BatchesTableOrderingComposer
+    extends Composer<_$AppDatabase, $BatchesTable> {
+  $$BatchesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchNo => $composableBuilder(
+    column: $table.batchNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mfgDate => $composableBuilder(
+    column: $table.mfgDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get expiryDate => $composableBuilder(
+    column: $table.expiryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$BatchesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $BatchesTable> {
+  $$BatchesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get batchNo =>
+      $composableBuilder(column: $table.batchNo, builder: (column) => column);
+
+  GeneratedColumn<String> get mfgDate =>
+      $composableBuilder(column: $table.mfgDate, builder: (column) => column);
+
+  GeneratedColumn<String> get expiryDate => $composableBuilder(
+    column: $table.expiryDate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get costPaise =>
+      $composableBuilder(column: $table.costPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get qtyMilli =>
+      $composableBuilder(column: $table.qtyMilli, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$BatchesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $BatchesTable,
+          Batche,
+          $$BatchesTableFilterComposer,
+          $$BatchesTableOrderingComposer,
+          $$BatchesTableAnnotationComposer,
+          $$BatchesTableCreateCompanionBuilder,
+          $$BatchesTableUpdateCompanionBuilder,
+          (Batche, BaseReferences<_$AppDatabase, $BatchesTable, Batche>),
+          Batche,
+          PrefetchHooks Function()
+        > {
+  $$BatchesTableTableManager(_$AppDatabase db, $BatchesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$BatchesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$BatchesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$BatchesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> productId = const Value.absent(),
+                Value<String> batchNo = const Value.absent(),
+                Value<String?> mfgDate = const Value.absent(),
+                Value<String?> expiryDate = const Value.absent(),
+                Value<int> costPaise = const Value.absent(),
+                Value<int> qtyMilli = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BatchesCompanion(
+                id: id,
+                tenantId: tenantId,
+                productId: productId,
+                batchNo: batchNo,
+                mfgDate: mfgDate,
+                expiryDate: expiryDate,
+                costPaise: costPaise,
+                qtyMilli: qtyMilli,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String productId,
+                required String batchNo,
+                Value<String?> mfgDate = const Value.absent(),
+                Value<String?> expiryDate = const Value.absent(),
+                required int costPaise,
+                required int qtyMilli,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BatchesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                productId: productId,
+                batchNo: batchNo,
+                mfgDate: mfgDate,
+                expiryDate: expiryDate,
+                costPaise: costPaise,
+                qtyMilli: qtyMilli,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$BatchesTable, Batche>(table),
+                  BaseReferences<_$AppDatabase, $BatchesTable, Batche>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$BatchesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $BatchesTable,
+      Batche,
+      $$BatchesTableFilterComposer,
+      $$BatchesTableOrderingComposer,
+      $$BatchesTableAnnotationComposer,
+      $$BatchesTableCreateCompanionBuilder,
+      $$BatchesTableUpdateCompanionBuilder,
+      (Batche, BaseReferences<_$AppDatabase, $BatchesTable, Batche>),
+      Batche,
+      PrefetchHooks Function()
+    >;
+typedef $$StockMovementsTableCreateCompanionBuilder =
+    StockMovementsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String productId,
+      Value<String?> batchId,
+      required String entryDate,
+      required int qtyMilli,
+      required String reason,
+      Value<String?> refType,
+      Value<String?> refId,
+      Value<String?> note,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> receivedAt,
+      Value<int> rowid,
+    });
+typedef $$StockMovementsTableUpdateCompanionBuilder =
+    StockMovementsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> productId,
+      Value<String?> batchId,
+      Value<String> entryDate,
+      Value<int> qtyMilli,
+      Value<String> reason,
+      Value<String?> refType,
+      Value<String?> refId,
+      Value<String?> note,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> receivedAt,
+      Value<int> rowid,
+    });
+
+class $$StockMovementsTableFilterComposer
+    extends Composer<_$AppDatabase, $StockMovementsTable> {
+  $$StockMovementsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reason => $composableBuilder(
+    column: $table.reason,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get receivedAt => $composableBuilder(
+    column: $table.receivedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$StockMovementsTableOrderingComposer
+    extends Composer<_$AppDatabase, $StockMovementsTable> {
+  $$StockMovementsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reason => $composableBuilder(
+    column: $table.reason,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get receivedAt => $composableBuilder(
+    column: $table.receivedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$StockMovementsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $StockMovementsTable> {
+  $$StockMovementsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get batchId =>
+      $composableBuilder(column: $table.batchId, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<int> get qtyMilli =>
+      $composableBuilder(column: $table.qtyMilli, builder: (column) => column);
+
+  GeneratedColumn<String> get reason =>
+      $composableBuilder(column: $table.reason, builder: (column) => column);
+
+  GeneratedColumn<String> get refType =>
+      $composableBuilder(column: $table.refType, builder: (column) => column);
+
+  GeneratedColumn<String> get refId =>
+      $composableBuilder(column: $table.refId, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get receivedAt => $composableBuilder(
+    column: $table.receivedAt,
+    builder: (column) => column,
+  );
+}
+
+class $$StockMovementsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $StockMovementsTable,
+          StockMovement,
+          $$StockMovementsTableFilterComposer,
+          $$StockMovementsTableOrderingComposer,
+          $$StockMovementsTableAnnotationComposer,
+          $$StockMovementsTableCreateCompanionBuilder,
+          $$StockMovementsTableUpdateCompanionBuilder,
+          (
+            StockMovement,
+            BaseReferences<_$AppDatabase, $StockMovementsTable, StockMovement>,
+          ),
+          StockMovement,
+          PrefetchHooks Function()
+        > {
+  $$StockMovementsTableTableManager(
+    _$AppDatabase db,
+    $StockMovementsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$StockMovementsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$StockMovementsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$StockMovementsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> productId = const Value.absent(),
+                Value<String?> batchId = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<int> qtyMilli = const Value.absent(),
+                Value<String> reason = const Value.absent(),
+                Value<String?> refType = const Value.absent(),
+                Value<String?> refId = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> receivedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => StockMovementsCompanion(
+                id: id,
+                tenantId: tenantId,
+                productId: productId,
+                batchId: batchId,
+                entryDate: entryDate,
+                qtyMilli: qtyMilli,
+                reason: reason,
+                refType: refType,
+                refId: refId,
+                note: note,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                receivedAt: receivedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String productId,
+                Value<String?> batchId = const Value.absent(),
+                required String entryDate,
+                required int qtyMilli,
+                required String reason,
+                Value<String?> refType = const Value.absent(),
+                Value<String?> refId = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> receivedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => StockMovementsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                productId: productId,
+                batchId: batchId,
+                entryDate: entryDate,
+                qtyMilli: qtyMilli,
+                reason: reason,
+                refType: refType,
+                refId: refId,
+                note: note,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                receivedAt: receivedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$StockMovementsTable, StockMovement>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $StockMovementsTable,
+                    StockMovement
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$StockMovementsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $StockMovementsTable,
+      StockMovement,
+      $$StockMovementsTableFilterComposer,
+      $$StockMovementsTableOrderingComposer,
+      $$StockMovementsTableAnnotationComposer,
+      $$StockMovementsTableCreateCompanionBuilder,
+      $$StockMovementsTableUpdateCompanionBuilder,
+      (
+        StockMovement,
+        BaseReferences<_$AppDatabase, $StockMovementsTable, StockMovement>,
+      ),
+      StockMovement,
+      PrefetchHooks Function()
+    >;
+typedef $$PurchasesTableCreateCompanionBuilder =
+    PurchasesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String purchaseNo,
+      required String partyId,
+      Value<String?> supplierInvoiceNo,
+      required String invoiceDate,
+      required String entryDate,
+      required int freightPaise,
+      required int otherChargesPaise,
+      required int taxablePaise,
+      required int gstPaise,
+      required int roundOffPaise,
+      required int totalPaise,
+      required int paidPaise,
+      Value<String?> paymentMode,
+      Value<String?> bankAccountId,
+      required int creditDays,
+      Value<String?> dueDate,
+      Value<String?> notes,
+      required String status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$PurchasesTableUpdateCompanionBuilder =
+    PurchasesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> purchaseNo,
+      Value<String> partyId,
+      Value<String?> supplierInvoiceNo,
+      Value<String> invoiceDate,
+      Value<String> entryDate,
+      Value<int> freightPaise,
+      Value<int> otherChargesPaise,
+      Value<int> taxablePaise,
+      Value<int> gstPaise,
+      Value<int> roundOffPaise,
+      Value<int> totalPaise,
+      Value<int> paidPaise,
+      Value<String?> paymentMode,
+      Value<String?> bankAccountId,
+      Value<int> creditDays,
+      Value<String?> dueDate,
+      Value<String?> notes,
+      Value<String> status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$PurchasesTableFilterComposer
+    extends Composer<_$AppDatabase, $PurchasesTable> {
+  $$PurchasesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purchaseNo => $composableBuilder(
+    column: $table.purchaseNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get supplierInvoiceNo => $composableBuilder(
+    column: $table.supplierInvoiceNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get invoiceDate => $composableBuilder(
+    column: $table.invoiceDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get freightPaise => $composableBuilder(
+    column: $table.freightPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get otherChargesPaise => $composableBuilder(
+    column: $table.otherChargesPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get paidPaise => $composableBuilder(
+    column: $table.paidPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paymentMode => $composableBuilder(
+    column: $table.paymentMode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get creditDays => $composableBuilder(
+    column: $table.creditDays,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get dueDate => $composableBuilder(
+    column: $table.dueDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PurchasesTableOrderingComposer
+    extends Composer<_$AppDatabase, $PurchasesTable> {
+  $$PurchasesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get purchaseNo => $composableBuilder(
+    column: $table.purchaseNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get supplierInvoiceNo => $composableBuilder(
+    column: $table.supplierInvoiceNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get invoiceDate => $composableBuilder(
+    column: $table.invoiceDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get freightPaise => $composableBuilder(
+    column: $table.freightPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get otherChargesPaise => $composableBuilder(
+    column: $table.otherChargesPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get paidPaise => $composableBuilder(
+    column: $table.paidPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paymentMode => $composableBuilder(
+    column: $table.paymentMode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get creditDays => $composableBuilder(
+    column: $table.creditDays,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get dueDate => $composableBuilder(
+    column: $table.dueDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PurchasesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PurchasesTable> {
+  $$PurchasesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get purchaseNo => $composableBuilder(
+    column: $table.purchaseNo,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get supplierInvoiceNo => $composableBuilder(
+    column: $table.supplierInvoiceNo,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get invoiceDate => $composableBuilder(
+    column: $table.invoiceDate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<int> get freightPaise => $composableBuilder(
+    column: $table.freightPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get otherChargesPaise => $composableBuilder(
+    column: $table.otherChargesPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get gstPaise =>
+      $composableBuilder(column: $table.gstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get paidPaise =>
+      $composableBuilder(column: $table.paidPaise, builder: (column) => column);
+
+  GeneratedColumn<String> get paymentMode => $composableBuilder(
+    column: $table.paymentMode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get creditDays => $composableBuilder(
+    column: $table.creditDays,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get dueDate =>
+      $composableBuilder(column: $table.dueDate, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$PurchasesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PurchasesTable,
+          Purchase,
+          $$PurchasesTableFilterComposer,
+          $$PurchasesTableOrderingComposer,
+          $$PurchasesTableAnnotationComposer,
+          $$PurchasesTableCreateCompanionBuilder,
+          $$PurchasesTableUpdateCompanionBuilder,
+          (Purchase, BaseReferences<_$AppDatabase, $PurchasesTable, Purchase>),
+          Purchase,
+          PrefetchHooks Function()
+        > {
+  $$PurchasesTableTableManager(_$AppDatabase db, $PurchasesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PurchasesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PurchasesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PurchasesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> purchaseNo = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String?> supplierInvoiceNo = const Value.absent(),
+                Value<String> invoiceDate = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<int> freightPaise = const Value.absent(),
+                Value<int> otherChargesPaise = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<int> gstPaise = const Value.absent(),
+                Value<int> roundOffPaise = const Value.absent(),
+                Value<int> totalPaise = const Value.absent(),
+                Value<int> paidPaise = const Value.absent(),
+                Value<String?> paymentMode = const Value.absent(),
+                Value<String?> bankAccountId = const Value.absent(),
+                Value<int> creditDays = const Value.absent(),
+                Value<String?> dueDate = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchasesCompanion(
+                id: id,
+                tenantId: tenantId,
+                purchaseNo: purchaseNo,
+                partyId: partyId,
+                supplierInvoiceNo: supplierInvoiceNo,
+                invoiceDate: invoiceDate,
+                entryDate: entryDate,
+                freightPaise: freightPaise,
+                otherChargesPaise: otherChargesPaise,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                paidPaise: paidPaise,
+                paymentMode: paymentMode,
+                bankAccountId: bankAccountId,
+                creditDays: creditDays,
+                dueDate: dueDate,
+                notes: notes,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String purchaseNo,
+                required String partyId,
+                Value<String?> supplierInvoiceNo = const Value.absent(),
+                required String invoiceDate,
+                required String entryDate,
+                required int freightPaise,
+                required int otherChargesPaise,
+                required int taxablePaise,
+                required int gstPaise,
+                required int roundOffPaise,
+                required int totalPaise,
+                required int paidPaise,
+                Value<String?> paymentMode = const Value.absent(),
+                Value<String?> bankAccountId = const Value.absent(),
+                required int creditDays,
+                Value<String?> dueDate = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                required String status,
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchasesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                purchaseNo: purchaseNo,
+                partyId: partyId,
+                supplierInvoiceNo: supplierInvoiceNo,
+                invoiceDate: invoiceDate,
+                entryDate: entryDate,
+                freightPaise: freightPaise,
+                otherChargesPaise: otherChargesPaise,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                paidPaise: paidPaise,
+                paymentMode: paymentMode,
+                bankAccountId: bankAccountId,
+                creditDays: creditDays,
+                dueDate: dueDate,
+                notes: notes,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PurchasesTable, Purchase>(table),
+                  BaseReferences<_$AppDatabase, $PurchasesTable, Purchase>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PurchasesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PurchasesTable,
+      Purchase,
+      $$PurchasesTableFilterComposer,
+      $$PurchasesTableOrderingComposer,
+      $$PurchasesTableAnnotationComposer,
+      $$PurchasesTableCreateCompanionBuilder,
+      $$PurchasesTableUpdateCompanionBuilder,
+      (Purchase, BaseReferences<_$AppDatabase, $PurchasesTable, Purchase>),
+      Purchase,
+      PrefetchHooks Function()
+    >;
+typedef $$PurchaseLinesTableCreateCompanionBuilder =
+    PurchaseLinesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String purchaseId,
+      required int lineNo,
+      required String productId,
+      required String batchId,
+      required String batchNo,
+      Value<String?> mfgDate,
+      Value<String?> expiryDate,
+      required int qtyMilli,
+      required int costPaise,
+      required double gstRate,
+      required int taxablePaise,
+      required int gstPaise,
+      required int lineTotalPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$PurchaseLinesTableUpdateCompanionBuilder =
+    PurchaseLinesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> purchaseId,
+      Value<int> lineNo,
+      Value<String> productId,
+      Value<String> batchId,
+      Value<String> batchNo,
+      Value<String?> mfgDate,
+      Value<String?> expiryDate,
+      Value<int> qtyMilli,
+      Value<int> costPaise,
+      Value<double> gstRate,
+      Value<int> taxablePaise,
+      Value<int> gstPaise,
+      Value<int> lineTotalPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$PurchaseLinesTableFilterComposer
+    extends Composer<_$AppDatabase, $PurchaseLinesTable> {
+  $$PurchaseLinesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchNo => $composableBuilder(
+    column: $table.batchNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mfgDate => $composableBuilder(
+    column: $table.mfgDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get expiryDate => $composableBuilder(
+    column: $table.expiryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get gstRate => $composableBuilder(
+    column: $table.gstRate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PurchaseLinesTableOrderingComposer
+    extends Composer<_$AppDatabase, $PurchaseLinesTable> {
+  $$PurchaseLinesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchNo => $composableBuilder(
+    column: $table.batchNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mfgDate => $composableBuilder(
+    column: $table.mfgDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get expiryDate => $composableBuilder(
+    column: $table.expiryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get gstRate => $composableBuilder(
+    column: $table.gstRate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PurchaseLinesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PurchaseLinesTable> {
+  $$PurchaseLinesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get lineNo =>
+      $composableBuilder(column: $table.lineNo, builder: (column) => column);
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get batchId =>
+      $composableBuilder(column: $table.batchId, builder: (column) => column);
+
+  GeneratedColumn<String> get batchNo =>
+      $composableBuilder(column: $table.batchNo, builder: (column) => column);
+
+  GeneratedColumn<String> get mfgDate =>
+      $composableBuilder(column: $table.mfgDate, builder: (column) => column);
+
+  GeneratedColumn<String> get expiryDate => $composableBuilder(
+    column: $table.expiryDate,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get qtyMilli =>
+      $composableBuilder(column: $table.qtyMilli, builder: (column) => column);
+
+  GeneratedColumn<int> get costPaise =>
+      $composableBuilder(column: $table.costPaise, builder: (column) => column);
+
+  GeneratedColumn<double> get gstRate =>
+      $composableBuilder(column: $table.gstRate, builder: (column) => column);
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get gstPaise =>
+      $composableBuilder(column: $table.gstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$PurchaseLinesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PurchaseLinesTable,
+          PurchaseLine,
+          $$PurchaseLinesTableFilterComposer,
+          $$PurchaseLinesTableOrderingComposer,
+          $$PurchaseLinesTableAnnotationComposer,
+          $$PurchaseLinesTableCreateCompanionBuilder,
+          $$PurchaseLinesTableUpdateCompanionBuilder,
+          (
+            PurchaseLine,
+            BaseReferences<_$AppDatabase, $PurchaseLinesTable, PurchaseLine>,
+          ),
+          PurchaseLine,
+          PrefetchHooks Function()
+        > {
+  $$PurchaseLinesTableTableManager(_$AppDatabase db, $PurchaseLinesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PurchaseLinesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PurchaseLinesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PurchaseLinesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> purchaseId = const Value.absent(),
+                Value<int> lineNo = const Value.absent(),
+                Value<String> productId = const Value.absent(),
+                Value<String> batchId = const Value.absent(),
+                Value<String> batchNo = const Value.absent(),
+                Value<String?> mfgDate = const Value.absent(),
+                Value<String?> expiryDate = const Value.absent(),
+                Value<int> qtyMilli = const Value.absent(),
+                Value<int> costPaise = const Value.absent(),
+                Value<double> gstRate = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<int> gstPaise = const Value.absent(),
+                Value<int> lineTotalPaise = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchaseLinesCompanion(
+                id: id,
+                tenantId: tenantId,
+                purchaseId: purchaseId,
+                lineNo: lineNo,
+                productId: productId,
+                batchId: batchId,
+                batchNo: batchNo,
+                mfgDate: mfgDate,
+                expiryDate: expiryDate,
+                qtyMilli: qtyMilli,
+                costPaise: costPaise,
+                gstRate: gstRate,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                lineTotalPaise: lineTotalPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String purchaseId,
+                required int lineNo,
+                required String productId,
+                required String batchId,
+                required String batchNo,
+                Value<String?> mfgDate = const Value.absent(),
+                Value<String?> expiryDate = const Value.absent(),
+                required int qtyMilli,
+                required int costPaise,
+                required double gstRate,
+                required int taxablePaise,
+                required int gstPaise,
+                required int lineTotalPaise,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchaseLinesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                purchaseId: purchaseId,
+                lineNo: lineNo,
+                productId: productId,
+                batchId: batchId,
+                batchNo: batchNo,
+                mfgDate: mfgDate,
+                expiryDate: expiryDate,
+                qtyMilli: qtyMilli,
+                costPaise: costPaise,
+                gstRate: gstRate,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                lineTotalPaise: lineTotalPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PurchaseLinesTable, PurchaseLine>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $PurchaseLinesTable,
+                    PurchaseLine
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PurchaseLinesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PurchaseLinesTable,
+      PurchaseLine,
+      $$PurchaseLinesTableFilterComposer,
+      $$PurchaseLinesTableOrderingComposer,
+      $$PurchaseLinesTableAnnotationComposer,
+      $$PurchaseLinesTableCreateCompanionBuilder,
+      $$PurchaseLinesTableUpdateCompanionBuilder,
+      (
+        PurchaseLine,
+        BaseReferences<_$AppDatabase, $PurchaseLinesTable, PurchaseLine>,
+      ),
+      PurchaseLine,
+      PrefetchHooks Function()
+    >;
+typedef $$PurchaseReturnsTableCreateCompanionBuilder =
+    PurchaseReturnsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String returnNo,
+      required String purchaseId,
+      required String partyId,
+      required String entryDate,
+      required int taxablePaise,
+      required int gstPaise,
+      required int roundOffPaise,
+      required int totalPaise,
+      required int refundKhataPaise,
+      required int refundPaidPaise,
+      Value<String?> paymentMode,
+      Value<String?> bankAccountId,
+      Value<String?> note,
+      required String status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$PurchaseReturnsTableUpdateCompanionBuilder =
+    PurchaseReturnsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> returnNo,
+      Value<String> purchaseId,
+      Value<String> partyId,
+      Value<String> entryDate,
+      Value<int> taxablePaise,
+      Value<int> gstPaise,
+      Value<int> roundOffPaise,
+      Value<int> totalPaise,
+      Value<int> refundKhataPaise,
+      Value<int> refundPaidPaise,
+      Value<String?> paymentMode,
+      Value<String?> bankAccountId,
+      Value<String?> note,
+      Value<String> status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$PurchaseReturnsTableFilterComposer
+    extends Composer<_$AppDatabase, $PurchaseReturnsTable> {
+  $$PurchaseReturnsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get returnNo => $composableBuilder(
+    column: $table.returnNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get refundKhataPaise => $composableBuilder(
+    column: $table.refundKhataPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get refundPaidPaise => $composableBuilder(
+    column: $table.refundPaidPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paymentMode => $composableBuilder(
+    column: $table.paymentMode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PurchaseReturnsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PurchaseReturnsTable> {
+  $$PurchaseReturnsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get returnNo => $composableBuilder(
+    column: $table.returnNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get refundKhataPaise => $composableBuilder(
+    column: $table.refundKhataPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get refundPaidPaise => $composableBuilder(
+    column: $table.refundPaidPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paymentMode => $composableBuilder(
+    column: $table.paymentMode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PurchaseReturnsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PurchaseReturnsTable> {
+  $$PurchaseReturnsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get returnNo =>
+      $composableBuilder(column: $table.returnNo, builder: (column) => column);
+
+  GeneratedColumn<String> get purchaseId => $composableBuilder(
+    column: $table.purchaseId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get gstPaise =>
+      $composableBuilder(column: $table.gstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get refundKhataPaise => $composableBuilder(
+    column: $table.refundKhataPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get refundPaidPaise => $composableBuilder(
+    column: $table.refundPaidPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get paymentMode => $composableBuilder(
+    column: $table.paymentMode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$PurchaseReturnsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PurchaseReturnsTable,
+          PurchaseReturn,
+          $$PurchaseReturnsTableFilterComposer,
+          $$PurchaseReturnsTableOrderingComposer,
+          $$PurchaseReturnsTableAnnotationComposer,
+          $$PurchaseReturnsTableCreateCompanionBuilder,
+          $$PurchaseReturnsTableUpdateCompanionBuilder,
+          (
+            PurchaseReturn,
+            BaseReferences<
+              _$AppDatabase,
+              $PurchaseReturnsTable,
+              PurchaseReturn
+            >,
+          ),
+          PurchaseReturn,
+          PrefetchHooks Function()
+        > {
+  $$PurchaseReturnsTableTableManager(
+    _$AppDatabase db,
+    $PurchaseReturnsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PurchaseReturnsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PurchaseReturnsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PurchaseReturnsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> returnNo = const Value.absent(),
+                Value<String> purchaseId = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<int> gstPaise = const Value.absent(),
+                Value<int> roundOffPaise = const Value.absent(),
+                Value<int> totalPaise = const Value.absent(),
+                Value<int> refundKhataPaise = const Value.absent(),
+                Value<int> refundPaidPaise = const Value.absent(),
+                Value<String?> paymentMode = const Value.absent(),
+                Value<String?> bankAccountId = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchaseReturnsCompanion(
+                id: id,
+                tenantId: tenantId,
+                returnNo: returnNo,
+                purchaseId: purchaseId,
+                partyId: partyId,
+                entryDate: entryDate,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                refundKhataPaise: refundKhataPaise,
+                refundPaidPaise: refundPaidPaise,
+                paymentMode: paymentMode,
+                bankAccountId: bankAccountId,
+                note: note,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String returnNo,
+                required String purchaseId,
+                required String partyId,
+                required String entryDate,
+                required int taxablePaise,
+                required int gstPaise,
+                required int roundOffPaise,
+                required int totalPaise,
+                required int refundKhataPaise,
+                required int refundPaidPaise,
+                Value<String?> paymentMode = const Value.absent(),
+                Value<String?> bankAccountId = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                required String status,
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchaseReturnsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                returnNo: returnNo,
+                purchaseId: purchaseId,
+                partyId: partyId,
+                entryDate: entryDate,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                refundKhataPaise: refundKhataPaise,
+                refundPaidPaise: refundPaidPaise,
+                paymentMode: paymentMode,
+                bankAccountId: bankAccountId,
+                note: note,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PurchaseReturnsTable, PurchaseReturn>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $PurchaseReturnsTable,
+                    PurchaseReturn
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PurchaseReturnsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PurchaseReturnsTable,
+      PurchaseReturn,
+      $$PurchaseReturnsTableFilterComposer,
+      $$PurchaseReturnsTableOrderingComposer,
+      $$PurchaseReturnsTableAnnotationComposer,
+      $$PurchaseReturnsTableCreateCompanionBuilder,
+      $$PurchaseReturnsTableUpdateCompanionBuilder,
+      (
+        PurchaseReturn,
+        BaseReferences<_$AppDatabase, $PurchaseReturnsTable, PurchaseReturn>,
+      ),
+      PurchaseReturn,
+      PrefetchHooks Function()
+    >;
+typedef $$PurchaseReturnLinesTableCreateCompanionBuilder =
+    PurchaseReturnLinesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String purchaseReturnId,
+      required int lineNo,
+      required String purchaseLineId,
+      required String productId,
+      required String batchId,
+      required int qtyMilli,
+      required int costPaise,
+      required int taxablePaise,
+      required int gstPaise,
+      required int lineTotalPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$PurchaseReturnLinesTableUpdateCompanionBuilder =
+    PurchaseReturnLinesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> purchaseReturnId,
+      Value<int> lineNo,
+      Value<String> purchaseLineId,
+      Value<String> productId,
+      Value<String> batchId,
+      Value<int> qtyMilli,
+      Value<int> costPaise,
+      Value<int> taxablePaise,
+      Value<int> gstPaise,
+      Value<int> lineTotalPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$PurchaseReturnLinesTableFilterComposer
+    extends Composer<_$AppDatabase, $PurchaseReturnLinesTable> {
+  $$PurchaseReturnLinesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purchaseReturnId => $composableBuilder(
+    column: $table.purchaseReturnId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get purchaseLineId => $composableBuilder(
+    column: $table.purchaseLineId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PurchaseReturnLinesTableOrderingComposer
+    extends Composer<_$AppDatabase, $PurchaseReturnLinesTable> {
+  $$PurchaseReturnLinesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get purchaseReturnId => $composableBuilder(
+    column: $table.purchaseReturnId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get purchaseLineId => $composableBuilder(
+    column: $table.purchaseLineId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get gstPaise => $composableBuilder(
+    column: $table.gstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PurchaseReturnLinesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PurchaseReturnLinesTable> {
+  $$PurchaseReturnLinesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get purchaseReturnId => $composableBuilder(
+    column: $table.purchaseReturnId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get lineNo =>
+      $composableBuilder(column: $table.lineNo, builder: (column) => column);
+
+  GeneratedColumn<String> get purchaseLineId => $composableBuilder(
+    column: $table.purchaseLineId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get batchId =>
+      $composableBuilder(column: $table.batchId, builder: (column) => column);
+
+  GeneratedColumn<int> get qtyMilli =>
+      $composableBuilder(column: $table.qtyMilli, builder: (column) => column);
+
+  GeneratedColumn<int> get costPaise =>
+      $composableBuilder(column: $table.costPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get gstPaise =>
+      $composableBuilder(column: $table.gstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$PurchaseReturnLinesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PurchaseReturnLinesTable,
+          PurchaseReturnLine,
+          $$PurchaseReturnLinesTableFilterComposer,
+          $$PurchaseReturnLinesTableOrderingComposer,
+          $$PurchaseReturnLinesTableAnnotationComposer,
+          $$PurchaseReturnLinesTableCreateCompanionBuilder,
+          $$PurchaseReturnLinesTableUpdateCompanionBuilder,
+          (
+            PurchaseReturnLine,
+            BaseReferences<
+              _$AppDatabase,
+              $PurchaseReturnLinesTable,
+              PurchaseReturnLine
+            >,
+          ),
+          PurchaseReturnLine,
+          PrefetchHooks Function()
+        > {
+  $$PurchaseReturnLinesTableTableManager(
+    _$AppDatabase db,
+    $PurchaseReturnLinesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PurchaseReturnLinesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PurchaseReturnLinesTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$PurchaseReturnLinesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> purchaseReturnId = const Value.absent(),
+                Value<int> lineNo = const Value.absent(),
+                Value<String> purchaseLineId = const Value.absent(),
+                Value<String> productId = const Value.absent(),
+                Value<String> batchId = const Value.absent(),
+                Value<int> qtyMilli = const Value.absent(),
+                Value<int> costPaise = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<int> gstPaise = const Value.absent(),
+                Value<int> lineTotalPaise = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchaseReturnLinesCompanion(
+                id: id,
+                tenantId: tenantId,
+                purchaseReturnId: purchaseReturnId,
+                lineNo: lineNo,
+                purchaseLineId: purchaseLineId,
+                productId: productId,
+                batchId: batchId,
+                qtyMilli: qtyMilli,
+                costPaise: costPaise,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                lineTotalPaise: lineTotalPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String purchaseReturnId,
+                required int lineNo,
+                required String purchaseLineId,
+                required String productId,
+                required String batchId,
+                required int qtyMilli,
+                required int costPaise,
+                required int taxablePaise,
+                required int gstPaise,
+                required int lineTotalPaise,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PurchaseReturnLinesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                purchaseReturnId: purchaseReturnId,
+                lineNo: lineNo,
+                purchaseLineId: purchaseLineId,
+                productId: productId,
+                batchId: batchId,
+                qtyMilli: qtyMilli,
+                costPaise: costPaise,
+                taxablePaise: taxablePaise,
+                gstPaise: gstPaise,
+                lineTotalPaise: lineTotalPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PurchaseReturnLinesTable, PurchaseReturnLine>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $PurchaseReturnLinesTable,
+                    PurchaseReturnLine
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PurchaseReturnLinesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PurchaseReturnLinesTable,
+      PurchaseReturnLine,
+      $$PurchaseReturnLinesTableFilterComposer,
+      $$PurchaseReturnLinesTableOrderingComposer,
+      $$PurchaseReturnLinesTableAnnotationComposer,
+      $$PurchaseReturnLinesTableCreateCompanionBuilder,
+      $$PurchaseReturnLinesTableUpdateCompanionBuilder,
+      (
+        PurchaseReturnLine,
+        BaseReferences<
+          _$AppDatabase,
+          $PurchaseReturnLinesTable,
+          PurchaseReturnLine
+        >,
+      ),
+      PurchaseReturnLine,
+      PrefetchHooks Function()
+    >;
+typedef $$ShopSalesTableCreateCompanionBuilder =
+    ShopSalesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String saleNo,
+      Value<String?> partyId,
+      Value<String?> customerName,
+      Value<String?> customerGstin,
+      Value<String?> placeOfSupply,
+      Value<String?> tier,
+      required String entryDate,
+      required int subtotalPaise,
+      required int discountPaise,
+      required double invoiceDiscountPct,
+      required int invoiceDiscountPaise,
+      required int taxablePaise,
+      required int cgstPaise,
+      required int sgstPaise,
+      required int igstPaise,
+      required int roundOffPaise,
+      required int totalPaise,
+      required int paidCashPaise,
+      required int paidUpiPaise,
+      required int paidCreditPaise,
+      Value<String?> upiAccountId,
+      Value<String?> notes,
+      required String status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$ShopSalesTableUpdateCompanionBuilder =
+    ShopSalesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> saleNo,
+      Value<String?> partyId,
+      Value<String?> customerName,
+      Value<String?> customerGstin,
+      Value<String?> placeOfSupply,
+      Value<String?> tier,
+      Value<String> entryDate,
+      Value<int> subtotalPaise,
+      Value<int> discountPaise,
+      Value<double> invoiceDiscountPct,
+      Value<int> invoiceDiscountPaise,
+      Value<int> taxablePaise,
+      Value<int> cgstPaise,
+      Value<int> sgstPaise,
+      Value<int> igstPaise,
+      Value<int> roundOffPaise,
+      Value<int> totalPaise,
+      Value<int> paidCashPaise,
+      Value<int> paidUpiPaise,
+      Value<int> paidCreditPaise,
+      Value<String?> upiAccountId,
+      Value<String?> notes,
+      Value<String> status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$ShopSalesTableFilterComposer
+    extends Composer<_$AppDatabase, $ShopSalesTable> {
+  $$ShopSalesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get saleNo => $composableBuilder(
+    column: $table.saleNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get customerName => $composableBuilder(
+    column: $table.customerName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get customerGstin => $composableBuilder(
+    column: $table.customerGstin,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get placeOfSupply => $composableBuilder(
+    column: $table.placeOfSupply,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tier => $composableBuilder(
+    column: $table.tier,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get subtotalPaise => $composableBuilder(
+    column: $table.subtotalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get discountPaise => $composableBuilder(
+    column: $table.discountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get invoiceDiscountPct => $composableBuilder(
+    column: $table.invoiceDiscountPct,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get invoiceDiscountPaise => $composableBuilder(
+    column: $table.invoiceDiscountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get paidCashPaise => $composableBuilder(
+    column: $table.paidCashPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get paidUpiPaise => $composableBuilder(
+    column: $table.paidUpiPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get paidCreditPaise => $composableBuilder(
+    column: $table.paidCreditPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get upiAccountId => $composableBuilder(
+    column: $table.upiAccountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ShopSalesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShopSalesTable> {
+  $$ShopSalesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get saleNo => $composableBuilder(
+    column: $table.saleNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customerName => $composableBuilder(
+    column: $table.customerName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customerGstin => $composableBuilder(
+    column: $table.customerGstin,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get placeOfSupply => $composableBuilder(
+    column: $table.placeOfSupply,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tier => $composableBuilder(
+    column: $table.tier,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get subtotalPaise => $composableBuilder(
+    column: $table.subtotalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get discountPaise => $composableBuilder(
+    column: $table.discountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get invoiceDiscountPct => $composableBuilder(
+    column: $table.invoiceDiscountPct,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get invoiceDiscountPaise => $composableBuilder(
+    column: $table.invoiceDiscountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get paidCashPaise => $composableBuilder(
+    column: $table.paidCashPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get paidUpiPaise => $composableBuilder(
+    column: $table.paidUpiPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get paidCreditPaise => $composableBuilder(
+    column: $table.paidCreditPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get upiAccountId => $composableBuilder(
+    column: $table.upiAccountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ShopSalesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShopSalesTable> {
+  $$ShopSalesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get saleNo =>
+      $composableBuilder(column: $table.saleNo, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get customerName => $composableBuilder(
+    column: $table.customerName,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get customerGstin => $composableBuilder(
+    column: $table.customerGstin,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get placeOfSupply => $composableBuilder(
+    column: $table.placeOfSupply,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get tier =>
+      $composableBuilder(column: $table.tier, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<int> get subtotalPaise => $composableBuilder(
+    column: $table.subtotalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get discountPaise => $composableBuilder(
+    column: $table.discountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get invoiceDiscountPct => $composableBuilder(
+    column: $table.invoiceDiscountPct,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get invoiceDiscountPaise => $composableBuilder(
+    column: $table.invoiceDiscountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get cgstPaise =>
+      $composableBuilder(column: $table.cgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get sgstPaise =>
+      $composableBuilder(column: $table.sgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get igstPaise =>
+      $composableBuilder(column: $table.igstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get paidCashPaise => $composableBuilder(
+    column: $table.paidCashPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get paidUpiPaise => $composableBuilder(
+    column: $table.paidUpiPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get paidCreditPaise => $composableBuilder(
+    column: $table.paidCreditPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get upiAccountId => $composableBuilder(
+    column: $table.upiAccountId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$ShopSalesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShopSalesTable,
+          ShopSale,
+          $$ShopSalesTableFilterComposer,
+          $$ShopSalesTableOrderingComposer,
+          $$ShopSalesTableAnnotationComposer,
+          $$ShopSalesTableCreateCompanionBuilder,
+          $$ShopSalesTableUpdateCompanionBuilder,
+          (ShopSale, BaseReferences<_$AppDatabase, $ShopSalesTable, ShopSale>),
+          ShopSale,
+          PrefetchHooks Function()
+        > {
+  $$ShopSalesTableTableManager(_$AppDatabase db, $ShopSalesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShopSalesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShopSalesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShopSalesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> saleNo = const Value.absent(),
+                Value<String?> partyId = const Value.absent(),
+                Value<String?> customerName = const Value.absent(),
+                Value<String?> customerGstin = const Value.absent(),
+                Value<String?> placeOfSupply = const Value.absent(),
+                Value<String?> tier = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<int> subtotalPaise = const Value.absent(),
+                Value<int> discountPaise = const Value.absent(),
+                Value<double> invoiceDiscountPct = const Value.absent(),
+                Value<int> invoiceDiscountPaise = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<int> cgstPaise = const Value.absent(),
+                Value<int> sgstPaise = const Value.absent(),
+                Value<int> igstPaise = const Value.absent(),
+                Value<int> roundOffPaise = const Value.absent(),
+                Value<int> totalPaise = const Value.absent(),
+                Value<int> paidCashPaise = const Value.absent(),
+                Value<int> paidUpiPaise = const Value.absent(),
+                Value<int> paidCreditPaise = const Value.absent(),
+                Value<String?> upiAccountId = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopSalesCompanion(
+                id: id,
+                tenantId: tenantId,
+                saleNo: saleNo,
+                partyId: partyId,
+                customerName: customerName,
+                customerGstin: customerGstin,
+                placeOfSupply: placeOfSupply,
+                tier: tier,
+                entryDate: entryDate,
+                subtotalPaise: subtotalPaise,
+                discountPaise: discountPaise,
+                invoiceDiscountPct: invoiceDiscountPct,
+                invoiceDiscountPaise: invoiceDiscountPaise,
+                taxablePaise: taxablePaise,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                paidCashPaise: paidCashPaise,
+                paidUpiPaise: paidUpiPaise,
+                paidCreditPaise: paidCreditPaise,
+                upiAccountId: upiAccountId,
+                notes: notes,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String saleNo,
+                Value<String?> partyId = const Value.absent(),
+                Value<String?> customerName = const Value.absent(),
+                Value<String?> customerGstin = const Value.absent(),
+                Value<String?> placeOfSupply = const Value.absent(),
+                Value<String?> tier = const Value.absent(),
+                required String entryDate,
+                required int subtotalPaise,
+                required int discountPaise,
+                required double invoiceDiscountPct,
+                required int invoiceDiscountPaise,
+                required int taxablePaise,
+                required int cgstPaise,
+                required int sgstPaise,
+                required int igstPaise,
+                required int roundOffPaise,
+                required int totalPaise,
+                required int paidCashPaise,
+                required int paidUpiPaise,
+                required int paidCreditPaise,
+                Value<String?> upiAccountId = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                required String status,
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopSalesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                saleNo: saleNo,
+                partyId: partyId,
+                customerName: customerName,
+                customerGstin: customerGstin,
+                placeOfSupply: placeOfSupply,
+                tier: tier,
+                entryDate: entryDate,
+                subtotalPaise: subtotalPaise,
+                discountPaise: discountPaise,
+                invoiceDiscountPct: invoiceDiscountPct,
+                invoiceDiscountPaise: invoiceDiscountPaise,
+                taxablePaise: taxablePaise,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                paidCashPaise: paidCashPaise,
+                paidUpiPaise: paidUpiPaise,
+                paidCreditPaise: paidCreditPaise,
+                upiAccountId: upiAccountId,
+                notes: notes,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShopSalesTable, ShopSale>(table),
+                  BaseReferences<_$AppDatabase, $ShopSalesTable, ShopSale>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ShopSalesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShopSalesTable,
+      ShopSale,
+      $$ShopSalesTableFilterComposer,
+      $$ShopSalesTableOrderingComposer,
+      $$ShopSalesTableAnnotationComposer,
+      $$ShopSalesTableCreateCompanionBuilder,
+      $$ShopSalesTableUpdateCompanionBuilder,
+      (ShopSale, BaseReferences<_$AppDatabase, $ShopSalesTable, ShopSale>),
+      ShopSale,
+      PrefetchHooks Function()
+    >;
+typedef $$ShopSaleLinesTableCreateCompanionBuilder =
+    ShopSaleLinesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String saleId,
+      required int lineNo,
+      required String productId,
+      Value<String?> batchId,
+      required int qtyMilli,
+      required int unitPricePaise,
+      Value<String?> tier,
+      required int discountPaise,
+      required int taxablePaise,
+      required double gstRate,
+      required int cgstPaise,
+      required int sgstPaise,
+      required int igstPaise,
+      required int lineTotalPaise,
+      Value<String?> hsn,
+      required int costPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$ShopSaleLinesTableUpdateCompanionBuilder =
+    ShopSaleLinesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> saleId,
+      Value<int> lineNo,
+      Value<String> productId,
+      Value<String?> batchId,
+      Value<int> qtyMilli,
+      Value<int> unitPricePaise,
+      Value<String?> tier,
+      Value<int> discountPaise,
+      Value<int> taxablePaise,
+      Value<double> gstRate,
+      Value<int> cgstPaise,
+      Value<int> sgstPaise,
+      Value<int> igstPaise,
+      Value<int> lineTotalPaise,
+      Value<String?> hsn,
+      Value<int> costPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$ShopSaleLinesTableFilterComposer
+    extends Composer<_$AppDatabase, $ShopSaleLinesTable> {
+  $$ShopSaleLinesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get saleId => $composableBuilder(
+    column: $table.saleId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get unitPricePaise => $composableBuilder(
+    column: $table.unitPricePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tier => $composableBuilder(
+    column: $table.tier,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get discountPaise => $composableBuilder(
+    column: $table.discountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get gstRate => $composableBuilder(
+    column: $table.gstRate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get hsn => $composableBuilder(
+    column: $table.hsn,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ShopSaleLinesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShopSaleLinesTable> {
+  $$ShopSaleLinesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get saleId => $composableBuilder(
+    column: $table.saleId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get unitPricePaise => $composableBuilder(
+    column: $table.unitPricePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tier => $composableBuilder(
+    column: $table.tier,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get discountPaise => $composableBuilder(
+    column: $table.discountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get gstRate => $composableBuilder(
+    column: $table.gstRate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get hsn => $composableBuilder(
+    column: $table.hsn,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get costPaise => $composableBuilder(
+    column: $table.costPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ShopSaleLinesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShopSaleLinesTable> {
+  $$ShopSaleLinesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get saleId =>
+      $composableBuilder(column: $table.saleId, builder: (column) => column);
+
+  GeneratedColumn<int> get lineNo =>
+      $composableBuilder(column: $table.lineNo, builder: (column) => column);
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get batchId =>
+      $composableBuilder(column: $table.batchId, builder: (column) => column);
+
+  GeneratedColumn<int> get qtyMilli =>
+      $composableBuilder(column: $table.qtyMilli, builder: (column) => column);
+
+  GeneratedColumn<int> get unitPricePaise => $composableBuilder(
+    column: $table.unitPricePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get tier =>
+      $composableBuilder(column: $table.tier, builder: (column) => column);
+
+  GeneratedColumn<int> get discountPaise => $composableBuilder(
+    column: $table.discountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get gstRate =>
+      $composableBuilder(column: $table.gstRate, builder: (column) => column);
+
+  GeneratedColumn<int> get cgstPaise =>
+      $composableBuilder(column: $table.cgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get sgstPaise =>
+      $composableBuilder(column: $table.sgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get igstPaise =>
+      $composableBuilder(column: $table.igstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get lineTotalPaise => $composableBuilder(
+    column: $table.lineTotalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get hsn =>
+      $composableBuilder(column: $table.hsn, builder: (column) => column);
+
+  GeneratedColumn<int> get costPaise =>
+      $composableBuilder(column: $table.costPaise, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$ShopSaleLinesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShopSaleLinesTable,
+          ShopSaleLine,
+          $$ShopSaleLinesTableFilterComposer,
+          $$ShopSaleLinesTableOrderingComposer,
+          $$ShopSaleLinesTableAnnotationComposer,
+          $$ShopSaleLinesTableCreateCompanionBuilder,
+          $$ShopSaleLinesTableUpdateCompanionBuilder,
+          (
+            ShopSaleLine,
+            BaseReferences<_$AppDatabase, $ShopSaleLinesTable, ShopSaleLine>,
+          ),
+          ShopSaleLine,
+          PrefetchHooks Function()
+        > {
+  $$ShopSaleLinesTableTableManager(_$AppDatabase db, $ShopSaleLinesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShopSaleLinesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShopSaleLinesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShopSaleLinesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> saleId = const Value.absent(),
+                Value<int> lineNo = const Value.absent(),
+                Value<String> productId = const Value.absent(),
+                Value<String?> batchId = const Value.absent(),
+                Value<int> qtyMilli = const Value.absent(),
+                Value<int> unitPricePaise = const Value.absent(),
+                Value<String?> tier = const Value.absent(),
+                Value<int> discountPaise = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<double> gstRate = const Value.absent(),
+                Value<int> cgstPaise = const Value.absent(),
+                Value<int> sgstPaise = const Value.absent(),
+                Value<int> igstPaise = const Value.absent(),
+                Value<int> lineTotalPaise = const Value.absent(),
+                Value<String?> hsn = const Value.absent(),
+                Value<int> costPaise = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopSaleLinesCompanion(
+                id: id,
+                tenantId: tenantId,
+                saleId: saleId,
+                lineNo: lineNo,
+                productId: productId,
+                batchId: batchId,
+                qtyMilli: qtyMilli,
+                unitPricePaise: unitPricePaise,
+                tier: tier,
+                discountPaise: discountPaise,
+                taxablePaise: taxablePaise,
+                gstRate: gstRate,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                lineTotalPaise: lineTotalPaise,
+                hsn: hsn,
+                costPaise: costPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String saleId,
+                required int lineNo,
+                required String productId,
+                Value<String?> batchId = const Value.absent(),
+                required int qtyMilli,
+                required int unitPricePaise,
+                Value<String?> tier = const Value.absent(),
+                required int discountPaise,
+                required int taxablePaise,
+                required double gstRate,
+                required int cgstPaise,
+                required int sgstPaise,
+                required int igstPaise,
+                required int lineTotalPaise,
+                Value<String?> hsn = const Value.absent(),
+                required int costPaise,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopSaleLinesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                saleId: saleId,
+                lineNo: lineNo,
+                productId: productId,
+                batchId: batchId,
+                qtyMilli: qtyMilli,
+                unitPricePaise: unitPricePaise,
+                tier: tier,
+                discountPaise: discountPaise,
+                taxablePaise: taxablePaise,
+                gstRate: gstRate,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                lineTotalPaise: lineTotalPaise,
+                hsn: hsn,
+                costPaise: costPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShopSaleLinesTable, ShopSaleLine>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $ShopSaleLinesTable,
+                    ShopSaleLine
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ShopSaleLinesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShopSaleLinesTable,
+      ShopSaleLine,
+      $$ShopSaleLinesTableFilterComposer,
+      $$ShopSaleLinesTableOrderingComposer,
+      $$ShopSaleLinesTableAnnotationComposer,
+      $$ShopSaleLinesTableCreateCompanionBuilder,
+      $$ShopSaleLinesTableUpdateCompanionBuilder,
+      (
+        ShopSaleLine,
+        BaseReferences<_$AppDatabase, $ShopSaleLinesTable, ShopSaleLine>,
+      ),
+      ShopSaleLine,
+      PrefetchHooks Function()
+    >;
+typedef $$ShopReturnsTableCreateCompanionBuilder =
+    ShopReturnsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String returnNo,
+      required String saleId,
+      Value<String?> partyId,
+      required String entryDate,
+      required int taxablePaise,
+      required int cgstPaise,
+      required int sgstPaise,
+      required int igstPaise,
+      required int roundOffPaise,
+      required int totalPaise,
+      required String refundMode,
+      required int refundKhataPaise,
+      required int refundCashPaise,
+      required int refundUpiPaise,
+      Value<String?> bankAccountId,
+      Value<String?> note,
+      required String status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$ShopReturnsTableUpdateCompanionBuilder =
+    ShopReturnsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> returnNo,
+      Value<String> saleId,
+      Value<String?> partyId,
+      Value<String> entryDate,
+      Value<int> taxablePaise,
+      Value<int> cgstPaise,
+      Value<int> sgstPaise,
+      Value<int> igstPaise,
+      Value<int> roundOffPaise,
+      Value<int> totalPaise,
+      Value<String> refundMode,
+      Value<int> refundKhataPaise,
+      Value<int> refundCashPaise,
+      Value<int> refundUpiPaise,
+      Value<String?> bankAccountId,
+      Value<String?> note,
+      Value<String> status,
+      Value<String?> reversedAt,
+      Value<String?> deviceId,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$ShopReturnsTableFilterComposer
+    extends Composer<_$AppDatabase, $ShopReturnsTable> {
+  $$ShopReturnsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get returnNo => $composableBuilder(
+    column: $table.returnNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get saleId => $composableBuilder(
+    column: $table.saleId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refundMode => $composableBuilder(
+    column: $table.refundMode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get refundKhataPaise => $composableBuilder(
+    column: $table.refundKhataPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get refundCashPaise => $composableBuilder(
+    column: $table.refundCashPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get refundUpiPaise => $composableBuilder(
+    column: $table.refundUpiPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ShopReturnsTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShopReturnsTable> {
+  $$ShopReturnsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get returnNo => $composableBuilder(
+    column: $table.returnNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get saleId => $composableBuilder(
+    column: $table.saleId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refundMode => $composableBuilder(
+    column: $table.refundMode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get refundKhataPaise => $composableBuilder(
+    column: $table.refundKhataPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get refundCashPaise => $composableBuilder(
+    column: $table.refundCashPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get refundUpiPaise => $composableBuilder(
+    column: $table.refundUpiPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ShopReturnsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShopReturnsTable> {
+  $$ShopReturnsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get returnNo =>
+      $composableBuilder(column: $table.returnNo, builder: (column) => column);
+
+  GeneratedColumn<String> get saleId =>
+      $composableBuilder(column: $table.saleId, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get cgstPaise =>
+      $composableBuilder(column: $table.cgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get sgstPaise =>
+      $composableBuilder(column: $table.sgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get igstPaise =>
+      $composableBuilder(column: $table.igstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get roundOffPaise => $composableBuilder(
+    column: $table.roundOffPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get totalPaise => $composableBuilder(
+    column: $table.totalPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get refundMode => $composableBuilder(
+    column: $table.refundMode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get refundKhataPaise => $composableBuilder(
+    column: $table.refundKhataPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get refundCashPaise => $composableBuilder(
+    column: $table.refundCashPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get refundUpiPaise => $composableBuilder(
+    column: $table.refundUpiPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get bankAccountId => $composableBuilder(
+    column: $table.bankAccountId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get reversedAt => $composableBuilder(
+    column: $table.reversedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$ShopReturnsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShopReturnsTable,
+          ShopReturn,
+          $$ShopReturnsTableFilterComposer,
+          $$ShopReturnsTableOrderingComposer,
+          $$ShopReturnsTableAnnotationComposer,
+          $$ShopReturnsTableCreateCompanionBuilder,
+          $$ShopReturnsTableUpdateCompanionBuilder,
+          (
+            ShopReturn,
+            BaseReferences<_$AppDatabase, $ShopReturnsTable, ShopReturn>,
+          ),
+          ShopReturn,
+          PrefetchHooks Function()
+        > {
+  $$ShopReturnsTableTableManager(_$AppDatabase db, $ShopReturnsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShopReturnsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShopReturnsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShopReturnsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> returnNo = const Value.absent(),
+                Value<String> saleId = const Value.absent(),
+                Value<String?> partyId = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<int> cgstPaise = const Value.absent(),
+                Value<int> sgstPaise = const Value.absent(),
+                Value<int> igstPaise = const Value.absent(),
+                Value<int> roundOffPaise = const Value.absent(),
+                Value<int> totalPaise = const Value.absent(),
+                Value<String> refundMode = const Value.absent(),
+                Value<int> refundKhataPaise = const Value.absent(),
+                Value<int> refundCashPaise = const Value.absent(),
+                Value<int> refundUpiPaise = const Value.absent(),
+                Value<String?> bankAccountId = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopReturnsCompanion(
+                id: id,
+                tenantId: tenantId,
+                returnNo: returnNo,
+                saleId: saleId,
+                partyId: partyId,
+                entryDate: entryDate,
+                taxablePaise: taxablePaise,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                refundMode: refundMode,
+                refundKhataPaise: refundKhataPaise,
+                refundCashPaise: refundCashPaise,
+                refundUpiPaise: refundUpiPaise,
+                bankAccountId: bankAccountId,
+                note: note,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String returnNo,
+                required String saleId,
+                Value<String?> partyId = const Value.absent(),
+                required String entryDate,
+                required int taxablePaise,
+                required int cgstPaise,
+                required int sgstPaise,
+                required int igstPaise,
+                required int roundOffPaise,
+                required int totalPaise,
+                required String refundMode,
+                required int refundKhataPaise,
+                required int refundCashPaise,
+                required int refundUpiPaise,
+                Value<String?> bankAccountId = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                required String status,
+                Value<String?> reversedAt = const Value.absent(),
+                Value<String?> deviceId = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopReturnsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                returnNo: returnNo,
+                saleId: saleId,
+                partyId: partyId,
+                entryDate: entryDate,
+                taxablePaise: taxablePaise,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                roundOffPaise: roundOffPaise,
+                totalPaise: totalPaise,
+                refundMode: refundMode,
+                refundKhataPaise: refundKhataPaise,
+                refundCashPaise: refundCashPaise,
+                refundUpiPaise: refundUpiPaise,
+                bankAccountId: bankAccountId,
+                note: note,
+                status: status,
+                reversedAt: reversedAt,
+                deviceId: deviceId,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShopReturnsTable, ShopReturn>(table),
+                  BaseReferences<_$AppDatabase, $ShopReturnsTable, ShopReturn>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ShopReturnsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShopReturnsTable,
+      ShopReturn,
+      $$ShopReturnsTableFilterComposer,
+      $$ShopReturnsTableOrderingComposer,
+      $$ShopReturnsTableAnnotationComposer,
+      $$ShopReturnsTableCreateCompanionBuilder,
+      $$ShopReturnsTableUpdateCompanionBuilder,
+      (
+        ShopReturn,
+        BaseReferences<_$AppDatabase, $ShopReturnsTable, ShopReturn>,
+      ),
+      ShopReturn,
+      PrefetchHooks Function()
+    >;
+typedef $$ShopReturnLinesTableCreateCompanionBuilder =
+    ShopReturnLinesCompanion Function({
+      required String id,
+      required String tenantId,
+      required String shopReturnId,
+      required int lineNo,
+      required String saleLineId,
+      required String productId,
+      Value<String?> batchId,
+      required int qtyMilli,
+      required int taxablePaise,
+      required int cgstPaise,
+      required int sgstPaise,
+      required int igstPaise,
+      required int amountPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+typedef $$ShopReturnLinesTableUpdateCompanionBuilder =
+    ShopReturnLinesCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> shopReturnId,
+      Value<int> lineNo,
+      Value<String> saleLineId,
+      Value<String> productId,
+      Value<String?> batchId,
+      Value<int> qtyMilli,
+      Value<int> taxablePaise,
+      Value<int> cgstPaise,
+      Value<int> sgstPaise,
+      Value<int> igstPaise,
+      Value<int> amountPaise,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<int> rowid,
+    });
+
+class $$ShopReturnLinesTableFilterComposer
+    extends Composer<_$AppDatabase, $ShopReturnLinesTable> {
+  $$ShopReturnLinesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get shopReturnId => $composableBuilder(
+    column: $table.shopReturnId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get saleLineId => $composableBuilder(
+    column: $table.saleLineId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ShopReturnLinesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ShopReturnLinesTable> {
+  $$ShopReturnLinesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get shopReturnId => $composableBuilder(
+    column: $table.shopReturnId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lineNo => $composableBuilder(
+    column: $table.lineNo,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get saleLineId => $composableBuilder(
+    column: $table.saleLineId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get productId => $composableBuilder(
+    column: $table.productId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get batchId => $composableBuilder(
+    column: $table.batchId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get qtyMilli => $composableBuilder(
+    column: $table.qtyMilli,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get cgstPaise => $composableBuilder(
+    column: $table.cgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sgstPaise => $composableBuilder(
+    column: $table.sgstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get igstPaise => $composableBuilder(
+    column: $table.igstPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ShopReturnLinesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ShopReturnLinesTable> {
+  $$ShopReturnLinesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get shopReturnId => $composableBuilder(
+    column: $table.shopReturnId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get lineNo =>
+      $composableBuilder(column: $table.lineNo, builder: (column) => column);
+
+  GeneratedColumn<String> get saleLineId => $composableBuilder(
+    column: $table.saleLineId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get productId =>
+      $composableBuilder(column: $table.productId, builder: (column) => column);
+
+  GeneratedColumn<String> get batchId =>
+      $composableBuilder(column: $table.batchId, builder: (column) => column);
+
+  GeneratedColumn<int> get qtyMilli =>
+      $composableBuilder(column: $table.qtyMilli, builder: (column) => column);
+
+  GeneratedColumn<int> get taxablePaise => $composableBuilder(
+    column: $table.taxablePaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get cgstPaise =>
+      $composableBuilder(column: $table.cgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get sgstPaise =>
+      $composableBuilder(column: $table.sgstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get igstPaise =>
+      $composableBuilder(column: $table.igstPaise, builder: (column) => column);
+
+  GeneratedColumn<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$ShopReturnLinesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ShopReturnLinesTable,
+          ShopReturnLine,
+          $$ShopReturnLinesTableFilterComposer,
+          $$ShopReturnLinesTableOrderingComposer,
+          $$ShopReturnLinesTableAnnotationComposer,
+          $$ShopReturnLinesTableCreateCompanionBuilder,
+          $$ShopReturnLinesTableUpdateCompanionBuilder,
+          (
+            ShopReturnLine,
+            BaseReferences<
+              _$AppDatabase,
+              $ShopReturnLinesTable,
+              ShopReturnLine
+            >,
+          ),
+          ShopReturnLine,
+          PrefetchHooks Function()
+        > {
+  $$ShopReturnLinesTableTableManager(
+    _$AppDatabase db,
+    $ShopReturnLinesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ShopReturnLinesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ShopReturnLinesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ShopReturnLinesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> shopReturnId = const Value.absent(),
+                Value<int> lineNo = const Value.absent(),
+                Value<String> saleLineId = const Value.absent(),
+                Value<String> productId = const Value.absent(),
+                Value<String?> batchId = const Value.absent(),
+                Value<int> qtyMilli = const Value.absent(),
+                Value<int> taxablePaise = const Value.absent(),
+                Value<int> cgstPaise = const Value.absent(),
+                Value<int> sgstPaise = const Value.absent(),
+                Value<int> igstPaise = const Value.absent(),
+                Value<int> amountPaise = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopReturnLinesCompanion(
+                id: id,
+                tenantId: tenantId,
+                shopReturnId: shopReturnId,
+                lineNo: lineNo,
+                saleLineId: saleLineId,
+                productId: productId,
+                batchId: batchId,
+                qtyMilli: qtyMilli,
+                taxablePaise: taxablePaise,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                amountPaise: amountPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String shopReturnId,
+                required int lineNo,
+                required String saleLineId,
+                required String productId,
+                Value<String?> batchId = const Value.absent(),
+                required int qtyMilli,
+                required int taxablePaise,
+                required int cgstPaise,
+                required int sgstPaise,
+                required int igstPaise,
+                required int amountPaise,
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ShopReturnLinesCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                shopReturnId: shopReturnId,
+                lineNo: lineNo,
+                saleLineId: saleLineId,
+                productId: productId,
+                batchId: batchId,
+                qtyMilli: qtyMilli,
+                taxablePaise: taxablePaise,
+                cgstPaise: cgstPaise,
+                sgstPaise: sgstPaise,
+                igstPaise: igstPaise,
+                amountPaise: amountPaise,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ShopReturnLinesTable, ShopReturnLine>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $ShopReturnLinesTable,
+                    ShopReturnLine
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ShopReturnLinesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ShopReturnLinesTable,
+      ShopReturnLine,
+      $$ShopReturnLinesTableFilterComposer,
+      $$ShopReturnLinesTableOrderingComposer,
+      $$ShopReturnLinesTableAnnotationComposer,
+      $$ShopReturnLinesTableCreateCompanionBuilder,
+      $$ShopReturnLinesTableUpdateCompanionBuilder,
+      (
+        ShopReturnLine,
+        BaseReferences<_$AppDatabase, $ShopReturnLinesTable, ShopReturnLine>,
+      ),
+      ShopReturnLine,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -36767,6 +55060,30 @@ class $AppDatabaseManager {
       $$ExpensesTableTableManager(_db, _db.expenses);
   $$FinancialYearsTableTableManager get financialYears =>
       $$FinancialYearsTableTableManager(_db, _db.financialYears);
+  $$ProductCategoriesTableTableManager get productCategories =>
+      $$ProductCategoriesTableTableManager(_db, _db.productCategories);
+  $$ProductsTableTableManager get products =>
+      $$ProductsTableTableManager(_db, _db.products);
+  $$BatchesTableTableManager get batches =>
+      $$BatchesTableTableManager(_db, _db.batches);
+  $$StockMovementsTableTableManager get stockMovements =>
+      $$StockMovementsTableTableManager(_db, _db.stockMovements);
+  $$PurchasesTableTableManager get purchases =>
+      $$PurchasesTableTableManager(_db, _db.purchases);
+  $$PurchaseLinesTableTableManager get purchaseLines =>
+      $$PurchaseLinesTableTableManager(_db, _db.purchaseLines);
+  $$PurchaseReturnsTableTableManager get purchaseReturns =>
+      $$PurchaseReturnsTableTableManager(_db, _db.purchaseReturns);
+  $$PurchaseReturnLinesTableTableManager get purchaseReturnLines =>
+      $$PurchaseReturnLinesTableTableManager(_db, _db.purchaseReturnLines);
+  $$ShopSalesTableTableManager get shopSales =>
+      $$ShopSalesTableTableManager(_db, _db.shopSales);
+  $$ShopSaleLinesTableTableManager get shopSaleLines =>
+      $$ShopSaleLinesTableTableManager(_db, _db.shopSaleLines);
+  $$ShopReturnsTableTableManager get shopReturns =>
+      $$ShopReturnsTableTableManager(_db, _db.shopReturns);
+  $$ShopReturnLinesTableTableManager get shopReturnLines =>
+      $$ShopReturnLinesTableTableManager(_db, _db.shopReturnLines);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }

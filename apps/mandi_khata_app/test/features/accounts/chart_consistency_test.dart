@@ -21,9 +21,14 @@ void main() {
           .where((f) => f.path.endsWith('.sql'))
           .toList()
         ..sort((a, b) => a.path.compareTo(b.path));
-  final sql = files
-      .map((f) => f.readAsStringSync())
-      .lastWhere((s) => s.contains('function private.seed_chart_accounts'));
+  final sources = files.map((f) => f.readAsStringSync()).toList();
+  final sql = sources.lastWhere(
+    (s) => s.contains('function private.seed_chart_accounts'),
+  );
+  // The groups and the accounts are redefined in different migrations.
+  final groupsSql = sources.lastWhere(
+    (s) => s.contains('function private.seed_chart_groups'),
+  );
 
   test('account ids equal the UUID v5 ids of the server', () {
     expect(
@@ -54,10 +59,8 @@ void main() {
   });
 
   test('the SQL group seed lists exactly the AccountGroup enum', () {
-    final block = sql.substring(
-      sql.indexOf('function private.seed_chart_groups'),
-      sql.indexOf('function private.seed_chart_accounts'),
-    );
+    final start = groupsSql.indexOf('function private.seed_chart_groups');
+    final block = groupsSql.substring(start, groupsSql.indexOf(r'$$;', start));
     final rows = RegExp(
       r"\('([a-z_]+)',\s+'([^']+)',\s+(null|'[a-z_]+'),\s+'([a-z]+)'\)",
     ).allMatches(block).toList();

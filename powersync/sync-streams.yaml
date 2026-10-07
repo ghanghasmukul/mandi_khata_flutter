@@ -47,6 +47,17 @@ streams:
       - SELECT * FROM expense_categories WHERE tenant_id IN my_tenants
       - SELECT * FROM recurring_expenses WHERE tenant_id IN my_tenants
       - SELECT * FROM expenses WHERE tenant_id IN my_tenants
+      # Input shop (phase 4). The counter works offline, so every member gets
+      # the catalogue, stock and the sales / returns. Purchases (supplier
+      # terms and costs) are finance data: finance_data stream.
+      - SELECT * FROM product_categories WHERE tenant_id IN my_tenants
+      - SELECT * FROM products WHERE tenant_id IN my_tenants
+      - SELECT * FROM batches WHERE tenant_id IN my_tenants
+      - SELECT * FROM stock_movements WHERE tenant_id IN my_tenants
+      - SELECT * FROM shop_sales WHERE tenant_id IN my_tenants
+      - SELECT * FROM shop_sale_lines WHERE tenant_id IN my_tenants
+      - SELECT * FROM shop_returns WHERE tenant_id IN my_tenants
+      - SELECT * FROM shop_return_lines WHERE tenant_id IN my_tenants
       # Everyone gets the Cash account and its book lines; bank accounts and
       # their lines go only to finance members (stream below).
       - SELECT * FROM bank_accounts WHERE tenant_id IN my_tenants AND kind = 'cash'
@@ -72,6 +83,12 @@ streams:
       # Bank reconciliation (step 3.3).
       - SELECT * FROM bank_statement_lines WHERE tenant_id IN finance_tenants
       - SELECT * FROM bank_reconciliations WHERE tenant_id IN finance_tenants
+      # Purchases and their returns (phase 4): RLS is finance.view or
+      # purchases.create; like above, default roles (owner, accountant).
+      - SELECT * FROM purchases WHERE tenant_id IN finance_tenants
+      - SELECT * FROM purchase_lines WHERE tenant_id IN finance_tenants
+      - SELECT * FROM purchase_returns WHERE tenant_id IN finance_tenants
+      - SELECT * FROM purchase_return_lines WHERE tenant_id IN finance_tenants
       # Closed years carry the year's profit: finance members only. Other
       # devices are refused by the server (lock trigger) if they post there.
       - SELECT * FROM financial_years WHERE tenant_id IN finance_tenants

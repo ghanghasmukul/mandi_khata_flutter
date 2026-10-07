@@ -326,6 +326,10 @@ class CashBankEntries extends Table {
   TextColumn get createdAt => text().nullable()();
   TextColumn get voucherId => text().nullable()();
   TextColumn get expenseId => text().nullable()();
+  TextColumn get purchaseId => text().nullable()();
+  TextColumn get purchaseReturnId => text().nullable()();
+  TextColumn get shopSaleId => text().nullable()();
+  TextColumn get shopReturnId => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};
@@ -629,6 +633,298 @@ class FinancialYears extends Table {
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
   TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+// ---- Phase 4: input shop ----
+
+class ProductCategories extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get name => text()();
+  IntColumn get sortOrder => integer()();
+  BoolColumn get isActive => boolean()();
+  TextColumn get deletedAt => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class Products extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get sku => text()();
+  TextColumn get barcode => text().nullable()();
+  TextColumn get name => text()();
+  TextColumn get brand => text().nullable()();
+  TextColumn get categoryId => text().nullable()();
+  TextColumn get unit => text()();
+  TextColumn get packSize => text().nullable()();
+  TextColumn get hsn => text().nullable()();
+  RealColumn get gstRate => real()();
+  IntColumn get reorderLevelMilli => integer()();
+  TextColumn get prices => text()();
+  BoolColumn get isActive => boolean()();
+  TextColumn get deletedAt => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class Batches extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get productId => text()();
+  TextColumn get batchNo => text()();
+  TextColumn get mfgDate => text().nullable()();
+  TextColumn get expiryDate => text().nullable()();
+  IntColumn get costPaise => integer()();
+  IntColumn get qtyMilli => integer()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class StockMovements extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get productId => text()();
+  TextColumn get batchId => text().nullable()();
+  TextColumn get entryDate => text()();
+  IntColumn get qtyMilli => integer()();
+  TextColumn get reason => text()();
+  TextColumn get refType => text().nullable()();
+  TextColumn get refId => text().nullable()();
+  TextColumn get note => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get receivedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class Purchases extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get purchaseNo => text()();
+  TextColumn get partyId => text()();
+  TextColumn get supplierInvoiceNo => text().nullable()();
+  TextColumn get invoiceDate => text()();
+  TextColumn get entryDate => text()();
+  IntColumn get freightPaise => integer()();
+  IntColumn get otherChargesPaise => integer()();
+  IntColumn get taxablePaise => integer()();
+  IntColumn get gstPaise => integer()();
+  IntColumn get roundOffPaise => integer()();
+  IntColumn get totalPaise => integer()();
+  IntColumn get paidPaise => integer()();
+  TextColumn get paymentMode => text().nullable()();
+  TextColumn get bankAccountId => text().nullable()();
+  IntColumn get creditDays => integer()();
+  TextColumn get dueDate => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get reversedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class PurchaseLines extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get purchaseId => text()();
+  IntColumn get lineNo => integer()();
+  TextColumn get productId => text()();
+  TextColumn get batchId => text()();
+  TextColumn get batchNo => text()();
+  TextColumn get mfgDate => text().nullable()();
+  TextColumn get expiryDate => text().nullable()();
+  IntColumn get qtyMilli => integer()();
+  IntColumn get costPaise => integer()();
+  RealColumn get gstRate => real()();
+  IntColumn get taxablePaise => integer()();
+  IntColumn get gstPaise => integer()();
+  IntColumn get lineTotalPaise => integer()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class PurchaseReturns extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get returnNo => text()();
+  TextColumn get purchaseId => text()();
+  TextColumn get partyId => text()();
+  TextColumn get entryDate => text()();
+  IntColumn get taxablePaise => integer()();
+  IntColumn get gstPaise => integer()();
+  IntColumn get roundOffPaise => integer()();
+  IntColumn get totalPaise => integer()();
+  IntColumn get refundKhataPaise => integer()();
+  IntColumn get refundPaidPaise => integer()();
+  TextColumn get paymentMode => text().nullable()();
+  TextColumn get bankAccountId => text().nullable()();
+  TextColumn get note => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get reversedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class PurchaseReturnLines extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get purchaseReturnId => text()();
+  IntColumn get lineNo => integer()();
+  TextColumn get purchaseLineId => text()();
+  TextColumn get productId => text()();
+  TextColumn get batchId => text()();
+  IntColumn get qtyMilli => integer()();
+  IntColumn get costPaise => integer()();
+  IntColumn get taxablePaise => integer()();
+  IntColumn get gstPaise => integer()();
+  IntColumn get lineTotalPaise => integer()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class ShopSales extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get saleNo => text()();
+  TextColumn get partyId => text().nullable()();
+  TextColumn get customerName => text().nullable()();
+  TextColumn get customerGstin => text().nullable()();
+  TextColumn get placeOfSupply => text().nullable()();
+  TextColumn get tier => text().nullable()();
+  TextColumn get entryDate => text()();
+  IntColumn get subtotalPaise => integer()();
+  IntColumn get discountPaise => integer()();
+  RealColumn get invoiceDiscountPct => real()();
+  IntColumn get invoiceDiscountPaise => integer()();
+  IntColumn get taxablePaise => integer()();
+  IntColumn get cgstPaise => integer()();
+  IntColumn get sgstPaise => integer()();
+  IntColumn get igstPaise => integer()();
+  IntColumn get roundOffPaise => integer()();
+  IntColumn get totalPaise => integer()();
+  IntColumn get paidCashPaise => integer()();
+  IntColumn get paidUpiPaise => integer()();
+  IntColumn get paidCreditPaise => integer()();
+  TextColumn get upiAccountId => text().nullable()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get reversedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class ShopSaleLines extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get saleId => text()();
+  IntColumn get lineNo => integer()();
+  TextColumn get productId => text()();
+  TextColumn get batchId => text().nullable()();
+  IntColumn get qtyMilli => integer()();
+  IntColumn get unitPricePaise => integer()();
+  TextColumn get tier => text().nullable()();
+  IntColumn get discountPaise => integer()();
+  IntColumn get taxablePaise => integer()();
+  RealColumn get gstRate => real()();
+  IntColumn get cgstPaise => integer()();
+  IntColumn get sgstPaise => integer()();
+  IntColumn get igstPaise => integer()();
+  IntColumn get lineTotalPaise => integer()();
+  TextColumn get hsn => text().nullable()();
+  IntColumn get costPaise => integer()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class ShopReturns extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get returnNo => text()();
+  TextColumn get saleId => text()();
+  TextColumn get partyId => text().nullable()();
+  TextColumn get entryDate => text()();
+  IntColumn get taxablePaise => integer()();
+  IntColumn get cgstPaise => integer()();
+  IntColumn get sgstPaise => integer()();
+  IntColumn get igstPaise => integer()();
+  IntColumn get roundOffPaise => integer()();
+  IntColumn get totalPaise => integer()();
+  TextColumn get refundMode => text()();
+  IntColumn get refundKhataPaise => integer()();
+  IntColumn get refundCashPaise => integer()();
+  IntColumn get refundUpiPaise => integer()();
+  TextColumn get bankAccountId => text().nullable()();
+  TextColumn get note => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get reversedAt => text().nullable()();
+  TextColumn get deviceId => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class ShopReturnLines extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get shopReturnId => text()();
+  IntColumn get lineNo => integer()();
+  TextColumn get saleLineId => text()();
+  TextColumn get productId => text()();
+  TextColumn get batchId => text().nullable()();
+  IntColumn get qtyMilli => integer()();
+  IntColumn get taxablePaise => integer()();
+  IntColumn get cgstPaise => integer()();
+  IntColumn get sgstPaise => integer()();
+  IntColumn get igstPaise => integer()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};

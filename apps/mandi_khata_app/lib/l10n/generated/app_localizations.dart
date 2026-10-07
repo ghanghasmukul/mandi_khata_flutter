@@ -766,6 +766,114 @@ abstract class AppLocalizations {
   /// **'GST on invoices'**
   String get settingShopGstEnabled;
 
+  /// shop.prices_include_gst.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices include GST'**
+  String get settingShopPricesIncludeGst;
+
+  /// shop.default_tier.
+  ///
+  /// In en, this message translates to:
+  /// **'Default price tier'**
+  String get settingShopDefaultTier;
+
+  /// shop.block_expired.
+  ///
+  /// In en, this message translates to:
+  /// **'Block sale of expired stock'**
+  String get settingShopBlockExpired;
+
+  /// shop.supplier_credit_days.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier credit days'**
+  String get settingShopSupplierCreditDays;
+
+  /// shop.round_invoice_to_rupee.
+  ///
+  /// In en, this message translates to:
+  /// **'Round invoice to the rupee'**
+  String get settingShopRoundInvoiceToRupee;
+
+  /// shop.default_gst_rate.
+  ///
+  /// In en, this message translates to:
+  /// **'Default GST rate (%)'**
+  String get settingShopDefaultGstRate;
+
+  /// business.gstin.
+  ///
+  /// In en, this message translates to:
+  /// **'GSTIN'**
+  String get settingBusinessGstin;
+
+  /// business.state_code.
+  ///
+  /// In en, this message translates to:
+  /// **'State code (GST)'**
+  String get settingBusinessStateCode;
+
+  /// doc sales_return..
+  ///
+  /// In en, this message translates to:
+  /// **'Sales returns'**
+  String get settingSuffixDocSalesReturn;
+
+  /// doc purchase_bill..
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase bills'**
+  String get settingSuffixDocPurchaseBill;
+
+  /// doc purchase_return..
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase returns'**
+  String get settingSuffixDocPurchaseReturn;
+
+  /// shop.default_gst_rate=0.
+  ///
+  /// In en, this message translates to:
+  /// **'0%'**
+  String get settingOptShopDefaultGstRate0;
+
+  /// shop.default_gst_rate=0.25.
+  ///
+  /// In en, this message translates to:
+  /// **'0.25%'**
+  String get settingOptShopDefaultGstRate025;
+
+  /// shop.default_gst_rate=3.
+  ///
+  /// In en, this message translates to:
+  /// **'3%'**
+  String get settingOptShopDefaultGstRate3;
+
+  /// shop.default_gst_rate=5.
+  ///
+  /// In en, this message translates to:
+  /// **'5%'**
+  String get settingOptShopDefaultGstRate5;
+
+  /// shop.default_gst_rate=12.
+  ///
+  /// In en, this message translates to:
+  /// **'12%'**
+  String get settingOptShopDefaultGstRate12;
+
+  /// shop.default_gst_rate=18.
+  ///
+  /// In en, this message translates to:
+  /// **'18%'**
+  String get settingOptShopDefaultGstRate18;
+
+  /// shop.default_gst_rate=28.
+  ///
+  /// In en, this message translates to:
+  /// **'28%'**
+  String get settingOptShopDefaultGstRate28;
+
   /// Label of setting shop.post_credit_sale_to_khata.
   ///
   /// In en, this message translates to:
@@ -8902,6 +9010,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All screens'**
   String get navMenuTitle;
+
+  /// Phase 4 (input shop).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase return'**
+  String get khataRefPurchaseReturn;
+
+  /// Phase 4 (input shop).
+  ///
+  /// In en, this message translates to:
+  /// **'Manage products and stock'**
+  String get permission_productsManage;
+
+  /// Phase 4 (input shop).
+  ///
+  /// In en, this message translates to:
+  /// **'Record purchases'**
+  String get permission_purchasesCreate;
+
+  /// Phase 4 (input shop).
+  ///
+  /// In en, this message translates to:
+  /// **'Make shop sales'**
+  String get permission_salesCreate;
+
+  /// Phase 4 (input shop).
+  ///
+  /// In en, this message translates to:
+  /// **'Take sales returns'**
+  String get permission_salesReturn;
+
+  /// Phase 4 (input shop).
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust stock'**
+  String get permission_stockAdjust;
+
+  /// Phase 4 (input shop).
+  ///
+  /// In en, this message translates to:
+  /// **'See shop profit'**
+  String get permission_shopViewProfit;
 }
 
 class _AppLocalizationsDelegate

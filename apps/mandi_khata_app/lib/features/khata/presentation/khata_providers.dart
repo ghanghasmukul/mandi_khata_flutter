@@ -183,6 +183,7 @@ extension KhataLabels on AppLocalizations {
     RefType.shopSale => khataRefShopSale,
     RefType.shopReturn => khataRefShopReturn,
     RefType.purchase => khataRefPurchase,
+    RefType.purchaseReturn => khataRefPurchaseReturn,
     RefType.loanDisbursal => khataRefLoanDisbursal,
     RefType.loanRepayment => khataRefLoanRepayment,
     RefType.interest => khataRefInterest,

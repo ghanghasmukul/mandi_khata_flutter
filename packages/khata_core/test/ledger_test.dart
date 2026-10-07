@@ -432,15 +432,12 @@ void main() {
       expect(need(RefType.interest), Permission.loansManage);
     });
 
-    test('shop and expense entries: any member (for now)', () {
-      for (final t in [
-        RefType.shopSale,
-        RefType.shopReturn,
-        RefType.purchase,
-        RefType.expense,
-      ]) {
-        expect(need(t), isNull, reason: t.name);
-      }
+    test('shop entries need their document right; expenses any member', () {
+      expect(need(RefType.shopSale), Permission.salesCreate);
+      expect(need(RefType.shopReturn), Permission.salesReturn);
+      expect(need(RefType.purchase), Permission.purchasesCreate);
+      expect(need(RefType.purchaseReturn), Permission.purchasesCreate);
+      expect(need(RefType.expense), isNull);
     });
 
     test('a munshi posts payments and arrivals but cannot reverse', () {

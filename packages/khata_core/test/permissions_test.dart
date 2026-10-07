@@ -9,11 +9,18 @@ void main() {
       Permission.paymentsCreate,
       Permission.entriesReverse,
       Permission.financeView,
+      Permission.productsManage,
+      Permission.purchasesCreate,
+      Permission.salesCreate,
+      Permission.salesReturn,
+      Permission.stockAdjust,
+      Permission.shopViewProfit,
     };
     const munshi = {
       Permission.partiesManage,
       Permission.arrivalsManage,
       Permission.paymentsCreate,
+      Permission.salesCreate,
     };
 
     for (final p in Permission.values) {

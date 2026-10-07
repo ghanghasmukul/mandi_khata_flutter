@@ -408,6 +408,60 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingShopGstEnabled => 'GST on invoices';
 
   @override
+  String get settingShopPricesIncludeGst => 'Prices include GST';
+
+  @override
+  String get settingShopDefaultTier => 'Default price tier';
+
+  @override
+  String get settingShopBlockExpired => 'Block sale of expired stock';
+
+  @override
+  String get settingShopSupplierCreditDays => 'Supplier credit days';
+
+  @override
+  String get settingShopRoundInvoiceToRupee => 'Round invoice to the rupee';
+
+  @override
+  String get settingShopDefaultGstRate => 'Default GST rate (%)';
+
+  @override
+  String get settingBusinessGstin => 'GSTIN';
+
+  @override
+  String get settingBusinessStateCode => 'State code (GST)';
+
+  @override
+  String get settingSuffixDocSalesReturn => 'Sales returns';
+
+  @override
+  String get settingSuffixDocPurchaseBill => 'Purchase bills';
+
+  @override
+  String get settingSuffixDocPurchaseReturn => 'Purchase returns';
+
+  @override
+  String get settingOptShopDefaultGstRate0 => '0%';
+
+  @override
+  String get settingOptShopDefaultGstRate025 => '0.25%';
+
+  @override
+  String get settingOptShopDefaultGstRate3 => '3%';
+
+  @override
+  String get settingOptShopDefaultGstRate5 => '5%';
+
+  @override
+  String get settingOptShopDefaultGstRate12 => '12%';
+
+  @override
+  String get settingOptShopDefaultGstRate18 => '18%';
+
+  @override
+  String get settingOptShopDefaultGstRate28 => '28%';
+
+  @override
   String get settingShopPostCreditSaleToKhata => 'Post credit sales to khata';
 
   @override
@@ -5072,4 +5126,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navMenuTitle => 'All screens';
+
+  @override
+  String get khataRefPurchaseReturn => 'Purchase return';
+
+  @override
+  String get permission_productsManage => 'Manage products and stock';
+
+  @override
+  String get permission_purchasesCreate => 'Record purchases';
+
+  @override
+  String get permission_salesCreate => 'Make shop sales';
+
+  @override
+  String get permission_salesReturn => 'Take sales returns';
+
+  @override
+  String get permission_stockAdjust => 'Adjust stock';
+
+  @override
+  String get permission_shopViewProfit => 'See shop profit';
 }

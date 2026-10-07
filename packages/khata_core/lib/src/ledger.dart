@@ -101,6 +101,7 @@ enum RefType {
   shopSale('shop_sale'),
   shopReturn('shop_return'),
   purchase('purchase'),
+  purchaseReturn('purchase_return'),
   loanDisbursal('loan_disbursal'),
   loanRepayment('loan_repayment'),
   interest('interest'),
@@ -396,9 +397,9 @@ abstract final class LedgerPosting {
       RefType.receipt ||
       RefType.loanRepayment => Permission.paymentsCreate,
       RefType.loanDisbursal || RefType.interest => Permission.loansManage,
-      RefType.shopSale ||
-      RefType.shopReturn ||
-      RefType.purchase ||
+      RefType.shopSale => Permission.salesCreate,
+      RefType.shopReturn => Permission.salesReturn,
+      RefType.purchase || RefType.purchaseReturn => Permission.purchasesCreate,
       RefType.expense => null,
     };
   }

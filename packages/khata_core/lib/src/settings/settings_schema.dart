@@ -1,4 +1,5 @@
 import 'package:decimal/decimal.dart';
+import 'package:khata_core/src/gst.dart';
 import 'package:khata_core/src/settings/setting_scope.dart';
 import 'package:khata_core/src/tally_export.dart';
 import 'package:meta/meta.dart';
@@ -418,7 +419,7 @@ abstract final class SettingsSchema {
     ),
     SettingDef.integer(
       'shop.expiry_warn_days',
-      fallback: 180,
+      fallback: 60,
       min: 0,
       max: 3650,
       businessOnly: true,
@@ -427,6 +428,54 @@ abstract final class SettingsSchema {
     SettingDef.boolean(
       'shop.post_credit_sale_to_khata',
       fallback: true,
+      businessOnly: true,
+    ),
+    // Phase 4 (docs/domain/shop-rules.md section 8). "shop.enabled" is the
+    // existing `app.modules.shop`.
+    SettingDef.boolean(
+      'shop.prices_include_gst',
+      fallback: true,
+      businessOnly: true,
+    ),
+    SettingDef.structured(
+      'shop.default_tier',
+      fallback: 'retail',
+      validator: _validIdentifier,
+      businessOnly: true,
+    ),
+    SettingDef.boolean(
+      'shop.block_expired',
+      fallback: true,
+      businessOnly: true,
+    ),
+    SettingDef.integer(
+      'shop.supplier_credit_days',
+      fallback: 30,
+      min: 0,
+      max: 365,
+      businessOnly: true,
+    ),
+    SettingDef.boolean(
+      'shop.round_invoice_to_rupee',
+      fallback: true,
+      businessOnly: true,
+    ),
+    SettingDef.choice(
+      'shop.default_gst_rate',
+      fallback: '5',
+      options: ['0', '0.25', '3', '5', '12', '18', '28'],
+      businessOnly: true,
+    ),
+    SettingDef.structured(
+      'business.gstin',
+      fallback: '',
+      validator: _validGstinOrEmpty,
+      businessOnly: true,
+    ),
+    SettingDef.structured(
+      'business.state_code',
+      fallback: '',
+      validator: _validStateCodeOrEmpty,
       businessOnly: true,
     ),
 
@@ -479,6 +528,9 @@ abstract final class SettingsSchema {
         'purchase_voucher',
         'journal_voucher',
         'expense',
+        'sales_return',
+        'purchase_bill',
+        'purchase_return',
       ],
       suffixDefaults: {
         'receipt': {'prefix': 'R-', 'next': 1},
@@ -495,6 +547,9 @@ abstract final class SettingsSchema {
         'purchase_voucher': {'prefix': 'PU-', 'next': 1},
         'journal_voucher': {'prefix': 'JV-', 'next': 1},
         'expense': {'prefix': 'EX-', 'next': 1},
+        'sales_return': {'prefix': 'SR-', 'next': 1},
+        'purchase_bill': {'prefix': 'PB-', 'next': 1},
+        'purchase_return': {'prefix': 'PR-', 'next': 1},
       },
     ),
     SettingDef.boolean(
@@ -627,6 +682,12 @@ abstract final class SettingsSchema {
       v.entries.every(
         (e) => chargeNames.contains(e.key) && chargePayers.contains(e.value),
       );
+
+  static bool _validGstinOrEmpty(Object v) =>
+      v is String && (v.isEmpty || GstStates.isValidGstin(v));
+
+  static bool _validStateCodeOrEmpty(Object v) =>
+      v is String && (v.isEmpty || GstStates.isValid(v));
 
   static bool _validTierList(Object v) =>
       v is List &&

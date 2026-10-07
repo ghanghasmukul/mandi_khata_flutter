@@ -403,6 +403,61 @@ class AppLocalizationsHi extends AppLocalizations {
   String get settingShopGstEnabled => 'बिल पर GST';
 
   @override
+  String get settingShopPricesIncludeGst => 'कीमतों में GST शामिल';
+
+  @override
+  String get settingShopDefaultTier => 'डिफ़ॉल्ट मूल्य श्रेणी';
+
+  @override
+  String get settingShopBlockExpired => 'एक्सपायर माल की बिक्री रोकें';
+
+  @override
+  String get settingShopSupplierCreditDays => 'सप्लायर उधार के दिन';
+
+  @override
+  String get settingShopRoundInvoiceToRupee =>
+      'बिल को पूरे रुपये में राउंड करें';
+
+  @override
+  String get settingShopDefaultGstRate => 'डिफ़ॉल्ट GST दर (%)';
+
+  @override
+  String get settingBusinessGstin => 'GSTIN';
+
+  @override
+  String get settingBusinessStateCode => 'राज्य कोड (GST)';
+
+  @override
+  String get settingSuffixDocSalesReturn => 'बिक्री वापसी';
+
+  @override
+  String get settingSuffixDocPurchaseBill => 'खरीद बिल';
+
+  @override
+  String get settingSuffixDocPurchaseReturn => 'खरीद वापसी';
+
+  @override
+  String get settingOptShopDefaultGstRate0 => '0%';
+
+  @override
+  String get settingOptShopDefaultGstRate025 => '0.25%';
+
+  @override
+  String get settingOptShopDefaultGstRate3 => '3%';
+
+  @override
+  String get settingOptShopDefaultGstRate5 => '5%';
+
+  @override
+  String get settingOptShopDefaultGstRate12 => '12%';
+
+  @override
+  String get settingOptShopDefaultGstRate18 => '18%';
+
+  @override
+  String get settingOptShopDefaultGstRate28 => '28%';
+
+  @override
   String get settingShopPostCreditSaleToKhata => 'उधार बिक्री खाते में चढ़ाएँ';
 
   @override
@@ -5023,4 +5078,25 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get navMenuTitle => 'सभी स्क्रीन';
+
+  @override
+  String get khataRefPurchaseReturn => 'खरीद वापसी';
+
+  @override
+  String get permission_productsManage => 'प्रोडक्ट और स्टॉक संभालें';
+
+  @override
+  String get permission_purchasesCreate => 'खरीद दर्ज करें';
+
+  @override
+  String get permission_salesCreate => 'दुकान की बिक्री करें';
+
+  @override
+  String get permission_salesReturn => 'बिक्री वापसी लें';
+
+  @override
+  String get permission_stockAdjust => 'स्टॉक सुधारें';
+
+  @override
+  String get permission_shopViewProfit => 'दुकान का मुनाफ़ा देखें';
 }

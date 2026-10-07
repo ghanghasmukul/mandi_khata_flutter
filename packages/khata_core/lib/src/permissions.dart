@@ -21,11 +21,18 @@ enum MemberRole {
       Permission.paymentsCreate,
       Permission.entriesReverse,
       Permission.financeView,
+      Permission.productsManage,
+      Permission.purchasesCreate,
+      Permission.salesCreate,
+      Permission.salesReturn,
+      Permission.stockAdjust,
+      Permission.shopViewProfit,
     }.contains(p),
     munshi => const {
       Permission.partiesManage,
       Permission.arrivalsManage,
       Permission.paymentsCreate,
+      Permission.salesCreate,
     }.contains(p),
     custom => false,
   };
@@ -43,7 +50,15 @@ enum Permission {
   adminManage('admin.manage'),
   masterDelete('master.delete'),
   settingsManage('settings.manage'),
-  auditView('audit.view');
+  auditView('audit.view'),
+
+  /// Shop (phase 4, docs/domain/shop-rules.md section 9).
+  productsManage('products.manage'),
+  purchasesCreate('purchases.create'),
+  salesCreate('sales.create'),
+  salesReturn('sales.return'),
+  stockAdjust('stock.adjust'),
+  shopViewProfit('shop.view_profit');
 
   const Permission(this.key);
 

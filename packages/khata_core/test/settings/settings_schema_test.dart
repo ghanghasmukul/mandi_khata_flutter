@@ -129,7 +129,7 @@ void main() {
       expect(d('shop.default_tier_for_role.farmer'), 'farmer');
       expect(d('shop.default_tier_for_role.vendor'), 'vendor');
       expect(d('shop.default_tier_for_role.customer'), 'retail');
-      expect(d('shop.expiry_warn_days'), 180);
+      expect(d('shop.expiry_warn_days'), 60);
       expect(d('business.fy_start_month'), 4);
       expect(d('business.backdate_days'), 3);
       expect(d('business.number_series.receipt'), {'prefix': 'R-', 'next': 1});

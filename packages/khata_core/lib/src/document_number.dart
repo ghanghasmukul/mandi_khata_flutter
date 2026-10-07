@@ -23,7 +23,12 @@ enum DocumentSeries {
   journalVoucher('JV', 'journal_voucher'),
 
   /// Expenses (step 3.4).
-  expense('EX', 'expense');
+  expense('EX', 'expense'),
+
+  /// The shop (phase 4): sales return, purchase bill, purchase return.
+  salesReturn('SR', 'sales_return'),
+  purchaseBill('PB', 'purchase_bill'),
+  purchaseReturn('PR', 'purchase_return');
 
   const DocumentSeries(this.code, this.doc);
 

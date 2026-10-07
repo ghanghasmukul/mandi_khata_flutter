@@ -251,3 +251,20 @@ The **day book** (accounts) lists every journal entry of a date range (vouchers 
 | Indirect Expenses | Indirect Expenses |
 | Sales Accounts | Sales Accounts |
 | Purchase Accounts | Purchase Accounts |
+
+
+## 12. Phase 4 additions: shop (steps 4.2-4.5)
+
+Written before the code (2026-10-07); maths and settings are in `docs/domain/shop-rules.md`. Perpetual inventory: stock and cost of goods sold are booked at every sale and purchase. One document = one journal entry (khata_core `ShopPosting`). `P` = party account; `Book` = the account of the cash / bank book used. Only the **unpaid / udhaar** part touches the party (principle 5: party account = khata); the paid part goes straight to cash / bank.
+
+| # | Document (`source_type`, khata `ref_type`) | Journal lines |
+|---|---|---|
+| 17 | **Sale** (`shop_sale`; udhaar on `P`, `ref_type = shop_sale`) | Dr **P** (udhaar). Dr **Book** (each cash / UPI part). Cr **Sales** (taxable total). Cr **GST Output CGST / SGST / IGST** (each non-zero). Round-off: Cr **Round Off** when the total was rounded up, Dr when down. COGS: Dr **Cost of Goods Sold**, Cr **Stock-in-Hand** (batch cost x qty) |
+| 18 | **Sales return** (`shop_return`; jama on `P`, `ref_type = shop_return`) | Mirror of 17 for the returned lines: Dr **Sales** (taxable), Dr **GST Output** (tax). Cr **P** (part credited to khata). Cr **Book** (part refunded). Round-off share mirrored. Dr **Stock-in-Hand**, Cr **Cost of Goods Sold** (original batch cost) |
+| 19 | **Purchase** (`purchase`; jama on supplier `P`, `ref_type = purchase`) | Dr **Stock-in-Hand** (taxable + freight + other). Dr **GST Input CGST / SGST / IGST**. Cr **P** (unpaid). Cr **Book** (paid now). Supplier round-off: Dr **Round Off** when positive, Cr when negative |
+| 20 | **Purchase return** (`purchase_return`; udhaar on supplier `P`, `ref_type = purchase_return`) | Mirror of 19 for returned lines: Cr **Stock-in-Hand**, Cr **GST Input**. Dr **P** (credit note against the supplier's khata). Dr **Book** (refund received) |
+| 21 | **Stock adjustment** (`stock_adjustment`, no khata) | Loss (negative qty): Dr **Stock Adjustment**, Cr **Stock-in-Hand**. Gain: the other way round. Opening stock (reason `opening`): Dr **Stock-in-Hand**, Cr **Opening Balance Equity** (gain) |
+
+Notes: discounts are not an account, Sales is posted net of them. Freight and other charges on a purchase are part of stock cost (no separate expense, no input credit). A sale or purchase is never edited: return documents (18, 20) or an `entries.reverse` reversal (row 15, mirror of the whole entry together with its stock movements). Stock-in-Hand can differ from the stock-at-cost report by a few paise because costs are held per unit (rounded) while purchases post the exact landed amount; the report is the quantity truth, the account the money truth.
+
+New ledger `ref_type`: `purchase_return`. New journal source types: `purchase`, `purchase_return`, `shop_sale`, `shop_return`, `stock_adjustment`. New permissions: see shop-rules.md section 9. Reading shop journal lines needs `finance.view` like all journal lines.

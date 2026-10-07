@@ -499,6 +499,78 @@
   "@settingShopGstEnabled": {
     "description": "Label of setting shop.gst_enabled."
   },
+  "settingShopPricesIncludeGst": "Prices include GST",
+  "@settingShopPricesIncludeGst": {
+    "description": "shop.prices_include_gst."
+  },
+  "settingShopDefaultTier": "Default price tier",
+  "@settingShopDefaultTier": {
+    "description": "shop.default_tier."
+  },
+  "settingShopBlockExpired": "Block sale of expired stock",
+  "@settingShopBlockExpired": {
+    "description": "shop.block_expired."
+  },
+  "settingShopSupplierCreditDays": "Supplier credit days",
+  "@settingShopSupplierCreditDays": {
+    "description": "shop.supplier_credit_days."
+  },
+  "settingShopRoundInvoiceToRupee": "Round invoice to the rupee",
+  "@settingShopRoundInvoiceToRupee": {
+    "description": "shop.round_invoice_to_rupee."
+  },
+  "settingShopDefaultGstRate": "Default GST rate (%)",
+  "@settingShopDefaultGstRate": {
+    "description": "shop.default_gst_rate."
+  },
+  "settingBusinessGstin": "GSTIN",
+  "@settingBusinessGstin": {
+    "description": "business.gstin."
+  },
+  "settingBusinessStateCode": "State code (GST)",
+  "@settingBusinessStateCode": {
+    "description": "business.state_code."
+  },
+  "settingSuffixDocSalesReturn": "Sales returns",
+  "@settingSuffixDocSalesReturn": {
+    "description": "doc sales_return.."
+  },
+  "settingSuffixDocPurchaseBill": "Purchase bills",
+  "@settingSuffixDocPurchaseBill": {
+    "description": "doc purchase_bill.."
+  },
+  "settingSuffixDocPurchaseReturn": "Purchase returns",
+  "@settingSuffixDocPurchaseReturn": {
+    "description": "doc purchase_return.."
+  },
+  "settingOptShopDefaultGstRate0": "0%",
+  "@settingOptShopDefaultGstRate0": {
+    "description": "shop.default_gst_rate=0."
+  },
+  "settingOptShopDefaultGstRate025": "0.25%",
+  "@settingOptShopDefaultGstRate025": {
+    "description": "shop.default_gst_rate=0.25."
+  },
+  "settingOptShopDefaultGstRate3": "3%",
+  "@settingOptShopDefaultGstRate3": {
+    "description": "shop.default_gst_rate=3."
+  },
+  "settingOptShopDefaultGstRate5": "5%",
+  "@settingOptShopDefaultGstRate5": {
+    "description": "shop.default_gst_rate=5."
+  },
+  "settingOptShopDefaultGstRate12": "12%",
+  "@settingOptShopDefaultGstRate12": {
+    "description": "shop.default_gst_rate=12."
+  },
+  "settingOptShopDefaultGstRate18": "18%",
+  "@settingOptShopDefaultGstRate18": {
+    "description": "shop.default_gst_rate=18."
+  },
+  "settingOptShopDefaultGstRate28": "28%",
+  "@settingOptShopDefaultGstRate28": {
+    "description": "shop.default_gst_rate=28."
+  },
   "settingShopPostCreditSaleToKhata": "Post credit sales to khata",
   "@settingShopPostCreditSaleToKhata": {
     "description": "Label of setting shop.post_credit_sale_to_khata."
@@ -6875,5 +6947,33 @@
   "navMenuTitle": "All screens",
   "@navMenuTitle": {
       "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+  },
+  "khataRefPurchaseReturn": "Purchase return",
+  "@khataRefPurchaseReturn": {
+    "description": "Phase 4 (input shop)."
+  },
+  "permission_productsManage": "Manage products and stock",
+  "@permission_productsManage": {
+    "description": "Phase 4 (input shop)."
+  },
+  "permission_purchasesCreate": "Record purchases",
+  "@permission_purchasesCreate": {
+    "description": "Phase 4 (input shop)."
+  },
+  "permission_salesCreate": "Make shop sales",
+  "@permission_salesCreate": {
+    "description": "Phase 4 (input shop)."
+  },
+  "permission_salesReturn": "Take sales returns",
+  "@permission_salesReturn": {
+    "description": "Phase 4 (input shop)."
+  },
+  "permission_stockAdjust": "Adjust stock",
+  "@permission_stockAdjust": {
+    "description": "Phase 4 (input shop)."
+  },
+  "permission_shopViewProfit": "See shop profit",
+  "@permission_shopViewProfit": {
+    "description": "Phase 4 (input shop)."
   }
 }
