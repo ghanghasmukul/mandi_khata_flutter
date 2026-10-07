@@ -1457,5 +1457,12 @@
   "tallyIssueUnbalanced": "{subject}: नाम और जमा अलग",
   "tallyIssueUnknown": "{subject}: एक खाता अभी सिंक नहीं हुआ",
   "tallyExportBlocked": "पहले ऊपर की गड़बड़ियाँ ठीक करें।",
-  "expenseBillTooLarge": "बिल 8 MB से बड़ा है। छोटी फ़ोटो चुनें।"
+  "expenseBillTooLarge": "बिल 8 MB से बड़ा है। छोटी फ़ोटो चुनें।",
+  "navDashboard": "डैशबोर्ड",
+  "navSectionDaily": "रोज़ का काम",
+  "navSectionMoney": "पैसा और हिसाब",
+  "navSectionAdmin": "प्रबंध",
+  "navMore": "और",
+  "navSearchHint": "खोजें या कमांड चलाएँ…",
+  "navMenuTitle": "सभी स्क्रीन"
 }

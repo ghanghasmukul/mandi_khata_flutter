@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/audit/domain/audit_entry.dart';
 import 'package:mandi_khata_app/features/audit/presentation/audit_entry_card.dart';
 import 'package:mandi_khata_app/features/audit/presentation/audit_labels.dart';
@@ -69,17 +66,7 @@ class _AuditScreenState extends ConsumerState<AuditScreen> {
     return Scaffold(
       body: Column(
         children: [
-          MkTopBar(
-            title: l10n.auditTitle,
-            actions: [
-              const SyncStatusChip(),
-              IconButton(
-                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                onPressed: () => context.go(GateRoutes.home),
-                icon: const Icon(Icons.close),
-              ),
-            ],
-          ),
+          MkTopBar(title: l10n.auditTitle),
           Expanded(child: body()),
         ],
       ),

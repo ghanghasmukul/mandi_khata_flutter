@@ -181,9 +181,7 @@ void main() {
       amount: const Money(1250000),
     );
 
-    testWidgets('an owner sees every alert and the Loans badge', (
-      tester,
-    ) async {
+    testWidgets('an owner sees every alert', (tester) async {
       await pump(
         tester,
         loans: const LoanAlerts(overdue: 2, dueSoon: 1),
@@ -199,19 +197,6 @@ void main() {
       );
       expect(find.textContaining('3 accounts'), findsOneWidget);
       expect(find.text('Nothing needs you right now'), findsNothing);
-      final badge = tester.widget<Badge>(
-        find.byKey(const ValueKey('loans-badge')),
-      );
-      expect(badge.isLabelVisible, isTrue);
-      expect((badge.label! as Text).data, '2');
-    });
-
-    testWidgets('no overdue loans: no badge', (tester) async {
-      await pump(tester, loans: const LoanAlerts(overdue: 0, dueSoon: 1));
-      final badge = tester.widget<Badge>(
-        find.byKey(const ValueKey('loans-badge')),
-      );
-      expect(badge.isLabelVisible, isFalse);
     });
 
     testWidgets('a munshi sees none of them', (tester) async {

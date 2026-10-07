@@ -8860,6 +8860,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The bill is over 8 MB. Choose a smaller photo.'**
   String get expenseBillTooLarge;
+
+  /// App navigation: sidebar sections, bottom bar (UI overhaul).
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get navDashboard;
+
+  /// App navigation: sidebar sections, bottom bar (UI overhaul).
+  ///
+  /// In en, this message translates to:
+  /// **'Daily work'**
+  String get navSectionDaily;
+
+  /// App navigation: sidebar sections, bottom bar (UI overhaul).
+  ///
+  /// In en, this message translates to:
+  /// **'Money & books'**
+  String get navSectionMoney;
+
+  /// App navigation: sidebar sections, bottom bar (UI overhaul).
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get navSectionAdmin;
+
+  /// App navigation: sidebar sections, bottom bar (UI overhaul).
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get navMore;
+
+  /// App navigation: sidebar sections, bottom bar (UI overhaul).
+  ///
+  /// In en, this message translates to:
+  /// **'Search or run a command…'**
+  String get navSearchHint;
+
+  /// App navigation: sidebar sections, bottom bar (UI overhaul).
+  ///
+  /// In en, this message translates to:
+  /// **'All screens'**
+  String get navMenuTitle;
 }
 
 class _AppLocalizationsDelegate

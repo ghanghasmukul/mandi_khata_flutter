@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/accounts/presentation/accounts_labels.dart';
 import 'package:mandi_khata_app/features/accounts/presentation/accounts_routes.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
@@ -96,19 +95,7 @@ class AccountsHubScreen extends ConsumerWidget {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.acctHubTitle,
-                actions: [
-                  const SyncStatusChip(),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.acctHubTitle),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.all(MkSpacing.lg),

@@ -6,7 +6,6 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/payments/domain/payment.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_providers.dart';
 import 'package:mandi_khata_app/features/payments/presentation/record_payment_dialog.dart';
@@ -80,7 +79,6 @@ class _PaymentsScreenState extends ConsumerState<PaymentsScreen> {
               MkTopBar(
                 title: l10n.paymentsTitle,
                 actions: [
-                  const SyncStatusChip(),
                   if (canFinance)
                     IconButton(
                       key: const ValueKey('payments-accounts'),
@@ -88,13 +86,6 @@ class _PaymentsScreenState extends ConsumerState<PaymentsScreen> {
                       onPressed: () => context.go(PaymentRoutes.accounts),
                       icon: const Icon(Icons.account_balance_outlined),
                     ),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
-                    icon: const Icon(Icons.close),
-                  ),
                 ],
               ),
               _Filters(

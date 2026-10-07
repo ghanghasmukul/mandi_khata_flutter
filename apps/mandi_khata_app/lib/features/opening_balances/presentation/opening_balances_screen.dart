@@ -7,7 +7,6 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/opening_balances/data/opening_balances_repository.dart';
 import 'package:mandi_khata_app/features/opening_balances/presentation/opening_balances_providers.dart';
 import 'package:mandi_khata_app/features/opening_balances/presentation/opening_balances_widgets.dart';
@@ -284,7 +283,6 @@ class _State extends ConsumerState<OpeningBalancesScreen> {
             language: Localizations.localeOf(context).languageCode,
             onLanguage: (c) => ref.read(appLanguageProvider.notifier).set(c),
             actions: [
-              const SyncStatusChip(),
               IconButton(
                 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: () => context.go(PartyRoutes.list),

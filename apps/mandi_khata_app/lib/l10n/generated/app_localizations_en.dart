@@ -5051,4 +5051,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get expenseBillTooLarge =>
       'The bill is over 8 MB. Choose a smaller photo.';
+
+  @override
+  String get navDashboard => 'Dashboard';
+
+  @override
+  String get navSectionDaily => 'Daily work';
+
+  @override
+  String get navSectionMoney => 'Money & books';
+
+  @override
+  String get navSectionAdmin => 'Admin';
+
+  @override
+  String get navMore => 'More';
+
+  @override
+  String get navSearchHint => 'Search or run a command…';
+
+  @override
+  String get navMenuTitle => 'All screens';
 }

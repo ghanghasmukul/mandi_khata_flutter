@@ -284,13 +284,6 @@ class _LotFormScreenState extends ConsumerState<LotFormScreen> {
             MkTopBar(
               title: _editing ? l10n.lotEditTitle : l10n.lotNewTitle,
               subtitle: nextNo == null ? null : l10n.lotNextNo(nextNo),
-              actions: [
-                IconButton(
-                  tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                  onPressed: _back,
-                  icon: const Icon(Icons.close),
-                ),
-              ],
             ),
             Expanded(
               child: _loading

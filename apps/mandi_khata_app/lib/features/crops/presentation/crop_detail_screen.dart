@@ -6,7 +6,6 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/crops/domain/crop.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crop_form_dialog.dart';
@@ -63,7 +62,6 @@ class CropDetailScreen extends ConsumerWidget {
           MkTopBar(
             title: crop.value?.nameIn(lang) ?? l10n.cropsTitle,
             actions: [
-              const SyncStatusChip(),
               IconButton(
                 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: () => context.go(CropRoutes.list),

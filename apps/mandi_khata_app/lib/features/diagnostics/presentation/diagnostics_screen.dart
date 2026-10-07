@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/sync/sync_error_actions.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
@@ -57,18 +54,7 @@ class DiagnosticsScreen extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
-          MkTopBar(
-            title: l10n.diagnosticsTitle,
-            subtitle: member?.tenantName,
-            actions: [
-              const SyncStatusChip(),
-              IconButton(
-                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                onPressed: () => context.go(GateRoutes.home),
-                icon: const Icon(Icons.close),
-              ),
-            ],
-          ),
+          MkTopBar(title: l10n.diagnosticsTitle, subtitle: member?.tenantName),
           Expanded(
             child: !isOwner
                 ? Center(child: Text(l10n.diagnosticsOwnerOnly))

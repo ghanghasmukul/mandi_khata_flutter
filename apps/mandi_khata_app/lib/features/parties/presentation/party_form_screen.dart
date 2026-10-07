@@ -138,16 +138,7 @@ class _PartyFormScreenState extends ConsumerState<PartyFormScreen> {
       child: Scaffold(
         body: Column(
           children: [
-            MkTopBar(
-              title: _editing ? l10n.partyEditTitle : l10n.partiesAdd,
-              actions: [
-                IconButton(
-                  tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                  onPressed: _back,
-                  icon: const Icon(Icons.close),
-                ),
-              ],
-            ),
+            MkTopBar(title: _editing ? l10n.partyEditTitle : l10n.partiesAdd),
             Expanded(
               child: _loading
                   ? const Center(child: CircularProgressIndicator())

@@ -92,7 +92,7 @@ final class LockOverrideProvider
   }
 }
 
-String _$lockOverrideHash() => r'95131e63c7ba571caa287d6d949daec1968a4e5b';
+String _$lockOverrideHash() => r'a76cad9632af89251ae28df795bd417718aa6db6';
 
 /// The owner's reason while a closed financial year is unlocked on this
 /// device (Year close screen); cleared on restart. Only owners' writes

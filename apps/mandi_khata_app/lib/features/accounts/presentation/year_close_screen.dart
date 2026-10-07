@@ -34,18 +34,7 @@ class YearCloseScreen extends ConsumerWidget {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.yearCloseTitle,
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(AccountRoutes.hub),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.yearCloseTitle),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.all(MkSpacing.lg),

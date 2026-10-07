@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart' show LedgerDate, Permission;
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/loans/domain/loan.dart';
 import 'package:mandi_khata_app/features/loans/presentation/issue_loan_dialog.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_card.dart';
@@ -79,7 +78,6 @@ class _LoansScreenState extends ConsumerState<LoansScreen> {
               MkTopBar(
                 title: l10n.loansTitle,
                 actions: [
-                  const SyncStatusChip(),
                   if (canIssue)
                     IconButton(
                       key: const ValueKey('loans-post-interest'),
@@ -87,13 +85,6 @@ class _LoansScreenState extends ConsumerState<LoansScreen> {
                       onPressed: () => context.go(LoanRoutes.post),
                       icon: const Icon(Icons.playlist_add_check),
                     ),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
-                    icon: const Icon(Icons.close),
-                  ),
                 ],
               ),
               Padding(

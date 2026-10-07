@@ -1457,5 +1457,12 @@
   "tallyIssueUnbalanced": "{subject}: ਨਾਮ ਅਤੇ ਜਮ੍ਹਾਂ ਵੱਖਰੇ",
   "tallyIssueUnknown": "{subject}: ਇੱਕ ਖਾਤਾ ਹਾਲੇ ਸਿੰਕ ਨਹੀਂ ਹੋਇਆ",
   "tallyExportBlocked": "ਪਹਿਲਾਂ ਉੱਪਰ ਦੀਆਂ ਗੜਬੜਾਂ ਠੀਕ ਕਰੋ।",
-  "expenseBillTooLarge": "ਬਿੱਲ 8 MB ਤੋਂ ਵੱਡਾ ਹੈ। ਛੋਟੀ ਫ਼ੋਟੋ ਚੁਣੋ।"
+  "expenseBillTooLarge": "ਬਿੱਲ 8 MB ਤੋਂ ਵੱਡਾ ਹੈ। ਛੋਟੀ ਫ਼ੋਟੋ ਚੁਣੋ।",
+  "navDashboard": "ਡੈਸ਼ਬੋਰਡ",
+  "navSectionDaily": "ਰੋਜ਼ ਦਾ ਕੰਮ",
+  "navSectionMoney": "ਪੈਸਾ ਅਤੇ ਹਿਸਾਬ",
+  "navSectionAdmin": "ਪ੍ਰਬੰਧ",
+  "navMore": "ਹੋਰ",
+  "navSearchHint": "ਖੋਜੋ ਜਾਂ ਕਮਾਂਡ ਚਲਾਓ…",
+  "navMenuTitle": "ਸਾਰੀਆਂ ਸਕ੍ਰੀਨਾਂ"
 }

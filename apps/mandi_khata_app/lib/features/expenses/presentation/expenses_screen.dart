@@ -75,13 +75,6 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
                         onPressed: () => ExpenseCategoriesDialog.show(context),
                         icon: const Icon(Icons.category_outlined),
                       ),
-                    IconButton(
-                      tooltip: MaterialLocalizations.of(
-                        context,
-                      ).closeButtonTooltip,
-                      onPressed: () => context.go(AccountRoutes.hub),
-                      icon: const Icon(Icons.close),
-                    ),
                   ],
                 ),
                 TabBar(

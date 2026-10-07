@@ -129,7 +129,11 @@ class CommandPaletteShortcut extends ConsumerWidget {
   final GlobalKey<NavigatorState> navigatorKey;
   final Widget child;
 
-  Future<void> _open(WidgetRef ref) async {
+  /// Opens the palette (what Ctrl/⌘ K and the top bar's search pill do).
+  static Future<void> open(
+    WidgetRef ref,
+    GlobalKey<NavigatorState> navigatorKey,
+  ) async {
     final context = navigatorKey.currentContext;
     if (context == null || ref.read(gateStepProvider) != GateStep.ready) {
       return;
@@ -152,9 +156,9 @@ class CommandPaletteShortcut extends ConsumerWidget {
     return CallbackShortcuts(
       bindings: {
         const SingleActivator(LogicalKeyboardKey.keyK, control: true): () =>
-            _open(ref),
+            open(ref, navigatorKey),
         const SingleActivator(LogicalKeyboardKey.keyK, meta: true): () =>
-            _open(ref),
+            open(ref, navigatorKey),
       },
       child: child,
     );

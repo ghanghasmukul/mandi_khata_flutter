@@ -6847,5 +6847,33 @@
   "expenseBillTooLarge": "The bill is over 8 MB. Choose a smaller photo.",
   "@expenseBillTooLarge": {
       "description": "Expenses (step 3.4), bill size."
+  },
+  "navDashboard": "Dashboard",
+  "@navDashboard": {
+      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+  },
+  "navSectionDaily": "Daily work",
+  "@navSectionDaily": {
+      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+  },
+  "navSectionMoney": "Money & books",
+  "@navSectionMoney": {
+      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+  },
+  "navSectionAdmin": "Admin",
+  "@navSectionAdmin": {
+      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+  },
+  "navMore": "More",
+  "@navMore": {
+      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+  },
+  "navSearchHint": "Search or run a command…",
+  "@navSearchHint": {
+      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+  },
+  "navMenuTitle": "All screens",
+  "@navMenuTitle": {
+      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   }
 }

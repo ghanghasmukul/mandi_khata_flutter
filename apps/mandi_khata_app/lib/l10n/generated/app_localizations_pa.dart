@@ -5010,4 +5010,25 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get expenseBillTooLarge => 'ਬਿੱਲ 8 MB ਤੋਂ ਵੱਡਾ ਹੈ। ਛੋਟੀ ਫ਼ੋਟੋ ਚੁਣੋ।';
+
+  @override
+  String get navDashboard => 'ਡੈਸ਼ਬੋਰਡ';
+
+  @override
+  String get navSectionDaily => 'ਰੋਜ਼ ਦਾ ਕੰਮ';
+
+  @override
+  String get navSectionMoney => 'ਪੈਸਾ ਅਤੇ ਹਿਸਾਬ';
+
+  @override
+  String get navSectionAdmin => 'ਪ੍ਰਬੰਧ';
+
+  @override
+  String get navMore => 'ਹੋਰ';
+
+  @override
+  String get navSearchHint => 'ਖੋਜੋ ਜਾਂ ਕਮਾਂਡ ਚਲਾਓ…';
+
+  @override
+  String get navMenuTitle => 'ਸਾਰੀਆਂ ਸਕ੍ਰੀਨਾਂ';
 }

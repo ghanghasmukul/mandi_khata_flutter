@@ -79,15 +79,6 @@ class LotDetailScreen extends ConsumerWidget {
               MkTopBar(
                 title: l?.lotNo ?? l10n.arrivalsTitle,
                 subtitle: l == null ? null : l10n.lotStatus(l),
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: back,
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
               ),
               Expanded(
                 child: switch (lot) {

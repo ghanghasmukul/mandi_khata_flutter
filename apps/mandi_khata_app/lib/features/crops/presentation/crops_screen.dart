@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/crops/domain/crop.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crop_form_dialog.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_providers.dart';
@@ -57,19 +55,7 @@ class _CropsScreenState extends ConsumerState<CropsScreen> {
               : null,
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.cropsTitle,
-                actions: [
-                  const SyncStatusChip(),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.cropsTitle),
               Expanded(
                 child: Align(
                   alignment: Alignment.topCenter,

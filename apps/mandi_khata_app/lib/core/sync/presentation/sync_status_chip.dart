@@ -12,7 +12,10 @@ import 'package:mk_ui/mk_ui.dart';
 /// rejected" — for the top bar. Tapping it when changes were rejected opens
 /// the list of what the server refused.
 class SyncStatusChip extends ConsumerStatefulWidget {
-  const SyncStatusChip({super.key});
+  const SyncStatusChip({super.key, this.onDark = false});
+
+  /// Plain text on the dark sidebar instead of a pill.
+  final bool onDark;
 
   @override
   ConsumerState<SyncStatusChip> createState() => _SyncStatusChipState();
@@ -49,15 +52,20 @@ class _SyncStatusChipState extends ConsumerState<SyncStatusChip> {
       SyncDone(:final at) => (_syncedLabel(l10n, at), MkColors.synced),
     };
 
+    final onDark = widget.onDark;
     final chip = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        color: indicator is SyncRejected
-            ? tokens.udhaarTint
-            : tokens.surfaceAlt,
-        border: Border.all(color: tokens.border),
-        borderRadius: BorderRadius.circular(MkRadius.pill),
-      ),
+      padding: onDark
+          ? EdgeInsets.zero
+          : const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: onDark
+          ? null
+          : BoxDecoration(
+              color: indicator is SyncRejected
+                  ? tokens.udhaarTint
+                  : tokens.surfaceAlt,
+              border: Border.all(color: tokens.border),
+              borderRadius: BorderRadius.circular(MkRadius.pill),
+            ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -72,7 +80,9 @@ class _SyncStatusChipState extends ConsumerState<SyncStatusChip> {
             style: TextStyle(
               fontSize: 11.5,
               fontWeight: FontWeight.w500,
-              color: indicator is SyncRejected
+              color: onDark
+                  ? tokens.sidebarMuted
+                  : indicator is SyncRejected
                   ? tokens.udhaar
                   : tokens.textMuted,
             ),

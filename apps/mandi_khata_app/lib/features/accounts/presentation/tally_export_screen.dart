@@ -137,18 +137,7 @@ class _TallyState extends ConsumerState<TallyExportScreen> {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.tallyTitle,
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(AccountRoutes.hub),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.tallyTitle),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.all(MkSpacing.lg),

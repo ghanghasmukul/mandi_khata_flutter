@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart' show GlobalKey, NavigatorState;
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
+import 'package:mandi_khata_app/app/app_shell.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/app/home_screen.dart';
 import 'package:mandi_khata_app/features/accounts/presentation/accounts_router.dart';
@@ -80,10 +81,6 @@ GoRouter router(Ref ref) {
         redirectFor(refresh.value, state.matchedLocation),
     routes: [
       GoRoute(
-        path: AppRoutes.home,
-        builder: (context, state) => const HomeScreen(),
-      ),
-      GoRoute(
         path: GateRoutes.splash,
         builder: (context, state) => const SplashScreen(),
       ),
@@ -108,148 +105,8 @@ GoRouter router(Ref ref) {
         builder: (context, state) => const SetPinScreen(),
       ),
       GoRoute(
-        path: PartyRoutes.list,
-        builder: (context, state) => const PartiesScreen(),
-        routes: [
-          // Before ':id' so "new" is never read as an id.
-          GoRoute(
-            path: 'new',
-            builder: (context, state) => const PartyFormScreen(),
-          ),
-          GoRoute(
-            path: 'interest',
-            builder: (context, state) => const BulkInterestScreen(),
-          ),
-          GoRoute(
-            path: 'import',
-            builder: (context, state) => const OpeningBalancesScreen(),
-          ),
-          GoRoute(
-            path: ':id',
-            builder: (context, state) =>
-                PartyDetailScreen(partyId: state.pathParameters['id']!),
-            routes: [
-              GoRoute(
-                path: 'edit',
-                builder: (context, state) =>
-                    PartyFormScreen(partyId: state.pathParameters['id']),
-              ),
-              GoRoute(
-                path: 'hisaab',
-                builder: (context, state) =>
-                    SettlementScreen(partyId: state.pathParameters['id']!),
-              ),
-            ],
-          ),
-        ],
-      ),
-      GoRoute(
         path: OnboardingRoutes.wizard,
         builder: (context, state) => const OnboardingScreen(),
-      ),
-      GoRoute(
-        path: ArrivalRoutes.list,
-        builder: (context, state) => const ArrivalsScreen(),
-        routes: [
-          // Before ':id' so "new" is never read as an id.
-          GoRoute(
-            path: 'new',
-            builder: (context, state) =>
-                LotFormScreen(copyFromId: state.uri.queryParameters['from']),
-          ),
-          GoRoute(
-            path: ':id',
-            builder: (context, state) =>
-                LotDetailScreen(lotId: state.pathParameters['id']!),
-            routes: [
-              GoRoute(
-                path: 'edit',
-                builder: (context, state) =>
-                    LotFormScreen(lotId: state.pathParameters['id']),
-              ),
-            ],
-          ),
-        ],
-      ),
-      GoRoute(
-        path: PaymentRoutes.list,
-        builder: (context, state) => const PaymentsScreen(),
-        routes: [
-          // Before ':id' so "accounts" is never read as an id.
-          GoRoute(
-            path: 'accounts',
-            builder: (context, state) => const BankAccountsScreen(),
-          ),
-          GoRoute(
-            path: ':id',
-            builder: (context, state) =>
-                PaymentDetailScreen(paymentId: state.pathParameters['id']!),
-          ),
-        ],
-      ),
-      GoRoute(
-        path: LoanRoutes.list,
-        builder: (context, state) => const LoansScreen(),
-        routes: [
-          // Before ':id' so "post" is never read as an id.
-          GoRoute(
-            path: 'post',
-            builder: (context, state) {
-              final asOf = state.uri.queryParameters['asOf'];
-              return BulkPostingScreen(
-                initialAsOf: asOf == null ? null : _tryDate(asOf),
-              );
-            },
-          ),
-          GoRoute(
-            path: ':id',
-            builder: (context, state) =>
-                LoanDetailScreen(loanId: state.pathParameters['id']!),
-          ),
-        ],
-      ),
-      ...accountsRoutes(),
-      GoRoute(
-        path: KhataRoutes.dayBook,
-        builder: (context, state) => const DayBookScreen(),
-      ),
-      GoRoute(
-        path: ReportRoutes.list,
-        builder: (context, state) {
-          final kind = ReportKind.values
-              .asNameMap()[state.uri.queryParameters['r']];
-          return ReportsScreen(
-            key: ValueKey(kind),
-            initial: kind ?? ReportKind.outstanding,
-          );
-        },
-      ),
-      GoRoute(
-        path: CropRoutes.list,
-        builder: (context, state) => const CropsScreen(),
-        routes: [
-          GoRoute(
-            path: ':id',
-            builder: (context, state) =>
-                CropDetailScreen(cropId: state.pathParameters['id']!),
-          ),
-        ],
-      ),
-      GoRoute(
-        path: TeamRoutes.list,
-        builder: (context, state) => const TeamScreen(),
-      ),
-      GoRoute(
-        path: AuditRoutes.list,
-        builder: (context, state) => const AuditScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.settings,
-        builder: (context, state) => const SettingsScreen(),
-      ),
-      GoRoute(
-        path: AppRoutes.diagnostics,
-        builder: (context, state) => const DiagnosticsScreen(),
       ),
       if (!kReleaseMode) ...[
         GoRoute(
@@ -261,6 +118,157 @@ GoRouter router(Ref ref) {
           builder: (context, state) => const DevSyncScreen(),
         ),
       ],
+      ShellRoute(
+        builder: (context, state, child) =>
+            AppShell(location: state.matchedLocation, child: child),
+        routes: [
+          GoRoute(
+            path: AppRoutes.home,
+            builder: (context, state) => const HomeScreen(),
+          ),
+          GoRoute(
+            path: PartyRoutes.list,
+            builder: (context, state) => const PartiesScreen(),
+            routes: [
+              // Before ':id' so "new" is never read as an id.
+              GoRoute(
+                path: 'new',
+                builder: (context, state) => const PartyFormScreen(),
+              ),
+              GoRoute(
+                path: 'interest',
+                builder: (context, state) => const BulkInterestScreen(),
+              ),
+              GoRoute(
+                path: 'import',
+                builder: (context, state) => const OpeningBalancesScreen(),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    PartyDetailScreen(partyId: state.pathParameters['id']!),
+                routes: [
+                  GoRoute(
+                    path: 'edit',
+                    builder: (context, state) =>
+                        PartyFormScreen(partyId: state.pathParameters['id']),
+                  ),
+                  GoRoute(
+                    path: 'hisaab',
+                    builder: (context, state) =>
+                        SettlementScreen(partyId: state.pathParameters['id']!),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          GoRoute(
+            path: ArrivalRoutes.list,
+            builder: (context, state) => const ArrivalsScreen(),
+            routes: [
+              // Before ':id' so "new" is never read as an id.
+              GoRoute(
+                path: 'new',
+                builder: (context, state) => LotFormScreen(
+                  copyFromId: state.uri.queryParameters['from'],
+                ),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    LotDetailScreen(lotId: state.pathParameters['id']!),
+                routes: [
+                  GoRoute(
+                    path: 'edit',
+                    builder: (context, state) =>
+                        LotFormScreen(lotId: state.pathParameters['id']),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          GoRoute(
+            path: PaymentRoutes.list,
+            builder: (context, state) => const PaymentsScreen(),
+            routes: [
+              // Before ':id' so "accounts" is never read as an id.
+              GoRoute(
+                path: 'accounts',
+                builder: (context, state) => const BankAccountsScreen(),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    PaymentDetailScreen(paymentId: state.pathParameters['id']!),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: LoanRoutes.list,
+            builder: (context, state) => const LoansScreen(),
+            routes: [
+              // Before ':id' so "post" is never read as an id.
+              GoRoute(
+                path: 'post',
+                builder: (context, state) {
+                  final asOf = state.uri.queryParameters['asOf'];
+                  return BulkPostingScreen(
+                    initialAsOf: asOf == null ? null : _tryDate(asOf),
+                  );
+                },
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    LoanDetailScreen(loanId: state.pathParameters['id']!),
+              ),
+            ],
+          ),
+          ...accountsRoutes(),
+          GoRoute(
+            path: KhataRoutes.dayBook,
+            builder: (context, state) => const DayBookScreen(),
+          ),
+          GoRoute(
+            path: ReportRoutes.list,
+            builder: (context, state) {
+              final kind = ReportKind.values
+                  .asNameMap()[state.uri.queryParameters['r']];
+              return ReportsScreen(
+                key: ValueKey(kind),
+                initial: kind ?? ReportKind.outstanding,
+              );
+            },
+          ),
+          GoRoute(
+            path: CropRoutes.list,
+            builder: (context, state) => const CropsScreen(),
+            routes: [
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    CropDetailScreen(cropId: state.pathParameters['id']!),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: TeamRoutes.list,
+            builder: (context, state) => const TeamScreen(),
+          ),
+          GoRoute(
+            path: AuditRoutes.list,
+            builder: (context, state) => const AuditScreen(),
+          ),
+          GoRoute(
+            path: AppRoutes.settings,
+            builder: (context, state) => const SettingsScreen(),
+          ),
+          GoRoute(
+            path: AppRoutes.diagnostics,
+            builder: (context, state) => const DiagnosticsScreen(),
+          ),
+        ],
+      ),
     ],
   );
   ref.onDispose(() {

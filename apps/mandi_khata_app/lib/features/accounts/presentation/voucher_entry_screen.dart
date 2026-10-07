@@ -188,15 +188,6 @@ class _VoucherEntryState extends ConsumerState<VoucherEntryScreen> {
               MkTopBar(
                 title: l10n.voucherEntryTitle,
                 subtitle: nextNo == null ? null : l10n.voucherNoPreview(nextNo),
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: _leave,
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
               ),
               Expanded(
                 child: chart == null

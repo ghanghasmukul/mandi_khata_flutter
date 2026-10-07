@@ -107,15 +107,6 @@ class PaymentDetailScreen extends ConsumerWidget {
                 subtitle: p == null
                     ? null
                     : l10n.paymentDocumentTitle(p.direction),
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: back,
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
               ),
               Expanded(
                 child: switch (async) {

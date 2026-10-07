@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_line.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_providers.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
@@ -79,7 +77,6 @@ class _PartiesScreenState extends ConsumerState<PartiesScreen> {
               MkTopBar(
                 title: l10n.partiesTitle,
                 actions: [
-                  const SyncStatusChip(),
                   if (canImport)
                     IconButton(
                       key: const ValueKey('parties-import'),
@@ -95,13 +92,6 @@ class _PartiesScreenState extends ConsumerState<PartiesScreen> {
                           context.go('${PartyRoutes.list}/interest'),
                       icon: const Icon(Icons.percent),
                     ),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
-                    icon: const Icon(Icons.close),
-                  ),
                 ],
               ),
               Padding(

@@ -1,26 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/app/router.dart';
-import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
-import 'package:mandi_khata_app/features/accounts/presentation/accounts_routes.dart';
-import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
-import 'package:mandi_khata_app/features/audit/presentation/audit_screen.dart';
-import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_charts.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_hero.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_needs.dart';
-import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_stats.dart';
-import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart';
-import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
-import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
-import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
-import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
-import 'package:mandi_khata_app/features/team/presentation/team_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -72,8 +56,6 @@ class DashboardView extends StatelessWidget {
                   const SizedBox(height: gap),
                   pair(const MoneyCard(), const NeedsYouCard()),
                   const SizedBox(height: MkSpacing.xxl),
-                  const _Browse(),
-                  const SizedBox(height: MkSpacing.lg),
                   const _DeviceCode(),
                 ],
               );
@@ -81,79 +63,6 @@ class DashboardView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-/// Links to the other screens until the app shell has a navigation menu.
-class _Browse extends ConsumerWidget {
-  const _Browse();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final canAdmin = ref.watch(canProvider(Permission.adminManage));
-    // The accounts hub: vouchers / books (entries.reverse), statements
-    // (finance.view), the cash book (payments.create). Tiles check again.
-    final canBooks =
-        ref.watch(canProvider(Permission.entriesReverse)) ||
-        ref.watch(canProvider(Permission.financeView)) ||
-        ref.watch(canProvider(Permission.paymentsCreate));
-    final canAudit = ref.watch(canProvider(Permission.auditView));
-    final l10n = AppLocalizations.of(context);
-    final overdue = ref.watch(loanAlertsProvider).value?.overdue ?? 0;
-    Widget link(String label, IconData icon, String route) => MkButton(
-      label: label,
-      icon: icon,
-      variant: MkButtonVariant.ghost,
-      onPressed: () => context.go(route),
-    );
-    return Wrap(
-      spacing: MkSpacing.sm,
-      runSpacing: MkSpacing.sm,
-      children: [
-        link(l10n.partiesTitle, Icons.groups_outlined, PartyRoutes.list),
-        link(
-          l10n.arrivalsTitle,
-          Icons.agriculture_outlined,
-          ArrivalRoutes.list,
-        ),
-        link(l10n.paymentsTitle, Icons.payments_outlined, PaymentRoutes.list),
-        // The count of overdue loans stands in for the sidebar badge until
-        // the app shell has a navigation menu.
-        Badge(
-          key: const ValueKey('loans-badge'),
-          isLabelVisible: overdue > 0,
-          label: Text('$overdue'),
-          child: link(
-            l10n.loansTitle,
-            Icons.request_quote_outlined,
-            LoanRoutes.list,
-          ),
-        ),
-        link(
-          l10n.khataDayBookTitle,
-          Icons.menu_book_outlined,
-          KhataRoutes.dayBook,
-        ),
-        link(l10n.reportsTitle, Icons.assessment_outlined, ReportRoutes.list),
-        if (canBooks)
-          link(
-            l10n.acctHubTitle,
-            Icons.account_balance_outlined,
-            AccountRoutes.hub,
-          ),
-        link(l10n.cropsTitle, Icons.grass_outlined, CropRoutes.list),
-        link(l10n.settingsTitle, Icons.tune, AppRoutes.settings),
-        // Shown by permission; the screens check it again.
-        if (canAdmin)
-          link(l10n.teamTitle, Icons.manage_accounts_outlined, TeamRoutes.list),
-        if (canAudit) link(l10n.auditTitle, Icons.history, AuditRoutes.list),
-        // Developer-only; the routes do not exist in release builds.
-        if (!kReleaseMode) ...[
-          link('Design gallery', Icons.palette_outlined, AppRoutes.gallery),
-          link('Sync lab', Icons.sync, AppRoutes.sync),
-        ],
-      ],
     );
   }
 }

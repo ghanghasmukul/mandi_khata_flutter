@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/interest/presentation/interest_providers.dart';
 import 'package:mandi_khata_app/features/loans/domain/loan.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loan_change_dialogs.dart';
@@ -62,16 +61,6 @@ class _LoanDetailScreenState extends ConsumerState<LoanDetailScreen> {
               MkTopBar(
                 title: detail?.loan.loanNo ?? l10n.loansTitle,
                 subtitle: detail?.loan.partyName,
-                actions: [
-                  const SyncStatusChip(),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: _back,
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
               ),
               Expanded(
                 child: switch (async) {

@@ -41,18 +41,7 @@ class BankAccountsScreen extends ConsumerWidget {
               : null,
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.accountsTitle,
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: back,
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.accountsTitle),
               Expanded(
                 child: accounts == null
                     ? const Center(child: CircularProgressIndicator())

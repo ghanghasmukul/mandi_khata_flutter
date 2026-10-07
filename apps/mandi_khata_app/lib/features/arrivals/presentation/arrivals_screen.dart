@@ -3,10 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/arrivals/domain/lot.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_filters.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_providers.dart';
@@ -75,19 +73,7 @@ class _ArrivalsScreenState extends ConsumerState<ArrivalsScreen> {
               : null,
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.arrivalsTitle,
-                actions: [
-                  const SyncStatusChip(),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.arrivalsTitle),
               ArrivalsFilterBar(
                 filter: _filter,
                 searchFocus: _searchFocus,

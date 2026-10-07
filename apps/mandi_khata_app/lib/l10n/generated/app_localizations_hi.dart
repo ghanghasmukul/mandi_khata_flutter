@@ -5002,4 +5002,25 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get expenseBillTooLarge => 'बिल 8 MB से बड़ा है। छोटी फ़ोटो चुनें।';
+
+  @override
+  String get navDashboard => 'डैशबोर्ड';
+
+  @override
+  String get navSectionDaily => 'रोज़ का काम';
+
+  @override
+  String get navSectionMoney => 'पैसा और हिसाब';
+
+  @override
+  String get navSectionAdmin => 'प्रबंध';
+
+  @override
+  String get navMore => 'और';
+
+  @override
+  String get navSearchHint => 'खोजें या कमांड चलाएँ…';
+
+  @override
+  String get navMenuTitle => 'सभी स्क्रीन';
 }

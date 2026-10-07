@@ -45,18 +45,7 @@ class StatementPage extends StatelessWidget {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: title,
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(AccountRoutes.hub),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: title),
               Padding(
                 padding: const EdgeInsets.all(MkSpacing.md),
                 child: Wrap(

@@ -113,13 +113,6 @@ class _ArrivalWizardState extends ConsumerState<ArrivalWizard> {
           MkTopBar(
             title: l10n.lotNewTitle,
             subtitle: l10n.wizardStepOf(_step + 1, 3, titles[_step]),
-            actions: [
-              IconButton(
-                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                onPressed: () => context.go(ArrivalRoutes.list),
-                icon: const Icon(Icons.close),
-              ),
-            ],
           ),
           LinearProgressIndicator(value: (_step + 1) / 3),
           Expanded(

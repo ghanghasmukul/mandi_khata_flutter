@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
 import 'package:mandi_khata_app/features/interest/presentation/interest_posting_providers.dart';
-import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payment_mode_fields.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
@@ -78,17 +75,7 @@ class _BulkPostingState extends ConsumerState<BulkPostingScreen> {
     return Scaffold(
       body: Column(
         children: [
-          MkTopBar(
-            title: l10n.postInterestTitle,
-            actions: [
-              const SyncStatusChip(),
-              IconButton(
-                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                onPressed: () => context.go(LoanRoutes.list),
-                icon: const Icon(Icons.close),
-              ),
-            ],
-          ),
+          MkTopBar(title: l10n.postInterestTitle),
           Expanded(
             child: !canManage
                 ? Center(child: Text(l10n.byajNoPermission))

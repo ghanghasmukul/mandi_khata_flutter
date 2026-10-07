@@ -57,18 +57,7 @@ class _DayBookState extends ConsumerState<AccountsDayBookScreen> {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.dayBookAccountsTitle,
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(AccountRoutes.hub),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.dayBookAccountsTitle),
               Padding(
                 padding: const EdgeInsets.all(MkSpacing.md),
                 child: Column(

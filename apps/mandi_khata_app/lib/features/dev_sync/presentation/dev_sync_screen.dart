@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mandi_khata_app/app/env.dart';
 import 'package:mandi_khata_app/app/router.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_panels.dart';
 import 'package:mk_ui/mk_ui.dart';
@@ -24,7 +23,6 @@ class DevSyncScreen extends ConsumerWidget {
             title: 'Sync lab',
             subtitle: 'Dev only · offline writes and PowerSync',
             actions: [
-              const SyncStatusChip(),
               IconButton(
                 tooltip: 'Home',
                 onPressed: () => context.go(AppRoutes.home),

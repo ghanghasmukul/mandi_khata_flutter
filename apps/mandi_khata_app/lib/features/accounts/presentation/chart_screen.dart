@@ -54,16 +54,7 @@ class _ChartScreenState extends ConsumerState<ChartScreen> {
             : null,
         body: Column(
           children: [
-            MkTopBar(
-              title: l10n.chartTitle,
-              actions: [
-                IconButton(
-                  tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-                  onPressed: () => context.go(AccountRoutes.hub),
-                  icon: const Icon(Icons.close),
-                ),
-              ],
-            ),
+            MkTopBar(title: l10n.chartTitle),
             Padding(
               padding: const EdgeInsets.all(MkSpacing.md),
               child: MkTextField(

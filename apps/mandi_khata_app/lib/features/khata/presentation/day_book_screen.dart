@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/khata/domain/day_book.dart';
 import 'package:mandi_khata_app/features/khata/presentation/entry_actions.dart';
 import 'package:mandi_khata_app/features/khata/presentation/khata_entry_dialog.dart';
@@ -65,19 +64,7 @@ class _DayBookScreenState extends ConsumerState<DayBookScreen> {
               : null,
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.khataDayBookTitle,
-                actions: [
-                  const SyncStatusChip(),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(GateRoutes.home),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.khataDayBookTitle),
               _Filters(
                 filter: _filter,
                 party: _party,

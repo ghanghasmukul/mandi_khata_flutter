@@ -6,7 +6,6 @@ import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/settings/data/party_options.dart';
@@ -155,7 +154,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             language: Localizations.localeOf(context).languageCode,
             onLanguage: (c) => ref.read(appLanguageProvider.notifier).set(c),
             actions: [
-              const SyncStatusChip(),
               IconButton(
                 tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: () => context.go(GateRoutes.home),

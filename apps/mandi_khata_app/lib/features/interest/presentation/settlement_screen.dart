@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/interest/data/settlement_slip_pdf.dart';
 import 'package:mandi_khata_app/features/interest/domain/interest_posting_models.dart';
@@ -293,20 +292,7 @@ class _SettlementScreenState extends ConsumerState<SettlementScreen> {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.settleTitle,
-                subtitle: party?.name,
-                actions: [
-                  const SyncStatusChip(),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: back,
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.settleTitle, subtitle: party?.name),
               Expanded(child: body()),
             ],
           ),

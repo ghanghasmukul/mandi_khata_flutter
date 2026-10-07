@@ -90,18 +90,7 @@ class _CashBookState extends ConsumerState<CashBookScreen> {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.cashBookTitle,
-                actions: [
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(AccountRoutes.hub),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.cashBookTitle),
               Padding(
                 padding: const EdgeInsets.all(MkSpacing.md),
                 child: Wrap(

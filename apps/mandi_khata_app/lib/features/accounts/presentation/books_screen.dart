@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart' show Permission;
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
-import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/features/accounts/data/journal_backfill.dart';
 import 'package:mandi_khata_app/features/accounts/presentation/accounts_providers.dart';
 import 'package:mandi_khata_app/features/accounts/presentation/accounts_routes.dart';
@@ -78,19 +77,7 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
         child: Scaffold(
           body: Column(
             children: [
-              MkTopBar(
-                title: l10n.booksTitle,
-                actions: [
-                  const SyncStatusChip(),
-                  IconButton(
-                    tooltip: MaterialLocalizations.of(
-                      context,
-                    ).closeButtonTooltip,
-                    onPressed: () => context.go(AccountRoutes.hub),
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+              MkTopBar(title: l10n.booksTitle),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.all(MkSpacing.lg),

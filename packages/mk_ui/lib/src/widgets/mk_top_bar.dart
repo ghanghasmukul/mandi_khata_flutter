@@ -14,8 +14,49 @@ class MkLanguage {
   final String label;
 }
 
+/// App-wide defaults for every [MkTopBar] below it: search, language switcher,
+/// role and trailing actions (sync status, account menu). The app shell
+/// provides one, so each screen's header only has to say its title.
+class MkTopBarScope extends InheritedWidget {
+  const MkTopBarScope({
+    required super.child,
+    super.key,
+    this.searchHint,
+    this.onSearch,
+    this.languages = const [],
+    this.language,
+    this.onLanguage,
+    this.roleLabel,
+    this.trailing = const [],
+  });
+
+  final String? searchHint;
+  final VoidCallback? onSearch;
+  final List<MkLanguage> languages;
+  final String? language;
+  final ValueChanged<String>? onLanguage;
+  final String? roleLabel;
+
+  /// Shown after a bar's own actions.
+  final List<Widget> trailing;
+
+  static MkTopBarScope? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<MkTopBarScope>();
+
+  @override
+  bool updateShouldNotify(MkTopBarScope old) =>
+      searchHint != old.searchHint ||
+      onSearch != old.onSearch ||
+      language != old.language ||
+      roleLabel != old.roleLabel ||
+      languages != old.languages ||
+      trailing != old.trailing ||
+      onLanguage != old.onLanguage;
+}
+
 /// Screen header: title, subtitle, search (Ctrl/⌘ K), language switcher and
-/// the current role.
+/// the current role. Anything not given falls back to the nearest
+/// [MkTopBarScope].
 ///
 /// The Ctrl/⌘ K shortcut itself is registered by `MkAppShell` so it works
 /// wherever focus is; this bar only shows the hint and handles taps.
@@ -63,6 +104,16 @@ class MkTopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = MkTokens.of(context);
     final theme = Theme.of(context);
+    final scope = MkTopBarScope.maybeOf(context);
+    final onSearch = this.onSearch ?? scope?.onSearch;
+    final searchHint = this.searchHint ?? scope?.searchHint;
+    final languages = this.languages.isNotEmpty
+        ? this.languages
+        : scope?.languages ?? const <MkLanguage>[];
+    final language = this.language ?? scope?.language;
+    final onLanguage = this.onLanguage ?? scope?.onLanguage;
+    final roleLabel = this.roleLabel ?? scope?.roleLabel;
+    final actions = [...this.actions, ...?scope?.trailing];
     return LayoutBuilder(
       builder: (context, constraints) {
         final narrow = constraints.maxWidth < MkBreakpoints.rail;
@@ -129,7 +180,7 @@ class MkTopBar extends StatelessWidget {
                           flex: 2,
                           child: _SearchPill(
                             hint: searchHint ?? '',
-                            onTap: onSearch!,
+                            onTap: onSearch,
                           ),
                         ),
                       if (languages.isNotEmpty && !narrow) ...[
@@ -149,7 +200,7 @@ class MkTopBar extends StatelessWidget {
                       ],
                       if (roleLabel != null && !narrow) ...[
                         const SizedBox(width: 12),
-                        MkRoleChip(label: roleLabel!),
+                        MkRoleChip(label: roleLabel),
                       ],
                       ...actions,
                     ],
