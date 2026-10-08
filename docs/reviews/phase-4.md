@@ -41,3 +41,7 @@ Not run: the camera scanner on a device, printing on real printers, two physical
 4. Have a Hindi and a Punjabi speaker check `docs/translation-review-phase4.md`.
 5. Decide findings 4 (munshi UPI) and 6 (batch cost edits).
 6. Approve `supabase db push` for the review-fix migration once the fixer reports.
+
+## Manual checks: prepared 2026-10-08
+- Criterion 4: `docs/ca-sample-bills/` holds 4 invoice PDFs (B2B intra-state 5% + 18%, B2B inter-state IGST, B2C 12%, line + invoice discount) and `sheet.md` with the figures and a worked return, all made by the real `SaleCalculator` and invoice PDF (regenerate: `cd apps/mandi_khata_app && flutter test tool/ca_sample_bills_test.dart`). Gap found: the app has no printable credit note for a return, so the CA can only check the return arithmetic from the sheet. Spot-checked by hand: 1,350 / 1.12 = 1,205.36 taxable; 13,500 / 1.05 = 12,857.14.
+- Criterion 3 (stopwatch) still needs a person at a PC with a scanner.
