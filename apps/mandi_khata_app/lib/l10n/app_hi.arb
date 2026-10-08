@@ -1490,55 +1490,55 @@
   "navSearchHint": "खोजें या कमांड चलाएँ…",
   "navMenuTitle": "सभी स्क्रीन",
   "khataRefPurchaseReturn": "खरीद वापसी",
-  "purchasesTitle": "Purchases",
+  "purchasesTitle": "खरीद",
   "@purchasesTitle": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchasesEmpty": "No purchases yet",
+  "purchasesEmpty": "अभी कोई खरीद नहीं",
   "@purchasesEmpty": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseNew": "New purchase",
+  "purchaseNew": "नई खरीद",
   "@purchaseNew": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseSupplier": "Supplier",
+  "purchaseSupplier": "सप्लायर",
   "@purchaseSupplier": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseSupplierInvoiceNo": "Supplier invoice no",
+  "purchaseSupplierInvoiceNo": "सप्लायर का बिल नं.",
   "@purchaseSupplierInvoiceNo": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseInvoiceDate": "Invoice date",
+  "purchaseInvoiceDate": "बिल की तारीख़",
   "@purchaseInvoiceDate": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseAddLine": "Add line (F2)",
+  "purchaseAddLine": "लाइन जोड़ें (F2)",
   "@purchaseAddLine": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseProduct": "Product",
+  "purchaseProduct": "प्रोडक्ट",
   "@purchaseProduct": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseBatchNo": "Batch no",
+  "purchaseBatchNo": "बैच नं.",
   "@purchaseBatchNo": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseMfg": "Mfg date",
+  "purchaseMfg": "बनने की तारीख़",
   "@purchaseMfg": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseExpiry": "Expiry date",
+  "purchaseExpiry": "एक्सपायरी की तारीख़",
   "@purchaseExpiry": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseQty": "Qty",
+  "purchaseQty": "मात्रा",
   "@purchaseQty": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseCost": "Cost / unit",
+  "purchaseCost": "लागत / इकाई",
   "@purchaseCost": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
@@ -1546,31 +1546,31 @@
   "@purchaseGstRate": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseFreight": "Freight",
+  "purchaseFreight": "भाड़ा",
   "@purchaseFreight": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseOtherCharges": "Other charges",
+  "purchaseOtherCharges": "दूसरे ख़र्चे",
   "@purchaseOtherCharges": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseRoundOff": "Round off (+/-)",
+  "purchaseRoundOff": "राउंड ऑफ़ (+/-)",
   "@purchaseRoundOff": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchasePaidNow": "Paid now",
+  "purchasePaidNow": "अभी चुकाया",
   "@purchasePaidNow": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseCreditDays": "Credit days",
+  "purchaseCreditDays": "उधार के दिन",
   "@purchaseCreditDays": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseDueDate": "Due date",
+  "purchaseDueDate": "देने की तारीख़",
   "@purchaseDueDate": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseTaxable": "Taxable",
+  "purchaseTaxable": "कर योग्य",
   "@purchaseTaxable": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
@@ -1578,135 +1578,135 @@
   "@purchaseGst": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseTotal": "Total",
+  "purchaseTotal": "कुल",
   "@purchaseTotal": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseUnpaid": "Unpaid",
+  "purchaseUnpaid": "बाकी",
   "@purchaseUnpaid": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchasePaid": "Paid",
+  "purchasePaid": "चुकाया",
   "@purchasePaid": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseSave": "Save (Ctrl+Enter)",
+  "purchaseSave": "सेव करें (Ctrl+Enter)",
   "@purchaseSave": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseReturnTitle": "Purchase return",
+  "purchaseReturnTitle": "खरीद वापसी",
   "@purchaseReturnTitle": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseReturnQty": "Return qty",
+  "purchaseReturnQty": "वापसी मात्रा",
   "@purchaseReturnQty": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseReturnSave": "Return goods",
+  "purchaseReturnSave": "माल वापस करें",
   "@purchaseReturnSave": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseReverse": "Reverse purchase",
+  "purchaseReverse": "खरीद रद्द करें",
   "@purchaseReverse": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseReversedTag": "Reversed",
+  "purchaseReversedTag": "रद्द",
   "@purchaseReversedTag": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseStatusAll": "All",
+  "purchaseStatusAll": "सभी",
   "@purchaseStatusAll": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseStatusUnpaid": "Unpaid",
+  "purchaseStatusUnpaid": "बाकी",
   "@purchaseStatusUnpaid": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseStatusReversed": "Reversed",
+  "purchaseStatusReversed": "रद्द",
   "@purchaseStatusReversed": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseNotFound": "Purchase not found",
+  "purchaseNotFound": "खरीद नहीं मिली",
   "@purchaseNotFound": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseInUse": "Cannot reverse: goods were returned or sold",
+  "purchaseInUse": "रद्द नहीं हो सकती: माल वापस हो चुका है या बिक चुका है",
   "@purchaseInUse": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseLocked": "Already reversed",
+  "purchaseLocked": "पहले ही रद्द हो चुकी",
   "@purchaseLocked": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseErrInvalid": "Check the lines: product, batch, qty and cost are needed",
+  "purchaseErrInvalid": "लाइनें जाँचें: प्रोडक्ट, बैच, मात्रा और लागत ज़रूरी हैं",
   "@purchaseErrInvalid": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseErrNoSupplier": "Choose a supplier",
+  "purchaseErrNoSupplier": "सप्लायर चुनें",
   "@purchaseErrNoSupplier": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseErrNotSupplier": "This party is not a supplier",
+  "purchaseErrNotSupplier": "यह पार्टी सप्लायर नहीं है",
   "@purchaseErrNotSupplier": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseErrProduct": "A product was not found",
+  "purchaseErrProduct": "एक प्रोडक्ट नहीं मिला",
   "@purchaseErrProduct": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseErrPaid": "Paid amount is not valid",
+  "purchaseErrPaid": "चुकाई रकम सही नहीं है",
   "@purchaseErrPaid": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseErrBank": "Choose a bank account",
+  "purchaseErrBank": "बैंक खाता चुनें",
   "@purchaseErrBank": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseErrReturn": "Return quantity is not valid",
+  "purchaseErrReturn": "वापसी मात्रा सही नहीं है",
   "@purchaseErrReturn": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseOutstanding": "Outstanding",
+  "purchaseOutstanding": "बकाया",
   "@purchaseOutstanding": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseReturns": "Returns",
+  "purchaseReturns": "वापसियाँ",
   "@purchaseReturns": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseLinesTitle": "Lines",
+  "purchaseLinesTitle": "लाइनें",
   "@purchaseLinesTitle": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseBank": "Bank",
+  "purchaseBank": "बैंक",
   "@purchaseBank": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseCash": "Cash",
+  "purchaseCash": "नकद",
   "@purchaseCash": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseBankAccount": "Bank account",
+  "purchaseBankAccount": "बैंक खाता",
   "@purchaseBankAccount": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseNoLines": "Add at least one line",
+  "purchaseNoLines": "कम से कम एक लाइन जोड़ें",
   "@purchaseNoLines": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseRefundKhata": "Credit note on khata",
+  "purchaseRefundKhata": "खाते में जमा",
   "@purchaseRefundKhata": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseRefundCash": "Money back",
+  "purchaseRefundCash": "पैसे वापस",
   "@purchaseRefundCash": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseRefundAuto": "Auto",
+  "purchaseRefundAuto": "अपने-आप",
   "@purchaseRefundAuto": {
     "description": "Purchases (step 4.2). TODO(translate)"
   },
-  "purchaseSaved": "Purchase {no} saved",
+  "purchaseSaved": "खरीद {no} सेव हो गई",
   "@purchaseSaved": {
     "description": "Purchases (step 4.2). TODO(translate)",
     "placeholders": {
@@ -1715,7 +1715,7 @@
       }
     }
   },
-  "purchaseReturnSaved": "Return {no} saved",
+  "purchaseReturnSaved": "वापसी {no} सेव हो गई",
   "@purchaseReturnSaved": {
     "description": "Purchases (step 4.2). TODO(translate)",
     "placeholders": {
@@ -1724,7 +1724,7 @@
       }
     }
   },
-  "purchaseOverdue": "{days} days overdue",
+  "purchaseOverdue": "{days} दिन देर",
   "@purchaseOverdue": {
     "description": "Purchases (step 4.2). TODO(translate)",
     "placeholders": {
@@ -1733,145 +1733,145 @@
       }
     }
   },
-  "prodTitle": "Products & stock",
-  "prodSearchHint": "Search name, SKU, barcode or brand",
-  "prodAdd": "Add product",
-  "prodTileValue": "Stock value (cost)",
-  "prodTileLow": "Low stock",
-  "prodTileOut": "Out of stock",
-  "prodTileExpiring": "Expiring soon",
-  "prodTileExpired": "Expired",
-  "prodFilterAll": "All",
-  "prodFilterLow": "Low",
-  "prodFilterOut": "Out",
-  "prodFilterExpiring": "Expiring",
-  "prodFilterExpired": "Expired",
-  "prodAllCategories": "All categories",
-  "prodColProduct": "Product",
-  "prodColBatches": "Batches",
-  "prodColCost": "Cost",
-  "prodColPrices": "Prices",
-  "prodColMargin": "Margin",
-  "prodColStock": "Stock",
-  "prodColValue": "Value",
-  "prodEmptyTitle": "No products yet",
-  "prodEmptyBody": "Add your first product or import opening stock.",
-  "prodNoMatch": "No product matches",
-  "prodNoAccess": "You do not have access to products.",
-  "prodNoBatches": "No stock",
-  "prodCount": "{count, plural, =1{1 product} other{{count} products}}",
+  "prodTitle": "प्रोडक्ट और स्टॉक",
+  "prodSearchHint": "नाम, SKU, बारकोड या ब्रांड खोजें",
+  "prodAdd": "प्रोडक्ट जोड़ें",
+  "prodTileValue": "स्टॉक का मूल्य (लागत पर)",
+  "prodTileLow": "कम स्टॉक",
+  "prodTileOut": "स्टॉक खत्म",
+  "prodTileExpiring": "जल्द एक्सपायर",
+  "prodTileExpired": "एक्सपायर",
+  "prodFilterAll": "सभी",
+  "prodFilterLow": "कम",
+  "prodFilterOut": "खत्म",
+  "prodFilterExpiring": "जल्द एक्सपायर",
+  "prodFilterExpired": "एक्सपायर",
+  "prodAllCategories": "सभी श्रेणियाँ",
+  "prodColProduct": "प्रोडक्ट",
+  "prodColBatches": "बैच",
+  "prodColCost": "लागत",
+  "prodColPrices": "भाव",
+  "prodColMargin": "मार्जिन",
+  "prodColStock": "स्टॉक",
+  "prodColValue": "मूल्य",
+  "prodEmptyTitle": "अभी कोई प्रोडक्ट नहीं",
+  "prodEmptyBody": "अपना पहला प्रोडक्ट जोड़ें या शुरुआती स्टॉक इम्पोर्ट करें।",
+  "prodNoMatch": "कोई प्रोडक्ट नहीं मिला",
+  "prodNoAccess": "आपको प्रोडक्ट देखने की अनुमति नहीं है।",
+  "prodNoBatches": "स्टॉक नहीं",
+  "prodCount": "{count, plural, =1{1 प्रोडक्ट} other{{count} प्रोडक्ट}}",
   "prodBatchLine": "{no}: {qty}",
-  "prodFormNew": "New product",
-  "prodFormEdit": "Edit product",
-  "prodFieldName": "Name",
+  "prodFormNew": "नया प्रोडक्ट",
+  "prodFormEdit": "प्रोडक्ट सुधारें",
+  "prodFieldName": "नाम",
   "prodFieldSku": "SKU",
-  "prodFieldBarcode": "Barcode",
-  "prodFieldBrand": "Brand",
-  "prodFieldCategory": "Category",
-  "prodFieldUnit": "Unit",
-  "prodFieldPackSize": "Pack size",
+  "prodFieldBarcode": "बारकोड",
+  "prodFieldBrand": "ब्रांड",
+  "prodFieldCategory": "श्रेणी",
+  "prodFieldUnit": "इकाई",
+  "prodFieldPackSize": "पैक का साइज़",
   "prodFieldHsn": "HSN",
-  "prodFieldGst": "GST rate",
-  "prodFieldReorder": "Reorder level",
-  "prodFieldPrices": "Selling price per unit",
-  "prodNoCategory": "No category",
-  "prodAddCategory": "New category",
-  "prodSave": "Save (Ctrl+S)",
-  "prodSaved": "Product saved",
-  "prodDeactivate": "Stop selling",
-  "prodActivate": "Sell again",
-  "prodDelete": "Delete product",
-  "prodDeleteConfirm": "Delete this product? It stays in old bills.",
-  "prodErrName": "Enter a name",
-  "prodErrSku": "Enter a SKU",
-  "prodErrGst": "Choose a valid GST rate",
-  "prodErrHsn": "HSN must be 4, 6 or 8 digits",
-  "prodErrReorder": "Reorder level cannot be negative",
-  "prodErrPrice": "Price cannot be negative",
-  "prodErrDupSku": "SKU already used by {name}",
-  "prodErrDupBarcode": "Barcode already used by {name}",
-  "prodErrUnitLocked": "The unit cannot change once the product has batches",
-  "prodErrHasStock": "Adjust the stock to zero before deleting",
-  "prodErrNotPermitted": "You are not allowed to do this",
-  "prodErrNotFound": "Not found",
-  "prodUnitBag": "Bag",
-  "prodUnitBtl": "Bottle",
-  "prodUnitLtr": "Litre",
-  "prodUnitKg": "Kg",
-  "prodUnitPkt": "Packet",
-  "prodUnitPc": "Piece",
-  "prodBatchTitle": "Batch {no}",
-  "prodBatchMovements": "Stock book",
-  "prodBatchCost": "Cost per unit",
-  "prodBatchMfg": "Manufactured",
-  "prodBatchExpiry": "Expiry",
-  "prodBatchLeft": "Left",
-  "prodBatchStale": "Stored quantity differs from the stock book",
-  "prodBatchRebuild": "Repair quantities",
-  "prodBatchRebuilt": "{count, plural, =0{All quantities are right} =1{1 batch repaired} other{{count} batches repaired}}",
-  "prodBatchExpiredTag": "Expired",
-  "prodBatchExpiringTag": "Expiring",
-  "prodReasonPurchase": "Purchase",
-  "prodReasonSale": "Sale",
-  "prodReasonSaleReturn": "Sale return",
-  "prodReasonPurchaseReturn": "Purchase return",
-  "prodReasonAdjustment": "Adjustment",
-  "prodReasonOpening": "Opening stock",
-  "prodAdjTitle": "Adjust stock",
-  "prodAdjAddBatch": "Add stock as a new batch",
-  "prodAdjBatch": "Batch",
-  "prodAdjDelta": "Change (+ found, - lost)",
-  "prodAdjNote": "Reason (required)",
-  "prodAdjBatchNo": "Batch no",
-  "prodAdjQty": "Quantity",
-  "prodAdjCost": "Cost per unit",
-  "prodAdjMfg": "Mfg date (dd/mm/yyyy)",
-  "prodAdjExpiry": "Expiry date (dd/mm/yyyy)",
-  "prodAdjApply": "Apply",
-  "prodAdjDone": "Stock updated",
-  "prodAdjErrNote": "Enter the reason",
-  "prodAdjErrZero": "Enter a quantity",
-  "prodAdjErrNegative": "Not enough stock in this batch",
-  "prodAdjErrDate": "Date is in the future",
-  "prodAdjErrLocked": "This date is in a closed financial year",
-  "prodAdjErrExists": "This batch number already exists",
-  "prodAdjErrCost": "Enter the cost",
-  "prodImpTitle": "Import opening stock",
-  "prodImpHelp": "Columns: SKU (or barcode or product name), batch, mfg, expiry, qty, cost. First row is the header. Products must exist already.",
-  "prodImpChoose": "Choose file",
-  "prodImpPasteLabel": "Or paste the table",
+  "prodFieldGst": "GST दर",
+  "prodFieldReorder": "दोबारा मंगवाने का स्तर",
+  "prodFieldPrices": "प्रति इकाई बिक्री भाव",
+  "prodNoCategory": "बिना श्रेणी",
+  "prodAddCategory": "नई श्रेणी",
+  "prodSave": "सेव करें (Ctrl+S)",
+  "prodSaved": "प्रोडक्ट सेव हो गया",
+  "prodDeactivate": "बेचना बंद करें",
+  "prodActivate": "फिर से बेचें",
+  "prodDelete": "प्रोडक्ट हटाएँ",
+  "prodDeleteConfirm": "यह प्रोडक्ट हटाएँ? पुराने बिलों में यह बना रहेगा।",
+  "prodErrName": "नाम लिखें",
+  "prodErrSku": "SKU लिखें",
+  "prodErrGst": "सही GST दर चुनें",
+  "prodErrHsn": "HSN 4, 6 या 8 अंकों का होना चाहिए",
+  "prodErrReorder": "दोबारा मंगवाने का स्तर माइनस नहीं हो सकता",
+  "prodErrPrice": "भाव माइनस नहीं हो सकता",
+  "prodErrDupSku": "SKU पहले से {name} में इस्तेमाल है",
+  "prodErrDupBarcode": "बारकोड पहले से {name} में इस्तेमाल है",
+  "prodErrUnitLocked": "बैच बन जाने के बाद इकाई नहीं बदल सकते",
+  "prodErrHasStock": "हटाने से पहले स्टॉक सुधारकर शून्य करें",
+  "prodErrNotPermitted": "आपको यह करने की अनुमति नहीं है",
+  "prodErrNotFound": "नहीं मिला",
+  "prodUnitBag": "बोरी",
+  "prodUnitBtl": "बोतल",
+  "prodUnitLtr": "लीटर",
+  "prodUnitKg": "किलो",
+  "prodUnitPkt": "पैकेट",
+  "prodUnitPc": "नग",
+  "prodBatchTitle": "बैच {no}",
+  "prodBatchMovements": "स्टॉक बही",
+  "prodBatchCost": "प्रति इकाई लागत",
+  "prodBatchMfg": "बनने की तारीख़",
+  "prodBatchExpiry": "एक्सपायरी",
+  "prodBatchLeft": "बचा",
+  "prodBatchStale": "दर्ज मात्रा स्टॉक बही से मेल नहीं खाती",
+  "prodBatchRebuild": "मात्रा ठीक करें",
+  "prodBatchRebuilt": "{count, plural, =0{सारी मात्राएँ सही हैं} =1{1 बैच ठीक किया गया} other{{count} बैच ठीक किए गए}}",
+  "prodBatchExpiredTag": "एक्सपायर",
+  "prodBatchExpiringTag": "जल्द एक्सपायर",
+  "prodReasonPurchase": "खरीद",
+  "prodReasonSale": "बिक्री",
+  "prodReasonSaleReturn": "बिक्री वापसी",
+  "prodReasonPurchaseReturn": "खरीद वापसी",
+  "prodReasonAdjustment": "सुधार",
+  "prodReasonOpening": "शुरुआती स्टॉक",
+  "prodAdjTitle": "स्टॉक सुधारें",
+  "prodAdjAddBatch": "स्टॉक नए बैच के रूप में जोड़ें",
+  "prodAdjBatch": "बैच",
+  "prodAdjDelta": "बदलाव (+ मिला, - कम)",
+  "prodAdjNote": "कारण (ज़रूरी)",
+  "prodAdjBatchNo": "बैच नं.",
+  "prodAdjQty": "मात्रा",
+  "prodAdjCost": "प्रति इकाई लागत",
+  "prodAdjMfg": "बनने की तारीख़ (dd/mm/yyyy)",
+  "prodAdjExpiry": "एक्सपायरी तारीख़ (dd/mm/yyyy)",
+  "prodAdjApply": "लागू करें",
+  "prodAdjDone": "स्टॉक बदल गया",
+  "prodAdjErrNote": "कारण लिखें",
+  "prodAdjErrZero": "मात्रा लिखें",
+  "prodAdjErrNegative": "इस बैच में इतना स्टॉक नहीं है",
+  "prodAdjErrDate": "तारीख़ आगे की है",
+  "prodAdjErrLocked": "यह तारीख़ बंद हो चुके वित्त वर्ष में है",
+  "prodAdjErrExists": "यह बैच नंबर पहले से मौजूद है",
+  "prodAdjErrCost": "लागत लिखें",
+  "prodImpTitle": "शुरुआती स्टॉक इम्पोर्ट करें",
+  "prodImpHelp": "कॉलम: SKU (या बारकोड या प्रोडक्ट का नाम), बैच, बनने की तारीख़, एक्सपायरी, मात्रा, लागत। पहली पंक्ति शीर्षक की हो। प्रोडक्ट पहले से बने होने चाहिए।",
+  "prodImpChoose": "फ़ाइल चुनें",
+  "prodImpPasteLabel": "या टेबल यहाँ पेस्ट करें",
   "prodImpPasteHint": "sku, batch, expiry, qty, cost",
-  "prodImpRead": "Read pasted text",
-  "prodImpDate": "Stock as on",
-  "prodImpSummary": "{count, plural, =1{1 row} other{{count} rows}} worth {value}",
-  "prodImpErrorsFound": "{count, plural, =1{1 row has a problem} other{{count} rows have problems}}. Fix the file and read it again.",
-  "prodImpButton": "Import stock",
-  "prodImpDone": "{rows} rows imported, {skipped} already there",
-  "prodImpAlready": "Everything in this file was imported before",
-  "prodImpStale": "Row {row}: the product changed. Read the file again.",
-  "prodImpRowNumber": "Row {row}",
-  "prodImpSheetEmpty": "The file is empty",
-  "prodImpNoProductCol": "No SKU, barcode or product column found",
-  "prodImpNoQtyCol": "No quantity column found",
-  "prodImpNoCostCol": "No cost column found",
-  "prodImpUnreadable": "This file could not be read",
-  "prodImpOldExcel": "Save the old .xls file as .xlsx or CSV first",
-  "prodImpProbUnknown": "Product not found",
-  "prodImpProbAmbiguous": "More than one product matches",
-  "prodImpProbQty": "Quantity is not valid",
-  "prodImpProbCost": "Cost is not valid",
-  "prodImpProbMfg": "Mfg date is not valid",
-  "prodImpProbExpiry": "Expiry date is not valid",
-  "prodImpProbExpiryBeforeMfg": "Expiry is before manufacturing",
-  "prodImpProbDuplicate": "Same product and batch appears twice",
-  "navSectionShop": "Shop",
+  "prodImpRead": "पेस्ट किया टेक्स्ट पढ़ें",
+  "prodImpDate": "स्टॉक की तारीख़",
+  "prodImpSummary": "{count, plural, =1{1 पंक्ति} other{{count} पंक्तियाँ}}, कुल मूल्य {value}",
+  "prodImpErrorsFound": "{count, plural, =1{1 पंक्ति में गड़बड़ है} other{{count} पंक्तियों में गड़बड़ है}}। फ़ाइल सुधारकर दोबारा पढ़ें।",
+  "prodImpButton": "स्टॉक इम्पोर्ट करें",
+  "prodImpDone": "{rows} पंक्तियाँ इम्पोर्ट हुईं, {skipped} पहले से मौजूद थीं",
+  "prodImpAlready": "इस फ़ाइल का सारा माल पहले इम्पोर्ट हो चुका है",
+  "prodImpStale": "पंक्ति {row}: प्रोडक्ट बदल गया है। फ़ाइल दोबारा पढ़ें।",
+  "prodImpRowNumber": "पंक्ति {row}",
+  "prodImpSheetEmpty": "फ़ाइल ख़ाली है",
+  "prodImpNoProductCol": "SKU, बारकोड या प्रोडक्ट का कॉलम नहीं मिला",
+  "prodImpNoQtyCol": "मात्रा का कॉलम नहीं मिला",
+  "prodImpNoCostCol": "लागत का कॉलम नहीं मिला",
+  "prodImpUnreadable": "यह फ़ाइल पढ़ी नहीं जा सकी",
+  "prodImpOldExcel": "पुरानी .xls फ़ाइल को पहले .xlsx या CSV में सेव करें",
+  "prodImpProbUnknown": "प्रोडक्ट नहीं मिला",
+  "prodImpProbAmbiguous": "एक से ज़्यादा प्रोडक्ट मेल खाते हैं",
+  "prodImpProbQty": "मात्रा सही नहीं है",
+  "prodImpProbCost": "लागत सही नहीं है",
+  "prodImpProbMfg": "बनने की तारीख़ सही नहीं है",
+  "prodImpProbExpiry": "एक्सपायरी की तारीख़ सही नहीं है",
+  "prodImpProbExpiryBeforeMfg": "एक्सपायरी बनने की तारीख़ से पहले है",
+  "prodImpProbDuplicate": "वही प्रोडक्ट और बैच दो बार आया है",
+  "navSectionShop": "दुकान",
   "shrNavDues": "बकाया",
   "shrNavProfit": "दुकान का मुनाफ़ा",
-  "shrNavGst": "जीएसटी",
+  "shrNavGst": "GST",
   "shrNavExpiry": "एक्सपायरी",
   "shrNavReorder": "दोबारा मंगवाना",
   "shrModuleOff": "इस कारोबार के लिए दुकान मॉड्यूल बंद है।",
-  "shrDuesTitle": "देय और प्राप्य",
+  "shrDuesTitle": "देना और लेना",
   "shrTabPayables": "सप्लायर को देना",
   "shrTabReceivables": "ग्राहकों से लेना",
   "shrPay": "भुगतान",
@@ -1894,7 +1894,7 @@
   "shrProfitLocked": "दुकान का मुनाफ़ा और लागत देखने की अनुमति चाहिए।",
   "shrUncategorised": "बिना श्रेणी",
   "shrNoSales": "इन तारीख़ों में कोई बिक्री नहीं।",
-  "shrGstTitle": "जीएसटी (GSTR-1)",
+  "shrGstTitle": "GST (GSTR-1)",
   "shrGstMissingBanner": "सेटिंग्स में कारोबार का GSTIN और राज्य कोड भरें: इनके बिना रिटर्न नहीं भरा जा सकता और हर बिक्री एक ही राज्य की मानी जाती है।",
   "shrGstOpenSettings": "सेटिंग्स खोलें",
   "shrGstPrevMonth": "पिछला महीना",
@@ -1907,7 +1907,7 @@
   "shrGstTaxable": "कर योग्य {amount}",
   "shrGstCgstSgst": "CGST + SGST (अपना राज्य)",
   "shrGstIgst": "IGST (दूसरा राज्य)",
-  "shrGstTabSummary": "सार",
+  "shrGstTabSummary": "कुल सार",
   "shrGstTabB2b": "B2B",
   "shrGstTabB2cl": "बड़ा B2C",
   "shrGstTabB2cs": "छोटा B2C",
@@ -1986,9 +1986,42 @@
   "@posNewBill": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posSearchHint": "बारकोड स्कैन करें या उत्पाद लिखें (5*यूरिया = 5)",
+  "posSearchHint": "बारकोड स्कैन करें या प्रोडक्ट लिखें (5*यूरिया = 5)",
   "@posSearchHint": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posScanTooltip": "कैमरे से बारकोड स्कैन करें",
+  "@posScanTooltip": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanTitle": "बारकोड स्कैन करें",
+  "@posScanTitle": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanTorch": "टॉर्च",
+  "@posScanTorch": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanHint": "कैमरा बारकोड की ओर करें",
+  "@posScanHint": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanLast": "जोड़ा गया: {code}",
+  "@posScanLast": {
+    "description": "POS camera barcode scan",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "posScanPermissionDenied": "कैमरे की अनुमति बंद है। स्कैन के लिए सेटिंग में कैमरा अनुमति दें, या कोड लिखें।",
+  "@posScanPermissionDenied": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanUnavailable": "कैमरा उपलब्ध नहीं है। कोड लिखें।",
+  "@posScanUnavailable": {
+    "description": "POS camera barcode scan"
   },
   "posPay": "भुगतान",
   "@posPay": {
@@ -2002,11 +2035,11 @@
   "@posRecall": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posCartEmpty": "कार्ट खाली है। उत्पाद स्कैन या खोजें।",
+  "posCartEmpty": "कार्ट खाली है। प्रोडक्ट स्कैन या खोजें।",
   "@posCartEmpty": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posNoProducts": "कोई उत्पाद नहीं मिला",
+  "posNoProducts": "कोई प्रोडक्ट नहीं मिला",
   "@posNoProducts": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2074,15 +2107,15 @@
   "@posTaxable": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posCgst": "सीजीएसटी",
+  "posCgst": "CGST",
   "@posCgst": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posSgst": "एसजीएसटी",
+  "posSgst": "SGST",
   "@posSgst": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posIgst": "आईजीएसटी",
+  "posIgst": "IGST",
   "@posIgst": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2115,7 +2148,7 @@
   "@posNoPrice": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posGstMissing": "एचएसएन या जीएसटी दर नहीं",
+  "posGstMissing": "HSN या GST दर नहीं",
   "@posGstMissing": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2135,7 +2168,7 @@
   "@posPayCash": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posPayUpi": "यूपीआई",
+  "posPayUpi": "UPI",
   "@posPayUpi": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2143,15 +2176,15 @@
   "@posPayUdhaar": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posPayAllHint": "Alt+1 सब नकद · Alt+2 सब यूपीआई · Alt+3 सब उधार · F10 सेव",
+  "posPayAllHint": "Alt+1 सब नकद · Alt+2 सब UPI · Alt+3 सब उधार · F10 सेव",
   "@posPayAllHint": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posPayUpiAccount": "यूपीआई खाता",
+  "posPayUpiAccount": "UPI खाता",
   "@posPayUpiAccount": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posPayNoBank": "यूपीआई के लिए कोई बैंक खाता नहीं",
+  "posPayNoBank": "UPI के लिए कोई बैंक खाता नहीं",
   "@posPayNoBank": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2173,7 +2206,7 @@
       }
     }
   },
-  "posPayRemaining": "बाकी: {amount}",
+  "posPayRemaining": "देना बाकी: {amount}",
   "@posPayRemaining": {
     "description": "Shop POS and sales (steps 4.3, 4.4)",
     "placeholders": {
@@ -2186,7 +2219,7 @@
   "@posPaySave": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posErrorPayMismatch": "नकद + यूपीआई + उधार कुल के बराबर होना चाहिए",
+  "posErrorPayMismatch": "नकद + UPI + उधार कुल के बराबर होना चाहिए",
   "@posErrorPayMismatch": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2194,7 +2227,7 @@
   "@posErrorUdhaarParty": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posErrorUpiAccount": "यूपीआई हिस्से के लिए बैंक खाता चुनें",
+  "posErrorUpiAccount": "UPI हिस्से के लिए बैंक खाता चुनें",
   "@posErrorUpiAccount": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2206,7 +2239,7 @@
   "@posErrorBadLine": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posErrorProductGone": "कार्ट का एक उत्पाद अब उपलब्ध नहीं",
+  "posErrorProductGone": "कार्ट का एक प्रोडक्ट अब उपलब्ध नहीं",
   "@posErrorProductGone": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2264,7 +2297,7 @@
   "@posPrint": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posShare": "पीडीएफ़ भेजें",
+  "posShare": "PDF भेजें",
   "@posShare": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2293,7 +2326,7 @@
   "@posHeldDelete": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "posHeldSkipped": "{count, plural, =1{1 उत्पाद अब उपलब्ध नहीं, छोड़ दिया गया} other{{count} उत्पाद अब उपलब्ध नहीं, छोड़ दिए गए}}",
+  "posHeldSkipped": "{count, plural, =1{1 प्रोडक्ट अब उपलब्ध नहीं, छोड़ दिया गया} other{{count} प्रोडक्ट अब उपलब्ध नहीं, छोड़ दिए गए}}",
   "@posHeldSkipped": {
     "description": "Shop POS and sales (steps 4.3, 4.4)",
     "placeholders": {
@@ -2354,7 +2387,7 @@
   "@salesColUdhaar": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "salesTotalsBar": "{count, plural, =1{1 बिल} other{{count} बिल}} · कुल {total} · नकद {cash} · यूपीआई {upi} · उधार {udhaar}",
+  "salesTotalsBar": "{count, plural, =1{1 बिल} other{{count} बिल}} · कुल {total} · नकद {cash} · UPI {upi} · उधार {udhaar}",
   "@salesTotalsBar": {
     "description": "Shop POS and sales (steps 4.3, 4.4)",
     "placeholders": {
@@ -2383,15 +2416,15 @@
   "@salesReversedTag": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "salesInvoiceTitle": "चालान",
+  "salesInvoiceTitle": "इनवॉइस",
   "@salesInvoiceTitle": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "salesBillTo": "ग्राहक",
+  "salesBillTo": "ग्राहक का नाम",
   "@salesBillTo": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "salesGstin": "जीएसटीआईएन",
+  "salesGstin": "GSTIN",
   "@salesGstin": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2399,7 +2432,7 @@
   "@salesPlaceOfSupply": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "salesHsn": "एचएसएन",
+  "salesHsn": "HSN",
   "@salesHsn": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2424,7 +2457,7 @@
       }
     }
   },
-  "salesNoBatch": "बैच नहीं (ऋणात्मक स्टॉक)",
+  "salesNoBatch": "बैच नहीं (माइनस स्टॉक)",
   "@salesNoBatch": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2502,7 +2535,7 @@
   "@salesRefundCash": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "salesRefundUpi": "यूपीआई से लौटाएँ",
+  "salesRefundUpi": "UPI से लौटाएँ",
   "@salesRefundUpi": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2539,7 +2572,7 @@
   "@salesReturnErrParty": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "salesReturnErrUpi": "यूपीआई वापसी के लिए बैंक खाता चुनें",
+  "salesReturnErrUpi": "UPI वापसी के लिए बैंक खाता चुनें",
   "@salesReturnErrUpi": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2551,15 +2584,15 @@
   "@salesReturnsHeader": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "invoiceTax": "कर चालान",
+  "invoiceTax": "टैक्स इनवॉइस",
   "@invoiceTax": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "invoiceRetail": "चालान",
+  "invoiceRetail": "इनवॉइस",
   "@invoiceRetail": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "invoiceNo": "चालान नं.",
+  "invoiceNo": "इनवॉइस नं.",
   "@invoiceNo": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2583,7 +2616,7 @@
   "@invoiceTaxable": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "invoiceGstPct": "जीएसटी %",
+  "invoiceGstPct": "GST %",
   "@invoiceGstPct": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
@@ -2603,7 +2636,7 @@
   "@invoicePaidCash": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
-  "invoicePaidUpi": "यूपीआई से चुकाया",
+  "invoicePaidUpi": "UPI से चुकाया",
   "@invoicePaidUpi": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },

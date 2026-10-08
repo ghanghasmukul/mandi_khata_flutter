@@ -8310,6 +8310,39 @@
   "@posSearchHint": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
   },
+  "posScanTooltip": "Scan barcode with camera",
+  "@posScanTooltip": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanTitle": "Scan barcode",
+  "@posScanTitle": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanTorch": "Torch",
+  "@posScanTorch": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanHint": "Point the camera at a barcode",
+  "@posScanHint": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanLast": "Added: {code}",
+  "@posScanLast": {
+    "description": "POS camera barcode scan",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "posScanPermissionDenied": "Camera permission is off. Allow camera access in Settings to scan, or type the code instead.",
+  "@posScanPermissionDenied": {
+    "description": "POS camera barcode scan"
+  },
+  "posScanUnavailable": "The camera is not available. Type the code instead.",
+  "@posScanUnavailable": {
+    "description": "POS camera barcode scan"
+  },
   "posPay": "Pay",
   "@posPay": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"

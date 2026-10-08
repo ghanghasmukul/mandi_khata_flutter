@@ -15,6 +15,7 @@ import 'package:mandi_khata_app/features/pos/presentation/pos_payment_dialog.dar
 import 'package:mandi_khata_app/features/pos/presentation/pos_product_grid.dart';
 import 'package:mandi_khata_app/features/pos/presentation/pos_providers.dart';
 import 'package:mandi_khata_app/features/pos/presentation/pos_saved_dialog.dart';
+import 'package:mandi_khata_app/features/pos/presentation/pos_scan.dart';
 import 'package:mandi_khata_app/features/shop_sales/domain/shop_sale.dart';
 import 'package:mandi_khata_app/features/shop_sales/domain/shop_settings.dart';
 import 'package:mandi_khata_app/features/shop_sales/presentation/sales_providers.dart';
@@ -43,10 +44,6 @@ class _PosScreenState extends ConsumerState<PosScreen> {
   int _highlight = 0;
   int _selected = -1;
   bool _saving = false;
-
-  // TODO(scan): Android camera scanning needs the mobile_scanner package,
-  // which is not a dependency yet. A USB / Bluetooth scanner already works
-  // as a keyboard (type + Enter in the search field).
 
   @override
   void dispose() {
@@ -129,6 +126,12 @@ class _PosScreenState extends ConsumerState<PosScreen> {
       return;
     }
     _add(p, qtyMilli: intent.qtyMilli);
+  }
+
+  /// A camera scan takes the exact same path as typing the code + Enter.
+  void _onScanned(String code, List<PosProduct> all) {
+    _search.text = code;
+    _submit(all);
   }
 
   bool get _typingElsewhere {
@@ -300,6 +303,12 @@ class _PosScreenState extends ConsumerState<PosScreen> {
       autofocus: true,
       hint: l10n.posSearchHint,
       prefix: const Icon(Icons.search),
+      suffix: PosScanButton(
+        onCode: (code) => _onScanned(
+          code,
+          ref.read(posCatalogProvider).value ?? const <PosProduct>[],
+        ),
+      ),
       textInputAction: TextInputAction.done,
       onChanged: (_) => setState(() => _highlight = 0),
       onSubmitted: (_) => _submit(all),

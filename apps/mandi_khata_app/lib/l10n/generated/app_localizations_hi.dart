@@ -5101,268 +5101,270 @@ class AppLocalizationsHi extends AppLocalizations {
   String get permission_shopViewProfit => 'दुकान का मुनाफ़ा देखें';
 
   @override
-  String get purchasesTitle => 'Purchases';
+  String get purchasesTitle => 'खरीद';
 
   @override
-  String get purchasesEmpty => 'No purchases yet';
+  String get purchasesEmpty => 'अभी कोई खरीद नहीं';
 
   @override
-  String get purchaseNew => 'New purchase';
+  String get purchaseNew => 'नई खरीद';
 
   @override
-  String get purchaseSupplier => 'Supplier';
+  String get purchaseSupplier => 'सप्लायर';
 
   @override
-  String get purchaseSupplierInvoiceNo => 'Supplier invoice no';
+  String get purchaseSupplierInvoiceNo => 'सप्लायर का बिल नं.';
 
   @override
-  String get purchaseInvoiceDate => 'Invoice date';
+  String get purchaseInvoiceDate => 'बिल की तारीख़';
 
   @override
-  String get purchaseAddLine => 'Add line (F2)';
+  String get purchaseAddLine => 'लाइन जोड़ें (F2)';
 
   @override
-  String get purchaseProduct => 'Product';
+  String get purchaseProduct => 'प्रोडक्ट';
 
   @override
-  String get purchaseBatchNo => 'Batch no';
+  String get purchaseBatchNo => 'बैच नं.';
 
   @override
-  String get purchaseMfg => 'Mfg date';
+  String get purchaseMfg => 'बनने की तारीख़';
 
   @override
-  String get purchaseExpiry => 'Expiry date';
+  String get purchaseExpiry => 'एक्सपायरी की तारीख़';
 
   @override
-  String get purchaseQty => 'Qty';
+  String get purchaseQty => 'मात्रा';
 
   @override
-  String get purchaseCost => 'Cost / unit';
+  String get purchaseCost => 'लागत / इकाई';
 
   @override
   String get purchaseGstRate => 'GST %';
 
   @override
-  String get purchaseFreight => 'Freight';
+  String get purchaseFreight => 'भाड़ा';
 
   @override
-  String get purchaseOtherCharges => 'Other charges';
+  String get purchaseOtherCharges => 'दूसरे ख़र्चे';
 
   @override
-  String get purchaseRoundOff => 'Round off (+/-)';
+  String get purchaseRoundOff => 'राउंड ऑफ़ (+/-)';
 
   @override
-  String get purchasePaidNow => 'Paid now';
+  String get purchasePaidNow => 'अभी चुकाया';
 
   @override
-  String get purchaseCreditDays => 'Credit days';
+  String get purchaseCreditDays => 'उधार के दिन';
 
   @override
-  String get purchaseDueDate => 'Due date';
+  String get purchaseDueDate => 'देने की तारीख़';
 
   @override
-  String get purchaseTaxable => 'Taxable';
+  String get purchaseTaxable => 'कर योग्य';
 
   @override
   String get purchaseGst => 'GST';
 
   @override
-  String get purchaseTotal => 'Total';
+  String get purchaseTotal => 'कुल';
 
   @override
-  String get purchaseUnpaid => 'Unpaid';
+  String get purchaseUnpaid => 'बाकी';
 
   @override
-  String get purchasePaid => 'Paid';
+  String get purchasePaid => 'चुकाया';
 
   @override
-  String get purchaseSave => 'Save (Ctrl+Enter)';
+  String get purchaseSave => 'सेव करें (Ctrl+Enter)';
 
   @override
-  String get purchaseReturnTitle => 'Purchase return';
+  String get purchaseReturnTitle => 'खरीद वापसी';
 
   @override
-  String get purchaseReturnQty => 'Return qty';
+  String get purchaseReturnQty => 'वापसी मात्रा';
 
   @override
-  String get purchaseReturnSave => 'Return goods';
+  String get purchaseReturnSave => 'माल वापस करें';
 
   @override
-  String get purchaseReverse => 'Reverse purchase';
+  String get purchaseReverse => 'खरीद रद्द करें';
 
   @override
-  String get purchaseReversedTag => 'Reversed';
+  String get purchaseReversedTag => 'रद्द';
 
   @override
-  String get purchaseStatusAll => 'All';
+  String get purchaseStatusAll => 'सभी';
 
   @override
-  String get purchaseStatusUnpaid => 'Unpaid';
+  String get purchaseStatusUnpaid => 'बाकी';
 
   @override
-  String get purchaseStatusReversed => 'Reversed';
+  String get purchaseStatusReversed => 'रद्द';
 
   @override
-  String get purchaseNotFound => 'Purchase not found';
+  String get purchaseNotFound => 'खरीद नहीं मिली';
 
   @override
-  String get purchaseInUse => 'Cannot reverse: goods were returned or sold';
+  String get purchaseInUse =>
+      'रद्द नहीं हो सकती: माल वापस हो चुका है या बिक चुका है';
 
   @override
-  String get purchaseLocked => 'Already reversed';
+  String get purchaseLocked => 'पहले ही रद्द हो चुकी';
 
   @override
   String get purchaseErrInvalid =>
-      'Check the lines: product, batch, qty and cost are needed';
+      'लाइनें जाँचें: प्रोडक्ट, बैच, मात्रा और लागत ज़रूरी हैं';
 
   @override
-  String get purchaseErrNoSupplier => 'Choose a supplier';
+  String get purchaseErrNoSupplier => 'सप्लायर चुनें';
 
   @override
-  String get purchaseErrNotSupplier => 'This party is not a supplier';
+  String get purchaseErrNotSupplier => 'यह पार्टी सप्लायर नहीं है';
 
   @override
-  String get purchaseErrProduct => 'A product was not found';
+  String get purchaseErrProduct => 'एक प्रोडक्ट नहीं मिला';
 
   @override
-  String get purchaseErrPaid => 'Paid amount is not valid';
+  String get purchaseErrPaid => 'चुकाई रकम सही नहीं है';
 
   @override
-  String get purchaseErrBank => 'Choose a bank account';
+  String get purchaseErrBank => 'बैंक खाता चुनें';
 
   @override
-  String get purchaseErrReturn => 'Return quantity is not valid';
+  String get purchaseErrReturn => 'वापसी मात्रा सही नहीं है';
 
   @override
-  String get purchaseOutstanding => 'Outstanding';
+  String get purchaseOutstanding => 'बकाया';
 
   @override
-  String get purchaseReturns => 'Returns';
+  String get purchaseReturns => 'वापसियाँ';
 
   @override
-  String get purchaseLinesTitle => 'Lines';
+  String get purchaseLinesTitle => 'लाइनें';
 
   @override
-  String get purchaseBank => 'Bank';
+  String get purchaseBank => 'बैंक';
 
   @override
-  String get purchaseCash => 'Cash';
+  String get purchaseCash => 'नकद';
 
   @override
-  String get purchaseBankAccount => 'Bank account';
+  String get purchaseBankAccount => 'बैंक खाता';
 
   @override
-  String get purchaseNoLines => 'Add at least one line';
+  String get purchaseNoLines => 'कम से कम एक लाइन जोड़ें';
 
   @override
-  String get purchaseRefundKhata => 'Credit note on khata';
+  String get purchaseRefundKhata => 'खाते में जमा';
 
   @override
-  String get purchaseRefundCash => 'Money back';
+  String get purchaseRefundCash => 'पैसे वापस';
 
   @override
-  String get purchaseRefundAuto => 'Auto';
+  String get purchaseRefundAuto => 'अपने-आप';
 
   @override
   String purchaseSaved(String no) {
-    return 'Purchase $no saved';
+    return 'खरीद $no सेव हो गई';
   }
 
   @override
   String purchaseReturnSaved(String no) {
-    return 'Return $no saved';
+    return 'वापसी $no सेव हो गई';
   }
 
   @override
   String purchaseOverdue(int days) {
-    return '$days days overdue';
+    return '$days दिन देर';
   }
 
   @override
-  String get prodTitle => 'Products & stock';
+  String get prodTitle => 'प्रोडक्ट और स्टॉक';
 
   @override
-  String get prodSearchHint => 'Search name, SKU, barcode or brand';
+  String get prodSearchHint => 'नाम, SKU, बारकोड या ब्रांड खोजें';
 
   @override
-  String get prodAdd => 'Add product';
+  String get prodAdd => 'प्रोडक्ट जोड़ें';
 
   @override
-  String get prodTileValue => 'Stock value (cost)';
+  String get prodTileValue => 'स्टॉक का मूल्य (लागत पर)';
 
   @override
-  String get prodTileLow => 'Low stock';
+  String get prodTileLow => 'कम स्टॉक';
 
   @override
-  String get prodTileOut => 'Out of stock';
+  String get prodTileOut => 'स्टॉक खत्म';
 
   @override
-  String get prodTileExpiring => 'Expiring soon';
+  String get prodTileExpiring => 'जल्द एक्सपायर';
 
   @override
-  String get prodTileExpired => 'Expired';
+  String get prodTileExpired => 'एक्सपायर';
 
   @override
-  String get prodFilterAll => 'All';
+  String get prodFilterAll => 'सभी';
 
   @override
-  String get prodFilterLow => 'Low';
+  String get prodFilterLow => 'कम';
 
   @override
-  String get prodFilterOut => 'Out';
+  String get prodFilterOut => 'खत्म';
 
   @override
-  String get prodFilterExpiring => 'Expiring';
+  String get prodFilterExpiring => 'जल्द एक्सपायर';
 
   @override
-  String get prodFilterExpired => 'Expired';
+  String get prodFilterExpired => 'एक्सपायर';
 
   @override
-  String get prodAllCategories => 'All categories';
+  String get prodAllCategories => 'सभी श्रेणियाँ';
 
   @override
-  String get prodColProduct => 'Product';
+  String get prodColProduct => 'प्रोडक्ट';
 
   @override
-  String get prodColBatches => 'Batches';
+  String get prodColBatches => 'बैच';
 
   @override
-  String get prodColCost => 'Cost';
+  String get prodColCost => 'लागत';
 
   @override
-  String get prodColPrices => 'Prices';
+  String get prodColPrices => 'भाव';
 
   @override
-  String get prodColMargin => 'Margin';
+  String get prodColMargin => 'मार्जिन';
 
   @override
-  String get prodColStock => 'Stock';
+  String get prodColStock => 'स्टॉक';
 
   @override
-  String get prodColValue => 'Value';
+  String get prodColValue => 'मूल्य';
 
   @override
-  String get prodEmptyTitle => 'No products yet';
+  String get prodEmptyTitle => 'अभी कोई प्रोडक्ट नहीं';
 
   @override
-  String get prodEmptyBody => 'Add your first product or import opening stock.';
+  String get prodEmptyBody =>
+      'अपना पहला प्रोडक्ट जोड़ें या शुरुआती स्टॉक इम्पोर्ट करें।';
 
   @override
-  String get prodNoMatch => 'No product matches';
+  String get prodNoMatch => 'कोई प्रोडक्ट नहीं मिला';
 
   @override
-  String get prodNoAccess => 'You do not have access to products.';
+  String get prodNoAccess => 'आपको प्रोडक्ट देखने की अनुमति नहीं है।';
 
   @override
-  String get prodNoBatches => 'No stock';
+  String get prodNoBatches => 'स्टॉक नहीं';
 
   @override
   String prodCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count products',
-      one: '1 product',
+      other: '$count प्रोडक्ट',
+      one: '1 प्रोडक्ट',
     );
     return '$_temp0';
   }
@@ -5373,277 +5375,277 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get prodFormNew => 'New product';
+  String get prodFormNew => 'नया प्रोडक्ट';
 
   @override
-  String get prodFormEdit => 'Edit product';
+  String get prodFormEdit => 'प्रोडक्ट सुधारें';
 
   @override
-  String get prodFieldName => 'Name';
+  String get prodFieldName => 'नाम';
 
   @override
   String get prodFieldSku => 'SKU';
 
   @override
-  String get prodFieldBarcode => 'Barcode';
+  String get prodFieldBarcode => 'बारकोड';
 
   @override
-  String get prodFieldBrand => 'Brand';
+  String get prodFieldBrand => 'ब्रांड';
 
   @override
-  String get prodFieldCategory => 'Category';
+  String get prodFieldCategory => 'श्रेणी';
 
   @override
-  String get prodFieldUnit => 'Unit';
+  String get prodFieldUnit => 'इकाई';
 
   @override
-  String get prodFieldPackSize => 'Pack size';
+  String get prodFieldPackSize => 'पैक का साइज़';
 
   @override
   String get prodFieldHsn => 'HSN';
 
   @override
-  String get prodFieldGst => 'GST rate';
+  String get prodFieldGst => 'GST दर';
 
   @override
-  String get prodFieldReorder => 'Reorder level';
+  String get prodFieldReorder => 'दोबारा मंगवाने का स्तर';
 
   @override
-  String get prodFieldPrices => 'Selling price per unit';
+  String get prodFieldPrices => 'प्रति इकाई बिक्री भाव';
 
   @override
-  String get prodNoCategory => 'No category';
+  String get prodNoCategory => 'बिना श्रेणी';
 
   @override
-  String get prodAddCategory => 'New category';
+  String get prodAddCategory => 'नई श्रेणी';
 
   @override
-  String get prodSave => 'Save (Ctrl+S)';
+  String get prodSave => 'सेव करें (Ctrl+S)';
 
   @override
-  String get prodSaved => 'Product saved';
+  String get prodSaved => 'प्रोडक्ट सेव हो गया';
 
   @override
-  String get prodDeactivate => 'Stop selling';
+  String get prodDeactivate => 'बेचना बंद करें';
 
   @override
-  String get prodActivate => 'Sell again';
+  String get prodActivate => 'फिर से बेचें';
 
   @override
-  String get prodDelete => 'Delete product';
+  String get prodDelete => 'प्रोडक्ट हटाएँ';
 
   @override
-  String get prodDeleteConfirm => 'Delete this product? It stays in old bills.';
+  String get prodDeleteConfirm =>
+      'यह प्रोडक्ट हटाएँ? पुराने बिलों में यह बना रहेगा।';
 
   @override
-  String get prodErrName => 'Enter a name';
+  String get prodErrName => 'नाम लिखें';
 
   @override
-  String get prodErrSku => 'Enter a SKU';
+  String get prodErrSku => 'SKU लिखें';
 
   @override
-  String get prodErrGst => 'Choose a valid GST rate';
+  String get prodErrGst => 'सही GST दर चुनें';
 
   @override
-  String get prodErrHsn => 'HSN must be 4, 6 or 8 digits';
+  String get prodErrHsn => 'HSN 4, 6 या 8 अंकों का होना चाहिए';
 
   @override
-  String get prodErrReorder => 'Reorder level cannot be negative';
+  String get prodErrReorder => 'दोबारा मंगवाने का स्तर माइनस नहीं हो सकता';
 
   @override
-  String get prodErrPrice => 'Price cannot be negative';
+  String get prodErrPrice => 'भाव माइनस नहीं हो सकता';
 
   @override
   String prodErrDupSku(String name) {
-    return 'SKU already used by $name';
+    return 'SKU पहले से $name में इस्तेमाल है';
   }
 
   @override
   String prodErrDupBarcode(String name) {
-    return 'Barcode already used by $name';
+    return 'बारकोड पहले से $name में इस्तेमाल है';
   }
 
   @override
-  String get prodErrUnitLocked =>
-      'The unit cannot change once the product has batches';
+  String get prodErrUnitLocked => 'बैच बन जाने के बाद इकाई नहीं बदल सकते';
 
   @override
-  String get prodErrHasStock => 'Adjust the stock to zero before deleting';
+  String get prodErrHasStock => 'हटाने से पहले स्टॉक सुधारकर शून्य करें';
 
   @override
-  String get prodErrNotPermitted => 'You are not allowed to do this';
+  String get prodErrNotPermitted => 'आपको यह करने की अनुमति नहीं है';
 
   @override
-  String get prodErrNotFound => 'Not found';
+  String get prodErrNotFound => 'नहीं मिला';
 
   @override
-  String get prodUnitBag => 'Bag';
+  String get prodUnitBag => 'बोरी';
 
   @override
-  String get prodUnitBtl => 'Bottle';
+  String get prodUnitBtl => 'बोतल';
 
   @override
-  String get prodUnitLtr => 'Litre';
+  String get prodUnitLtr => 'लीटर';
 
   @override
-  String get prodUnitKg => 'Kg';
+  String get prodUnitKg => 'किलो';
 
   @override
-  String get prodUnitPkt => 'Packet';
+  String get prodUnitPkt => 'पैकेट';
 
   @override
-  String get prodUnitPc => 'Piece';
+  String get prodUnitPc => 'नग';
 
   @override
   String prodBatchTitle(String no) {
-    return 'Batch $no';
+    return 'बैच $no';
   }
 
   @override
-  String get prodBatchMovements => 'Stock book';
+  String get prodBatchMovements => 'स्टॉक बही';
 
   @override
-  String get prodBatchCost => 'Cost per unit';
+  String get prodBatchCost => 'प्रति इकाई लागत';
 
   @override
-  String get prodBatchMfg => 'Manufactured';
+  String get prodBatchMfg => 'बनने की तारीख़';
 
   @override
-  String get prodBatchExpiry => 'Expiry';
+  String get prodBatchExpiry => 'एक्सपायरी';
 
   @override
-  String get prodBatchLeft => 'Left';
+  String get prodBatchLeft => 'बचा';
 
   @override
-  String get prodBatchStale => 'Stored quantity differs from the stock book';
+  String get prodBatchStale => 'दर्ज मात्रा स्टॉक बही से मेल नहीं खाती';
 
   @override
-  String get prodBatchRebuild => 'Repair quantities';
+  String get prodBatchRebuild => 'मात्रा ठीक करें';
 
   @override
   String prodBatchRebuilt(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count batches repaired',
-      one: '1 batch repaired',
-      zero: 'All quantities are right',
+      other: '$count बैच ठीक किए गए',
+      one: '1 बैच ठीक किया गया',
+      zero: 'सारी मात्राएँ सही हैं',
     );
     return '$_temp0';
   }
 
   @override
-  String get prodBatchExpiredTag => 'Expired';
+  String get prodBatchExpiredTag => 'एक्सपायर';
 
   @override
-  String get prodBatchExpiringTag => 'Expiring';
+  String get prodBatchExpiringTag => 'जल्द एक्सपायर';
 
   @override
-  String get prodReasonPurchase => 'Purchase';
+  String get prodReasonPurchase => 'खरीद';
 
   @override
-  String get prodReasonSale => 'Sale';
+  String get prodReasonSale => 'बिक्री';
 
   @override
-  String get prodReasonSaleReturn => 'Sale return';
+  String get prodReasonSaleReturn => 'बिक्री वापसी';
 
   @override
-  String get prodReasonPurchaseReturn => 'Purchase return';
+  String get prodReasonPurchaseReturn => 'खरीद वापसी';
 
   @override
-  String get prodReasonAdjustment => 'Adjustment';
+  String get prodReasonAdjustment => 'सुधार';
 
   @override
-  String get prodReasonOpening => 'Opening stock';
+  String get prodReasonOpening => 'शुरुआती स्टॉक';
 
   @override
-  String get prodAdjTitle => 'Adjust stock';
+  String get prodAdjTitle => 'स्टॉक सुधारें';
 
   @override
-  String get prodAdjAddBatch => 'Add stock as a new batch';
+  String get prodAdjAddBatch => 'स्टॉक नए बैच के रूप में जोड़ें';
 
   @override
-  String get prodAdjBatch => 'Batch';
+  String get prodAdjBatch => 'बैच';
 
   @override
-  String get prodAdjDelta => 'Change (+ found, - lost)';
+  String get prodAdjDelta => 'बदलाव (+ मिला, - कम)';
 
   @override
-  String get prodAdjNote => 'Reason (required)';
+  String get prodAdjNote => 'कारण (ज़रूरी)';
 
   @override
-  String get prodAdjBatchNo => 'Batch no';
+  String get prodAdjBatchNo => 'बैच नं.';
 
   @override
-  String get prodAdjQty => 'Quantity';
+  String get prodAdjQty => 'मात्रा';
 
   @override
-  String get prodAdjCost => 'Cost per unit';
+  String get prodAdjCost => 'प्रति इकाई लागत';
 
   @override
-  String get prodAdjMfg => 'Mfg date (dd/mm/yyyy)';
+  String get prodAdjMfg => 'बनने की तारीख़ (dd/mm/yyyy)';
 
   @override
-  String get prodAdjExpiry => 'Expiry date (dd/mm/yyyy)';
+  String get prodAdjExpiry => 'एक्सपायरी तारीख़ (dd/mm/yyyy)';
 
   @override
-  String get prodAdjApply => 'Apply';
+  String get prodAdjApply => 'लागू करें';
 
   @override
-  String get prodAdjDone => 'Stock updated';
+  String get prodAdjDone => 'स्टॉक बदल गया';
 
   @override
-  String get prodAdjErrNote => 'Enter the reason';
+  String get prodAdjErrNote => 'कारण लिखें';
 
   @override
-  String get prodAdjErrZero => 'Enter a quantity';
+  String get prodAdjErrZero => 'मात्रा लिखें';
 
   @override
-  String get prodAdjErrNegative => 'Not enough stock in this batch';
+  String get prodAdjErrNegative => 'इस बैच में इतना स्टॉक नहीं है';
 
   @override
-  String get prodAdjErrDate => 'Date is in the future';
+  String get prodAdjErrDate => 'तारीख़ आगे की है';
 
   @override
-  String get prodAdjErrLocked => 'This date is in a closed financial year';
+  String get prodAdjErrLocked => 'यह तारीख़ बंद हो चुके वित्त वर्ष में है';
 
   @override
-  String get prodAdjErrExists => 'This batch number already exists';
+  String get prodAdjErrExists => 'यह बैच नंबर पहले से मौजूद है';
 
   @override
-  String get prodAdjErrCost => 'Enter the cost';
+  String get prodAdjErrCost => 'लागत लिखें';
 
   @override
-  String get prodImpTitle => 'Import opening stock';
+  String get prodImpTitle => 'शुरुआती स्टॉक इम्पोर्ट करें';
 
   @override
   String get prodImpHelp =>
-      'Columns: SKU (or barcode or product name), batch, mfg, expiry, qty, cost. First row is the header. Products must exist already.';
+      'कॉलम: SKU (या बारकोड या प्रोडक्ट का नाम), बैच, बनने की तारीख़, एक्सपायरी, मात्रा, लागत। पहली पंक्ति शीर्षक की हो। प्रोडक्ट पहले से बने होने चाहिए।';
 
   @override
-  String get prodImpChoose => 'Choose file';
+  String get prodImpChoose => 'फ़ाइल चुनें';
 
   @override
-  String get prodImpPasteLabel => 'Or paste the table';
+  String get prodImpPasteLabel => 'या टेबल यहाँ पेस्ट करें';
 
   @override
   String get prodImpPasteHint => 'sku, batch, expiry, qty, cost';
 
   @override
-  String get prodImpRead => 'Read pasted text';
+  String get prodImpRead => 'पेस्ट किया टेक्स्ट पढ़ें';
 
   @override
-  String get prodImpDate => 'Stock as on';
+  String get prodImpDate => 'स्टॉक की तारीख़';
 
   @override
   String prodImpSummary(int count, String value) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count rows',
-      one: '1 row',
+      other: '$count पंक्तियाँ',
+      one: '1 पंक्ति',
     );
-    return '$_temp0 worth $value';
+    return '$_temp0, कुल मूल्य $value';
   }
 
   @override
@@ -5651,77 +5653,79 @@ class AppLocalizationsHi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count rows have problems',
-      one: '1 row has a problem',
+      other: '$count पंक्तियों में गड़बड़ है',
+      one: '1 पंक्ति में गड़बड़ है',
     );
-    return '$_temp0. Fix the file and read it again.';
+    return '$_temp0। फ़ाइल सुधारकर दोबारा पढ़ें।';
   }
 
   @override
-  String get prodImpButton => 'Import stock';
+  String get prodImpButton => 'स्टॉक इम्पोर्ट करें';
 
   @override
   String prodImpDone(int rows, int skipped) {
-    return '$rows rows imported, $skipped already there';
+    return '$rows पंक्तियाँ इम्पोर्ट हुईं, $skipped पहले से मौजूद थीं';
   }
 
   @override
-  String get prodImpAlready => 'Everything in this file was imported before';
+  String get prodImpAlready => 'इस फ़ाइल का सारा माल पहले इम्पोर्ट हो चुका है';
 
   @override
   String prodImpStale(int row) {
-    return 'Row $row: the product changed. Read the file again.';
+    return 'पंक्ति $row: प्रोडक्ट बदल गया है। फ़ाइल दोबारा पढ़ें।';
   }
 
   @override
   String prodImpRowNumber(int row) {
-    return 'Row $row';
+    return 'पंक्ति $row';
   }
 
   @override
-  String get prodImpSheetEmpty => 'The file is empty';
+  String get prodImpSheetEmpty => 'फ़ाइल ख़ाली है';
 
   @override
-  String get prodImpNoProductCol => 'No SKU, barcode or product column found';
+  String get prodImpNoProductCol => 'SKU, बारकोड या प्रोडक्ट का कॉलम नहीं मिला';
 
   @override
-  String get prodImpNoQtyCol => 'No quantity column found';
+  String get prodImpNoQtyCol => 'मात्रा का कॉलम नहीं मिला';
 
   @override
-  String get prodImpNoCostCol => 'No cost column found';
+  String get prodImpNoCostCol => 'लागत का कॉलम नहीं मिला';
 
   @override
-  String get prodImpUnreadable => 'This file could not be read';
+  String get prodImpUnreadable => 'यह फ़ाइल पढ़ी नहीं जा सकी';
 
   @override
-  String get prodImpOldExcel => 'Save the old .xls file as .xlsx or CSV first';
+  String get prodImpOldExcel =>
+      'पुरानी .xls फ़ाइल को पहले .xlsx या CSV में सेव करें';
 
   @override
-  String get prodImpProbUnknown => 'Product not found';
+  String get prodImpProbUnknown => 'प्रोडक्ट नहीं मिला';
 
   @override
-  String get prodImpProbAmbiguous => 'More than one product matches';
+  String get prodImpProbAmbiguous => 'एक से ज़्यादा प्रोडक्ट मेल खाते हैं';
 
   @override
-  String get prodImpProbQty => 'Quantity is not valid';
+  String get prodImpProbQty => 'मात्रा सही नहीं है';
 
   @override
-  String get prodImpProbCost => 'Cost is not valid';
+  String get prodImpProbCost => 'लागत सही नहीं है';
 
   @override
-  String get prodImpProbMfg => 'Mfg date is not valid';
+  String get prodImpProbMfg => 'बनने की तारीख़ सही नहीं है';
 
   @override
-  String get prodImpProbExpiry => 'Expiry date is not valid';
+  String get prodImpProbExpiry => 'एक्सपायरी की तारीख़ सही नहीं है';
 
   @override
-  String get prodImpProbExpiryBeforeMfg => 'Expiry is before manufacturing';
+  String get prodImpProbExpiryBeforeMfg =>
+      'एक्सपायरी बनने की तारीख़ से पहले है';
 
   @override
-  String get prodImpProbDuplicate => 'Same product and batch appears twice';
+  String get prodImpProbDuplicate => 'वही प्रोडक्ट और बैच दो बार आया है';
 
   @override
-  String get navSectionShop => 'Shop';
+  String get navSectionShop => 'दुकान';
 
   @override
   String get shrNavDues => 'बकाया';
@@ -5730,7 +5734,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get shrNavProfit => 'दुकान का मुनाफ़ा';
 
   @override
-  String get shrNavGst => 'जीएसटी';
+  String get shrNavGst => 'GST';
 
   @override
   String get shrNavExpiry => 'एक्सपायरी';
@@ -5742,7 +5746,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get shrModuleOff => 'इस कारोबार के लिए दुकान मॉड्यूल बंद है।';
 
   @override
-  String get shrDuesTitle => 'देय और प्राप्य';
+  String get shrDuesTitle => 'देना और लेना';
 
   @override
   String get shrTabPayables => 'सप्लायर को देना';
@@ -5839,7 +5843,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get shrNoSales => 'इन तारीख़ों में कोई बिक्री नहीं।';
 
   @override
-  String get shrGstTitle => 'जीएसटी (GSTR-1)';
+  String get shrGstTitle => 'GST (GSTR-1)';
 
   @override
   String get shrGstMissingBanner =>
@@ -5883,7 +5887,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get shrGstIgst => 'IGST (दूसरा राज्य)';
 
   @override
-  String get shrGstTabSummary => 'सार';
+  String get shrGstTabSummary => 'कुल सार';
 
   @override
   String get shrGstTabB2b => 'B2B';
@@ -6115,7 +6119,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get posSearchHint =>
-      'बारकोड स्कैन करें या उत्पाद लिखें (5*यूरिया = 5)';
+      'बारकोड स्कैन करें या प्रोडक्ट लिखें (5*यूरिया = 5)';
+
+  @override
+  String get posScanTooltip => 'कैमरे से बारकोड स्कैन करें';
+
+  @override
+  String get posScanTitle => 'बारकोड स्कैन करें';
+
+  @override
+  String get posScanTorch => 'टॉर्च';
+
+  @override
+  String get posScanHint => 'कैमरा बारकोड की ओर करें';
+
+  @override
+  String posScanLast(String code) {
+    return 'जोड़ा गया: $code';
+  }
+
+  @override
+  String get posScanPermissionDenied =>
+      'कैमरे की अनुमति बंद है। स्कैन के लिए सेटिंग में कैमरा अनुमति दें, या कोड लिखें।';
+
+  @override
+  String get posScanUnavailable => 'कैमरा उपलब्ध नहीं है। कोड लिखें।';
 
   @override
   String get posPay => 'भुगतान';
@@ -6127,10 +6155,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get posRecall => 'रुके हुए बिल';
 
   @override
-  String get posCartEmpty => 'कार्ट खाली है। उत्पाद स्कैन या खोजें।';
+  String get posCartEmpty => 'कार्ट खाली है। प्रोडक्ट स्कैन या खोजें।';
 
   @override
-  String get posNoProducts => 'कोई उत्पाद नहीं मिला';
+  String get posNoProducts => 'कोई प्रोडक्ट नहीं मिला';
 
   @override
   String get posTierLabel => 'भाव श्रेणी';
@@ -6181,13 +6209,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get posTaxable => 'कर योग्य मूल्य';
 
   @override
-  String get posCgst => 'सीजीएसटी';
+  String get posCgst => 'CGST';
 
   @override
-  String get posSgst => 'एसजीएसटी';
+  String get posSgst => 'SGST';
 
   @override
-  String get posIgst => 'आईजीएसटी';
+  String get posIgst => 'IGST';
 
   @override
   String get posRoundOff => 'राउंड ऑफ़';
@@ -6210,7 +6238,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get posNoPrice => 'इस श्रेणी में भाव नहीं: लिखें';
 
   @override
-  String get posGstMissing => 'एचएसएन या जीएसटी दर नहीं';
+  String get posGstMissing => 'HSN या GST दर नहीं';
 
   @override
   String get posShortcuts =>
@@ -6226,20 +6254,20 @@ class AppLocalizationsHi extends AppLocalizations {
   String get posPayCash => 'नकद';
 
   @override
-  String get posPayUpi => 'यूपीआई';
+  String get posPayUpi => 'UPI';
 
   @override
   String get posPayUdhaar => 'उधार';
 
   @override
   String get posPayAllHint =>
-      'Alt+1 सब नकद · Alt+2 सब यूपीआई · Alt+3 सब उधार · F10 सेव';
+      'Alt+1 सब नकद · Alt+2 सब UPI · Alt+3 सब उधार · F10 सेव';
 
   @override
-  String get posPayUpiAccount => 'यूपीआई खाता';
+  String get posPayUpiAccount => 'UPI खाता';
 
   @override
-  String get posPayNoBank => 'यूपीआई के लिए कोई बैंक खाता नहीं';
+  String get posPayNoBank => 'UPI के लिए कोई बैंक खाता नहीं';
 
   @override
   String posPayBalance(String balance) {
@@ -6253,21 +6281,20 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String posPayRemaining(String amount) {
-    return 'बाकी: $amount';
+    return 'देना बाकी: $amount';
   }
 
   @override
   String get posPaySave => 'बिल सेव करें';
 
   @override
-  String get posErrorPayMismatch =>
-      'नकद + यूपीआई + उधार कुल के बराबर होना चाहिए';
+  String get posErrorPayMismatch => 'नकद + UPI + उधार कुल के बराबर होना चाहिए';
 
   @override
   String get posErrorUdhaarParty => 'उधार के लिए ग्राहक चुनें (F4)।';
 
   @override
-  String get posErrorUpiAccount => 'यूपीआई हिस्से के लिए बैंक खाता चुनें';
+  String get posErrorUpiAccount => 'UPI हिस्से के लिए बैंक खाता चुनें';
 
   @override
   String get posErrorNoLines => 'कम से कम एक वस्तु जोड़ें';
@@ -6276,7 +6303,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get posErrorBadLine => 'मात्रा, भाव या छूट सही नहीं';
 
   @override
-  String get posErrorProductGone => 'कार्ट का एक उत्पाद अब उपलब्ध नहीं';
+  String get posErrorProductGone => 'कार्ट का एक प्रोडक्ट अब उपलब्ध नहीं';
 
   @override
   String posErrorStock(String product) {
@@ -6312,7 +6339,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get posPrint => 'प्रिंट';
 
   @override
-  String get posShare => 'पीडीएफ़ भेजें';
+  String get posShare => 'PDF भेजें';
 
   @override
   String get posHeldTitle => 'रुके हुए बिल';
@@ -6342,8 +6369,8 @@ class AppLocalizationsHi extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count उत्पाद अब उपलब्ध नहीं, छोड़ दिए गए',
-      one: '1 उत्पाद अब उपलब्ध नहीं, छोड़ दिया गया',
+      other: '$count प्रोडक्ट अब उपलब्ध नहीं, छोड़ दिए गए',
+      one: '1 प्रोडक्ट अब उपलब्ध नहीं, छोड़ दिया गया',
     );
     return '$_temp0';
   }
@@ -6401,7 +6428,7 @@ class AppLocalizationsHi extends AppLocalizations {
       other: '$count बिल',
       one: '1 बिल',
     );
-    return '$_temp0 · कुल $total · नकद $cash · यूपीआई $upi · उधार $udhaar';
+    return '$_temp0 · कुल $total · नकद $cash · UPI $upi · उधार $udhaar';
   }
 
   @override
@@ -6411,19 +6438,19 @@ class AppLocalizationsHi extends AppLocalizations {
   String get salesReversedTag => 'रद्द';
 
   @override
-  String get salesInvoiceTitle => 'चालान';
+  String get salesInvoiceTitle => 'इनवॉइस';
 
   @override
-  String get salesBillTo => 'ग्राहक';
+  String get salesBillTo => 'ग्राहक का नाम';
 
   @override
-  String get salesGstin => 'जीएसटीआईएन';
+  String get salesGstin => 'GSTIN';
 
   @override
   String get salesPlaceOfSupply => 'आपूर्ति का स्थान';
 
   @override
-  String get salesHsn => 'एचएसएन';
+  String get salesHsn => 'HSN';
 
   @override
   String salesBatchExpiry(String batch, String expiry) {
@@ -6436,7 +6463,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get salesNoBatch => 'बैच नहीं (ऋणात्मक स्टॉक)';
+  String get salesNoBatch => 'बैच नहीं (माइनस स्टॉक)';
 
   @override
   String get salesPaymentSplit => 'भुगतान';
@@ -6493,7 +6520,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get salesRefundCash => 'नकद लौटाएँ';
 
   @override
-  String get salesRefundUpi => 'यूपीआई से लौटाएँ';
+  String get salesRefundUpi => 'UPI से लौटाएँ';
 
   @override
   String salesReturnSplit(String khata, String cash) {
@@ -6515,7 +6542,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get salesReturnErrParty => 'खाते में जमा के लिए बिल पर ग्राहक चाहिए';
 
   @override
-  String get salesReturnErrUpi => 'यूपीआई वापसी के लिए बैंक खाता चुनें';
+  String get salesReturnErrUpi => 'UPI वापसी के लिए बैंक खाता चुनें';
 
   @override
   String get salesReturnErrNotPermitted => 'आपको वापसी लेने की अनुमति नहीं';
@@ -6524,13 +6551,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get salesReturnsHeader => 'वापसियाँ';
 
   @override
-  String get invoiceTax => 'कर चालान';
+  String get invoiceTax => 'टैक्स इनवॉइस';
 
   @override
-  String get invoiceRetail => 'चालान';
+  String get invoiceRetail => 'इनवॉइस';
 
   @override
-  String get invoiceNo => 'चालान नं.';
+  String get invoiceNo => 'इनवॉइस नं.';
 
   @override
   String get invoiceDate => 'तारीख';
@@ -6548,7 +6575,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get invoiceTaxable => 'कर योग्य';
 
   @override
-  String get invoiceGstPct => 'जीएसटी %';
+  String get invoiceGstPct => 'GST %';
 
   @override
   String get invoiceAmount => 'राशि';
@@ -6563,7 +6590,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get invoicePaidCash => 'नकद चुकाया';
 
   @override
-  String get invoicePaidUpi => 'यूपीआई से चुकाया';
+  String get invoicePaidUpi => 'UPI से चुकाया';
 
   @override
   String get invoiceOnUdhaar => 'उधार';

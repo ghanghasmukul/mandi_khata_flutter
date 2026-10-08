@@ -10883,6 +10883,48 @@ abstract class AppLocalizations {
   /// **'Scan barcode or type product (5*urea = 5 units)'**
   String get posSearchHint;
 
+  /// POS camera barcode scan
+  ///
+  /// In en, this message translates to:
+  /// **'Scan barcode with camera'**
+  String get posScanTooltip;
+
+  /// POS camera barcode scan
+  ///
+  /// In en, this message translates to:
+  /// **'Scan barcode'**
+  String get posScanTitle;
+
+  /// POS camera barcode scan
+  ///
+  /// In en, this message translates to:
+  /// **'Torch'**
+  String get posScanTorch;
+
+  /// POS camera barcode scan
+  ///
+  /// In en, this message translates to:
+  /// **'Point the camera at a barcode'**
+  String get posScanHint;
+
+  /// POS camera barcode scan
+  ///
+  /// In en, this message translates to:
+  /// **'Added: {code}'**
+  String posScanLast(String code);
+
+  /// POS camera barcode scan
+  ///
+  /// In en, this message translates to:
+  /// **'Camera permission is off. Allow camera access in Settings to scan, or type the code instead.'**
+  String get posScanPermissionDenied;
+
+  /// POS camera barcode scan
+  ///
+  /// In en, this message translates to:
+  /// **'The camera is not available. Type the code instead.'**
+  String get posScanUnavailable;
+
   /// Shop POS and sales (steps 4.3, 4.4)
   ///
   /// In en, this message translates to:

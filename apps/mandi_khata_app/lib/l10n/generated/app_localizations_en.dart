@@ -6166,6 +6166,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get posSearchHint => 'Scan barcode or type product (5*urea = 5 units)';
 
   @override
+  String get posScanTooltip => 'Scan barcode with camera';
+
+  @override
+  String get posScanTitle => 'Scan barcode';
+
+  @override
+  String get posScanTorch => 'Torch';
+
+  @override
+  String get posScanHint => 'Point the camera at a barcode';
+
+  @override
+  String posScanLast(String code) {
+    return 'Added: $code';
+  }
+
+  @override
+  String get posScanPermissionDenied =>
+      'Camera permission is off. Allow camera access in Settings to scan, or type the code instead.';
+
+  @override
+  String get posScanUnavailable =>
+      'The camera is not available. Type the code instead.';
+
+  @override
   String get posPay => 'Pay';
 
   @override

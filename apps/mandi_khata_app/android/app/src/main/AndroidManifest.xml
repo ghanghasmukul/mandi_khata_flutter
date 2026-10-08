@@ -3,6 +3,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- Optional fingerprint / face unlock of the app lock (local_auth). -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <!-- Camera barcode scanning in the POS (mobile_scanner). -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <application
         android:label="mandi_khata_app"
         android:name="${applicationName}"
