@@ -182,7 +182,8 @@ class PurchaseRepository {
         otherCharges: draft.otherCharges,
         roundOff: draft.roundOff,
       );
-    // ignore: avoid_catching_errors
+      // PurchaseRules signals bad input with ArgumentError.
+      // ignore: avoid_catching_errors
     } on ArgumentError {
       return const PurchaseInvalid([PurchaseProblem.badLine]);
     }

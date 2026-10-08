@@ -10180,6 +10180,1518 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Same product and batch appears twice'**
   String get prodImpProbDuplicate;
+
+  /// Sidebar group of the input shop.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get navSectionShop;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Dues'**
+  String get shrNavDues;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Shop profit'**
+  String get shrNavProfit;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'GST'**
+  String get shrNavGst;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry'**
+  String get shrNavExpiry;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder'**
+  String get shrNavReorder;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'The shop module is switched off for this business.'**
+  String get shrModuleOff;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Payables & receivables'**
+  String get shrDuesTitle;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier payables'**
+  String get shrTabPayables;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Customer receivables'**
+  String get shrTabReceivables;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Pay'**
+  String get shrPay;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Collect'**
+  String get shrCollect;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Breakdown'**
+  String get shrBreakdown;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Khata of {name}'**
+  String shrBreakdownTitle(String name);
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Parts by source. They add up to the one khata balance; nothing is added on top.'**
+  String get shrBreakdownNote;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Khata balance'**
+  String get shrBreakdownBalance;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Breakdowns of the khata by source. A party\'s net position is always the single khata balance.'**
+  String get shrDuesNote;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No unpaid supplier bills.'**
+  String get shrNoPayables;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No shop credit to collect.'**
+  String get shrNoReceivables;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days overdue'**
+  String shrOverdueDays(int days);
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Not due'**
+  String get shrNotDue;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to collect: this party does not owe us on the khata.'**
+  String get shrCollectDisabled;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'{type, select, arrival{Mandi lots} payment{Payments} receipt{Receipts} shop_sale{Shop sales} shop_return{Shop returns} purchase{Purchases} purchase_return{Purchase returns} loan_disbursal{Loans given} loan_repayment{Loan repayments} interest{Interest} expense{Expenses} journal{Journal} opening_balance{Opening balance} reversal{Reversals} voucher{Vouchers} other{{type}}}'**
+  String shrRefType(String type);
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Shop profit'**
+  String get shrProfitTitle;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'By product'**
+  String get shrByProduct;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'By category'**
+  String get shrByCategory;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'By month'**
+  String get shrByMonth;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'You need permission to see shop profit and cost.'**
+  String get shrProfitLocked;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Uncategorised'**
+  String get shrUncategorised;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No sales on these dates.'**
+  String get shrNoSales;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'GST (GSTR-1)'**
+  String get shrGstTitle;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Set the business GSTIN and state code in Settings: without them the return cannot be filed and every sale is treated as same-state.'**
+  String get shrGstMissingBanner;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get shrGstOpenSettings;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Previous month'**
+  String get shrGstPrevMonth;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Next month'**
+  String get shrGstNextMonth;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'B2B (registered)'**
+  String get shrGstB2b;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'B2C (unregistered)'**
+  String get shrGstB2c;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit notes (returns)'**
+  String get shrGstCreditNotes;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Net for the month'**
+  String get shrGstNet;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'{count} documents'**
+  String shrGstCount(int count);
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Taxable {amount}'**
+  String shrGstTaxable(String amount);
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'CGST + SGST (same state)'**
+  String get shrGstCgstSgst;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'IGST (other state)'**
+  String get shrGstIgst;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get shrGstTabSummary;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'B2B'**
+  String get shrGstTabB2b;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'B2C large'**
+  String get shrGstTabB2cl;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'B2C small'**
+  String get shrGstTabB2cs;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit notes'**
+  String get shrGstTabNotes;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'HSN summary'**
+  String get shrGstTabHsn;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Invoices'**
+  String get shrGstTabInvoices;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Missing data'**
+  String get shrGstTabIssues;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'GSTR-1 Excel'**
+  String get shrGstExportXlsx;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'GSTR-1 JSON'**
+  String get shrGstExportJson;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'All active products have an HSN and a GST rate.'**
+  String get shrGstNoFlags;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Edit product'**
+  String get shrGstEditProduct;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'{issue, select, missingHsn{No HSN} invalidHsn{HSN must be 4, 6 or 8 digits} missingRate{No GST rate} invalidRate{GST rate not allowed} other{{issue}}}'**
+  String shrGstIssue(String issue);
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No invoices in this month.'**
+  String get shrGstNothing;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Saved: {path}'**
+  String shrGstSaved(String path);
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry report'**
+  String get shrExpiryTitle;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder report'**
+  String get shrReorderTitle;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'No batches with an expiry date and stock.'**
+  String get shrNoExpiry;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing needs reordering.'**
+  String get shrNoReorder;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Value at cost is shown only to members who may see shop profit.'**
+  String get shrExpiryValueHidden;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Product'**
+  String get shrColProduct;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Qty'**
+  String get shrColQty;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue'**
+  String get shrColRevenue;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Cost'**
+  String get shrColCost;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Profit'**
+  String get shrColProfit;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Margin'**
+  String get shrColMargin;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get shrColTotal;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier'**
+  String get shrColSupplier;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid bills'**
+  String get shrColUnpaidBills;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Due date'**
+  String get shrColDueDate;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Days overdue'**
+  String get shrColDaysOverdue;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Khata balance'**
+  String get shrColKhataBalance;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Customer'**
+  String get shrColCustomer;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Shop sales'**
+  String get shrColShopSales;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Shop returns'**
+  String get shrColShopReturns;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'To collect'**
+  String get shrColToCollect;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get shrColExpired;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Within 30 days'**
+  String get shrColWithin30Days;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'31 to 60 days'**
+  String get shrCol31To60Days;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'61 to 90 days'**
+  String get shrCol61To90Days;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get shrColLater;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Batch'**
+  String get shrColBatch;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry'**
+  String get shrColExpiry;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Days left'**
+  String get shrColDaysLeft;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get shrColStatus;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Value at cost'**
+  String get shrColValueAtCost;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'In stock'**
+  String get shrColInStock;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder level'**
+  String get shrColReorderLevel;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Sold in 30 days'**
+  String get shrColSoldIn30Days;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Days of stock'**
+  String get shrColDaysOfStock;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested purchase'**
+  String get shrColSuggestedPurchase;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit note'**
+  String get shrColCreditNote;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice no'**
+  String get shrColInvoiceNo;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get shrColDate;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'GSTIN'**
+  String get shrColGstin;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get shrColType;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Taxable value'**
+  String get shrColTaxableValue;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'CGST'**
+  String get shrColCgst;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'SGST'**
+  String get shrColSgst;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'IGST'**
+  String get shrColIgst;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice value'**
+  String get shrColInvoiceValue;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Place of supply'**
+  String get shrColPlaceOfSupply;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Rate %'**
+  String get shrColRate;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit note no'**
+  String get shrColCreditNoteNo;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'HSN'**
+  String get shrColHsn;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Unit'**
+  String get shrColUnit;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Total value'**
+  String get shrColTotalValue;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Nature of document'**
+  String get shrColNatureOfDocument;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get shrColFrom;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get shrColTo;
+
+  /// Shop reports (steps 4.4, 4.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Walk-in'**
+  String get shrColWalkIn;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Counter sale'**
+  String get posTitle;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'New bill'**
+  String get posNewBill;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Scan barcode or type product (5*urea = 5 units)'**
+  String get posSearchHint;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Pay'**
+  String get posPay;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Hold'**
+  String get posHold;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Held bills'**
+  String get posRecall;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'The cart is empty. Scan or search a product.'**
+  String get posCartEmpty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'No product matches'**
+  String get posNoProducts;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Price tier'**
+  String get posTierLabel;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Farmer'**
+  String get posTierFarmer;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Retail'**
+  String get posTierRetail;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Vendor'**
+  String get posTierVendor;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Wholesale'**
+  String get posTierWholesale;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Customer (needed for udhaar)'**
+  String get posCustomer;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Walk-in customer'**
+  String get posWalkIn;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Item'**
+  String get posColItem;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Qty'**
+  String get posColQty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get posColPrice;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Disc.'**
+  String get posColDiscount;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get posColAmount;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Bill discount %'**
+  String get posInvoiceDiscount;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal'**
+  String get posSubtotal;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Discount'**
+  String get posDiscountTotal;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Taxable value'**
+  String get posTaxable;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'CGST'**
+  String get posCgst;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'SGST'**
+  String get posSgst;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'IGST'**
+  String get posIgst;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Round off'**
+  String get posRoundOff;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get posTotal;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'{qty} left'**
+  String posStockLeft(String qty);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Out of stock'**
+  String get posOutOfStock;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Expired stock on shelf'**
+  String get posExpiredStock;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'No price for this tier: type one'**
+  String get posNoPrice;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'HSN or GST rate missing'**
+  String get posGstMissing;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'F2 new · F3 search · F4 customer · F10 pay · + / - qty · Del remove · Esc'**
+  String get posShortcuts;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Remove line'**
+  String get posRemoveLine;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Take payment'**
+  String get posPayTitle;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get posPayCash;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'UPI'**
+  String get posPayUpi;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar'**
+  String get posPayUdhaar;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Alt+1 all cash · Alt+2 all UPI · Alt+3 all udhaar · F10 save'**
+  String get posPayAllHint;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'UPI account'**
+  String get posPayUpiAccount;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'No bank account available for UPI'**
+  String get posPayNoBank;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Party balance now: {balance}'**
+  String posPayBalance(String balance);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'This udhaar takes the party {amount} over the credit limit'**
+  String posPayCreditLimit(String amount);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Left to pay: {amount}'**
+  String posPayRemaining(String amount);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Save bill'**
+  String get posPaySave;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Cash + UPI + udhaar must equal the total'**
+  String get posErrorPayMismatch;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar needs a customer. Pick one with F4.'**
+  String get posErrorUdhaarParty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a bank account for the UPI part'**
+  String get posErrorUpiAccount;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least one item'**
+  String get posErrorNoLines;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'A quantity, price or discount is not valid'**
+  String get posErrorBadLine;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'A product in the cart is no longer available'**
+  String get posErrorProductGone;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough stock: {product}'**
+  String posErrorStock(String product);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Only expired stock is left: {product}'**
+  String posErrorExpired(String product);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'You are not allowed to sell'**
+  String get posErrorNotPermitted;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'An expired batch was sold'**
+  String get posWarnExpiredSold;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Sold beyond the stock on hand'**
+  String get posWarnNegative;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'A batch that expires soon was sold'**
+  String get posWarnNearExpiry;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Bill saved'**
+  String get posSavedTitle;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'{no} · {total}'**
+  String posSavedBody(String no, String total);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Print'**
+  String get posPrint;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Share PDF'**
+  String get posShare;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Held bills'**
+  String get posHeldTitle;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'No bills on hold'**
+  String get posHeldEmpty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 item} other{{count} items}}'**
+  String posHeldItems(int count);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Recall'**
+  String get posHeldRecall;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get posHeldDelete;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 product is no longer available and was left out} other{{count} products are no longer available and were left out}}'**
+  String posHeldSkipped(int count);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Bill put on hold'**
+  String get posHeldSaved;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Shop sales'**
+  String get salesTitle;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'No sales in this period'**
+  String get salesEmpty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Bill no or customer'**
+  String get salesSearchHint;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'All payments'**
+  String get salesFilterAll;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Bill'**
+  String get salesColNo;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get salesColDate;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Customer'**
+  String get salesColCustomer;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get salesColItems;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Tier'**
+  String get salesColTier;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get salesColTotal;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get salesColPaid;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Udhaar'**
+  String get salesColUdhaar;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 bill} other{{count} bills}} · Total {total} · Cash {cash} · UPI {upi} · Udhaar {udhaar}'**
+  String salesTotalsBar(
+    int count,
+    String total,
+    String cash,
+    String upi,
+    String udhaar,
+  );
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'New sale'**
+  String get salesNewSale;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'reversed'**
+  String get salesReversedTag;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice'**
+  String get salesInvoiceTitle;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Bill to'**
+  String get salesBillTo;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'GSTIN'**
+  String get salesGstin;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Place of supply'**
+  String get salesPlaceOfSupply;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'HSN'**
+  String get salesHsn;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Batch {batch} · exp {expiry}'**
+  String salesBatchExpiry(String batch, String expiry);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Batch {batch}'**
+  String salesBatchOnly(String batch);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'No batch (negative stock)'**
+  String get salesNoBatch;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get salesPaymentSplit;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Cost'**
+  String get salesCost;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Profit'**
+  String get salesProfit;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Sales return'**
+  String get salesReturnAction;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse bill'**
+  String get salesReverseAction;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse this whole bill? Stock, khata and books are mirrored.'**
+  String get salesReverseConfirm;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'This bill cannot be reversed (already reversed, or it has returns)'**
+  String get salesReverseLocked;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Bill reversed'**
+  String get salesReverseDone;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'This bill no longer exists'**
+  String get salesNotFound;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Sales return'**
+  String get salesReturnTitle;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Return qty'**
+  String get salesReturnQty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'{qty} can be returned'**
+  String salesReturnLeft(String qty);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Refund {amount}'**
+  String salesReturnRefund(String amount);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Auto (udhaar first, rest cash)'**
+  String get salesRefundAuto;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Credit to khata'**
+  String get salesRefundKhata;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Refund in cash'**
+  String get salesRefundCash;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Refund by UPI'**
+  String get salesRefundUpi;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'To khata {khata} · paid out {cash}'**
+  String salesReturnSplit(String khata, String cash);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Return {no} saved'**
+  String salesReturnSaved(String no);
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a quantity for at least one line'**
+  String get salesReturnErrNoItems;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'More than can be returned'**
+  String get salesReturnErrQty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Crediting the khata needs a customer on the bill'**
+  String get salesReturnErrParty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the bank account for the UPI refund'**
+  String get salesReturnErrUpi;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'You are not allowed to take returns'**
+  String get salesReturnErrNotPermitted;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Returns'**
+  String get salesReturnsHeader;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'TAX INVOICE'**
+  String get invoiceTax;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'INVOICE'**
+  String get invoiceRetail;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice no'**
+  String get invoiceNo;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get invoiceDate;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Item'**
+  String get invoiceItem;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Qty'**
+  String get invoiceQty;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Rate'**
+  String get invoiceRate;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Taxable'**
+  String get invoiceTaxable;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'GST %'**
+  String get invoiceGstPct;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get invoiceAmount;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Discount'**
+  String get invoiceDiscount;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get invoiceTotal;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Paid in cash'**
+  String get invoicePaidCash;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Paid by UPI'**
+  String get invoicePaidUpi;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'On udhaar'**
+  String get invoiceOnUdhaar;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you. Visit again.'**
+  String get invoiceThanks;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Authorised signatory'**
+  String get invoiceSignature;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'Batch'**
+  String get invoiceBatchNote;
+
+  /// Shop POS and sales (steps 4.3, 4.4)
+  ///
+  /// In en, this message translates to:
+  /// **'REVERSED'**
+  String get invoiceReversed;
 }
 
 class _AppLocalizationsDelegate

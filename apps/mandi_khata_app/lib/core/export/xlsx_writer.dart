@@ -49,24 +49,28 @@ abstract final class XlsxWriter {
       '<?xml version="1.0" encoding="UTF-8" '
       'standalone="yes"?>\n';
 
-  static String _contentTypes(int sheets) =>
-      '$_xmlHead'
-      '<Types xmlns="http://schemas.openxmlformats.org/package/2006/'
-      'content-types">'
-      '<Default Extension="rels" ContentType="application/vnd.'
-      'openxmlformats-package.relationships+xml"/>'
-      '<Default Extension="xml" ContentType="application/xml"/>'
-      '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.'
-      'openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'
-      '${[
-        for (var i = 1; i <= sheets; i++)
-          '<Override PartName="/xl/worksheets/sheet$i.xml" ContentType="'
-              'application/vnd.openxmlformats-officedocument.spreadsheetml.'
-              'worksheet+xml"/>',
-      ].join()}'
-      '<Override PartName="/xl/styles.xml" ContentType="application/vnd.'
-      'openxmlformats-officedocument.spreadsheetml.styles+xml"/>'
-      '</Types>';
+  static String _contentTypes(int sheets) {
+    final overrides = StringBuffer();
+    for (var i = 1; i <= sheets; i++) {
+      overrides.write(
+        '<Override PartName="/xl/worksheets/sheet$i.xml" ContentType="'
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.'
+        'worksheet+xml"/>',
+      );
+    }
+    return '$_xmlHead'
+        '<Types xmlns="http://schemas.openxmlformats.org/package/2006/'
+        'content-types">'
+        '<Default Extension="rels" ContentType="application/vnd.'
+        'openxmlformats-package.relationships+xml"/>'
+        '<Default Extension="xml" ContentType="application/xml"/>'
+        '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.'
+        'openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'
+        '$overrides'
+        '<Override PartName="/xl/styles.xml" ContentType="application/vnd.'
+        'openxmlformats-officedocument.spreadsheetml.styles+xml"/>'
+        '</Types>';
+  }
 
   static const _rootRels =
       '$_xmlHead'
@@ -79,23 +83,24 @@ abstract final class XlsxWriter {
       '$_xmlHead'
       '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/'
       'main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/'
-      'relationships"><sheets>${[
-        for (final (i, n) in names.indexed)
-          '<sheet name="${_escape(_sheetName(n))}" sheetId="${i + 1}" '
-              'r:id="rId${i + 1}"/>',
-      ].join()}</sheets></workbook>';
+      'relationships"><sheets>${[for (final (i, n) in names.indexed) '<sheet name="${_escape(_sheetName(n))}" sheetId="${i + 1}" '
+            'r:id="rId${i + 1}"/>'].join()}</sheets></workbook>';
 
-  static String _workbookRels(int sheets) =>
-      '$_xmlHead'
-      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/'
-      'relationships">${[
-        for (var i = 1; i <= sheets; i++)
-          '<Relationship Id="rId$i" Type="http://schemas.openxmlformats.org/'
-              'officeDocument/2006/relationships/worksheet" '
-              'Target="worksheets/sheet$i.xml"/>',
-      ].join()}<Relationship Id="rId${sheets + 1}" Type="http://schemas.'
-      'openxmlformats.org/officeDocument/2006/relationships/styles" '
-      'Target="styles.xml"/></Relationships>';
+  static String _workbookRels(int sheets) {
+    final rels = StringBuffer();
+    for (var i = 1; i <= sheets; i++) {
+      rels.write(
+        '<Relationship Id="rId$i" Type="http://schemas.openxmlformats.org/'
+        'officeDocument/2006/relationships/worksheet" '
+        'Target="worksheets/sheet$i.xml"/>',
+      );
+    }
+    return '$_xmlHead'
+        '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/'
+        'relationships">$rels<Relationship Id="rId${sheets + 1}" '
+        'Type="http://schemas.openxmlformats.org/officeDocument/2006/'
+        'relationships/styles" Target="styles.xml"/></Relationships>';
+  }
 
   // Style ids: 0 plain, 1 header, 2 money, 3 date, 4 quantity, 5 bold money,
   // 6 bold, 7 bold quantity.

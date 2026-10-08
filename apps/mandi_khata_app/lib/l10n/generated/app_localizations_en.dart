@@ -5767,4 +5767,867 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prodImpProbDuplicate => 'Same product and batch appears twice';
+
+  @override
+  String get navSectionShop => 'Shop';
+
+  @override
+  String get shrNavDues => 'Dues';
+
+  @override
+  String get shrNavProfit => 'Shop profit';
+
+  @override
+  String get shrNavGst => 'GST';
+
+  @override
+  String get shrNavExpiry => 'Expiry';
+
+  @override
+  String get shrNavReorder => 'Reorder';
+
+  @override
+  String get shrModuleOff =>
+      'The shop module is switched off for this business.';
+
+  @override
+  String get shrDuesTitle => 'Payables & receivables';
+
+  @override
+  String get shrTabPayables => 'Supplier payables';
+
+  @override
+  String get shrTabReceivables => 'Customer receivables';
+
+  @override
+  String get shrPay => 'Pay';
+
+  @override
+  String get shrCollect => 'Collect';
+
+  @override
+  String get shrBreakdown => 'Breakdown';
+
+  @override
+  String shrBreakdownTitle(String name) {
+    return 'Khata of $name';
+  }
+
+  @override
+  String get shrBreakdownNote =>
+      'Parts by source. They add up to the one khata balance; nothing is added on top.';
+
+  @override
+  String get shrBreakdownBalance => 'Khata balance';
+
+  @override
+  String get shrDuesNote =>
+      'Breakdowns of the khata by source. A party\'s net position is always the single khata balance.';
+
+  @override
+  String get shrNoPayables => 'No unpaid supplier bills.';
+
+  @override
+  String get shrNoReceivables => 'No shop credit to collect.';
+
+  @override
+  String shrOverdueDays(int days) {
+    return '$days days overdue';
+  }
+
+  @override
+  String get shrNotDue => 'Not due';
+
+  @override
+  String get shrCollectDisabled =>
+      'Nothing to collect: this party does not owe us on the khata.';
+
+  @override
+  String shrRefType(String type) {
+    String _temp0 = intl.Intl.selectLogic(type, {
+      'arrival': 'Mandi lots',
+      'payment': 'Payments',
+      'receipt': 'Receipts',
+      'shop_sale': 'Shop sales',
+      'shop_return': 'Shop returns',
+      'purchase': 'Purchases',
+      'purchase_return': 'Purchase returns',
+      'loan_disbursal': 'Loans given',
+      'loan_repayment': 'Loan repayments',
+      'interest': 'Interest',
+      'expense': 'Expenses',
+      'journal': 'Journal',
+      'opening_balance': 'Opening balance',
+      'reversal': 'Reversals',
+      'voucher': 'Vouchers',
+      'other': '$type',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get shrProfitTitle => 'Shop profit';
+
+  @override
+  String get shrByProduct => 'By product';
+
+  @override
+  String get shrByCategory => 'By category';
+
+  @override
+  String get shrByMonth => 'By month';
+
+  @override
+  String get shrProfitLocked =>
+      'You need permission to see shop profit and cost.';
+
+  @override
+  String get shrUncategorised => 'Uncategorised';
+
+  @override
+  String get shrNoSales => 'No sales on these dates.';
+
+  @override
+  String get shrGstTitle => 'GST (GSTR-1)';
+
+  @override
+  String get shrGstMissingBanner =>
+      'Set the business GSTIN and state code in Settings: without them the return cannot be filed and every sale is treated as same-state.';
+
+  @override
+  String get shrGstOpenSettings => 'Open settings';
+
+  @override
+  String get shrGstPrevMonth => 'Previous month';
+
+  @override
+  String get shrGstNextMonth => 'Next month';
+
+  @override
+  String get shrGstB2b => 'B2B (registered)';
+
+  @override
+  String get shrGstB2c => 'B2C (unregistered)';
+
+  @override
+  String get shrGstCreditNotes => 'Credit notes (returns)';
+
+  @override
+  String get shrGstNet => 'Net for the month';
+
+  @override
+  String shrGstCount(int count) {
+    return '$count documents';
+  }
+
+  @override
+  String shrGstTaxable(String amount) {
+    return 'Taxable $amount';
+  }
+
+  @override
+  String get shrGstCgstSgst => 'CGST + SGST (same state)';
+
+  @override
+  String get shrGstIgst => 'IGST (other state)';
+
+  @override
+  String get shrGstTabSummary => 'Summary';
+
+  @override
+  String get shrGstTabB2b => 'B2B';
+
+  @override
+  String get shrGstTabB2cl => 'B2C large';
+
+  @override
+  String get shrGstTabB2cs => 'B2C small';
+
+  @override
+  String get shrGstTabNotes => 'Credit notes';
+
+  @override
+  String get shrGstTabHsn => 'HSN summary';
+
+  @override
+  String get shrGstTabInvoices => 'Invoices';
+
+  @override
+  String get shrGstTabIssues => 'Missing data';
+
+  @override
+  String get shrGstExportXlsx => 'GSTR-1 Excel';
+
+  @override
+  String get shrGstExportJson => 'GSTR-1 JSON';
+
+  @override
+  String get shrGstNoFlags => 'All active products have an HSN and a GST rate.';
+
+  @override
+  String get shrGstEditProduct => 'Edit product';
+
+  @override
+  String shrGstIssue(String issue) {
+    String _temp0 = intl.Intl.selectLogic(issue, {
+      'missingHsn': 'No HSN',
+      'invalidHsn': 'HSN must be 4, 6 or 8 digits',
+      'missingRate': 'No GST rate',
+      'invalidRate': 'GST rate not allowed',
+      'other': '$issue',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get shrGstNothing => 'No invoices in this month.';
+
+  @override
+  String shrGstSaved(String path) {
+    return 'Saved: $path';
+  }
+
+  @override
+  String get shrExpiryTitle => 'Expiry report';
+
+  @override
+  String get shrReorderTitle => 'Reorder report';
+
+  @override
+  String get shrNoExpiry => 'No batches with an expiry date and stock.';
+
+  @override
+  String get shrNoReorder => 'Nothing needs reordering.';
+
+  @override
+  String get shrExpiryValueHidden =>
+      'Value at cost is shown only to members who may see shop profit.';
+
+  @override
+  String get shrColProduct => 'Product';
+
+  @override
+  String get shrColQty => 'Qty';
+
+  @override
+  String get shrColRevenue => 'Revenue';
+
+  @override
+  String get shrColCost => 'Cost';
+
+  @override
+  String get shrColProfit => 'Profit';
+
+  @override
+  String get shrColMargin => 'Margin';
+
+  @override
+  String get shrColTotal => 'Total';
+
+  @override
+  String get shrColSupplier => 'Supplier';
+
+  @override
+  String get shrColUnpaidBills => 'Unpaid bills';
+
+  @override
+  String get shrColDueDate => 'Due date';
+
+  @override
+  String get shrColDaysOverdue => 'Days overdue';
+
+  @override
+  String get shrColKhataBalance => 'Khata balance';
+
+  @override
+  String get shrColCustomer => 'Customer';
+
+  @override
+  String get shrColShopSales => 'Shop sales';
+
+  @override
+  String get shrColShopReturns => 'Shop returns';
+
+  @override
+  String get shrColToCollect => 'To collect';
+
+  @override
+  String get shrColExpired => 'Expired';
+
+  @override
+  String get shrColWithin30Days => 'Within 30 days';
+
+  @override
+  String get shrCol31To60Days => '31 to 60 days';
+
+  @override
+  String get shrCol61To90Days => '61 to 90 days';
+
+  @override
+  String get shrColLater => 'Later';
+
+  @override
+  String get shrColBatch => 'Batch';
+
+  @override
+  String get shrColExpiry => 'Expiry';
+
+  @override
+  String get shrColDaysLeft => 'Days left';
+
+  @override
+  String get shrColStatus => 'Status';
+
+  @override
+  String get shrColValueAtCost => 'Value at cost';
+
+  @override
+  String get shrColInStock => 'In stock';
+
+  @override
+  String get shrColReorderLevel => 'Reorder level';
+
+  @override
+  String get shrColSoldIn30Days => 'Sold in 30 days';
+
+  @override
+  String get shrColDaysOfStock => 'Days of stock';
+
+  @override
+  String get shrColSuggestedPurchase => 'Suggested purchase';
+
+  @override
+  String get shrColCreditNote => 'Credit note';
+
+  @override
+  String get shrColInvoiceNo => 'Invoice no';
+
+  @override
+  String get shrColDate => 'Date';
+
+  @override
+  String get shrColGstin => 'GSTIN';
+
+  @override
+  String get shrColType => 'Type';
+
+  @override
+  String get shrColTaxableValue => 'Taxable value';
+
+  @override
+  String get shrColCgst => 'CGST';
+
+  @override
+  String get shrColSgst => 'SGST';
+
+  @override
+  String get shrColIgst => 'IGST';
+
+  @override
+  String get shrColInvoiceValue => 'Invoice value';
+
+  @override
+  String get shrColPlaceOfSupply => 'Place of supply';
+
+  @override
+  String get shrColRate => 'Rate %';
+
+  @override
+  String get shrColCreditNoteNo => 'Credit note no';
+
+  @override
+  String get shrColHsn => 'HSN';
+
+  @override
+  String get shrColUnit => 'Unit';
+
+  @override
+  String get shrColTotalValue => 'Total value';
+
+  @override
+  String get shrColNatureOfDocument => 'Nature of document';
+
+  @override
+  String get shrColFrom => 'From';
+
+  @override
+  String get shrColTo => 'To';
+
+  @override
+  String get shrColWalkIn => 'Walk-in';
+
+  @override
+  String get posTitle => 'Counter sale';
+
+  @override
+  String get posNewBill => 'New bill';
+
+  @override
+  String get posSearchHint => 'Scan barcode or type product (5*urea = 5 units)';
+
+  @override
+  String get posPay => 'Pay';
+
+  @override
+  String get posHold => 'Hold';
+
+  @override
+  String get posRecall => 'Held bills';
+
+  @override
+  String get posCartEmpty => 'The cart is empty. Scan or search a product.';
+
+  @override
+  String get posNoProducts => 'No product matches';
+
+  @override
+  String get posTierLabel => 'Price tier';
+
+  @override
+  String get posTierFarmer => 'Farmer';
+
+  @override
+  String get posTierRetail => 'Retail';
+
+  @override
+  String get posTierVendor => 'Vendor';
+
+  @override
+  String get posTierWholesale => 'Wholesale';
+
+  @override
+  String get posCustomer => 'Customer (needed for udhaar)';
+
+  @override
+  String get posWalkIn => 'Walk-in customer';
+
+  @override
+  String get posColItem => 'Item';
+
+  @override
+  String get posColQty => 'Qty';
+
+  @override
+  String get posColPrice => 'Price';
+
+  @override
+  String get posColDiscount => 'Disc.';
+
+  @override
+  String get posColAmount => 'Amount';
+
+  @override
+  String get posInvoiceDiscount => 'Bill discount %';
+
+  @override
+  String get posSubtotal => 'Subtotal';
+
+  @override
+  String get posDiscountTotal => 'Discount';
+
+  @override
+  String get posTaxable => 'Taxable value';
+
+  @override
+  String get posCgst => 'CGST';
+
+  @override
+  String get posSgst => 'SGST';
+
+  @override
+  String get posIgst => 'IGST';
+
+  @override
+  String get posRoundOff => 'Round off';
+
+  @override
+  String get posTotal => 'Total';
+
+  @override
+  String posStockLeft(String qty) {
+    return '$qty left';
+  }
+
+  @override
+  String get posOutOfStock => 'Out of stock';
+
+  @override
+  String get posExpiredStock => 'Expired stock on shelf';
+
+  @override
+  String get posNoPrice => 'No price for this tier: type one';
+
+  @override
+  String get posGstMissing => 'HSN or GST rate missing';
+
+  @override
+  String get posShortcuts =>
+      'F2 new · F3 search · F4 customer · F10 pay · + / - qty · Del remove · Esc';
+
+  @override
+  String get posRemoveLine => 'Remove line';
+
+  @override
+  String get posPayTitle => 'Take payment';
+
+  @override
+  String get posPayCash => 'Cash';
+
+  @override
+  String get posPayUpi => 'UPI';
+
+  @override
+  String get posPayUdhaar => 'Udhaar';
+
+  @override
+  String get posPayAllHint =>
+      'Alt+1 all cash · Alt+2 all UPI · Alt+3 all udhaar · F10 save';
+
+  @override
+  String get posPayUpiAccount => 'UPI account';
+
+  @override
+  String get posPayNoBank => 'No bank account available for UPI';
+
+  @override
+  String posPayBalance(String balance) {
+    return 'Party balance now: $balance';
+  }
+
+  @override
+  String posPayCreditLimit(String amount) {
+    return 'This udhaar takes the party $amount over the credit limit';
+  }
+
+  @override
+  String posPayRemaining(String amount) {
+    return 'Left to pay: $amount';
+  }
+
+  @override
+  String get posPaySave => 'Save bill';
+
+  @override
+  String get posErrorPayMismatch => 'Cash + UPI + udhaar must equal the total';
+
+  @override
+  String get posErrorUdhaarParty =>
+      'Udhaar needs a customer. Pick one with F4.';
+
+  @override
+  String get posErrorUpiAccount => 'Pick a bank account for the UPI part';
+
+  @override
+  String get posErrorNoLines => 'Add at least one item';
+
+  @override
+  String get posErrorBadLine => 'A quantity, price or discount is not valid';
+
+  @override
+  String get posErrorProductGone =>
+      'A product in the cart is no longer available';
+
+  @override
+  String posErrorStock(String product) {
+    return 'Not enough stock: $product';
+  }
+
+  @override
+  String posErrorExpired(String product) {
+    return 'Only expired stock is left: $product';
+  }
+
+  @override
+  String get posErrorNotPermitted => 'You are not allowed to sell';
+
+  @override
+  String get posWarnExpiredSold => 'An expired batch was sold';
+
+  @override
+  String get posWarnNegative => 'Sold beyond the stock on hand';
+
+  @override
+  String get posWarnNearExpiry => 'A batch that expires soon was sold';
+
+  @override
+  String get posSavedTitle => 'Bill saved';
+
+  @override
+  String posSavedBody(String no, String total) {
+    return '$no · $total';
+  }
+
+  @override
+  String get posPrint => 'Print';
+
+  @override
+  String get posShare => 'Share PDF';
+
+  @override
+  String get posHeldTitle => 'Held bills';
+
+  @override
+  String get posHeldEmpty => 'No bills on hold';
+
+  @override
+  String posHeldItems(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get posHeldRecall => 'Recall';
+
+  @override
+  String get posHeldDelete => 'Delete';
+
+  @override
+  String posHeldSkipped(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count products are no longer available and were left out',
+      one: '1 product is no longer available and was left out',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get posHeldSaved => 'Bill put on hold';
+
+  @override
+  String get salesTitle => 'Shop sales';
+
+  @override
+  String get salesEmpty => 'No sales in this period';
+
+  @override
+  String get salesSearchHint => 'Bill no or customer';
+
+  @override
+  String get salesFilterAll => 'All payments';
+
+  @override
+  String get salesColNo => 'Bill';
+
+  @override
+  String get salesColDate => 'Date';
+
+  @override
+  String get salesColCustomer => 'Customer';
+
+  @override
+  String get salesColItems => 'Items';
+
+  @override
+  String get salesColTier => 'Tier';
+
+  @override
+  String get salesColTotal => 'Total';
+
+  @override
+  String get salesColPaid => 'Paid';
+
+  @override
+  String get salesColUdhaar => 'Udhaar';
+
+  @override
+  String salesTotalsBar(
+    int count,
+    String total,
+    String cash,
+    String upi,
+    String udhaar,
+  ) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count bills',
+      one: '1 bill',
+    );
+    return '$_temp0 · Total $total · Cash $cash · UPI $upi · Udhaar $udhaar';
+  }
+
+  @override
+  String get salesNewSale => 'New sale';
+
+  @override
+  String get salesReversedTag => 'reversed';
+
+  @override
+  String get salesInvoiceTitle => 'Invoice';
+
+  @override
+  String get salesBillTo => 'Bill to';
+
+  @override
+  String get salesGstin => 'GSTIN';
+
+  @override
+  String get salesPlaceOfSupply => 'Place of supply';
+
+  @override
+  String get salesHsn => 'HSN';
+
+  @override
+  String salesBatchExpiry(String batch, String expiry) {
+    return 'Batch $batch · exp $expiry';
+  }
+
+  @override
+  String salesBatchOnly(String batch) {
+    return 'Batch $batch';
+  }
+
+  @override
+  String get salesNoBatch => 'No batch (negative stock)';
+
+  @override
+  String get salesPaymentSplit => 'Payment';
+
+  @override
+  String get salesCost => 'Cost';
+
+  @override
+  String get salesProfit => 'Profit';
+
+  @override
+  String get salesReturnAction => 'Sales return';
+
+  @override
+  String get salesReverseAction => 'Reverse bill';
+
+  @override
+  String get salesReverseConfirm =>
+      'Reverse this whole bill? Stock, khata and books are mirrored.';
+
+  @override
+  String get salesReverseLocked =>
+      'This bill cannot be reversed (already reversed, or it has returns)';
+
+  @override
+  String get salesReverseDone => 'Bill reversed';
+
+  @override
+  String get salesNotFound => 'This bill no longer exists';
+
+  @override
+  String get salesReturnTitle => 'Sales return';
+
+  @override
+  String get salesReturnQty => 'Return qty';
+
+  @override
+  String salesReturnLeft(String qty) {
+    return '$qty can be returned';
+  }
+
+  @override
+  String salesReturnRefund(String amount) {
+    return 'Refund $amount';
+  }
+
+  @override
+  String get salesRefundAuto => 'Auto (udhaar first, rest cash)';
+
+  @override
+  String get salesRefundKhata => 'Credit to khata';
+
+  @override
+  String get salesRefundCash => 'Refund in cash';
+
+  @override
+  String get salesRefundUpi => 'Refund by UPI';
+
+  @override
+  String salesReturnSplit(String khata, String cash) {
+    return 'To khata $khata · paid out $cash';
+  }
+
+  @override
+  String salesReturnSaved(String no) {
+    return 'Return $no saved';
+  }
+
+  @override
+  String get salesReturnErrNoItems => 'Enter a quantity for at least one line';
+
+  @override
+  String get salesReturnErrQty => 'More than can be returned';
+
+  @override
+  String get salesReturnErrParty =>
+      'Crediting the khata needs a customer on the bill';
+
+  @override
+  String get salesReturnErrUpi => 'Pick the bank account for the UPI refund';
+
+  @override
+  String get salesReturnErrNotPermitted =>
+      'You are not allowed to take returns';
+
+  @override
+  String get salesReturnsHeader => 'Returns';
+
+  @override
+  String get invoiceTax => 'TAX INVOICE';
+
+  @override
+  String get invoiceRetail => 'INVOICE';
+
+  @override
+  String get invoiceNo => 'Invoice no';
+
+  @override
+  String get invoiceDate => 'Date';
+
+  @override
+  String get invoiceItem => 'Item';
+
+  @override
+  String get invoiceQty => 'Qty';
+
+  @override
+  String get invoiceRate => 'Rate';
+
+  @override
+  String get invoiceTaxable => 'Taxable';
+
+  @override
+  String get invoiceGstPct => 'GST %';
+
+  @override
+  String get invoiceAmount => 'Amount';
+
+  @override
+  String get invoiceDiscount => 'Discount';
+
+  @override
+  String get invoiceTotal => 'Total';
+
+  @override
+  String get invoicePaidCash => 'Paid in cash';
+
+  @override
+  String get invoicePaidUpi => 'Paid by UPI';
+
+  @override
+  String get invoiceOnUdhaar => 'On udhaar';
+
+  @override
+  String get invoiceThanks => 'Thank you. Visit again.';
+
+  @override
+  String get invoiceSignature => 'Authorised signatory';
+
+  @override
+  String get invoiceBatchNote => 'Batch';
+
+  @override
+  String get invoiceReversed => 'REVERSED';
 }

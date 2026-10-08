@@ -39,13 +39,17 @@ bool shopModuleEnabled(Ref ref) =>
 /// `shop.expiry_warn_days`
 @riverpod
 int expiryWarnDays(Ref ref) =>
-    ref.watch(settingProvider('shop.expiry_warn_days', businessTarget))?.asInt ??
+    ref
+        .watch(settingProvider('shop.expiry_warn_days', businessTarget))
+        ?.asInt ??
     60;
 
 /// `shop.price_tiers`
 @riverpod
 List<String> priceTiers(Ref ref) {
-  final v = ref.watch(settingProvider('shop.price_tiers', businessTarget))?.value;
+  final v = ref
+      .watch(settingProvider('shop.price_tiers', businessTarget))
+      ?.value;
   if (v is List && v.isNotEmpty) return [for (final t in v) t.toString()];
   return PriceTiers.defaultTiers;
 }
@@ -234,12 +238,7 @@ class ProductsWriter {
     final who = _who();
     if (who == null) return const StockNotPermitted(Permission.stockAdjust);
     final repo = await _ref.read(stockRepositoryProvider.future);
-    return await repo.importOpening(
-      who.ctx,
-      preview,
-      asOn: asOn,
-      can: who.can,
-    );
+    return await repo.importOpening(who.ctx, preview, asOn: asOn, can: who.can);
   }
 }
 

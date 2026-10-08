@@ -80,7 +80,8 @@ final class SupplierPayableTotals {
 /// ledger-and-mandi.md "One party, many roles").
 ///
 /// Derivation (kept deliberately simple):
-///  1. Each invoice contributes its `purchase` khata jama ([PayableBill.booked]).
+///  1. Each invoice contributes its `purchase` khata jama
+///     ([PayableBill.booked]).
 ///  2. A credit note reduces its own invoice first; a credit above what that
 ///     invoice has left is treated as a payment.
 ///  3. The supplier's payments (udhaar entries of `payment` / `voucher`
@@ -135,11 +136,7 @@ abstract final class Payables {
         if (days > worst) worst = days;
         total += rest;
         open.add(
-          PayableBillState(
-            bill: list[i],
-            outstanding: rest,
-            overdueDays: days,
-          ),
+          PayableBillState(bill: list[i], outstanding: rest, overdueDays: days),
         );
       }
       if (open.isEmpty) continue;

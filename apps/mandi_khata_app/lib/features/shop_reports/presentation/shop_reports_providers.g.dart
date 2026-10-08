@@ -51,55 +51,6 @@ final class ShopReportsRepositoryProvider
 String _$shopReportsRepositoryHash() =>
     r'f1d61ffeb9dfb4a9cdc945554c6e686a3821c92a';
 
-/// The shop module switch (`app.modules.shop`); on until the business turns
-/// it off.
-
-@ProviderFor(shopModuleEnabled)
-final shopModuleEnabledProvider = ShopModuleEnabledProvider._();
-
-/// The shop module switch (`app.modules.shop`); on until the business turns
-/// it off.
-
-final class ShopModuleEnabledProvider
-    extends $FunctionalProvider<bool, bool, bool>
-    with $Provider<bool> {
-  /// The shop module switch (`app.modules.shop`); on until the business turns
-  /// it off.
-  ShopModuleEnabledProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'shopModuleEnabledProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$shopModuleEnabledHash();
-
-  @$internal
-  @override
-  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
-
-  @override
-  bool create(Ref ref) {
-    return shopModuleEnabled(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(bool value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<bool>(value),
-    );
-  }
-}
-
-String _$shopModuleEnabledHash() => r'ba4d45549f31bf01a4efbe8c23b8e07e44619a23';
-
 @ProviderFor(supplierPayables)
 final supplierPayablesProvider = SupplierPayablesFamily._();
 

@@ -66,7 +66,7 @@ void main() {
 
     testWidgets('an owner sees all three sections', (tester) async {
       final s = await build(tester, MemberRole.owner);
-      expect(s.map((x) => x.id), ['daily', 'money', 'admin']);
+      expect(s.map((x) => x.id), ['daily', 'shop', 'money', 'admin']);
       final ids = [for (final x in s) ...x.items.map((i) => i.id)];
       expect(
         ids,
@@ -206,6 +206,11 @@ void main() {
       expect(find.byType(MkSidebar), findsNothing);
       await tester.tap(find.text('More'));
       await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('more-/reports')),
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
       expect(find.byKey(const ValueKey('more-/reports')), findsOneWidget);
       await tester.scrollUntilVisible(
         find.byKey(const ValueKey('more-/settings')),

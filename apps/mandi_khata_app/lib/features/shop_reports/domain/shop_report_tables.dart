@@ -23,9 +23,7 @@ abstract final class ShopReportTables {
     ReportColumn col(int i, ReportColumn c) =>
         qty.contains(i) ? ReportColumn(c.title, ReportColumnKind.text) : c;
     return ReportTable(
-      columns: [
-        for (final (i, c) in t.columns.indexed) col(i, c),
-      ],
+      columns: [for (final (i, c) in t.columns.indexed) col(i, c)],
       rows: [for (final r in t.rows) fix(r)],
       totals: t.totals == null ? null : fix(t.totals!),
     );

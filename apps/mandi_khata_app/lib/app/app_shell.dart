@@ -17,6 +17,7 @@ import 'package:mandi_khata_app/core/update/update_banner.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
+import 'package:mandi_khata_app/features/products/presentation/products_providers.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -44,6 +45,7 @@ class AppShell extends ConsumerWidget {
       l10n,
       can,
       badges: {if (overdue > 0) LoanRoutes.list: '$overdue'},
+      moduleOn: (m) => m != 'shop' || ref.watch(shopModuleEnabledProvider),
     );
     final all = [for (final s in sections) ...s.items];
     final selected = selectedNavId(location, [for (final i in all) i.id]);

@@ -140,17 +140,16 @@ class ShopReportsRepository {
   Stream<List<SupplierPayable>> watchSupplierPayables(
     String tenantId, {
     required LedgerDate today,
-  }) => live(
-    const ['purchases', 'ledger_entries', 'parties'],
-    () => supplierPayables(tenantId, today: today),
-  );
+  }) => live(const [
+    'purchases',
+    'ledger_entries',
+    'parties',
+  ], () => supplierPayables(tenantId, today: today));
 
   /// Customers with shop credit: `shop_sale` (udhaar) less `shop_return`
   /// (jama) entries, limited to what the party owes on the whole khata.
   /// Biggest first.
-  Future<List<CustomerReceivable>> customerReceivables(
-    String tenantId,
-  ) async {
+  Future<List<CustomerReceivable>> customerReceivables(String tenantId) async {
     final rows = await _db.getAll(
       'SELECT e.party_id, '
       "SUM(CASE WHEN e.ref_type = 'shop_sale' AND e.side = 'udhaar' "
@@ -199,16 +198,13 @@ class ShopReportsRepository {
   }
 
   Stream<List<CustomerReceivable>> watchCustomerReceivables(String tenantId) =>
-      live(
-        const ['ledger_entries', 'parties'],
-        () => customerReceivables(tenantId),
-      );
+      live(const [
+        'ledger_entries',
+        'parties',
+      ], () => customerReceivables(tenantId));
 
   /// One party's khata by `ref_type`; the parts add up to the balance.
-  Future<KhataBreakdown> khataBreakdown(
-    String tenantId,
-    String partyId,
-  ) async {
+  Future<KhataBreakdown> khataBreakdown(String tenantId, String partyId) async {
     final rows = await _db.getAll(
       "SELECT e.ref_type, SUM(CASE e.side WHEN 'udhaar' "
       'THEN e.amount_paise ELSE -e.amount_paise END) AS amt '
@@ -256,7 +252,7 @@ class ShopReportsRepository {
     final sales = await _db.getAll(
       query(
         'shop_sale_lines l JOIN shop_sales s ON s.id = l.sale_id '
-        'AND s.tenant_id = l.tenant_id',
+            'AND s.tenant_id = l.tenant_id',
         'l.cost_paise',
       ),
       args,
@@ -264,9 +260,9 @@ class ShopReportsRepository {
     final returns = await _db.getAll(
       query(
         'shop_return_lines l JOIN shop_returns s '
-        'ON s.id = l.shop_return_id AND s.tenant_id = l.tenant_id '
-        'JOIN shop_sale_lines sl ON sl.id = l.sale_line_id '
-        'AND sl.tenant_id = l.tenant_id',
+            'ON s.id = l.shop_return_id AND s.tenant_id = l.tenant_id '
+            'JOIN shop_sale_lines sl ON sl.id = l.sale_line_id '
+            'AND sl.tenant_id = l.tenant_id',
         'sl.cost_paise',
       ),
       args,
@@ -296,28 +292,20 @@ class ShopReportsRepository {
     String tenantId, {
     required LedgerDate from,
     required LedgerDate to,
-  }) => live(
-    const [
-      'shop_sales',
-      'shop_sale_lines',
-      'shop_returns',
-      'shop_return_lines',
-      'products',
-      'product_categories',
-    ],
-    () => profitRecords(
-      tenantId,
-      from: from,
-      to: to,
-    ),
-  );
+  }) => live(const [
+    'shop_sales',
+    'shop_sale_lines',
+    'shop_returns',
+    'shop_return_lines',
+    'products',
+    'product_categories',
+  ], () => profitRecords(tenantId, from: from, to: to));
 
   // ---------------------------------------------------------------------
   // GST
   // ---------------------------------------------------------------------
 
-  static int _rateBp(Object? rate) =>
-      rate is num ? (rate * 100).round() : 0;
+  static int _rateBp(Object? rate) => rate is num ? (rate * 100).round() : 0;
 
   static String _monthStart(int year, int month) =>
       '${year.toString().padLeft(4, '0')}-'
@@ -551,10 +539,11 @@ class ShopReportsRepository {
   Stream<List<ExpiryRow>> watchExpiryRows(
     String tenantId, {
     required LedgerDate today,
-  }) => live(
-    const ['batches', 'stock_movements', 'products'],
-    () => expiryRows(tenantId, today: today),
-  );
+  }) => live(const [
+    'batches',
+    'stock_movements',
+    'products',
+  ], () => expiryRows(tenantId, today: today));
 
   /// Active products with their stock and the last 30 days' net sales.
   Future<List<ReorderSuggestion>> reorderSuggestions(
@@ -594,8 +583,8 @@ class ShopReportsRepository {
   Stream<List<ReorderSuggestion>> watchReorderSuggestions(
     String tenantId, {
     required LedgerDate today,
-  }) => live(
-    const ['products', 'stock_movements'],
-    () => reorderSuggestions(tenantId, today: today),
-  );
+  }) => live(const [
+    'products',
+    'stock_movements',
+  ], () => reorderSuggestions(tenantId, today: today));
 }

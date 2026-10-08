@@ -195,7 +195,10 @@ abstract final class DuesCalc {
     final capped = total - weOwe;
     final effective = capped > credits ? capped : credits;
     final all = allocateFifo(bills, effective, today: today);
-    final open = [for (final a in all) if (a.isOpen) a];
+    final open = [
+      for (final a in all)
+        if (a.isOpen) a,
+    ];
     final outstanding = open.fold(Money.zero, (a, b) => a + b.outstanding);
     return SupplierPayable(
       partyId: partyId,

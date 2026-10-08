@@ -153,7 +153,7 @@ void main() {
     expect(await n('cash_bank_entries'), 0);
     await expectBalanced();
     final stockLine = await db.get(
-      "SELECT debit_paise FROM journal_lines WHERE debit_paise = 100000",
+      'SELECT debit_paise FROM journal_lines WHERE debit_paise = 100000',
     );
     expect(stockLine, isNotNull);
     for (final table in [
@@ -287,7 +287,7 @@ void main() {
     expect(await stock(line['batch_id']! as String), 6000);
     // 4 x 100 + 5% = 420, all unpaid -> credit note (udhaar).
     final khata = await db.getAll(
-      "SELECT side, amount_paise FROM ledger_entries WHERE ref_type = "
+      'SELECT side, amount_paise FROM ledger_entries WHERE ref_type = '
       "'purchase_return'",
     );
     expect(khata.single['side'], 'udhaar');

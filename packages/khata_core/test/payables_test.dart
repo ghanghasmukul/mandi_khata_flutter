@@ -3,9 +3,9 @@ import 'package:test/test.dart';
 
 PayableBill bill(
   String id, {
-  String supplier = 's1',
   required int rupees,
   required LedgerDate due,
+  String supplier = 's1',
   int credit = 0,
 }) => PayableBill(
   purchaseId: id,
@@ -78,7 +78,7 @@ void main() {
   test('suppliers are independent and sorted by earliest due date', () {
     final r = Payables.derive(
       bills: [
-        bill('a', supplier: 's1', rupees: 100, due: LedgerDate(2027, 7, 1)),
+        bill('a', rupees: 100, due: LedgerDate(2027, 7, 1)),
         bill('b', supplier: 's2', rupees: 200, due: LedgerDate(2027, 6, 1)),
       ],
       paidBySupplier: {'s1': const Money.rupees(50)},

@@ -299,3 +299,10 @@
 - Rules written in docs/domain/shop-rules.md and posting-rules.md section 12 before the code: perpetual inventory (stock = sum of stock movements in milli units), FEFO with nulls last, expired batches blocked by default (`shop.block_expired`), negative stock off by default, tax-inclusive prices by default (`shop.prices_include_gst`), invoice discount apportioned by largest remainder, optional round-off to the rupee (default on), GST per line summed per invoice, CGST/SGST vs IGST by place of supply (GSTIN state, else tenant state).
 - One journal entry per shop document, COGS and stock included; paid part posts to cash/bank directly, only the udhaar/unpaid part goes through the party account. New ledger ref_type `purchase_return`; new journal source types `purchase`, `purchase_return`, `shop_sale`, `shop_return`, `stock_adjustment`; new series `SR-`, `PB-`, `PR-`.
 - New permissions `products.manage`, `purchases.create`, `sales.create`, `sales.return`, `stock.adjust`, `shop.view_profit` (munshi gets only `sales.create`). `shop.expiry_warn_days` default changed 180 -> 60. "shop.enabled" is the existing `app.modules.shop`; "tier by role" is the existing `shop.default_tier_for_role.<role>`.
+
+## 2026-10-08 — Phase 4 app layer
+- The app never writes `batches.qty_milli`. The server trigger keeps the cache and RLS on `batches` needs stock rights, so a munshi's sale would otherwise be rejected as a whole. Local reads sum `stock_movements`.
+- Purchase batch cost = weighted average when a batch number is bought again; freight and other charges are spread into batch cost.
+- Supplier payables are a view: purchase khata jama per bill, supplier payments applied FIFO by due date, overpayment shown as advance. Never added to the party balance.
+- Purchase return freight share is stored in `purchase_returns.round_off_paise` (the column that satisfies the total check).
+- Open: payables logic exists twice (`Payables.derive` for purchases, own SQL in `shop_reports`); same rules, to be merged. Hindi / Punjabi strings for the new keys are unreviewed English or first-pass translations.

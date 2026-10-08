@@ -9,7 +9,14 @@ import 'package:mandi_khata_app/features/khata/presentation/day_book_screen.dart
 import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
 import 'package:mandi_khata_app/features/parties/presentation/parties_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/features/pos/presentation/pos_screen.dart'
+    show PosRoutes;
+import 'package:mandi_khata_app/features/products/presentation/products_routes.dart';
+import 'package:mandi_khata_app/features/purchases/presentation/purchases_labels.dart';
 import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
+import 'package:mandi_khata_app/features/shop_reports/presentation/shop_routes.dart';
+import 'package:mandi_khata_app/features/shop_sales/presentation/sales_screen.dart'
+    show SalesRoutes;
 import 'package:mandi_khata_app/features/team/presentation/team_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
@@ -21,7 +28,13 @@ const settingsRoute = '/settings';
 
 /// One entry of the navigation, before it is translated.
 class NavDestination {
-  const NavDestination(this.route, this.icon, this.label, {this.permissions});
+  const NavDestination(
+    this.route,
+    this.icon,
+    this.label, {
+    this.permissions,
+    this.module,
+  });
 
   final String route;
   final IconData icon;
@@ -29,6 +42,9 @@ class NavDestination {
 
   /// Shown when the member has any one of these; null = everyone.
   final List<Permission>? permissions;
+
+  /// The `app.modules.<name>` switch this entry belongs to; null = always.
+  final String? module;
 }
 
 class NavGroup {
@@ -71,6 +87,57 @@ final List<NavGroup> navGroups = <NavGroup>[
       LoanRoutes.list,
       Icons.request_quote_outlined,
       (l) => l.loansTitle,
+    ),
+  ]),
+  NavGroup('shop', (l) => l.navSectionShop, [
+    NavDestination(
+      PosRoutes.pos,
+      Icons.point_of_sale,
+      (l) => l.posTitle,
+      permissions: [Permission.salesCreate],
+      module: 'shop',
+    ),
+    NavDestination(
+      SalesRoutes.list,
+      Icons.receipt_long_outlined,
+      (l) => l.salesTitle,
+      permissions: [Permission.salesCreate, Permission.salesReturn],
+      module: 'shop',
+    ),
+    NavDestination(
+      ProductRoutes.list,
+      Icons.inventory_2_outlined,
+      (l) => l.prodTitle,
+      permissions: [Permission.productsManage],
+      module: 'shop',
+    ),
+    NavDestination(
+      PurchaseRoutes.list,
+      Icons.local_shipping_outlined,
+      (l) => l.purchasesTitle,
+      permissions: [Permission.purchasesCreate],
+      module: 'shop',
+    ),
+    NavDestination(
+      ShopReportRoutes.dues,
+      Icons.account_balance_wallet_outlined,
+      (l) => l.shrNavDues,
+      permissions: [Permission.financeView, Permission.paymentsCreate],
+      module: 'shop',
+    ),
+    NavDestination(
+      ShopReportRoutes.profit,
+      Icons.trending_up,
+      (l) => l.shrNavProfit,
+      permissions: [Permission.shopViewProfit],
+      module: 'shop',
+    ),
+    NavDestination(
+      ShopReportRoutes.gst,
+      Icons.receipt_long_outlined,
+      (l) => l.shrNavGst,
+      permissions: [Permission.financeView],
+      module: 'shop',
     ),
   ]),
   NavGroup('money', (l) => l.navSectionMoney, [
@@ -126,14 +193,15 @@ List<MkNavSection> navSections(
   AppLocalizations l10n,
   bool Function(Permission) can, {
   Map<String, String> badges = const {},
+  bool Function(String module) moduleOn = _allModules,
 }) => [
   for (final g in navGroups)
-    if (_visible(g, can).isNotEmpty)
+    if (_visible(g, can, moduleOn).isNotEmpty)
       MkNavSection(
         id: g.id,
         title: g.title(l10n),
         items: [
-          for (final d in _visible(g, can))
+          for (final d in _visible(g, can, moduleOn))
             MkNavItem(
               id: d.route,
               icon: d.icon,
@@ -144,9 +212,17 @@ List<MkNavSection> navSections(
       ),
 ];
 
-List<NavDestination> _visible(NavGroup g, bool Function(Permission) can) => [
+bool _allModules(String module) => true;
+
+List<NavDestination> _visible(
+  NavGroup g,
+  bool Function(Permission) can,
+  bool Function(String) moduleOn,
+) => [
   for (final d in g.items)
-    if (d.permissions == null || d.permissions!.any(can)) d,
+    if ((d.permissions == null || d.permissions!.any(can)) &&
+        (d.module == null || moduleOn(d.module!)))
+      d,
 ];
 
 /// The id of the destination [location] belongs to: the longest route that

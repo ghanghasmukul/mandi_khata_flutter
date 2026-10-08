@@ -3,15 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
-import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
 import 'package:mandi_khata_app/features/products/domain/product.dart';
 import 'package:mandi_khata_app/features/products/domain/stock.dart';
-import 'package:mandi_khata_app/features/products/presentation/product_form_screen.dart';
 import 'package:mandi_khata_app/features/products/presentation/products_labels.dart';
 import 'package:mandi_khata_app/features/products/presentation/products_providers.dart';
 import 'package:mandi_khata_app/features/products/presentation/products_routes.dart';
-import 'package:mandi_khata_app/features/products/presentation/stock_adjust_dialog.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mandi_khata_app/shared/shortcuts.dart';
 import 'package:mk_ui/mk_ui.dart';
@@ -65,10 +62,7 @@ class _ProductsScreenState extends ConsumerState<ProductsScreen> {
 
     if (!manage) {
       return Scaffold(
-        body: MkEmptyState(
-          icon: Icons.lock_outline,
-          title: l10n.prodNoAccess,
-        ),
+        body: MkEmptyState(icon: Icons.lock_outline, title: l10n.prodNoAccess),
       );
     }
     return CallbackShortcuts(
@@ -319,7 +313,9 @@ class _Filters extends StatelessWidget {
   ProductFilter _with({String? query, Object? category, StockFilter? stock}) =>
       ProductFilter(
         query: query ?? filter.query,
-        categoryId: category == null ? filter.categoryId : (category as String?),
+        categoryId: category == null
+            ? filter.categoryId
+            : (category as String?),
         stock: stock ?? filter.stock,
       );
 
@@ -425,13 +421,3 @@ class _Batches extends StatelessWidget {
     );
   }
 }
-
-/// Opens the stock adjustment dialog for [p] (used by the form screen).
-Future<void> adjustStockFor(BuildContext context, ProductWithStock p) =>
-    showStockAdjustDialog(context, p);
-
-// Keeps the import used by the router.
-// ignore: unused_element
-const _form = ProductFormScreen.new;
-// ignore: unused_element
-String _fmt(BuildContext c, LedgerDate d) => AppFormat.ledgerDate(c, d);

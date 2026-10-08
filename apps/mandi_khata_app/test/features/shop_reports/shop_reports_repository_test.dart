@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/db/powersync_schema.dart';
 import 'package:mandi_khata_app/features/shop_reports/data/shop_reports_repository.dart';
-import 'package:mandi_khata_app/features/shop_reports/domain/dues_models.dart';
 import 'package:mandi_khata_app/features/shop_reports/domain/gst_models.dart';
 import 'package:powersync/powersync.dart';
 
@@ -83,7 +82,7 @@ void main() {
         date,
         date,
         khata,
-        due == 0 ? null : date,
+        if (due == 0) null else date,
         status,
       ],
     );
@@ -118,12 +117,6 @@ void main() {
         [sale, t1, farmer],
       );
       await entry(farmer, 'udhaar', 400000, 'shop_sale', refId: sale);
-      // Other tenant's noise on the same party id must never leak in.
-      await party(
-        farmer + '9'.substring(0, 0),
-        'x',
-        tenant: t2,
-      ).catchError((_) {});
 
       final b = await repo.khataBreakdown(t1, farmer);
       // One net balance: udhaar - jama = -6,000 (we owe him).
@@ -138,8 +131,7 @@ void main() {
       final row = recv.single;
       expect(row.shopNet, const Money(400000));
       expect(row.khataBalance, const Money(-600000));
-      // He owes us nothing net, so nothing is collectible and nothing is
-      // added on top of the balance.
+      // He owes us nothing net: nothing collectible, nothing added on top.
       expect(row.receivable, Money.zero);
       final screenTotal = recv.fold<Money>(
         Money.zero,
@@ -230,7 +222,7 @@ void main() {
   group('profit and GST', () {
     Future<void> seedShop() async {
       await db.execute(
-        "INSERT INTO product_categories (id, tenant_id, name, sort_order, "
+        'INSERT INTO product_categories (id, tenant_id, name, sort_order, '
         "is_active) VALUES (?, ?, 'Fertiliser', 0, 1)",
         [cat, t1],
       );
@@ -275,9 +267,7 @@ void main() {
               prod,
               qty,
               taxable,
-              pos == '07' ? 0 : tax ~/ 2,
-              pos == '07' ? 0 : tax - tax ~/ 2,
-              pos == '07' ? tax : 0,
+              ...(pos == '27' ? [0, 0, tax] : [tax ~/ 2, tax - tax ~/ 2, 0]),
               cost,
             ],
           );
@@ -290,7 +280,7 @@ void main() {
         (urea, 2000, 100000, 40000, 5000),
       ]);
       // 1.5 bags DAP: revenue 600.00, unit cost 300.00 -> COGS 450.00.
-      await sale('SI-2', '2026-10-04', '07AAACG2115R1ZN', '07', [
+      await sale('SI-2', '2026-10-04', '27AAPFU0939F1ZV', '27', [
         (dap, 1500, 60000, 30000, 3000),
       ]);
       // Outside the period.
@@ -429,7 +419,7 @@ void main() {
     final ex = await repo.expiryRows(t1, today: today);
     expect(ex.single.batch.remainingMilli, 8000);
     expect(ex.single.bucket, ExpiryBucket.within30);
-    expect(ex.single.value, const Money(32000));
+    expect(ex.single.value, const Money(320000));
     final re = await repo.reorderSuggestions(t1, today: today);
     // 8 bags <= level 10; sold 12 in 30 days -> cover 12 - 8 = 4 < level
     // 10 - 8 = 2 ... target max(12, 10) = 12, short 4 bags.

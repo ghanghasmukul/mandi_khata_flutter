@@ -14,13 +14,6 @@ part 'shop_reports_providers.g.dart';
 Future<ShopReportsRepository> shopReportsRepository(Ref ref) async =>
     ShopReportsRepository(await ref.watch(powerSyncDatabaseProvider.future));
 
-/// The shop module switch (`app.modules.shop`); on until the business turns
-/// it off.
-@riverpod
-bool shopModuleEnabled(Ref ref) =>
-    ref.watch(settingProvider('app.modules.shop', businessTarget))?.value !=
-    false;
-
 @riverpod
 Stream<List<SupplierPayable>> supplierPayables(
   Ref ref,

@@ -5719,4 +5719,864 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get prodImpProbDuplicate => 'Same product and batch appears twice';
+
+  @override
+  String get navSectionShop => 'Shop';
+
+  @override
+  String get shrNavDues => 'बकाया';
+
+  @override
+  String get shrNavProfit => 'दुकान का मुनाफ़ा';
+
+  @override
+  String get shrNavGst => 'जीएसटी';
+
+  @override
+  String get shrNavExpiry => 'एक्सपायरी';
+
+  @override
+  String get shrNavReorder => 'दोबारा मंगवाना';
+
+  @override
+  String get shrModuleOff => 'इस कारोबार के लिए दुकान मॉड्यूल बंद है।';
+
+  @override
+  String get shrDuesTitle => 'देय और प्राप्य';
+
+  @override
+  String get shrTabPayables => 'सप्लायर को देना';
+
+  @override
+  String get shrTabReceivables => 'ग्राहकों से लेना';
+
+  @override
+  String get shrPay => 'भुगतान';
+
+  @override
+  String get shrCollect => 'वसूलें';
+
+  @override
+  String get shrBreakdown => 'ब्योरा';
+
+  @override
+  String shrBreakdownTitle(String name) {
+    return '$name का खाता';
+  }
+
+  @override
+  String get shrBreakdownNote =>
+      'स्रोत के अनुसार हिस्से। ये एक ही खाता-बैलेंस के बराबर हैं; ऊपर से कुछ नहीं जुड़ता।';
+
+  @override
+  String get shrBreakdownBalance => 'खाता बैलेंस';
+
+  @override
+  String get shrDuesNote =>
+      'खाते का स्रोत के अनुसार ब्योरा। पार्टी की असल स्थिति हमेशा एक ही खाता-बैलेंस है।';
+
+  @override
+  String get shrNoPayables => 'सप्लायर का कोई बिल बाकी नहीं।';
+
+  @override
+  String get shrNoReceivables => 'वसूलने के लिए कोई दुकान उधार नहीं।';
+
+  @override
+  String shrOverdueDays(int days) {
+    return '$days दिन देर';
+  }
+
+  @override
+  String get shrNotDue => 'अभी देय नहीं';
+
+  @override
+  String get shrCollectDisabled =>
+      'वसूलने को कुछ नहीं: खाते में इस पार्टी का बकाया नहीं।';
+
+  @override
+  String shrRefType(String type) {
+    String _temp0 = intl.Intl.selectLogic(type, {
+      'arrival': 'मंडी लॉट',
+      'payment': 'भुगतान',
+      'receipt': 'रसीदें',
+      'shop_sale': 'दुकान की बिक्री',
+      'shop_return': 'दुकान की वापसी',
+      'purchase': 'ख़रीद',
+      'purchase_return': 'ख़रीद वापसी',
+      'loan_disbursal': 'दिया कर्ज़',
+      'loan_repayment': 'कर्ज़ वापसी',
+      'interest': 'ब्याज',
+      'expense': 'ख़र्च',
+      'journal': 'जर्नल',
+      'opening_balance': 'शुरुआती बैलेंस',
+      'reversal': 'उलट-प्रविष्टि',
+      'voucher': 'वाउचर',
+      'other': '$type',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get shrProfitTitle => 'दुकान का मुनाफ़ा';
+
+  @override
+  String get shrByProduct => 'प्रोडक्ट के अनुसार';
+
+  @override
+  String get shrByCategory => 'श्रेणी के अनुसार';
+
+  @override
+  String get shrByMonth => 'महीने के अनुसार';
+
+  @override
+  String get shrProfitLocked =>
+      'दुकान का मुनाफ़ा और लागत देखने की अनुमति चाहिए।';
+
+  @override
+  String get shrUncategorised => 'बिना श्रेणी';
+
+  @override
+  String get shrNoSales => 'इन तारीख़ों में कोई बिक्री नहीं।';
+
+  @override
+  String get shrGstTitle => 'जीएसटी (GSTR-1)';
+
+  @override
+  String get shrGstMissingBanner =>
+      'सेटिंग्स में कारोबार का GSTIN और राज्य कोड भरें: इनके बिना रिटर्न नहीं भरा जा सकता और हर बिक्री एक ही राज्य की मानी जाती है।';
+
+  @override
+  String get shrGstOpenSettings => 'सेटिंग्स खोलें';
+
+  @override
+  String get shrGstPrevMonth => 'पिछला महीना';
+
+  @override
+  String get shrGstNextMonth => 'अगला महीना';
+
+  @override
+  String get shrGstB2b => 'B2B (पंजीकृत)';
+
+  @override
+  String get shrGstB2c => 'B2C (अपंजीकृत)';
+
+  @override
+  String get shrGstCreditNotes => 'क्रेडिट नोट (वापसी)';
+
+  @override
+  String get shrGstNet => 'महीने का कुल';
+
+  @override
+  String shrGstCount(int count) {
+    return '$count दस्तावेज़';
+  }
+
+  @override
+  String shrGstTaxable(String amount) {
+    return 'कर योग्य $amount';
+  }
+
+  @override
+  String get shrGstCgstSgst => 'CGST + SGST (अपना राज्य)';
+
+  @override
+  String get shrGstIgst => 'IGST (दूसरा राज्य)';
+
+  @override
+  String get shrGstTabSummary => 'सार';
+
+  @override
+  String get shrGstTabB2b => 'B2B';
+
+  @override
+  String get shrGstTabB2cl => 'बड़ा B2C';
+
+  @override
+  String get shrGstTabB2cs => 'छोटा B2C';
+
+  @override
+  String get shrGstTabNotes => 'क्रेडिट नोट';
+
+  @override
+  String get shrGstTabHsn => 'HSN सार';
+
+  @override
+  String get shrGstTabInvoices => 'इनवॉइस';
+
+  @override
+  String get shrGstTabIssues => 'अधूरा डेटा';
+
+  @override
+  String get shrGstExportXlsx => 'GSTR-1 एक्सेल';
+
+  @override
+  String get shrGstExportJson => 'GSTR-1 JSON';
+
+  @override
+  String get shrGstNoFlags => 'सभी सक्रिय प्रोडक्ट में HSN और GST दर है।';
+
+  @override
+  String get shrGstEditProduct => 'प्रोडक्ट सुधारें';
+
+  @override
+  String shrGstIssue(String issue) {
+    String _temp0 = intl.Intl.selectLogic(issue, {
+      'missingHsn': 'HSN नहीं',
+      'invalidHsn': 'HSN 4, 6 या 8 अंकों का हो',
+      'missingRate': 'GST दर नहीं',
+      'invalidRate': 'GST दर मान्य नहीं',
+      'other': '$issue',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get shrGstNothing => 'इस महीने कोई इनवॉइस नहीं।';
+
+  @override
+  String shrGstSaved(String path) {
+    return 'सेव हुआ: $path';
+  }
+
+  @override
+  String get shrExpiryTitle => 'एक्सपायरी रिपोर्ट';
+
+  @override
+  String get shrReorderTitle => 'दोबारा मंगवाने की रिपोर्ट';
+
+  @override
+  String get shrNoExpiry => 'एक्सपायरी वाला कोई बैच स्टॉक में नहीं।';
+
+  @override
+  String get shrNoReorder => 'कुछ भी दोबारा मंगवाना नहीं।';
+
+  @override
+  String get shrExpiryValueHidden =>
+      'लागत पर मूल्य केवल उन्हें दिखता है जो दुकान का मुनाफ़ा देख सकते हैं।';
+
+  @override
+  String get shrColProduct => 'प्रोडक्ट';
+
+  @override
+  String get shrColQty => 'मात्रा';
+
+  @override
+  String get shrColRevenue => 'बिक्री';
+
+  @override
+  String get shrColCost => 'लागत';
+
+  @override
+  String get shrColProfit => 'मुनाफ़ा';
+
+  @override
+  String get shrColMargin => 'मार्जिन';
+
+  @override
+  String get shrColTotal => 'कुल';
+
+  @override
+  String get shrColSupplier => 'सप्लायर';
+
+  @override
+  String get shrColUnpaidBills => 'बाकी बिल';
+
+  @override
+  String get shrColDueDate => 'देय तारीख़';
+
+  @override
+  String get shrColDaysOverdue => 'देर के दिन';
+
+  @override
+  String get shrColKhataBalance => 'खाता बैलेंस';
+
+  @override
+  String get shrColCustomer => 'ग्राहक';
+
+  @override
+  String get shrColShopSales => 'दुकान की बिक्री';
+
+  @override
+  String get shrColShopReturns => 'दुकान की वापसी';
+
+  @override
+  String get shrColToCollect => 'वसूलना';
+
+  @override
+  String get shrColExpired => 'एक्सपायर';
+
+  @override
+  String get shrColWithin30Days => '30 दिन में';
+
+  @override
+  String get shrCol31To60Days => '31 से 60 दिन';
+
+  @override
+  String get shrCol61To90Days => '61 से 90 दिन';
+
+  @override
+  String get shrColLater => 'बाद में';
+
+  @override
+  String get shrColBatch => 'बैच';
+
+  @override
+  String get shrColExpiry => 'एक्सपायरी';
+
+  @override
+  String get shrColDaysLeft => 'बचे दिन';
+
+  @override
+  String get shrColStatus => 'स्थिति';
+
+  @override
+  String get shrColValueAtCost => 'लागत पर मूल्य';
+
+  @override
+  String get shrColInStock => 'स्टॉक में';
+
+  @override
+  String get shrColReorderLevel => 'दोबारा मंगवाने का स्तर';
+
+  @override
+  String get shrColSoldIn30Days => '30 दिन में बिका';
+
+  @override
+  String get shrColDaysOfStock => 'स्टॉक के दिन';
+
+  @override
+  String get shrColSuggestedPurchase => 'सुझाई ख़रीद';
+
+  @override
+  String get shrColCreditNote => 'क्रेडिट नोट';
+
+  @override
+  String get shrColInvoiceNo => 'इनवॉइस नं.';
+
+  @override
+  String get shrColDate => 'तारीख़';
+
+  @override
+  String get shrColGstin => 'GSTIN';
+
+  @override
+  String get shrColType => 'प्रकार';
+
+  @override
+  String get shrColTaxableValue => 'कर योग्य मूल्य';
+
+  @override
+  String get shrColCgst => 'CGST';
+
+  @override
+  String get shrColSgst => 'SGST';
+
+  @override
+  String get shrColIgst => 'IGST';
+
+  @override
+  String get shrColInvoiceValue => 'इनवॉइस मूल्य';
+
+  @override
+  String get shrColPlaceOfSupply => 'आपूर्ति का स्थान';
+
+  @override
+  String get shrColRate => 'दर %';
+
+  @override
+  String get shrColCreditNoteNo => 'क्रेडिट नोट नं.';
+
+  @override
+  String get shrColHsn => 'HSN';
+
+  @override
+  String get shrColUnit => 'इकाई';
+
+  @override
+  String get shrColTotalValue => 'कुल मूल्य';
+
+  @override
+  String get shrColNatureOfDocument => 'दस्तावेज़ का प्रकार';
+
+  @override
+  String get shrColFrom => 'से';
+
+  @override
+  String get shrColTo => 'तक';
+
+  @override
+  String get shrColWalkIn => 'काउंटर ग्राहक';
+
+  @override
+  String get posTitle => 'काउंटर बिक्री';
+
+  @override
+  String get posNewBill => 'नया बिल';
+
+  @override
+  String get posSearchHint =>
+      'बारकोड स्कैन करें या उत्पाद लिखें (5*यूरिया = 5)';
+
+  @override
+  String get posPay => 'भुगतान';
+
+  @override
+  String get posHold => 'रोकें';
+
+  @override
+  String get posRecall => 'रुके हुए बिल';
+
+  @override
+  String get posCartEmpty => 'कार्ट खाली है। उत्पाद स्कैन या खोजें।';
+
+  @override
+  String get posNoProducts => 'कोई उत्पाद नहीं मिला';
+
+  @override
+  String get posTierLabel => 'भाव श्रेणी';
+
+  @override
+  String get posTierFarmer => 'किसान';
+
+  @override
+  String get posTierRetail => 'खुदरा';
+
+  @override
+  String get posTierVendor => 'विक्रेता';
+
+  @override
+  String get posTierWholesale => 'थोक';
+
+  @override
+  String get posCustomer => 'ग्राहक (उधार के लिए ज़रूरी)';
+
+  @override
+  String get posWalkIn => 'सामान्य ग्राहक';
+
+  @override
+  String get posColItem => 'वस्तु';
+
+  @override
+  String get posColQty => 'मात्रा';
+
+  @override
+  String get posColPrice => 'भाव';
+
+  @override
+  String get posColDiscount => 'छूट';
+
+  @override
+  String get posColAmount => 'राशि';
+
+  @override
+  String get posInvoiceDiscount => 'बिल छूट %';
+
+  @override
+  String get posSubtotal => 'उप-योग';
+
+  @override
+  String get posDiscountTotal => 'छूट';
+
+  @override
+  String get posTaxable => 'कर योग्य मूल्य';
+
+  @override
+  String get posCgst => 'सीजीएसटी';
+
+  @override
+  String get posSgst => 'एसजीएसटी';
+
+  @override
+  String get posIgst => 'आईजीएसटी';
+
+  @override
+  String get posRoundOff => 'राउंड ऑफ़';
+
+  @override
+  String get posTotal => 'कुल';
+
+  @override
+  String posStockLeft(String qty) {
+    return '$qty बचा';
+  }
+
+  @override
+  String get posOutOfStock => 'स्टॉक खत्म';
+
+  @override
+  String get posExpiredStock => 'एक्सपायर स्टॉक';
+
+  @override
+  String get posNoPrice => 'इस श्रेणी में भाव नहीं: लिखें';
+
+  @override
+  String get posGstMissing => 'एचएसएन या जीएसटी दर नहीं';
+
+  @override
+  String get posShortcuts =>
+      'F2 नया · F3 खोज · F4 ग्राहक · F10 भुगतान · + / - मात्रा · Del हटाएँ · Esc';
+
+  @override
+  String get posRemoveLine => 'पंक्ति हटाएँ';
+
+  @override
+  String get posPayTitle => 'भुगतान लें';
+
+  @override
+  String get posPayCash => 'नकद';
+
+  @override
+  String get posPayUpi => 'यूपीआई';
+
+  @override
+  String get posPayUdhaar => 'उधार';
+
+  @override
+  String get posPayAllHint =>
+      'Alt+1 सब नकद · Alt+2 सब यूपीआई · Alt+3 सब उधार · F10 सेव';
+
+  @override
+  String get posPayUpiAccount => 'यूपीआई खाता';
+
+  @override
+  String get posPayNoBank => 'यूपीआई के लिए कोई बैंक खाता नहीं';
+
+  @override
+  String posPayBalance(String balance) {
+    return 'पार्टी का अभी का बकाया: $balance';
+  }
+
+  @override
+  String posPayCreditLimit(String amount) {
+    return 'इस उधार से पार्टी क्रेडिट सीमा से $amount ऊपर जाएगी';
+  }
+
+  @override
+  String posPayRemaining(String amount) {
+    return 'बाकी: $amount';
+  }
+
+  @override
+  String get posPaySave => 'बिल सेव करें';
+
+  @override
+  String get posErrorPayMismatch =>
+      'नकद + यूपीआई + उधार कुल के बराबर होना चाहिए';
+
+  @override
+  String get posErrorUdhaarParty => 'उधार के लिए ग्राहक चुनें (F4)।';
+
+  @override
+  String get posErrorUpiAccount => 'यूपीआई हिस्से के लिए बैंक खाता चुनें';
+
+  @override
+  String get posErrorNoLines => 'कम से कम एक वस्तु जोड़ें';
+
+  @override
+  String get posErrorBadLine => 'मात्रा, भाव या छूट सही नहीं';
+
+  @override
+  String get posErrorProductGone => 'कार्ट का एक उत्पाद अब उपलब्ध नहीं';
+
+  @override
+  String posErrorStock(String product) {
+    return 'स्टॉक कम है: $product';
+  }
+
+  @override
+  String posErrorExpired(String product) {
+    return 'सिर्फ़ एक्सपायर स्टॉक बचा है: $product';
+  }
+
+  @override
+  String get posErrorNotPermitted => 'आपको बिक्री की अनुमति नहीं';
+
+  @override
+  String get posWarnExpiredSold => 'एक्सपायर बैच बेचा गया';
+
+  @override
+  String get posWarnNegative => 'स्टॉक से ज़्यादा बेचा गया';
+
+  @override
+  String get posWarnNearExpiry => 'जल्द एक्सपायर होने वाला बैच बेचा गया';
+
+  @override
+  String get posSavedTitle => 'बिल सेव हो गया';
+
+  @override
+  String posSavedBody(String no, String total) {
+    return '$no · $total';
+  }
+
+  @override
+  String get posPrint => 'प्रिंट';
+
+  @override
+  String get posShare => 'पीडीएफ़ भेजें';
+
+  @override
+  String get posHeldTitle => 'रुके हुए बिल';
+
+  @override
+  String get posHeldEmpty => 'कोई बिल रुका नहीं है';
+
+  @override
+  String posHeldItems(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count वस्तुएँ',
+      one: '1 वस्तु',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get posHeldRecall => 'वापस लाएँ';
+
+  @override
+  String get posHeldDelete => 'हटाएँ';
+
+  @override
+  String posHeldSkipped(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count उत्पाद अब उपलब्ध नहीं, छोड़ दिए गए',
+      one: '1 उत्पाद अब उपलब्ध नहीं, छोड़ दिया गया',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get posHeldSaved => 'बिल रोक दिया गया';
+
+  @override
+  String get salesTitle => 'दुकान की बिक्री';
+
+  @override
+  String get salesEmpty => 'इस अवधि में कोई बिक्री नहीं';
+
+  @override
+  String get salesSearchHint => 'बिल नं. या ग्राहक';
+
+  @override
+  String get salesFilterAll => 'सभी भुगतान';
+
+  @override
+  String get salesColNo => 'बिल';
+
+  @override
+  String get salesColDate => 'तारीख';
+
+  @override
+  String get salesColCustomer => 'ग्राहक';
+
+  @override
+  String get salesColItems => 'वस्तुएँ';
+
+  @override
+  String get salesColTier => 'श्रेणी';
+
+  @override
+  String get salesColTotal => 'कुल';
+
+  @override
+  String get salesColPaid => 'चुकाया';
+
+  @override
+  String get salesColUdhaar => 'उधार';
+
+  @override
+  String salesTotalsBar(
+    int count,
+    String total,
+    String cash,
+    String upi,
+    String udhaar,
+  ) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बिल',
+      one: '1 बिल',
+    );
+    return '$_temp0 · कुल $total · नकद $cash · यूपीआई $upi · उधार $udhaar';
+  }
+
+  @override
+  String get salesNewSale => 'नई बिक्री';
+
+  @override
+  String get salesReversedTag => 'रद्द';
+
+  @override
+  String get salesInvoiceTitle => 'चालान';
+
+  @override
+  String get salesBillTo => 'ग्राहक';
+
+  @override
+  String get salesGstin => 'जीएसटीआईएन';
+
+  @override
+  String get salesPlaceOfSupply => 'आपूर्ति का स्थान';
+
+  @override
+  String get salesHsn => 'एचएसएन';
+
+  @override
+  String salesBatchExpiry(String batch, String expiry) {
+    return 'बैच $batch · समाप्ति $expiry';
+  }
+
+  @override
+  String salesBatchOnly(String batch) {
+    return 'बैच $batch';
+  }
+
+  @override
+  String get salesNoBatch => 'बैच नहीं (ऋणात्मक स्टॉक)';
+
+  @override
+  String get salesPaymentSplit => 'भुगतान';
+
+  @override
+  String get salesCost => 'लागत';
+
+  @override
+  String get salesProfit => 'मुनाफ़ा';
+
+  @override
+  String get salesReturnAction => 'बिक्री वापसी';
+
+  @override
+  String get salesReverseAction => 'बिल रद्द करें';
+
+  @override
+  String get salesReverseConfirm =>
+      'पूरा बिल रद्द करें? स्टॉक, खाता और बही उलट जाएँगे।';
+
+  @override
+  String get salesReverseLocked =>
+      'यह बिल रद्द नहीं हो सकता (पहले ही रद्द, या वापसी हो चुकी)';
+
+  @override
+  String get salesReverseDone => 'बिल रद्द हो गया';
+
+  @override
+  String get salesNotFound => 'यह बिल मौजूद नहीं';
+
+  @override
+  String get salesReturnTitle => 'बिक्री वापसी';
+
+  @override
+  String get salesReturnQty => 'वापसी मात्रा';
+
+  @override
+  String salesReturnLeft(String qty) {
+    return '$qty वापस हो सकता है';
+  }
+
+  @override
+  String salesReturnRefund(String amount) {
+    return 'वापसी राशि $amount';
+  }
+
+  @override
+  String get salesRefundAuto => 'स्वतः (पहले उधार, बाकी नकद)';
+
+  @override
+  String get salesRefundKhata => 'खाते में जमा';
+
+  @override
+  String get salesRefundCash => 'नकद लौटाएँ';
+
+  @override
+  String get salesRefundUpi => 'यूपीआई से लौटाएँ';
+
+  @override
+  String salesReturnSplit(String khata, String cash) {
+    return 'खाते में $khata · लौटाया $cash';
+  }
+
+  @override
+  String salesReturnSaved(String no) {
+    return 'वापसी $no सेव हो गई';
+  }
+
+  @override
+  String get salesReturnErrNoItems => 'कम से कम एक पंक्ति की मात्रा भरें';
+
+  @override
+  String get salesReturnErrQty => 'वापसी योग्य से ज़्यादा';
+
+  @override
+  String get salesReturnErrParty => 'खाते में जमा के लिए बिल पर ग्राहक चाहिए';
+
+  @override
+  String get salesReturnErrUpi => 'यूपीआई वापसी के लिए बैंक खाता चुनें';
+
+  @override
+  String get salesReturnErrNotPermitted => 'आपको वापसी लेने की अनुमति नहीं';
+
+  @override
+  String get salesReturnsHeader => 'वापसियाँ';
+
+  @override
+  String get invoiceTax => 'कर चालान';
+
+  @override
+  String get invoiceRetail => 'चालान';
+
+  @override
+  String get invoiceNo => 'चालान नं.';
+
+  @override
+  String get invoiceDate => 'तारीख';
+
+  @override
+  String get invoiceItem => 'वस्तु';
+
+  @override
+  String get invoiceQty => 'मात्रा';
+
+  @override
+  String get invoiceRate => 'दर';
+
+  @override
+  String get invoiceTaxable => 'कर योग्य';
+
+  @override
+  String get invoiceGstPct => 'जीएसटी %';
+
+  @override
+  String get invoiceAmount => 'राशि';
+
+  @override
+  String get invoiceDiscount => 'छूट';
+
+  @override
+  String get invoiceTotal => 'कुल';
+
+  @override
+  String get invoicePaidCash => 'नकद चुकाया';
+
+  @override
+  String get invoicePaidUpi => 'यूपीआई से चुकाया';
+
+  @override
+  String get invoiceOnUdhaar => 'उधार';
+
+  @override
+  String get invoiceThanks => 'धन्यवाद। फिर पधारें।';
+
+  @override
+  String get invoiceSignature => 'अधिकृत हस्ताक्षर';
+
+  @override
+  String get invoiceBatchNote => 'बैच';
+
+  @override
+  String get invoiceReversed => 'रद्द';
 }

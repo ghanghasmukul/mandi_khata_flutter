@@ -56,8 +56,10 @@ class StockApi {
       _repo.stockMilli(tenantId, productId);
 }
 
-/// Adds stock movements the way the server does: the row and the cached
-/// `batches.qty_milli` together.
+/// Adds a stock movement. The cached `batches.qty_milli` is NOT written
+/// here: the server trigger keeps it, and a member without stock rights
+/// (a munshi selling) could not upload that update, which would reject the
+/// whole sale. Local reads always sum the movements.
 abstract final class StockMovementWriter {
   static Future<void> insert(
     SqliteWriteContext tx,
@@ -101,13 +103,6 @@ abstract final class StockMovementWriter {
         when.toIso8601String(),
       ],
     );
-    if (batchId != null) {
-      await tx.execute(
-        'UPDATE batches SET qty_milli = qty_milli + ?, updated_at = ? '
-        'WHERE tenant_id = ? AND id = ?',
-        [qtyMilli, when.toIso8601String(), ctx.tenantId, batchId],
-      );
-    }
   }
 }
 

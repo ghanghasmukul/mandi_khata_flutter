@@ -35,9 +35,18 @@ import 'package:mandi_khata_app/features/parties/presentation/party_form_screen.
 import 'package:mandi_khata_app/features/payments/presentation/bank_accounts_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payment_detail_screen.dart';
 import 'package:mandi_khata_app/features/payments/presentation/payments_screen.dart';
+import 'package:mandi_khata_app/features/pos/presentation/pos_screen.dart';
+import 'package:mandi_khata_app/features/products/presentation/products_router.dart';
+import 'package:mandi_khata_app/features/purchases/presentation/purchase_detail_screen.dart';
+import 'package:mandi_khata_app/features/purchases/presentation/purchase_entry_screen.dart';
+import 'package:mandi_khata_app/features/purchases/presentation/purchases_labels.dart';
+import 'package:mandi_khata_app/features/purchases/presentation/purchases_screen.dart';
 import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
 import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
 import 'package:mandi_khata_app/features/settings/presentation/settings_screen.dart';
+import 'package:mandi_khata_app/features/shop_reports/presentation/shop_reports_router.dart';
+import 'package:mandi_khata_app/features/shop_sales/presentation/sale_detail_screen.dart';
+import 'package:mandi_khata_app/features/shop_sales/presentation/sales_screen.dart';
 import 'package:mandi_khata_app/features/team/presentation/team_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -224,7 +233,41 @@ GoRouter router(Ref ref) {
               ),
             ],
           ),
+          GoRoute(
+            path: PurchaseRoutes.list,
+            builder: (context, state) => const PurchasesScreen(),
+            routes: [
+              // Before ':id' so "new" is never read as an id.
+              GoRoute(
+                path: 'new',
+                builder: (context, state) => const PurchaseEntryScreen(),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (context, state) => PurchaseDetailScreen(
+                  purchaseId: state.pathParameters['id']!,
+                ),
+              ),
+            ],
+          ),
           ...accountsRoutes(),
+          ...shopReportRoutes(),
+          ...productRoutes(),
+          GoRoute(
+            path: PosRoutes.pos,
+            builder: (context, state) => const PosScreen(),
+          ),
+          GoRoute(
+            path: SalesRoutes.list,
+            builder: (context, state) => const SalesScreen(),
+            routes: [
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    SaleDetailScreen(saleId: state.pathParameters['id']!),
+              ),
+            ],
+          ),
           GoRoute(
             path: KhataRoutes.dayBook,
             builder: (context, state) => const DayBookScreen(),

@@ -5457,1496 +5457,1496 @@
   },
   "booksTitle": "Books (accounts)",
   "@booksTitle": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksIntro": "Every lot, payment, loan and interest entry also makes a balanced journal entry (debit = credit). This page shows whether older documents are covered and whether the books tally with the khata.",
   "@booksIntro": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksNotPermitted": "Only an accountant or the owner can open the books.",
   "@booksNotPermitted": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksStatusTitle": "Journal entries",
   "@booksStatusTitle": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksAllDone": "Every document has its journal entry.",
   "@booksAllDone": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksMissing": "{count} documents have no journal entry yet.",
   "@booksMissing": {
-      "description": "Books (chart of accounts and journal), step 3.1.",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Books (chart of accounts and journal), step 3.1.",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "booksMissingDetail": "Lots {lots} · Payments {payments} · Interest {interest} · Waivers {waivers} · Khata entries {entries} · Reversals {reversals}",
   "@booksMissingDetail": {
-      "description": "Books (chart of accounts and journal), step 3.1.",
-      "placeholders": {
-          "lots": {
-              "type": "int"
-          },
-          "payments": {
-              "type": "int"
-          },
-          "interest": {
-              "type": "int"
-          },
-          "waivers": {
-              "type": "int"
-          },
-          "entries": {
-              "type": "int"
-          },
-          "reversals": {
-              "type": "int"
-          }
+    "description": "Books (chart of accounts and journal), step 3.1.",
+    "placeholders": {
+      "lots": {
+        "type": "int"
+      },
+      "payments": {
+        "type": "int"
+      },
+      "interest": {
+        "type": "int"
+      },
+      "waivers": {
+        "type": "int"
+      },
+      "entries": {
+        "type": "int"
+      },
+      "reversals": {
+        "type": "int"
       }
+    }
   },
   "booksRun": "Write the missing entries",
   "@booksRun": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksRunning": "Writing… {done} of {total}",
   "@booksRunning": {
-      "description": "Books (chart of accounts and journal), step 3.1.",
-      "placeholders": {
-          "done": {
-              "type": "int"
-          },
-          "total": {
-              "type": "int"
-          }
+    "description": "Books (chart of accounts and journal), step 3.1.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
       }
+    }
   },
   "booksRunDone": "Done: {written} journal entries written.",
   "@booksRunDone": {
-      "description": "Books (chart of accounts and journal), step 3.1.",
-      "placeholders": {
-          "written": {
-              "type": "int"
-          }
+    "description": "Books (chart of accounts and journal), step 3.1.",
+    "placeholders": {
+      "written": {
+        "type": "int"
       }
+    }
   },
   "booksRunProblems": "Could not write for these (nothing was changed):",
   "@booksRunProblems": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksChecksTitle": "Checks",
   "@booksChecksTitle": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksRecheck": "Check again",
   "@booksRecheck": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksCheckBalanced": "Every journal entry balances.",
   "@booksCheckBalanced": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksCheckBalancedBad": "{count} journal entries do not balance.",
   "@booksCheckBalancedBad": {
-      "description": "Books (chart of accounts and journal), step 3.1.",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Books (chart of accounts and journal), step 3.1.",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "booksCheckParties": "Party accounts match the khata.",
   "@booksCheckParties": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksCheckPartiesBad": "{count} party accounts differ from the khata.",
   "@booksCheckPartiesBad": {
-      "description": "Books (chart of accounts and journal), step 3.1.",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Books (chart of accounts and journal), step 3.1.",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "booksCheckBooks": "Cash and bank accounts match the cash book.",
   "@booksCheckBooks": {
-      "description": "Books (chart of accounts and journal), step 3.1."
+    "description": "Books (chart of accounts and journal), step 3.1."
   },
   "booksCheckBooksBad": "{count} cash or bank accounts differ from the cash book.",
   "@booksCheckBooksBad": {
-      "description": "Books (chart of accounts and journal), step 3.1.",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Books (chart of accounts and journal), step 3.1.",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "khataRefVoucher": "Voucher",
   "@khataRefVoucher": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "acctHubTitle": "Accounts",
   "@acctHubTitle": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "acctHubIntro": "Vouchers, books and statements of the business. F4–F9 open a voucher of that type.",
   "@acctHubIntro": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "acctHubSectionEntry": "Entry",
   "@acctHubSectionEntry": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "acctHubSectionBooks": "Books",
   "@acctHubSectionBooks": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "acctHubSectionStatements": "Statements",
   "@acctHubSectionStatements": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "acctHubSectionYear": "Year end and export",
   "@acctHubSectionYear": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "acctNeedsPermission": "You need the “{permission}” permission.",
   "@acctNeedsPermission": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
-      "placeholders": {
-          "permission": {
-              "type": "String"
-          }
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+    "placeholders": {
+      "permission": {
+        "type": "String"
       }
+    }
   },
   "acctNotPermitted": "Only an accountant or the owner can open the accounts.",
   "@acctNotPermitted": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherTypeContra": "Contra",
   "@voucherTypeContra": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherTypePayment": "Payment",
   "@voucherTypePayment": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherTypeReceipt": "Receipt",
   "@voucherTypeReceipt": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherTypeSales": "Sales",
   "@voucherTypeSales": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherTypePurchase": "Purchase",
   "@voucherTypePurchase": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherTypeJournal": "Journal",
   "@voucherTypeJournal": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherEntryTitle": "Voucher entry",
   "@voucherEntryTitle": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherNoPreview": "No. {no}",
   "@voucherNoPreview": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
-      "placeholders": {
-          "no": {
-              "type": "String"
-          }
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+    "placeholders": {
+      "no": {
+        "type": "String"
       }
+    }
   },
   "voucherDate": "Date",
   "@voucherDate": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherNarration": "Narration",
   "@voucherNarration": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherDr": "Dr",
   "@voucherDr": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherCr": "Cr",
   "@voucherCr": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherAccount": "Account",
   "@voucherAccount": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherAmount": "Amount",
   "@voucherAmount": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherAddLine": "Add line",
   "@voucherAddLine": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherRemoveLine": "Remove line",
   "@voucherRemoveLine": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherTotals": "Dr {debit} · Cr {credit}",
   "@voucherTotals": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
-      "placeholders": {
-          "debit": {
-              "type": "String"
-          },
-          "credit": {
-              "type": "String"
-          }
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+    "placeholders": {
+      "debit": {
+        "type": "String"
+      },
+      "credit": {
+        "type": "String"
       }
+    }
   },
   "voucherDifference": "Difference {amount}",
   "@voucherDifference": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "voucherBalanced": "Balanced",
   "@voucherBalanced": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherSave": "Save",
   "@voucherSave": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherSaved": "Saved {no}",
   "@voucherSaved": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
-      "placeholders": {
-          "no": {
-              "type": "String"
-          }
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+    "placeholders": {
+      "no": {
+        "type": "String"
       }
+    }
   },
   "voucherShortcuts": "F4 Contra · F5 Payment · F6 Receipt · F7 Sales · F8 Purchase · F9 Journal · Enter next field · Ctrl+Enter save · Esc cancel",
   "@voucherShortcuts": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherAccountSearch": "Search account",
   "@voucherAccountSearch": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherNoAccount": "No account matches",
   "@voucherNoAccount": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemTooFewLines": "A voucher needs at least two lines.",
   "@voucherProblemTooFewLines": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemAmount": "Every line needs an account and an amount above zero.",
   "@voucherProblemAmount": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemUnbalanced": "Debit and credit must be equal.",
   "@voucherProblemUnbalanced": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemDuplicate": "The same account is twice on one side.",
   "@voucherProblemDuplicate": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemInactive": "An account on this voucher is switched off.",
   "@voucherProblemInactive": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemContra": "A contra uses only cash and bank accounts, on both sides.",
   "@voucherProblemContra": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemPayment": "A payment credits cash or a bank, and debits none.",
   "@voucherProblemPayment": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemReceipt": "A receipt debits cash or a bank, and credits none.",
   "@voucherProblemReceipt": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemSales": "A sales voucher credits a Sales account.",
   "@voucherProblemSales": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemPurchase": "A purchase voucher debits a Purchase account.",
   "@voucherProblemPurchase": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherProblemJournal": "A journal does not use cash or bank: use a payment, receipt or contra.",
   "@voucherProblemJournal": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherNotFound": "An account on this voucher is no longer in the books.",
   "@voucherNotFound": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherLocked": "This voucher is already reversed.",
   "@voucherLocked": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherReverse": "Reverse voucher",
   "@voucherReverse": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherReverseBody": "Every khata entry, cash / bank line and journal line of this voucher is reversed, dated like the voucher. Continue?",
   "@voucherReverseBody": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "voucherReversedTag": "Reversed",
   "@voucherReversedTag": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "dayBookAccountsTitle": "Day book (accounts)",
   "@dayBookAccountsTitle": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "dayBookVouchersOnly": "Vouchers only",
   "@dayBookVouchersOnly": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "dayBookAllTypes": "All",
   "@dayBookAllTypes": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "dayBookNoEntries": "No journal entries on these dates.",
   "@dayBookNoEntries": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "dayBookReverseOnDocument": "This entry belongs to a document: reverse it from that screen.",
   "@dayBookReverseOnDocument": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "sourceLot": "Lot",
   "@sourceLot": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "sourcePayment": "Payment / receipt",
   "@sourcePayment": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "sourceInterest": "Interest",
   "@sourceInterest": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "sourceWaiver": "Interest waived",
   "@sourceWaiver": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "sourceEntry": "Khata entry",
   "@sourceEntry": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "sourceReversal": "Reversal",
   "@sourceReversal": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "journalEntryTitle": "Journal entry",
   "@journalEntryTitle": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "journalDebit": "Debit",
   "@journalDebit": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "journalCredit": "Credit",
   "@journalCredit": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "journalAccountNotSynced": "Account not synced yet",
   "@journalAccountNotSynced": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartTitle": "Chart of accounts",
   "@chartTitle": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartSearch": "Search accounts",
   "@chartSearch": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartAddAccount": "Add account",
   "@chartAddAccount": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartEditAccount": "Edit account",
   "@chartEditAccount": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartAccountName": "Account name",
   "@chartAccountName": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartGroup": "Group",
   "@chartGroup": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartSwitchOff": "Switch off",
   "@chartSwitchOff": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartSwitchOn": "Switch on",
   "@chartSwitchOn": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartOff": "Off",
   "@chartOff": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartNotSynced": "Waiting for sync",
   "@chartNotSynced": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartDrBalance": "{amount} Dr",
   "@chartDrBalance": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "chartCrBalance": "{amount} Cr",
   "@chartCrBalance": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "chartProblemNameEmpty": "Enter a name.",
   "@chartProblemNameEmpty": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartProblemNameTaken": "An account with this name already exists.",
   "@chartProblemNameTaken": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartProblemGroup": "Parties and cash / bank accounts are added on their own screens.",
   "@chartProblemGroup": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "chartProblemNotOwn": "This account cannot be changed here.",
   "@chartProblemNotOwn": {
-      "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
+    "description": "Accounts: vouchers, day book, chart of accounts (step 3.2)."
   },
   "cashBookTitle": "Cash / bank book",
   "@cashBookTitle": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookAccount": "Account",
   "@cashBookAccount": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookOpening": "Opening",
   "@cashBookOpening": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookReceipts": "Receipts",
   "@cashBookReceipts": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookPayments": "Payments",
   "@cashBookPayments": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookClosing": "Closing",
   "@cashBookClosing": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookColDate": "Date",
   "@cashBookColDate": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookColText": "Particulars",
   "@cashBookColText": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookColIn": "In",
   "@cashBookColIn": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookColOut": "Out",
   "@cashBookColOut": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookColBalance": "Balance",
   "@cashBookColBalance": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookDayTotal": "Day total",
   "@cashBookDayTotal": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashBookEmpty": "No lines on these dates.",
   "@cashBookEmpty": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountTitle": "Count cash",
   "@cashCountTitle": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountNotes": "Notes and coins",
   "@cashCountNotes": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountLoose": "Loose change (₹)",
   "@cashCountLoose": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountCounted": "Counted {amount}",
   "@cashCountCounted": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "cashCountBook": "Cash book {amount}",
   "@cashCountBook": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "cashCountExcess": "Excess {amount}",
   "@cashCountExcess": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "cashCountShort": "Short {amount}",
   "@cashCountShort": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "cashCountMatches": "Matches the cash book",
   "@cashCountMatches": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountPost": "Post the difference to Cash Short / Excess",
   "@cashCountPost": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountNote": "Note",
   "@cashCountNote": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountSave": "Save count",
   "@cashCountSave": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountSaved": "Count saved",
   "@cashCountSaved": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "cashCountSavedPosted": "Count saved; difference posted as {no}",
   "@cashCountSavedPosted": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "no": {
-              "type": "String"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "no": {
+        "type": "String"
       }
+    }
   },
   "cashCountHistory": "Earlier counts",
   "@cashCountHistory": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconTitle": "Bank reconciliation",
   "@reconTitle": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconNoBank": "Add a bank account first (Payments → Bank accounts).",
   "@reconNoBank": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconImport": "Import statement",
   "@reconImport": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconAutoMatch": "Auto-match",
   "@reconAutoMatch": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconAutoMatched": "{count} matched",
   "@reconAutoMatched": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "reconMatch": "Match",
   "@reconMatch": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconStatementTab": "Statement ({count})",
   "@reconStatementTab": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "reconBookTab": "Book ({count})",
   "@reconBookTab": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "reconReconciledTab": "Reconciled ({count})",
   "@reconReconciledTab": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "reconWithoutStatement": "Reconciled without statement",
   "@reconWithoutStatement": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconWithReversal": "Reconcile with its reversal",
   "@reconWithReversal": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconUndo": "Undo",
   "@reconUndo": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconPickBoth": "Pick one statement line and one book line with the same amount, then Match.",
   "@reconPickBoth": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconMismatch": "These two lines differ in amount or direction.",
   "@reconMismatch": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconOn": "Reconciled {date}",
   "@reconOn": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "date": {
-              "type": "String"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "date": {
+        "type": "String"
       }
+    }
   },
   "reconImportTitle": "Import bank statement",
   "@reconImportTitle": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconMappingHelp": "Pick which column is which. It is saved for this bank.",
   "@reconMappingHelp": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColDate": "Date",
   "@reconColDate": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColDescription": "Description",
   "@reconColDescription": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColReference": "Reference (UTR / cheque)",
   "@reconColReference": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColDebit": "Withdrawal (debit)",
   "@reconColDebit": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColCredit": "Deposit (credit)",
   "@reconColCredit": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColAmount": "Amount (one signed column)",
   "@reconColAmount": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColBalance": "Balance",
   "@reconColBalance": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconUseAmount": "One amount column",
   "@reconUseAmount": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconDateFormat": "Date format",
   "@reconDateFormat": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconHeaderRows": "Rows to skip at the top",
   "@reconHeaderRows": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconNoColumn": "—",
   "@reconNoColumn": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "reconColumnN": "Column {n}: {sample}",
   "@reconColumnN": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "n": {
-              "type": "int"
-          },
-          "sample": {
-              "type": "String"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "sample": {
+        "type": "String"
       }
+    }
   },
   "reconPreview": "{rows} lines read, {errors} skipped",
   "@reconPreview": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "rows": {
-              "type": "int"
-          },
-          "errors": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "rows": {
+        "type": "int"
+      },
+      "errors": {
+        "type": "int"
       }
+    }
   },
   "reconImportDone": "{added} added, {duplicates} already there, {errors} skipped",
   "@reconImportDone": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "added": {
-              "type": "int"
-          },
-          "duplicates": {
-              "type": "int"
-          },
-          "errors": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "added": {
+        "type": "int"
+      },
+      "duplicates": {
+        "type": "int"
+      },
+      "errors": {
+        "type": "int"
       }
+    }
   },
   "reconRowBadDate": "Row {row}: date not readable",
   "@reconRowBadDate": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "row": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "row": {
+        "type": "int"
       }
+    }
   },
   "reconRowBadAmount": "Row {row}: amount not readable",
   "@reconRowBadAmount": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "row": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "row": {
+        "type": "int"
       }
+    }
   },
   "reconRowNoAmount": "Row {row}: no amount, skipped",
   "@reconRowNoAmount": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "row": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "row": {
+        "type": "int"
       }
+    }
   },
   "reconImportButton": "Import",
   "@reconImportButton": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3)."
   },
   "dashNeedsUnreconciled": "{count, plural, =1{1 bank line not reconciled for over a week} other{{count} bank lines not reconciled for over a week}}",
   "@dashNeedsUnreconciled": {
-      "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Accounts: cash / bank book, bank reconciliation, cash count (step 3.3).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "expensesTitle": "Expenses",
   "@expensesTitle": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseAdd": "Add expense",
   "@expenseAdd": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategory": "Category",
   "@expenseCategory": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseModeCash": "Cash",
   "@expenseModeCash": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseModeBank": "Bank",
   "@expenseModeBank": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseBankAccount": "Bank account",
   "@expenseBankAccount": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expensePaidTo": "Paid to",
   "@expensePaidTo": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseAttachBill": "Attach bill photo",
   "@expenseAttachBill": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseBillAttached": "Bill: {name}",
   "@expenseBillAttached": {
-      "description": "Expenses (step 3.4).",
-      "placeholders": {
-          "name": {
-              "type": "String"
-          }
+    "description": "Expenses (step 3.4).",
+    "placeholders": {
+      "name": {
+        "type": "String"
       }
+    }
   },
   "expenseViewBill": "View bill",
   "@expenseViewBill": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseBillOffline": "The bill is not on this device; it opens when online.",
   "@expenseBillOffline": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseUploadsPending": "{count, plural, =1{1 bill photo waiting to upload} other{{count} bill photos waiting to upload}}",
   "@expenseUploadsPending": {
-      "description": "Expenses (step 3.4).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Expenses (step 3.4).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "expenseSaved": "Saved {no}",
   "@expenseSaved": {
-      "description": "Expenses (step 3.4).",
-      "placeholders": {
-          "no": {
-              "type": "String"
-          }
+    "description": "Expenses (step 3.4).",
+    "placeholders": {
+      "no": {
+        "type": "String"
       }
+    }
   },
   "expenseReverse": "Reverse expense",
   "@expenseReverse": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseReverseBody": "The journal entry and the cash / bank line of this expense are reversed, dated like the expense. Continue?",
   "@expenseReverseBody": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseProblemAmount": "Enter an amount above zero.",
   "@expenseProblemAmount": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseProblemCategory": "Pick a category.",
   "@expenseProblemCategory": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseProblemBank": "Pick a bank account.",
   "@expenseProblemBank": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseNotFound": "The category or bank account is not available.",
   "@expenseNotFound": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseLocked": "Already reversed, or this month is already posted.",
   "@expenseLocked": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expensesEntriesTab": "Entries",
   "@expensesEntriesTab": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expensesRecurringTab": "Recurring",
   "@expensesRecurringTab": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expensesReportTab": "Report",
   "@expensesReportTab": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expensesEmpty": "No expenses on these dates.",
   "@expensesEmpty": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseDueTitle": "Due now",
   "@expenseDueTitle": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseDuePost": "Post",
   "@expenseDuePost": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseDueNone": "Nothing due.",
   "@expenseDueNone": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseRecurringAdd": "Add recurring expense",
   "@expenseRecurringAdd": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseRecurringDay": "Day of month",
   "@expenseRecurringDay": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseRecurringStart": "From",
   "@expenseRecurringStart": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseRecurringEvery": "Every month on day {day} · {amount}",
   "@expenseRecurringEvery": {
-      "description": "Expenses (step 3.4).",
-      "placeholders": {
-          "day": {
-              "type": "int"
-          },
-          "amount": {
-              "type": "String"
-          }
+    "description": "Expenses (step 3.4).",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "expenseCategoriesTitle": "Expense categories",
   "@expenseCategoriesTitle": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryAdd": "Add category",
   "@expenseCategoryAdd": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryName": "Name",
   "@expenseCategoryName": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseGroupDirect": "Direct expense",
   "@expenseGroupDirect": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseGroupIndirect": "Indirect expense",
   "@expenseGroupIndirect": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseReportTotal": "Total",
   "@expenseReportTotal": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryPalledari": "Palledari",
   "@expenseCategoryPalledari": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryTransport": "Transport",
   "@expenseCategoryTransport": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategorySalary": "Salary",
   "@expenseCategorySalary": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryBardana": "Bardana",
   "@expenseCategoryBardana": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryMandiCharges": "Mandi charges",
   "@expenseCategoryMandiCharges": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryElectricity": "Electricity",
   "@expenseCategoryElectricity": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryRent": "Rent",
   "@expenseCategoryRent": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "expenseCategoryMisc": "Miscellaneous",
   "@expenseCategoryMisc": {
-      "description": "Expenses (step 3.4)."
+    "description": "Expenses (step 3.4)."
   },
   "dashNeedsRecurringDue": "{count, plural, =1{1 recurring expense due} other{{count} recurring expenses due}}",
   "@dashNeedsRecurringDue": {
-      "description": "Expenses (step 3.4), dashboard.",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Expenses (step 3.4), dashboard.",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "tbTitle": "Trial balance",
   "@tbTitle": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtAsOf": "As of {date}",
   "@stmtAsOf": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "date": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "date": {
+        "type": "String"
       }
+    }
   },
   "stmtPickDate": "Change date",
   "@stmtPickDate": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "tbGroupsOnly": "Groups only",
   "@tbGroupsOnly": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtParticulars": "Particulars",
   "@stmtParticulars": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtDebit": "Debit",
   "@stmtDebit": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtCredit": "Credit",
   "@stmtCredit": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtAmount": "Amount",
   "@stmtAmount": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtTotal": "Total",
   "@stmtTotal": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtBalance": "Balance",
   "@stmtBalance": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtTallies": "Tallies",
   "@stmtTallies": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtDoesNotTally": "Does not tally: difference {amount}",
   "@stmtDoesNotTally": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "stmtEmpty": "No entries on these dates.",
   "@stmtEmpty": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "stmtThisYear": "This year {label}",
   "@stmtThisYear": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "label": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "label": {
+        "type": "String"
       }
+    }
   },
   "stmtLastYear": "Last year {label}",
   "@stmtLastYear": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "label": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "label": {
+        "type": "String"
       }
+    }
   },
   "plTitle": "Profit & loss",
   "@plTitle": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plSales": "Sales",
   "@plSales": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plDirectIncome": "Direct income",
   "@plDirectIncome": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plPurchases": "Purchases",
   "@plPurchases": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plDirectExpenses": "Direct expenses",
   "@plDirectExpenses": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plIndirectIncome": "Indirect income",
   "@plIndirectIncome": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plIndirectExpenses": "Indirect expenses",
   "@plIndirectExpenses": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plGrossProfit": "Gross profit",
   "@plGrossProfit": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plNetProfit": "Net profit",
   "@plNetProfit": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "plNetLoss": "Net loss",
   "@plNetLoss": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "bsTitle": "Balance sheet",
   "@bsTitle": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "bsAssets": "Assets",
   "@bsAssets": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "bsLiabilities": "Liabilities",
   "@bsLiabilities": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "bsCapital": "Capital",
   "@bsCapital": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "bsCurrentProfit": "Profit & Loss (current)",
   "@bsCurrentProfit": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "bsOtherSide": "{name} (other side)",
   "@bsOtherSide": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "name": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "name": {
+        "type": "String"
       }
+    }
   },
   "bsLiabilitiesAndCapital": "Liabilities + capital",
   "@bsLiabilitiesAndCapital": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "ledgerTitle": "Account ledger",
   "@ledgerTitle": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "ledgerPickAccount": "Pick an account",
   "@ledgerPickAccount": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "ledgerOpening": "Opening balance",
   "@ledgerOpening": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "ledgerClosing": "Closing balance",
   "@ledgerClosing": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "groupSummaryTitle": "Group summary",
   "@groupSummaryTitle": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearCloseTitle": "Year close",
   "@yearCloseTitle": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearCloseIntro": "Closing a year moves its profit to Profit & Loss A/c and locks every date in it. Balances simply carry on: the khata is not touched.",
   "@yearCloseIntro": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearOpen": "Open",
   "@yearOpen": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearClosedOn": "Closed {date}",
   "@yearClosedOn": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "date": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "date": {
+        "type": "String"
       }
+    }
   },
   "yearProfit": "Profit {amount}",
   "@yearProfit": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "yearLoss": "Loss {amount}",
   "@yearLoss": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "amount": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
       }
+    }
   },
   "yearRunInterest": "Post interest up to 31 March first (optional)",
   "@yearRunInterest": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearCloseButton": "Close {label}",
   "@yearCloseButton": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "label": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "label": {
+        "type": "String"
       }
+    }
   },
   "yearCloseConfirm": "Closing {label} moves its profit to Profit & Loss A/c and locks every date in it; only the owner can then post there, with a reason. This cannot be undone. Continue?",
   "@yearCloseConfirm": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "label": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "label": {
+        "type": "String"
       }
+    }
   },
   "yearClosedDone": "{label} closed",
   "@yearClosedDone": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "label": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "label": {
+        "type": "String"
       }
+    }
   },
   "yearProblemOwner": "Only the owner can close a year.",
   "@yearProblemOwner": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearProblemNotEnded": "The year has not ended yet.",
   "@yearProblemNotEnded": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearProblemEarlier": "Close the earlier year first.",
   "@yearProblemEarlier": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearProblemBooks": "The books do not tally: fix the books checks first.",
   "@yearProblemBooks": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearCloseEntry": "Year close",
   "@yearCloseEntry": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearLockedError": "This date is in a closed financial year. Only the owner can post there, after unlocking it with a reason on the Year close screen.",
   "@yearLockedError": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearUnlockTitle": "Post into a closed year (this session)",
   "@yearUnlockTitle": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearUnlockReason": "Reason",
   "@yearUnlockReason": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearUnlockButton": "Unlock",
   "@yearUnlockButton": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "yearUnlockOn": "Unlocked for this session: {reason}",
   "@yearUnlockOn": {
-      "description": "Accounts: statements and year close (step 3.5).",
-      "placeholders": {
-          "reason": {
-              "type": "String"
-          }
+    "description": "Accounts: statements and year close (step 3.5).",
+    "placeholders": {
+      "reason": {
+        "type": "String"
       }
+    }
   },
   "yearUnlockOff": "Lock again",
   "@yearUnlockOff": {
-      "description": "Accounts: statements and year close (step 3.5)."
+    "description": "Accounts: statements and year close (step 3.5)."
   },
   "dashNeedsBooks": "{count, plural, =1{The books do not tally: 1 problem} other{The books do not tally: {count} problems}}",
   "@dashNeedsBooks": {
-      "description": "Books check after every sync (phase 3 exit criterion).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Books check after every sync (phase 3 exit criterion).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "tallyTitle": "Export to Tally",
   "@tallyTitle": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyIntro": "Makes Tally Prime files (ledgers, then vouchers) for a period. Import them in Tally Prime: Import → Masters → 01-masters.xml, then Import → Transactions → 02-vouchers.xml.",
   "@tallyIntro": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyThisMonth": "This month",
   "@tallyThisMonth": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyLastMonth": "Last month",
   "@tallyLastMonth": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyMapping": "Account groups in Tally",
   "@tallyMapping": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyGroupUnmapped": "Pick a Tally group",
   "@tallyGroupUnmapped": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyCounts": "{ledgers} ledgers · {vouchers} vouchers",
   "@tallyCounts": {
-      "description": "Tally export (step 3.6).",
-      "placeholders": {
-          "ledgers": {
-              "type": "int"
-          },
-          "vouchers": {
-              "type": "int"
-          }
+    "description": "Tally export (step 3.6).",
+    "placeholders": {
+      "ledgers": {
+        "type": "int"
+      },
+      "vouchers": {
+        "type": "int"
       }
+    }
   },
   "tallyGroupLedgers": "{count} ledgers",
   "@tallyGroupLedgers": {
-      "description": "Tally export (step 3.6).",
-      "placeholders": {
-          "count": {
-              "type": "int"
-          }
+    "description": "Tally export (step 3.6).",
+    "placeholders": {
+      "count": {
+        "type": "int"
       }
+    }
   },
   "tallyExport": "Export (.zip)",
   "@tallyExport": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyIssuesTitle": "Checks before export",
   "@tallyIssuesTitle": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyNoIssues": "Nothing to fix: ready for Tally.",
   "@tallyNoIssues": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "tallyIssueUnmapped": "{subject}: no Tally group for {detail}",
   "@tallyIssueUnmapped": {
-      "description": "Tally export (step 3.6).",
-      "placeholders": {
-          "subject": {
-              "type": "String"
-          },
-          "detail": {
-              "type": "String"
-          }
+    "description": "Tally export (step 3.6).",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      },
+      "detail": {
+        "type": "String"
       }
+    }
   },
   "tallyIssueBadName": "{subject}: the name is empty or longer than 99 characters",
   "@tallyIssueBadName": {
-      "description": "Tally export (step 3.6).",
-      "placeholders": {
-          "subject": {
-              "type": "String"
-          }
+    "description": "Tally export (step 3.6).",
+    "placeholders": {
+      "subject": {
+        "type": "String"
       }
+    }
   },
   "tallyIssueRenamed": "{subject} is used twice; exported as {detail}",
   "@tallyIssueRenamed": {
-      "description": "Tally export (step 3.6).",
-      "placeholders": {
-          "subject": {
-              "type": "String"
-          },
-          "detail": {
-              "type": "String"
-          }
+    "description": "Tally export (step 3.6).",
+    "placeholders": {
+      "subject": {
+        "type": "String"
+      },
+      "detail": {
+        "type": "String"
       }
+    }
   },
   "tallyIssueUnbalanced": "{subject}: debit and credit differ",
   "@tallyIssueUnbalanced": {
-      "description": "Tally export (step 3.6).",
-      "placeholders": {
-          "subject": {
-              "type": "String"
-          }
+    "description": "Tally export (step 3.6).",
+    "placeholders": {
+      "subject": {
+        "type": "String"
       }
+    }
   },
   "tallyIssueUnknown": "{subject}: an account has not synced yet",
   "@tallyIssueUnknown": {
-      "description": "Tally export (step 3.6).",
-      "placeholders": {
-          "subject": {
-              "type": "String"
-          }
+    "description": "Tally export (step 3.6).",
+    "placeholders": {
+      "subject": {
+        "type": "String"
       }
+    }
   },
   "tallyExportBlocked": "Fix the problems above first.",
   "@tallyExportBlocked": {
-      "description": "Tally export (step 3.6)."
+    "description": "Tally export (step 3.6)."
   },
   "expenseBillTooLarge": "The bill is over 8 MB. Choose a smaller photo.",
   "@expenseBillTooLarge": {
-      "description": "Expenses (step 3.4), bill size."
+    "description": "Expenses (step 3.4), bill size."
   },
   "navDashboard": "Dashboard",
   "@navDashboard": {
-      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+    "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   },
   "navSectionDaily": "Daily work",
   "@navSectionDaily": {
-      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+    "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   },
   "navSectionMoney": "Money & books",
   "@navSectionMoney": {
-      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+    "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   },
   "navSectionAdmin": "Admin",
   "@navSectionAdmin": {
-      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+    "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   },
   "navMore": "More",
   "@navMore": {
-      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+    "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   },
   "navSearchHint": "Search or run a command…",
   "@navSearchHint": {
-      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+    "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   },
   "navMenuTitle": "All screens",
   "@navMenuTitle": {
-      "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
+    "description": "App navigation: sidebar sections, bottom bar (UI overhaul)."
   },
   "khataRefPurchaseReturn": "Purchase return",
   "@khataRefPurchaseReturn": {
@@ -6977,119 +6977,248 @@
     "description": "Phase 4 (input shop)."
   },
   "purchasesTitle": "Purchases",
-  "@purchasesTitle": {"description": "Purchases (step 4.2)."},
+  "@purchasesTitle": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchasesEmpty": "No purchases yet",
-  "@purchasesEmpty": {"description": "Purchases (step 4.2)."},
+  "@purchasesEmpty": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseNew": "New purchase",
-  "@purchaseNew": {"description": "Purchases (step 4.2)."},
+  "@purchaseNew": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseSupplier": "Supplier",
-  "@purchaseSupplier": {"description": "Purchases (step 4.2)."},
+  "@purchaseSupplier": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseSupplierInvoiceNo": "Supplier invoice no",
-  "@purchaseSupplierInvoiceNo": {"description": "Purchases (step 4.2)."},
+  "@purchaseSupplierInvoiceNo": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseInvoiceDate": "Invoice date",
-  "@purchaseInvoiceDate": {"description": "Purchases (step 4.2)."},
+  "@purchaseInvoiceDate": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseAddLine": "Add line (F2)",
-  "@purchaseAddLine": {"description": "Purchases (step 4.2)."},
+  "@purchaseAddLine": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseProduct": "Product",
-  "@purchaseProduct": {"description": "Purchases (step 4.2)."},
+  "@purchaseProduct": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseBatchNo": "Batch no",
-  "@purchaseBatchNo": {"description": "Purchases (step 4.2)."},
+  "@purchaseBatchNo": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseMfg": "Mfg date",
-  "@purchaseMfg": {"description": "Purchases (step 4.2)."},
+  "@purchaseMfg": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseExpiry": "Expiry date",
-  "@purchaseExpiry": {"description": "Purchases (step 4.2)."},
+  "@purchaseExpiry": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseQty": "Qty",
-  "@purchaseQty": {"description": "Purchases (step 4.2)."},
+  "@purchaseQty": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseCost": "Cost / unit",
-  "@purchaseCost": {"description": "Purchases (step 4.2)."},
+  "@purchaseCost": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseGstRate": "GST %",
-  "@purchaseGstRate": {"description": "Purchases (step 4.2)."},
+  "@purchaseGstRate": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseFreight": "Freight",
-  "@purchaseFreight": {"description": "Purchases (step 4.2)."},
+  "@purchaseFreight": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseOtherCharges": "Other charges",
-  "@purchaseOtherCharges": {"description": "Purchases (step 4.2)."},
+  "@purchaseOtherCharges": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseRoundOff": "Round off (+/-)",
-  "@purchaseRoundOff": {"description": "Purchases (step 4.2)."},
+  "@purchaseRoundOff": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchasePaidNow": "Paid now",
-  "@purchasePaidNow": {"description": "Purchases (step 4.2)."},
+  "@purchasePaidNow": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseCreditDays": "Credit days",
-  "@purchaseCreditDays": {"description": "Purchases (step 4.2)."},
+  "@purchaseCreditDays": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseDueDate": "Due date",
-  "@purchaseDueDate": {"description": "Purchases (step 4.2)."},
+  "@purchaseDueDate": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseTaxable": "Taxable",
-  "@purchaseTaxable": {"description": "Purchases (step 4.2)."},
+  "@purchaseTaxable": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseGst": "GST",
-  "@purchaseGst": {"description": "Purchases (step 4.2)."},
+  "@purchaseGst": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseTotal": "Total",
-  "@purchaseTotal": {"description": "Purchases (step 4.2)."},
+  "@purchaseTotal": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseUnpaid": "Unpaid",
-  "@purchaseUnpaid": {"description": "Purchases (step 4.2)."},
+  "@purchaseUnpaid": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchasePaid": "Paid",
-  "@purchasePaid": {"description": "Purchases (step 4.2)."},
+  "@purchasePaid": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseSave": "Save (Ctrl+Enter)",
-  "@purchaseSave": {"description": "Purchases (step 4.2)."},
+  "@purchaseSave": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseReturnTitle": "Purchase return",
-  "@purchaseReturnTitle": {"description": "Purchases (step 4.2)."},
+  "@purchaseReturnTitle": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseReturnQty": "Return qty",
-  "@purchaseReturnQty": {"description": "Purchases (step 4.2)."},
+  "@purchaseReturnQty": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseReturnSave": "Return goods",
-  "@purchaseReturnSave": {"description": "Purchases (step 4.2)."},
+  "@purchaseReturnSave": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseReverse": "Reverse purchase",
-  "@purchaseReverse": {"description": "Purchases (step 4.2)."},
+  "@purchaseReverse": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseReversedTag": "Reversed",
-  "@purchaseReversedTag": {"description": "Purchases (step 4.2)."},
+  "@purchaseReversedTag": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseStatusAll": "All",
-  "@purchaseStatusAll": {"description": "Purchases (step 4.2)."},
+  "@purchaseStatusAll": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseStatusUnpaid": "Unpaid",
-  "@purchaseStatusUnpaid": {"description": "Purchases (step 4.2)."},
+  "@purchaseStatusUnpaid": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseStatusReversed": "Reversed",
-  "@purchaseStatusReversed": {"description": "Purchases (step 4.2)."},
+  "@purchaseStatusReversed": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseNotFound": "Purchase not found",
-  "@purchaseNotFound": {"description": "Purchases (step 4.2)."},
+  "@purchaseNotFound": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseInUse": "Cannot reverse: goods were returned or sold",
-  "@purchaseInUse": {"description": "Purchases (step 4.2)."},
+  "@purchaseInUse": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseLocked": "Already reversed",
-  "@purchaseLocked": {"description": "Purchases (step 4.2)."},
+  "@purchaseLocked": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseErrInvalid": "Check the lines: product, batch, qty and cost are needed",
-  "@purchaseErrInvalid": {"description": "Purchases (step 4.2)."},
+  "@purchaseErrInvalid": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseErrNoSupplier": "Choose a supplier",
-  "@purchaseErrNoSupplier": {"description": "Purchases (step 4.2)."},
+  "@purchaseErrNoSupplier": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseErrNotSupplier": "This party is not a supplier",
-  "@purchaseErrNotSupplier": {"description": "Purchases (step 4.2)."},
+  "@purchaseErrNotSupplier": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseErrProduct": "A product was not found",
-  "@purchaseErrProduct": {"description": "Purchases (step 4.2)."},
+  "@purchaseErrProduct": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseErrPaid": "Paid amount is not valid",
-  "@purchaseErrPaid": {"description": "Purchases (step 4.2)."},
+  "@purchaseErrPaid": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseErrBank": "Choose a bank account",
-  "@purchaseErrBank": {"description": "Purchases (step 4.2)."},
+  "@purchaseErrBank": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseErrReturn": "Return quantity is not valid",
-  "@purchaseErrReturn": {"description": "Purchases (step 4.2)."},
+  "@purchaseErrReturn": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseOutstanding": "Outstanding",
-  "@purchaseOutstanding": {"description": "Purchases (step 4.2)."},
+  "@purchaseOutstanding": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseReturns": "Returns",
-  "@purchaseReturns": {"description": "Purchases (step 4.2)."},
+  "@purchaseReturns": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseLinesTitle": "Lines",
-  "@purchaseLinesTitle": {"description": "Purchases (step 4.2)."},
+  "@purchaseLinesTitle": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseBank": "Bank",
-  "@purchaseBank": {"description": "Purchases (step 4.2)."},
+  "@purchaseBank": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseCash": "Cash",
-  "@purchaseCash": {"description": "Purchases (step 4.2)."},
+  "@purchaseCash": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseBankAccount": "Bank account",
-  "@purchaseBankAccount": {"description": "Purchases (step 4.2)."},
+  "@purchaseBankAccount": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseNoLines": "Add at least one line",
-  "@purchaseNoLines": {"description": "Purchases (step 4.2)."},
+  "@purchaseNoLines": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseRefundKhata": "Credit note on khata",
-  "@purchaseRefundKhata": {"description": "Purchases (step 4.2)."},
+  "@purchaseRefundKhata": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseRefundCash": "Money back",
-  "@purchaseRefundCash": {"description": "Purchases (step 4.2)."},
+  "@purchaseRefundCash": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseRefundAuto": "Auto",
-  "@purchaseRefundAuto": {"description": "Purchases (step 4.2)."},
+  "@purchaseRefundAuto": {
+    "description": "Purchases (step 4.2)."
+  },
   "purchaseSaved": "Purchase {no} saved",
-  "@purchaseSaved": {"description": "Purchases (step 4.2).", "placeholders": {"no": {"type": "String"}}},
+  "@purchaseSaved": {
+    "description": "Purchases (step 4.2).",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
   "purchaseReturnSaved": "Return {no} saved",
-  "@purchaseReturnSaved": {"description": "Purchases (step 4.2).", "placeholders": {"no": {"type": "String"}}},
+  "@purchaseReturnSaved": {
+    "description": "Purchases (step 4.2).",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
   "purchaseOverdue": "{days} days overdue",
-  "@purchaseOverdue": {"description": "Purchases (step 4.2).", "placeholders": {"days": {"type": "int"}}},
+  "@purchaseOverdue": {
+    "description": "Purchases (step 4.2).",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "prodTitle": "Products & stock",
   "@prodTitle": {
     "description": "Products & stock (step 4.1)."
@@ -7677,5 +7806,1145 @@
   "prodImpProbDuplicate": "Same product and batch appears twice",
   "@prodImpProbDuplicate": {
     "description": "Products & stock (step 4.1)."
+  },
+  "navSectionShop": "Shop",
+  "@navSectionShop": {
+    "description": "Sidebar group of the input shop."
+  },
+  "shrNavDues": "Dues",
+  "@shrNavDues": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNavProfit": "Shop profit",
+  "@shrNavProfit": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNavGst": "GST",
+  "@shrNavGst": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNavExpiry": "Expiry",
+  "@shrNavExpiry": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNavReorder": "Reorder",
+  "@shrNavReorder": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrModuleOff": "The shop module is switched off for this business.",
+  "@shrModuleOff": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrDuesTitle": "Payables & receivables",
+  "@shrDuesTitle": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrTabPayables": "Supplier payables",
+  "@shrTabPayables": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrTabReceivables": "Customer receivables",
+  "@shrTabReceivables": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrPay": "Pay",
+  "@shrPay": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrCollect": "Collect",
+  "@shrCollect": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrBreakdown": "Breakdown",
+  "@shrBreakdown": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrBreakdownTitle": "Khata of {name}",
+  "@shrBreakdownTitle": {
+    "description": "Shop reports (steps 4.4, 4.5).",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shrBreakdownNote": "Parts by source. They add up to the one khata balance; nothing is added on top.",
+  "@shrBreakdownNote": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrBreakdownBalance": "Khata balance",
+  "@shrBreakdownBalance": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrDuesNote": "Breakdowns of the khata by source. A party's net position is always the single khata balance.",
+  "@shrDuesNote": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNoPayables": "No unpaid supplier bills.",
+  "@shrNoPayables": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNoReceivables": "No shop credit to collect.",
+  "@shrNoReceivables": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrOverdueDays": "{days} days overdue",
+  "@shrOverdueDays": {
+    "description": "Shop reports (steps 4.4, 4.5).",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "shrNotDue": "Not due",
+  "@shrNotDue": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrCollectDisabled": "Nothing to collect: this party does not owe us on the khata.",
+  "@shrCollectDisabled": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrRefType": "{type, select, arrival{Mandi lots} payment{Payments} receipt{Receipts} shop_sale{Shop sales} shop_return{Shop returns} purchase{Purchases} purchase_return{Purchase returns} loan_disbursal{Loans given} loan_repayment{Loan repayments} interest{Interest} expense{Expenses} journal{Journal} opening_balance{Opening balance} reversal{Reversals} voucher{Vouchers} other{{type}}}",
+  "@shrRefType": {
+    "description": "Shop reports (steps 4.4, 4.5).",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "shrProfitTitle": "Shop profit",
+  "@shrProfitTitle": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrByProduct": "By product",
+  "@shrByProduct": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrByCategory": "By category",
+  "@shrByCategory": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrByMonth": "By month",
+  "@shrByMonth": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrProfitLocked": "You need permission to see shop profit and cost.",
+  "@shrProfitLocked": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrUncategorised": "Uncategorised",
+  "@shrUncategorised": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNoSales": "No sales on these dates.",
+  "@shrNoSales": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTitle": "GST (GSTR-1)",
+  "@shrGstTitle": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstMissingBanner": "Set the business GSTIN and state code in Settings: without them the return cannot be filed and every sale is treated as same-state.",
+  "@shrGstMissingBanner": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstOpenSettings": "Open settings",
+  "@shrGstOpenSettings": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstPrevMonth": "Previous month",
+  "@shrGstPrevMonth": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstNextMonth": "Next month",
+  "@shrGstNextMonth": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstB2b": "B2B (registered)",
+  "@shrGstB2b": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstB2c": "B2C (unregistered)",
+  "@shrGstB2c": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstCreditNotes": "Credit notes (returns)",
+  "@shrGstCreditNotes": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstNet": "Net for the month",
+  "@shrGstNet": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstCount": "{count} documents",
+  "@shrGstCount": {
+    "description": "Shop reports (steps 4.4, 4.5).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shrGstTaxable": "Taxable {amount}",
+  "@shrGstTaxable": {
+    "description": "Shop reports (steps 4.4, 4.5).",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "shrGstCgstSgst": "CGST + SGST (same state)",
+  "@shrGstCgstSgst": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstIgst": "IGST (other state)",
+  "@shrGstIgst": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabSummary": "Summary",
+  "@shrGstTabSummary": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabB2b": "B2B",
+  "@shrGstTabB2b": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabB2cl": "B2C large",
+  "@shrGstTabB2cl": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabB2cs": "B2C small",
+  "@shrGstTabB2cs": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabNotes": "Credit notes",
+  "@shrGstTabNotes": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabHsn": "HSN summary",
+  "@shrGstTabHsn": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabInvoices": "Invoices",
+  "@shrGstTabInvoices": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstTabIssues": "Missing data",
+  "@shrGstTabIssues": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstExportXlsx": "GSTR-1 Excel",
+  "@shrGstExportXlsx": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstExportJson": "GSTR-1 JSON",
+  "@shrGstExportJson": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstNoFlags": "All active products have an HSN and a GST rate.",
+  "@shrGstNoFlags": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstEditProduct": "Edit product",
+  "@shrGstEditProduct": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstIssue": "{issue, select, missingHsn{No HSN} invalidHsn{HSN must be 4, 6 or 8 digits} missingRate{No GST rate} invalidRate{GST rate not allowed} other{{issue}}}",
+  "@shrGstIssue": {
+    "description": "Shop reports (steps 4.4, 4.5).",
+    "placeholders": {
+      "issue": {
+        "type": "String"
+      }
+    }
+  },
+  "shrGstNothing": "No invoices in this month.",
+  "@shrGstNothing": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrGstSaved": "Saved: {path}",
+  "@shrGstSaved": {
+    "description": "Shop reports (steps 4.4, 4.5).",
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "shrExpiryTitle": "Expiry report",
+  "@shrExpiryTitle": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrReorderTitle": "Reorder report",
+  "@shrReorderTitle": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNoExpiry": "No batches with an expiry date and stock.",
+  "@shrNoExpiry": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrNoReorder": "Nothing needs reordering.",
+  "@shrNoReorder": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrExpiryValueHidden": "Value at cost is shown only to members who may see shop profit.",
+  "@shrExpiryValueHidden": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColProduct": "Product",
+  "@shrColProduct": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColQty": "Qty",
+  "@shrColQty": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColRevenue": "Revenue",
+  "@shrColRevenue": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColCost": "Cost",
+  "@shrColCost": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColProfit": "Profit",
+  "@shrColProfit": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColMargin": "Margin",
+  "@shrColMargin": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColTotal": "Total",
+  "@shrColTotal": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColSupplier": "Supplier",
+  "@shrColSupplier": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColUnpaidBills": "Unpaid bills",
+  "@shrColUnpaidBills": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColDueDate": "Due date",
+  "@shrColDueDate": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColDaysOverdue": "Days overdue",
+  "@shrColDaysOverdue": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColKhataBalance": "Khata balance",
+  "@shrColKhataBalance": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColCustomer": "Customer",
+  "@shrColCustomer": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColShopSales": "Shop sales",
+  "@shrColShopSales": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColShopReturns": "Shop returns",
+  "@shrColShopReturns": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColToCollect": "To collect",
+  "@shrColToCollect": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColExpired": "Expired",
+  "@shrColExpired": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColWithin30Days": "Within 30 days",
+  "@shrColWithin30Days": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrCol31To60Days": "31 to 60 days",
+  "@shrCol31To60Days": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrCol61To90Days": "61 to 90 days",
+  "@shrCol61To90Days": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColLater": "Later",
+  "@shrColLater": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColBatch": "Batch",
+  "@shrColBatch": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColExpiry": "Expiry",
+  "@shrColExpiry": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColDaysLeft": "Days left",
+  "@shrColDaysLeft": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColStatus": "Status",
+  "@shrColStatus": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColValueAtCost": "Value at cost",
+  "@shrColValueAtCost": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColInStock": "In stock",
+  "@shrColInStock": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColReorderLevel": "Reorder level",
+  "@shrColReorderLevel": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColSoldIn30Days": "Sold in 30 days",
+  "@shrColSoldIn30Days": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColDaysOfStock": "Days of stock",
+  "@shrColDaysOfStock": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColSuggestedPurchase": "Suggested purchase",
+  "@shrColSuggestedPurchase": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColCreditNote": "Credit note",
+  "@shrColCreditNote": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColInvoiceNo": "Invoice no",
+  "@shrColInvoiceNo": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColDate": "Date",
+  "@shrColDate": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColGstin": "GSTIN",
+  "@shrColGstin": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColType": "Type",
+  "@shrColType": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColTaxableValue": "Taxable value",
+  "@shrColTaxableValue": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColCgst": "CGST",
+  "@shrColCgst": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColSgst": "SGST",
+  "@shrColSgst": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColIgst": "IGST",
+  "@shrColIgst": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColInvoiceValue": "Invoice value",
+  "@shrColInvoiceValue": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColPlaceOfSupply": "Place of supply",
+  "@shrColPlaceOfSupply": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColRate": "Rate %",
+  "@shrColRate": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColCreditNoteNo": "Credit note no",
+  "@shrColCreditNoteNo": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColHsn": "HSN",
+  "@shrColHsn": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColUnit": "Unit",
+  "@shrColUnit": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColTotalValue": "Total value",
+  "@shrColTotalValue": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColNatureOfDocument": "Nature of document",
+  "@shrColNatureOfDocument": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColFrom": "From",
+  "@shrColFrom": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColTo": "To",
+  "@shrColTo": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "shrColWalkIn": "Walk-in",
+  "@shrColWalkIn": {
+    "description": "Shop reports (steps 4.4, 4.5)."
+  },
+  "posTitle": "Counter sale",
+  "@posTitle": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posNewBill": "New bill",
+  "@posNewBill": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posSearchHint": "Scan barcode or type product (5*urea = 5 units)",
+  "@posSearchHint": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPay": "Pay",
+  "@posPay": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posHold": "Hold",
+  "@posHold": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posRecall": "Held bills",
+  "@posRecall": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posCartEmpty": "The cart is empty. Scan or search a product.",
+  "@posCartEmpty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posNoProducts": "No product matches",
+  "@posNoProducts": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posTierLabel": "Price tier",
+  "@posTierLabel": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posTierFarmer": "Farmer",
+  "@posTierFarmer": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posTierRetail": "Retail",
+  "@posTierRetail": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posTierVendor": "Vendor",
+  "@posTierVendor": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posTierWholesale": "Wholesale",
+  "@posTierWholesale": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posCustomer": "Customer (needed for udhaar)",
+  "@posCustomer": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posWalkIn": "Walk-in customer",
+  "@posWalkIn": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posColItem": "Item",
+  "@posColItem": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posColQty": "Qty",
+  "@posColQty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posColPrice": "Price",
+  "@posColPrice": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posColDiscount": "Disc.",
+  "@posColDiscount": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posColAmount": "Amount",
+  "@posColAmount": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posInvoiceDiscount": "Bill discount %",
+  "@posInvoiceDiscount": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posSubtotal": "Subtotal",
+  "@posSubtotal": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posDiscountTotal": "Discount",
+  "@posDiscountTotal": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posTaxable": "Taxable value",
+  "@posTaxable": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posCgst": "CGST",
+  "@posCgst": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posSgst": "SGST",
+  "@posSgst": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posIgst": "IGST",
+  "@posIgst": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posRoundOff": "Round off",
+  "@posRoundOff": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posTotal": "Total",
+  "@posTotal": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posStockLeft": "{qty} left",
+  "@posStockLeft": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "qty": {
+        "type": "String"
+      }
+    }
+  },
+  "posOutOfStock": "Out of stock",
+  "@posOutOfStock": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posExpiredStock": "Expired stock on shelf",
+  "@posExpiredStock": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posNoPrice": "No price for this tier: type one",
+  "@posNoPrice": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posGstMissing": "HSN or GST rate missing",
+  "@posGstMissing": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posShortcuts": "F2 new · F3 search · F4 customer · F10 pay · + / - qty · Del remove · Esc",
+  "@posShortcuts": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posRemoveLine": "Remove line",
+  "@posRemoveLine": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayTitle": "Take payment",
+  "@posPayTitle": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayCash": "Cash",
+  "@posPayCash": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayUpi": "UPI",
+  "@posPayUpi": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayUdhaar": "Udhaar",
+  "@posPayUdhaar": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayAllHint": "Alt+1 all cash · Alt+2 all UPI · Alt+3 all udhaar · F10 save",
+  "@posPayAllHint": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayUpiAccount": "UPI account",
+  "@posPayUpiAccount": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayNoBank": "No bank account available for UPI",
+  "@posPayNoBank": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posPayBalance": "Party balance now: {balance}",
+  "@posPayBalance": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "balance": {
+        "type": "String"
+      }
+    }
+  },
+  "posPayCreditLimit": "This udhaar takes the party {amount} over the credit limit",
+  "@posPayCreditLimit": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "posPayRemaining": "Left to pay: {amount}",
+  "@posPayRemaining": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "posPaySave": "Save bill",
+  "@posPaySave": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posErrorPayMismatch": "Cash + UPI + udhaar must equal the total",
+  "@posErrorPayMismatch": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posErrorUdhaarParty": "Udhaar needs a customer. Pick one with F4.",
+  "@posErrorUdhaarParty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posErrorUpiAccount": "Pick a bank account for the UPI part",
+  "@posErrorUpiAccount": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posErrorNoLines": "Add at least one item",
+  "@posErrorNoLines": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posErrorBadLine": "A quantity, price or discount is not valid",
+  "@posErrorBadLine": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posErrorProductGone": "A product in the cart is no longer available",
+  "@posErrorProductGone": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posErrorStock": "Not enough stock: {product}",
+  "@posErrorStock": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "posErrorExpired": "Only expired stock is left: {product}",
+  "@posErrorExpired": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "product": {
+        "type": "String"
+      }
+    }
+  },
+  "posErrorNotPermitted": "You are not allowed to sell",
+  "@posErrorNotPermitted": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posWarnExpiredSold": "An expired batch was sold",
+  "@posWarnExpiredSold": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posWarnNegative": "Sold beyond the stock on hand",
+  "@posWarnNegative": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posWarnNearExpiry": "A batch that expires soon was sold",
+  "@posWarnNearExpiry": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posSavedTitle": "Bill saved",
+  "@posSavedTitle": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posSavedBody": "{no} · {total}",
+  "@posSavedBody": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "posPrint": "Print",
+  "@posPrint": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posShare": "Share PDF",
+  "@posShare": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posHeldTitle": "Held bills",
+  "@posHeldTitle": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posHeldEmpty": "No bills on hold",
+  "@posHeldEmpty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posHeldItems": "{count, plural, =1{1 item} other{{count} items}}",
+  "@posHeldItems": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "posHeldRecall": "Recall",
+  "@posHeldRecall": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posHeldDelete": "Delete",
+  "@posHeldDelete": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "posHeldSkipped": "{count, plural, =1{1 product is no longer available and was left out} other{{count} products are no longer available and were left out}}",
+  "@posHeldSkipped": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "posHeldSaved": "Bill put on hold",
+  "@posHeldSaved": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesTitle": "Shop sales",
+  "@salesTitle": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesEmpty": "No sales in this period",
+  "@salesEmpty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesSearchHint": "Bill no or customer",
+  "@salesSearchHint": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesFilterAll": "All payments",
+  "@salesFilterAll": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColNo": "Bill",
+  "@salesColNo": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColDate": "Date",
+  "@salesColDate": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColCustomer": "Customer",
+  "@salesColCustomer": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColItems": "Items",
+  "@salesColItems": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColTier": "Tier",
+  "@salesColTier": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColTotal": "Total",
+  "@salesColTotal": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColPaid": "Paid",
+  "@salesColPaid": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesColUdhaar": "Udhaar",
+  "@salesColUdhaar": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesTotalsBar": "{count, plural, =1{1 bill} other{{count} bills}} · Total {total} · Cash {cash} · UPI {upi} · Udhaar {udhaar}",
+  "@salesTotalsBar": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "String"
+      },
+      "cash": {
+        "type": "String"
+      },
+      "upi": {
+        "type": "String"
+      },
+      "udhaar": {
+        "type": "String"
+      }
+    }
+  },
+  "salesNewSale": "New sale",
+  "@salesNewSale": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReversedTag": "reversed",
+  "@salesReversedTag": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesInvoiceTitle": "Invoice",
+  "@salesInvoiceTitle": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesBillTo": "Bill to",
+  "@salesBillTo": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesGstin": "GSTIN",
+  "@salesGstin": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesPlaceOfSupply": "Place of supply",
+  "@salesPlaceOfSupply": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesHsn": "HSN",
+  "@salesHsn": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesBatchExpiry": "Batch {batch} · exp {expiry}",
+  "@salesBatchExpiry": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "batch": {
+        "type": "String"
+      },
+      "expiry": {
+        "type": "String"
+      }
+    }
+  },
+  "salesBatchOnly": "Batch {batch}",
+  "@salesBatchOnly": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "batch": {
+        "type": "String"
+      }
+    }
+  },
+  "salesNoBatch": "No batch (negative stock)",
+  "@salesNoBatch": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesPaymentSplit": "Payment",
+  "@salesPaymentSplit": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesCost": "Cost",
+  "@salesCost": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesProfit": "Profit",
+  "@salesProfit": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnAction": "Sales return",
+  "@salesReturnAction": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReverseAction": "Reverse bill",
+  "@salesReverseAction": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReverseConfirm": "Reverse this whole bill? Stock, khata and books are mirrored.",
+  "@salesReverseConfirm": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReverseLocked": "This bill cannot be reversed (already reversed, or it has returns)",
+  "@salesReverseLocked": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReverseDone": "Bill reversed",
+  "@salesReverseDone": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesNotFound": "This bill no longer exists",
+  "@salesNotFound": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnTitle": "Sales return",
+  "@salesReturnTitle": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnQty": "Return qty",
+  "@salesReturnQty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnLeft": "{qty} can be returned",
+  "@salesReturnLeft": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "qty": {
+        "type": "String"
+      }
+    }
+  },
+  "salesReturnRefund": "Refund {amount}",
+  "@salesReturnRefund": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "salesRefundAuto": "Auto (udhaar first, rest cash)",
+  "@salesRefundAuto": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesRefundKhata": "Credit to khata",
+  "@salesRefundKhata": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesRefundCash": "Refund in cash",
+  "@salesRefundCash": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesRefundUpi": "Refund by UPI",
+  "@salesRefundUpi": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnSplit": "To khata {khata} · paid out {cash}",
+  "@salesReturnSplit": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "khata": {
+        "type": "String"
+      },
+      "cash": {
+        "type": "String"
+      }
+    }
+  },
+  "salesReturnSaved": "Return {no} saved",
+  "@salesReturnSaved": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
+  "salesReturnErrNoItems": "Enter a quantity for at least one line",
+  "@salesReturnErrNoItems": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnErrQty": "More than can be returned",
+  "@salesReturnErrQty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnErrParty": "Crediting the khata needs a customer on the bill",
+  "@salesReturnErrParty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnErrUpi": "Pick the bank account for the UPI refund",
+  "@salesReturnErrUpi": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnErrNotPermitted": "You are not allowed to take returns",
+  "@salesReturnErrNotPermitted": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "salesReturnsHeader": "Returns",
+  "@salesReturnsHeader": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceTax": "TAX INVOICE",
+  "@invoiceTax": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceRetail": "INVOICE",
+  "@invoiceRetail": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceNo": "Invoice no",
+  "@invoiceNo": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceDate": "Date",
+  "@invoiceDate": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceItem": "Item",
+  "@invoiceItem": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceQty": "Qty",
+  "@invoiceQty": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceRate": "Rate",
+  "@invoiceRate": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceTaxable": "Taxable",
+  "@invoiceTaxable": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceGstPct": "GST %",
+  "@invoiceGstPct": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceAmount": "Amount",
+  "@invoiceAmount": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceDiscount": "Discount",
+  "@invoiceDiscount": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceTotal": "Total",
+  "@invoiceTotal": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoicePaidCash": "Paid in cash",
+  "@invoicePaidCash": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoicePaidUpi": "Paid by UPI",
+  "@invoicePaidUpi": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceOnUdhaar": "On udhaar",
+  "@invoiceOnUdhaar": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceThanks": "Thank you. Visit again.",
+  "@invoiceThanks": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceSignature": "Authorised signatory",
+  "@invoiceSignature": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceBatchNote": "Batch",
+  "@invoiceBatchNote": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "invoiceReversed": "REVERSED",
+  "@invoiceReversed": {
+    "description": "Shop POS and sales (steps 4.3, 4.4)"
   }
 }
