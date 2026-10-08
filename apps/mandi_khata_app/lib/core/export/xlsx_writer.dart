@@ -25,17 +25,23 @@ abstract final class XlsxWriter {
   static const _boldStyle = 6;
   static const _boldQtyStyle = 7;
 
-  static Uint8List build(ReportTable table, {String sheetName = 'Report'}) {
+  static Uint8List build(ReportTable table, {String sheetName = 'Report'}) =>
+      buildWorkbook([(sheetName, table)]);
+
+  /// A workbook with one sheet per `(name, table)`, in order.
+  static Uint8List buildWorkbook(List<(String, ReportTable)> sheets) {
     final archive = Archive();
     void add(String path, String xml) =>
         archive.addFile(ArchiveFile.bytes(path, utf8.encode(xml)));
 
-    add('[Content_Types].xml', _contentTypes);
+    add('[Content_Types].xml', _contentTypes(sheets.length));
     add('_rels/.rels', _rootRels);
-    add('xl/workbook.xml', _workbook(sheetName));
-    add('xl/_rels/workbook.xml.rels', _workbookRels);
+    add('xl/workbook.xml', _workbook([for (final s in sheets) s.$1]));
+    add('xl/_rels/workbook.xml.rels', _workbookRels(sheets.length));
     add('xl/styles.xml', _styles);
-    add('xl/worksheets/sheet1.xml', _sheet(table));
+    for (final (i, s) in sheets.indexed) {
+      add('xl/worksheets/sheet${i + 1}.xml', _sheet(s.$2));
+    }
     return Uint8List.fromList(ZipEncoder().encode(archive));
   }
 
@@ -43,7 +49,7 @@ abstract final class XlsxWriter {
       '<?xml version="1.0" encoding="UTF-8" '
       'standalone="yes"?>\n';
 
-  static const _contentTypes =
+  static String _contentTypes(int sheets) =>
       '$_xmlHead'
       '<Types xmlns="http://schemas.openxmlformats.org/package/2006/'
       'content-types">'
@@ -52,9 +58,12 @@ abstract final class XlsxWriter {
       '<Default Extension="xml" ContentType="application/xml"/>'
       '<Override PartName="/xl/workbook.xml" ContentType="application/vnd.'
       'openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'
-      '<Override PartName="/xl/worksheets/sheet1.xml" ContentType="'
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.'
-      'worksheet+xml"/>'
+      '${[
+        for (var i = 1; i <= sheets; i++)
+          '<Override PartName="/xl/worksheets/sheet$i.xml" ContentType="'
+              'application/vnd.openxmlformats-officedocument.spreadsheetml.'
+              'worksheet+xml"/>',
+      ].join()}'
       '<Override PartName="/xl/styles.xml" ContentType="application/vnd.'
       'openxmlformats-officedocument.spreadsheetml.styles+xml"/>'
       '</Types>';
@@ -66,20 +75,26 @@ abstract final class XlsxWriter {
       'openxmlformats.org/officeDocument/2006/relationships/officeDocument" '
       'Target="xl/workbook.xml"/></Relationships>';
 
-  static String _workbook(String name) =>
+  static String _workbook(List<String> names) =>
       '$_xmlHead'
       '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/'
       'main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/'
-      'relationships"><sheets><sheet name="${_escape(_sheetName(name))}" '
-      'sheetId="1" r:id="rId1"/></sheets></workbook>';
+      'relationships"><sheets>${[
+        for (final (i, n) in names.indexed)
+          '<sheet name="${_escape(_sheetName(n))}" sheetId="${i + 1}" '
+              'r:id="rId${i + 1}"/>',
+      ].join()}</sheets></workbook>';
 
-  static const _workbookRels =
+  static String _workbookRels(int sheets) =>
       '$_xmlHead'
       '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/'
-      'relationships"><Relationship Id="rId1" Type="http://schemas.'
-      'openxmlformats.org/officeDocument/2006/relationships/worksheet" '
-      'Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://'
-      'schemas.openxmlformats.org/officeDocument/2006/relationships/styles" '
+      'relationships">${[
+        for (var i = 1; i <= sheets; i++)
+          '<Relationship Id="rId$i" Type="http://schemas.openxmlformats.org/'
+              'officeDocument/2006/relationships/worksheet" '
+              'Target="worksheets/sheet$i.xml"/>',
+      ].join()}<Relationship Id="rId${sheets + 1}" Type="http://schemas.'
+      'openxmlformats.org/officeDocument/2006/relationships/styles" '
       'Target="styles.xml"/></Relationships>';
 
   // Style ids: 0 plain, 1 header, 2 money, 3 date, 4 quantity, 5 bold money,

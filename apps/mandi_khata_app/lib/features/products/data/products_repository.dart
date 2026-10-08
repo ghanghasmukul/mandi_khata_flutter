@@ -90,7 +90,13 @@ class ProductsRepository {
       await tx.execute(
         'UPDATE product_categories SET name = ?, deleted_at = ?, '
         'updated_at = ? WHERE tenant_id = ? AND id = ?',
-        [name?.trim() ?? row['name'], delete ? at : null, at, ctx.tenantId, id],
+        [
+          name?.trim() ?? row['name'],
+          if (delete) at else null,
+          at,
+          ctx.tenantId,
+          id,
+        ],
       );
       await AuditWriter.record(
         tx,
@@ -179,14 +185,7 @@ class ProductsRepository {
         'category_id, unit, pack_size, hsn, gst_rate, reorder_level_milli, '
         'prices, is_active, created_by, created_at, updated_at) '
         'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?)',
-        [
-          productId,
-          ctx.tenantId,
-          ..._columns(clean),
-          ctx.userId,
-          at,
-          at,
-        ],
+        [productId, ctx.tenantId, ..._columns(clean), ctx.userId, at, at],
       );
       await AuditWriter.record(
         tx,
@@ -241,12 +240,7 @@ class ProductsRepository {
         'category_id = ?, unit = ?, pack_size = ?, hsn = ?, gst_rate = ?, '
         'reorder_level_milli = ?, prices = ?, updated_at = ? '
         'WHERE tenant_id = ? AND id = ?',
-        [
-          ..._columns(clean),
-          when.toIso8601String(),
-          ctx.tenantId,
-          id,
-        ],
+        [..._columns(clean), when.toIso8601String(), ctx.tenantId, id],
       );
       await AuditWriter.record(
         tx,
@@ -375,9 +369,11 @@ class ProductsRepository {
     p.hsn,
     p.gstRateBp / 100.0,
     p.reorderLevelMilli,
-    jsonEncode(TierPrices({
-      for (final e in p.prices.entries) e.key: Money(e.value),
-    }).toJson()),
+    jsonEncode(
+      TierPrices({
+        for (final e in p.prices.entries) e.key: Money(e.value),
+      }).toJson(),
+    ),
   ];
 
   static Map<String, Object?> _audit(ProductInput p) => {
@@ -408,7 +404,10 @@ class ProductsRepository {
       [tenantId, p.sku.toLowerCase(), exceptId ?? ''],
     );
     if (sku != null) {
-      return ProductDuplicate(ProductDuplicateField.sku, sku['name']! as String);
+      return ProductDuplicate(
+        ProductDuplicateField.sku,
+        sku['name']! as String,
+      );
     }
     final barcode = p.barcode;
     if (barcode != null) {

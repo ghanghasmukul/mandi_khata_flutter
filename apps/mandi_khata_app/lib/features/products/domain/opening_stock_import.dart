@@ -96,8 +96,14 @@ class OpeningStockPreview {
     Namespace.url.value,
     [
       for (final r in rows)
-        '${r.productId}|${r.batchNo}|${r.qtyMilli}|${r.cost.paise}|'
-            '${r.mfgDate}|${r.expiry}',
+        [
+          r.productId,
+          r.batchNo,
+          r.qtyMilli,
+          r.cost.paise,
+          r.mfgDate,
+          r.expiry,
+        ].join('|'),
     ].join('\n'),
   );
 }
@@ -118,7 +124,13 @@ abstract final class OpeningStockImport {
   };
   static const _batch = {'batch', 'batch no', 'batch number', 'batchno', 'lot'};
   static const _mfg = {'mfg', 'mfg date', 'manufacture', 'manufactured'};
-  static const _expiry = {'expiry', 'exp', 'expiry date', 'exp date', 'expires'};
+  static const _expiry = {
+    'expiry',
+    'exp',
+    'expiry date',
+    'exp date',
+    'expires',
+  };
   static const _qty = {'qty', 'quantity', 'stock', 'opening stock', 'opening'};
   static const _cost = {
     'cost',
@@ -194,13 +206,14 @@ abstract final class OpeningStockImport {
       final sku = row.cell(cSku);
       final barcode = row.cell(cBarcode);
       final name = row.cell(cName);
-      final ref = [sku, barcode, name].firstWhere(
-        (s) => s.isNotEmpty,
-        orElse: () => '',
-      );
+      final ref = [
+        sku,
+        barcode,
+        name,
+      ].firstWhere((s) => s.isNotEmpty, orElse: () => '');
       final problems = <StockRowProblem>[];
 
-      List<ProductRef> found = const [];
+      var found = const <ProductRef>[];
       if (sku.isNotEmpty) found = bySku[sku.toLowerCase()] ?? const [];
       if (found.isEmpty && barcode.isNotEmpty) {
         found = byBarcode[barcode.toLowerCase()] ?? const [];

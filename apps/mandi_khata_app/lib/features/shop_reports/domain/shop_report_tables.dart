@@ -15,18 +15,25 @@ abstract final class ShopReportTables {
         if (c.kind == ReportColumnKind.quantity) i,
     };
     if (qty.isEmpty) return t;
+    Object? cell(int i, Object? v) =>
+        qty.contains(i) && v is int ? Qty.format(v) : v;
     List<Object?> fix(List<Object?> row) => [
-      for (final (i, v) in row.indexed)
-        qty.contains(i) && v is int ? Qty.format(v) : v,
+      for (final (i, v) in row.indexed) cell(i, v),
     ];
+    ReportColumn col(int i, ReportColumn c) =>
+        qty.contains(i) ? ReportColumn(c.title, ReportColumnKind.text) : c;
     return ReportTable(
       columns: [
-        for (final (i, c) in t.columns.indexed)
-          qty.contains(i) ? ReportColumn(c.title, ReportColumnKind.text) : c,
+        for (final (i, c) in t.columns.indexed) col(i, c),
       ],
       rows: [for (final r in t.rows) fix(r)],
       totals: t.totals == null ? null : fix(t.totals!),
     );
+  }
+
+  static String _invoiceType(Gstr1Invoice inv, ReportTitle title) {
+    if (inv.isCreditNote) return title('Credit note');
+    return inv.isRegistered ? 'B2B' : 'B2C';
   }
 
   static String bucketTitle(ExpiryBucket b, ReportTitle t) => switch (b) {
@@ -58,7 +65,8 @@ abstract final class ShopReportTables {
         ReportColumn(title('Days left'), ReportColumnKind.number),
         ReportColumn(title('Status'), ReportColumnKind.text),
         ReportColumn(title('Qty'), ReportColumnKind.text),
-        if (withCost) ReportColumn(title('Value at cost'), ReportColumnKind.money),
+        if (withCost)
+          ReportColumn(title('Value at cost'), ReportColumnKind.money),
       ],
       rows: [
         for (final r in rows)
@@ -128,7 +136,7 @@ abstract final class ShopReportTables {
     ],
     totals: [
       title('Total'),
-      rows.fold(Money.zero, (a, r) => a + r.outstanding),
+      rows.fold<Money>(Money.zero, (a, r) => a + r.outstanding),
       null,
       null,
       null,
@@ -155,7 +163,7 @@ abstract final class ShopReportTables {
       title('Total'),
       null,
       null,
-      rows.fold(Money.zero, (a, r) => a + r.receivable),
+      rows.fold<Money>(Money.zero, (a, r) => a + r.receivable),
       null,
     ],
   );
@@ -180,11 +188,7 @@ abstract final class ShopReportTables {
         inv.date,
         inv.customerName,
         inv.gstin,
-        inv.isCreditNote
-            ? title('Credit note')
-            : inv.isRegistered
-            ? 'B2B'
-            : 'B2C',
+        _invoiceType(inv, title),
         sign.taxable,
         sign.cgst,
         sign.sgst,

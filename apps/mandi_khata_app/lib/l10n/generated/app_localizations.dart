@@ -9052,6 +9052,1134 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'See shop profit'**
   String get permission_shopViewProfit;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases'**
+  String get purchasesTitle;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'No purchases yet'**
+  String get purchasesEmpty;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'New purchase'**
+  String get purchaseNew;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier'**
+  String get purchaseSupplier;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier invoice no'**
+  String get purchaseSupplierInvoiceNo;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice date'**
+  String get purchaseInvoiceDate;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Add line (F2)'**
+  String get purchaseAddLine;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Product'**
+  String get purchaseProduct;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Batch no'**
+  String get purchaseBatchNo;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Mfg date'**
+  String get purchaseMfg;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry date'**
+  String get purchaseExpiry;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Qty'**
+  String get purchaseQty;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Cost / unit'**
+  String get purchaseCost;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'GST %'**
+  String get purchaseGstRate;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Freight'**
+  String get purchaseFreight;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Other charges'**
+  String get purchaseOtherCharges;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Round off (+/-)'**
+  String get purchaseRoundOff;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid now'**
+  String get purchasePaidNow;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit days'**
+  String get purchaseCreditDays;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Due date'**
+  String get purchaseDueDate;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Taxable'**
+  String get purchaseTaxable;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'GST'**
+  String get purchaseGst;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get purchaseTotal;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid'**
+  String get purchaseUnpaid;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get purchasePaid;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Save (Ctrl+Enter)'**
+  String get purchaseSave;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase return'**
+  String get purchaseReturnTitle;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Return qty'**
+  String get purchaseReturnQty;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Return goods'**
+  String get purchaseReturnSave;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse purchase'**
+  String get purchaseReverse;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Reversed'**
+  String get purchaseReversedTag;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get purchaseStatusAll;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid'**
+  String get purchaseStatusUnpaid;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Reversed'**
+  String get purchaseStatusReversed;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase not found'**
+  String get purchaseNotFound;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot reverse: goods were returned or sold'**
+  String get purchaseInUse;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Already reversed'**
+  String get purchaseLocked;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Check the lines: product, batch, qty and cost are needed'**
+  String get purchaseErrInvalid;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a supplier'**
+  String get purchaseErrNoSupplier;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'This party is not a supplier'**
+  String get purchaseErrNotSupplier;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'A product was not found'**
+  String get purchaseErrProduct;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Paid amount is not valid'**
+  String get purchaseErrPaid;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a bank account'**
+  String get purchaseErrBank;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Return quantity is not valid'**
+  String get purchaseErrReturn;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Outstanding'**
+  String get purchaseOutstanding;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Returns'**
+  String get purchaseReturns;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Lines'**
+  String get purchaseLinesTitle;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get purchaseBank;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get purchaseCash;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Bank account'**
+  String get purchaseBankAccount;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least one line'**
+  String get purchaseNoLines;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Credit note on khata'**
+  String get purchaseRefundKhata;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Money back'**
+  String get purchaseRefundCash;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get purchaseRefundAuto;
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase {no} saved'**
+  String purchaseSaved(String no);
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'Return {no} saved'**
+  String purchaseReturnSaved(String no);
+
+  /// Purchases (step 4.2).
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days overdue'**
+  String purchaseOverdue(int days);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Products & stock'**
+  String get prodTitle;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Search name, SKU, barcode or brand'**
+  String get prodSearchHint;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Add product'**
+  String get prodAdd;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Stock value (cost)'**
+  String get prodTileValue;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Low stock'**
+  String get prodTileLow;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Out of stock'**
+  String get prodTileOut;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiring soon'**
+  String get prodTileExpiring;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get prodTileExpired;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get prodFilterAll;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get prodFilterLow;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Out'**
+  String get prodFilterOut;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiring'**
+  String get prodFilterExpiring;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get prodFilterExpired;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'All categories'**
+  String get prodAllCategories;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Product'**
+  String get prodColProduct;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Batches'**
+  String get prodColBatches;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Cost'**
+  String get prodColCost;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Prices'**
+  String get prodColPrices;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Margin'**
+  String get prodColMargin;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Stock'**
+  String get prodColStock;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Value'**
+  String get prodColValue;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'No products yet'**
+  String get prodEmptyTitle;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first product or import opening stock.'**
+  String get prodEmptyBody;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'No product matches'**
+  String get prodNoMatch;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have access to products.'**
+  String get prodNoAccess;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'No stock'**
+  String get prodNoBatches;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 product} other{{count} products}}'**
+  String prodCount(int count);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'{no}: {qty}'**
+  String prodBatchLine(String no, String qty);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'New product'**
+  String get prodFormNew;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Edit product'**
+  String get prodFormEdit;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get prodFieldName;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'SKU'**
+  String get prodFieldSku;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode'**
+  String get prodFieldBarcode;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get prodFieldBrand;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get prodFieldCategory;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Unit'**
+  String get prodFieldUnit;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Pack size'**
+  String get prodFieldPackSize;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'HSN'**
+  String get prodFieldHsn;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'GST rate'**
+  String get prodFieldGst;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder level'**
+  String get prodFieldReorder;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Selling price per unit'**
+  String get prodFieldPrices;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'No category'**
+  String get prodNoCategory;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'New category'**
+  String get prodAddCategory;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Save (Ctrl+S)'**
+  String get prodSave;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Product saved'**
+  String get prodSaved;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Stop selling'**
+  String get prodDeactivate;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Sell again'**
+  String get prodActivate;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Delete product'**
+  String get prodDelete;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this product? It stays in old bills.'**
+  String get prodDeleteConfirm;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name'**
+  String get prodErrName;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a SKU'**
+  String get prodErrSku;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a valid GST rate'**
+  String get prodErrGst;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'HSN must be 4, 6 or 8 digits'**
+  String get prodErrHsn;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder level cannot be negative'**
+  String get prodErrReorder;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Price cannot be negative'**
+  String get prodErrPrice;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'SKU already used by {name}'**
+  String prodErrDupSku(String name);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode already used by {name}'**
+  String prodErrDupBarcode(String name);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'The unit cannot change once the product has batches'**
+  String get prodErrUnitLocked;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust the stock to zero before deleting'**
+  String get prodErrHasStock;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'You are not allowed to do this'**
+  String get prodErrNotPermitted;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Not found'**
+  String get prodErrNotFound;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Bag'**
+  String get prodUnitBag;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Bottle'**
+  String get prodUnitBtl;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Litre'**
+  String get prodUnitLtr;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Kg'**
+  String get prodUnitKg;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Packet'**
+  String get prodUnitPkt;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Piece'**
+  String get prodUnitPc;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Batch {no}'**
+  String prodBatchTitle(String no);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Stock book'**
+  String get prodBatchMovements;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Cost per unit'**
+  String get prodBatchCost;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Manufactured'**
+  String get prodBatchMfg;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry'**
+  String get prodBatchExpiry;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get prodBatchLeft;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Stored quantity differs from the stock book'**
+  String get prodBatchStale;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Repair quantities'**
+  String get prodBatchRebuild;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{All quantities are right} =1{1 batch repaired} other{{count} batches repaired}}'**
+  String prodBatchRebuilt(int count);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get prodBatchExpiredTag;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiring'**
+  String get prodBatchExpiringTag;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase'**
+  String get prodReasonPurchase;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Sale'**
+  String get prodReasonSale;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Sale return'**
+  String get prodReasonSaleReturn;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase return'**
+  String get prodReasonPurchaseReturn;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Adjustment'**
+  String get prodReasonAdjustment;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Opening stock'**
+  String get prodReasonOpening;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust stock'**
+  String get prodAdjTitle;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Add stock as a new batch'**
+  String get prodAdjAddBatch;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Batch'**
+  String get prodAdjBatch;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Change (+ found, - lost)'**
+  String get prodAdjDelta;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Reason (required)'**
+  String get prodAdjNote;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Batch no'**
+  String get prodAdjBatchNo;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity'**
+  String get prodAdjQty;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Cost per unit'**
+  String get prodAdjCost;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Mfg date (dd/mm/yyyy)'**
+  String get prodAdjMfg;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry date (dd/mm/yyyy)'**
+  String get prodAdjExpiry;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get prodAdjApply;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Stock updated'**
+  String get prodAdjDone;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the reason'**
+  String get prodAdjErrNote;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a quantity'**
+  String get prodAdjErrZero;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough stock in this batch'**
+  String get prodAdjErrNegative;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Date is in the future'**
+  String get prodAdjErrDate;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'This date is in a closed financial year'**
+  String get prodAdjErrLocked;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'This batch number already exists'**
+  String get prodAdjErrExists;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the cost'**
+  String get prodAdjErrCost;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Import opening stock'**
+  String get prodImpTitle;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Columns: SKU (or barcode or product name), batch, mfg, expiry, qty, cost. First row is the header. Products must exist already.'**
+  String get prodImpHelp;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Choose file'**
+  String get prodImpChoose;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Or paste the table'**
+  String get prodImpPasteLabel;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'sku, batch, expiry, qty, cost'**
+  String get prodImpPasteHint;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Read pasted text'**
+  String get prodImpRead;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Stock as on'**
+  String get prodImpDate;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 row} other{{count} rows}} worth {value}'**
+  String prodImpSummary(int count, String value);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 row has a problem} other{{count} rows have problems}}. Fix the file and read it again.'**
+  String prodImpErrorsFound(int count);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Import stock'**
+  String get prodImpButton;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'{rows} rows imported, {skipped} already there'**
+  String prodImpDone(int rows, int skipped);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Everything in this file was imported before'**
+  String get prodImpAlready;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row}: the product changed. Read the file again.'**
+  String prodImpStale(int row);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row}'**
+  String prodImpRowNumber(int row);
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'The file is empty'**
+  String get prodImpSheetEmpty;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'No SKU, barcode or product column found'**
+  String get prodImpNoProductCol;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'No quantity column found'**
+  String get prodImpNoQtyCol;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'No cost column found'**
+  String get prodImpNoCostCol;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'This file could not be read'**
+  String get prodImpUnreadable;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Save the old .xls file as .xlsx or CSV first'**
+  String get prodImpOldExcel;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Product not found'**
+  String get prodImpProbUnknown;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'More than one product matches'**
+  String get prodImpProbAmbiguous;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity is not valid'**
+  String get prodImpProbQty;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Cost is not valid'**
+  String get prodImpProbCost;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Mfg date is not valid'**
+  String get prodImpProbMfg;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry date is not valid'**
+  String get prodImpProbExpiry;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry is before manufacturing'**
+  String get prodImpProbExpiryBeforeMfg;
+
+  /// Products & stock (step 4.1).
+  ///
+  /// In en, this message translates to:
+  /// **'Same product and batch appears twice'**
+  String get prodImpProbDuplicate;
 }
 
 class _AppLocalizationsDelegate

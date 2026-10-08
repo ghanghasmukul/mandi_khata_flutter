@@ -12,8 +12,8 @@ enum SaleStatus {
 /// One row of `shop_sale_lines`: a cart line is one row per batch it was
 /// served from. [unitCost] is the batch cost snapshot (COGS).
 @immutable
-class SaleLineRecord {
-  const SaleLineRecord({
+class InvoiceLine {
+  const InvoiceLine({
     required this.id,
     required this.lineNo,
     required this.productId,
@@ -212,7 +212,7 @@ class SaleDetail {
   });
 
   final SaleRecord sale;
-  final List<SaleLineRecord> lines;
+  final List<InvoiceLine> lines;
   final List<SaleReturnRecord> returns;
   final String? partyVillage;
 
@@ -235,10 +235,8 @@ class SaleDetail {
       lines.any((l) => l.returnableMilli > 0);
 
   /// Σ cost of goods sold, net of what came back.
-  Money get costOfGoods => lines.fold(
-    Money.zero,
-    (a, l) => a + l.cost - l.returnedCost,
-  );
+  Money get costOfGoods =>
+      lines.fold(Money.zero, (a, l) => a + l.cost - l.returnedCost);
 }
 
 /// What the sales list filters on.

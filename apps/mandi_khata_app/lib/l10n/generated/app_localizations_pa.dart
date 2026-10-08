@@ -5107,4 +5107,624 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get permission_shopViewProfit => 'ਦੁਕਾਨ ਦਾ ਮੁਨਾਫ਼ਾ ਵੇਖੋ';
+
+  @override
+  String get purchasesTitle => 'Purchases';
+
+  @override
+  String get purchasesEmpty => 'No purchases yet';
+
+  @override
+  String get purchaseNew => 'New purchase';
+
+  @override
+  String get purchaseSupplier => 'Supplier';
+
+  @override
+  String get purchaseSupplierInvoiceNo => 'Supplier invoice no';
+
+  @override
+  String get purchaseInvoiceDate => 'Invoice date';
+
+  @override
+  String get purchaseAddLine => 'Add line (F2)';
+
+  @override
+  String get purchaseProduct => 'Product';
+
+  @override
+  String get purchaseBatchNo => 'Batch no';
+
+  @override
+  String get purchaseMfg => 'Mfg date';
+
+  @override
+  String get purchaseExpiry => 'Expiry date';
+
+  @override
+  String get purchaseQty => 'Qty';
+
+  @override
+  String get purchaseCost => 'Cost / unit';
+
+  @override
+  String get purchaseGstRate => 'GST %';
+
+  @override
+  String get purchaseFreight => 'Freight';
+
+  @override
+  String get purchaseOtherCharges => 'Other charges';
+
+  @override
+  String get purchaseRoundOff => 'Round off (+/-)';
+
+  @override
+  String get purchasePaidNow => 'Paid now';
+
+  @override
+  String get purchaseCreditDays => 'Credit days';
+
+  @override
+  String get purchaseDueDate => 'Due date';
+
+  @override
+  String get purchaseTaxable => 'Taxable';
+
+  @override
+  String get purchaseGst => 'GST';
+
+  @override
+  String get purchaseTotal => 'Total';
+
+  @override
+  String get purchaseUnpaid => 'Unpaid';
+
+  @override
+  String get purchasePaid => 'Paid';
+
+  @override
+  String get purchaseSave => 'Save (Ctrl+Enter)';
+
+  @override
+  String get purchaseReturnTitle => 'Purchase return';
+
+  @override
+  String get purchaseReturnQty => 'Return qty';
+
+  @override
+  String get purchaseReturnSave => 'Return goods';
+
+  @override
+  String get purchaseReverse => 'Reverse purchase';
+
+  @override
+  String get purchaseReversedTag => 'Reversed';
+
+  @override
+  String get purchaseStatusAll => 'All';
+
+  @override
+  String get purchaseStatusUnpaid => 'Unpaid';
+
+  @override
+  String get purchaseStatusReversed => 'Reversed';
+
+  @override
+  String get purchaseNotFound => 'Purchase not found';
+
+  @override
+  String get purchaseInUse => 'Cannot reverse: goods were returned or sold';
+
+  @override
+  String get purchaseLocked => 'Already reversed';
+
+  @override
+  String get purchaseErrInvalid =>
+      'Check the lines: product, batch, qty and cost are needed';
+
+  @override
+  String get purchaseErrNoSupplier => 'Choose a supplier';
+
+  @override
+  String get purchaseErrNotSupplier => 'This party is not a supplier';
+
+  @override
+  String get purchaseErrProduct => 'A product was not found';
+
+  @override
+  String get purchaseErrPaid => 'Paid amount is not valid';
+
+  @override
+  String get purchaseErrBank => 'Choose a bank account';
+
+  @override
+  String get purchaseErrReturn => 'Return quantity is not valid';
+
+  @override
+  String get purchaseOutstanding => 'Outstanding';
+
+  @override
+  String get purchaseReturns => 'Returns';
+
+  @override
+  String get purchaseLinesTitle => 'Lines';
+
+  @override
+  String get purchaseBank => 'Bank';
+
+  @override
+  String get purchaseCash => 'Cash';
+
+  @override
+  String get purchaseBankAccount => 'Bank account';
+
+  @override
+  String get purchaseNoLines => 'Add at least one line';
+
+  @override
+  String get purchaseRefundKhata => 'Credit note on khata';
+
+  @override
+  String get purchaseRefundCash => 'Money back';
+
+  @override
+  String get purchaseRefundAuto => 'Auto';
+
+  @override
+  String purchaseSaved(String no) {
+    return 'Purchase $no saved';
+  }
+
+  @override
+  String purchaseReturnSaved(String no) {
+    return 'Return $no saved';
+  }
+
+  @override
+  String purchaseOverdue(int days) {
+    return '$days days overdue';
+  }
+
+  @override
+  String get prodTitle => 'Products & stock';
+
+  @override
+  String get prodSearchHint => 'Search name, SKU, barcode or brand';
+
+  @override
+  String get prodAdd => 'Add product';
+
+  @override
+  String get prodTileValue => 'Stock value (cost)';
+
+  @override
+  String get prodTileLow => 'Low stock';
+
+  @override
+  String get prodTileOut => 'Out of stock';
+
+  @override
+  String get prodTileExpiring => 'Expiring soon';
+
+  @override
+  String get prodTileExpired => 'Expired';
+
+  @override
+  String get prodFilterAll => 'All';
+
+  @override
+  String get prodFilterLow => 'Low';
+
+  @override
+  String get prodFilterOut => 'Out';
+
+  @override
+  String get prodFilterExpiring => 'Expiring';
+
+  @override
+  String get prodFilterExpired => 'Expired';
+
+  @override
+  String get prodAllCategories => 'All categories';
+
+  @override
+  String get prodColProduct => 'Product';
+
+  @override
+  String get prodColBatches => 'Batches';
+
+  @override
+  String get prodColCost => 'Cost';
+
+  @override
+  String get prodColPrices => 'Prices';
+
+  @override
+  String get prodColMargin => 'Margin';
+
+  @override
+  String get prodColStock => 'Stock';
+
+  @override
+  String get prodColValue => 'Value';
+
+  @override
+  String get prodEmptyTitle => 'No products yet';
+
+  @override
+  String get prodEmptyBody => 'Add your first product or import opening stock.';
+
+  @override
+  String get prodNoMatch => 'No product matches';
+
+  @override
+  String get prodNoAccess => 'You do not have access to products.';
+
+  @override
+  String get prodNoBatches => 'No stock';
+
+  @override
+  String prodCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count products',
+      one: '1 product',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String prodBatchLine(String no, String qty) {
+    return '$no: $qty';
+  }
+
+  @override
+  String get prodFormNew => 'New product';
+
+  @override
+  String get prodFormEdit => 'Edit product';
+
+  @override
+  String get prodFieldName => 'Name';
+
+  @override
+  String get prodFieldSku => 'SKU';
+
+  @override
+  String get prodFieldBarcode => 'Barcode';
+
+  @override
+  String get prodFieldBrand => 'Brand';
+
+  @override
+  String get prodFieldCategory => 'Category';
+
+  @override
+  String get prodFieldUnit => 'Unit';
+
+  @override
+  String get prodFieldPackSize => 'Pack size';
+
+  @override
+  String get prodFieldHsn => 'HSN';
+
+  @override
+  String get prodFieldGst => 'GST rate';
+
+  @override
+  String get prodFieldReorder => 'Reorder level';
+
+  @override
+  String get prodFieldPrices => 'Selling price per unit';
+
+  @override
+  String get prodNoCategory => 'No category';
+
+  @override
+  String get prodAddCategory => 'New category';
+
+  @override
+  String get prodSave => 'Save (Ctrl+S)';
+
+  @override
+  String get prodSaved => 'Product saved';
+
+  @override
+  String get prodDeactivate => 'Stop selling';
+
+  @override
+  String get prodActivate => 'Sell again';
+
+  @override
+  String get prodDelete => 'Delete product';
+
+  @override
+  String get prodDeleteConfirm => 'Delete this product? It stays in old bills.';
+
+  @override
+  String get prodErrName => 'Enter a name';
+
+  @override
+  String get prodErrSku => 'Enter a SKU';
+
+  @override
+  String get prodErrGst => 'Choose a valid GST rate';
+
+  @override
+  String get prodErrHsn => 'HSN must be 4, 6 or 8 digits';
+
+  @override
+  String get prodErrReorder => 'Reorder level cannot be negative';
+
+  @override
+  String get prodErrPrice => 'Price cannot be negative';
+
+  @override
+  String prodErrDupSku(String name) {
+    return 'SKU already used by $name';
+  }
+
+  @override
+  String prodErrDupBarcode(String name) {
+    return 'Barcode already used by $name';
+  }
+
+  @override
+  String get prodErrUnitLocked =>
+      'The unit cannot change once the product has batches';
+
+  @override
+  String get prodErrHasStock => 'Adjust the stock to zero before deleting';
+
+  @override
+  String get prodErrNotPermitted => 'You are not allowed to do this';
+
+  @override
+  String get prodErrNotFound => 'Not found';
+
+  @override
+  String get prodUnitBag => 'Bag';
+
+  @override
+  String get prodUnitBtl => 'Bottle';
+
+  @override
+  String get prodUnitLtr => 'Litre';
+
+  @override
+  String get prodUnitKg => 'Kg';
+
+  @override
+  String get prodUnitPkt => 'Packet';
+
+  @override
+  String get prodUnitPc => 'Piece';
+
+  @override
+  String prodBatchTitle(String no) {
+    return 'Batch $no';
+  }
+
+  @override
+  String get prodBatchMovements => 'Stock book';
+
+  @override
+  String get prodBatchCost => 'Cost per unit';
+
+  @override
+  String get prodBatchMfg => 'Manufactured';
+
+  @override
+  String get prodBatchExpiry => 'Expiry';
+
+  @override
+  String get prodBatchLeft => 'Left';
+
+  @override
+  String get prodBatchStale => 'Stored quantity differs from the stock book';
+
+  @override
+  String get prodBatchRebuild => 'Repair quantities';
+
+  @override
+  String prodBatchRebuilt(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count batches repaired',
+      one: '1 batch repaired',
+      zero: 'All quantities are right',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get prodBatchExpiredTag => 'Expired';
+
+  @override
+  String get prodBatchExpiringTag => 'Expiring';
+
+  @override
+  String get prodReasonPurchase => 'Purchase';
+
+  @override
+  String get prodReasonSale => 'Sale';
+
+  @override
+  String get prodReasonSaleReturn => 'Sale return';
+
+  @override
+  String get prodReasonPurchaseReturn => 'Purchase return';
+
+  @override
+  String get prodReasonAdjustment => 'Adjustment';
+
+  @override
+  String get prodReasonOpening => 'Opening stock';
+
+  @override
+  String get prodAdjTitle => 'Adjust stock';
+
+  @override
+  String get prodAdjAddBatch => 'Add stock as a new batch';
+
+  @override
+  String get prodAdjBatch => 'Batch';
+
+  @override
+  String get prodAdjDelta => 'Change (+ found, - lost)';
+
+  @override
+  String get prodAdjNote => 'Reason (required)';
+
+  @override
+  String get prodAdjBatchNo => 'Batch no';
+
+  @override
+  String get prodAdjQty => 'Quantity';
+
+  @override
+  String get prodAdjCost => 'Cost per unit';
+
+  @override
+  String get prodAdjMfg => 'Mfg date (dd/mm/yyyy)';
+
+  @override
+  String get prodAdjExpiry => 'Expiry date (dd/mm/yyyy)';
+
+  @override
+  String get prodAdjApply => 'Apply';
+
+  @override
+  String get prodAdjDone => 'Stock updated';
+
+  @override
+  String get prodAdjErrNote => 'Enter the reason';
+
+  @override
+  String get prodAdjErrZero => 'Enter a quantity';
+
+  @override
+  String get prodAdjErrNegative => 'Not enough stock in this batch';
+
+  @override
+  String get prodAdjErrDate => 'Date is in the future';
+
+  @override
+  String get prodAdjErrLocked => 'This date is in a closed financial year';
+
+  @override
+  String get prodAdjErrExists => 'This batch number already exists';
+
+  @override
+  String get prodAdjErrCost => 'Enter the cost';
+
+  @override
+  String get prodImpTitle => 'Import opening stock';
+
+  @override
+  String get prodImpHelp =>
+      'Columns: SKU (or barcode or product name), batch, mfg, expiry, qty, cost. First row is the header. Products must exist already.';
+
+  @override
+  String get prodImpChoose => 'Choose file';
+
+  @override
+  String get prodImpPasteLabel => 'Or paste the table';
+
+  @override
+  String get prodImpPasteHint => 'sku, batch, expiry, qty, cost';
+
+  @override
+  String get prodImpRead => 'Read pasted text';
+
+  @override
+  String get prodImpDate => 'Stock as on';
+
+  @override
+  String prodImpSummary(int count, String value) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count rows',
+      one: '1 row',
+    );
+    return '$_temp0 worth $value';
+  }
+
+  @override
+  String prodImpErrorsFound(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count rows have problems',
+      one: '1 row has a problem',
+    );
+    return '$_temp0. Fix the file and read it again.';
+  }
+
+  @override
+  String get prodImpButton => 'Import stock';
+
+  @override
+  String prodImpDone(int rows, int skipped) {
+    return '$rows rows imported, $skipped already there';
+  }
+
+  @override
+  String get prodImpAlready => 'Everything in this file was imported before';
+
+  @override
+  String prodImpStale(int row) {
+    return 'Row $row: the product changed. Read the file again.';
+  }
+
+  @override
+  String prodImpRowNumber(int row) {
+    return 'Row $row';
+  }
+
+  @override
+  String get prodImpSheetEmpty => 'The file is empty';
+
+  @override
+  String get prodImpNoProductCol => 'No SKU, barcode or product column found';
+
+  @override
+  String get prodImpNoQtyCol => 'No quantity column found';
+
+  @override
+  String get prodImpNoCostCol => 'No cost column found';
+
+  @override
+  String get prodImpUnreadable => 'This file could not be read';
+
+  @override
+  String get prodImpOldExcel => 'Save the old .xls file as .xlsx or CSV first';
+
+  @override
+  String get prodImpProbUnknown => 'Product not found';
+
+  @override
+  String get prodImpProbAmbiguous => 'More than one product matches';
+
+  @override
+  String get prodImpProbQty => 'Quantity is not valid';
+
+  @override
+  String get prodImpProbCost => 'Cost is not valid';
+
+  @override
+  String get prodImpProbMfg => 'Mfg date is not valid';
+
+  @override
+  String get prodImpProbExpiry => 'Expiry date is not valid';
+
+  @override
+  String get prodImpProbExpiryBeforeMfg => 'Expiry is before manufacturing';
+
+  @override
+  String get prodImpProbDuplicate => 'Same product and batch appears twice';
 }

@@ -6975,5 +6975,707 @@
   "permission_shopViewProfit": "See shop profit",
   "@permission_shopViewProfit": {
     "description": "Phase 4 (input shop)."
+  },
+  "purchasesTitle": "Purchases",
+  "@purchasesTitle": {"description": "Purchases (step 4.2)."},
+  "purchasesEmpty": "No purchases yet",
+  "@purchasesEmpty": {"description": "Purchases (step 4.2)."},
+  "purchaseNew": "New purchase",
+  "@purchaseNew": {"description": "Purchases (step 4.2)."},
+  "purchaseSupplier": "Supplier",
+  "@purchaseSupplier": {"description": "Purchases (step 4.2)."},
+  "purchaseSupplierInvoiceNo": "Supplier invoice no",
+  "@purchaseSupplierInvoiceNo": {"description": "Purchases (step 4.2)."},
+  "purchaseInvoiceDate": "Invoice date",
+  "@purchaseInvoiceDate": {"description": "Purchases (step 4.2)."},
+  "purchaseAddLine": "Add line (F2)",
+  "@purchaseAddLine": {"description": "Purchases (step 4.2)."},
+  "purchaseProduct": "Product",
+  "@purchaseProduct": {"description": "Purchases (step 4.2)."},
+  "purchaseBatchNo": "Batch no",
+  "@purchaseBatchNo": {"description": "Purchases (step 4.2)."},
+  "purchaseMfg": "Mfg date",
+  "@purchaseMfg": {"description": "Purchases (step 4.2)."},
+  "purchaseExpiry": "Expiry date",
+  "@purchaseExpiry": {"description": "Purchases (step 4.2)."},
+  "purchaseQty": "Qty",
+  "@purchaseQty": {"description": "Purchases (step 4.2)."},
+  "purchaseCost": "Cost / unit",
+  "@purchaseCost": {"description": "Purchases (step 4.2)."},
+  "purchaseGstRate": "GST %",
+  "@purchaseGstRate": {"description": "Purchases (step 4.2)."},
+  "purchaseFreight": "Freight",
+  "@purchaseFreight": {"description": "Purchases (step 4.2)."},
+  "purchaseOtherCharges": "Other charges",
+  "@purchaseOtherCharges": {"description": "Purchases (step 4.2)."},
+  "purchaseRoundOff": "Round off (+/-)",
+  "@purchaseRoundOff": {"description": "Purchases (step 4.2)."},
+  "purchasePaidNow": "Paid now",
+  "@purchasePaidNow": {"description": "Purchases (step 4.2)."},
+  "purchaseCreditDays": "Credit days",
+  "@purchaseCreditDays": {"description": "Purchases (step 4.2)."},
+  "purchaseDueDate": "Due date",
+  "@purchaseDueDate": {"description": "Purchases (step 4.2)."},
+  "purchaseTaxable": "Taxable",
+  "@purchaseTaxable": {"description": "Purchases (step 4.2)."},
+  "purchaseGst": "GST",
+  "@purchaseGst": {"description": "Purchases (step 4.2)."},
+  "purchaseTotal": "Total",
+  "@purchaseTotal": {"description": "Purchases (step 4.2)."},
+  "purchaseUnpaid": "Unpaid",
+  "@purchaseUnpaid": {"description": "Purchases (step 4.2)."},
+  "purchasePaid": "Paid",
+  "@purchasePaid": {"description": "Purchases (step 4.2)."},
+  "purchaseSave": "Save (Ctrl+Enter)",
+  "@purchaseSave": {"description": "Purchases (step 4.2)."},
+  "purchaseReturnTitle": "Purchase return",
+  "@purchaseReturnTitle": {"description": "Purchases (step 4.2)."},
+  "purchaseReturnQty": "Return qty",
+  "@purchaseReturnQty": {"description": "Purchases (step 4.2)."},
+  "purchaseReturnSave": "Return goods",
+  "@purchaseReturnSave": {"description": "Purchases (step 4.2)."},
+  "purchaseReverse": "Reverse purchase",
+  "@purchaseReverse": {"description": "Purchases (step 4.2)."},
+  "purchaseReversedTag": "Reversed",
+  "@purchaseReversedTag": {"description": "Purchases (step 4.2)."},
+  "purchaseStatusAll": "All",
+  "@purchaseStatusAll": {"description": "Purchases (step 4.2)."},
+  "purchaseStatusUnpaid": "Unpaid",
+  "@purchaseStatusUnpaid": {"description": "Purchases (step 4.2)."},
+  "purchaseStatusReversed": "Reversed",
+  "@purchaseStatusReversed": {"description": "Purchases (step 4.2)."},
+  "purchaseNotFound": "Purchase not found",
+  "@purchaseNotFound": {"description": "Purchases (step 4.2)."},
+  "purchaseInUse": "Cannot reverse: goods were returned or sold",
+  "@purchaseInUse": {"description": "Purchases (step 4.2)."},
+  "purchaseLocked": "Already reversed",
+  "@purchaseLocked": {"description": "Purchases (step 4.2)."},
+  "purchaseErrInvalid": "Check the lines: product, batch, qty and cost are needed",
+  "@purchaseErrInvalid": {"description": "Purchases (step 4.2)."},
+  "purchaseErrNoSupplier": "Choose a supplier",
+  "@purchaseErrNoSupplier": {"description": "Purchases (step 4.2)."},
+  "purchaseErrNotSupplier": "This party is not a supplier",
+  "@purchaseErrNotSupplier": {"description": "Purchases (step 4.2)."},
+  "purchaseErrProduct": "A product was not found",
+  "@purchaseErrProduct": {"description": "Purchases (step 4.2)."},
+  "purchaseErrPaid": "Paid amount is not valid",
+  "@purchaseErrPaid": {"description": "Purchases (step 4.2)."},
+  "purchaseErrBank": "Choose a bank account",
+  "@purchaseErrBank": {"description": "Purchases (step 4.2)."},
+  "purchaseErrReturn": "Return quantity is not valid",
+  "@purchaseErrReturn": {"description": "Purchases (step 4.2)."},
+  "purchaseOutstanding": "Outstanding",
+  "@purchaseOutstanding": {"description": "Purchases (step 4.2)."},
+  "purchaseReturns": "Returns",
+  "@purchaseReturns": {"description": "Purchases (step 4.2)."},
+  "purchaseLinesTitle": "Lines",
+  "@purchaseLinesTitle": {"description": "Purchases (step 4.2)."},
+  "purchaseBank": "Bank",
+  "@purchaseBank": {"description": "Purchases (step 4.2)."},
+  "purchaseCash": "Cash",
+  "@purchaseCash": {"description": "Purchases (step 4.2)."},
+  "purchaseBankAccount": "Bank account",
+  "@purchaseBankAccount": {"description": "Purchases (step 4.2)."},
+  "purchaseNoLines": "Add at least one line",
+  "@purchaseNoLines": {"description": "Purchases (step 4.2)."},
+  "purchaseRefundKhata": "Credit note on khata",
+  "@purchaseRefundKhata": {"description": "Purchases (step 4.2)."},
+  "purchaseRefundCash": "Money back",
+  "@purchaseRefundCash": {"description": "Purchases (step 4.2)."},
+  "purchaseRefundAuto": "Auto",
+  "@purchaseRefundAuto": {"description": "Purchases (step 4.2)."},
+  "purchaseSaved": "Purchase {no} saved",
+  "@purchaseSaved": {"description": "Purchases (step 4.2).", "placeholders": {"no": {"type": "String"}}},
+  "purchaseReturnSaved": "Return {no} saved",
+  "@purchaseReturnSaved": {"description": "Purchases (step 4.2).", "placeholders": {"no": {"type": "String"}}},
+  "purchaseOverdue": "{days} days overdue",
+  "@purchaseOverdue": {"description": "Purchases (step 4.2).", "placeholders": {"days": {"type": "int"}}},
+  "prodTitle": "Products & stock",
+  "@prodTitle": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodSearchHint": "Search name, SKU, barcode or brand",
+  "@prodSearchHint": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdd": "Add product",
+  "@prodAdd": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodTileValue": "Stock value (cost)",
+  "@prodTileValue": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodTileLow": "Low stock",
+  "@prodTileLow": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodTileOut": "Out of stock",
+  "@prodTileOut": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodTileExpiring": "Expiring soon",
+  "@prodTileExpiring": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodTileExpired": "Expired",
+  "@prodTileExpired": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFilterAll": "All",
+  "@prodFilterAll": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFilterLow": "Low",
+  "@prodFilterLow": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFilterOut": "Out",
+  "@prodFilterOut": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFilterExpiring": "Expiring",
+  "@prodFilterExpiring": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFilterExpired": "Expired",
+  "@prodFilterExpired": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAllCategories": "All categories",
+  "@prodAllCategories": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodColProduct": "Product",
+  "@prodColProduct": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodColBatches": "Batches",
+  "@prodColBatches": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodColCost": "Cost",
+  "@prodColCost": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodColPrices": "Prices",
+  "@prodColPrices": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodColMargin": "Margin",
+  "@prodColMargin": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodColStock": "Stock",
+  "@prodColStock": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodColValue": "Value",
+  "@prodColValue": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodEmptyTitle": "No products yet",
+  "@prodEmptyTitle": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodEmptyBody": "Add your first product or import opening stock.",
+  "@prodEmptyBody": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodNoMatch": "No product matches",
+  "@prodNoMatch": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodNoAccess": "You do not have access to products.",
+  "@prodNoAccess": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodNoBatches": "No stock",
+  "@prodNoBatches": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodCount": "{count, plural, =1{1 product} other{{count} products}}",
+  "@prodCount": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prodBatchLine": "{no}: {qty}",
+  "@prodBatchLine": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      },
+      "qty": {
+        "type": "String"
+      }
+    }
+  },
+  "prodFormNew": "New product",
+  "@prodFormNew": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFormEdit": "Edit product",
+  "@prodFormEdit": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldName": "Name",
+  "@prodFieldName": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldSku": "SKU",
+  "@prodFieldSku": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldBarcode": "Barcode",
+  "@prodFieldBarcode": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldBrand": "Brand",
+  "@prodFieldBrand": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldCategory": "Category",
+  "@prodFieldCategory": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldUnit": "Unit",
+  "@prodFieldUnit": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldPackSize": "Pack size",
+  "@prodFieldPackSize": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldHsn": "HSN",
+  "@prodFieldHsn": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldGst": "GST rate",
+  "@prodFieldGst": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldReorder": "Reorder level",
+  "@prodFieldReorder": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodFieldPrices": "Selling price per unit",
+  "@prodFieldPrices": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodNoCategory": "No category",
+  "@prodNoCategory": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAddCategory": "New category",
+  "@prodAddCategory": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodSave": "Save (Ctrl+S)",
+  "@prodSave": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodSaved": "Product saved",
+  "@prodSaved": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodDeactivate": "Stop selling",
+  "@prodDeactivate": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodActivate": "Sell again",
+  "@prodActivate": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodDelete": "Delete product",
+  "@prodDelete": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodDeleteConfirm": "Delete this product? It stays in old bills.",
+  "@prodDeleteConfirm": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrName": "Enter a name",
+  "@prodErrName": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrSku": "Enter a SKU",
+  "@prodErrSku": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrGst": "Choose a valid GST rate",
+  "@prodErrGst": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrHsn": "HSN must be 4, 6 or 8 digits",
+  "@prodErrHsn": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrReorder": "Reorder level cannot be negative",
+  "@prodErrReorder": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrPrice": "Price cannot be negative",
+  "@prodErrPrice": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrDupSku": "SKU already used by {name}",
+  "@prodErrDupSku": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "prodErrDupBarcode": "Barcode already used by {name}",
+  "@prodErrDupBarcode": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "prodErrUnitLocked": "The unit cannot change once the product has batches",
+  "@prodErrUnitLocked": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrHasStock": "Adjust the stock to zero before deleting",
+  "@prodErrHasStock": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrNotPermitted": "You are not allowed to do this",
+  "@prodErrNotPermitted": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodErrNotFound": "Not found",
+  "@prodErrNotFound": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodUnitBag": "Bag",
+  "@prodUnitBag": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodUnitBtl": "Bottle",
+  "@prodUnitBtl": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodUnitLtr": "Litre",
+  "@prodUnitLtr": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodUnitKg": "Kg",
+  "@prodUnitKg": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodUnitPkt": "Packet",
+  "@prodUnitPkt": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodUnitPc": "Piece",
+  "@prodUnitPc": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchTitle": "Batch {no}",
+  "@prodBatchTitle": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "no": {
+        "type": "String"
+      }
+    }
+  },
+  "prodBatchMovements": "Stock book",
+  "@prodBatchMovements": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchCost": "Cost per unit",
+  "@prodBatchCost": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchMfg": "Manufactured",
+  "@prodBatchMfg": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchExpiry": "Expiry",
+  "@prodBatchExpiry": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchLeft": "Left",
+  "@prodBatchLeft": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchStale": "Stored quantity differs from the stock book",
+  "@prodBatchStale": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchRebuild": "Repair quantities",
+  "@prodBatchRebuild": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchRebuilt": "{count, plural, =0{All quantities are right} =1{1 batch repaired} other{{count} batches repaired}}",
+  "@prodBatchRebuilt": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prodBatchExpiredTag": "Expired",
+  "@prodBatchExpiredTag": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodBatchExpiringTag": "Expiring",
+  "@prodBatchExpiringTag": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodReasonPurchase": "Purchase",
+  "@prodReasonPurchase": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodReasonSale": "Sale",
+  "@prodReasonSale": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodReasonSaleReturn": "Sale return",
+  "@prodReasonSaleReturn": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodReasonPurchaseReturn": "Purchase return",
+  "@prodReasonPurchaseReturn": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodReasonAdjustment": "Adjustment",
+  "@prodReasonAdjustment": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodReasonOpening": "Opening stock",
+  "@prodReasonOpening": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjTitle": "Adjust stock",
+  "@prodAdjTitle": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjAddBatch": "Add stock as a new batch",
+  "@prodAdjAddBatch": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjBatch": "Batch",
+  "@prodAdjBatch": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjDelta": "Change (+ found, - lost)",
+  "@prodAdjDelta": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjNote": "Reason (required)",
+  "@prodAdjNote": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjBatchNo": "Batch no",
+  "@prodAdjBatchNo": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjQty": "Quantity",
+  "@prodAdjQty": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjCost": "Cost per unit",
+  "@prodAdjCost": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjMfg": "Mfg date (dd/mm/yyyy)",
+  "@prodAdjMfg": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjExpiry": "Expiry date (dd/mm/yyyy)",
+  "@prodAdjExpiry": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjApply": "Apply",
+  "@prodAdjApply": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjDone": "Stock updated",
+  "@prodAdjDone": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjErrNote": "Enter the reason",
+  "@prodAdjErrNote": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjErrZero": "Enter a quantity",
+  "@prodAdjErrZero": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjErrNegative": "Not enough stock in this batch",
+  "@prodAdjErrNegative": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjErrDate": "Date is in the future",
+  "@prodAdjErrDate": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjErrLocked": "This date is in a closed financial year",
+  "@prodAdjErrLocked": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjErrExists": "This batch number already exists",
+  "@prodAdjErrExists": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodAdjErrCost": "Enter the cost",
+  "@prodAdjErrCost": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpTitle": "Import opening stock",
+  "@prodImpTitle": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpHelp": "Columns: SKU (or barcode or product name), batch, mfg, expiry, qty, cost. First row is the header. Products must exist already.",
+  "@prodImpHelp": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpChoose": "Choose file",
+  "@prodImpChoose": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpPasteLabel": "Or paste the table",
+  "@prodImpPasteLabel": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpPasteHint": "sku, batch, expiry, qty, cost",
+  "@prodImpPasteHint": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpRead": "Read pasted text",
+  "@prodImpRead": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpDate": "Stock as on",
+  "@prodImpDate": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpSummary": "{count, plural, =1{1 row} other{{count} rows}} worth {value}",
+  "@prodImpSummary": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "prodImpErrorsFound": "{count, plural, =1{1 row has a problem} other{{count} rows have problems}}. Fix the file and read it again.",
+  "@prodImpErrorsFound": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prodImpButton": "Import stock",
+  "@prodImpButton": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpDone": "{rows} rows imported, {skipped} already there",
+  "@prodImpDone": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "rows": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+  "prodImpAlready": "Everything in this file was imported before",
+  "@prodImpAlready": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpStale": "Row {row}: the product changed. Read the file again.",
+  "@prodImpStale": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "row": {
+        "type": "int"
+      }
+    }
+  },
+  "prodImpRowNumber": "Row {row}",
+  "@prodImpRowNumber": {
+    "description": "Products & stock (step 4.1).",
+    "placeholders": {
+      "row": {
+        "type": "int"
+      }
+    }
+  },
+  "prodImpSheetEmpty": "The file is empty",
+  "@prodImpSheetEmpty": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpNoProductCol": "No SKU, barcode or product column found",
+  "@prodImpNoProductCol": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpNoQtyCol": "No quantity column found",
+  "@prodImpNoQtyCol": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpNoCostCol": "No cost column found",
+  "@prodImpNoCostCol": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpUnreadable": "This file could not be read",
+  "@prodImpUnreadable": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpOldExcel": "Save the old .xls file as .xlsx or CSV first",
+  "@prodImpOldExcel": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbUnknown": "Product not found",
+  "@prodImpProbUnknown": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbAmbiguous": "More than one product matches",
+  "@prodImpProbAmbiguous": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbQty": "Quantity is not valid",
+  "@prodImpProbQty": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbCost": "Cost is not valid",
+  "@prodImpProbCost": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbMfg": "Mfg date is not valid",
+  "@prodImpProbMfg": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbExpiry": "Expiry date is not valid",
+  "@prodImpProbExpiry": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbExpiryBeforeMfg": "Expiry is before manufacturing",
+  "@prodImpProbExpiryBeforeMfg": {
+    "description": "Products & stock (step 4.1)."
+  },
+  "prodImpProbDuplicate": "Same product and batch appears twice",
+  "@prodImpProbDuplicate": {
+    "description": "Products & stock (step 4.1)."
   }
 }

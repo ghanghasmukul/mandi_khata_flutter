@@ -70,11 +70,9 @@ class PurchaseRepository {
     if (d.lines.isEmpty) PurchaseProblem.noLines,
     if (d.lines.any((l) => l.qtyMilli <= 0 || l.unitCost.isNegative))
       PurchaseProblem.badLine,
-    if (d.lines.any((l) => l.batchNo.trim().isEmpty))
-      PurchaseProblem.noBatchNo,
+    if (d.lines.any((l) => l.batchNo.trim().isEmpty)) PurchaseProblem.noBatchNo,
     if (d.lines.any(
-      (l) =>
-          l.mfgDate != null && l.expiry != null && l.expiry! < l.mfgDate!,
+      (l) => l.mfgDate != null && l.expiry != null && l.expiry! < l.mfgDate!,
     ))
       PurchaseProblem.badDates,
     if (d.freight.isNegative || d.otherCharges.isNegative)
@@ -110,7 +108,9 @@ class PurchaseRepository {
     }
 
     final supplier = await _supplier(tx, ctx.tenantId, draft.supplierId);
-    if (supplier == null) return const PurchaseInvalid([PurchaseProblem.noSupplier]);
+    if (supplier == null) {
+      return const PurchaseInvalid([PurchaseProblem.noSupplier]);
+    }
     if (!supplier.isSupplier) {
       return const PurchaseInvalid([PurchaseProblem.notASupplier]);
     }
@@ -182,6 +182,7 @@ class PurchaseRepository {
         otherCharges: draft.otherCharges,
         roundOff: draft.roundOff,
       );
+    // ignore: avoid_catching_errors
     } on ArgumentError {
       return const PurchaseInvalid([PurchaseProblem.badLine]);
     }
@@ -314,9 +315,7 @@ class PurchaseRepository {
       date: date,
       totals: totals,
       supplierId: draft.supplierId,
-      paid: [
-        if (bookAccountId != null) BookPayment(bookAccountId, draft.paid),
-      ],
+      paid: [if (bookAccountId != null) BookPayment(bookAccountId, draft.paid)],
       billNo: no,
     );
     final khata = plan.khata;
@@ -394,7 +393,9 @@ class PurchaseRepository {
         table: 'batches',
         rowId: id,
         action: AuditAction.insert,
-        after: {for (final MapEntry(:key, :value) in values.entries) key: ?value},
+        after: {
+          for (final MapEntry(:key, :value) in values.entries) key: ?value,
+        },
         at: when,
       );
       return id;
@@ -1248,33 +1249,31 @@ class PurchaseRepository {
   Stream<List<SupplierPayable>> watchSupplierPayables(
     String tenantId, {
     LedgerDate? today,
-  }) => _db
-      .watch('SELECT 1', triggerOnTables: _watched)
-      .asyncMap((_) async {
-        final day = today ?? LedgerDate.fromDateTime(DateTime.now());
-        return await _db.readTransaction((tx) async {
-          final totals = await _derive(tx, tenantId, day);
-          final names = <String, Map<String, Object?>>{};
-          for (final p in await tx.getAll(
-            'SELECT id, name, code FROM parties WHERE tenant_id = ?',
-            [tenantId],
-          )) {
-            names[p['id']! as String] = p;
-          }
-          return [
-            for (final t in totals)
-              SupplierPayable(
-                supplierId: t.supplierId,
-                supplierName: names[t.supplierId]?['name'] as String? ?? '',
-                supplierCode: names[t.supplierId]?['code'] as String? ?? '',
-                outstanding: t.outstanding,
-                dueDate: t.dueDate,
-                overdueDays: t.overdueDays,
-                bills: t.bills,
-              ),
-          ];
-        });
-      });
+  }) => _db.watch('SELECT 1', triggerOnTables: _watched).asyncMap((_) async {
+    final day = today ?? LedgerDate.fromDateTime(DateTime.now());
+    return await _db.readTransaction((tx) async {
+      final totals = await _derive(tx, tenantId, day);
+      final names = <String, Map<String, Object?>>{};
+      for (final p in await tx.getAll(
+        'SELECT id, name, code FROM parties WHERE tenant_id = ?',
+        [tenantId],
+      )) {
+        names[p['id']! as String] = p;
+      }
+      return [
+        for (final t in totals)
+          SupplierPayable(
+            supplierId: t.supplierId,
+            supplierName: names[t.supplierId]?['name'] as String? ?? '',
+            supplierCode: names[t.supplierId]?['code'] as String? ?? '',
+            outstanding: t.outstanding,
+            dueDate: t.dueDate,
+            overdueDays: t.overdueDays,
+            bills: t.bills,
+          ),
+      ];
+    });
+  });
 
   // -- reads -----------------------------------------------------------------
 
@@ -1284,34 +1283,31 @@ class PurchaseRepository {
     String tenantId,
     PurchaseFilter filter, {
     LedgerDate? today,
-  }) => _db
-      .watch('SELECT 1', triggerOnTables: _watched)
-      .asyncMap((_) async {
-        final day = today ?? LedgerDate.fromDateTime(DateTime.now());
-        return await _db.readTransaction((tx) async {
-          final rows = await tx.getAll(
-            '$_summarySelect WHERE p.tenant_id = ? '
-            'AND (? IS NULL OR p.party_id = ?) '
-            'AND (? IS NULL OR p.entry_date >= ?) '
-            'AND (? IS NULL OR p.entry_date <= ?) '
-            'ORDER BY p.entry_date DESC, p.created_at DESC LIMIT 1000',
-            [
-              tenantId,
-              filter.supplierId,
-              filter.supplierId,
-              filter.from?.toString(),
-              filter.from?.toString(),
-              filter.to?.toString(),
-              filter.to?.toString(),
-            ],
-          );
-          final open = await _openBills(tx, tenantId, day);
-          return [
-            for (final r in rows)
-              ?_summaryIf(r, open[r['id']], filter.status),
-          ];
-        });
-      });
+  }) => _db.watch('SELECT 1', triggerOnTables: _watched).asyncMap((_) async {
+    final day = today ?? LedgerDate.fromDateTime(DateTime.now());
+    return await _db.readTransaction((tx) async {
+      final rows = await tx.getAll(
+        '$_summarySelect WHERE p.tenant_id = ? '
+        'AND (? IS NULL OR p.party_id = ?) '
+        'AND (? IS NULL OR p.entry_date >= ?) '
+        'AND (? IS NULL OR p.entry_date <= ?) '
+        'ORDER BY p.entry_date DESC, p.created_at DESC LIMIT 1000',
+        [
+          tenantId,
+          filter.supplierId,
+          filter.supplierId,
+          filter.from?.toString(),
+          filter.from?.toString(),
+          filter.to?.toString(),
+          filter.to?.toString(),
+        ],
+      );
+      final open = await _openBills(tx, tenantId, day);
+      return [
+        for (final r in rows) ?_summaryIf(r, open[r['id']], filter.status),
+      ];
+    });
+  });
 
   PurchaseSummary? _summaryIf(
     Map<String, Object?> r,
@@ -1365,86 +1361,84 @@ class PurchaseRepository {
     String tenantId,
     String id, {
     LedgerDate? today,
-  }) => _db
-      .watch('SELECT 1', triggerOnTables: _watched)
-      .asyncMap((_) async {
-        final day = today ?? LedgerDate.fromDateTime(DateTime.now());
-        return await _db.readTransaction((tx) async {
-          final r = await tx.getOptional(
-            '$_summarySelect WHERE p.tenant_id = ? AND p.id = ?',
-            [tenantId, id],
-          );
-          if (r == null) return null;
-          final open = await _openBills(tx, tenantId, day);
-          final lines = await tx.getAll(
-            'SELECT l.*, pr.name AS product_name, '
-            '(SELECT COALESCE(SUM(x.qty_milli), 0) '
-            'FROM purchase_return_lines x JOIN purchase_returns rr '
-            'ON rr.id = x.purchase_return_id AND rr.tenant_id = x.tenant_id '
-            "WHERE x.purchase_line_id = l.id AND rr.status = 'posted') "
-            'AS returned_milli '
-            'FROM purchase_lines l LEFT JOIN products pr '
-            'ON pr.id = l.product_id AND pr.tenant_id = l.tenant_id '
-            'WHERE l.tenant_id = ? AND l.purchase_id = ? ORDER BY l.line_no',
-            [tenantId, id],
-          );
-          final returns = await tx.getAll(
-            'SELECT * FROM purchase_returns WHERE tenant_id = ? '
-            'AND purchase_id = ? ORDER BY created_at',
-            [tenantId, id],
-          );
-          final account = r['bank_account_id'] == null
-              ? null
-              : await tx.getOptional(
-                  'SELECT name FROM bank_accounts WHERE tenant_id = ? '
-                  'AND id = ?',
-                  [tenantId, r['bank_account_id']],
-                );
-          return PurchaseDetail(
-            summary: _summary(r, open[id]),
-            lines: [
-              for (final l in lines)
-                PurchaseLineView(
-                  id: l['id']! as String,
-                  lineNo: l['line_no']! as int,
-                  productId: l['product_id']! as String,
-                  productName: l['product_name'] as String? ?? '',
-                  batchId: l['batch_id']! as String,
-                  batchNo: l['batch_no']! as String,
-                  mfgDate: _date(l['mfg_date']),
-                  expiry: _date(l['expiry_date']),
-                  qtyMilli: l['qty_milli']! as int,
-                  returnedMilli: l['returned_milli']! as int,
-                  unitCost: Money(l['cost_paise']! as int),
-                  gstRateBp: (((l['gst_rate']! as num) * 100)).round(),
-                  taxable: Money(l['taxable_paise']! as int),
-                  gst: Money(l['gst_paise']! as int),
-                ),
-            ],
-            returns: [
-              for (final x in returns)
-                PurchaseReturnView(
-                  id: x['id']! as String,
-                  returnNo: x['return_no']! as String,
-                  date: LedgerDate.parse(x['entry_date']! as String),
-                  total: Money(x['total_paise']! as int),
-                  creditedToKhata: Money(x['refund_khata_paise']! as int),
-                  refundedPaid: Money(x['refund_paid_paise']! as int),
-                  isReversed: x['status'] == 'reversed',
-                ),
-            ],
-            taxable: Money(r['taxable_paise']! as int),
-            gst: Money(r['gst_paise']! as int),
-            freight: Money(r['freight_paise']! as int),
-            otherCharges: Money(r['other_charges_paise']! as int),
-            roundOff: Money(r['round_off_paise']! as int),
-            paidInCash: r['payment_mode'] != 'bank',
-            accountName: account?['name'] as String?,
-            creditDays: r['credit_days']! as int,
-            notes: r['notes'] as String?,
-          );
-        });
-      });
+  }) => _db.watch('SELECT 1', triggerOnTables: _watched).asyncMap((_) async {
+    final day = today ?? LedgerDate.fromDateTime(DateTime.now());
+    return await _db.readTransaction((tx) async {
+      final r = await tx.getOptional(
+        '$_summarySelect WHERE p.tenant_id = ? AND p.id = ?',
+        [tenantId, id],
+      );
+      if (r == null) return null;
+      final open = await _openBills(tx, tenantId, day);
+      final lines = await tx.getAll(
+        'SELECT l.*, pr.name AS product_name, '
+        '(SELECT COALESCE(SUM(x.qty_milli), 0) '
+        'FROM purchase_return_lines x JOIN purchase_returns rr '
+        'ON rr.id = x.purchase_return_id AND rr.tenant_id = x.tenant_id '
+        "WHERE x.purchase_line_id = l.id AND rr.status = 'posted') "
+        'AS returned_milli '
+        'FROM purchase_lines l LEFT JOIN products pr '
+        'ON pr.id = l.product_id AND pr.tenant_id = l.tenant_id '
+        'WHERE l.tenant_id = ? AND l.purchase_id = ? ORDER BY l.line_no',
+        [tenantId, id],
+      );
+      final returns = await tx.getAll(
+        'SELECT * FROM purchase_returns WHERE tenant_id = ? '
+        'AND purchase_id = ? ORDER BY created_at',
+        [tenantId, id],
+      );
+      final account = r['bank_account_id'] == null
+          ? null
+          : await tx.getOptional(
+              'SELECT name FROM bank_accounts WHERE tenant_id = ? '
+              'AND id = ?',
+              [tenantId, r['bank_account_id']],
+            );
+      return PurchaseDetail(
+        summary: _summary(r, open[id]),
+        lines: [
+          for (final l in lines)
+            PurchaseLineView(
+              id: l['id']! as String,
+              lineNo: l['line_no']! as int,
+              productId: l['product_id']! as String,
+              productName: l['product_name'] as String? ?? '',
+              batchId: l['batch_id']! as String,
+              batchNo: l['batch_no']! as String,
+              mfgDate: _date(l['mfg_date']),
+              expiry: _date(l['expiry_date']),
+              qtyMilli: l['qty_milli']! as int,
+              returnedMilli: l['returned_milli']! as int,
+              unitCost: Money(l['cost_paise']! as int),
+              gstRateBp: ((l['gst_rate']! as num) * 100).round(),
+              taxable: Money(l['taxable_paise']! as int),
+              gst: Money(l['gst_paise']! as int),
+            ),
+        ],
+        returns: [
+          for (final x in returns)
+            PurchaseReturnView(
+              id: x['id']! as String,
+              returnNo: x['return_no']! as String,
+              date: LedgerDate.parse(x['entry_date']! as String),
+              total: Money(x['total_paise']! as int),
+              creditedToKhata: Money(x['refund_khata_paise']! as int),
+              refundedPaid: Money(x['refund_paid_paise']! as int),
+              isReversed: x['status'] == 'reversed',
+            ),
+        ],
+        taxable: Money(r['taxable_paise']! as int),
+        gst: Money(r['gst_paise']! as int),
+        freight: Money(r['freight_paise']! as int),
+        otherCharges: Money(r['other_charges_paise']! as int),
+        roundOff: Money(r['round_off_paise']! as int),
+        paidInCash: r['payment_mode'] != 'bank',
+        accountName: account?['name'] as String?,
+        creditDays: r['credit_days']! as int,
+        notes: r['notes'] as String?,
+      );
+    });
+  });
 
   static LedgerDate? _date(Object? text) =>
       text == null ? null : LedgerDate.parse(text as String);

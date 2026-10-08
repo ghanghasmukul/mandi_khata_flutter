@@ -124,8 +124,7 @@ class ProductWithStock {
 
   ProductStockStatus get status => StockSummary.statusOf(toStockProduct());
 
-  bool hasExpired(LedgerDate today) =>
-      stocked.any((b) => b.isExpired(today));
+  bool hasExpired(LedgerDate today) => stocked.any((b) => b.isExpired(today));
 
   bool hasExpiring(LedgerDate today, int warnDays) =>
       stocked.any((b) => b.isExpiring(today, warnDays));
@@ -149,7 +148,19 @@ class ProductFilter {
   final StockFilter stock;
   final bool includeInactive;
 
-  bool matches(ProductWithStock p, {
+  @override
+  bool operator ==(Object other) =>
+      other is ProductFilter &&
+      other.query == query &&
+      other.categoryId == categoryId &&
+      other.stock == stock &&
+      other.includeInactive == includeInactive;
+
+  @override
+  int get hashCode => Object.hash(query, categoryId, stock, includeInactive);
+
+  bool matches(
+    ProductWithStock p, {
     required LedgerDate today,
     required int warnDays,
   }) {
@@ -158,9 +169,12 @@ class ProductFilter {
     if (categoryId != null && prod.categoryId != categoryId) return false;
     final q = query.trim().toLowerCase();
     if (q.isNotEmpty &&
-        ![prod.name, prod.sku, prod.barcode, prod.brand].any(
-          (s) => s != null && s.toLowerCase().contains(q),
-        )) {
+        ![
+          prod.name,
+          prod.sku,
+          prod.barcode,
+          prod.brand,
+        ].any((s) => s != null && s.toLowerCase().contains(q))) {
       return false;
     }
     return switch (stock) {
@@ -175,7 +189,7 @@ class ProductFilter {
 
 /// Builds [ProductWithStock] from raw rows; pure, so it is unit tested.
 abstract final class StockProjection {
-  /// [movementSums] maps `productId` -> `batchId` (or '' for no batch) -> Σ.
+  /// Sums are per product and batch (null batch = no batch).
   static List<ProductWithStock> build({
     required Iterable<Map<String, Object?>> productRows,
     required Iterable<Map<String, Object?>> batchRows,
@@ -219,10 +233,9 @@ abstract final class StockProjection {
     final out = <ProductWithStock>[];
     for (final r in productRows) {
       final product = Product.fromRow(r);
-      final batches = [...?batchesOf[product.id]]
-        ..sort(
-          (a, b) => FefoPicker.compare(a.toStockBatch(), b.toStockBatch()),
-        );
+      final batches = [
+        ...?batchesOf[product.id],
+      ]..sort((a, b) => FefoPicker.compare(a.toStockBatch(), b.toStockBatch()));
       out.add(
         ProductWithStock(
           product: product,

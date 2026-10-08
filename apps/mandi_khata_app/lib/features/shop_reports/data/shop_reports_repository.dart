@@ -39,7 +39,7 @@ class ShopReportsRepository {
   ) async {
     if (partyIds.isEmpty) return {};
     final rows = await _db.getAll(
-      'SELECT party_id, SUM(CASE side WHEN \'udhaar\' THEN amount_paise '
+      "SELECT party_id, SUM(CASE side WHEN 'udhaar' THEN amount_paise "
       'ELSE -amount_paise END) AS bal FROM ledger_entries '
       'WHERE tenant_id = ?1 GROUP BY party_id',
       [tenantId],
@@ -210,7 +210,7 @@ class ShopReportsRepository {
     String partyId,
   ) async {
     final rows = await _db.getAll(
-      'SELECT e.ref_type, SUM(CASE e.side WHEN \'udhaar\' '
+      "SELECT e.ref_type, SUM(CASE e.side WHEN 'udhaar' "
       'THEN e.amount_paise ELSE -e.amount_paise END) AS amt '
       'FROM ledger_entries e WHERE e.tenant_id = ?1 AND e.party_id = ?2 '
       'AND $_effective GROUP BY e.ref_type ORDER BY e.ref_type',
@@ -320,7 +320,8 @@ class ShopReportsRepository {
       rate is num ? (rate * 100).round() : 0;
 
   static String _monthStart(int year, int month) =>
-      '${year.toString().padLeft(4, '0')}-${month.toString().padLeft(2, '0')}-01';
+      '${year.toString().padLeft(4, '0')}-'
+      '${month.toString().padLeft(2, '0')}-01';
 
   /// The month's sales invoices and credit notes (sales returns) in the
   /// shape of the GSTR-1 builder. [tenantStateCode] is the place of supply
@@ -519,7 +520,7 @@ class ShopReportsRepository {
   }) async {
     final rows = await _db.getAll(
       'SELECT b.id, b.product_id, b.batch_no, b.cost_paise, b.expiry_date, '
-      "b.created_at, p.name, COALESCE(m.qty, 0) AS qty FROM batches b "
+      'b.created_at, p.name, COALESCE(m.qty, 0) AS qty FROM batches b '
       'JOIN products p ON p.id = b.product_id AND p.tenant_id = b.tenant_id '
       'LEFT JOIN (SELECT batch_id, SUM(qty_milli) AS qty '
       'FROM stock_movements WHERE tenant_id = ?1 GROUP BY batch_id) m '
@@ -565,7 +566,7 @@ class ShopReportsRepository {
     final since = today.addDays(-30).toString();
     final rows = await _db.getAll(
       'SELECT p.id, p.name, p.reorder_level_milli, COALESCE(s.stock, 0) AS '
-      'stock, COALESCE(s.sold, 0) AS sold FROM products p LEFT JOIN ('
+      'stock, COALESCE(s.sold, 0) AS sold FROM products p LEFT JOIN ( '
       'SELECT product_id, SUM(qty_milli) AS stock, '
       "SUM(CASE WHEN reason IN ('sale', 'sale_return') AND entry_date >= ?2 "
       'AND entry_date <= ?3 THEN -qty_milli ELSE 0 END) AS sold '
