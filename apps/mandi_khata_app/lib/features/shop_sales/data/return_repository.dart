@@ -111,6 +111,16 @@ class ReturnRepository {
       }
       final result = p.result;
       final settlement = p.settlement;
+      // Belt and braces: khata_core clamps, but never write a negative refund.
+      if (result.refund.paise < 0) {
+        return const ReturnInvalid({ReturnProblem.badQuantity});
+      }
+      // Mirrors the server guard: a bank / UPI refund needs finance.view.
+      if (draft.viaUpi &&
+          settlement.cash.isPositive &&
+          !can(Permission.financeView)) {
+        return const ReturnNotPermitted(Permission.financeView);
+      }
 
       String? bankId;
       if (draft.viaUpi && settlement.cash.isPositive) {

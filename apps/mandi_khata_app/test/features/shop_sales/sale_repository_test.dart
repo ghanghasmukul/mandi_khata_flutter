@@ -552,5 +552,79 @@ void main() {
       expect(await stockOf('a'), 10000);
       expect(await BooksInvariants.unbalancedEntriesIn(db, t1), isEmpty);
     });
+
+    test('a UPI refund needs finance.view; cash refund does not', () async {
+      await product('a');
+      await batch('b', 'a');
+      final saved = await save(
+        sale([
+          line('a', 2),
+        ], payment: const PaymentSplit(cash: Money.rupees(210))),
+      );
+      final d = (await repo.detail(t1, saved.id))!;
+      final item = ReturnItem(d.lines.single.id, 1000);
+      bool noFinance(Permission p) => p != Permission.financeView;
+      final refused = await returns.create(
+        ctx,
+        ReturnDraft(
+          saleId: saved.id,
+          items: [item],
+          viaUpi: true,
+          bankAccountId: sbi,
+        ),
+        can: noFinance,
+        now: now,
+      );
+      expect(
+        (refused as ReturnNotPermitted).permission,
+        Permission.financeView,
+      );
+      expect(
+        await db.getAll('SELECT id FROM shop_returns WHERE tenant_id = ?', [
+          t1,
+        ]),
+        isEmpty,
+      );
+      final cash = await returns.create(
+        ctx,
+        ReturnDraft(saleId: saved.id, items: [item]),
+        can: noFinance,
+        now: now,
+      );
+      expect(cash, isA<ReturnSaved>());
+    });
+
+    test('a negative round-off cannot make the refund negative', () async {
+      await product('a');
+      await batch('b', 'a');
+      final saved = await save(
+        sale([
+          line('a', 1),
+        ], payment: const PaymentSplit(cash: Money.rupees(105))),
+      );
+      // Corrupt the bill's round-off so the final return would go below zero.
+      await db.execute(
+        'UPDATE shop_sales SET round_off_paise = -100000 WHERE id = ?',
+        [saved.id],
+      );
+      final d = (await repo.detail(t1, saved.id))!;
+      final r = await returns.create(
+        ctx,
+        ReturnDraft(
+          saleId: saved.id,
+          items: [ReturnItem(d.lines.single.id, 1000)],
+        ),
+        can: owner,
+        now: now,
+      );
+      final ok = r as ReturnSaved;
+      expect(ok.refund.paise, greaterThanOrEqualTo(0));
+      final h = await db.get(
+        'SELECT total_paise, refund_khata_paise + refund_cash_paise + '
+        'refund_upi_paise AS s FROM shop_returns WHERE id = ?',
+        [ok.id],
+      );
+      expect(h['s'], h['total_paise']);
+    });
   });
 }

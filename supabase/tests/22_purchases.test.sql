@@ -3,7 +3,7 @@
 -- and batch, the supplier's khata and cash book lines, tenant isolation.
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(29);
+select plan(31);
 
 insert into auth.users (id, aud, role, email) values
   ('aaaaaaaa-0000-4000-8000-000000000001', 'authenticated', 'authenticated', 'owner1@test.local'),
@@ -245,6 +245,19 @@ select lives_ok(
 select throws_ok(
   $$update public.purchases set notes = 'x' where id = '60000000-0000-4000-8000-000000000002'$$,
   '42501', null, 'and a reversed purchase never changes again');
+
+select throws_ok(
+  $$update public.purchases set status = 'reversed', reversed_at = now()
+    where id = '60000000-0000-4000-8000-000000000001'$$,
+  '23514', null, 'a purchase with a posted return cannot be reversed');
+select throws_ok(
+  $$insert into public.purchase_returns (id, tenant_id, return_no, purchase_id, party_id,
+      entry_date, taxable_paise, gst_paise, total_paise, refund_khata_paise, device_id)
+    values (gen_random_uuid(), '11111111-1111-4111-8111-111111111111', 'PR-W2-0010',
+      '60000000-0000-4000-8000-000000000002', 'cccccccc-0000-4000-8000-000000000001',
+      (now() at time zone 'Asia/Kolkata')::date, 10000, 500, 10500, 10500,
+      'dddddddd-0000-4000-8000-000000000003')$$,
+  '23514', null, 'a reversed purchase cannot take a return');
 
 -- The munshi has no purchases.create.
 select set_config('request.jwt.claims',

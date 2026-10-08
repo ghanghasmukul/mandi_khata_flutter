@@ -142,4 +142,23 @@ void main() {
     );
     expect(() => SalesReturns.compute(sold, const []), throwsArgumentError);
   });
+
+  test('round-off never makes the refund negative', () {
+    final r = SalesReturns.compute(sold, const [
+      ReturnRequest(0, 5000),
+      ReturnRequest(1, 2000),
+    ], invoiceRoundOff: const Money(-1000000));
+    expect(r.completesInvoice, isTrue);
+    expect(r.roundOff, Money(-r.split.total.paise));
+    expect(r.refund, Money.zero);
+  });
+
+  test('a round-off within the split total is kept as is', () {
+    final r = SalesReturns.compute(sold, const [
+      ReturnRequest(0, 5000),
+      ReturnRequest(1, 2000),
+    ], invoiceRoundOff: const Money(-50));
+    expect(r.roundOff, const Money(-50));
+    expect(r.refund, r.split.total + const Money(-50));
+  });
 }

@@ -5,6 +5,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/powersync_schema.dart';
 import 'package:mandi_khata_app/features/payments/data/bank_accounts_repository.dart';
+import 'package:mandi_khata_app/features/products/domain/batch_ids.dart';
 import 'package:mandi_khata_app/features/purchases/data/purchase_repository.dart';
 import 'package:mandi_khata_app/features/purchases/domain/purchase.dart';
 import 'package:powersync/powersync.dart';
@@ -214,6 +215,15 @@ void main() {
     expect(await stock(b['id']! as String), 20000);
     // (10 x 100 + 10 x 200) / 20 = 150.
     expect(b['cost_paise'], 15000);
+  });
+
+  test('new batch id is derived from tenant, product and batch no', () async {
+    await save(draft());
+    final b = await db.get('SELECT id, product_id, batch_no FROM batches');
+    expect(
+      b['id'],
+      BatchIds.of(t1, b['product_id']! as String, b['batch_no']! as String),
+    );
   });
 
   test('freight rides into the batch cost', () async {

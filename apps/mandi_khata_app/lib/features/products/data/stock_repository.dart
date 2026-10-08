@@ -24,6 +24,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/features/accounts/data/journal_writer.dart';
 import 'package:mandi_khata_app/features/accounts/data/period_lock.dart';
+import 'package:mandi_khata_app/features/products/domain/batch_ids.dart';
 import 'package:mandi_khata_app/features/products/domain/opening_stock_import.dart';
 import 'package:mandi_khata_app/features/products/domain/stock.dart';
 import 'package:powersync/powersync.dart';
@@ -384,10 +385,11 @@ class StockRepository {
         return const StockInvalid([StockAdjustProblem.wouldGoNegative]);
       }
       final adjustmentId = const Uuid().v4();
+      final movementId = const Uuid().v4();
       await StockMovementWriter.insert(
         tx,
         ctx,
-        id: const Uuid().v4(),
+        id: movementId,
         productId: productId,
         batchId: batchId,
         date: day,
@@ -402,10 +404,11 @@ class StockRepository {
         tx,
         ctx,
         table: 'stock_movements',
-        rowId: adjustmentId,
+        rowId: movementId,
         action: AuditAction.insert,
         before: {'batch_id': batchId, 'qty_milli': left},
         after: {
+          'adjustment_id': adjustmentId,
           'product_id': productId,
           'batch_id': batchId,
           'delta_milli': deltaMilli,
@@ -565,10 +568,7 @@ class StockRepository {
           }
           final batchId =
               (existing?['id'] as String?) ??
-              const Uuid().v5(
-                _ns,
-                '${ctx.tenantId}|batch|$productId|${row.batchNo}',
-              );
+              BatchIds.of(ctx.tenantId, productId, row.batchNo);
           final movementId = failIfBatchExists
               ? const Uuid().v4()
               : const Uuid().v5(

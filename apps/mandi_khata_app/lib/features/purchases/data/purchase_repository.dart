@@ -8,6 +8,7 @@ import 'package:mandi_khata_app/features/accounts/data/period_lock.dart';
 import 'package:mandi_khata_app/features/khata/data/ledger_repository.dart';
 import 'package:mandi_khata_app/features/khata/domain/ledger_posting.dart';
 import 'package:mandi_khata_app/features/payments/data/bank_accounts_repository.dart';
+import 'package:mandi_khata_app/features/products/domain/batch_ids.dart';
 import 'package:mandi_khata_app/features/purchases/domain/purchase.dart';
 import 'package:powersync/powersync.dart';
 import 'package:sqlite_async/sqlite_async.dart'
@@ -372,7 +373,7 @@ class PurchaseRepository {
       [ctx.tenantId, l.productId, l.batchNo],
     );
     if (existing == null) {
-      final id = const Uuid().v4();
+      final id = BatchIds.of(ctx.tenantId, l.productId, l.batchNo);
       final values = <String, Object?>{
         'product_id': l.productId,
         'batch_no': l.batchNo,

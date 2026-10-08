@@ -297,6 +297,14 @@ void main() {
       );
       expect(move['note'], 'damaged');
       expect(move['qty_milli'], -2000);
+      // The audit row points at the movement; the adjustment id is payload.
+      final audit = await db.get(
+        'SELECT row_id, after FROM audit_log WHERE table_name = '
+        "'stock_movements' AND row_id = ?",
+        [move['id']],
+      );
+      expect(audit['row_id'], move['id']);
+      expect(audit['after'], contains(move['ref_id']! as String));
       // Loss: Dr Stock Adjustment, Cr Stock-in-Hand.
       expect(await count('journal_entries'), 2);
       final found = await adj(500, 'found') as StockAdjusted;

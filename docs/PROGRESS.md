@@ -60,7 +60,7 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [x] 4.3 POS (2026-10-08): keyboard-first POS (F2 / F3 / F4 / F10, barcode wedge, tiers, discounts, GST, cash / UPI / udhaar / split, hold / recall), FEFO, expiry and negative-stock settings, SI- numbers, A5 and 80 mm invoice PDF (en / hi / pa). Android camera scan via `mobile_scanner` (Android and iOS only)
 - [x] 4.4 Shop sales, returns, receivables & payables (2026-10-08): sales list / invoice / return (restocks original batch, khata or cash), `/shop/dues` with Pay / Collect and ref_type breakdown; test proves no double counting (farmer: lot jama 10,000 + urea udhaar 4,000 = one balance)
 - [ ] 4.5 Shop profit & GST (built 2026-10-08, open: 🧑 CA checks 5 invoices): profit by product / category / month, GST summary + GSTR-1 XLSX / JSON, HSN, missing-data flags, expiry and reorder reports
-- [ ] Phase 4 review
+- [ ] Phase 4 review run 2026-10-08 (docs/reviews/phase-4.md): no HIGH; 3 MEDIUM + 2 LOW fixed (migration `20261008151709_phase4_review_fixes` not yet pushed), 4 open items; exit criteria 1-2 proven, 3 needs a stopwatch run, 4 needs the CA (🧑)
 
 ## Phase 5: SaaS layer
 - [ ] 5.1 Plans & entitlements (🧑 decide plan prices)

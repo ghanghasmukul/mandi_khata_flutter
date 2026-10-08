@@ -3,7 +3,7 @@
 -- line and batch, the khata and book lines, permissions, tenant isolation.
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(29);
+select plan(31);
 
 insert into auth.users (id, aud, role, email) values
   ('aaaaaaaa-0000-4000-8000-000000000001', 'authenticated', 'authenticated', 'owner1@test.local'),
@@ -242,13 +242,25 @@ select throws_ok(
       (now() at time zone 'Asia/Kolkata')::date, 100, 100, 'cash', 50,
       'dddddddd-0000-4000-8000-000000000003')$$,
   '23514', null, 'the refund parts must add up to the return total');
-select lives_ok(
+select throws_ok(
   $$update public.shop_sales set status = 'reversed', reversed_at = now()
     where id = '80000000-0000-4000-8000-000000000001'$$,
-  'an accountant (entries.reverse) reverses a sale');
+  '23514', null, 'a sale with a posted return cannot be reversed');
+select lives_ok(
+  $$update public.shop_sales set status = 'reversed', reversed_at = now()
+    where id = '80000000-0000-4000-8000-000000000002'$$,
+  'an accountant (entries.reverse) reverses a sale without returns');
 select throws_ok(
-  $$update public.shop_sales set notes = 'x' where id = '80000000-0000-4000-8000-000000000001'$$,
+  $$update public.shop_sales set notes = 'x' where id = '80000000-0000-4000-8000-000000000002'$$,
   '42501', null, 'and a reversed sale never changes again');
+select throws_ok(
+  $$insert into public.shop_returns (id, tenant_id, sale_id, return_no, entry_date,
+      taxable_paise, total_paise, refund_mode, refund_cash_paise, device_id)
+    values (gen_random_uuid(), '11111111-1111-4111-8111-111111111111',
+      '80000000-0000-4000-8000-000000000002', 'SR-W2-0010',
+      (now() at time zone 'Asia/Kolkata')::date, 100, 100, 'cash', 100,
+      'dddddddd-0000-4000-8000-000000000003')$$,
+  '23514', null, 'a reversed sale cannot take a return');
 
 -- Another business.
 select set_config('request.jwt.claims',

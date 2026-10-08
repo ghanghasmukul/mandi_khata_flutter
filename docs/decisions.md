@@ -306,3 +306,7 @@
 - Supplier payables are a view: purchase khata jama per bill, supplier payments applied FIFO by due date, overpayment shown as advance. Never added to the party balance.
 - Purchase return freight share is stored in `purchase_returns.round_off_paise` (the column that satisfies the total check).
 - Open: payables logic exists twice (`Payables.derive` for purchases, own SQL in `shop_reports`); same rules, to be merged. Hindi / Punjabi strings for the new keys are unreviewed English or first-pass translations.
+
+## 2026-10-08 — Phase 4 review
+- Accepted for now: batch cost, sale-line cost and stock movements sync to every member (a munshi device needs cost to snapshot COGS at sale). Profit and cost are hidden by `shop.view_profit` in the UI only. Revisit with server-side COGS before selling to businesses with untrusted staff devices.
+- Open: munshi UPI sales (bank accounts not synced to sales-only members) and batch cost edits not revalued in the journal. See docs/reviews/phase-4.md.

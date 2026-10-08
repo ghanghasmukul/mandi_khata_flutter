@@ -151,7 +151,8 @@ final class SalesReturnResult {
   final GstSplit split;
   final Money cost;
 
-  /// The invoice's round-off, given back with the last return.
+  /// The invoice's round-off, given back with the last return (never below
+  /// minus the split total, so [refund] is never negative).
   final Money roundOff;
   final bool completesInvoice;
 
@@ -234,11 +235,21 @@ abstract final class SalesReturns {
       for (var i = 0; i < sold.length; i++)
         sold[i].returnableMilli - (taken[i] ?? 0) == 0,
     ].every((done) => done);
+    // A negative round-off (the bill was rounded up in the customer's favour)
+    // is given back with the last return but must never push the refund below
+    // zero: it is clamped to -split.total. Any round-off that cannot be
+    // recovered this way is simply not carried anywhere (it is at most a few
+    // paise and the bill is already complete).
+    final owed = invoiceRoundOff - roundOffReturned;
+    final floor = Money(-total.total.paise);
+    final settledRoundOff = !completes
+        ? Money.zero
+        : (owed.paise < floor.paise ? floor : owed);
     return SalesReturnResult(
       lines: lines,
       split: total,
       cost: cost,
-      roundOff: completes ? invoiceRoundOff - roundOffReturned : Money.zero,
+      roundOff: settledRoundOff,
       completesInvoice: completes,
     );
   }
