@@ -6616,4 +6616,304 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get invoiceReversed => 'ਰੱਦ';
+
+  @override
+  String get navBilling => 'ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ';
+
+  @override
+  String get annDismiss => 'ਹਟਾਓ';
+
+  @override
+  String lcTrialDays(int n) {
+    return 'ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ: $n ਦਿਨ ਬਾਕੀ';
+  }
+
+  @override
+  String get lcTrialEnded =>
+      'ਤੁਹਾਡਾ ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ ਖ਼ਤਮ ਹੋ ਗਿਆ ਹੈ। ਐਪ ਹੁਣ ਸਿਰਫ਼ ਦੇਖਣ ਲਈ ਹੈ: ਤੁਸੀਂ ਸਭ ਕੁਝ ਦੇਖ, ਪ੍ਰਿੰਟ ਅਤੇ ਐਕਸਪੋਰਟ ਕਰ ਸਕਦੇ ਹੋ।';
+
+  @override
+  String lcGrace(String date) {
+    return 'ਤੁਹਾਡੇ ਪਲਾਨ ਦਾ ਨਵੀਨੀਕਰਨ ਬਾਕੀ ਹੈ। $date ਤੱਕ ਸਭ ਕੁਝ ਚੱਲੇਗਾ।';
+  }
+
+  @override
+  String get lcGraceEnded =>
+      'ਤੁਹਾਡਾ ਪਲਾਨ ਖ਼ਤਮ ਹੋ ਗਿਆ ਹੈ। ਐਪ ਸਿਰਫ਼ ਦੇਖਣ ਲਈ ਹੈ: ਤੁਸੀਂ ਸਭ ਕੁਝ ਦੇਖ, ਪ੍ਰਿੰਟ ਅਤੇ ਐਕਸਪੋਰਟ ਕਰ ਸਕਦੇ ਹੋ।';
+
+  @override
+  String get lcLockedByVendor =>
+      'ਇਹ ਖਾਤਾ ਲਾਕ ਹੈ। ਪਲਾਨ ਬਹਾਲ ਹੋਣ ਤੱਕ ਐਪ ਸਿਰਫ਼ ਦੇਖਣ ਲਈ ਹੈ।';
+
+  @override
+  String lcCancelled(int n) {
+    return 'ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਰੱਦ। $n ਹੋਰ ਦਿਨ ਸਿਰਫ਼ ਦੇਖਣ ਲਈ, ਫਿਰ ਸਿਰਫ਼ ਐਕਸਪੋਰਟ।';
+  }
+
+  @override
+  String get lcExportOnly =>
+      'ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਕਾਫ਼ੀ ਪਹਿਲਾਂ ਖ਼ਤਮ ਹੋ ਗਿਆ। ਹੁਣ ਤੁਸੀਂ ਸਿਰਫ਼ ਆਪਣਾ ਡੇਟਾ ਐਕਸਪੋਰਟ ਕਰ ਸਕਦੇ ਹੋ।';
+
+  @override
+  String lcConfirm(int n) {
+    return 'ਆਪਣੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਦੀ ਪੁਸ਼ਟੀ ਲਈ ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ ($n ਦਿਨ ਬਾਕੀ)।';
+  }
+
+  @override
+  String get lcSyncRequired =>
+      'ਜਾਰੀ ਰੱਖਣ ਲਈ ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ। ਉਦੋਂ ਤੱਕ ਐਪ ਸਿਰਫ਼ ਦੇਖਣ ਲਈ ਹੈ।';
+
+  @override
+  String get billTitle => 'ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ';
+
+  @override
+  String get billNoSubscription =>
+      'ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਹਾਲੇ ਇਸ ਡਿਵਾਈਸ ਤੱਕ ਨਹੀਂ ਪਹੁੰਚੀ। ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ।';
+
+  @override
+  String get billSwitchBusiness => 'ਹੋਰ ਕਾਰੋਬਾਰ ਚੁਣੋ';
+
+  @override
+  String get billCurrentPlan => 'ਮੌਜੂਦਾ ਪਲਾਨ';
+
+  @override
+  String get billStatusTrial => 'ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ';
+
+  @override
+  String get billStatusActive => 'ਚਾਲੂ';
+
+  @override
+  String get billStatusGrace => 'ਨਵੀਨੀਕਰਨ ਬਾਕੀ (ਛੋਟ ਦੀ ਮਿਆਦ)';
+
+  @override
+  String get billStatusLocked => 'ਲਾਕ (ਸਿਰਫ਼ ਦੇਖਣ ਲਈ)';
+
+  @override
+  String get billStatusCancelled => 'ਰੱਦ';
+
+  @override
+  String billTrialEnds(String date) {
+    return 'ਟ੍ਰਾਇਲ $date ਨੂੰ ਖ਼ਤਮ ਹੋਵੇਗਾ';
+  }
+
+  @override
+  String billRenews(String date) {
+    return '$date ਨੂੰ ਨਵੀਨੀਕਰਨ';
+  }
+
+  @override
+  String billDiscount(String pct) {
+    return 'ਛੋਟ: $pct%';
+  }
+
+  @override
+  String get billRequestPending => 'ਪਲਾਨ ਦੀ ਬੇਨਤੀ ਸਾਡੀ ਪੁਸ਼ਟੀ ਦੀ ਉਡੀਕ ਵਿੱਚ ਹੈ।';
+
+  @override
+  String get billOnlyOwner => 'ਸਿਰਫ਼ ਮਾਲਕ ਪਲਾਨ ਬਦਲ ਸਕਦਾ ਹੈ।';
+
+  @override
+  String get billUsage => 'ਵਰਤੋਂ';
+
+  @override
+  String get billUsers => 'ਵਰਤੋਂਕਾਰ';
+
+  @override
+  String get billDevices => 'ਡਿਵਾਈਸ';
+
+  @override
+  String get billParties => 'ਪਾਰਟੀਆਂ';
+
+  @override
+  String billUsageOf(int used, int limit) {
+    return '$limit ਵਿੱਚੋਂ $used';
+  }
+
+  @override
+  String billUsageNoLimit(int used) {
+    return '$used (ਕੋਈ ਹੱਦ ਨਹੀਂ)';
+  }
+
+  @override
+  String get billModules => 'ਸ਼ਾਮਲ ਮਾਡਿਊਲ';
+
+  @override
+  String get modKhata => 'ਖਾਤਾ ਅਤੇ ਭੁਗਤਾਨ';
+
+  @override
+  String get modArrivals => 'ਆਮਦ ਅਤੇ ਲਾਟ';
+
+  @override
+  String get modKarza => 'ਕਰਜ਼ਾ ਅਤੇ ਵਿਆਜ';
+
+  @override
+  String get modAccounting => 'ਲੇਖਾ';
+
+  @override
+  String get modShop => 'ਇਨਪੁੱਟ ਦੁਕਾਨ';
+
+  @override
+  String get billPlans => 'ਪਲਾਨ';
+
+  @override
+  String billPerMonth(String price) {
+    return '$price / ਮਹੀਨਾ';
+  }
+
+  @override
+  String billPerYear(String price) {
+    return '$price / ਸਾਲ';
+  }
+
+  @override
+  String get billPriceOnRequest => 'ਕੀਮਤ ਪੁੱਛਣ ਤੇ';
+
+  @override
+  String billUsersDevices(String users, String devices) {
+    return '$users ਵਰਤੋਂਕਾਰ, $devices ਡਿਵਾਈਸ';
+  }
+
+  @override
+  String get billCurrentBadge => 'ਮੌਜੂਦਾ';
+
+  @override
+  String get billRequestPlan => 'ਇਹ ਪਲਾਨ ਮੰਗੋ';
+
+  @override
+  String get billAddons => 'ਐਡ-ਆਨ';
+
+  @override
+  String get billAddonLess => 'ਘੱਟ';
+
+  @override
+  String get billAddonMore => 'ਵੱਧ';
+
+  @override
+  String get billRequestAddons => 'ਐਡ-ਆਨ ਮੰਗੋ';
+
+  @override
+  String billRequestTitle(String plan) {
+    return '$plan ਮੰਗੋ';
+  }
+
+  @override
+  String get billRequestAddonsTitle => 'ਐਡ-ਆਨ ਮੰਗੋ';
+
+  @override
+  String get billMonthly => 'ਮਹੀਨਾਵਾਰ';
+
+  @override
+  String get billYearly => 'ਸਾਲਾਨਾ';
+
+  @override
+  String get billRequestNote => 'ਸਾਡੇ ਲਈ ਸੁਨੇਹਾ (ਵਿਕਲਪਿਕ)';
+
+  @override
+  String get billRequestSend => 'ਬੇਨਤੀ ਭੇਜੋ';
+
+  @override
+  String get billRequestSent =>
+      'ਬੇਨਤੀ ਭੇਜ ਦਿੱਤੀ। ਅਸੀਂ ਤੁਹਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰਾਂਗੇ।';
+
+  @override
+  String get billRequests => 'ਤੁਹਾਡੀਆਂ ਬੇਨਤੀਆਂ';
+
+  @override
+  String get billReqPending => 'ਉਡੀਕ ਵਿੱਚ';
+
+  @override
+  String get billReqDone => 'ਮੁਕੰਮਲ';
+
+  @override
+  String get billReqRejected => 'ਰੱਦ ਕੀਤੀ';
+
+  @override
+  String get billSupportAccess => 'ਸਹਾਇਤਾ ਪਹੁੰਚ';
+
+  @override
+  String get billManualNote =>
+      'ਹਾਲੇ ਭੁਗਤਾਨ ਅਸੀਂ ਸੰਭਾਲਦੇ ਹਾਂ। ਬੇਨਤੀ ਭੇਜੋ, ਅਸੀਂ ਬਦਲਾਅ ਅਤੇ ਰਕਮ ਦੀ ਪੁਸ਼ਟੀ ਕਰਾਂਗੇ।';
+
+  @override
+  String get modNotInPlan => 'ਤੁਹਾਡੇ ਪਲਾਨ ਵਿੱਚ ਨਹੀਂ';
+
+  @override
+  String limitReachedParties(int n) {
+    return 'ਤੁਹਾਡੇ ਪਲਾਨ ਵਿੱਚ $n ਪਾਰਟੀਆਂ ਹਨ। ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ ਵਿੱਚ ਹੋਰ ਮੰਗੋ।';
+  }
+
+  @override
+  String limitReachedUsers(int n) {
+    return 'ਤੁਹਾਡੇ ਪਲਾਨ ਵਿੱਚ $n ਵਰਤੋਂਕਾਰ ਹਨ। ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ ਵਿੱਚ ਹੋਰ ਮੰਗੋ।';
+  }
+
+  @override
+  String limitReachedDevices(int n) {
+    return 'ਤੁਹਾਡੇ ਪਲਾਨ ਵਿੱਚ $n ਡਿਵਾਈਸ ਹਨ। ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ ਵਿੱਚ ਹੋਰ ਮੰਗੋ।';
+  }
+
+  @override
+  String get signupStart => 'ਨਵਾਂ ਕਾਰੋਬਾਰ ਬਣਾਓ';
+
+  @override
+  String get signupTitle => 'ਆਪਣਾ ਕਾਰੋਬਾਰ ਬਣਾਓ';
+
+  @override
+  String get signupSubtitle => 'ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕੁਝ ਜਾਣਕਾਰੀ।';
+
+  @override
+  String get signupName => 'ਕਾਰੋਬਾਰ ਦਾ ਨਾਮ';
+
+  @override
+  String get signupNameRequired => 'ਕਾਰੋਬਾਰ ਦਾ ਨਾਮ ਲਿਖੋ।';
+
+  @override
+  String get signupType => 'ਤੁਸੀਂ ਕੀ ਚਲਾਉਂਦੇ ਹੋ?';
+
+  @override
+  String get signupTypeArhtiya => 'ਆੜ੍ਹਤੀ';
+
+  @override
+  String get signupTypeShop => 'ਇਨਪੁੱਟ ਦੁਕਾਨ';
+
+  @override
+  String get signupTypeBoth => 'ਦੋਵੇਂ';
+
+  @override
+  String get signupPhone => 'ਕਾਰੋਬਾਰ ਦਾ ਫ਼ੋਨ';
+
+  @override
+  String get signupReferral => 'ਰੈਫ਼ਰਲ ਕੋਡ (ਵਿਕਲਪਿਕ)';
+
+  @override
+  String get signupCreate => 'ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ ਸ਼ੁਰੂ ਕਰੋ';
+
+  @override
+  String get signupTrialNote => 'ਮੁਫ਼ਤ ਟ੍ਰਾਇਲ। ਕਾਰਡ ਦੀ ਲੋੜ ਨਹੀਂ।';
+
+  @override
+  String get signupBack => 'ਵਾਪਸ';
+
+  @override
+  String get signupOffline =>
+      'ਕਾਰੋਬਾਰ ਬਣਾਉਣ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ। ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।';
+
+  @override
+  String get signupClosed =>
+      'ਨਵੇਂ ਸਾਈਨ-ਅੱਪ ਹਾਲੇ ਰੁਕੇ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਕੋਸ਼ਿਸ਼ ਕਰੋ।';
+
+  @override
+  String get signupLimit =>
+      'ਤੁਸੀਂ ਇੱਕ ਵਿਅਕਤੀ ਵੱਲੋਂ ਬਣਾਏ ਜਾ ਸਕਣ ਵਾਲੇ ਕਾਰੋਬਾਰਾਂ ਦੀ ਹੱਦ ਤੱਕ ਪਹੁੰਚ ਗਏ ਹੋ।';
+
+  @override
+  String get signupInvalid => 'ਕਿਰਪਾ ਕਰਕੇ ਜਾਣਕਾਰੀ ਜਾਂਚ ਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।';
+
+  @override
+  String get signupFailed =>
+      'ਕਾਰੋਬਾਰ ਨਹੀਂ ਬਣ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।';
+
+  @override
+  String get inviteErrLimitReached =>
+      'ਤੁਹਾਡੇ ਪਲਾਨ ਵਿੱਚ ਕੋਈ ਖਾਲੀ ਵਰਤੋਂਕਾਰ ਸੀਟ ਨਹੀਂ ਹੈ। ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ ਵਿੱਚ ਹੋਰ ਮੰਗੋ।';
 }

@@ -11734,6 +11734,516 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'REVERSED'**
   String get invoiceReversed;
+
+  /// Sidebar entry for the subscription screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan & billing'**
+  String get navBilling;
+
+  /// Hides a platform announcement.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get annDismiss;
+
+  /// Banner during the trial.
+  ///
+  /// In en, this message translates to:
+  /// **'Free trial: {n} days left'**
+  String lcTrialDays(int n);
+
+  /// Banner when the trial is over.
+  ///
+  /// In en, this message translates to:
+  /// **'Your free trial has ended. The app is read-only: you can view, print and export everything.'**
+  String get lcTrialEnded;
+
+  /// Banner during the grace period.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan renewal is overdue. Everything works until {date}.'**
+  String lcGrace(String date);
+
+  /// Banner when grace has ended.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan has expired. The app is read-only: you can view, print and export everything.'**
+  String get lcGraceEnded;
+
+  /// Banner when the vendor locked the account.
+  ///
+  /// In en, this message translates to:
+  /// **'This account is locked. The app is read-only until the plan is restored.'**
+  String get lcLockedByVendor;
+
+  /// Banner after cancelling.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription cancelled. Read-only for {n} more days, then export only.'**
+  String lcCancelled(int n);
+
+  /// Banner when only export is left.
+  ///
+  /// In en, this message translates to:
+  /// **'The subscription ended a while ago. You can only export your data now.'**
+  String get lcExportOnly;
+
+  /// Offline device must reach the server soon.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to the internet to confirm your subscription ({n} days left).'**
+  String lcConfirm(int n);
+
+  /// Offline too long: read-only until a sync.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to the internet once to continue. The app is read-only until then.'**
+  String get lcSyncRequired;
+
+  /// Billing screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan & billing'**
+  String get billTitle;
+
+  /// Billing screen before the subscription synced.
+  ///
+  /// In en, this message translates to:
+  /// **'The subscription has not reached this device yet. Connect to the internet once.'**
+  String get billNoSubscription;
+
+  /// Link on the billing screen when the app is locked down.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch business'**
+  String get billSwitchBusiness;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Current plan'**
+  String get billCurrentPlan;
+
+  /// Subscription status.
+  ///
+  /// In en, this message translates to:
+  /// **'Free trial'**
+  String get billStatusTrial;
+
+  /// Subscription status.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get billStatusActive;
+
+  /// Subscription status.
+  ///
+  /// In en, this message translates to:
+  /// **'Renewal overdue (grace period)'**
+  String get billStatusGrace;
+
+  /// Subscription status.
+  ///
+  /// In en, this message translates to:
+  /// **'Locked (read-only)'**
+  String get billStatusLocked;
+
+  /// Subscription status.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get billStatusCancelled;
+
+  /// Trial end date.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial ends on {date}'**
+  String billTrialEnds(String date);
+
+  /// Renewal date.
+  ///
+  /// In en, this message translates to:
+  /// **'Renews on {date}'**
+  String billRenews(String date);
+
+  /// Discount agreed with the vendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Discount: {pct}%'**
+  String billDiscount(String pct);
+
+  /// Shown while a request is pending.
+  ///
+  /// In en, this message translates to:
+  /// **'A plan request is waiting for us to confirm.'**
+  String get billRequestPending;
+
+  /// Note for non-owners.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can change the plan.'**
+  String get billOnlyOwner;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Usage'**
+  String get billUsage;
+
+  /// Limit name.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get billUsers;
+
+  /// Limit name.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices'**
+  String get billDevices;
+
+  /// Limit name.
+  ///
+  /// In en, this message translates to:
+  /// **'Parties'**
+  String get billParties;
+
+  /// Usage against a limit.
+  ///
+  /// In en, this message translates to:
+  /// **'{used} of {limit}'**
+  String billUsageOf(int used, int limit);
+
+  /// Usage without a limit.
+  ///
+  /// In en, this message translates to:
+  /// **'{used} (no limit)'**
+  String billUsageNoLimit(int used);
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Included modules'**
+  String get billModules;
+
+  /// Module name.
+  ///
+  /// In en, this message translates to:
+  /// **'Khata & payments'**
+  String get modKhata;
+
+  /// Module name.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrivals & lots'**
+  String get modArrivals;
+
+  /// Module name.
+  ///
+  /// In en, this message translates to:
+  /// **'Karza & byaj'**
+  String get modKarza;
+
+  /// Module name.
+  ///
+  /// In en, this message translates to:
+  /// **'Accounting'**
+  String get modAccounting;
+
+  /// Module name.
+  ///
+  /// In en, this message translates to:
+  /// **'Input shop'**
+  String get modShop;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Plans'**
+  String get billPlans;
+
+  /// Monthly price.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} / month'**
+  String billPerMonth(String price);
+
+  /// Yearly price.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} / year'**
+  String billPerYear(String price);
+
+  /// Plan without a listed price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price on request'**
+  String get billPriceOnRequest;
+
+  /// Plan limits.
+  ///
+  /// In en, this message translates to:
+  /// **'{users} users, {devices} devices'**
+  String billUsersDevices(String users, String devices);
+
+  /// Marks the current plan.
+  ///
+  /// In en, this message translates to:
+  /// **'Current'**
+  String get billCurrentBadge;
+
+  /// Button on a plan.
+  ///
+  /// In en, this message translates to:
+  /// **'Request this plan'**
+  String get billRequestPlan;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Add-ons'**
+  String get billAddons;
+
+  /// Tooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Fewer'**
+  String get billAddonLess;
+
+  /// Tooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get billAddonMore;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Request add-ons'**
+  String get billRequestAddons;
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Request {plan}'**
+  String billRequestTitle(String plan);
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Request add-ons'**
+  String get billRequestAddonsTitle;
+
+  /// Billing cycle.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get billMonthly;
+
+  /// Billing cycle.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly'**
+  String get billYearly;
+
+  /// Request dialog field.
+  ///
+  /// In en, this message translates to:
+  /// **'Note for us (optional)'**
+  String get billRequestNote;
+
+  /// Request dialog button.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get billRequestSend;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Request sent. We will contact you.'**
+  String get billRequestSent;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Your requests'**
+  String get billRequests;
+
+  /// Request status.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get billReqPending;
+
+  /// Request status.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get billReqDone;
+
+  /// Request status.
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get billReqRejected;
+
+  /// Card title: when support looked at the business.
+  ///
+  /// In en, this message translates to:
+  /// **'Support access'**
+  String get billSupportAccess;
+
+  /// Footnote until online payments exist.
+  ///
+  /// In en, this message translates to:
+  /// **'Payments are handled by us for now. Send a request and we will confirm the change and the amount.'**
+  String get billManualNote;
+
+  /// Setting row for a module the plan lacks.
+  ///
+  /// In en, this message translates to:
+  /// **'Not in your plan'**
+  String get modNotInPlan;
+
+  /// Party limit reached.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan allows {n} parties. Ask for more under Plan & billing.'**
+  String limitReachedParties(int n);
+
+  /// User limit reached.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan allows {n} users. Ask for more under Plan & billing.'**
+  String limitReachedUsers(int n);
+
+  /// Device limit reached.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan allows {n} devices. Ask for more under Plan & billing.'**
+  String limitReachedDevices(int n);
+
+  /// Button on the business picker.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new business'**
+  String get signupStart;
+
+  /// Signup screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your business'**
+  String get signupTitle;
+
+  /// Signup subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A few details to start your free trial.'**
+  String get signupSubtitle;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'Business name'**
+  String get signupName;
+
+  /// Validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the business name.'**
+  String get signupNameRequired;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you run?'**
+  String get signupType;
+
+  /// Business type.
+  ///
+  /// In en, this message translates to:
+  /// **'Arhtiya'**
+  String get signupTypeArhtiya;
+
+  /// Business type.
+  ///
+  /// In en, this message translates to:
+  /// **'Input shop'**
+  String get signupTypeShop;
+
+  /// Business type.
+  ///
+  /// In en, this message translates to:
+  /// **'Both'**
+  String get signupTypeBoth;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'Business phone'**
+  String get signupPhone;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'Referral code (optional)'**
+  String get signupReferral;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial'**
+  String get signupCreate;
+
+  /// Reassurance under the button.
+  ///
+  /// In en, this message translates to:
+  /// **'Free trial. No card needed.'**
+  String get signupTrialNote;
+
+  /// Link.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get signupBack;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating a business needs the internet. Check your connection and try again.'**
+  String get signupOffline;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'New signups are paused right now. Please try later.'**
+  String get signupClosed;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'You have reached the number of businesses one person can create.'**
+  String get signupLimit;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check the details and try again.'**
+  String get signupInvalid;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not create the business. Please try again.'**
+  String get signupFailed;
+
+  /// Invite failed: the plan's user limit is full.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan has no free user seat. Ask for more under Plan & billing.'**
+  String get inviteErrLimitReached;
 }
 
 class _AppLocalizationsDelegate

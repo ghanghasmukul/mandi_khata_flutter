@@ -19,6 +19,7 @@ class Membership {
     required this.role,
     this.mandiName,
     this.customPermissions = const {},
+    this.readOnly = false,
   });
 
   final String tenantId;
@@ -29,8 +30,39 @@ class Membership {
   /// `{"permission.key": true|false}` overrides of the role defaults.
   final Map<String, Object?> customPermissions;
 
+  /// The subscription has ended (or the business is locked): the member can
+  /// look at everything but write nothing (docs/domain/saas-rules.md).
+  /// Set by the app from the subscription, never stored.
+  final bool readOnly;
+
+  /// Permissions that only look at things; they survive read-only mode.
+  static const Set<Permission> viewPermissions = {
+    Permission.financeView,
+    Permission.auditView,
+    Permission.shopViewProfit,
+  };
+
+  /// Whether the member may do [permission] right now: their role says so
+  /// and the subscription allows writing.
   bool can(Permission permission) =>
+      (!readOnly || viewPermissions.contains(permission)) &&
       hasPermission(role, customPermissions, permission);
+
+  /// Role-only check, for what a locked business may still do (asking for a
+  /// plan, exporting).
+  bool canIgnoringLock(Permission permission) =>
+      hasPermission(role, customPermissions, permission);
+
+  Membership withReadOnly({required bool readOnly}) => readOnly == this.readOnly
+      ? this
+      : Membership(
+          tenantId: tenantId,
+          tenantName: tenantName,
+          role: role,
+          mandiName: mandiName,
+          customPermissions: customPermissions,
+          readOnly: readOnly,
+        );
 
   @override
   bool operator ==(Object other) =>
@@ -39,10 +71,12 @@ class Membership {
       other.tenantName == tenantName &&
       other.mandiName == mandiName &&
       other.role == role &&
+      other.readOnly == readOnly &&
       mapEquals(other.customPermissions, customPermissions);
 
   @override
-  int get hashCode => Object.hash(tenantId, tenantName, mandiName, role);
+  int get hashCode =>
+      Object.hash(tenantId, tenantName, mandiName, role, readOnly);
 }
 
 /// Reads memberships from the local (synced) database, so the business

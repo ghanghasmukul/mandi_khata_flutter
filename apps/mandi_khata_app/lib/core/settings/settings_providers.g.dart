@@ -51,14 +51,16 @@ final class SettingsRepositoryProvider
 String _$settingsRepositoryHash() =>
     r'd9a8aa9148f60850fe2e8ba48cdc2d4ba4736e8b';
 
-/// Values that come with the subscription plan. Plans arrive in step 5.1;
-/// until then every key falls through to the system default.
+/// Values that come with the subscription plan (the plan level of the
+/// cascade); until the plan has synced every key falls through to the
+/// system default.
 
 @ProviderFor(planDefaults)
 final planDefaultsProvider = PlanDefaultsProvider._();
 
-/// Values that come with the subscription plan. Plans arrive in step 5.1;
-/// until then every key falls through to the system default.
+/// Values that come with the subscription plan (the plan level of the
+/// cascade); until the plan has synced every key falls through to the
+/// system default.
 
 final class PlanDefaultsProvider
     extends
@@ -68,15 +70,16 @@ final class PlanDefaultsProvider
           Map<String, Object?>
         >
     with $Provider<Map<String, Object?>> {
-  /// Values that come with the subscription plan. Plans arrive in step 5.1;
-  /// until then every key falls through to the system default.
+  /// Values that come with the subscription plan (the plan level of the
+  /// cascade); until the plan has synced every key falls through to the
+  /// system default.
   PlanDefaultsProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'planDefaultsProvider',
-        isAutoDispose: false,
+        isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -104,7 +107,7 @@ final class PlanDefaultsProvider
   }
 }
 
-String _$planDefaultsHash() => r'ff3e5e67e93a48dfbd9f253caaa75cbad734bf0b';
+String _$planDefaultsHash() => r'045b588efb7658fc411c861c66e2525aa7eaf64f';
 
 /// Setting rows of the active business that can apply to [target]. Live.
 

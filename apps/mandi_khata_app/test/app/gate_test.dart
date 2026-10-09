@@ -63,6 +63,43 @@ void main() {
       }
     });
 
+    test('ended subscription: only export, billing and the picker', () {
+      for (final ok in [
+        '/billing',
+        '/reports',
+        '/reports/outstanding',
+        '/accounts/tally',
+        '/select-tenant',
+      ]) {
+        expect(redirectFor(GateStep.exportOnly, ok), isNull, reason: ok);
+      }
+      for (final blocked in ['/', '/parties', '/accounts', '/khata', '/pos']) {
+        expect(
+          redirectFor(GateStep.exportOnly, blocked),
+          '/billing',
+          reason: blocked,
+        );
+      }
+      // A look-alike prefix is not the export screen.
+      expect(redirectFor(GateStep.exportOnly, '/reports-x'), '/billing');
+    });
+
+    test('signup is part of choosing a business, and only then', () {
+      expect(redirectFor(GateStep.chooseTenant, '/signup'), isNull);
+      expect(redirectFor(GateStep.signedOut, '/signup'), '/login');
+      expect(redirectFor(GateStep.locked, '/signup'), '/lock');
+    });
+
+    test('a module that is off sends its screens home', () {
+      expect(redirectFor(GateStep.ready, '/pos', moduleOff: true), '/');
+      expect(redirectFor(GateStep.ready, '/pos'), isNull);
+      // Other steps keep their own rule.
+      expect(
+        redirectFor(GateStep.signedOut, '/pos', moduleOff: true),
+        '/login',
+      );
+    });
+
     test('diagnostics ships in release, so it is guarded', () {
       expect(redirectFor(GateStep.signedOut, '/dev/diagnostics'), '/login');
       expect(redirectFor(GateStep.locked, '/dev/diagnostics'), '/lock');

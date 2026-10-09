@@ -63,12 +63,12 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [ ] Phase 4 review run 2026-10-08 (docs/reviews/phase-4.md): no HIGH; 3 MEDIUM + 2 LOW fixed (migration `20261008151709_phase4_review_fixes` not yet pushed), 4 open items; exit criteria 1-2 proven, 3 needs a stopwatch run, 4 needs the CA (🧑)
 
 ## Phase 5: SaaS layer
-- [ ] 5.1 Plans & entitlements (🧑 decide plan prices)
-- [ ] 5.2 Razorpay subscriptions (🧑 Razorpay account + test keys as Supabase secrets)
-- [ ] 5.3 Lifecycle: trial, grace, lock
-- [ ] 5.4 Super-admin console
-- [ ] 5.5 Self-serve signup & onboarding
-- [ ] Phase 5 review
+- [x] 5.1 Plans & entitlements (2026-10-09): everything configurable as data (plans, add-ons, platform settings, per-business overrides); khata_core `Entitlements.resolve` + SQL mirror, plan default settings as the plan level of the cascade, module gating in menu / routes / server, limits for users, devices, parties, owner's module switches can only turn off, "not in your plan" in Settings. 🧑 set real plan prices in the console (seeded at 0).
+- [ ] 5.2 Razorpay subscriptions: **deferred by you**; manual billing instead: Billing screen (plan, usage, plans, add-ons, requests, support access) + `plan_requests`, vendor records payment in the console
+- [x] 5.3 Lifecycle: trial, grace, lock (2026-10-09): khata_core `Lifecycle` with every transition tested, read-only mode in app and server, export-only after cancel, offline tolerance, signed ES256 `entitlement-token` verified in Dart
+- [x] 5.4 Super-admin console (2026-10-09): `apps/mk_admin` + Edge Function `admin-api`: businesses with MRR, subscription / trial / grace / discount / add-ons / overrides, defaults on a customer's behalf, read-only support view (customer sees it), requests inbox, plans, platform settings, state presets, crop master + push, referral codes, announcements, admin audit log
+- [x] 5.5 Self-serve signup & onboarding (2026-10-09): `signup_business()` (trial plan by business type, state preset, modules off for unused ones, referral code) + "Create a new business" screen -> onboarding wizard
+- [ ] Phase 5 review (docs/reviews/phase-5.md)
 
 ## Phase 6: Polish & scale
 - [ ] 6.1 WhatsApp & SMS (🧑 WhatsApp BSP account + approved templates)

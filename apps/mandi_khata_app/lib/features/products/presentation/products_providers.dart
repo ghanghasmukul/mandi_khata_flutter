@@ -3,6 +3,7 @@ import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/core/subscription/module_access.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/products/data/products_repository.dart';
 import 'package:mandi_khata_app/features/products/data/stock_repository.dart';
@@ -32,9 +33,7 @@ Future<StockApi?> stockApi(Ref ref) async {
 
 /// `app.modules.shop`: the module switch (default on).
 @riverpod
-bool shopModuleEnabled(Ref ref) =>
-    ref.watch(settingProvider('app.modules.shop', businessTarget))?.asBool ??
-    true;
+bool shopModuleEnabled(Ref ref) => ref.watch(moduleEnabledProvider('shop'));
 
 /// `shop.expiry_warn_days`
 @riverpod

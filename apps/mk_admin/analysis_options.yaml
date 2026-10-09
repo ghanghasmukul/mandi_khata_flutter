@@ -1,0 +1,12 @@
+analyzer:
+  exclude:
+    - build/**
+    - web/**
+include: package:very_good_analysis/analysis_options.yaml
+
+linter:
+  rules:
+    public_member_api_docs: false
+    # Internal tool: long literal rows and exhaustive-looking defaults are fine.
+    lines_longer_than_80_chars: false
+    no_default_cases: false

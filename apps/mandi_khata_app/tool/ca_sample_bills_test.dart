@@ -9,7 +9,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/features/khata/data/statement_pdf.dart';
-import 'package:mandi_khata_app/features/payments/data/receipt_pdf.dart';
 import 'package:mandi_khata_app/features/shop_sales/domain/shop_sale.dart';
 import 'package:mandi_khata_app/features/shop_sales/presentation/invoice_actions.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
@@ -22,8 +21,14 @@ pw.Font _font(String file) => pw.Font.ttf(
 );
 
 class _Item {
-  const _Item(this.name, this.hsn, this.rateBp, this.qtyMilli, this.price,
-      [this.discount = Money.zero]);
+  const _Item(
+    this.name,
+    this.hsn,
+    this.rateBp,
+    this.qtyMilli,
+    this.price, [
+    this.discount = Money.zero,
+  ]);
   final String name;
   final String hsn;
   final int rateBp;
@@ -33,13 +38,16 @@ class _Item {
 }
 
 class _Case {
-  const _Case(this.no, this.title, this.items,
-      {this.interState = false,
-      this.gstin,
-      this.customer,
-      this.pos = '03',
-      this.invoiceDiscount = const InvoiceDiscount.none(),
-      this.cash = true});
+  const _Case(
+    this.no,
+    this.title,
+    this.items, {
+    this.interState = false,
+    this.gstin,
+    this.customer,
+    this.pos = '03',
+    this.invoiceDiscount = const InvoiceDiscount.none(),
+  });
   final String no;
   final String title;
   final List<_Item> items;
@@ -48,29 +56,41 @@ class _Case {
   final String? customer;
   final String pos;
   final InvoiceDiscount invoiceDiscount;
-  final bool cash;
 }
 
 const _cases = [
-  _Case('SI-W1-0001', 'B2B intra-state (Punjab to Punjab), 5% and 18%', [
-    _Item('DAP 50 kg', '3105', 500, 10000, Money(135000)),
-    _Item('Neem oil 1 ltr', '3808', 1800, 5000, Money(35000)),
-  ], gstin: '03AAPFU0939F1ZV', customer: 'Kisan Traders'),
-  _Case('SI-W1-0002', 'B2B inter-state (Haryana buyer, IGST)', [
-    _Item('Urea 45 kg', '3102', 500, 20000, Money(26700)),
-  ],
-      interState: true,
-      gstin: '06AAACH7409R1ZZ',
-      customer: 'Haryana Agro',
-      pos: '06'),
+  _Case(
+    'SI-W1-0001',
+    'B2B intra-state (Punjab to Punjab), 5% and 18%',
+    [
+      _Item('DAP 50 kg', '3105', 500, 10000, Money(135000)),
+      _Item('Neem oil 1 ltr', '3808', 1800, 5000, Money(35000)),
+    ],
+    gstin: '03AAPFU0939F1ZV',
+    customer: 'Kisan Traders',
+  ),
+  _Case(
+    'SI-W1-0002',
+    'B2B inter-state (Haryana buyer, IGST)',
+    [_Item('Urea 45 kg', '3102', 500, 20000, Money(26700))],
+    interState: true,
+    gstin: '06AAACH7409R1ZZ',
+    customer: 'Haryana Agro',
+    pos: '06',
+  ),
   _Case('SI-W1-0003', 'B2C walk-in, cash, 12% pesticide', [
     _Item('Imidacloprid 100 ml', '3808', 1200, 3000, Money(45000)),
   ], customer: 'Walk-in'),
-  _Case('SI-W1-0004', 'Line discount + 10% invoice discount, 5% and 12%', [
-    _Item('Wheat seed 40 kg', '1001', 500, 5000, Money(240000),
-        Money(12000)),
-    _Item('Sprayer pump', '8424', 1200, 1000, Money(185000)),
-  ], customer: 'Gurmeet Singh', invoiceDiscount: InvoiceDiscount.percent(1000)),
+  _Case(
+    'SI-W1-0004',
+    'Line discount + 10% invoice discount, 5% and 12%',
+    [
+      _Item('Wheat seed 40 kg', '1001', 500, 5000, Money(240000), Money(12000)),
+      _Item('Sprayer pump', '8424', 1200, 1000, Money(185000)),
+    ],
+    customer: 'Gurmeet Singh',
+    invoiceDiscount: InvoiceDiscount.percent(1000),
+  ),
 ];
 
 void main() {
@@ -162,6 +182,7 @@ round-off, total, HSN and place of supply.
         businessGstin: '03AAPFU0939F1ZV',
       );
       File('${out.path}/${c.no}.pdf').writeAsBytesSync(bytes);
+      String m(Money v) => v.format(paise: PaiseDisplay.always);
       sheet
         ..writeln('## ${c.no}: ${c.title}')
         ..writeln()
@@ -169,19 +190,22 @@ round-off, total, HSN and place of supply.
         ..writeln('|---|---|---|---|---|---|---|');
       for (final (i, r) in t.lines.indexed) {
         final it = c.items[i];
-        sheet.writeln('| ${it.name} | ${it.hsn} | ${it.rateBp / 100}% | '
-            '${it.qtyMilli / 1000} | ${it.price.format(paise: PaiseDisplay.always)} | '
-            '${r.split.taxable.format(paise: PaiseDisplay.always)} | '
-            '${(r.split.cgst + r.split.sgst + r.split.igst).format(paise: PaiseDisplay.always)} |');
+        sheet.writeln(
+          '| ${it.name} | ${it.hsn} | ${it.rateBp / 100}% | '
+          '${it.qtyMilli / 1000} | ${m(it.price)} | '
+          '${m(r.split.taxable)} | '
+          '${m(r.split.cgst + r.split.sgst + r.split.igst)} |',
+        );
       }
-      String m(Money v) => v.format(paise: PaiseDisplay.always);
       sheet
         ..writeln()
-        ..writeln('Subtotal ${m(t.subtotal)}; line discounts '
-            '${m(t.lineDiscounts)}; invoice discount ${m(t.invoiceDiscount)}; '
-            'taxable ${m(t.gst.taxable)}; CGST ${m(t.gst.cgst)}; '
-            'SGST ${m(t.gst.sgst)}; IGST ${m(t.gst.igst)}; '
-            'round-off ${m(t.roundOff)}; **total ${m(total)}**.')
+        ..writeln(
+          'Subtotal ${m(t.subtotal)}; line discounts '
+          '${m(t.lineDiscounts)}; invoice discount ${m(t.invoiceDiscount)}; '
+          'taxable ${m(t.gst.taxable)}; CGST ${m(t.gst.cgst)}; '
+          'SGST ${m(t.gst.sgst)}; IGST ${m(t.gst.igst)}; '
+          'round-off ${m(t.roundOff)}; **total ${m(total)}**.',
+        )
         ..writeln();
     }
     sheet.writeln('''

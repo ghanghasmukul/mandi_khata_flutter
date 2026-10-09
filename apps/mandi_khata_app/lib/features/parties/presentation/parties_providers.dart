@@ -1,6 +1,7 @@
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
+import 'package:mandi_khata_app/core/subscription/subscription_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/parties/data/parties_repository.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
@@ -68,8 +69,14 @@ class PartyWriter {
     return await action(repo, ctx, member.can);
   }
 
-  Future<PartySaveResult> create(PartyInput input) =>
-      _run((repo, ctx, can) => repo.create(ctx, input, can: can));
+  Future<PartySaveResult> create(PartyInput input) {
+    // The plan's limit, checked inside the save (read before any await).
+    final maxParties = _ref.read(entitlementsProvider).limit('parties');
+    return _run(
+      (repo, ctx, can) =>
+          repo.create(ctx, input, can: can, maxParties: maxParties),
+    );
+  }
 
   Future<PartySaveResult> update(String id, PartyInput input) =>
       _run((repo, ctx, can) => repo.update(ctx, id, input, can: can));

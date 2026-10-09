@@ -152,6 +152,14 @@ final class PartyCodeTaken extends PartySaveResult {
   const PartyCodeTaken();
 }
 
+/// The plan's party limit is full (checked before saving; the server checks
+/// again).
+final class PartyLimitReached extends PartySaveResult {
+  const PartyLimitReached(this.limit);
+
+  final int limit;
+}
+
 final class PartyNotPermitted extends PartySaveResult {
   const PartyNotPermitted();
 }

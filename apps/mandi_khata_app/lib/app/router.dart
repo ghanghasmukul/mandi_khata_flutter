@@ -1,10 +1,15 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart' show GlobalKey, NavigatorState;
+import 'package:flutter/widgets.dart'
+    show GlobalKey, Listenable, NavigatorState;
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/app/app_shell.dart';
 import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/app/home_screen.dart';
+import 'package:mandi_khata_app/app/nav_destinations.dart'
+    show moduleOfLocation;
+import 'package:mandi_khata_app/core/subscription/module_access.dart';
+import 'package:mandi_khata_app/core/subscription/subscription_providers.dart';
 import 'package:mandi_khata_app/features/accounts/presentation/accounts_router.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/arrivals_screen.dart';
 import 'package:mandi_khata_app/features/arrivals/presentation/lot_detail_screen.dart';
@@ -47,6 +52,9 @@ import 'package:mandi_khata_app/features/settings/presentation/settings_screen.d
 import 'package:mandi_khata_app/features/shop_reports/presentation/shop_reports_router.dart';
 import 'package:mandi_khata_app/features/shop_sales/presentation/sale_detail_screen.dart';
 import 'package:mandi_khata_app/features/shop_sales/presentation/sales_screen.dart';
+import 'package:mandi_khata_app/features/subscription/presentation/billing_routes.dart';
+import 'package:mandi_khata_app/features/subscription/presentation/billing_screen.dart';
+import 'package:mandi_khata_app/features/subscription/presentation/signup_screen.dart';
 import 'package:mandi_khata_app/features/team/presentation/team_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -82,12 +90,24 @@ GlobalKey<NavigatorState> rootNavigatorKey(Ref ref) =>
 GoRouter router(Ref ref) {
   final refresh = ValueNotifier<GateStep>(ref.read(gateStepProvider));
   ref.listen(gateStepProvider, (_, step) => refresh.value = step);
+  // A module switched off (plan change, owner's switch) re-checks the
+  // current screen.
+  final modulesChanged = ValueNotifier<int>(0);
+  ref
+    ..listen(entitlementsProvider, (_, _) => modulesChanged.value++)
+    ..onDispose(modulesChanged.dispose);
 
   final router = GoRouter(
     navigatorKey: ref.watch(rootNavigatorKeyProvider),
-    refreshListenable: refresh,
-    redirect: (context, state) =>
-        redirectFor(refresh.value, state.matchedLocation),
+    refreshListenable: Listenable.merge([refresh, modulesChanged]),
+    redirect: (context, state) {
+      final module = moduleOfLocation(state.matchedLocation);
+      return redirectFor(
+        refresh.value,
+        state.matchedLocation,
+        moduleOff: module != null && !ref.read(moduleEnabledProvider(module)),
+      );
+    },
     routes: [
       GoRoute(
         path: GateRoutes.splash,
@@ -104,6 +124,10 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: AppRoutes.lock,
         builder: (context, state) => const LockScreen(),
+      ),
+      GoRoute(
+        path: GateRoutes.signup,
+        builder: (context, state) => const SignupScreen(),
       ),
       GoRoute(
         path: GateRoutes.deviceRevoked,
@@ -293,6 +317,10 @@ GoRouter router(Ref ref) {
                     CropDetailScreen(cropId: state.pathParameters['id']!),
               ),
             ],
+          ),
+          GoRoute(
+            path: BillingRoutes.billing,
+            builder: (context, state) => const BillingScreen(),
           ),
           GoRoute(
             path: TeamRoutes.list,

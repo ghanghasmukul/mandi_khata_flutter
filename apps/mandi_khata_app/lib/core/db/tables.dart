@@ -22,6 +22,9 @@ class Tenants extends Table {
   TextColumn get createdBy => text().nullable()();
   TextColumn get createdAt => text().nullable()();
   TextColumn get updatedAt => text().nullable()();
+  TextColumn get businessType => text().nullable()();
+  TextColumn get referralCode => text().nullable()();
+  BoolColumn get referralValid => boolean().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};
@@ -942,6 +945,137 @@ class SyncErrors extends Table {
   TextColumn get createdAt => text()();
   TextColumn get batchId => text().nullable()();
   IntColumn get batchSeq => integer().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+// Phase 5: plans and subscriptions.
+
+class Plans extends Table {
+  TextColumn get id => text()();
+  TextColumn get code => text()();
+  TextColumn get name => text()();
+  TextColumn get description => text().nullable()();
+  IntColumn get priceMonthlyPaise => integer().nullable()();
+  IntColumn get priceYearlyPaise => integer().nullable()();
+  IntColumn get maxUsers => integer().nullable()();
+  IntColumn get maxDevices => integer().nullable()();
+  TextColumn get modules => text().nullable()();
+  TextColumn get limits => text().nullable()();
+  TextColumn get defaultSettings => text().nullable()();
+  BoolColumn get isPublic => boolean().nullable()();
+  BoolColumn get isActive => boolean().nullable()();
+  IntColumn get sortOrder => integer().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class PlanAddons extends Table {
+  TextColumn get id => text()();
+  TextColumn get code => text()();
+  TextColumn get name => text()();
+  TextColumn get description => text().nullable()();
+  TextColumn get grantsLimits => text().nullable()();
+  TextColumn get grantsModules => text().nullable()();
+  IntColumn get priceMonthlyPaise => integer().nullable()();
+  IntColumn get priceYearlyPaise => integer().nullable()();
+  IntColumn get maxQuantity => integer().nullable()();
+  BoolColumn get isActive => boolean().nullable()();
+  IntColumn get sortOrder => integer().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class PlatformSettings extends Table {
+  TextColumn get id => text()();
+  TextColumn get key => text()();
+  TextColumn get value => text().nullable()();
+  BoolColumn get isPublic => boolean().nullable()();
+  TextColumn get description => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class Announcements extends Table {
+  TextColumn get id => text()();
+  TextColumn get titleEn => text()();
+  TextColumn get titleHi => text().nullable()();
+  TextColumn get titlePa => text().nullable()();
+  TextColumn get bodyEn => text().nullable()();
+  TextColumn get bodyHi => text().nullable()();
+  TextColumn get bodyPa => text().nullable()();
+  TextColumn get severity => text().nullable()();
+  TextColumn get planCodes => text().nullable()();
+  TextColumn get startsAt => text().nullable()();
+  TextColumn get endsAt => text().nullable()();
+  BoolColumn get isActive => boolean().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class TenantSubscriptions extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get planCode => text()();
+  TextColumn get billingCycle => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get trialEndsAt => text().nullable()();
+  TextColumn get currentPeriodStart => text().nullable()();
+  TextColumn get currentPeriodEnd => text().nullable()();
+  IntColumn get graceDays => integer().nullable()();
+  TextColumn get graceUntil => text().nullable()();
+  TextColumn get cancelledAt => text().nullable()();
+  IntColumn get cancelledReadonlyDays => integer().nullable()();
+  TextColumn get addons => text().nullable()();
+  TextColumn get overrides => text().nullable()();
+  RealColumn get discountPct => real().nullable()();
+  TextColumn get discountNote => text().nullable()();
+  TextColumn get razorpayCustomerId => text().nullable()();
+  TextColumn get razorpaySubscriptionId => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class PlanRequests extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get requestedPlanCode => text().nullable()();
+  TextColumn get billingCycle => text().nullable()();
+  TextColumn get addons => text().nullable()();
+  TextColumn get note => text().nullable()();
+  TextColumn get status => text()();
+  TextColumn get handledNote => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}
+
+class SupportSessions extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get adminUserId => text()();
+  TextColumn get adminLabel => text()();
+  TextColumn get reason => text()();
+  TextColumn get startedAt => text().nullable()();
+  TextColumn get endedAt => text().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {id};

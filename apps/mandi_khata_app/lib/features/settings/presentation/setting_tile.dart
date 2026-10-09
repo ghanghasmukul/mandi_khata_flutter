@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/core/subscription/subscription_providers.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_editors.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_labels.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
@@ -100,6 +101,13 @@ class SettingTile extends ConsumerWidget {
     final source = setHere
         ? l10n.settingSetHere
         : settingSourceText(l10n, resolved.level);
+    // A module the plan lacks is off, whatever the switch says, and cannot
+    // be switched on from here (docs/domain/saas-rules.md section 2).
+    final notInPlan =
+        def.key == 'app.modules' &&
+        suffix != null &&
+        !ref.watch(entitlementsProvider).module(suffix);
+    final canEdit = this.canEdit && !notInPlan;
     final perMonth = def.key == 'interest.rate_pa'
         ? SettingsSchema.decimalOf(resolved.value)
         : null;
@@ -119,12 +127,12 @@ class SettingTile extends ConsumerWidget {
                 Text(label, style: theme.textTheme.bodyLarge),
                 Text(
                   [
-                    source,
+                    if (notInPlan) l10n.modNotInPlan else source,
                     if (perMonth != null)
                       l10n.settingRatePerMonth(
                         InterestRate.per100PerMonthFromPa(perMonth).toString(),
                       ),
-                    if (!canEdit) l10n.settingsNoPermission,
+                    if (!canEdit && !notInPlan) l10n.settingsNoPermission,
                     if (!settingHasEditor(def)) l10n.settingsReadOnly,
                   ].join(' · '),
                   style: TextStyle(
@@ -143,7 +151,7 @@ class SettingTile extends ConsumerWidget {
                   // New input when the level or the stored value changes.
                   key: ValueKey('${scope.name}|$scopeId|${resolved.value}'),
                   def: def,
-                  value: resolved.value,
+                  value: notInPlan ? false : resolved.value,
                   enabled: canEdit && settingHasEditor(def),
                   onSave: (v) async {
                     if (def.type == SettingType.boolean ||

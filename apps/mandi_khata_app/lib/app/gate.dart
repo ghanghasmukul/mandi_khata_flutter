@@ -1,5 +1,7 @@
+import 'package:khata_core/khata_core.dart' show AccessLevel;
 import 'package:mandi_khata_app/core/auth/app_lock/app_lock.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
+import 'package:mandi_khata_app/core/subscription/subscription_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/core/tenant/device_status.dart';
 import 'package:mandi_khata_app/features/onboarding/presentation/onboarding_providers.dart';
@@ -20,6 +22,10 @@ enum GateStep {
 
   /// First run on a lockable device: offer to set a PIN.
   setupPin,
+
+  /// The subscription has ended for good: only export, billing and
+  /// sign-out remain (docs/domain/saas-rules.md).
+  exportOnly,
 
   /// A new business: the owner goes through the setup wizard first.
   onboarding,
@@ -44,6 +50,9 @@ GateStep gateStep(Ref ref) {
     return GateStep.deviceRevoked;
   }
   if (lock.setupPromptPending) return GateStep.setupPin;
+  if (ref.watch(lifecycleProvider).access == AccessLevel.exportOnly) {
+    return GateStep.exportOnly;
+  }
   if (ref.watch(onboardingNeededProvider)) return GateStep.onboarding;
   return GateStep.ready;
 }
@@ -57,6 +66,18 @@ abstract final class GateRoutes {
   static const setPin = '/set-pin';
   static const deviceRevoked = '/device-revoked';
   static const onboarding = '/onboarding';
+  static const billing = '/billing';
+  static const signup = '/signup';
+
+  /// What an ended subscription can still open: the export screens and
+  /// billing (to ask for the plan back).
+  static const exportOnlyPrefixes = [
+    '/billing',
+    '/reports',
+    '/accounts/tally',
+    '/select-tenant',
+    '/set-pin',
+  ];
 
   /// Developer pages that exist only in debug builds and work signed out.
   static const debugOnly = {'/dev/gallery', '/dev/sync'};
@@ -67,9 +88,19 @@ abstract final class GateRoutes {
 /// Debug-only developer pages ([GateRoutes.debugOnly]) are never
 /// redirected; `/dev/diagnostics` ships in release and is guarded like any
 /// other page.
-String? redirectFor(GateStep step, String location) {
+///
+/// [moduleOff] says the screen at [location] belongs to a module the plan
+/// (or the business) has switched off: it goes home instead.
+String? redirectFor(GateStep step, String location, {bool moduleOff = false}) {
   if (GateRoutes.debugOnly.contains(location)) return null;
+  if (step == GateStep.exportOnly) {
+    final allowed = GateRoutes.exportOnlyPrefixes.any(
+      (p) => location == p || location.startsWith('$p/'),
+    );
+    return allowed ? null : GateRoutes.billing;
+  }
   final required = switch (step) {
+    GateStep.exportOnly => null,
     GateStep.starting => GateRoutes.splash,
     GateStep.signedOut => GateRoutes.login,
     GateStep.locked => GateRoutes.lock,
@@ -79,7 +110,13 @@ String? redirectFor(GateStep step, String location) {
     GateStep.onboarding => GateRoutes.onboarding,
     GateStep.ready => null,
   };
-  if (required != null) return location == required ? null : required;
+  if (required != null) {
+    // Creating a business is part of choosing one.
+    if (step == GateStep.chooseTenant && location == GateRoutes.signup) {
+      return null;
+    }
+    return location == required ? null : required;
+  }
   // Ready: leave the gate pages. /set-pin stays reachable to change the PIN.
   const gatePages = {
     GateRoutes.splash,
@@ -88,5 +125,6 @@ String? redirectFor(GateStep step, String location) {
     GateRoutes.selectTenant,
     GateRoutes.deviceRevoked,
   };
-  return gatePages.contains(location) ? GateRoutes.home : null;
+  if (gatePages.contains(location)) return GateRoutes.home;
+  return moduleOff ? GateRoutes.home : null;
 }

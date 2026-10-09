@@ -180,7 +180,7 @@ final class ShopModuleEnabledProvider
   }
 }
 
-String _$shopModuleEnabledHash() => r'270c72d46d4f0bbf1075c3db96be99c72c17370b';
+String _$shopModuleEnabledHash() => r'29da6f4e7f37e66cc7ecda7923af4251fdc825d4';
 
 /// `shop.expiry_warn_days`
 

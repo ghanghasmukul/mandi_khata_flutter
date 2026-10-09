@@ -6655,4 +6655,303 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invoiceReversed => 'REVERSED';
+
+  @override
+  String get navBilling => 'Plan & billing';
+
+  @override
+  String get annDismiss => 'Dismiss';
+
+  @override
+  String lcTrialDays(int n) {
+    return 'Free trial: $n days left';
+  }
+
+  @override
+  String get lcTrialEnded =>
+      'Your free trial has ended. The app is read-only: you can view, print and export everything.';
+
+  @override
+  String lcGrace(String date) {
+    return 'Your plan renewal is overdue. Everything works until $date.';
+  }
+
+  @override
+  String get lcGraceEnded =>
+      'Your plan has expired. The app is read-only: you can view, print and export everything.';
+
+  @override
+  String get lcLockedByVendor =>
+      'This account is locked. The app is read-only until the plan is restored.';
+
+  @override
+  String lcCancelled(int n) {
+    return 'Subscription cancelled. Read-only for $n more days, then export only.';
+  }
+
+  @override
+  String get lcExportOnly =>
+      'The subscription ended a while ago. You can only export your data now.';
+
+  @override
+  String lcConfirm(int n) {
+    return 'Connect to the internet to confirm your subscription ($n days left).';
+  }
+
+  @override
+  String get lcSyncRequired =>
+      'Connect to the internet once to continue. The app is read-only until then.';
+
+  @override
+  String get billTitle => 'Plan & billing';
+
+  @override
+  String get billNoSubscription =>
+      'The subscription has not reached this device yet. Connect to the internet once.';
+
+  @override
+  String get billSwitchBusiness => 'Switch business';
+
+  @override
+  String get billCurrentPlan => 'Current plan';
+
+  @override
+  String get billStatusTrial => 'Free trial';
+
+  @override
+  String get billStatusActive => 'Active';
+
+  @override
+  String get billStatusGrace => 'Renewal overdue (grace period)';
+
+  @override
+  String get billStatusLocked => 'Locked (read-only)';
+
+  @override
+  String get billStatusCancelled => 'Cancelled';
+
+  @override
+  String billTrialEnds(String date) {
+    return 'Trial ends on $date';
+  }
+
+  @override
+  String billRenews(String date) {
+    return 'Renews on $date';
+  }
+
+  @override
+  String billDiscount(String pct) {
+    return 'Discount: $pct%';
+  }
+
+  @override
+  String get billRequestPending =>
+      'A plan request is waiting for us to confirm.';
+
+  @override
+  String get billOnlyOwner => 'Only the owner can change the plan.';
+
+  @override
+  String get billUsage => 'Usage';
+
+  @override
+  String get billUsers => 'Users';
+
+  @override
+  String get billDevices => 'Devices';
+
+  @override
+  String get billParties => 'Parties';
+
+  @override
+  String billUsageOf(int used, int limit) {
+    return '$used of $limit';
+  }
+
+  @override
+  String billUsageNoLimit(int used) {
+    return '$used (no limit)';
+  }
+
+  @override
+  String get billModules => 'Included modules';
+
+  @override
+  String get modKhata => 'Khata & payments';
+
+  @override
+  String get modArrivals => 'Arrivals & lots';
+
+  @override
+  String get modKarza => 'Karza & byaj';
+
+  @override
+  String get modAccounting => 'Accounting';
+
+  @override
+  String get modShop => 'Input shop';
+
+  @override
+  String get billPlans => 'Plans';
+
+  @override
+  String billPerMonth(String price) {
+    return '$price / month';
+  }
+
+  @override
+  String billPerYear(String price) {
+    return '$price / year';
+  }
+
+  @override
+  String get billPriceOnRequest => 'Price on request';
+
+  @override
+  String billUsersDevices(String users, String devices) {
+    return '$users users, $devices devices';
+  }
+
+  @override
+  String get billCurrentBadge => 'Current';
+
+  @override
+  String get billRequestPlan => 'Request this plan';
+
+  @override
+  String get billAddons => 'Add-ons';
+
+  @override
+  String get billAddonLess => 'Fewer';
+
+  @override
+  String get billAddonMore => 'More';
+
+  @override
+  String get billRequestAddons => 'Request add-ons';
+
+  @override
+  String billRequestTitle(String plan) {
+    return 'Request $plan';
+  }
+
+  @override
+  String get billRequestAddonsTitle => 'Request add-ons';
+
+  @override
+  String get billMonthly => 'Monthly';
+
+  @override
+  String get billYearly => 'Yearly';
+
+  @override
+  String get billRequestNote => 'Note for us (optional)';
+
+  @override
+  String get billRequestSend => 'Send request';
+
+  @override
+  String get billRequestSent => 'Request sent. We will contact you.';
+
+  @override
+  String get billRequests => 'Your requests';
+
+  @override
+  String get billReqPending => 'Waiting';
+
+  @override
+  String get billReqDone => 'Done';
+
+  @override
+  String get billReqRejected => 'Declined';
+
+  @override
+  String get billSupportAccess => 'Support access';
+
+  @override
+  String get billManualNote =>
+      'Payments are handled by us for now. Send a request and we will confirm the change and the amount.';
+
+  @override
+  String get modNotInPlan => 'Not in your plan';
+
+  @override
+  String limitReachedParties(int n) {
+    return 'Your plan allows $n parties. Ask for more under Plan & billing.';
+  }
+
+  @override
+  String limitReachedUsers(int n) {
+    return 'Your plan allows $n users. Ask for more under Plan & billing.';
+  }
+
+  @override
+  String limitReachedDevices(int n) {
+    return 'Your plan allows $n devices. Ask for more under Plan & billing.';
+  }
+
+  @override
+  String get signupStart => 'Create a new business';
+
+  @override
+  String get signupTitle => 'Create your business';
+
+  @override
+  String get signupSubtitle => 'A few details to start your free trial.';
+
+  @override
+  String get signupName => 'Business name';
+
+  @override
+  String get signupNameRequired => 'Enter the business name.';
+
+  @override
+  String get signupType => 'What do you run?';
+
+  @override
+  String get signupTypeArhtiya => 'Arhtiya';
+
+  @override
+  String get signupTypeShop => 'Input shop';
+
+  @override
+  String get signupTypeBoth => 'Both';
+
+  @override
+  String get signupPhone => 'Business phone';
+
+  @override
+  String get signupReferral => 'Referral code (optional)';
+
+  @override
+  String get signupCreate => 'Start free trial';
+
+  @override
+  String get signupTrialNote => 'Free trial. No card needed.';
+
+  @override
+  String get signupBack => 'Back';
+
+  @override
+  String get signupOffline =>
+      'Creating a business needs the internet. Check your connection and try again.';
+
+  @override
+  String get signupClosed =>
+      'New signups are paused right now. Please try later.';
+
+  @override
+  String get signupLimit =>
+      'You have reached the number of businesses one person can create.';
+
+  @override
+  String get signupInvalid => 'Please check the details and try again.';
+
+  @override
+  String get signupFailed => 'Could not create the business. Please try again.';
+
+  @override
+  String get inviteErrLimitReached =>
+      'Your plan has no free user seat. Ask for more under Plan & billing.';
 }

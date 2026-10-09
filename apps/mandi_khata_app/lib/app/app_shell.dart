@@ -11,13 +11,15 @@ import 'package:mandi_khata_app/app/router.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
+import 'package:mandi_khata_app/core/subscription/module_access.dart';
 import 'package:mandi_khata_app/core/sync/presentation/sync_status_chip.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/core/update/update_banner.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/dashboard/presentation/dashboard_providers.dart';
 import 'package:mandi_khata_app/features/loans/presentation/loans_screen.dart';
-import 'package:mandi_khata_app/features/products/presentation/products_providers.dart';
+import 'package:mandi_khata_app/features/subscription/presentation/announcement_banner.dart';
+import 'package:mandi_khata_app/features/subscription/presentation/lifecycle_banner.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -45,7 +47,8 @@ class AppShell extends ConsumerWidget {
       l10n,
       can,
       badges: {if (overdue > 0) LoanRoutes.list: '$overdue'},
-      moduleOn: (m) => m != 'shop' || ref.watch(shopModuleEnabledProvider),
+      moduleOn: (m) => ref.watch(moduleEnabledProvider(m)),
+      canIgnoringLock: (p) => member?.canIgnoringLock(p) ?? false,
     );
     final all = [for (final s in sections) ...s.items];
     final selected = selectedNavId(location, [for (final i in all) i.id]);
@@ -89,6 +92,8 @@ class AppShell extends ConsumerWidget {
         child: Column(
           children: [
             const UpdateBanner(),
+            const LifecycleBanner(),
+            const AnnouncementBanner(),
             Expanded(child: child),
           ],
         ),

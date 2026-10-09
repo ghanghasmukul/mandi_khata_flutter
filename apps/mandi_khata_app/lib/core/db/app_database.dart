@@ -56,6 +56,13 @@ part 'app_database.g.dart';
     ShopSaleLines,
     ShopReturns,
     ShopReturnLines,
+    Plans,
+    PlanAddons,
+    PlatformSettings,
+    Announcements,
+    TenantSubscriptions,
+    PlanRequests,
+    SupportSessions,
     SyncErrors,
   ],
 )

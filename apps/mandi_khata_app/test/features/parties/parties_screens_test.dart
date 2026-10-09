@@ -81,6 +81,7 @@ class FakePartiesRepository implements PartiesRepository {
     WriteContext ctx,
     PartyInput input, {
     required bool Function(Permission) can,
+    int? maxParties,
     DateTime? now,
   }) async {
     if (!can(Permission.partiesManage)) return const PartyNotPermitted();

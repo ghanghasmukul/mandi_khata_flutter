@@ -7,6 +7,7 @@ environment:
 
 workspace:
   - apps/mandi_khata_app
+  - apps/mk_admin
   - packages/khata_core
   - packages/mk_ui
 

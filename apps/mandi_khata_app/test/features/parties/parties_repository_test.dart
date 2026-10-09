@@ -70,6 +70,61 @@ void main() {
       jsonDecode(r['data']! as String) as Map<String, Object?>,
   ];
 
+  group('plan party limit', () {
+    test(
+      'the party over the limit is refused and nothing is written',
+      () async {
+        await add(gurmeet(code: 'A'));
+        await add(gurmeet(code: 'B'));
+        final r = await repo.create(
+          ctx,
+          gurmeet(code: 'C'),
+          can: owner,
+          maxParties: 2,
+        );
+        expect(r, isA<PartyLimitReached>());
+        expect((r as PartyLimitReached).limit, 2);
+        final n = await db.get('SELECT count(*) AS n FROM parties');
+        expect(n['n'], 2);
+        expect((await audit()).where((a) => a['row_id'] == null), isEmpty);
+      },
+    );
+
+    test('room left, no limit, or another business: saved', () async {
+      await add(gurmeet(code: 'A'));
+      expect(
+        await repo.create(ctx, gurmeet(code: 'B'), can: owner, maxParties: 2),
+        isA<PartySaved>(),
+      );
+      expect(
+        await repo.create(ctx, gurmeet(code: 'C'), can: owner),
+        isA<PartySaved>(),
+      );
+      // The other business has none of its own yet.
+      expect(
+        await repo.create(
+          otherTenant,
+          gurmeet(code: 'A'),
+          can: owner,
+          maxParties: 1,
+        ),
+        isA<PartySaved>(),
+      );
+    });
+
+    test('deleted parties do not count', () async {
+      final id = await add(gurmeet(code: 'A'));
+      await db.execute(
+        "UPDATE parties SET deleted_at = '2027-01-01' WHERE id = ?",
+        [id],
+      );
+      expect(
+        await repo.create(ctx, gurmeet(code: 'B'), can: owner, maxParties: 1),
+        isA<PartySaved>(),
+      );
+    });
+  });
+
   group('create', () {
     test('stores clean values, auto code, roles and audit rows', () async {
       final r = await repo.create(ctx, gurmeet(), can: owner);

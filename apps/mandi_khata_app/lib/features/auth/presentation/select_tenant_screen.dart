@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mandi_khata_app/app/env.dart';
+import 'package:mandi_khata_app/app/gate.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/core/tenant/device_registrar.dart';
@@ -148,6 +151,18 @@ class _SelectTenantScreenState extends ConsumerState<SelectTenantScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           body,
+          if (synced && Env.hasSupabase) ...[
+            const SizedBox(height: MkSpacing.md),
+            Center(
+              child: MkButton(
+                key: const ValueKey('create-business'),
+                label: l10n.signupStart,
+                icon: Icons.add_business_outlined,
+                variant: MkButtonVariant.secondary,
+                onPressed: () => context.go(GateRoutes.signup),
+              ),
+            ),
+          ],
           const SizedBox(height: MkSpacing.xl),
           Center(
             child: MkButton(

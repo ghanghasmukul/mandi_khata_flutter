@@ -17,6 +17,7 @@ import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dar
 import 'package:mandi_khata_app/features/shop_reports/presentation/shop_routes.dart';
 import 'package:mandi_khata_app/features/shop_sales/presentation/sales_screen.dart'
     show SalesRoutes;
+import 'package:mandi_khata_app/features/subscription/presentation/billing_routes.dart';
 import 'package:mandi_khata_app/features/team/presentation/team_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
@@ -34,6 +35,7 @@ class NavDestination {
     this.label, {
     this.permissions,
     this.module,
+    this.ignoreReadOnly = false,
   });
 
   final String route;
@@ -45,6 +47,10 @@ class NavDestination {
 
   /// The `app.modules.<name>` switch this entry belongs to; null = always.
   final String? module;
+
+  /// Shown in the menu even though the permission checks are off in
+  /// read-only mode (billing is how a locked owner gets back in).
+  final bool ignoreReadOnly;
 }
 
 class NavGroup {
@@ -67,6 +73,7 @@ final List<NavGroup> navGroups = <NavGroup>[
       ArrivalRoutes.list,
       Icons.agriculture_outlined,
       (l) => l.arrivalsTitle,
+      module: 'arrivals',
     ),
     NavDestination(
       PartyRoutes.list,
@@ -87,6 +94,7 @@ final List<NavGroup> navGroups = <NavGroup>[
       LoanRoutes.list,
       Icons.request_quote_outlined,
       (l) => l.loansTitle,
+      module: 'karza',
     ),
   ]),
   NavGroup('shop', (l) => l.navSectionShop, [
@@ -150,12 +158,14 @@ final List<NavGroup> navGroups = <NavGroup>[
         Permission.financeView,
         Permission.paymentsCreate,
       ],
+      module: 'accounting',
     ),
     NavDestination(
       AccountRoutes.expenses,
       Icons.shopping_bag_outlined,
       (l) => l.expensesTitle,
       permissions: [Permission.paymentsCreate],
+      module: 'accounting',
     ),
     NavDestination(
       AccountRoutes.cashBook,
@@ -168,7 +178,12 @@ final List<NavGroup> navGroups = <NavGroup>[
       Icons.assessment_outlined,
       (l) => l.reportsTitle,
     ),
-    NavDestination(CropRoutes.list, Icons.grass_outlined, (l) => l.cropsTitle),
+    NavDestination(
+      CropRoutes.list,
+      Icons.grass_outlined,
+      (l) => l.cropsTitle,
+      module: 'arrivals',
+    ),
   ]),
   NavGroup('admin', (l) => l.navSectionAdmin, [
     NavDestination(
@@ -183,9 +198,28 @@ final List<NavGroup> navGroups = <NavGroup>[
       (l) => l.auditTitle,
       permissions: [Permission.auditView],
     ),
+    NavDestination(
+      BillingRoutes.billing,
+      Icons.workspace_premium_outlined,
+      (l) => l.navBilling,
+      permissions: [Permission.adminManage],
+      ignoreReadOnly: true,
+    ),
     NavDestination(settingsRoute, Icons.tune, (l) => l.settingsTitle),
   ]),
 ];
+
+/// The module a location belongs to (null = base khata or outside the menu):
+/// the module of the longest menu route that is a prefix of [location].
+String? moduleOfLocation(String location) {
+  final byRoute = {
+    for (final g in navGroups)
+      for (final d in g.items)
+        if (d.module != null) d.route: d.module!,
+  };
+  final id = selectedNavId(location, byRoute.keys);
+  return id == null ? null : byRoute[id];
+}
 
 /// The destinations [can] may see, grouped, translated, with [badges] (by
 /// route) on the sidebar.
@@ -194,14 +228,15 @@ List<MkNavSection> navSections(
   bool Function(Permission) can, {
   Map<String, String> badges = const {},
   bool Function(String module) moduleOn = _allModules,
+  bool Function(Permission)? canIgnoringLock,
 }) => [
   for (final g in navGroups)
-    if (_visible(g, can, moduleOn).isNotEmpty)
+    if (_visible(g, can, moduleOn, canIgnoringLock ?? can).isNotEmpty)
       MkNavSection(
         id: g.id,
         title: g.title(l10n),
         items: [
-          for (final d in _visible(g, can, moduleOn))
+          for (final d in _visible(g, can, moduleOn, canIgnoringLock ?? can))
             MkNavItem(
               id: d.route,
               icon: d.icon,
@@ -218,9 +253,11 @@ List<NavDestination> _visible(
   NavGroup g,
   bool Function(Permission) can,
   bool Function(String) moduleOn,
+  bool Function(Permission) canIgnoringLock,
 ) => [
   for (final d in g.items)
-    if ((d.permissions == null || d.permissions!.any(can)) &&
+    if ((d.permissions == null ||
+            d.permissions!.any(d.ignoreReadOnly ? canIgnoringLock : can)) &&
         (d.module == null || moduleOn(d.module!)))
       d,
 ];

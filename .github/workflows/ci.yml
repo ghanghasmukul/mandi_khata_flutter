@@ -57,6 +57,9 @@ jobs:
       - name: mk_ui tests
         working-directory: packages/mk_ui
         run: flutter test
+      - name: Admin console tests
+        working-directory: apps/mk_admin
+        run: flutter test
       - name: App tests
         working-directory: apps/mandi_khata_app
         # Shared runners are slower than a laptop: the performance test
@@ -118,6 +121,9 @@ jobs:
           cache: true
       - run: flutter pub get
       - working-directory: apps/mandi_khata_app
+        run: flutter build web --release
+      - name: Admin console (web)
+        working-directory: apps/mk_admin
         run: flutter build web --release
 
   build-android:

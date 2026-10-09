@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:logging/logging.dart';
 import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/storage/app_prefs.dart';
+import 'package:mandi_khata_app/core/subscription/subscription_providers.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/device_registrar.dart';
 import 'package:mandi_khata_app/core/tenant/membership_repository.dart';
@@ -119,7 +120,9 @@ Membership? activeMembership(Ref ref) {
   final memberships = ref.watch(myMembershipsProvider).value;
   if (tenantId == null || memberships == null) return null;
   for (final m in memberships) {
-    if (m.tenantId == tenantId) return m;
+    if (m.tenantId == tenantId) {
+      return m.withReadOnly(readOnly: ref.watch(subscriptionReadOnlyProvider));
+    }
   }
   return null;
 }

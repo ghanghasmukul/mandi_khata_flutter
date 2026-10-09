@@ -93,6 +93,7 @@ function errorCode(message: string): string {
       "invalid_permissions",
       "already_member",
       "already_invited",
+      "limit_reached",
     ]
   ) {
     if (message.includes(code)) return code;

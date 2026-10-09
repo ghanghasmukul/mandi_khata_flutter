@@ -2,6 +2,7 @@ import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/core/subscription/subscription_providers.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -11,10 +12,12 @@ part 'settings_providers.g.dart';
 Future<SettingsRepository> settingsRepository(Ref ref) async =>
     SettingsRepository(await ref.watch(powerSyncDatabaseProvider.future));
 
-/// Values that come with the subscription plan. Plans arrive in step 5.1;
-/// until then every key falls through to the system default.
-@Riverpod(keepAlive: true)
-Map<String, Object?> planDefaults(Ref ref) => const {};
+/// Values that come with the subscription plan (the plan level of the
+/// cascade); until the plan has synced every key falls through to the
+/// system default.
+@riverpod
+Map<String, Object?> planDefaults(Ref ref) =>
+    ref.watch(planSettingDefaultsProvider);
 
 /// Setting rows of the active business that can apply to [target]. Live.
 @riverpod

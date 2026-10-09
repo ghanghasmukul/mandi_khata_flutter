@@ -10,6 +10,7 @@ environment:
 dependencies:
   archive: ^4.3.0
   crypto: ^3.0.7
+  dart_jsonwebtoken: ^3.4.1
   decimal: ^3.2.6
   drift: ^2.35.0
   drift_sqlite_async: ^0.3.1

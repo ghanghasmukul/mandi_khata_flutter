@@ -13,6 +13,7 @@ enum InviteFailure {
   invalidRole,
   alreadyMember,
   alreadyInvited,
+  limitReached,
   notAllowed,
   offline,
   failed,
@@ -73,6 +74,7 @@ class SupabaseInviteService implements InviteService {
     'invalid_role' => InviteFailure.invalidRole,
     'already_member' => InviteFailure.alreadyMember,
     'already_invited' => InviteFailure.alreadyInvited,
+    'limit_reached' => InviteFailure.limitReached,
     'not_allowed' => InviteFailure.notAllowed,
     _ => InviteFailure.failed,
   };

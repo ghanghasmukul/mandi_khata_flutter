@@ -15,6 +15,13 @@ abstract final class Env {
     'UPDATE_MANIFEST_URL',
   );
 
+  /// PEM public key (ES256) that verifies the signed entitlement token. Empty
+  /// = the token is not used and the synced subscription row alone decides.
+  /// Write the PEM with `\n` for line breaks in the env file.
+  static const entitlementPublicKey = String.fromEnvironment(
+    'ENTITLEMENT_PUBLIC_KEY',
+  );
+
   /// Which backend this build targets: `dev` or `prod` (empty when built with
   /// no env file, e.g. in CI). Comes from `APP_ENV` in the env file.
   static const appEnv = String.fromEnvironment('APP_ENV');

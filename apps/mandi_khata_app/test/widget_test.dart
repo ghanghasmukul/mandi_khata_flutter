@@ -11,10 +11,12 @@ import 'package:mandi_khata_app/core/auth/session.dart';
 import 'package:mandi_khata_app/core/auth/sign_out_service.dart';
 import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/storage/app_prefs.dart';
+import 'package:mandi_khata_app/core/subscription/subscription_providers.dart';
 import 'package:mandi_khata_app/core/sync/sync_providers.dart';
 import 'package:mandi_khata_app/core/tenant/device_registrar.dart';
 import 'package:mandi_khata_app/core/tenant/device_status.dart';
 import 'package:mandi_khata_app/core/tenant/membership_repository.dart';
+import 'package:mandi_khata_app/features/subscription/presentation/announcement_banner.dart';
 import 'package:mandi_khata_app/main.dart';
 
 import 'helpers/fakes.dart';
@@ -61,6 +63,9 @@ void main() {
             (ref) => Stream.value(memberships),
           ),
           hasSyncedProvider.overrideWithValue(true),
+          // No subscription synced in a widget test: the app stays open.
+          subscriptionBundleProvider.overrideWith((ref) => Stream.value(null)),
+          announcementsProvider.overrideWith((ref) => Stream.value(const [])),
           deviceRevokedProvider.overrideWith((ref) => Stream.value(false)),
           profileLanguageProvider.overrideWith((ref) => Stream.value(null)),
           appLockSupportedProvider.overrideWithValue(true),

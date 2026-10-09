@@ -82,6 +82,69 @@ void main() {
       expect(s.first.items.firstWhere((i) => i.id == '/loans').badge, '3');
     });
 
+    testWidgets('modules the plan lacks are hidden from the menu', (
+      tester,
+    ) async {
+      late List<MkNavSection> out;
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: Builder(
+            builder: (context) {
+              out = navSections(
+                AppLocalizations.of(context),
+                MemberRole.owner.allows,
+                moduleOn: (m) => m == 'arrivals' || m == 'karza',
+              );
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+      final ids = [for (final x in out) ...x.items.map((i) => i.id)];
+      expect(ids, containsAll(['/arrivals', '/loans', '/crops']));
+      expect(ids, isNot(contains('/accounts')));
+      expect(ids, isNot(contains('/accounts/expenses')));
+      expect(ids.where((i) => i.startsWith('/shop') || i == '/pos'), isEmpty);
+      // Base khata screens never depend on a module.
+      expect(ids, containsAll(['/', '/parties', '/payments', '/reports']));
+    });
+
+    testWidgets('billing stays in the menu of a locked owner', (tester) async {
+      late List<MkNavSection> out;
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: Builder(
+            builder: (context) {
+              out = navSections(
+                AppLocalizations.of(context),
+                (_) => false, // read-only: every write permission is off
+                canIgnoringLock: MemberRole.owner.allows,
+              );
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+      final ids = [for (final x in out) ...x.items.map((i) => i.id)];
+      expect(ids, contains('/billing'));
+      expect(ids, isNot(contains('/team')));
+    });
+
+    test('moduleOfLocation maps a screen to its module', () {
+      expect(moduleOfLocation('/loans'), 'karza');
+      expect(moduleOfLocation('/loans/abc'), 'karza');
+      expect(moduleOfLocation('/accounts/expenses'), 'accounting');
+      expect(moduleOfLocation('/arrivals/new'), 'arrivals');
+      expect(moduleOfLocation('/shop/pos'), 'shop');
+      expect(moduleOfLocation('/parties'), isNull);
+      expect(moduleOfLocation('/billing'), isNull);
+      expect(moduleOfLocation('/unknown'), isNull);
+    });
+
     testWidgets('a munshi sees neither admin screens nor the accounts hub', (
       tester,
     ) async {

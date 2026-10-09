@@ -3,6 +3,7 @@ import 'package:mandi_khata_app/core/audit/audit_writer.dart';
 import 'package:mandi_khata_app/core/db/database_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
+import 'package:mandi_khata_app/core/subscription/module_access.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
 import 'package:mandi_khata_app/features/shop_sales/data/return_repository.dart';
 import 'package:mandi_khata_app/features/shop_sales/data/sale_repository.dart';
@@ -33,9 +34,7 @@ ShopSettings? shopSettings(Ref ref) {
 
 /// Whether the shop module is switched on (`app.modules.shop`).
 @riverpod
-bool shopModuleEnabled(Ref ref) =>
-    ref.watch(settingProvider('app.modules.shop', businessTarget))?.value ==
-    true;
+bool shopModuleEnabled(Ref ref) => ref.watch(moduleEnabledProvider('shop'));
 
 /// Bills of the active business matching [filter], newest first. Live.
 @riverpod

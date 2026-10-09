@@ -15,7 +15,7 @@ Plan default_settings become the "plan default" level in the settings cascade.
 Suggested plans to seed: Mandi Basic (khata, arrivals, payments), Mandi Pro (+ karza/byaj, accounting, 5 users), Shop (input shop only), Combo (everything), plus per-extra-user and per-extra-device add-ons.
 ```
 
-## Step 5.2 — Razorpay subscriptions
+## Step 5.2 — Razorpay subscriptions (DEFERRED — owner's decision 2026-10-09; manual billing instead, see docs/saas-setup.md)
 
 **Prompt**
 ```

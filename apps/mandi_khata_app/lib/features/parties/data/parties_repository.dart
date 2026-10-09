@@ -93,10 +93,15 @@ class PartiesRepository {
   );
 
   /// Adds a party. A blank code gets the next `P-<device>-NNNN` number.
+  ///
+  /// [maxParties] is the plan's party limit (null = unlimited): a business
+  /// that already has that many parties gets [PartyLimitReached] and nothing
+  /// is written (the server checks again).
   Future<PartySaveResult> create(
     WriteContext ctx,
     PartyInput input, {
     required bool Function(Permission) can,
+    int? maxParties,
     DateTime? now,
   }) async {
     if (!can(Permission.partiesManage)) return const PartyNotPermitted();
@@ -107,6 +112,16 @@ class PartiesRepository {
     final when = now ?? DateTime.now();
     try {
       return await _db.writeTransaction((tx) async {
+        if (maxParties != null) {
+          final row = await tx.get(
+            'SELECT count(*) AS n FROM parties '
+            'WHERE tenant_id = ? AND deleted_at IS NULL',
+            [ctx.tenantId],
+          );
+          if ((row['n']! as int) >= maxParties) {
+            throw _LimitReached(maxParties);
+          }
+        }
         final PartyInput n;
         if (autoCode) {
           // Skip numbers someone already typed in by hand as a code.
@@ -138,6 +153,8 @@ class PartiesRepository {
       });
     } on _CodeTaken {
       return const PartyCodeTaken();
+    } on _LimitReached catch (e) {
+      return PartyLimitReached(e.limit);
     }
   }
 
@@ -366,6 +383,12 @@ class PartiesRepository {
       at: when,
     );
   }
+}
+
+class _LimitReached implements Exception {
+  const _LimitReached(this.limit);
+
+  final int limit;
 }
 
 class _CodeTaken implements Exception {

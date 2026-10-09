@@ -37,6 +37,7 @@ extension TeamLabels on AppLocalizations {
     InviteFailure.invalidRole => inviteErrRole,
     InviteFailure.alreadyMember => inviteErrAlreadyMember,
     InviteFailure.alreadyInvited => inviteErrAlreadyInvited,
+    InviteFailure.limitReached => inviteErrLimitReached,
     InviteFailure.notAllowed => inviteErrNotAllowed,
     InviteFailure.offline => inviteErrOffline,
     InviteFailure.failed => inviteErrFailed,

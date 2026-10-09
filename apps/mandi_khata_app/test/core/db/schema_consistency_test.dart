@@ -39,9 +39,18 @@ void main() {
     }
   });
 
-  test('every synced table except app_users and tenants has tenant_id', () {
+  test('every synced table except platform ones has tenant_id', () {
+    // Platform tables hold no business data: they are the same for everyone.
+    const platform = {
+      'tenants',
+      'app_users',
+      'plans',
+      'plan_addons',
+      'platform_settings',
+      'announcements',
+    };
     for (final table in syncedTables) {
-      if (table.name == 'tenants' || table.name == 'app_users') continue;
+      if (platform.contains(table.name)) continue;
       expect(table.columns, contains('tenant_id'), reason: table.name);
     }
   });

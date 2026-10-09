@@ -93,6 +93,12 @@ class _PartyFormScreenState extends ConsumerState<PartyFormScreen> {
           l10n.settingsNoPermission,
           tone: MkToastTone.error,
         );
+      case PartyLimitReached(:final limit):
+        MkToast.show(
+          context,
+          l10n.limitReachedParties(limit),
+          tone: MkToastTone.error,
+        );
       case PartyNotFound():
         MkToast.show(context, l10n.partyNotFound, tone: MkToastTone.error);
       case PartyInvalid() || PartyCodeTaken():

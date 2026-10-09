@@ -34,6 +34,8 @@ class AppPrefs {
   /// that [clearAll] leaves alone.
   static const _uiLanguage = 'ui.language';
   static const _dismissedUpdate = 'ui.dismissedUpdate';
+  static const _dismissedAnnouncements = 'ui.dismissedAnnouncements';
+  static const _entitlementToken = '${_prefix}entitlementToken.';
 
   /// The user whose data is in the local database. A different user signing
   /// in on this install starts from an empty database.
@@ -113,6 +115,19 @@ class AppPrefs {
   String? get dismissedUpdate => _prefs.getString(_dismissedUpdate);
   Future<void> setDismissedUpdate(String version) =>
       _prefs.setString(_dismissedUpdate, version);
+
+  /// Platform announcements this device has dismissed (device-level).
+  List<String> get dismissedAnnouncements =>
+      _prefs.getStringList(_dismissedAnnouncements) ?? const [];
+  Future<void> setDismissedAnnouncements(List<String> ids) =>
+      _prefs.setStringList(_dismissedAnnouncements, ids);
+
+  /// The signed entitlement token of a business (cleared with the rest on
+  /// sign-out).
+  String? entitlementToken(String tenantId) =>
+      _prefs.getString('$_entitlementToken$tenantId');
+  Future<void> setEntitlementToken(String tenantId, String token) =>
+      _prefs.setString('$_entitlementToken$tenantId', token);
 
   /// Forgets everything above except the UI language (sign-out, or another
   /// user signing in).

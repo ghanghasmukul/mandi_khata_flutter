@@ -177,7 +177,7 @@ final class ShopModuleEnabledProvider
   }
 }
 
-String _$shopModuleEnabledHash() => r'2829a821aa5623ec489d02c8dbbc29ae3d9bc5b0';
+String _$shopModuleEnabledHash() => r'29da6f4e7f37e66cc7ecda7923af4251fdc825d4';
 
 /// Bills of the active business matching [filter], newest first. Live.
 

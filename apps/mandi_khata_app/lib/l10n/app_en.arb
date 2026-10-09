@@ -8979,5 +8979,431 @@
   "invoiceReversed": "REVERSED",
   "@invoiceReversed": {
     "description": "Shop POS and sales (steps 4.3, 4.4)"
+  },
+  "navBilling": "Plan & billing",
+  "@navBilling": {
+    "description": "Sidebar entry for the subscription screen."
+  },
+  "annDismiss": "Dismiss",
+  "@annDismiss": {
+    "description": "Hides a platform announcement."
+  },
+  "lcTrialDays": "Free trial: {n} days left",
+  "@lcTrialDays": {
+    "description": "Banner during the trial.",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "lcTrialEnded": "Your free trial has ended. The app is read-only: you can view, print and export everything.",
+  "@lcTrialEnded": {
+    "description": "Banner when the trial is over."
+  },
+  "lcGrace": "Your plan renewal is overdue. Everything works until {date}.",
+  "@lcGrace": {
+    "description": "Banner during the grace period.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lcGraceEnded": "Your plan has expired. The app is read-only: you can view, print and export everything.",
+  "@lcGraceEnded": {
+    "description": "Banner when grace has ended."
+  },
+  "lcLockedByVendor": "This account is locked. The app is read-only until the plan is restored.",
+  "@lcLockedByVendor": {
+    "description": "Banner when the vendor locked the account."
+  },
+  "lcCancelled": "Subscription cancelled. Read-only for {n} more days, then export only.",
+  "@lcCancelled": {
+    "description": "Banner after cancelling.",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "lcExportOnly": "The subscription ended a while ago. You can only export your data now.",
+  "@lcExportOnly": {
+    "description": "Banner when only export is left."
+  },
+  "lcConfirm": "Connect to the internet to confirm your subscription ({n} days left).",
+  "@lcConfirm": {
+    "description": "Offline device must reach the server soon.",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "lcSyncRequired": "Connect to the internet once to continue. The app is read-only until then.",
+  "@lcSyncRequired": {
+    "description": "Offline too long: read-only until a sync."
+  },
+  "billTitle": "Plan & billing",
+  "@billTitle": {
+    "description": "Billing screen title."
+  },
+  "billNoSubscription": "The subscription has not reached this device yet. Connect to the internet once.",
+  "@billNoSubscription": {
+    "description": "Billing screen before the subscription synced."
+  },
+  "billSwitchBusiness": "Switch business",
+  "@billSwitchBusiness": {
+    "description": "Link on the billing screen when the app is locked down."
+  },
+  "billCurrentPlan": "Current plan",
+  "@billCurrentPlan": {
+    "description": "Card title."
+  },
+  "billStatusTrial": "Free trial",
+  "@billStatusTrial": {
+    "description": "Subscription status."
+  },
+  "billStatusActive": "Active",
+  "@billStatusActive": {
+    "description": "Subscription status."
+  },
+  "billStatusGrace": "Renewal overdue (grace period)",
+  "@billStatusGrace": {
+    "description": "Subscription status."
+  },
+  "billStatusLocked": "Locked (read-only)",
+  "@billStatusLocked": {
+    "description": "Subscription status."
+  },
+  "billStatusCancelled": "Cancelled",
+  "@billStatusCancelled": {
+    "description": "Subscription status."
+  },
+  "billTrialEnds": "Trial ends on {date}",
+  "@billTrialEnds": {
+    "description": "Trial end date.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billRenews": "Renews on {date}",
+  "@billRenews": {
+    "description": "Renewal date.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billDiscount": "Discount: {pct}%",
+  "@billDiscount": {
+    "description": "Discount agreed with the vendor.",
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "billRequestPending": "A plan request is waiting for us to confirm.",
+  "@billRequestPending": {
+    "description": "Shown while a request is pending."
+  },
+  "billOnlyOwner": "Only the owner can change the plan.",
+  "@billOnlyOwner": {
+    "description": "Note for non-owners."
+  },
+  "billUsage": "Usage",
+  "@billUsage": {
+    "description": "Card title."
+  },
+  "billUsers": "Users",
+  "@billUsers": {
+    "description": "Limit name."
+  },
+  "billDevices": "Devices",
+  "@billDevices": {
+    "description": "Limit name."
+  },
+  "billParties": "Parties",
+  "@billParties": {
+    "description": "Limit name."
+  },
+  "billUsageOf": "{used} of {limit}",
+  "@billUsageOf": {
+    "description": "Usage against a limit.",
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "billUsageNoLimit": "{used} (no limit)",
+  "@billUsageNoLimit": {
+    "description": "Usage without a limit.",
+    "placeholders": {
+      "used": {
+        "type": "int"
+      }
+    }
+  },
+  "billModules": "Included modules",
+  "@billModules": {
+    "description": "Card title."
+  },
+  "modKhata": "Khata & payments",
+  "@modKhata": {
+    "description": "Module name."
+  },
+  "modArrivals": "Arrivals & lots",
+  "@modArrivals": {
+    "description": "Module name."
+  },
+  "modKarza": "Karza & byaj",
+  "@modKarza": {
+    "description": "Module name."
+  },
+  "modAccounting": "Accounting",
+  "@modAccounting": {
+    "description": "Module name."
+  },
+  "modShop": "Input shop",
+  "@modShop": {
+    "description": "Module name."
+  },
+  "billPlans": "Plans",
+  "@billPlans": {
+    "description": "Card title."
+  },
+  "billPerMonth": "{price} / month",
+  "@billPerMonth": {
+    "description": "Monthly price.",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "billPerYear": "{price} / year",
+  "@billPerYear": {
+    "description": "Yearly price.",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "billPriceOnRequest": "Price on request",
+  "@billPriceOnRequest": {
+    "description": "Plan without a listed price."
+  },
+  "billUsersDevices": "{users} users, {devices} devices",
+  "@billUsersDevices": {
+    "description": "Plan limits.",
+    "placeholders": {
+      "users": {
+        "type": "String"
+      },
+      "devices": {
+        "type": "String"
+      }
+    }
+  },
+  "billCurrentBadge": "Current",
+  "@billCurrentBadge": {
+    "description": "Marks the current plan."
+  },
+  "billRequestPlan": "Request this plan",
+  "@billRequestPlan": {
+    "description": "Button on a plan."
+  },
+  "billAddons": "Add-ons",
+  "@billAddons": {
+    "description": "Card title."
+  },
+  "billAddonLess": "Fewer",
+  "@billAddonLess": {
+    "description": "Tooltip."
+  },
+  "billAddonMore": "More",
+  "@billAddonMore": {
+    "description": "Tooltip."
+  },
+  "billRequestAddons": "Request add-ons",
+  "@billRequestAddons": {
+    "description": "Button."
+  },
+  "billRequestTitle": "Request {plan}",
+  "@billRequestTitle": {
+    "description": "Dialog title.",
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "billRequestAddonsTitle": "Request add-ons",
+  "@billRequestAddonsTitle": {
+    "description": "Dialog title."
+  },
+  "billMonthly": "Monthly",
+  "@billMonthly": {
+    "description": "Billing cycle."
+  },
+  "billYearly": "Yearly",
+  "@billYearly": {
+    "description": "Billing cycle."
+  },
+  "billRequestNote": "Note for us (optional)",
+  "@billRequestNote": {
+    "description": "Request dialog field."
+  },
+  "billRequestSend": "Send request",
+  "@billRequestSend": {
+    "description": "Request dialog button."
+  },
+  "billRequestSent": "Request sent. We will contact you.",
+  "@billRequestSent": {
+    "description": "Toast."
+  },
+  "billRequests": "Your requests",
+  "@billRequests": {
+    "description": "Card title."
+  },
+  "billReqPending": "Waiting",
+  "@billReqPending": {
+    "description": "Request status."
+  },
+  "billReqDone": "Done",
+  "@billReqDone": {
+    "description": "Request status."
+  },
+  "billReqRejected": "Declined",
+  "@billReqRejected": {
+    "description": "Request status."
+  },
+  "billSupportAccess": "Support access",
+  "@billSupportAccess": {
+    "description": "Card title: when support looked at the business."
+  },
+  "billManualNote": "Payments are handled by us for now. Send a request and we will confirm the change and the amount.",
+  "@billManualNote": {
+    "description": "Footnote until online payments exist."
+  },
+  "modNotInPlan": "Not in your plan",
+  "@modNotInPlan": {
+    "description": "Setting row for a module the plan lacks."
+  },
+  "limitReachedParties": "Your plan allows {n} parties. Ask for more under Plan & billing.",
+  "@limitReachedParties": {
+    "description": "Party limit reached.",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "limitReachedUsers": "Your plan allows {n} users. Ask for more under Plan & billing.",
+  "@limitReachedUsers": {
+    "description": "User limit reached.",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "limitReachedDevices": "Your plan allows {n} devices. Ask for more under Plan & billing.",
+  "@limitReachedDevices": {
+    "description": "Device limit reached.",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "signupStart": "Create a new business",
+  "@signupStart": {
+    "description": "Button on the business picker."
+  },
+  "signupTitle": "Create your business",
+  "@signupTitle": {
+    "description": "Signup screen title."
+  },
+  "signupSubtitle": "A few details to start your free trial.",
+  "@signupSubtitle": {
+    "description": "Signup subtitle."
+  },
+  "signupName": "Business name",
+  "@signupName": {
+    "description": "Field."
+  },
+  "signupNameRequired": "Enter the business name.",
+  "@signupNameRequired": {
+    "description": "Validation."
+  },
+  "signupType": "What do you run?",
+  "@signupType": {
+    "description": "Field."
+  },
+  "signupTypeArhtiya": "Arhtiya",
+  "@signupTypeArhtiya": {
+    "description": "Business type."
+  },
+  "signupTypeShop": "Input shop",
+  "@signupTypeShop": {
+    "description": "Business type."
+  },
+  "signupTypeBoth": "Both",
+  "@signupTypeBoth": {
+    "description": "Business type."
+  },
+  "signupPhone": "Business phone",
+  "@signupPhone": {
+    "description": "Field."
+  },
+  "signupReferral": "Referral code (optional)",
+  "@signupReferral": {
+    "description": "Field."
+  },
+  "signupCreate": "Start free trial",
+  "@signupCreate": {
+    "description": "Button."
+  },
+  "signupTrialNote": "Free trial. No card needed.",
+  "@signupTrialNote": {
+    "description": "Reassurance under the button."
+  },
+  "signupBack": "Back",
+  "@signupBack": {
+    "description": "Link."
+  },
+  "signupOffline": "Creating a business needs the internet. Check your connection and try again.",
+  "@signupOffline": {
+    "description": "Error."
+  },
+  "signupClosed": "New signups are paused right now. Please try later.",
+  "@signupClosed": {
+    "description": "Error."
+  },
+  "signupLimit": "You have reached the number of businesses one person can create.",
+  "@signupLimit": {
+    "description": "Error."
+  },
+  "signupInvalid": "Please check the details and try again.",
+  "@signupInvalid": {
+    "description": "Error."
+  },
+  "signupFailed": "Could not create the business. Please try again.",
+  "@signupFailed": {
+    "description": "Error."
+  },
+  "inviteErrLimitReached": "Your plan has no free user seat. Ask for more under Plan & billing.",
+  "@inviteErrLimitReached": {
+    "description": "Invite failed: the plan's user limit is full."
   }
 }
