@@ -148,6 +148,9 @@ class OpeningBalancesRepository {
     required LedgerDate asOn,
     required bool Function(Permission) can,
     String? fileName,
+
+    /// Where the rows came from: `file` or `tally` (shown with the batch).
+    String source = 'file',
     DateTime? now,
   }) async {
     final when = now ?? DateTime.now();
@@ -183,6 +186,7 @@ class OpeningBalancesRepository {
           if (refused != null) return OpeningNotPermitted(refused.permission);
 
           var created = 0;
+          final newPartyIds = <String>[];
           var entries = 0;
           var udhaar = Money.zero;
           var jama = Money.zero;
@@ -244,6 +248,7 @@ class OpeningBalancesRepository {
                   when: when,
                 );
                 created++;
+                newPartyIds.add(partyId);
               }
             }
 
@@ -285,6 +290,8 @@ class OpeningBalancesRepository {
             action: AuditAction.insert,
             after: {
               'file': fileName,
+              'source': source,
+              'party_ids': newPartyIds,
               'as_on': asOn.toString(),
               'rows': rows.length,
               'new_parties': created,

@@ -36,6 +36,10 @@ class AppPrefs {
   static const _dismissedUpdate = 'ui.dismissedUpdate';
   static const _dismissedAnnouncements = 'ui.dismissedAnnouncements';
   static const _entitlementToken = '${_prefix}entitlementToken.';
+  static const _backupFolder = 'ui.backup.folder';
+  static const _backupPassphrase = 'ui.backup.passphrase';
+  static const _backupEnabled = 'ui.backup.enabled';
+  static const _backupLastAt = 'ui.backup.lastAt.';
 
   /// The user whose data is in the local database. A different user signing
   /// in on this install starts from an empty database.
@@ -128,6 +132,34 @@ class AppPrefs {
       _prefs.getString('$_entitlementToken$tenantId');
   Future<void> setEntitlementToken(String tenantId, String token) =>
       _prefs.setString('$_entitlementToken$tenantId', token);
+
+  /// Scheduled local backup (desktop, step 6.4). Device-level like the UI
+  /// choices: it is a property of this PC, not of the signed-in user. The
+  /// passphrase sits in the preferences file so a backup can run unattended;
+  /// it protects a copied backup file (USB stick, shared folder), not a PC
+  /// that is already compromised (docs/domain/backup-export.md).
+  String? get backupFolder => _prefs.getString(_backupFolder);
+  String? get backupPassphrase => _prefs.getString(_backupPassphrase);
+  bool get backupEnabled => _prefs.getBool(_backupEnabled) ?? false;
+  Future<void> setBackup({
+    required bool enabled,
+    String? folder,
+    String? passphrase,
+  }) async {
+    await _prefs.setBool(_backupEnabled, enabled);
+    if (folder != null) await _prefs.setString(_backupFolder, folder);
+    if (passphrase != null) {
+      await _prefs.setString(_backupPassphrase, passphrase);
+    }
+  }
+
+  DateTime? backupLastAt(String tenantId) {
+    final raw = _prefs.getString('$_backupLastAt$tenantId');
+    return raw == null ? null : DateTime.tryParse(raw);
+  }
+
+  Future<void> setBackupLastAt(String tenantId, DateTime at) =>
+      _prefs.setString('$_backupLastAt$tenantId', at.toUtc().toIso8601String());
 
   /// Forgets everything above except the UI language (sign-out, or another
   /// user signing in).

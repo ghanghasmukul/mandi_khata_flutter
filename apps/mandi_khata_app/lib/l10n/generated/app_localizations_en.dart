@@ -6954,4 +6954,370 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get inviteErrLimitReached =>
       'Your plan has no free user seat. Ask for more under Plan & billing.';
+
+  @override
+  String get docAdd => 'Add document';
+
+  @override
+  String get docEmpty => 'No documents yet.';
+
+  @override
+  String get docOwnerNote => 'Aadhaar and PAN are visible to the owner only.';
+
+  @override
+  String docPendingUploads(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count files waiting to upload',
+      one: '1 file waiting to upload',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get docTypeAadhaar => 'Aadhaar';
+
+  @override
+  String get docTypePan => 'PAN';
+
+  @override
+  String get docTypePassbook => 'Bank passbook';
+
+  @override
+  String get docTypeCheque => 'Cheque';
+
+  @override
+  String get docTypeJForm => 'J-form';
+
+  @override
+  String get docTypeLoanAgreement => 'Loan agreement';
+
+  @override
+  String get docTypeOther => 'Other';
+
+  @override
+  String get docFieldType => 'Type';
+
+  @override
+  String get docFieldTitle => 'Title (optional)';
+
+  @override
+  String get docFieldIdNumber => 'Number (optional)';
+
+  @override
+  String get docIdNumberHelp =>
+      'Only the last 4 characters are kept; the full number is never saved.';
+
+  @override
+  String get docTakePhoto => 'Take photo';
+
+  @override
+  String get docPickFile => 'Choose file';
+
+  @override
+  String docChosen(String name, int kb) {
+    return '$name ($kb KB)';
+  }
+
+  @override
+  String get docSave => 'Save document';
+
+  @override
+  String get docAdded => 'Document saved. It uploads when you are online.';
+
+  @override
+  String get docRefusedNotAllowed =>
+      'You do not have permission for this document.';
+
+  @override
+  String get docTooLarge =>
+      'The file is too large (limit 6 MB after compression).';
+
+  @override
+  String get docUnsupported => 'Use a JPG, PNG, WebP, HEIC or PDF file.';
+
+  @override
+  String get docBadIdNumber =>
+      'This number is not valid. Check the Aadhaar / PAN number.';
+
+  @override
+  String get docDelete => 'Delete document';
+
+  @override
+  String get docDeleteBody =>
+      'The document is removed from the party. The file stays safe on the server.';
+
+  @override
+  String get docOffline => 'Connect to the internet to view this file.';
+
+  @override
+  String get docOpenPdf => 'Open PDF';
+
+  @override
+  String get backupTitle => 'Backup & export';
+
+  @override
+  String get backupOwnerOnly => 'Only the owner can back up or restore.';
+
+  @override
+  String get exportAllTitle => 'Download all my data';
+
+  @override
+  String get exportAllBody =>
+      'A ZIP with an Excel file for every table and one PDF with every party\'s khata statement. Yours to keep, always.';
+
+  @override
+  String get exportAllButton => 'Download ZIP';
+
+  @override
+  String get backupLocalTitle => 'Backup on this computer';
+
+  @override
+  String get backupLocalBody =>
+      'An encrypted backup file is saved to a folder or USB stick. Keep the passphrase safe: without it the file cannot be opened.';
+
+  @override
+  String get backupDaily => 'Back up every day';
+
+  @override
+  String get backupNoFolder => 'No folder chosen';
+
+  @override
+  String get backupChooseFolder => 'Choose folder';
+
+  @override
+  String get backupPassphrase => 'Passphrase';
+
+  @override
+  String get backupPassphraseHelp =>
+      'At least 6 characters. Saved on this computer so the daily backup can run by itself.';
+
+  @override
+  String get backupNow => 'Back up now';
+
+  @override
+  String get backupNever => 'No backup yet';
+
+  @override
+  String backupLast(String when) {
+    return 'Last backup: $when';
+  }
+
+  @override
+  String backupDone(String path) {
+    return 'Backup saved: $path';
+  }
+
+  @override
+  String get backupNeedsSetup =>
+      'Choose a folder and a passphrase (6+ characters) first.';
+
+  @override
+  String get restoreTitle => 'Restore from a backup file';
+
+  @override
+  String get restoreBody =>
+      'For a fresh install of the same business with nothing on it yet. Enter the passphrase, then pick the .mkbak file.';
+
+  @override
+  String get restorePick => 'Choose backup file';
+
+  @override
+  String get restoreConfirmTitle => 'Restore this backup?';
+
+  @override
+  String restoreConfirmBody(String business, int rows, String when) {
+    return '$business, $rows records, made $when. They are added to this device and then sync.';
+  }
+
+  @override
+  String get restoreAction => 'Restore';
+
+  @override
+  String restoreDone(int count) {
+    return 'Restored $count records.';
+  }
+
+  @override
+  String get restoreWrongPassphrase => 'Wrong passphrase.';
+
+  @override
+  String get restoreCorrupt =>
+      'This is not a Mandi Khata backup, or the file is damaged.';
+
+  @override
+  String get restoreOtherBusiness => 'This backup belongs to another business.';
+
+  @override
+  String get restoreNotEmpty =>
+      'This business already has data on this device. A restore only goes into an empty install.';
+
+  @override
+  String get restoreNewerFormat =>
+      'This backup was made by a newer app. Update the app first.';
+
+  @override
+  String get importHubTitle => 'Import data';
+
+  @override
+  String get importHubBalances =>
+      'Parties and opening balances (file or Tally)';
+
+  @override
+  String get importHubProducts => 'Products (CSV / Excel, Busy, Marg)';
+
+  @override
+  String get importHubStock => 'Opening stock';
+
+  @override
+  String get importPast => 'Past imports';
+
+  @override
+  String get importPastEmpty => 'Nothing imported yet.';
+
+  @override
+  String get importKindTally => 'Parties from Tally';
+
+  @override
+  String importRows(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count records',
+      one: '1 record',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get importRollback => 'Roll back';
+
+  @override
+  String get importRollbackTitle => 'Roll back this import?';
+
+  @override
+  String get importRollbackBody =>
+      'Every balance it posted is cancelled with a reversal entry (nothing is erased), and parties it created are removed if nothing else uses them.';
+
+  @override
+  String importRolledBack(int entries, int removed, int kept) {
+    return 'Rolled back: $entries entries reversed, $removed removed, $kept kept (in use).';
+  }
+
+  @override
+  String get importRolledBackTag => 'Rolled back';
+
+  @override
+  String get importRollbackNotFound => 'This import was not found.';
+
+  @override
+  String get importRollbackDone => 'Already rolled back.';
+
+  @override
+  String get importRollbackLocked =>
+      'An entry is in a closed financial year. Unlock the year first (Year close).';
+
+  @override
+  String get obTallyButton => 'Tally XML';
+
+  @override
+  String obTallySummary(
+    int parties,
+    int vouchers,
+    int otherLedgers,
+    int skippedVouchers,
+  ) {
+    return 'Tally: $parties parties, $vouchers vouchers read ($otherLedgers other ledgers and $skippedVouchers cancelled / optional vouchers ignored). Balance = opening + vouchers, as of the last voucher date.';
+  }
+
+  @override
+  String get obTallyUnreadable =>
+      'This is not a Tally XML export (Gateway of Tally > Export).';
+
+  @override
+  String get piTitle => 'Import products';
+
+  @override
+  String get piHelp =>
+      'A CSV or Excel file with a header row. Needs a name column; SKU (or barcode), unit, HSN, GST %, price, brand and category are read when present. Busy and Marg exports work as they are.';
+
+  @override
+  String piSummary(int valid, int invalid) {
+    return '$valid products ready to import, $invalid rows with problems (they are skipped).';
+  }
+
+  @override
+  String piImportNow(int count) {
+    return 'Import $count products';
+  }
+
+  @override
+  String piDone(int count) {
+    return '$count products imported. You can roll this back from Past imports.';
+  }
+
+  @override
+  String piRow(int number, String name, String problems) {
+    return 'Row $number ($name): $problems';
+  }
+
+  @override
+  String get piNameMissing => 'name is empty';
+
+  @override
+  String get piSkuMissing => 'no SKU or barcode';
+
+  @override
+  String get piUnitUnknown =>
+      'unit not understood (use bag, btl, ltr, kg, pkt, pc)';
+
+  @override
+  String get piGstInvalid => 'GST rate must be 0, 0.25, 3, 5, 12, 18 or 28';
+
+  @override
+  String get piHsnInvalid => 'HSN must be 4, 6 or 8 digits';
+
+  @override
+  String get piPriceInvalid => 'a price or quantity is not a valid number';
+
+  @override
+  String get piDuplicateInFile => 'same SKU or barcode as an earlier row';
+
+  @override
+  String get piSkuExists => 'SKU already exists';
+
+  @override
+  String get piBarcodeExists => 'barcode already exists';
+
+  @override
+  String get piCategoryUnknown => 'category not found (added without one)';
+
+  @override
+  String get piNoNameColumn => 'No name column found in the first row.';
+
+  @override
+  String get piTooManyRows => 'More than 5,000 rows. Split the file.';
+
+  @override
+  String get whatsNewTitle => 'What\'s new';
+
+  @override
+  String whatsNewVersion(String version) {
+    return 'Version $version';
+  }
+
+  @override
+  String get changelogV100 =>
+      '• Party documents: Aadhaar, PAN, passbook, cheque, J-form (photo or file, works offline)\n• Backup & export: download all your data, daily encrypted backup to a USB stick, restore\n• Import from Tally XML and product files (Busy, Marg, CSV), with undo for the owner\n• Faster day book and sync health checks';
+
+  @override
+  String get loginAdminLink => 'Admin sign-in';
+
+  @override
+  String get loginAdminTitle => 'Admin console';
+
+  @override
+  String get loginAdminNotConfigured =>
+      'The admin console address is not set in this build. Build the app with ADMIN_CONSOLE_URL, or open the console (apps/mk_admin) directly.';
 }

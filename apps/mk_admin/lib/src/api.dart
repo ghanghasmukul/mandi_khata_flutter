@@ -17,6 +17,10 @@ class AdminApiException implements Exception {
     'invalid' => 'The server refused one of the values.',
     'already_exists' => 'That already exists.',
     'reason_required' => 'A reason is required.',
+    'bad_email' => 'That email address does not look right.',
+    'bad_phone' => 'Mobile must be a 10-digit Indian number.',
+    'weak_password' => 'The password needs at least 8 characters.',
+    'cannot_ban_self' => 'You cannot disable your own account.',
     _ => 'Something went wrong ($code).',
   };
 }

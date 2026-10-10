@@ -33,6 +33,7 @@ class _Importer implements OpeningBalanceImporter {
     OpeningPreview preview, {
     required LedgerDate asOn,
     String? fileName,
+    String source = 'file',
   }) async {
     imported = preview;
     this.asOn = asOn;

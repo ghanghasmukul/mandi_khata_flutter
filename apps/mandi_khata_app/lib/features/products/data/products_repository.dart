@@ -173,31 +173,44 @@ class ProductsRepository {
     if (problems.isNotEmpty) return ProductInvalid(problems);
     final when = (now ?? DateTime.now()).toUtc();
     final productId = id ?? const Uuid().v4();
-    return await _db.writeTransaction((tx) async {
-      final dup = await _duplicate(tx, ctx.tenantId, clean, exceptId: null);
-      if (dup != null) return dup;
-      if (!await _categoryOk(tx, ctx.tenantId, clean.categoryId)) {
-        return const ProductNotFound();
-      }
-      final at = when.toIso8601String();
-      await tx.execute(
-        'INSERT INTO products (id, tenant_id, sku, barcode, name, brand, '
-        'category_id, unit, pack_size, hsn, gst_rate, reorder_level_milli, '
-        'prices, is_active, created_by, created_at, updated_at) '
-        'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?)',
-        [productId, ctx.tenantId, ..._columns(clean), ctx.userId, at, at],
-      );
-      await AuditWriter.record(
-        tx,
-        ctx,
-        table: 'products',
-        rowId: productId,
-        action: AuditAction.insert,
-        after: _audit(clean),
-        at: when,
-      );
-      return ProductSaved(productId);
-    });
+    return await _db.writeTransaction(
+      (tx) => createIn(tx, ctx, clean, productId, when),
+    );
+  }
+
+  /// Inserts a (normalised, valid) product inside the caller's transaction:
+  /// duplicate and category checks, the row and its audit entry. The caller
+  /// checks the permission. Used by [create] and the product import.
+  static Future<ProductResult> createIn(
+    SqliteWriteContext tx,
+    WriteContext ctx,
+    ProductInput clean,
+    String productId,
+    DateTime when,
+  ) async {
+    final dup = await _duplicate(tx, ctx.tenantId, clean, exceptId: null);
+    if (dup != null) return dup;
+    if (!await _categoryOk(tx, ctx.tenantId, clean.categoryId)) {
+      return const ProductNotFound();
+    }
+    final at = when.toIso8601String();
+    await tx.execute(
+      'INSERT INTO products (id, tenant_id, sku, barcode, name, brand, '
+      'category_id, unit, pack_size, hsn, gst_rate, reorder_level_milli, '
+      'prices, is_active, created_by, created_at, updated_at) '
+      'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?)',
+      [productId, ctx.tenantId, ..._columns(clean), ctx.userId, at, at],
+    );
+    await AuditWriter.record(
+      tx,
+      ctx,
+      table: 'products',
+      rowId: productId,
+      action: AuditAction.insert,
+      after: _audit(clean),
+      at: when,
+    );
+    return ProductSaved(productId);
   }
 
   Future<ProductResult> update(

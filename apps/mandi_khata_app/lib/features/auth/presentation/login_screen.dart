@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mandi_khata_app/app/env.dart';
 import 'package:mandi_khata_app/features/auth/presentation/auth_layout.dart';
 import 'package:mandi_khata_app/features/auth/presentation/email_login_form.dart';
 import 'package:mandi_khata_app/features/auth/presentation/phone_login_form.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum _Method { phone, email }
 
@@ -18,6 +20,30 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   _Method _method = _Method.phone;
+
+  /// Super admins sign in to the web console, not here: it is a separate app
+  /// so no admin code ships in the customer build.
+  Future<void> _openAdmin() async {
+    final l10n = AppLocalizations.of(context);
+    const url = Env.adminConsoleUrl;
+    if (url.isEmpty) {
+      await showDialog<void>(
+        context: context,
+        builder: (c) => AlertDialog(
+          title: Text(l10n.loginAdminTitle),
+          content: Text(l10n.loginAdminNotConfigured),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(c).pop(),
+              child: Text(l10n.commonClose),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+    await launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +77,15 @@ class _LoginScreenState extends State<LoginScreen> {
               _Method.phone => const PhoneLoginForm(),
               _Method.email => const EmailLoginForm(),
             },
+            const SizedBox(height: MkSpacing.md),
+            Align(
+              child: TextButton.icon(
+                key: const ValueKey('login-admin'),
+                onPressed: _openAdmin,
+                icon: const Icon(Icons.admin_panel_settings_outlined),
+                label: Text(l10n.loginAdminLink),
+              ),
+            ),
           ],
         ),
       ),

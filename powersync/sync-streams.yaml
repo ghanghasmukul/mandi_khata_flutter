@@ -63,6 +63,9 @@ streams:
       - SELECT * FROM tenant_subscriptions WHERE tenant_id IN my_tenants
       - SELECT * FROM plan_requests WHERE tenant_id IN my_tenants
       - SELECT * FROM support_sessions WHERE tenant_id IN my_tenants
+      # Party documents (step 6.3): everything except identity documents,
+      # which only owners get (owner_kyc stream). RLS also enforces it.
+      - SELECT * FROM party_documents WHERE tenant_id IN my_tenants AND doc_type NOT IN ('aadhaar', 'pan')
       # Everyone gets the Cash account and its book lines; bank accounts and
       # their lines go only to finance members (stream below).
       - SELECT * FROM bank_accounts WHERE tenant_id IN my_tenants AND kind = 'cash'
@@ -121,6 +124,17 @@ streams:
         SELECT tenant_id FROM tenant_members
         WHERE user_id = auth.user_id() AND role = 'owner' AND is_active = true
     query: SELECT * FROM audit_log WHERE tenant_id IN owned_tenants
+
+  # Identity documents (Aadhaar, PAN): owners only (step 6.3).
+  owner_kyc:
+    auto_subscribe: true
+    with:
+      owned_tenants_kyc: >-
+        SELECT tenant_id FROM tenant_members
+        WHERE user_id = auth.user_id() AND role = 'owner' AND is_active = true
+    query: >-
+      SELECT * FROM party_documents
+      WHERE tenant_id IN owned_tenants_kyc AND doc_type IN ('aadhaar', 'pan')
 
   # Pending invitations: owners only (RLS: admin.manage). Same default-role
   # limit as the other owner streams.

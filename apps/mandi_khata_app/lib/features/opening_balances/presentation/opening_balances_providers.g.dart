@@ -92,6 +92,47 @@ final class ImportFilePickerProvider
 
 String _$importFilePickerHash() => r'63a0df05c17dadb6ea0171823711fd5b598e9e6b';
 
+@ProviderFor(tallyFilePicker)
+final tallyFilePickerProvider = TallyFilePickerProvider._();
+
+final class TallyFilePickerProvider
+    extends $FunctionalProvider<TallyPickerFn, TallyPickerFn, TallyPickerFn>
+    with $Provider<TallyPickerFn> {
+  TallyFilePickerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'tallyFilePickerProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$tallyFilePickerHash();
+
+  @$internal
+  @override
+  $ProviderElement<TallyPickerFn> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  TallyPickerFn create(Ref ref) {
+    return tallyFilePicker(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(TallyPickerFn value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<TallyPickerFn>(value),
+    );
+  }
+}
+
+String _$tallyFilePickerHash() => r'16c057d2a17355b3844f98eb409d589fdd68fc3d';
+
 @ProviderFor(openingBalanceImporter)
 final openingBalanceImporterProvider = OpeningBalanceImporterProvider._();
 

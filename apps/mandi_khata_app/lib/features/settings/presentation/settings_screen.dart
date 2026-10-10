@@ -7,10 +7,13 @@ import 'package:mandi_khata_app/core/i18n/app_language.dart';
 import 'package:mandi_khata_app/core/settings/settings_providers.dart';
 import 'package:mandi_khata_app/core/settings/settings_repository.dart';
 import 'package:mandi_khata_app/core/tenant/active_tenant.dart';
+import 'package:mandi_khata_app/features/backup/presentation/backup_screen.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
+import 'package:mandi_khata_app/features/imports/presentation/imports_hub_screen.dart';
 import 'package:mandi_khata_app/features/settings/data/party_options.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_labels.dart';
 import 'package:mandi_khata_app/features/settings/presentation/setting_tile.dart';
+import 'package:mandi_khata_app/features/settings/presentation/whats_new_screen.dart';
 import 'package:mandi_khata_app/l10n/generated/app_localizations.dart';
 import 'package:mk_ui/mk_ui.dart';
 
@@ -97,6 +100,51 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   title: Text(l10n.onboardingTitle),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => context.go('/onboarding'),
+                ),
+              ),
+            ),
+          if (_partyId == null)
+            Padding(
+              padding: const EdgeInsets.only(top: MkSpacing.lg),
+              child: MkCard(
+                padding: EdgeInsets.zero,
+                onTap: () => context.go(WhatsNewScreen.route),
+                child: ListTile(
+                  key: const ValueKey('settings-whats-new'),
+                  leading: const Icon(Icons.new_releases_outlined),
+                  title: Text(l10n.whatsNewTitle),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => context.go(WhatsNewScreen.route),
+                ),
+              ),
+            ),
+          if (_partyId == null && member.can(Permission.partiesManage))
+            Padding(
+              padding: const EdgeInsets.only(top: MkSpacing.lg),
+              child: MkCard(
+                padding: EdgeInsets.zero,
+                onTap: () => context.go(ImportRoutes.hub),
+                child: ListTile(
+                  key: const ValueKey('settings-imports'),
+                  leading: const Icon(Icons.upload_file_outlined),
+                  title: Text(l10n.importHubTitle),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => context.go(ImportRoutes.hub),
+                ),
+              ),
+            ),
+          if (_partyId == null && member.role == MemberRole.owner)
+            Padding(
+              padding: const EdgeInsets.only(top: MkSpacing.lg),
+              child: MkCard(
+                padding: EdgeInsets.zero,
+                onTap: () => context.go(BackupScreen.route),
+                child: ListTile(
+                  key: const ValueKey('settings-backup'),
+                  leading: const Icon(Icons.backup_outlined),
+                  title: Text(l10n.backupTitle),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => context.go(BackupScreen.route),
                 ),
               ),
             ),

@@ -253,7 +253,7 @@ const syncedTables = <SyncedTable>[
     },
     indexes: {
       'party_date': ['tenant_id', 'party_id', 'entry_date'],
-      'tenant_date': ['tenant_id', 'entry_date'],
+      'tenant_date': ['tenant_id', 'entry_date', 'created_at'],
       'reverses': ['reverses_id'],
       'ref': ['ref_id'],
     },
@@ -1137,6 +1137,29 @@ const syncedTables = <SyncedTable>[
     'started_at': _t,
     'ended_at': _t,
   }),
+  // Step 6.3: documents of a party. The files are in Storage.
+  SyncedTable(
+    'party_documents',
+    {
+      'tenant_id': _t,
+      'party_id': _t,
+      'doc_type': _t,
+      'title': _t,
+      'id_masked': _t,
+      'file_path': _t,
+      'thumb_path': _t,
+      'content_type': _t,
+      'size_bytes': _i,
+      'notes': _t,
+      'created_by': _t,
+      'created_at': _t,
+      'updated_at': _t,
+      'deleted_at': _t,
+    },
+    indexes: {
+      'party': ['tenant_id', 'party_id'],
+    },
+  ),
 ];
 
 /// Changes the server rejected for good (RLS, constraint, bad data). Kept on
@@ -1170,6 +1193,23 @@ const billUploadsTable = Table.localOnly('bill_uploads', [
   Column.text('last_error'),
 ]);
 
+/// Party documents (photos / PDFs) waiting to go to Supabase Storage (step
+/// 6.3). Local only, like [billUploadsTable]; the `party_documents` row already
+/// carries the path. `bucket` is `kyc-docs` or `party-docs`.
+const documentUploadsTable = Table.localOnly('document_uploads', [
+  Column.text('tenant_id'),
+  Column.text('document_id'),
+  Column.text('bucket'),
+  Column.text('path'),
+  Column.text('content_type'),
+  // The file, base64 (also what the app shows until it can download it).
+  Column.text('data'),
+  Column.text('created_at'),
+  Column.text('uploaded_at'),
+  Column.integer('attempts'),
+  Column.text('last_error'),
+]);
+
 /// A bill put on hold at the counter (step 4.3). Kept on this device only:
 /// it is not a document yet, so it never syncs. `disconnectAndClear` wipes it
 /// with the rest when another user signs in.
@@ -1185,6 +1225,7 @@ final powerSyncSchema = Schema([
   for (final table in syncedTables) table.toPowerSync(),
   syncErrorsTable,
   billUploadsTable,
+  documentUploadsTable,
   heldBillsTable,
 ]);
 

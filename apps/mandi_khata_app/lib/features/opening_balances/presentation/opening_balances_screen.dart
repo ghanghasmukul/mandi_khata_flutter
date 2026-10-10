@@ -44,19 +44,25 @@ class _State extends ConsumerState<OpeningBalancesScreen> {
   bool _busy = false;
   OpeningImportResult? _result;
 
+  /// `file` or `tally`; recorded with the batch.
+  String _source = 'file';
+  TallyData? _tally;
+
   @override
   void dispose() {
     _paste.dispose();
     super.dispose();
   }
 
-  Future<void> _load(Sheet sheet, String? name) async {
+  Future<void> _load(Sheet sheet, String? name, {TallyData? tally}) async {
     final importer = ref.read(openingBalanceImporterProvider);
     final existing = await importer.existingParties();
     if (!mounted) return;
     _existing = existing;
     _sheet = sheet;
     _fileName = name;
+    _source = tally == null ? 'file' : 'tally';
+    _tally = tally;
     _result = null;
     await _recompute();
   }
@@ -96,6 +102,36 @@ class _State extends ConsumerState<OpeningBalancesScreen> {
           ImportReadFailure.unreadable => l10n.obReadUnreadable,
           ImportReadFailure.empty => l10n.obProblemEmpty,
         };
+      });
+    }
+  }
+
+  Future<void> _pickTally() async {
+    final l10n = AppLocalizations.of(context);
+    final files = await ref.read(tallyFilePickerProvider)();
+    if (files == null || !mounted) return;
+    try {
+      final data = TallyImport.parse([
+        for (final f in files) TallyImport.decode(f.bytes),
+      ]);
+      // The balances are as of the last voucher in the files.
+      final last = data.lastVoucher;
+      if (last != null) {
+        final d = LedgerDate(last.year, last.month, last.day);
+        final today = LedgerDate.fromDateTime(DateTime.now());
+        _asOn = d > today ? today : d;
+      }
+      await _load(
+        data.toSheet(),
+        files.map((f) => f.name).join(', '),
+        tally: data,
+      );
+    } on SheetFormatException {
+      setState(() {
+        _sheet = null;
+        _preview = null;
+        _tally = null;
+        _readError = l10n.obTallyUnreadable;
       });
     }
   }
@@ -151,7 +187,7 @@ class _State extends ConsumerState<OpeningBalancesScreen> {
     setState(() => _busy = true);
     final result = await ref
         .read(openingBalanceImporterProvider)
-        .run(p, asOn: _asOn, fileName: _fileName);
+        .run(p, asOn: _asOn, fileName: _fileName, source: _source);
     if (!mounted) return;
     setState(() {
       _busy = false;
@@ -208,9 +244,29 @@ class _State extends ConsumerState<OpeningBalancesScreen> {
                     icon: Icons.upload_file_outlined,
                     onPressed: _pickFile,
                   ),
+                  MkButton(
+                    key: const ValueKey('ob-pick-tally'),
+                    label: l10n.obTallyButton,
+                    icon: Icons.account_balance_outlined,
+                    variant: MkButtonVariant.secondary,
+                    onPressed: _pickTally,
+                  ),
                   if (_fileName != null) Chip(label: Text(_fileName!)),
                 ],
               ),
+              if (_tally != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: MkSpacing.sm),
+                  child: Text(
+                    l10n.obTallySummary(
+                      _tally!.parties.length,
+                      _tally!.voucherCount,
+                      _tally!.skippedLedgers,
+                      _tally!.skippedVouchers,
+                    ),
+                    key: const ValueKey('ob-tally-summary'),
+                  ),
+                ),
               const SizedBox(height: MkSpacing.md),
               MkTextField(
                 key: const ValueKey('ob-paste'),

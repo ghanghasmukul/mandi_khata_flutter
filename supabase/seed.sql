@@ -132,3 +132,31 @@ cross join lateral (
   union all select 'supplier' where p.code like 'S-%'
 ) as r
 where p.tenant_id in ('0e000000-0000-4000-8000-000000000001', '0e000000-0000-4000-8000-000000000002');
+
+-- ---------------------------------------------------------------------------
+-- Super admin (local only): signs in to apps/mk_admin and the main app's
+--   "Admin sign-in" link. Email admin@mandikhata.test, password Admin@12345.
+-- On the dev project create your own with scripts/create_super_admin.sql.
+-- ---------------------------------------------------------------------------
+
+insert into auth.users (
+  instance_id, id, aud, role, email, encrypted_password, email_confirmed_at,
+  raw_app_meta_data, raw_user_meta_data, created_at, updated_at,
+  confirmation_token, recovery_token, email_change_token_new, email_change
+) values (
+  '00000000-0000-0000-0000-000000000000', '0a000000-0000-4000-8000-0000000000ad',
+  'authenticated', 'authenticated', 'admin@mandikhata.test',
+  extensions.crypt('Admin@12345', extensions.gen_salt('bf')), now(),
+  '{"provider":"email","providers":["email"]}'::jsonb,
+  '{"full_name":"Super Admin"}'::jsonb, now(), now(), '', '', '', ''
+);
+
+insert into auth.identities (id, user_id, provider_id, identity_data, provider,
+  last_sign_in_at, created_at, updated_at)
+values (gen_random_uuid(), '0a000000-0000-4000-8000-0000000000ad',
+  '0a000000-0000-4000-8000-0000000000ad',
+  '{"sub":"0a000000-0000-4000-8000-0000000000ad","email":"admin@mandikhata.test"}'::jsonb,
+  'email', now(), now(), now());
+
+insert into public.platform_admins (user_id, email)
+values ('0a000000-0000-4000-8000-0000000000ad', 'admin@mandikhata.test');

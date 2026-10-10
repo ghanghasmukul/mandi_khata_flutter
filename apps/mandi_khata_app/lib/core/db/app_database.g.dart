@@ -42178,6 +42178,863 @@ class SupportSessionsCompanion extends UpdateCompanion<SupportSession> {
   }
 }
 
+class $PartyDocumentsTable extends PartyDocuments
+    with TableInfo<$PartyDocumentsTable, PartyDocument> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PartyDocumentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tenantIdMeta = const VerificationMeta(
+    'tenantId',
+  );
+  @override
+  late final GeneratedColumn<String> tenantId = GeneratedColumn<String>(
+    'tenant_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _docTypeMeta = const VerificationMeta(
+    'docType',
+  );
+  @override
+  late final GeneratedColumn<String> docType = GeneratedColumn<String>(
+    'doc_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idMaskedMeta = const VerificationMeta(
+    'idMasked',
+  );
+  @override
+  late final GeneratedColumn<String> idMasked = GeneratedColumn<String>(
+    'id_masked',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _filePathMeta = const VerificationMeta(
+    'filePath',
+  );
+  @override
+  late final GeneratedColumn<String> filePath = GeneratedColumn<String>(
+    'file_path',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _thumbPathMeta = const VerificationMeta(
+    'thumbPath',
+  );
+  @override
+  late final GeneratedColumn<String> thumbPath = GeneratedColumn<String>(
+    'thumb_path',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _contentTypeMeta = const VerificationMeta(
+    'contentType',
+  );
+  @override
+  late final GeneratedColumn<String> contentType = GeneratedColumn<String>(
+    'content_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sizeBytesMeta = const VerificationMeta(
+    'sizeBytes',
+  );
+  @override
+  late final GeneratedColumn<int> sizeBytes = GeneratedColumn<int>(
+    'size_bytes',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdByMeta = const VerificationMeta(
+    'createdBy',
+  );
+  @override
+  late final GeneratedColumn<String> createdBy = GeneratedColumn<String>(
+    'created_by',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+    'created_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<String> updatedAt = GeneratedColumn<String>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<String> deletedAt = GeneratedColumn<String>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    tenantId,
+    partyId,
+    docType,
+    title,
+    idMasked,
+    filePath,
+    thumbPath,
+    contentType,
+    sizeBytes,
+    notes,
+    createdBy,
+    createdAt,
+    updatedAt,
+    deletedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'party_documents';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PartyDocument> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('tenant_id')) {
+      context.handle(
+        _tenantIdMeta,
+        tenantId.isAcceptableOrUnknown(data['tenant_id']!, _tenantIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_tenantIdMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyIdMeta);
+    }
+    if (data.containsKey('doc_type')) {
+      context.handle(
+        _docTypeMeta,
+        docType.isAcceptableOrUnknown(data['doc_type']!, _docTypeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_docTypeMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    }
+    if (data.containsKey('id_masked')) {
+      context.handle(
+        _idMaskedMeta,
+        idMasked.isAcceptableOrUnknown(data['id_masked']!, _idMaskedMeta),
+      );
+    }
+    if (data.containsKey('file_path')) {
+      context.handle(
+        _filePathMeta,
+        filePath.isAcceptableOrUnknown(data['file_path']!, _filePathMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_filePathMeta);
+    }
+    if (data.containsKey('thumb_path')) {
+      context.handle(
+        _thumbPathMeta,
+        thumbPath.isAcceptableOrUnknown(data['thumb_path']!, _thumbPathMeta),
+      );
+    }
+    if (data.containsKey('content_type')) {
+      context.handle(
+        _contentTypeMeta,
+        contentType.isAcceptableOrUnknown(
+          data['content_type']!,
+          _contentTypeMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_contentTypeMeta);
+    }
+    if (data.containsKey('size_bytes')) {
+      context.handle(
+        _sizeBytesMeta,
+        sizeBytes.isAcceptableOrUnknown(data['size_bytes']!, _sizeBytesMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sizeBytesMeta);
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    if (data.containsKey('created_by')) {
+      context.handle(
+        _createdByMeta,
+        createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  PartyDocument map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PartyDocument(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      tenantId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tenant_id'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      docType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}doc_type'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      ),
+      idMasked: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id_masked'],
+      ),
+      filePath: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}file_path'],
+      )!,
+      thumbPath: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}thumb_path'],
+      ),
+      contentType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}content_type'],
+      )!,
+      sizeBytes: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}size_bytes'],
+      )!,
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+      createdBy: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_by'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}created_at'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}updated_at'],
+      ),
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}deleted_at'],
+      ),
+    );
+  }
+
+  @override
+  $PartyDocumentsTable createAlias(String alias) {
+    return $PartyDocumentsTable(attachedDatabase, alias);
+  }
+}
+
+class PartyDocument extends DataClass implements Insertable<PartyDocument> {
+  final String id;
+  final String tenantId;
+  final String partyId;
+  final String docType;
+  final String? title;
+  final String? idMasked;
+  final String filePath;
+  final String? thumbPath;
+  final String contentType;
+  final int sizeBytes;
+  final String? notes;
+  final String? createdBy;
+  final String? createdAt;
+  final String? updatedAt;
+  final String? deletedAt;
+  const PartyDocument({
+    required this.id,
+    required this.tenantId,
+    required this.partyId,
+    required this.docType,
+    this.title,
+    this.idMasked,
+    required this.filePath,
+    this.thumbPath,
+    required this.contentType,
+    required this.sizeBytes,
+    this.notes,
+    this.createdBy,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['tenant_id'] = Variable<String>(tenantId);
+    map['party_id'] = Variable<String>(partyId);
+    map['doc_type'] = Variable<String>(docType);
+    if (!nullToAbsent || title != null) {
+      map['title'] = Variable<String>(title);
+    }
+    if (!nullToAbsent || idMasked != null) {
+      map['id_masked'] = Variable<String>(idMasked);
+    }
+    map['file_path'] = Variable<String>(filePath);
+    if (!nullToAbsent || thumbPath != null) {
+      map['thumb_path'] = Variable<String>(thumbPath);
+    }
+    map['content_type'] = Variable<String>(contentType);
+    map['size_bytes'] = Variable<int>(sizeBytes);
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    if (!nullToAbsent || createdBy != null) {
+      map['created_by'] = Variable<String>(createdBy);
+    }
+    if (!nullToAbsent || createdAt != null) {
+      map['created_at'] = Variable<String>(createdAt);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<String>(updatedAt);
+    }
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<String>(deletedAt);
+    }
+    return map;
+  }
+
+  PartyDocumentsCompanion toCompanion(bool nullToAbsent) {
+    return PartyDocumentsCompanion(
+      id: Value(id),
+      tenantId: Value(tenantId),
+      partyId: Value(partyId),
+      docType: Value(docType),
+      title: title == null && nullToAbsent
+          ? const Value.absent()
+          : Value(title),
+      idMasked: idMasked == null && nullToAbsent
+          ? const Value.absent()
+          : Value(idMasked),
+      filePath: Value(filePath),
+      thumbPath: thumbPath == null && nullToAbsent
+          ? const Value.absent()
+          : Value(thumbPath),
+      contentType: Value(contentType),
+      sizeBytes: Value(sizeBytes),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+      createdBy: createdBy == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdBy),
+      createdAt: createdAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(createdAt),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+    );
+  }
+
+  factory PartyDocument.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PartyDocument(
+      id: serializer.fromJson<String>(json['id']),
+      tenantId: serializer.fromJson<String>(json['tenantId']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      docType: serializer.fromJson<String>(json['docType']),
+      title: serializer.fromJson<String?>(json['title']),
+      idMasked: serializer.fromJson<String?>(json['idMasked']),
+      filePath: serializer.fromJson<String>(json['filePath']),
+      thumbPath: serializer.fromJson<String?>(json['thumbPath']),
+      contentType: serializer.fromJson<String>(json['contentType']),
+      sizeBytes: serializer.fromJson<int>(json['sizeBytes']),
+      notes: serializer.fromJson<String?>(json['notes']),
+      createdBy: serializer.fromJson<String?>(json['createdBy']),
+      createdAt: serializer.fromJson<String?>(json['createdAt']),
+      updatedAt: serializer.fromJson<String?>(json['updatedAt']),
+      deletedAt: serializer.fromJson<String?>(json['deletedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'tenantId': serializer.toJson<String>(tenantId),
+      'partyId': serializer.toJson<String>(partyId),
+      'docType': serializer.toJson<String>(docType),
+      'title': serializer.toJson<String?>(title),
+      'idMasked': serializer.toJson<String?>(idMasked),
+      'filePath': serializer.toJson<String>(filePath),
+      'thumbPath': serializer.toJson<String?>(thumbPath),
+      'contentType': serializer.toJson<String>(contentType),
+      'sizeBytes': serializer.toJson<int>(sizeBytes),
+      'notes': serializer.toJson<String?>(notes),
+      'createdBy': serializer.toJson<String?>(createdBy),
+      'createdAt': serializer.toJson<String?>(createdAt),
+      'updatedAt': serializer.toJson<String?>(updatedAt),
+      'deletedAt': serializer.toJson<String?>(deletedAt),
+    };
+  }
+
+  PartyDocument copyWith({
+    String? id,
+    String? tenantId,
+    String? partyId,
+    String? docType,
+    Value<String?> title = const Value.absent(),
+    Value<String?> idMasked = const Value.absent(),
+    String? filePath,
+    Value<String?> thumbPath = const Value.absent(),
+    String? contentType,
+    int? sizeBytes,
+    Value<String?> notes = const Value.absent(),
+    Value<String?> createdBy = const Value.absent(),
+    Value<String?> createdAt = const Value.absent(),
+    Value<String?> updatedAt = const Value.absent(),
+    Value<String?> deletedAt = const Value.absent(),
+  }) => PartyDocument(
+    id: id ?? this.id,
+    tenantId: tenantId ?? this.tenantId,
+    partyId: partyId ?? this.partyId,
+    docType: docType ?? this.docType,
+    title: title.present ? title.value : this.title,
+    idMasked: idMasked.present ? idMasked.value : this.idMasked,
+    filePath: filePath ?? this.filePath,
+    thumbPath: thumbPath.present ? thumbPath.value : this.thumbPath,
+    contentType: contentType ?? this.contentType,
+    sizeBytes: sizeBytes ?? this.sizeBytes,
+    notes: notes.present ? notes.value : this.notes,
+    createdBy: createdBy.present ? createdBy.value : this.createdBy,
+    createdAt: createdAt.present ? createdAt.value : this.createdAt,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+  );
+  PartyDocument copyWithCompanion(PartyDocumentsCompanion data) {
+    return PartyDocument(
+      id: data.id.present ? data.id.value : this.id,
+      tenantId: data.tenantId.present ? data.tenantId.value : this.tenantId,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      docType: data.docType.present ? data.docType.value : this.docType,
+      title: data.title.present ? data.title.value : this.title,
+      idMasked: data.idMasked.present ? data.idMasked.value : this.idMasked,
+      filePath: data.filePath.present ? data.filePath.value : this.filePath,
+      thumbPath: data.thumbPath.present ? data.thumbPath.value : this.thumbPath,
+      contentType: data.contentType.present
+          ? data.contentType.value
+          : this.contentType,
+      sizeBytes: data.sizeBytes.present ? data.sizeBytes.value : this.sizeBytes,
+      notes: data.notes.present ? data.notes.value : this.notes,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PartyDocument(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('partyId: $partyId, ')
+          ..write('docType: $docType, ')
+          ..write('title: $title, ')
+          ..write('idMasked: $idMasked, ')
+          ..write('filePath: $filePath, ')
+          ..write('thumbPath: $thumbPath, ')
+          ..write('contentType: $contentType, ')
+          ..write('sizeBytes: $sizeBytes, ')
+          ..write('notes: $notes, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    tenantId,
+    partyId,
+    docType,
+    title,
+    idMasked,
+    filePath,
+    thumbPath,
+    contentType,
+    sizeBytes,
+    notes,
+    createdBy,
+    createdAt,
+    updatedAt,
+    deletedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PartyDocument &&
+          other.id == this.id &&
+          other.tenantId == this.tenantId &&
+          other.partyId == this.partyId &&
+          other.docType == this.docType &&
+          other.title == this.title &&
+          other.idMasked == this.idMasked &&
+          other.filePath == this.filePath &&
+          other.thumbPath == this.thumbPath &&
+          other.contentType == this.contentType &&
+          other.sizeBytes == this.sizeBytes &&
+          other.notes == this.notes &&
+          other.createdBy == this.createdBy &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt);
+}
+
+class PartyDocumentsCompanion extends UpdateCompanion<PartyDocument> {
+  final Value<String> id;
+  final Value<String> tenantId;
+  final Value<String> partyId;
+  final Value<String> docType;
+  final Value<String?> title;
+  final Value<String?> idMasked;
+  final Value<String> filePath;
+  final Value<String?> thumbPath;
+  final Value<String> contentType;
+  final Value<int> sizeBytes;
+  final Value<String?> notes;
+  final Value<String?> createdBy;
+  final Value<String?> createdAt;
+  final Value<String?> updatedAt;
+  final Value<String?> deletedAt;
+  final Value<int> rowid;
+  const PartyDocumentsCompanion({
+    this.id = const Value.absent(),
+    this.tenantId = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.docType = const Value.absent(),
+    this.title = const Value.absent(),
+    this.idMasked = const Value.absent(),
+    this.filePath = const Value.absent(),
+    this.thumbPath = const Value.absent(),
+    this.contentType = const Value.absent(),
+    this.sizeBytes = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PartyDocumentsCompanion.insert({
+    required String id,
+    required String tenantId,
+    required String partyId,
+    required String docType,
+    this.title = const Value.absent(),
+    this.idMasked = const Value.absent(),
+    required String filePath,
+    this.thumbPath = const Value.absent(),
+    required String contentType,
+    required int sizeBytes,
+    this.notes = const Value.absent(),
+    this.createdBy = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       tenantId = Value(tenantId),
+       partyId = Value(partyId),
+       docType = Value(docType),
+       filePath = Value(filePath),
+       contentType = Value(contentType),
+       sizeBytes = Value(sizeBytes);
+  static Insertable<PartyDocument> custom({
+    Expression<String>? id,
+    Expression<String>? tenantId,
+    Expression<String>? partyId,
+    Expression<String>? docType,
+    Expression<String>? title,
+    Expression<String>? idMasked,
+    Expression<String>? filePath,
+    Expression<String>? thumbPath,
+    Expression<String>? contentType,
+    Expression<int>? sizeBytes,
+    Expression<String>? notes,
+    Expression<String>? createdBy,
+    Expression<String>? createdAt,
+    Expression<String>? updatedAt,
+    Expression<String>? deletedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (tenantId != null) 'tenant_id': tenantId,
+      if (partyId != null) 'party_id': partyId,
+      if (docType != null) 'doc_type': docType,
+      if (title != null) 'title': title,
+      if (idMasked != null) 'id_masked': idMasked,
+      if (filePath != null) 'file_path': filePath,
+      if (thumbPath != null) 'thumb_path': thumbPath,
+      if (contentType != null) 'content_type': contentType,
+      if (sizeBytes != null) 'size_bytes': sizeBytes,
+      if (notes != null) 'notes': notes,
+      if (createdBy != null) 'created_by': createdBy,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PartyDocumentsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? tenantId,
+    Value<String>? partyId,
+    Value<String>? docType,
+    Value<String?>? title,
+    Value<String?>? idMasked,
+    Value<String>? filePath,
+    Value<String?>? thumbPath,
+    Value<String>? contentType,
+    Value<int>? sizeBytes,
+    Value<String?>? notes,
+    Value<String?>? createdBy,
+    Value<String?>? createdAt,
+    Value<String?>? updatedAt,
+    Value<String?>? deletedAt,
+    Value<int>? rowid,
+  }) {
+    return PartyDocumentsCompanion(
+      id: id ?? this.id,
+      tenantId: tenantId ?? this.tenantId,
+      partyId: partyId ?? this.partyId,
+      docType: docType ?? this.docType,
+      title: title ?? this.title,
+      idMasked: idMasked ?? this.idMasked,
+      filePath: filePath ?? this.filePath,
+      thumbPath: thumbPath ?? this.thumbPath,
+      contentType: contentType ?? this.contentType,
+      sizeBytes: sizeBytes ?? this.sizeBytes,
+      notes: notes ?? this.notes,
+      createdBy: createdBy ?? this.createdBy,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (tenantId.present) {
+      map['tenant_id'] = Variable<String>(tenantId.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (docType.present) {
+      map['doc_type'] = Variable<String>(docType.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (idMasked.present) {
+      map['id_masked'] = Variable<String>(idMasked.value);
+    }
+    if (filePath.present) {
+      map['file_path'] = Variable<String>(filePath.value);
+    }
+    if (thumbPath.present) {
+      map['thumb_path'] = Variable<String>(thumbPath.value);
+    }
+    if (contentType.present) {
+      map['content_type'] = Variable<String>(contentType.value);
+    }
+    if (sizeBytes.present) {
+      map['size_bytes'] = Variable<int>(sizeBytes.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (createdBy.present) {
+      map['created_by'] = Variable<String>(createdBy.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<String>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<String>(deletedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PartyDocumentsCompanion(')
+          ..write('id: $id, ')
+          ..write('tenantId: $tenantId, ')
+          ..write('partyId: $partyId, ')
+          ..write('docType: $docType, ')
+          ..write('title: $title, ')
+          ..write('idMasked: $idMasked, ')
+          ..write('filePath: $filePath, ')
+          ..write('thumbPath: $thumbPath, ')
+          ..write('contentType: $contentType, ')
+          ..write('sizeBytes: $sizeBytes, ')
+          ..write('notes: $notes, ')
+          ..write('createdBy: $createdBy, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $SyncErrorsTable extends SyncErrors
     with TableInfo<$SyncErrorsTable, SyncError> {
   @override
@@ -42860,6 +43717,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $SupportSessionsTable supportSessions = $SupportSessionsTable(
     this,
   );
+  late final $PartyDocumentsTable partyDocuments = $PartyDocumentsTable(this);
   late final $SyncErrorsTable syncErrors = $SyncErrorsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -42916,6 +43774,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     tenantSubscriptions,
     planRequests,
     supportSessions,
+    partyDocuments,
     syncErrors,
   ];
 }
@@ -62757,6 +63616,409 @@ typedef $$SupportSessionsTableProcessedTableManager =
       SupportSession,
       PrefetchHooks Function()
     >;
+typedef $$PartyDocumentsTableCreateCompanionBuilder =
+    PartyDocumentsCompanion Function({
+      required String id,
+      required String tenantId,
+      required String partyId,
+      required String docType,
+      Value<String?> title,
+      Value<String?> idMasked,
+      required String filePath,
+      Value<String?> thumbPath,
+      required String contentType,
+      required int sizeBytes,
+      Value<String?> notes,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<String?> deletedAt,
+      Value<int> rowid,
+    });
+typedef $$PartyDocumentsTableUpdateCompanionBuilder =
+    PartyDocumentsCompanion Function({
+      Value<String> id,
+      Value<String> tenantId,
+      Value<String> partyId,
+      Value<String> docType,
+      Value<String?> title,
+      Value<String?> idMasked,
+      Value<String> filePath,
+      Value<String?> thumbPath,
+      Value<String> contentType,
+      Value<int> sizeBytes,
+      Value<String?> notes,
+      Value<String?> createdBy,
+      Value<String?> createdAt,
+      Value<String?> updatedAt,
+      Value<String?> deletedAt,
+      Value<int> rowid,
+    });
+
+class $$PartyDocumentsTableFilterComposer
+    extends Composer<_$AppDatabase, $PartyDocumentsTable> {
+  $$PartyDocumentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get docType => $composableBuilder(
+    column: $table.docType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get idMasked => $composableBuilder(
+    column: $table.idMasked,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get filePath => $composableBuilder(
+    column: $table.filePath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get thumbPath => $composableBuilder(
+    column: $table.thumbPath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contentType => $composableBuilder(
+    column: $table.contentType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get sizeBytes => $composableBuilder(
+    column: $table.sizeBytes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PartyDocumentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PartyDocumentsTable> {
+  $$PartyDocumentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tenantId => $composableBuilder(
+    column: $table.tenantId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get docType => $composableBuilder(
+    column: $table.docType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get idMasked => $composableBuilder(
+    column: $table.idMasked,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get filePath => $composableBuilder(
+    column: $table.filePath,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get thumbPath => $composableBuilder(
+    column: $table.thumbPath,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contentType => $composableBuilder(
+    column: $table.contentType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get sizeBytes => $composableBuilder(
+    column: $table.sizeBytes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdBy => $composableBuilder(
+    column: $table.createdBy,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PartyDocumentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PartyDocumentsTable> {
+  $$PartyDocumentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get tenantId =>
+      $composableBuilder(column: $table.tenantId, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get docType =>
+      $composableBuilder(column: $table.docType, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get idMasked =>
+      $composableBuilder(column: $table.idMasked, builder: (column) => column);
+
+  GeneratedColumn<String> get filePath =>
+      $composableBuilder(column: $table.filePath, builder: (column) => column);
+
+  GeneratedColumn<String> get thumbPath =>
+      $composableBuilder(column: $table.thumbPath, builder: (column) => column);
+
+  GeneratedColumn<String> get contentType => $composableBuilder(
+    column: $table.contentType,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get sizeBytes =>
+      $composableBuilder(column: $table.sizeBytes, builder: (column) => column);
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+
+  GeneratedColumn<String> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+}
+
+class $$PartyDocumentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PartyDocumentsTable,
+          PartyDocument,
+          $$PartyDocumentsTableFilterComposer,
+          $$PartyDocumentsTableOrderingComposer,
+          $$PartyDocumentsTableAnnotationComposer,
+          $$PartyDocumentsTableCreateCompanionBuilder,
+          $$PartyDocumentsTableUpdateCompanionBuilder,
+          (
+            PartyDocument,
+            BaseReferences<_$AppDatabase, $PartyDocumentsTable, PartyDocument>,
+          ),
+          PartyDocument,
+          PrefetchHooks Function()
+        > {
+  $$PartyDocumentsTableTableManager(
+    _$AppDatabase db,
+    $PartyDocumentsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PartyDocumentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PartyDocumentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PartyDocumentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> tenantId = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String> docType = const Value.absent(),
+                Value<String?> title = const Value.absent(),
+                Value<String?> idMasked = const Value.absent(),
+                Value<String> filePath = const Value.absent(),
+                Value<String?> thumbPath = const Value.absent(),
+                Value<String> contentType = const Value.absent(),
+                Value<int> sizeBytes = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<String?> deletedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PartyDocumentsCompanion(
+                id: id,
+                tenantId: tenantId,
+                partyId: partyId,
+                docType: docType,
+                title: title,
+                idMasked: idMasked,
+                filePath: filePath,
+                thumbPath: thumbPath,
+                contentType: contentType,
+                sizeBytes: sizeBytes,
+                notes: notes,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String tenantId,
+                required String partyId,
+                required String docType,
+                Value<String?> title = const Value.absent(),
+                Value<String?> idMasked = const Value.absent(),
+                required String filePath,
+                Value<String?> thumbPath = const Value.absent(),
+                required String contentType,
+                required int sizeBytes,
+                Value<String?> notes = const Value.absent(),
+                Value<String?> createdBy = const Value.absent(),
+                Value<String?> createdAt = const Value.absent(),
+                Value<String?> updatedAt = const Value.absent(),
+                Value<String?> deletedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PartyDocumentsCompanion.insert(
+                id: id,
+                tenantId: tenantId,
+                partyId: partyId,
+                docType: docType,
+                title: title,
+                idMasked: idMasked,
+                filePath: filePath,
+                thumbPath: thumbPath,
+                contentType: contentType,
+                sizeBytes: sizeBytes,
+                notes: notes,
+                createdBy: createdBy,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PartyDocumentsTable, PartyDocument>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $PartyDocumentsTable,
+                    PartyDocument
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PartyDocumentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PartyDocumentsTable,
+      PartyDocument,
+      $$PartyDocumentsTableFilterComposer,
+      $$PartyDocumentsTableOrderingComposer,
+      $$PartyDocumentsTableAnnotationComposer,
+      $$PartyDocumentsTableCreateCompanionBuilder,
+      $$PartyDocumentsTableUpdateCompanionBuilder,
+      (
+        PartyDocument,
+        BaseReferences<_$AppDatabase, $PartyDocumentsTable, PartyDocument>,
+      ),
+      PartyDocument,
+      PrefetchHooks Function()
+    >;
 typedef $$SyncErrorsTableCreateCompanionBuilder =
     SyncErrorsCompanion Function({
       required String id,
@@ -63163,6 +64425,8 @@ class $AppDatabaseManager {
       $$PlanRequestsTableTableManager(_db, _db.planRequests);
   $$SupportSessionsTableTableManager get supportSessions =>
       $$SupportSessionsTableTableManager(_db, _db.supportSessions);
+  $$PartyDocumentsTableTableManager get partyDocuments =>
+      $$PartyDocumentsTableTableManager(_db, _db.partyDocuments);
   $$SyncErrorsTableTableManager get syncErrors =>
       $$SyncErrorsTableTableManager(_db, _db.syncErrors);
 }

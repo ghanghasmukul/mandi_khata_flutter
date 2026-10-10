@@ -39,6 +39,21 @@ FilePickerFn importFilePicker(Ref ref) => () async {
   return PickedFile(file.name, await file.readAsBytes());
 };
 
+/// Opens the file dialog for Tally XML exports (masters and/or vouchers,
+/// several files at once); null when cancelled. A provider so tests replace
+/// it.
+typedef TallyPickerFn = Future<List<PickedFile>?> Function();
+
+@Riverpod(keepAlive: true)
+TallyPickerFn tallyFilePicker(Ref ref) => () async {
+  final files = await FilePicker.pickFiles(
+    type: FileType.custom,
+    allowedExtensions: const ['xml'],
+  );
+  if (files.isEmpty) return null;
+  return [for (final f in files) PickedFile(f.name, await f.readAsBytes())];
+};
+
 /// Why a file could not be read.
 enum ImportReadFailure { oldExcel, unreadable, empty }
 
@@ -100,6 +115,7 @@ class OpeningBalanceImporter {
     OpeningPreview preview, {
     required LedgerDate asOn,
     String? fileName,
+    String source = 'file',
   }) async {
     // Read everything before the first await.
     final ctx = _ref.read(writeContextProvider);
@@ -114,6 +130,7 @@ class OpeningBalanceImporter {
       asOn: asOn,
       can: member.can,
       fileName: fileName,
+      source: source,
     );
   }
 }

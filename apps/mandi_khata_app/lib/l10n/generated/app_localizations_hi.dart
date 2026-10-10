@@ -6905,4 +6905,364 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get inviteErrLimitReached =>
       'आपके प्लान में कोई खाली उपयोगकर्ता सीट नहीं है। प्लान और बिलिंग में और माँगें।';
+
+  @override
+  String get docAdd => 'दस्तावेज़ जोड़ें';
+
+  @override
+  String get docEmpty => 'अभी कोई दस्तावेज़ नहीं।';
+
+  @override
+  String get docOwnerNote => 'आधार और पैन केवल मालिक को दिखते हैं।';
+
+  @override
+  String docPendingUploads(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count फ़ाइलें अपलोड के इंतज़ार में',
+      one: '1 फ़ाइल अपलोड के इंतज़ार में',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get docTypeAadhaar => 'आधार';
+
+  @override
+  String get docTypePan => 'पैन';
+
+  @override
+  String get docTypePassbook => 'बैंक पासबुक';
+
+  @override
+  String get docTypeCheque => 'चेक';
+
+  @override
+  String get docTypeJForm => 'जे-फ़ॉर्म';
+
+  @override
+  String get docTypeLoanAgreement => 'कर्ज़ का इकरारनामा';
+
+  @override
+  String get docTypeOther => 'अन्य';
+
+  @override
+  String get docFieldType => 'प्रकार';
+
+  @override
+  String get docFieldTitle => 'शीर्षक (वैकल्पिक)';
+
+  @override
+  String get docFieldIdNumber => 'नंबर (वैकल्पिक)';
+
+  @override
+  String get docIdNumberHelp =>
+      'सिर्फ़ आख़िरी 4 अंक रखे जाते हैं; पूरा नंबर कभी सेव नहीं होता।';
+
+  @override
+  String get docTakePhoto => 'फ़ोटो खींचें';
+
+  @override
+  String get docPickFile => 'फ़ाइल चुनें';
+
+  @override
+  String docChosen(String name, int kb) {
+    return '$name ($kb KB)';
+  }
+
+  @override
+  String get docSave => 'दस्तावेज़ सहेजें';
+
+  @override
+  String get docAdded => 'दस्तावेज़ सहेजा गया। इंटरनेट आने पर अपलोड होगा।';
+
+  @override
+  String get docRefusedNotAllowed => 'इस दस्तावेज़ की अनुमति आपके पास नहीं है।';
+
+  @override
+  String get docTooLarge => 'फ़ाइल बहुत बड़ी है (कंप्रेस के बाद सीमा 6 MB)।';
+
+  @override
+  String get docUnsupported => 'JPG, PNG, WebP, HEIC या PDF फ़ाइल चुनें।';
+
+  @override
+  String get docBadIdNumber => 'यह नंबर सही नहीं है। आधार / पैन नंबर जाँचें।';
+
+  @override
+  String get docDelete => 'दस्तावेज़ हटाएँ';
+
+  @override
+  String get docDeleteBody =>
+      'दस्तावेज़ पार्टी से हट जाएगा। फ़ाइल सर्वर पर सुरक्षित रहेगी।';
+
+  @override
+  String get docOffline => 'यह फ़ाइल देखने के लिए इंटरनेट से जुड़ें।';
+
+  @override
+  String get docOpenPdf => 'PDF खोलें';
+
+  @override
+  String get backupTitle => 'बैकअप और एक्सपोर्ट';
+
+  @override
+  String get backupOwnerOnly => 'बैकअप या रीस्टोर सिर्फ़ मालिक कर सकता है।';
+
+  @override
+  String get exportAllTitle => 'मेरा सारा डेटा डाउनलोड करें';
+
+  @override
+  String get exportAllBody =>
+      'एक ZIP जिसमें हर टेबल की Excel फ़ाइल और सभी पार्टियों के खाते का एक PDF है। यह हमेशा आपका है।';
+
+  @override
+  String get exportAllButton => 'ZIP डाउनलोड करें';
+
+  @override
+  String get backupLocalTitle => 'इस कंप्यूटर पर बैकअप';
+
+  @override
+  String get backupLocalBody =>
+      'एन्क्रिप्टेड बैकअप फ़ाइल फ़ोल्डर या USB में सेव होती है। पासफ़्रेज़ संभालकर रखें: इसके बिना फ़ाइल नहीं खुलेगी।';
+
+  @override
+  String get backupDaily => 'हर दिन बैकअप लें';
+
+  @override
+  String get backupNoFolder => 'कोई फ़ोल्डर नहीं चुना';
+
+  @override
+  String get backupChooseFolder => 'फ़ोल्डर चुनें';
+
+  @override
+  String get backupPassphrase => 'पासफ़्रेज़';
+
+  @override
+  String get backupPassphraseHelp =>
+      'कम से कम 6 अक्षर। इसी कंप्यूटर पर सेव रहता है ताकि रोज़ का बैकअप अपने-आप चले।';
+
+  @override
+  String get backupNow => 'अभी बैकअप लें';
+
+  @override
+  String get backupNever => 'अभी तक कोई बैकअप नहीं';
+
+  @override
+  String backupLast(String when) {
+    return 'आख़िरी बैकअप: $when';
+  }
+
+  @override
+  String backupDone(String path) {
+    return 'बैकअप सेव हुआ: $path';
+  }
+
+  @override
+  String get backupNeedsSetup => 'पहले फ़ोल्डर और पासफ़्रेज़ (6+ अक्षर) चुनें।';
+
+  @override
+  String get restoreTitle => 'बैकअप फ़ाइल से रीस्टोर करें';
+
+  @override
+  String get restoreBody =>
+      'उसी व्यापार के नए इंस्टॉल के लिए, जिसमें अभी कुछ नहीं है। पासफ़्रेज़ डालें, फिर .mkbak फ़ाइल चुनें।';
+
+  @override
+  String get restorePick => 'बैकअप फ़ाइल चुनें';
+
+  @override
+  String get restoreConfirmTitle => 'यह बैकअप रीस्टोर करें?';
+
+  @override
+  String restoreConfirmBody(String business, int rows, String when) {
+    return '$business, $rows रिकॉर्ड, बना: $when। ये इस डिवाइस में जुड़ेंगे और फिर सिंक होंगे।';
+  }
+
+  @override
+  String get restoreAction => 'रीस्टोर करें';
+
+  @override
+  String restoreDone(int count) {
+    return '$count रिकॉर्ड रीस्टोर हुए।';
+  }
+
+  @override
+  String get restoreWrongPassphrase => 'पासफ़्रेज़ ग़लत है।';
+
+  @override
+  String get restoreCorrupt => 'यह मंडी खाता बैकअप नहीं है, या फ़ाइल ख़राब है।';
+
+  @override
+  String get restoreOtherBusiness => 'यह बैकअप किसी दूसरे व्यापार का है।';
+
+  @override
+  String get restoreNotEmpty =>
+      'इस डिवाइस पर इस व्यापार का डेटा पहले से है। रीस्टोर सिर्फ़ ख़ाली इंस्टॉल में होता है।';
+
+  @override
+  String get restoreNewerFormat =>
+      'यह बैकअप नए ऐप से बना है। पहले ऐप अपडेट करें।';
+
+  @override
+  String get importHubTitle => 'डेटा इम्पोर्ट करें';
+
+  @override
+  String get importHubBalances => 'पार्टियाँ और शुरुआती बकाया (फ़ाइल या Tally)';
+
+  @override
+  String get importHubProducts => 'उत्पाद (CSV / Excel, Busy, Marg)';
+
+  @override
+  String get importHubStock => 'शुरुआती स्टॉक';
+
+  @override
+  String get importPast => 'पिछले इम्पोर्ट';
+
+  @override
+  String get importPastEmpty => 'अभी कुछ इम्पोर्ट नहीं हुआ।';
+
+  @override
+  String get importKindTally => 'Tally से पार्टियाँ';
+
+  @override
+  String importRows(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count रिकॉर्ड',
+      one: '1 रिकॉर्ड',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get importRollback => 'वापस लें';
+
+  @override
+  String get importRollbackTitle => 'यह इम्पोर्ट वापस लें?';
+
+  @override
+  String get importRollbackBody =>
+      'इसके हर बकाया को रिवर्सल एंट्री से रद्द किया जाएगा (कुछ मिटता नहीं), और इससे बनी पार्टियाँ हटेंगी अगर कहीं और इस्तेमाल नहीं हुईं।';
+
+  @override
+  String importRolledBack(int entries, int removed, int kept) {
+    return 'वापस लिया: $entries एंट्री रिवर्स, $removed हटाए, $kept रखे (इस्तेमाल में)।';
+  }
+
+  @override
+  String get importRolledBackTag => 'वापस लिया गया';
+
+  @override
+  String get importRollbackNotFound => 'यह इम्पोर्ट नहीं मिला।';
+
+  @override
+  String get importRollbackDone => 'पहले ही वापस लिया जा चुका है।';
+
+  @override
+  String get importRollbackLocked =>
+      'एक एंट्री बंद वित्तीय वर्ष में है। पहले वर्ष खोलें (Year close)।';
+
+  @override
+  String get obTallyButton => 'Tally XML';
+
+  @override
+  String obTallySummary(
+    int parties,
+    int vouchers,
+    int otherLedgers,
+    int skippedVouchers,
+  ) {
+    return 'Tally: $parties पार्टियाँ, $vouchers वाउचर पढ़े ($otherLedgers अन्य लेजर और $skippedVouchers रद्द / वैकल्पिक वाउचर छोड़े गए)। बकाया = शुरुआती + वाउचर, आख़िरी वाउचर की तारीख़ तक।';
+  }
+
+  @override
+  String get obTallyUnreadable =>
+      'यह Tally XML एक्सपोर्ट नहीं है (Gateway of Tally > Export)।';
+
+  @override
+  String get piTitle => 'उत्पाद इम्पोर्ट करें';
+
+  @override
+  String get piHelp =>
+      'हेडर वाली CSV या Excel फ़ाइल। नाम का कॉलम ज़रूरी है; SKU (या बारकोड), यूनिट, HSN, GST %, भाव, ब्रांड और कैटेगरी हों तो पढ़ी जाती हैं। Busy और Marg की फ़ाइलें सीधे चलती हैं।';
+
+  @override
+  String piSummary(int valid, int invalid) {
+    return '$valid उत्पाद इम्पोर्ट के लिए तैयार, $invalid पंक्तियों में समस्या (छोड़ी जाएँगी)।';
+  }
+
+  @override
+  String piImportNow(int count) {
+    return '$count उत्पाद इम्पोर्ट करें';
+  }
+
+  @override
+  String piDone(int count) {
+    return '$count उत्पाद इम्पोर्ट हुए। पिछले इम्पोर्ट में से इसे वापस ले सकते हैं।';
+  }
+
+  @override
+  String piRow(int number, String name, String problems) {
+    return 'पंक्ति $number ($name): $problems';
+  }
+
+  @override
+  String get piNameMissing => 'नाम ख़ाली है';
+
+  @override
+  String get piSkuMissing => 'SKU या बारकोड नहीं है';
+
+  @override
+  String get piUnitUnknown =>
+      'यूनिट समझ नहीं आई (bag, btl, ltr, kg, pkt, pc में से)';
+
+  @override
+  String get piGstInvalid => 'GST दर 0, 0.25, 3, 5, 12, 18 या 28 होनी चाहिए';
+
+  @override
+  String get piHsnInvalid => 'HSN 4, 6 या 8 अंकों का होना चाहिए';
+
+  @override
+  String get piPriceInvalid => 'कोई भाव या मात्रा सही संख्या नहीं है';
+
+  @override
+  String get piDuplicateInFile => 'पहले की पंक्ति जैसा ही SKU या बारकोड';
+
+  @override
+  String get piSkuExists => 'SKU पहले से मौजूद है';
+
+  @override
+  String get piBarcodeExists => 'बारकोड पहले से मौजूद है';
+
+  @override
+  String get piCategoryUnknown => 'कैटेगरी नहीं मिली (बिना कैटेगरी के जुड़ेगा)';
+
+  @override
+  String get piNoNameColumn => 'पहली पंक्ति में नाम का कॉलम नहीं मिला।';
+
+  @override
+  String get piTooManyRows => '5,000 से ज़्यादा पंक्तियाँ। फ़ाइल बाँट दें।';
+
+  @override
+  String get whatsNewTitle => 'नया क्या है';
+
+  @override
+  String whatsNewVersion(String version) {
+    return 'संस्करण $version';
+  }
+
+  @override
+  String get changelogV100 =>
+      '• पार्टी के दस्तावेज़: आधार, पैन, पासबुक, चेक, जे-फ़ॉर्म (फ़ोटो या फ़ाइल, बिना इंटरनेट भी)\n• बैकअप और एक्सपोर्ट: सारा डेटा डाउनलोड, USB में रोज़ का एन्क्रिप्टेड बैकअप, रीस्टोर\n• Tally XML और उत्पाद फ़ाइलों (Busy, Marg, CSV) से इम्पोर्ट, मालिक के लिए वापस लेने की सुविधा\n• तेज़ रोज़नामचा और सिंक की सेहत की जाँच';
+
+  @override
+  String get loginAdminLink => 'एडमिन साइन-इन';
+
+  @override
+  String get loginAdminTitle => 'एडमिन कंसोल';
+
+  @override
+  String get loginAdminNotConfigured =>
+      'इस बिल्ड में एडमिन कंसोल का पता सेट नहीं है। ऐप को ADMIN_CONSOLE_URL के साथ बनाएँ, या कंसोल (apps/mk_admin) सीधे खोलें।';
 }

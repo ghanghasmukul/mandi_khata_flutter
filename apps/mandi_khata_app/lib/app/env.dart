@@ -15,6 +15,11 @@ abstract final class Env {
     'UPDATE_MANIFEST_URL',
   );
 
+  /// Where the super-admin web console is hosted (apps/mk_admin). The login
+  /// screen's "Admin sign-in" opens it. Empty = the link explains how to set
+  /// it up. A public address only; the console signs in by itself.
+  static const adminConsoleUrl = String.fromEnvironment('ADMIN_CONSOLE_URL');
+
   /// PEM public key (ES256) that verifies the signed entitlement token. Empty
   /// = the token is not used and the synced subscription row alone decides.
   /// Write the PEM with `\n` for line breaks in the env file.

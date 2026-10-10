@@ -103,6 +103,13 @@ const ADDON_FIELDS = [
 const pick = (src: Params, fields: string[]) =>
   Object.fromEntries(fields.filter((f) => f in src).map((f) => [f, src[f]]));
 
+// 12 characters from an unambiguous alphabet (no 0/O, 1/l/I).
+function randomPassword(): string {
+  const alphabet = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = crypto.getRandomValues(new Uint8Array(12));
+  return Array.from(bytes, (b) => alphabet[b % alphabet.length]).join("");
+}
+
 async function handle(
   db: SupabaseClient,
   admin: Admin,
@@ -113,6 +120,12 @@ async function handle(
     // ---- businesses -------------------------------------------------------
     case "overview":
       return check(await db.rpc("admin_tenant_overview"));
+
+    // Upload lag and device freshness per business (step 6.6).
+    case "sync_health": {
+      const days = typeof p.days === "number" ? Math.min(Math.max(p.days, 1), 90) : 7;
+      return check(await db.rpc("admin_sync_health", { p_days: days }));
+    }
 
     case "tenant_detail": {
       const id = uuid(p.tenant_id, "tenant_id");
@@ -323,6 +336,99 @@ async function handle(
       if (p.tenant_id) q = q.eq("target_tenant_id", uuid(p.tenant_id, "tenant_id"));
       return check(await q);
     }
+
+    // ---- users and their feature access -------------------------------------
+    case "users_list":
+      return check(await db.rpc("admin_users"));
+
+    case "user_create": {
+      const email = str(p.email, "email").toLowerCase();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) throw new Problem("bad_email");
+      const generated = typeof p.password !== "string" || p.password === "";
+      const password = generated ? randomPassword() : String(p.password);
+      if (password.length < 8) throw new Problem("weak_password");
+      const phone = typeof p.phone === "string" && p.phone.trim() !== ""
+        ? p.phone.replace(/\D/g, "")
+        : null;
+      if (phone !== null && !/^91[6-9]\d{9}$/.test(phone)) throw new Problem("bad_phone");
+      const fullName = typeof p.full_name === "string" ? p.full_name.trim() : "";
+      const { data, error } = await db.auth.admin.createUser({
+        email,
+        password,
+        email_confirm: true,
+        ...(phone ? { phone, phone_confirm: true } : {}),
+        user_metadata: { full_name: fullName },
+      });
+      if (error || !data.user) {
+        console.error(error);
+        throw new Problem(error?.message?.toLowerCase().includes("already") ? "already_exists" : "failed",
+          error?.message?.toLowerCase().includes("already") ? 409 : 500);
+      }
+      await audit(db, admin, "create_user", {
+        type: "users", id: data.user.id, after: { email, phone, full_name: fullName },
+      });
+      let membership: unknown = null;
+      if (p.tenant_id) {
+        membership = check(await db.rpc("admin_set_member_access", {
+          p_admin_id: admin.id,
+          p_admin_email: admin.email,
+          p_tenant_id: uuid(p.tenant_id, "tenant_id"),
+          p_user_id: data.user.id,
+          p_role: typeof p.role === "string" ? p.role : "munshi",
+          p_custom: p.custom_permissions ?? null,
+          p_is_active: true,
+          p_device_limit: typeof p.device_limit === "number" ? p.device_limit : null,
+          p_note: "created with the user",
+        }));
+      }
+      // The password is returned once so the admin can hand it over.
+      return { user_id: data.user.id, email, password, generated, membership };
+    }
+
+    case "user_reset_password": {
+      const id = uuid(p.user_id, "user_id");
+      const generated = typeof p.password !== "string" || p.password === "";
+      const password = generated ? randomPassword() : String(p.password);
+      if (password.length < 8) throw new Problem("weak_password");
+      const { error } = await db.auth.admin.updateUserById(id, { password });
+      if (error) {
+        console.error(error);
+        throw new Problem("failed", 500);
+      }
+      await audit(db, admin, "reset_user_password", { type: "users", id });
+      return { user_id: id, password, generated };
+    }
+
+    case "user_set_banned": {
+      const id = uuid(p.user_id, "user_id");
+      if (id === admin.id) throw new Problem("cannot_ban_self", 422);
+      const banned = p.banned === true;
+      const { error } = await db.auth.admin.updateUserById(id, {
+        ban_duration: banned ? "876000h" : "none",
+      });
+      if (error) {
+        console.error(error);
+        throw new Problem("failed", 500);
+      }
+      await audit(db, admin, banned ? "disable_user" : "enable_user", { type: "users", id });
+      return { user_id: id, banned };
+    }
+
+    case "member_set_access":
+      return check(await db.rpc("admin_set_member_access", {
+        p_admin_id: admin.id,
+        p_admin_email: admin.email,
+        p_tenant_id: uuid(p.tenant_id, "tenant_id"),
+        p_user_id: uuid(p.user_id, "user_id"),
+        p_role: typeof p.role === "string" ? p.role : null,
+        p_custom: p.custom_permissions === undefined ? null : obj(p.custom_permissions, "custom_permissions"),
+        p_is_active: typeof p.is_active === "boolean" ? p.is_active : null,
+        p_device_limit: typeof p.device_limit === "number" ? p.device_limit : null,
+        p_note: typeof p.note === "string" ? p.note : null,
+      }));
+
+    case "businesses_brief":
+      return check(await db.from("tenants").select("id, name").order("name"));
 
     case "me":
       return { id: admin.id, email: admin.email };

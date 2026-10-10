@@ -9405,5 +9405,508 @@
   "inviteErrLimitReached": "Your plan has no free user seat. Ask for more under Plan & billing.",
   "@inviteErrLimitReached": {
     "description": "Invite failed: the plan's user limit is full."
+  },
+  "docAdd": "Add document",
+  "@docAdd": {
+    "description": "Documents tab: add button."
+  },
+  "docEmpty": "No documents yet.",
+  "@docEmpty": {
+    "description": "Empty state."
+  },
+  "docOwnerNote": "Aadhaar and PAN are visible to the owner only.",
+  "@docOwnerNote": {
+    "description": "Note on the documents tab."
+  },
+  "docPendingUploads": "{count, plural, =1{1 file waiting to upload} other{{count} files waiting to upload}}",
+  "@docPendingUploads": {
+    "description": "Files not yet sent to the server.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "docTypeAadhaar": "Aadhaar",
+  "@docTypeAadhaar": {
+    "description": "Document type."
+  },
+  "docTypePan": "PAN",
+  "@docTypePan": {
+    "description": "Document type."
+  },
+  "docTypePassbook": "Bank passbook",
+  "@docTypePassbook": {
+    "description": "Document type."
+  },
+  "docTypeCheque": "Cheque",
+  "@docTypeCheque": {
+    "description": "Document type."
+  },
+  "docTypeJForm": "J-form",
+  "@docTypeJForm": {
+    "description": "Document type."
+  },
+  "docTypeLoanAgreement": "Loan agreement",
+  "@docTypeLoanAgreement": {
+    "description": "Document type."
+  },
+  "docTypeOther": "Other",
+  "@docTypeOther": {
+    "description": "Document type."
+  },
+  "docFieldType": "Type",
+  "@docFieldType": {
+    "description": "Field."
+  },
+  "docFieldTitle": "Title (optional)",
+  "@docFieldTitle": {
+    "description": "Field."
+  },
+  "docFieldIdNumber": "Number (optional)",
+  "@docFieldIdNumber": {
+    "description": "Field."
+  },
+  "docIdNumberHelp": "Only the last 4 characters are kept; the full number is never saved.",
+  "@docIdNumberHelp": {
+    "description": "Help under the Aadhaar / PAN number field."
+  },
+  "docTakePhoto": "Take photo",
+  "@docTakePhoto": {
+    "description": "Button."
+  },
+  "docPickFile": "Choose file",
+  "@docPickFile": {
+    "description": "Button."
+  },
+  "docChosen": "{name} ({kb} KB)",
+  "@docChosen": {
+    "description": "The chosen file.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "kb": {
+        "type": "int"
+      }
+    }
+  },
+  "docSave": "Save document",
+  "@docSave": {
+    "description": "Button."
+  },
+  "docAdded": "Document saved. It uploads when you are online.",
+  "@docAdded": {
+    "description": "Toast."
+  },
+  "docRefusedNotAllowed": "You do not have permission for this document.",
+  "@docRefusedNotAllowed": {
+    "description": "Error."
+  },
+  "docTooLarge": "The file is too large (limit 6 MB after compression).",
+  "@docTooLarge": {
+    "description": "Error."
+  },
+  "docUnsupported": "Use a JPG, PNG, WebP, HEIC or PDF file.",
+  "@docUnsupported": {
+    "description": "Error."
+  },
+  "docBadIdNumber": "This number is not valid. Check the Aadhaar / PAN number.",
+  "@docBadIdNumber": {
+    "description": "Error."
+  },
+  "docDelete": "Delete document",
+  "@docDelete": {
+    "description": "Button / title."
+  },
+  "docDeleteBody": "The document is removed from the party. The file stays safe on the server.",
+  "@docDeleteBody": {
+    "description": "Confirmation."
+  },
+  "docOffline": "Connect to the internet to view this file.",
+  "@docOffline": {
+    "description": "Shown when the file is not on this device."
+  },
+  "docOpenPdf": "Open PDF",
+  "@docOpenPdf": {
+    "description": "Button."
+  },
+  "backupTitle": "Backup & export",
+  "@backupTitle": {
+    "description": "Screen title (step 6.4)."
+  },
+  "backupOwnerOnly": "Only the owner can back up or restore.",
+  "@backupOwnerOnly": {
+    "description": "Shown to non-owners."
+  },
+  "exportAllTitle": "Download all my data",
+  "@exportAllTitle": {
+    "description": "Card title."
+  },
+  "exportAllBody": "A ZIP with an Excel file for every table and one PDF with every party's khata statement. Yours to keep, always.",
+  "@exportAllBody": {
+    "description": "Card text."
+  },
+  "exportAllButton": "Download ZIP",
+  "@exportAllButton": {
+    "description": "Button."
+  },
+  "backupLocalTitle": "Backup on this computer",
+  "@backupLocalTitle": {
+    "description": "Card title (desktop)."
+  },
+  "backupLocalBody": "An encrypted backup file is saved to a folder or USB stick. Keep the passphrase safe: without it the file cannot be opened.",
+  "@backupLocalBody": {
+    "description": "Card text."
+  },
+  "backupDaily": "Back up every day",
+  "@backupDaily": {
+    "description": "Switch."
+  },
+  "backupNoFolder": "No folder chosen",
+  "@backupNoFolder": {
+    "description": "Folder row."
+  },
+  "backupChooseFolder": "Choose folder",
+  "@backupChooseFolder": {
+    "description": "Button."
+  },
+  "backupPassphrase": "Passphrase",
+  "@backupPassphrase": {
+    "description": "Field."
+  },
+  "backupPassphraseHelp": "At least 6 characters. Saved on this computer so the daily backup can run by itself.",
+  "@backupPassphraseHelp": {
+    "description": "Help text."
+  },
+  "backupNow": "Back up now",
+  "@backupNow": {
+    "description": "Button."
+  },
+  "backupNever": "No backup yet",
+  "@backupNever": {
+    "description": "Last backup."
+  },
+  "backupLast": "Last backup: {when}",
+  "@backupLast": {
+    "description": "Last backup time.",
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "backupDone": "Backup saved: {path}",
+  "@backupDone": {
+    "description": "Toast.",
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "backupNeedsSetup": "Choose a folder and a passphrase (6+ characters) first.",
+  "@backupNeedsSetup": {
+    "description": "Error."
+  },
+  "restoreTitle": "Restore from a backup file",
+  "@restoreTitle": {
+    "description": "Card title."
+  },
+  "restoreBody": "For a fresh install of the same business with nothing on it yet. Enter the passphrase, then pick the .mkbak file.",
+  "@restoreBody": {
+    "description": "Card text."
+  },
+  "restorePick": "Choose backup file",
+  "@restorePick": {
+    "description": "Button."
+  },
+  "restoreConfirmTitle": "Restore this backup?",
+  "@restoreConfirmTitle": {
+    "description": "Dialog title."
+  },
+  "restoreConfirmBody": "{business}, {rows} records, made {when}. They are added to this device and then sync.",
+  "@restoreConfirmBody": {
+    "description": "Dialog text.",
+    "placeholders": {
+      "business": {
+        "type": "String"
+      },
+      "rows": {
+        "type": "int"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreAction": "Restore",
+  "@restoreAction": {
+    "description": "Button."
+  },
+  "restoreDone": "Restored {count} records.",
+  "@restoreDone": {
+    "description": "Toast.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreWrongPassphrase": "Wrong passphrase.",
+  "@restoreWrongPassphrase": {
+    "description": "Error."
+  },
+  "restoreCorrupt": "This is not a Mandi Khata backup, or the file is damaged.",
+  "@restoreCorrupt": {
+    "description": "Error."
+  },
+  "restoreOtherBusiness": "This backup belongs to another business.",
+  "@restoreOtherBusiness": {
+    "description": "Error."
+  },
+  "restoreNotEmpty": "This business already has data on this device. A restore only goes into an empty install.",
+  "@restoreNotEmpty": {
+    "description": "Error."
+  },
+  "restoreNewerFormat": "This backup was made by a newer app. Update the app first.",
+  "@restoreNewerFormat": {
+    "description": "Error."
+  },
+  "importHubTitle": "Import data",
+  "@importHubTitle": {
+    "description": "Import hub (step 6.5)."
+  },
+  "importHubBalances": "Parties and opening balances (file or Tally)",
+  "@importHubBalances": {
+    "description": "Hub link."
+  },
+  "importHubProducts": "Products (CSV / Excel, Busy, Marg)",
+  "@importHubProducts": {
+    "description": "Hub link."
+  },
+  "importHubStock": "Opening stock",
+  "@importHubStock": {
+    "description": "Hub link."
+  },
+  "importPast": "Past imports",
+  "@importPast": {
+    "description": "Section title."
+  },
+  "importPastEmpty": "Nothing imported yet.",
+  "@importPastEmpty": {
+    "description": "Empty state."
+  },
+  "importKindTally": "Parties from Tally",
+  "@importKindTally": {
+    "description": "Batch kind."
+  },
+  "importRows": "{count, plural, =1{1 record} other{{count} records}}",
+  "@importRows": {
+    "description": "Records in a batch.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importRollback": "Roll back",
+  "@importRollback": {
+    "description": "Button."
+  },
+  "importRollbackTitle": "Roll back this import?",
+  "@importRollbackTitle": {
+    "description": "Dialog title."
+  },
+  "importRollbackBody": "Every balance it posted is cancelled with a reversal entry (nothing is erased), and parties it created are removed if nothing else uses them.",
+  "@importRollbackBody": {
+    "description": "Dialog text."
+  },
+  "importRolledBack": "Rolled back: {entries} entries reversed, {removed} removed, {kept} kept (in use).",
+  "@importRolledBack": {
+    "description": "Toast.",
+    "placeholders": {
+      "entries": {
+        "type": "int"
+      },
+      "removed": {
+        "type": "int"
+      },
+      "kept": {
+        "type": "int"
+      }
+    }
+  },
+  "importRolledBackTag": "Rolled back",
+  "@importRolledBackTag": {
+    "description": "Tag on a batch."
+  },
+  "importRollbackNotFound": "This import was not found.",
+  "@importRollbackNotFound": {
+    "description": "Error."
+  },
+  "importRollbackDone": "Already rolled back.",
+  "@importRollbackDone": {
+    "description": "Error."
+  },
+  "importRollbackLocked": "An entry is in a closed financial year. Unlock the year first (Year close).",
+  "@importRollbackLocked": {
+    "description": "Error."
+  },
+  "obTallyButton": "Tally XML",
+  "@obTallyButton": {
+    "description": "Button on the opening balances screen."
+  },
+  "obTallySummary": "Tally: {parties} parties, {vouchers} vouchers read ({otherLedgers} other ledgers and {skippedVouchers} cancelled / optional vouchers ignored). Balance = opening + vouchers, as of the last voucher date.",
+  "@obTallySummary": {
+    "description": "Summary of a read Tally export.",
+    "placeholders": {
+      "parties": {
+        "type": "int"
+      },
+      "vouchers": {
+        "type": "int"
+      },
+      "otherLedgers": {
+        "type": "int"
+      },
+      "skippedVouchers": {
+        "type": "int"
+      }
+    }
+  },
+  "obTallyUnreadable": "This is not a Tally XML export (Gateway of Tally > Export).",
+  "@obTallyUnreadable": {
+    "description": "Error."
+  },
+  "piTitle": "Import products",
+  "@piTitle": {
+    "description": "Screen title."
+  },
+  "piHelp": "A CSV or Excel file with a header row. Needs a name column; SKU (or barcode), unit, HSN, GST %, price, brand and category are read when present. Busy and Marg exports work as they are.",
+  "@piHelp": {
+    "description": "Help."
+  },
+  "piSummary": "{valid} products ready to import, {invalid} rows with problems (they are skipped).",
+  "@piSummary": {
+    "description": "Preview summary.",
+    "placeholders": {
+      "valid": {
+        "type": "int"
+      },
+      "invalid": {
+        "type": "int"
+      }
+    }
+  },
+  "piImportNow": "Import {count} products",
+  "@piImportNow": {
+    "description": "Button.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "piDone": "{count} products imported. You can roll this back from Past imports.",
+  "@piDone": {
+    "description": "Result.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "piRow": "Row {number} ({name}): {problems}",
+  "@piRow": {
+    "description": "A row with problems.",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      },
+      "problems": {
+        "type": "String"
+      }
+    }
+  },
+  "piNameMissing": "name is empty",
+  "@piNameMissing": {
+    "description": "Row problem."
+  },
+  "piSkuMissing": "no SKU or barcode",
+  "@piSkuMissing": {
+    "description": "Row problem."
+  },
+  "piUnitUnknown": "unit not understood (use bag, btl, ltr, kg, pkt, pc)",
+  "@piUnitUnknown": {
+    "description": "Row problem."
+  },
+  "piGstInvalid": "GST rate must be 0, 0.25, 3, 5, 12, 18 or 28",
+  "@piGstInvalid": {
+    "description": "Row problem."
+  },
+  "piHsnInvalid": "HSN must be 4, 6 or 8 digits",
+  "@piHsnInvalid": {
+    "description": "Row problem."
+  },
+  "piPriceInvalid": "a price or quantity is not a valid number",
+  "@piPriceInvalid": {
+    "description": "Row problem."
+  },
+  "piDuplicateInFile": "same SKU or barcode as an earlier row",
+  "@piDuplicateInFile": {
+    "description": "Row problem."
+  },
+  "piSkuExists": "SKU already exists",
+  "@piSkuExists": {
+    "description": "Row problem."
+  },
+  "piBarcodeExists": "barcode already exists",
+  "@piBarcodeExists": {
+    "description": "Row problem."
+  },
+  "piCategoryUnknown": "category not found (added without one)",
+  "@piCategoryUnknown": {
+    "description": "Row warning."
+  },
+  "piNoNameColumn": "No name column found in the first row.",
+  "@piNoNameColumn": {
+    "description": "File problem."
+  },
+  "piTooManyRows": "More than 5,000 rows. Split the file.",
+  "@piTooManyRows": {
+    "description": "File problem."
+  },
+  "whatsNewTitle": "What's new",
+  "@whatsNewTitle": {
+    "description": "Screen title (step 6.7)."
+  },
+  "whatsNewVersion": "Version {version}",
+  "@whatsNewVersion": {
+    "description": "Heading of a release.",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "changelogV100": "• Party documents: Aadhaar, PAN, passbook, cheque, J-form (photo or file, works offline)\n• Backup & export: download all your data, daily encrypted backup to a USB stick, restore\n• Import from Tally XML and product files (Busy, Marg, CSV), with undo for the owner\n• Faster day book and sync health checks",
+  "@changelogV100": {
+    "description": "Release notes of 1.0.0, shown in What's new. One key per release."
+  },
+  "loginAdminLink": "Admin sign-in",
+  "@loginAdminLink": {
+    "description": "Login screen link to the super-admin console."
+  },
+  "loginAdminTitle": "Admin console",
+  "@loginAdminTitle": {
+    "description": "Dialog title."
+  },
+  "loginAdminNotConfigured": "The admin console address is not set in this build. Build the app with ADMIN_CONSOLE_URL, or open the console (apps/mk_admin) directly.",
+  "@loginAdminNotConfigured": {
+    "description": "Shown when ADMIN_CONSOLE_URL is empty."
   }
 }

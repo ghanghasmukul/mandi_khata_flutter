@@ -21,11 +21,14 @@ import 'package:mandi_khata_app/features/auth/presentation/login_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/select_tenant_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/set_pin_screen.dart';
 import 'package:mandi_khata_app/features/auth/presentation/splash_screen.dart';
+import 'package:mandi_khata_app/features/backup/presentation/backup_screen.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crop_detail_screen.dart';
 import 'package:mandi_khata_app/features/crops/presentation/crops_screen.dart';
 import 'package:mandi_khata_app/features/dev_gallery/presentation/gallery_screen.dart';
 import 'package:mandi_khata_app/features/dev_sync/presentation/dev_sync_screen.dart';
 import 'package:mandi_khata_app/features/diagnostics/presentation/diagnostics_screen.dart';
+import 'package:mandi_khata_app/features/imports/presentation/imports_hub_screen.dart';
+import 'package:mandi_khata_app/features/imports/presentation/product_import_screen.dart';
 import 'package:mandi_khata_app/features/interest/presentation/bulk_interest_screen.dart';
 import 'package:mandi_khata_app/features/interest/presentation/bulk_posting_screen.dart';
 import 'package:mandi_khata_app/features/interest/presentation/settlement_screen.dart';
@@ -49,6 +52,7 @@ import 'package:mandi_khata_app/features/purchases/presentation/purchases_screen
 import 'package:mandi_khata_app/features/reports/domain/report_models.dart';
 import 'package:mandi_khata_app/features/reports/presentation/reports_screen.dart';
 import 'package:mandi_khata_app/features/settings/presentation/settings_screen.dart';
+import 'package:mandi_khata_app/features/settings/presentation/whats_new_screen.dart';
 import 'package:mandi_khata_app/features/shop_reports/presentation/shop_reports_router.dart';
 import 'package:mandi_khata_app/features/shop_sales/presentation/sale_detail_screen.dart';
 import 'package:mandi_khata_app/features/shop_sales/presentation/sales_screen.dart';
@@ -329,6 +333,22 @@ GoRouter router(Ref ref) {
           GoRoute(
             path: AuditRoutes.list,
             builder: (context, state) => const AuditScreen(),
+          ),
+          GoRoute(
+            path: WhatsNewScreen.route,
+            builder: (context, state) => const WhatsNewScreen(),
+          ),
+          GoRoute(
+            path: ImportRoutes.hub,
+            builder: (context, state) => const ImportsHubScreen(),
+          ),
+          GoRoute(
+            path: ImportRoutes.products,
+            builder: (context, state) => const ProductImportScreen(),
+          ),
+          GoRoute(
+            path: BackupScreen.route,
+            builder: (context, state) => const BackupScreen(),
           ),
           GoRoute(
             path: AppRoutes.settings,

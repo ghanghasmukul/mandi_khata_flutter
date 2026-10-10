@@ -1080,3 +1080,25 @@ class SupportSessions extends Table {
   @override
   Set<Column<Object>> get primaryKey => {id};
 }
+
+/// A stored document of a party (step 6.3). Identity documents are owner only.
+class PartyDocuments extends Table {
+  TextColumn get id => text()();
+  TextColumn get tenantId => text()();
+  TextColumn get partyId => text()();
+  TextColumn get docType => text()();
+  TextColumn get title => text().nullable()();
+  TextColumn get idMasked => text().nullable()();
+  TextColumn get filePath => text()();
+  TextColumn get thumbPath => text().nullable()();
+  TextColumn get contentType => text()();
+  IntColumn get sizeBytes => integer()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get createdBy => text().nullable()();
+  TextColumn get createdAt => text().nullable()();
+  TextColumn get updatedAt => text().nullable()();
+  TextColumn get deletedAt => text().nullable()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {id};
+}

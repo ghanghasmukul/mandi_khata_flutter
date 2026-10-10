@@ -225,6 +225,21 @@ on the web and the installed apps at the counter.
   made on devices after the restore point re-upload (ids are client UUIDs, so
   they do not duplicate).
 
+### RPO and RTO (step 6.4)
+
+| Failure | Recovery | RPO (data lost) | RTO (time to recover) |
+|---|---|---|---|
+| Server database damaged / deleted | Supabase PITR restore into a new project, repoint PowerSync and the app config | seconds to minutes (PITR; daily backup only: up to 24 h) | 2-4 h, human-driven |
+| One device lost or broken | Sign in on a new device; it syncs everything | none for synced data; changes never uploaded from that device are lost | minutes |
+| Server unreachable for days | Shops keep working offline; they sync later | none | n/a |
+| Shop PC dead **and** no server copy (bad internet) | Fresh install, sign in, Backup & export > Restore from the latest `.mkbak` on the USB stick | up to 24 h (the daily backup interval) | 30 min |
+| Customer wants their data | Backup & export > Download all my data (ZIP of XLSX + PDF) | none | minutes |
+
+PITR needs the Pro plan add-on (above); without it the server RPO is 24 h.
+Local encrypted backups (docs/domain/backup-export.md) are the second copy
+for shops with bad internet. Test a restore once before go-live: the restore
+drill above for the server, and a fresh install + `.mkbak` restore for shops.
+
 ## Rolling back a bad migration
 
 Never edit or delete an applied migration, and never `db reset` prod.

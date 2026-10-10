@@ -12244,6 +12244,611 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your plan has no free user seat. Ask for more under Plan & billing.'**
   String get inviteErrLimitReached;
+
+  /// Documents tab: add button.
+  ///
+  /// In en, this message translates to:
+  /// **'Add document'**
+  String get docAdd;
+
+  /// Empty state.
+  ///
+  /// In en, this message translates to:
+  /// **'No documents yet.'**
+  String get docEmpty;
+
+  /// Note on the documents tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Aadhaar and PAN are visible to the owner only.'**
+  String get docOwnerNote;
+
+  /// Files not yet sent to the server.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 file waiting to upload} other{{count} files waiting to upload}}'**
+  String docPendingUploads(int count);
+
+  /// Document type.
+  ///
+  /// In en, this message translates to:
+  /// **'Aadhaar'**
+  String get docTypeAadhaar;
+
+  /// Document type.
+  ///
+  /// In en, this message translates to:
+  /// **'PAN'**
+  String get docTypePan;
+
+  /// Document type.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank passbook'**
+  String get docTypePassbook;
+
+  /// Document type.
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque'**
+  String get docTypeCheque;
+
+  /// Document type.
+  ///
+  /// In en, this message translates to:
+  /// **'J-form'**
+  String get docTypeJForm;
+
+  /// Document type.
+  ///
+  /// In en, this message translates to:
+  /// **'Loan agreement'**
+  String get docTypeLoanAgreement;
+
+  /// Document type.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get docTypeOther;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get docFieldType;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (optional)'**
+  String get docFieldTitle;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'Number (optional)'**
+  String get docFieldIdNumber;
+
+  /// Help under the Aadhaar / PAN number field.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the last 4 characters are kept; the full number is never saved.'**
+  String get docIdNumberHelp;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get docTakePhoto;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose file'**
+  String get docPickFile;
+
+  /// The chosen file.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} ({kb} KB)'**
+  String docChosen(String name, int kb);
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Save document'**
+  String get docSave;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Document saved. It uploads when you are online.'**
+  String get docAdded;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission for this document.'**
+  String get docRefusedNotAllowed;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'The file is too large (limit 6 MB after compression).'**
+  String get docTooLarge;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a JPG, PNG, WebP, HEIC or PDF file.'**
+  String get docUnsupported;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'This number is not valid. Check the Aadhaar / PAN number.'**
+  String get docBadIdNumber;
+
+  /// Button / title.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete document'**
+  String get docDelete;
+
+  /// Confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'The document is removed from the party. The file stays safe on the server.'**
+  String get docDeleteBody;
+
+  /// Shown when the file is not on this device.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to the internet to view this file.'**
+  String get docOffline;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Open PDF'**
+  String get docOpenPdf;
+
+  /// Screen title (step 6.4).
+  ///
+  /// In en, this message translates to:
+  /// **'Backup & export'**
+  String get backupTitle;
+
+  /// Shown to non-owners.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner can back up or restore.'**
+  String get backupOwnerOnly;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Download all my data'**
+  String get exportAllTitle;
+
+  /// Card text.
+  ///
+  /// In en, this message translates to:
+  /// **'A ZIP with an Excel file for every table and one PDF with every party\'s khata statement. Yours to keep, always.'**
+  String get exportAllBody;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Download ZIP'**
+  String get exportAllButton;
+
+  /// Card title (desktop).
+  ///
+  /// In en, this message translates to:
+  /// **'Backup on this computer'**
+  String get backupLocalTitle;
+
+  /// Card text.
+  ///
+  /// In en, this message translates to:
+  /// **'An encrypted backup file is saved to a folder or USB stick. Keep the passphrase safe: without it the file cannot be opened.'**
+  String get backupLocalBody;
+
+  /// Switch.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up every day'**
+  String get backupDaily;
+
+  /// Folder row.
+  ///
+  /// In en, this message translates to:
+  /// **'No folder chosen'**
+  String get backupNoFolder;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose folder'**
+  String get backupChooseFolder;
+
+  /// Field.
+  ///
+  /// In en, this message translates to:
+  /// **'Passphrase'**
+  String get backupPassphrase;
+
+  /// Help text.
+  ///
+  /// In en, this message translates to:
+  /// **'At least 6 characters. Saved on this computer so the daily backup can run by itself.'**
+  String get backupPassphraseHelp;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up now'**
+  String get backupNow;
+
+  /// Last backup.
+  ///
+  /// In en, this message translates to:
+  /// **'No backup yet'**
+  String get backupNever;
+
+  /// Last backup time.
+  ///
+  /// In en, this message translates to:
+  /// **'Last backup: {when}'**
+  String backupLast(String when);
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup saved: {path}'**
+  String backupDone(String path);
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a folder and a passphrase (6+ characters) first.'**
+  String get backupNeedsSetup;
+
+  /// Card title.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from a backup file'**
+  String get restoreTitle;
+
+  /// Card text.
+  ///
+  /// In en, this message translates to:
+  /// **'For a fresh install of the same business with nothing on it yet. Enter the passphrase, then pick the .mkbak file.'**
+  String get restoreBody;
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose backup file'**
+  String get restorePick;
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore this backup?'**
+  String get restoreConfirmTitle;
+
+  /// Dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'{business}, {rows} records, made {when}. They are added to this device and then sync.'**
+  String restoreConfirmBody(String business, int rows, String when);
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get restoreAction;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored {count} records.'**
+  String restoreDone(int count);
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong passphrase.'**
+  String get restoreWrongPassphrase;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'This is not a Mandi Khata backup, or the file is damaged.'**
+  String get restoreCorrupt;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'This backup belongs to another business.'**
+  String get restoreOtherBusiness;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'This business already has data on this device. A restore only goes into an empty install.'**
+  String get restoreNotEmpty;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'This backup was made by a newer app. Update the app first.'**
+  String get restoreNewerFormat;
+
+  /// Import hub (step 6.5).
+  ///
+  /// In en, this message translates to:
+  /// **'Import data'**
+  String get importHubTitle;
+
+  /// Hub link.
+  ///
+  /// In en, this message translates to:
+  /// **'Parties and opening balances (file or Tally)'**
+  String get importHubBalances;
+
+  /// Hub link.
+  ///
+  /// In en, this message translates to:
+  /// **'Products (CSV / Excel, Busy, Marg)'**
+  String get importHubProducts;
+
+  /// Hub link.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening stock'**
+  String get importHubStock;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Past imports'**
+  String get importPast;
+
+  /// Empty state.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing imported yet.'**
+  String get importPastEmpty;
+
+  /// Batch kind.
+  ///
+  /// In en, this message translates to:
+  /// **'Parties from Tally'**
+  String get importKindTally;
+
+  /// Records in a batch.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 record} other{{count} records}}'**
+  String importRows(int count);
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Roll back'**
+  String get importRollback;
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Roll back this import?'**
+  String get importRollbackTitle;
+
+  /// Dialog text.
+  ///
+  /// In en, this message translates to:
+  /// **'Every balance it posted is cancelled with a reversal entry (nothing is erased), and parties it created are removed if nothing else uses them.'**
+  String get importRollbackBody;
+
+  /// Toast.
+  ///
+  /// In en, this message translates to:
+  /// **'Rolled back: {entries} entries reversed, {removed} removed, {kept} kept (in use).'**
+  String importRolledBack(int entries, int removed, int kept);
+
+  /// Tag on a batch.
+  ///
+  /// In en, this message translates to:
+  /// **'Rolled back'**
+  String get importRolledBackTag;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'This import was not found.'**
+  String get importRollbackNotFound;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'Already rolled back.'**
+  String get importRollbackDone;
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'An entry is in a closed financial year. Unlock the year first (Year close).'**
+  String get importRollbackLocked;
+
+  /// Button on the opening balances screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Tally XML'**
+  String get obTallyButton;
+
+  /// Summary of a read Tally export.
+  ///
+  /// In en, this message translates to:
+  /// **'Tally: {parties} parties, {vouchers} vouchers read ({otherLedgers} other ledgers and {skippedVouchers} cancelled / optional vouchers ignored). Balance = opening + vouchers, as of the last voucher date.'**
+  String obTallySummary(
+    int parties,
+    int vouchers,
+    int otherLedgers,
+    int skippedVouchers,
+  );
+
+  /// Error.
+  ///
+  /// In en, this message translates to:
+  /// **'This is not a Tally XML export (Gateway of Tally > Export).'**
+  String get obTallyUnreadable;
+
+  /// Screen title.
+  ///
+  /// In en, this message translates to:
+  /// **'Import products'**
+  String get piTitle;
+
+  /// Help.
+  ///
+  /// In en, this message translates to:
+  /// **'A CSV or Excel file with a header row. Needs a name column; SKU (or barcode), unit, HSN, GST %, price, brand and category are read when present. Busy and Marg exports work as they are.'**
+  String get piHelp;
+
+  /// Preview summary.
+  ///
+  /// In en, this message translates to:
+  /// **'{valid} products ready to import, {invalid} rows with problems (they are skipped).'**
+  String piSummary(int valid, int invalid);
+
+  /// Button.
+  ///
+  /// In en, this message translates to:
+  /// **'Import {count} products'**
+  String piImportNow(int count);
+
+  /// Result.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} products imported. You can roll this back from Past imports.'**
+  String piDone(int count);
+
+  /// A row with problems.
+  ///
+  /// In en, this message translates to:
+  /// **'Row {number} ({name}): {problems}'**
+  String piRow(int number, String name, String problems);
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'name is empty'**
+  String get piNameMissing;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'no SKU or barcode'**
+  String get piSkuMissing;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'unit not understood (use bag, btl, ltr, kg, pkt, pc)'**
+  String get piUnitUnknown;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'GST rate must be 0, 0.25, 3, 5, 12, 18 or 28'**
+  String get piGstInvalid;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'HSN must be 4, 6 or 8 digits'**
+  String get piHsnInvalid;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'a price or quantity is not a valid number'**
+  String get piPriceInvalid;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'same SKU or barcode as an earlier row'**
+  String get piDuplicateInFile;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'SKU already exists'**
+  String get piSkuExists;
+
+  /// Row problem.
+  ///
+  /// In en, this message translates to:
+  /// **'barcode already exists'**
+  String get piBarcodeExists;
+
+  /// Row warning.
+  ///
+  /// In en, this message translates to:
+  /// **'category not found (added without one)'**
+  String get piCategoryUnknown;
+
+  /// File problem.
+  ///
+  /// In en, this message translates to:
+  /// **'No name column found in the first row.'**
+  String get piNoNameColumn;
+
+  /// File problem.
+  ///
+  /// In en, this message translates to:
+  /// **'More than 5,000 rows. Split the file.'**
+  String get piTooManyRows;
+
+  /// Screen title (step 6.7).
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s new'**
+  String get whatsNewTitle;
+
+  /// Heading of a release.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}'**
+  String whatsNewVersion(String version);
+
+  /// Release notes of 1.0.0, shown in What's new. One key per release.
+  ///
+  /// In en, this message translates to:
+  /// **'• Party documents: Aadhaar, PAN, passbook, cheque, J-form (photo or file, works offline)\n• Backup & export: download all your data, daily encrypted backup to a USB stick, restore\n• Import from Tally XML and product files (Busy, Marg, CSV), with undo for the owner\n• Faster day book and sync health checks'**
+  String get changelogV100;
+
+  /// Login screen link to the super-admin console.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin sign-in'**
+  String get loginAdminLink;
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin console'**
+  String get loginAdminTitle;
+
+  /// Shown when ADMIN_CONSOLE_URL is empty.
+  ///
+  /// In en, this message translates to:
+  /// **'The admin console address is not set in this build. Build the app with ADMIN_CONSOLE_URL, or open the console (apps/mk_admin) directly.'**
+  String get loginAdminNotConfigured;
 }
 
 class _AppLocalizationsDelegate

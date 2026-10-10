@@ -71,11 +71,11 @@ Format for a done step: `- [x] 0.1 Monorepo scaffold (2026-10-01): note`
 - [ ] Phase 5 review (docs/reviews/phase-5.md)
 
 ## Phase 6: Polish & scale
-- [ ] 6.1 WhatsApp & SMS (🧑 WhatsApp BSP account + approved templates)
-- [ ] 6.2 Printing (🧑 test on real thermal printer)
-- [ ] 6.3 Documents & KYC
-- [ ] 6.4 Backup, restore, export
-- [ ] 6.5 Data import
-- [ ] 6.6 Performance & reliability
-- [ ] 6.7 Distribution & updates (🧑 Play Console, code-signing certificate, domain)
+- [ ] 6.1 WhatsApp & SMS (🧑 WhatsApp BSP account + approved templates): **skipped by you**; only the rules doc `docs/domain/notifications.md` exists (yours, uncommitted)
+- [ ] 6.2 Printing (🧑 test on real thermal printer): **skipped by you**
+- [x] 6.3 Documents & KYC (2026-10-10): party Documents tab, camera (Android) / file pick, compress + thumbnail, offline upload queue, Aadhaar/PAN masked (number never stored), identity docs owner-only in table, buckets, sync stream and UI; pgTAP 27
+- [x] 6.4 Backup, restore, export (2026-10-10): owner-only Backup & export screen: ZIP of XLSX per table + statements PDF, daily AES-GCM `.mkbak` to a folder/USB (Windows/macOS), restore into an empty install, RPO/RTO in docs/ops.md
+- [x] 6.5 Data import (2026-10-10): Import hub; Tally XML (balances from masters + vouchers), product master file (Busy/Marg/CSV), preview = dry run, batches with owner rollback by reversal entries
+- [ ] 6.6 Performance & reliability (2026-10-10, partly): index + budgets, admin Sync health (pgTAP 28); NOT done: low-end device / Windows i3 measurements (🧑), partial sync (decided against, see decisions.md), Sentry crash-free number
+- [ ] 6.7 Distribution & updates (🧑 Play Console, code-signing certificate, domain) (2026-10-10, partly): docs/release.md, schema-version pin + upgrade test, in-app What's new (en/hi/pa); update check / release workflow / web headers already existed; NOT done: store submissions, Play in-app update API, MSIX
 - [ ] Phase 6 review → public launch

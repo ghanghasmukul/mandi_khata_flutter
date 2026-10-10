@@ -63,6 +63,7 @@ part 'app_database.g.dart';
     TenantSubscriptions,
     PlanRequests,
     SupportSessions,
+    PartyDocuments,
     SyncErrors,
   ],
 )

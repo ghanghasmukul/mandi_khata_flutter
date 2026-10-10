@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:khata_core/khata_core.dart';
 import 'package:mandi_khata_app/core/permissions/permissions.dart';
+import 'package:mandi_khata_app/features/documents/presentation/party_documents_tab.dart';
 import 'package:mandi_khata_app/features/interest/presentation/party_byaj_tab.dart';
 import 'package:mandi_khata_app/features/khata/presentation/party_khata_tab.dart';
 import 'package:mandi_khata_app/features/parties/domain/party.dart';
@@ -206,11 +207,12 @@ class _Body extends ConsumerWidget {
             children: [
               PartyKhataTab(party: p),
               PartyByajTab(party: p),
-              for (var i = 0; i < 4; i++)
+              for (var i = 0; i < 3; i++)
                 MkEmptyState(
                   icon: Icons.construction_outlined,
                   title: l10n.partyTabComingSoon,
                 ),
+              PartyDocumentsTab(partyId: p.id),
               SingleChildScrollView(
                 padding: const EdgeInsets.all(MkSpacing.lg),
                 child: Text(p.notes ?? l10n.partyNoNotes),

@@ -2744,5 +2744,508 @@
   "signupLimit": "ਤੁਸੀਂ ਇੱਕ ਵਿਅਕਤੀ ਵੱਲੋਂ ਬਣਾਏ ਜਾ ਸਕਣ ਵਾਲੇ ਕਾਰੋਬਾਰਾਂ ਦੀ ਹੱਦ ਤੱਕ ਪਹੁੰਚ ਗਏ ਹੋ।",
   "signupInvalid": "ਕਿਰਪਾ ਕਰਕੇ ਜਾਣਕਾਰੀ ਜਾਂਚ ਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
   "signupFailed": "ਕਾਰੋਬਾਰ ਨਹੀਂ ਬਣ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
-  "inviteErrLimitReached": "ਤੁਹਾਡੇ ਪਲਾਨ ਵਿੱਚ ਕੋਈ ਖਾਲੀ ਵਰਤੋਂਕਾਰ ਸੀਟ ਨਹੀਂ ਹੈ। ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ ਵਿੱਚ ਹੋਰ ਮੰਗੋ।"
+  "inviteErrLimitReached": "ਤੁਹਾਡੇ ਪਲਾਨ ਵਿੱਚ ਕੋਈ ਖਾਲੀ ਵਰਤੋਂਕਾਰ ਸੀਟ ਨਹੀਂ ਹੈ। ਪਲਾਨ ਅਤੇ ਬਿਲਿੰਗ ਵਿੱਚ ਹੋਰ ਮੰਗੋ।",
+  "docAdd": "ਦਸਤਾਵੇਜ਼ ਜੋੜੋ",
+  "@docAdd": {
+    "description": "Documents tab: add button. TODO(translate): unreviewed"
+  },
+  "docEmpty": "ਹਾਲੇ ਕੋਈ ਦਸਤਾਵੇਜ਼ ਨਹੀਂ।",
+  "@docEmpty": {
+    "description": "Empty state. TODO(translate): unreviewed"
+  },
+  "docOwnerNote": "ਆਧਾਰ ਅਤੇ ਪੈਨ ਸਿਰਫ਼ ਮਾਲਕ ਨੂੰ ਦਿਸਦੇ ਹਨ।",
+  "@docOwnerNote": {
+    "description": "Note on the documents tab. TODO(translate): unreviewed"
+  },
+  "docPendingUploads": "{count, plural, =1{1 ਫ਼ਾਈਲ ਅੱਪਲੋਡ ਉਡੀਕ ਰਹੀ ਹੈ} other{{count} ਫ਼ਾਈਲਾਂ ਅੱਪਲੋਡ ਉਡੀਕ ਰਹੀਆਂ ਹਨ}}",
+  "@docPendingUploads": {
+    "description": "Files not yet sent to the server. TODO(translate): unreviewed",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "docTypeAadhaar": "ਆਧਾਰ",
+  "@docTypeAadhaar": {
+    "description": "Document type. TODO(translate): unreviewed"
+  },
+  "docTypePan": "ਪੈਨ",
+  "@docTypePan": {
+    "description": "Document type. TODO(translate): unreviewed"
+  },
+  "docTypePassbook": "ਬੈਂਕ ਪਾਸਬੁੱਕ",
+  "@docTypePassbook": {
+    "description": "Document type. TODO(translate): unreviewed"
+  },
+  "docTypeCheque": "ਚੈੱਕ",
+  "@docTypeCheque": {
+    "description": "Document type. TODO(translate): unreviewed"
+  },
+  "docTypeJForm": "ਜੇ-ਫਾਰਮ",
+  "@docTypeJForm": {
+    "description": "Document type. TODO(translate): unreviewed"
+  },
+  "docTypeLoanAgreement": "ਕਰਜ਼ੇ ਦਾ ਇਕਰਾਰਨਾਮਾ",
+  "@docTypeLoanAgreement": {
+    "description": "Document type. TODO(translate): unreviewed"
+  },
+  "docTypeOther": "ਹੋਰ",
+  "@docTypeOther": {
+    "description": "Document type. TODO(translate): unreviewed"
+  },
+  "docFieldType": "ਕਿਸਮ",
+  "@docFieldType": {
+    "description": "Field. TODO(translate): unreviewed"
+  },
+  "docFieldTitle": "ਸਿਰਲੇਖ (ਮਰਜ਼ੀ ਅਨੁਸਾਰ)",
+  "@docFieldTitle": {
+    "description": "Field. TODO(translate): unreviewed"
+  },
+  "docFieldIdNumber": "ਨੰਬਰ (ਮਰਜ਼ੀ ਅਨੁਸਾਰ)",
+  "@docFieldIdNumber": {
+    "description": "Field. TODO(translate): unreviewed"
+  },
+  "docIdNumberHelp": "ਸਿਰਫ਼ ਆਖ਼ਰੀ 4 ਅੰਕ ਰੱਖੇ ਜਾਂਦੇ ਹਨ; ਪੂਰਾ ਨੰਬਰ ਕਦੇ ਸੇਵ ਨਹੀਂ ਹੁੰਦਾ।",
+  "@docIdNumberHelp": {
+    "description": "Help under the Aadhaar / PAN number field. TODO(translate): unreviewed"
+  },
+  "docTakePhoto": "ਫ਼ੋਟੋ ਖਿੱਚੋ",
+  "@docTakePhoto": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "docPickFile": "ਫ਼ਾਈਲ ਚੁਣੋ",
+  "@docPickFile": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "docChosen": "{name} ({kb} KB)",
+  "@docChosen": {
+    "description": "The chosen file. TODO(translate): unreviewed",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "kb": {
+        "type": "int"
+      }
+    }
+  },
+  "docSave": "ਦਸਤਾਵੇਜ਼ ਸੰਭਾਲੋ",
+  "@docSave": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "docAdded": "ਦਸਤਾਵੇਜ਼ ਸੰਭਾਲਿਆ ਗਿਆ। ਇੰਟਰਨੈੱਟ ਆਉਣ 'ਤੇ ਅੱਪਲੋਡ ਹੋਵੇਗਾ।",
+  "@docAdded": {
+    "description": "Toast. TODO(translate): unreviewed"
+  },
+  "docRefusedNotAllowed": "ਇਸ ਦਸਤਾਵੇਜ਼ ਦੀ ਇਜਾਜ਼ਤ ਤੁਹਾਡੇ ਕੋਲ ਨਹੀਂ ਹੈ।",
+  "@docRefusedNotAllowed": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "docTooLarge": "ਫ਼ਾਈਲ ਬਹੁਤ ਵੱਡੀ ਹੈ (ਕੰਪ੍ਰੈੱਸ ਤੋਂ ਬਾਅਦ ਹੱਦ 6 MB)।",
+  "@docTooLarge": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "docUnsupported": "JPG, PNG, WebP, HEIC ਜਾਂ PDF ਫ਼ਾਈਲ ਚੁਣੋ।",
+  "@docUnsupported": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "docBadIdNumber": "ਇਹ ਨੰਬਰ ਸਹੀ ਨਹੀਂ ਹੈ। ਆਧਾਰ / ਪੈਨ ਨੰਬਰ ਜਾਂਚੋ।",
+  "@docBadIdNumber": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "docDelete": "ਦਸਤਾਵੇਜ਼ ਹਟਾਓ",
+  "@docDelete": {
+    "description": "Button / title. TODO(translate): unreviewed"
+  },
+  "docDeleteBody": "ਦਸਤਾਵੇਜ਼ ਪਾਰਟੀ ਤੋਂ ਹਟ ਜਾਵੇਗਾ। ਫ਼ਾਈਲ ਸਰਵਰ 'ਤੇ ਸੁਰੱਖਿਅਤ ਰਹੇਗੀ।",
+  "@docDeleteBody": {
+    "description": "Confirmation. TODO(translate): unreviewed"
+  },
+  "docOffline": "ਇਹ ਫ਼ਾਈਲ ਦੇਖਣ ਲਈ ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ।",
+  "@docOffline": {
+    "description": "Shown when the file is not on this device. TODO(translate): unreviewed"
+  },
+  "docOpenPdf": "PDF ਖੋਲ੍ਹੋ",
+  "@docOpenPdf": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "backupTitle": "ਬੈਕਅੱਪ ਅਤੇ ਐਕਸਪੋਰਟ",
+  "@backupTitle": {
+    "description": "Screen title (step 6.4). TODO(translate): unreviewed"
+  },
+  "backupOwnerOnly": "ਬੈਕਅੱਪ ਜਾਂ ਰੀਸਟੋਰ ਸਿਰਫ਼ ਮਾਲਕ ਕਰ ਸਕਦਾ ਹੈ।",
+  "@backupOwnerOnly": {
+    "description": "Shown to non-owners. TODO(translate): unreviewed"
+  },
+  "exportAllTitle": "ਮੇਰਾ ਸਾਰਾ ਡੇਟਾ ਡਾਊਨਲੋਡ ਕਰੋ",
+  "@exportAllTitle": {
+    "description": "Card title. TODO(translate): unreviewed"
+  },
+  "exportAllBody": "ਇੱਕ ZIP ਜਿਸ ਵਿੱਚ ਹਰ ਟੇਬਲ ਦੀ Excel ਫ਼ਾਈਲ ਅਤੇ ਸਾਰੀਆਂ ਪਾਰਟੀਆਂ ਦੇ ਖਾਤੇ ਦਾ ਇੱਕ PDF ਹੈ। ਇਹ ਹਮੇਸ਼ਾ ਤੁਹਾਡਾ ਹੈ।",
+  "@exportAllBody": {
+    "description": "Card text. TODO(translate): unreviewed"
+  },
+  "exportAllButton": "ZIP ਡਾਊਨਲੋਡ ਕਰੋ",
+  "@exportAllButton": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "backupLocalTitle": "ਇਸ ਕੰਪਿਊਟਰ 'ਤੇ ਬੈਕਅੱਪ",
+  "@backupLocalTitle": {
+    "description": "Card title (desktop). TODO(translate): unreviewed"
+  },
+  "backupLocalBody": "ਇਨਕ੍ਰਿਪਟਡ ਬੈਕਅੱਪ ਫ਼ਾਈਲ ਫ਼ੋਲਡਰ ਜਾਂ USB ਵਿੱਚ ਸੇਵ ਹੁੰਦੀ ਹੈ। ਪਾਸਫ਼ਰੇਜ਼ ਸੰਭਾਲ ਕੇ ਰੱਖੋ: ਇਸ ਤੋਂ ਬਿਨਾਂ ਫ਼ਾਈਲ ਨਹੀਂ ਖੁੱਲ੍ਹੇਗੀ।",
+  "@backupLocalBody": {
+    "description": "Card text. TODO(translate): unreviewed"
+  },
+  "backupDaily": "ਹਰ ਦਿਨ ਬੈਕਅੱਪ ਲਓ",
+  "@backupDaily": {
+    "description": "Switch. TODO(translate): unreviewed"
+  },
+  "backupNoFolder": "ਕੋਈ ਫ਼ੋਲਡਰ ਨਹੀਂ ਚੁਣਿਆ",
+  "@backupNoFolder": {
+    "description": "Folder row. TODO(translate): unreviewed"
+  },
+  "backupChooseFolder": "ਫ਼ੋਲਡਰ ਚੁਣੋ",
+  "@backupChooseFolder": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "backupPassphrase": "ਪਾਸਫ਼ਰੇਜ਼",
+  "@backupPassphrase": {
+    "description": "Field. TODO(translate): unreviewed"
+  },
+  "backupPassphraseHelp": "ਘੱਟੋ-ਘੱਟ 6 ਅੱਖਰ। ਇਸੇ ਕੰਪਿਊਟਰ 'ਤੇ ਸੇਵ ਰਹਿੰਦਾ ਹੈ ਤਾਂ ਜੋ ਰੋਜ਼ ਦਾ ਬੈਕਅੱਪ ਆਪਣੇ-ਆਪ ਚੱਲੇ।",
+  "@backupPassphraseHelp": {
+    "description": "Help text. TODO(translate): unreviewed"
+  },
+  "backupNow": "ਹੁਣੇ ਬੈਕਅੱਪ ਲਓ",
+  "@backupNow": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "backupNever": "ਹਾਲੇ ਤੱਕ ਕੋਈ ਬੈਕਅੱਪ ਨਹੀਂ",
+  "@backupNever": {
+    "description": "Last backup. TODO(translate): unreviewed"
+  },
+  "backupLast": "ਆਖ਼ਰੀ ਬੈਕਅੱਪ: {when}",
+  "@backupLast": {
+    "description": "Last backup time. TODO(translate): unreviewed",
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "backupDone": "ਬੈਕਅੱਪ ਸੇਵ ਹੋਇਆ: {path}",
+  "@backupDone": {
+    "description": "Toast. TODO(translate): unreviewed",
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "backupNeedsSetup": "ਪਹਿਲਾਂ ਫ਼ੋਲਡਰ ਅਤੇ ਪਾਸਫ਼ਰੇਜ਼ (6+ ਅੱਖਰ) ਚੁਣੋ।",
+  "@backupNeedsSetup": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "restoreTitle": "ਬੈਕਅੱਪ ਫ਼ਾਈਲ ਤੋਂ ਰੀਸਟੋਰ ਕਰੋ",
+  "@restoreTitle": {
+    "description": "Card title. TODO(translate): unreviewed"
+  },
+  "restoreBody": "ਉਸੇ ਕਾਰੋਬਾਰ ਦੀ ਨਵੀਂ ਇੰਸਟਾਲ ਲਈ, ਜਿਸ ਵਿੱਚ ਹਾਲੇ ਕੁਝ ਨਹੀਂ। ਪਾਸਫ਼ਰੇਜ਼ ਪਾਓ, ਫਿਰ .mkbak ਫ਼ਾਈਲ ਚੁਣੋ।",
+  "@restoreBody": {
+    "description": "Card text. TODO(translate): unreviewed"
+  },
+  "restorePick": "ਬੈਕਅੱਪ ਫ਼ਾਈਲ ਚੁਣੋ",
+  "@restorePick": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "restoreConfirmTitle": "ਇਹ ਬੈਕਅੱਪ ਰੀਸਟੋਰ ਕਰੀਏ?",
+  "@restoreConfirmTitle": {
+    "description": "Dialog title. TODO(translate): unreviewed"
+  },
+  "restoreConfirmBody": "{business}, {rows} ਰਿਕਾਰਡ, ਬਣਿਆ: {when}। ਇਹ ਇਸ ਡਿਵਾਈਸ ਵਿੱਚ ਜੁੜਨਗੇ ਅਤੇ ਫਿਰ ਸਿੰਕ ਹੋਣਗੇ।",
+  "@restoreConfirmBody": {
+    "description": "Dialog text. TODO(translate): unreviewed",
+    "placeholders": {
+      "business": {
+        "type": "String"
+      },
+      "rows": {
+        "type": "int"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreAction": "ਰੀਸਟੋਰ ਕਰੋ",
+  "@restoreAction": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "restoreDone": "{count} ਰਿਕਾਰਡ ਰੀਸਟੋਰ ਹੋਏ।",
+  "@restoreDone": {
+    "description": "Toast. TODO(translate): unreviewed",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreWrongPassphrase": "ਪਾਸਫ਼ਰੇਜ਼ ਗ਼ਲਤ ਹੈ।",
+  "@restoreWrongPassphrase": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "restoreCorrupt": "ਇਹ ਮੰਡੀ ਖਾਤਾ ਬੈਕਅੱਪ ਨਹੀਂ ਹੈ, ਜਾਂ ਫ਼ਾਈਲ ਖ਼ਰਾਬ ਹੈ।",
+  "@restoreCorrupt": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "restoreOtherBusiness": "ਇਹ ਬੈਕਅੱਪ ਕਿਸੇ ਹੋਰ ਕਾਰੋਬਾਰ ਦਾ ਹੈ।",
+  "@restoreOtherBusiness": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "restoreNotEmpty": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਇਸ ਕਾਰੋਬਾਰ ਦਾ ਡੇਟਾ ਪਹਿਲਾਂ ਹੀ ਹੈ। ਰੀਸਟੋਰ ਸਿਰਫ਼ ਖ਼ਾਲੀ ਇੰਸਟਾਲ ਵਿੱਚ ਹੁੰਦਾ ਹੈ।",
+  "@restoreNotEmpty": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "restoreNewerFormat": "ਇਹ ਬੈਕਅੱਪ ਨਵੀਂ ਐਪ ਨਾਲ ਬਣਿਆ ਹੈ। ਪਹਿਲਾਂ ਐਪ ਅੱਪਡੇਟ ਕਰੋ।",
+  "@restoreNewerFormat": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "importHubTitle": "ਡੇਟਾ ਇੰਪੋਰਟ ਕਰੋ",
+  "@importHubTitle": {
+    "description": "Import hub (step 6.5). TODO(translate): unreviewed"
+  },
+  "importHubBalances": "ਪਾਰਟੀਆਂ ਅਤੇ ਸ਼ੁਰੂਆਤੀ ਬਕਾਇਆ (ਫ਼ਾਈਲ ਜਾਂ Tally)",
+  "@importHubBalances": {
+    "description": "Hub link. TODO(translate): unreviewed"
+  },
+  "importHubProducts": "ਉਤਪਾਦ (CSV / Excel, Busy, Marg)",
+  "@importHubProducts": {
+    "description": "Hub link. TODO(translate): unreviewed"
+  },
+  "importHubStock": "ਸ਼ੁਰੂਆਤੀ ਸਟਾਕ",
+  "@importHubStock": {
+    "description": "Hub link. TODO(translate): unreviewed"
+  },
+  "importPast": "ਪਿਛਲੇ ਇੰਪੋਰਟ",
+  "@importPast": {
+    "description": "Section title. TODO(translate): unreviewed"
+  },
+  "importPastEmpty": "ਹਾਲੇ ਕੁਝ ਇੰਪੋਰਟ ਨਹੀਂ ਹੋਇਆ।",
+  "@importPastEmpty": {
+    "description": "Empty state. TODO(translate): unreviewed"
+  },
+  "importKindTally": "Tally ਤੋਂ ਪਾਰਟੀਆਂ",
+  "@importKindTally": {
+    "description": "Batch kind. TODO(translate): unreviewed"
+  },
+  "importRows": "{count, plural, =1{1 ਰਿਕਾਰਡ} other{{count} ਰਿਕਾਰਡ}}",
+  "@importRows": {
+    "description": "Records in a batch. TODO(translate): unreviewed",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importRollback": "ਵਾਪਸ ਲਓ",
+  "@importRollback": {
+    "description": "Button. TODO(translate): unreviewed"
+  },
+  "importRollbackTitle": "ਇਹ ਇੰਪੋਰਟ ਵਾਪਸ ਲਈਏ?",
+  "@importRollbackTitle": {
+    "description": "Dialog title. TODO(translate): unreviewed"
+  },
+  "importRollbackBody": "ਇਸ ਦੇ ਹਰ ਬਕਾਇਆ ਨੂੰ ਰਿਵਰਸਲ ਐਂਟਰੀ ਨਾਲ ਰੱਦ ਕੀਤਾ ਜਾਵੇਗਾ (ਕੁਝ ਮਿਟਦਾ ਨਹੀਂ), ਅਤੇ ਇਸ ਤੋਂ ਬਣੀਆਂ ਪਾਰਟੀਆਂ ਹਟਣਗੀਆਂ ਜੇ ਹੋਰ ਕਿਤੇ ਵਰਤੀਆਂ ਨਹੀਂ ਗਈਆਂ।",
+  "@importRollbackBody": {
+    "description": "Dialog text. TODO(translate): unreviewed"
+  },
+  "importRolledBack": "ਵਾਪਸ ਲਿਆ: {entries} ਐਂਟਰੀਆਂ ਰਿਵਰਸ, {removed} ਹਟਾਏ, {kept} ਰੱਖੇ (ਵਰਤੋਂ ਵਿੱਚ)।",
+  "@importRolledBack": {
+    "description": "Toast. TODO(translate): unreviewed",
+    "placeholders": {
+      "entries": {
+        "type": "int"
+      },
+      "removed": {
+        "type": "int"
+      },
+      "kept": {
+        "type": "int"
+      }
+    }
+  },
+  "importRolledBackTag": "ਵਾਪਸ ਲਿਆ ਗਿਆ",
+  "@importRolledBackTag": {
+    "description": "Tag on a batch. TODO(translate): unreviewed"
+  },
+  "importRollbackNotFound": "ਇਹ ਇੰਪੋਰਟ ਨਹੀਂ ਮਿਲਿਆ।",
+  "@importRollbackNotFound": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "importRollbackDone": "ਪਹਿਲਾਂ ਹੀ ਵਾਪਸ ਲਿਆ ਜਾ ਚੁੱਕਾ ਹੈ।",
+  "@importRollbackDone": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "importRollbackLocked": "ਇੱਕ ਐਂਟਰੀ ਬੰਦ ਵਿੱਤੀ ਸਾਲ ਵਿੱਚ ਹੈ। ਪਹਿਲਾਂ ਸਾਲ ਖੋਲ੍ਹੋ (Year close)।",
+  "@importRollbackLocked": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "obTallyButton": "Tally XML",
+  "@obTallyButton": {
+    "description": "Button on the opening balances screen. TODO(translate): unreviewed"
+  },
+  "obTallySummary": "Tally: {parties} ਪਾਰਟੀਆਂ, {vouchers} ਵਾਊਚਰ ਪੜ੍ਹੇ ({otherLedgers} ਹੋਰ ਲੇਜਰ ਅਤੇ {skippedVouchers} ਰੱਦ / ਵਿਕਲਪਿਕ ਵਾਊਚਰ ਛੱਡੇ ਗਏ)। ਬਕਾਇਆ = ਸ਼ੁਰੂਆਤੀ + ਵਾਊਚਰ, ਆਖ਼ਰੀ ਵਾਊਚਰ ਦੀ ਤਾਰੀਖ਼ ਤੱਕ।",
+  "@obTallySummary": {
+    "description": "Summary of a read Tally export. TODO(translate): unreviewed",
+    "placeholders": {
+      "parties": {
+        "type": "int"
+      },
+      "vouchers": {
+        "type": "int"
+      },
+      "otherLedgers": {
+        "type": "int"
+      },
+      "skippedVouchers": {
+        "type": "int"
+      }
+    }
+  },
+  "obTallyUnreadable": "ਇਹ Tally XML ਐਕਸਪੋਰਟ ਨਹੀਂ ਹੈ (Gateway of Tally > Export)।",
+  "@obTallyUnreadable": {
+    "description": "Error. TODO(translate): unreviewed"
+  },
+  "piTitle": "ਉਤਪਾਦ ਇੰਪੋਰਟ ਕਰੋ",
+  "@piTitle": {
+    "description": "Screen title. TODO(translate): unreviewed"
+  },
+  "piHelp": "ਹੈਡਰ ਵਾਲੀ CSV ਜਾਂ Excel ਫ਼ਾਈਲ। ਨਾਮ ਦਾ ਕਾਲਮ ਜ਼ਰੂਰੀ ਹੈ; SKU (ਜਾਂ ਬਾਰਕੋਡ), ਯੂਨਿਟ, HSN, GST %, ਭਾਅ, ਬ੍ਰਾਂਡ ਅਤੇ ਕੈਟਾਗਰੀ ਹੋਣ ਤਾਂ ਪੜ੍ਹੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। Busy ਅਤੇ Marg ਦੀਆਂ ਫ਼ਾਈਲਾਂ ਸਿੱਧੀਆਂ ਚੱਲਦੀਆਂ ਹਨ।",
+  "@piHelp": {
+    "description": "Help. TODO(translate): unreviewed"
+  },
+  "piSummary": "{valid} ਉਤਪਾਦ ਇੰਪੋਰਟ ਲਈ ਤਿਆਰ, {invalid} ਕਤਾਰਾਂ ਵਿੱਚ ਸਮੱਸਿਆ (ਛੱਡੀਆਂ ਜਾਣਗੀਆਂ)।",
+  "@piSummary": {
+    "description": "Preview summary. TODO(translate): unreviewed",
+    "placeholders": {
+      "valid": {
+        "type": "int"
+      },
+      "invalid": {
+        "type": "int"
+      }
+    }
+  },
+  "piImportNow": "{count} ਉਤਪਾਦ ਇੰਪੋਰਟ ਕਰੋ",
+  "@piImportNow": {
+    "description": "Button. TODO(translate): unreviewed",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "piDone": "{count} ਉਤਪਾਦ ਇੰਪੋਰਟ ਹੋਏ। ਪਿਛਲੇ ਇੰਪੋਰਟ ਵਿੱਚੋਂ ਇਹਨੂੰ ਵਾਪਸ ਲੈ ਸਕਦੇ ਹੋ।",
+  "@piDone": {
+    "description": "Result. TODO(translate): unreviewed",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "piRow": "ਕਤਾਰ {number} ({name}): {problems}",
+  "@piRow": {
+    "description": "A row with problems. TODO(translate): unreviewed",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      },
+      "problems": {
+        "type": "String"
+      }
+    }
+  },
+  "piNameMissing": "ਨਾਮ ਖ਼ਾਲੀ ਹੈ",
+  "@piNameMissing": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piSkuMissing": "SKU ਜਾਂ ਬਾਰਕੋਡ ਨਹੀਂ ਹੈ",
+  "@piSkuMissing": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piUnitUnknown": "ਯੂਨਿਟ ਸਮਝ ਨਹੀਂ ਆਈ (bag, btl, ltr, kg, pkt, pc ਵਿੱਚੋਂ)",
+  "@piUnitUnknown": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piGstInvalid": "GST ਦਰ 0, 0.25, 3, 5, 12, 18 ਜਾਂ 28 ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ",
+  "@piGstInvalid": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piHsnInvalid": "HSN 4, 6 ਜਾਂ 8 ਅੰਕਾਂ ਦਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ",
+  "@piHsnInvalid": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piPriceInvalid": "ਕੋਈ ਭਾਅ ਜਾਂ ਮਾਤਰਾ ਸਹੀ ਸੰਖਿਆ ਨਹੀਂ ਹੈ",
+  "@piPriceInvalid": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piDuplicateInFile": "ਪਹਿਲੀ ਕਤਾਰ ਵਾਲਾ ਹੀ SKU ਜਾਂ ਬਾਰਕੋਡ",
+  "@piDuplicateInFile": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piSkuExists": "SKU ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ",
+  "@piSkuExists": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piBarcodeExists": "ਬਾਰਕੋਡ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ",
+  "@piBarcodeExists": {
+    "description": "Row problem. TODO(translate): unreviewed"
+  },
+  "piCategoryUnknown": "ਕੈਟਾਗਰੀ ਨਹੀਂ ਮਿਲੀ (ਬਿਨਾਂ ਕੈਟਾਗਰੀ ਦੇ ਜੁੜੇਗਾ)",
+  "@piCategoryUnknown": {
+    "description": "Row warning. TODO(translate): unreviewed"
+  },
+  "piNoNameColumn": "ਪਹਿਲੀ ਕਤਾਰ ਵਿੱਚ ਨਾਮ ਦਾ ਕਾਲਮ ਨਹੀਂ ਮਿਲਿਆ।",
+  "@piNoNameColumn": {
+    "description": "File problem. TODO(translate): unreviewed"
+  },
+  "piTooManyRows": "5,000 ਤੋਂ ਵੱਧ ਕਤਾਰਾਂ। ਫ਼ਾਈਲ ਵੰਡ ਦਿਓ।",
+  "@piTooManyRows": {
+    "description": "File problem. TODO(translate): unreviewed"
+  },
+  "whatsNewTitle": "ਨਵਾਂ ਕੀ ਹੈ",
+  "@whatsNewTitle": {
+    "description": "Screen title (step 6.7). TODO(translate): unreviewed"
+  },
+  "whatsNewVersion": "ਵਰਜ਼ਨ {version}",
+  "@whatsNewVersion": {
+    "description": "Heading of a release. TODO(translate): unreviewed",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "changelogV100": "• ਪਾਰਟੀ ਦੇ ਦਸਤਾਵੇਜ਼: ਆਧਾਰ, ਪੈਨ, ਪਾਸਬੁੱਕ, ਚੈੱਕ, ਜੇ-ਫਾਰਮ (ਫ਼ੋਟੋ ਜਾਂ ਫ਼ਾਈਲ, ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਵੀ)\n• ਬੈਕਅੱਪ ਅਤੇ ਐਕਸਪੋਰਟ: ਸਾਰਾ ਡੇਟਾ ਡਾਊਨਲੋਡ, USB ਵਿੱਚ ਰੋਜ਼ ਦਾ ਇਨਕ੍ਰਿਪਟਡ ਬੈਕਅੱਪ, ਰੀਸਟੋਰ\n• Tally XML ਅਤੇ ਉਤਪਾਦ ਫ਼ਾਈਲਾਂ (Busy, Marg, CSV) ਤੋਂ ਇੰਪੋਰਟ, ਮਾਲਕ ਲਈ ਵਾਪਸ ਲੈਣ ਦੀ ਸਹੂਲਤ\n• ਤੇਜ਼ ਰੋਜ਼ਨਾਮਚਾ ਅਤੇ ਸਿੰਕ ਦੀ ਸਿਹਤ ਦੀ ਜਾਂਚ",
+  "@changelogV100": {
+    "description": "Release notes of 1.0.0, shown in What's new. One key per release. TODO(translate): unreviewed"
+  },
+  "loginAdminLink": "ਐਡਮਿਨ ਸਾਈਨ-ਇਨ",
+  "@loginAdminLink": {
+    "description": "Login screen link to the super-admin console. TODO(translate): unreviewed"
+  },
+  "loginAdminTitle": "ਐਡਮਿਨ ਕੰਸੋਲ",
+  "@loginAdminTitle": {
+    "description": "Dialog title. TODO(translate): unreviewed"
+  },
+  "loginAdminNotConfigured": "ਇਸ ਬਿਲਡ ਵਿੱਚ ਐਡਮਿਨ ਕੰਸੋਲ ਦਾ ਪਤਾ ਸੈੱਟ ਨਹੀਂ ਹੈ। ਐਪ ਨੂੰ ADMIN_CONSOLE_URL ਨਾਲ ਬਣਾਓ, ਜਾਂ ਕੰਸੋਲ (apps/mk_admin) ਸਿੱਧਾ ਖੋਲ੍ਹੋ।",
+  "@loginAdminNotConfigured": {
+    "description": "Shown when ADMIN_CONSOLE_URL is empty. TODO(translate): unreviewed"
+  }
 }
